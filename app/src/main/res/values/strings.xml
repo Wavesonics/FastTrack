@@ -1,0 +1,18 @@
+<resources>
+	<string name="app_name">Fast Track</string>
+	<string name="action_settings">Settings</string>
+	<!-- Strings used for fragments for navigation -->
+	<string name="fasting_fragment_label">Fast</string>
+	<string name="second_fragment_label">Second Fragment</string>
+	<string name="start_fast_button">Start Fast</string>
+	<string name="end_fast_button">End Fast</string>
+
+	<string name="fast_status_fasting">Fast in progress</string>
+	<string name="fast_status_not_fasting">You are not fasting</string>
+
+	<string name="next_stage">Next stage at: %1$d hours</string>
+
+	<string name="hello_first_fragment">Hello first fragment</string>
+	<string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+	<string name="start_fast_button_advanced">*</string>
+</resources>
