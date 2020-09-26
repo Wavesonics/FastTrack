@@ -7,6 +7,10 @@
 	<string name="start_fast_button">Start Fast</string>
 	<string name="end_fast_button">End Fast</string>
 
+	<string name="confirm_end_fast_title">End Fast?</string>
+	<string name="confirm_end_fast_positive">Yes</string>
+	<string name="confirm_end_fast_negative">No</string>
+
 	<string name="fast_status_fasting">Fast in progress</string>
 	<string name="fast_status_not_fasting">You are not fasting</string>
 

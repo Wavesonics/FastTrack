@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.log4k.d
 import com.log4k.i
 import com.log4k.w
@@ -56,7 +57,13 @@ class FastingFragment: Fragment()
 		}
 
 		button_end_fast.setOnClickListener {
-			endFast()
+			context?.let { ctx ->
+				MaterialAlertDialogBuilder(ctx)
+						.setTitle(R.string.confirm_end_fast_title)
+						.setPositiveButton(R.string.confirm_end_fast_positive) { _, _ -> endFast() }
+						.setNegativeButton(R.string.confirm_end_fast_negative, null)
+						.show()
+			}
 		}
 
 		button_start_fast_advanced.setOnClickListener {
@@ -135,7 +142,7 @@ class FastingFragment: Fragment()
 		textview_stage_description.text = ""
 		textview_next_stage.text = ""
 
-		if(fastStart != null)
+		if(isFasting() && fastStart != null)
 		{
 			val elapsedHours = Clock.System.now().minus(fastStart).inHours.toInt()
 
