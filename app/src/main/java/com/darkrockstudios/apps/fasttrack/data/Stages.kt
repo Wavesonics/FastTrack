@@ -8,6 +8,7 @@ object Stages
 			Stage(hours = 18, title = "Fasting Sweet Spot", description = "You're in the fasting sweet spot, keep it up!"),
 			Stage(hours = 20, title = "Peak Fat Burning", description = "Your body is burning fat rapidly now, and ketosis has begun."),
 			Stage(hours = 24, title = "Autophagy", description = "Your body has begun atophagy!."),
+			Stage(hours = 48, title = "Optimal Autophagy", description = "Atophagy is in full swing! Keep it up, between now and 72 hours autophagy will be very effective.."),
 					   )
 }
 
