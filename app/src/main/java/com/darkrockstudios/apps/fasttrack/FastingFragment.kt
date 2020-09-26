@@ -117,7 +117,7 @@ class FastingFragment: Fragment()
 
 	private fun startTimerUpdate()
 	{
-		uiHandler.postDelayed(updater, 1000)
+		uiHandler.postDelayed(updater, 10)
 	}
 
 	private fun stopTimerUpdate()
@@ -197,6 +197,8 @@ class FastingFragment: Fragment()
 		val secondsStr = "%02d".format(seconds)
 		val minutesStr = "%02d".format(minutes)
 		chronometer.text = "$hours:$minutesStr:$secondsStr"
+
+		milliseconds.text = "${nanoseconds / 10000000}"
 	}
 
 	private fun updateButtons()
