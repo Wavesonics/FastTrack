@@ -20,4 +20,19 @@
 	<string name="next_stage">Next stage at: %1$d hours</string>
 
 	<string name="start_fast_button_advanced">*</string>
+
+	<string name="profile_age_label">Age</string>
+	<string name="profile_age_years">years</string>
+
+	<string name="profile_weight_label">Weight</string>
+	<string name="profile_weight_pounds_label">Pounds</string>
+
+	<string name="profile_update_button">Update</string>
+
+	<string name="profile_bmi_label">BMI:</string>
+	<string name="profile_bmr_label">BMR:</string>
+
+	<string name="profile_height_label">Height</string>
+	<string name="profile_height_imper_feet_label">Feet</string>
+	<string name="profile_height_imper_inches_label">Inches</string>
 </resources>
