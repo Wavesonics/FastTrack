@@ -13,14 +13,20 @@ import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
+import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.log4k.d
+import com.log4k.e
 import com.log4k.i
 import com.log4k.w
 import kotlinx.android.synthetic.main.fragment_fasting.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.time.ExperimentalTime
 
@@ -32,13 +38,7 @@ import kotlin.time.ExperimentalTime
 class FastingFragment: Fragment()
 {
 	private val uiHandler = Handler(Looper.getMainLooper())
-
-	override fun onCreate(savedInstanceState: Bundle?)
-	{
-		super.onCreate(savedInstanceState)
-
-		//val dataStore: DataStore<Fast> = requireContext().createDataStore(fileName = "currentFast")
-	}
+	private val database by inject<AppDatabase>()
 
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
@@ -286,6 +286,9 @@ class FastingFragment: Fragment()
 			val now = Clock.System.now()
 			val mills = now.toEpochMilliseconds()
 			storage.edit { putLong(Data.KEY_FAST_END, mills) }
+
+			GlobalScope.launch { saveFastToLog(getFastStart(), getFastEnd()) }
+
 			i("Fast ended!")
 
 			updateUi()
@@ -293,6 +296,20 @@ class FastingFragment: Fragment()
 		else
 		{
 			w("Cannot end fast, there is none started")
+		}
+	}
+
+	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?)
+	{
+		if(startTime != null && endTime != null)
+		{
+			val duration = endTime.minus(startTime)
+			val newEntry = FastEntry(start = startTime.toEpochMilliseconds(), length = duration.toLongMilliseconds())
+			database.fastDao().insertAll(newEntry)
+		}
+		else
+		{
+			e("No start time when ending fast!")
 		}
 	}
 }
