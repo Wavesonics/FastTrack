@@ -6,7 +6,7 @@
 	android:layout_height="match_parent"
 	android:padding="@dimen/default_padding"
 	android:background="@drawable/fast_background"
-	tools:context=".FastingFragment">
+	tools:context=".screens.fasting.FastingFragment">
 
 	<TextView
 		android:id="@+id/textview_title"

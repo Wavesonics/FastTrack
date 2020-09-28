@@ -1,4 +1,4 @@
-package com.darkrockstudios.apps.fasttrack
+package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.Context
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog

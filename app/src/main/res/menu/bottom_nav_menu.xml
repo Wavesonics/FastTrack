@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/navigation_fasting"
+		android:icon="@drawable/ic_fasting"
+		android:title="@string/title_fasting" />
+
+	<item
+		android:id="@+id/navigation_log"
+		android:icon="@drawable/ic_log"
+		android:title="@string/title_log" />
+
+	<item
+		android:id="@+id/navigation_profile"
+		android:icon="@drawable/ic_profile"
+		android:title="@string/title_profile" />
+
+</menu>
