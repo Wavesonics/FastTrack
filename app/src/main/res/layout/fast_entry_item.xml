@@ -4,7 +4,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:padding="@dimen/default_padding">
+	android:padding="@dimen/default_padding"
+	android:background="@drawable/ripple">
 
 	<TextView
 		android:id="@+id/fast_entry_start"
