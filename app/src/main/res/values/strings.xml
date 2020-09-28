@@ -30,9 +30,19 @@
 	<string name="profile_update_button">Update</string>
 
 	<string name="profile_bmi_label">BMI:</string>
+	<string name="profile_bmi_value">%1$.0f - %2$s</string>
+	<string name="profile_bmi_category_underweight">Underweight</string>
+	<string name="profile_bmi_category_normal">Normal</string>
+	<string name="profile_bmi_category_overweight">Overweight</string>
+	<string name="profile_bmi_category_obese">Obese</string>
+	<string name="profile_bmi_category_morbidly_obese">Morbidly Obese</string>
+
 	<string name="profile_bmr_label">BMR:</string>
+	<string name="profile_bmr_value">%.0f" kCal / day</string>
 
 	<string name="profile_height_label">Height</string>
 	<string name="profile_height_imper_feet_label">Feet</string>
 	<string name="profile_height_imper_inches_label">Inches</string>
+	<string name="profile_gender_male">Male</string>
+	<string name="profile_gender_female">Female</string>
 </resources>

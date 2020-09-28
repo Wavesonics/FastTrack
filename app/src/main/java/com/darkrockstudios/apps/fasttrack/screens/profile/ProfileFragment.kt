@@ -13,12 +13,12 @@ import cafe.adriel.satchel.Satchel
 import cafe.adriel.satchel.ktx.getOrSet
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
+import com.darkrockstudios.apps.fasttrack.data.Gender
 import com.darkrockstudios.apps.fasttrack.data.Profile
 import com.log4k.w
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlin.math.floor
 import kotlin.math.pow
-import kotlin.math.round
 
 
 class ProfileFragment: Fragment()
@@ -52,6 +52,7 @@ class ProfileFragment: Fragment()
 		TextInputEditText_height_imper_inches.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
 		TextInputEditText_age.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
 		TextInputEditText_weight_pounds.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
+		gender_button_ground.setOnCheckedChangeListener { _, _ -> updateDirty(true) }
 
 		profile_update_button.setOnClickListener { saveProfile() }
 	}
@@ -68,7 +69,14 @@ class ProfileFragment: Fragment()
 
 		val age = parseInt(TextInputEditText_age.text)
 
-		val updatedProfile = Profile(ageYears = age, heightCm = totalCm, weightKg = kg)
+		val gender = when(gender_button_ground.checkedRadioButtonId)
+		{
+			R.id.gender_button_male -> Gender.Male
+			R.id.gender_button_female -> Gender.Female
+			else                      -> Gender.Male
+		}
+
+		val updatedProfile = Profile(ageYears = age, heightCm = totalCm, weightKg = kg, gender = gender)
 		viewModel.profile.postValue(updatedProfile)
 
 		Satchel.storage.apply {
@@ -140,24 +148,60 @@ class ProfileFragment: Fragment()
 		if(TextInputEditText_weight_pounds.text?.toString() != "$weightPounds")
 			TextInputEditText_weight_pounds.setText("$weightPounds")
 
+		when(profile.gender)
+		{
+			Gender.Male -> gender_button_ground.check(R.id.gender_button_male)
+			Gender.Female -> gender_button_ground.check(R.id.gender_button_female)
+		}
+
 		val bmi = calculateBmi(profile)
-		textView_bmi_value.text = "$bmi"
+		val bmiCategory = when
+		{
+			bmi < 18.5  -> getString(R.string.profile_bmi_category_underweight)
+			bmi < 25.0  -> getString(R.string.profile_bmi_category_normal)
+			bmi < 30.0  -> getString(R.string.profile_bmi_category_overweight)
+			bmi < 40.0  -> getString(R.string.profile_bmi_category_obese)
+			bmi >= 40.0 -> getString(R.string.profile_bmi_category_morbidly_obese)
+			else        -> ""
+		}
+
+		textView_bmi_value.text = getString(R.string.profile_bmi_value, bmi, bmiCategory)
+
+		val bmr = calculateBmr(profile)
+		textView_bmr_value.text = getString(R.string.profile_bmr_value, bmr)
 
 		updateDirty(dirty)
 	}
 
-	private fun calculateBmi(profile: Profile): Int
+	private fun calculateBmi(profile: Profile): Double
 	{
 		return if(profile.isValid())
 		{
 			// weight (kg) / [height (m)]2
 			val heightM = profile.heightCm / 100
 			val rawBmi = profile.weightKg / (heightM.pow(2.0))
-			round(rawBmi).toInt()
+			floor(rawBmi)
 		}
 		else
 		{
-			0
+			0.0
+		}
+	}
+
+	private fun calculateBmr(profile: Profile): Double
+	{
+		return when(profile.gender)
+		{
+			//BMR for Men = 66.47 + (13.75 * weight [kg]) + (5.003 * size [cm]) − (6.755 * age [years])
+			Gender.Male ->
+			{
+				66.47 + (13.75 * profile.weightKg) + (5.003 * profile.heightCm) - (6.755 * profile.ageYears)
+			}
+			//BMR for Women = 655.1 + (9.563 * weight [kg]) + (1.85 * size [cm]) − (4.676 * age [years])
+			Gender.Female ->
+			{
+				655.1 + (9.563 * profile.weightKg) + (1.85 * profile.heightCm) - (4.676 * profile.ageYears)
+			}
 		}
 	}
 }

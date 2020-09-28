@@ -5,7 +5,8 @@ import java.io.Serializable;
 data class Profile(
 		val ageYears: Int = 0,
 		val heightCm: Double = 0.0,
-		val weightKg: Double = 0.0): Serializable
+		val weightKg: Double = 0.0,
+		val gender: Gender = Gender.Male): Serializable
 {
 	companion object
 	{
@@ -14,3 +15,6 @@ data class Profile(
 
 	fun isValid() = ageYears > 0 && heightCm > 0.0 && weightKg > 0.0
 }
+
+enum class Gender
+{ Male, Female }

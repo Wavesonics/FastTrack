@@ -13,12 +13,12 @@
 	<fragment
 		android:id="@+id/navigation_log"
 		android:name="com.darkrockstudios.apps.fasttrack.screens.log.LogFragment"
-		android:label="log_fragment"
+		android:label="@string/title_log"
 		tools:layout="@layout/log_fragment" />
 	<fragment
 		android:id="@+id/navigation_profile"
 		android:name="com.darkrockstudios.apps.fasttrack.screens.profile.ProfileFragment"
-		android:label="profile_fragment"
+		android:label="@string/title_profile"
 		tools:layout="@layout/profile_fragment" />
 
 </navigation>
