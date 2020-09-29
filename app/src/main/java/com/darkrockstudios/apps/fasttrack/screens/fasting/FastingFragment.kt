@@ -7,11 +7,14 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
+import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
@@ -28,12 +31,11 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import org.koin.android.ext.android.inject
 import java.util.*
+import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
+import kotlin.time.hours
 
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 @ExperimentalTime
 class FastingFragment: Fragment()
 {
@@ -43,21 +45,22 @@ class FastingFragment: Fragment()
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
 			savedInstanceState: Bundle?
-							 ): View?
-	{
-		// Inflate the layout for this fragment
-		return inflater.inflate(R.layout.fragment_fasting, container, false)
-	}
+							 ): View? = inflater.inflate(R.layout.fragment_fasting, container, false)
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
 	{
 		super.onViewCreated(view, savedInstanceState)
 
-		button_start_fast.setOnClickListener {
-			startFast()
+		fast_fab_start.setOnClickListener {
+			MaterialAlertDialogBuilder(view.context)
+					.setTitle(R.string.confirm_start_fast_title)
+					.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> startFast() }
+					.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ -> showStartPicker() }
+					.setNegativeButton(R.string.confirm_start_fast_negative, null)
+					.show()
 		}
 
-		button_end_fast.setOnClickListener {
+		fast_fab_stop.setOnClickListener {
 			context?.let { ctx ->
 				MaterialAlertDialogBuilder(ctx)
 						.setTitle(R.string.confirm_end_fast_title)
@@ -65,10 +68,6 @@ class FastingFragment: Fragment()
 						.setNegativeButton(R.string.confirm_end_fast_negative, null)
 						.show()
 			}
-		}
-
-		button_start_fast_advanced.setOnClickListener {
-			showStartPicker()
 		}
 	}
 
@@ -107,7 +106,7 @@ class FastingFragment: Fragment()
 				.bottomSheet()
 				.curved()
 				.minutesStep(15)
-				.title("Fasted Started")
+				.title(getString(R.string.manual_start_title))
 				.listener(::onDateTimePicked).display()
 	}
 
@@ -131,21 +130,21 @@ class FastingFragment: Fragment()
 		updateButtons()
 		updateTimer()
 		updateStage()
-
-		textview_title.text = if(isFasting()) getString(R.string.fast_status_fasting) else getString(R.string.fast_status_not_fasting)
 	}
 
 	private fun updateStage()
 	{
 		val fastStart = getFastStart()
-		textview_stage.isVisible = (fastStart != null)
-		textview_stage.text = ""
+		//textview_stage.isVisible = (fastStart != null)
+		//textview_stage.text = ""
 		textview_stage_description.text = ""
-		textview_next_stage.text = ""
+		//textview_next_stage.text = ""
+		textview_energy_mode.text = ""
 
 		if(isFasting() && fastStart != null)
 		{
-			val elapsedHours = Clock.System.now().minus(fastStart).inHours.toInt()
+			val elapsedTime = Clock.System.now().minus(fastStart)
+			val elapsedHours = elapsedTime.inHours.toInt()
 
 			var stageIndex = Stages.stage.indexOfLast { it.hours <= elapsedHours }
 			if(stageIndex < 0)
@@ -155,22 +154,23 @@ class FastingFragment: Fragment()
 
 			val stage = Stages.stage[stageIndex]
 
-			textview_stage.text = stage.title
-			textview_stage_description.text = stage.description
-
-			if(stageIndex + 1 < Stages.stage.size)
+			val curPhase = Stages.getCurrentPhase(elapsedTime)
+			if(curPhase.fatBurning)
 			{
-				val nextStage = Stages.stage[stageIndex + 1]
-				textview_next_stage.text = getString(R.string.next_stage, nextStage.hours)
+				textview_energy_mode.text = getString(R.string.fasting_energy_mode, getString(R.string.fasting_energy_mode_fat))
 			}
+			else
+			{
+				textview_energy_mode.text = getString(R.string.fasting_energy_mode, getString(R.string.fasting_energy_mode_glucose))
+			}
+
+			textview_stage_description.text = stage.description
 		}
 	}
 
 	@ExperimentalTime
 	private fun updateTimer()
 	{
-		//debug()
-
 		val fastStart = getFastStart()
 		val fastEnd = getFastEnd()
 
@@ -180,11 +180,13 @@ class FastingFragment: Fragment()
 			{
 				val elapsedTime = Clock.System.now().minus(fastStart)
 				elapsedTime.toComponents(::updateTimerView)
+				updatePhases(elapsedTime)
 			}
 			else
 			{
 				val elapsedTime = fastEnd.minus(fastStart)
 				elapsedTime.toComponents(::updateTimerView)
+				updatePhases(elapsedTime)
 			}
 		}
 		else
@@ -202,13 +204,62 @@ class FastingFragment: Fragment()
 		milliseconds.text = "${nanoseconds / 10000000}"
 	}
 
+	private fun updatePhases(elapsedTime: Duration)
+	{
+		val currentStage = Stages.getCurrentPhase(elapsedTime)
+
+		// Handle Fat burning
+		updateTimeView(textview_phase_fatburn_time, Stages.PHASE_FAT_BURN, elapsedTime)
+
+		// Handle Ketosis
+		if(currentStage.fatBurning)
+		{
+			updateTimeView(textview_phase_ketosis_time, Stages.PHASE_KETOSIS, elapsedTime)
+		}
+		else
+		{
+			textview_phase_ketosis_time.text = "--:--:--"
+		}
+
+		// Handle Autophagy
+		if(currentStage.ketosis)
+		{
+			updateTimeView(textview_phase_autophagy_time, Stages.PHASE_AUTOPHAGY, elapsedTime)
+		}
+		else
+		{
+			textview_phase_autophagy_time.text = "--:--:--"
+		}
+	}
+
+	private fun updateTimeView(view: TextView, phase: Phase, elapsedTime: Duration)
+	{
+		val phaseHours = phase.hours
+
+		if(elapsedTime.inHours > phaseHours)
+		{
+			val timeSince = elapsedTime.minus(phaseHours.hours)
+			timeSince.toComponents { hours, minutes, seconds, _ ->
+				view.text = "%d:%02d:%02d".format(hours, minutes, seconds)
+			}
+			view.setTextColor(ContextCompat.getColor(requireContext(), R.color.bright_green))
+		}
+		else
+		{
+			val timeSince = elapsedTime.minus(phaseHours.hours)
+			timeSince.toComponents { hours, minutes, seconds, _ ->
+				view.text = "- %d:%02d:%02d".format(kotlin.math.abs(hours), kotlin.math.abs(minutes), kotlin.math.abs(seconds))
+			}
+			view.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_600))
+		}
+	}
+
 	private fun updateButtons()
 	{
 		val isFasting = isFasting()
 
-		button_start_fast.isVisible = !isFasting
-		button_start_fast_advanced.isVisible = !isFasting
-		button_end_fast.isVisible = isFasting
+		fast_fab_start.isVisible = !isFasting
+		fast_fab_stop.isVisible = isFasting
 	}
 
 	private val storage by lazy { requireActivity().getPreferences(Context.MODE_PRIVATE) }

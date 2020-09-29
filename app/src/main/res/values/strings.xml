@@ -10,6 +10,15 @@
 	<string name="start_fast_button">Start Fast</string>
 	<string name="end_fast_button">End Fast</string>
 
+	<string name="fasting_energy_mode">Energy Mode: %1$s</string>
+	<string name="fasting_energy_mode_glucose">Glucose</string>
+	<string name="fasting_energy_mode_fat">Fat</string>
+
+	<string name="confirm_start_fast_title">Start Fast?</string>
+	<string name="confirm_start_fast_positive">Now</string>
+	<string name="confirm_start_fast_neutral">Already Started</string>
+	<string name="confirm_start_fast_negative">No</string>
+
 	<string name="confirm_end_fast_title">End Fast?</string>
 	<string name="confirm_end_fast_positive">Yes</string>
 	<string name="confirm_end_fast_negative">No</string>
@@ -54,4 +63,5 @@
 	<string name="manual_add_length">Length of Fast:</string>
 	<string name="manual_add_complete_button">Add</string>
 	<string name="manual_add_fast_started_on">Fast Started On: %1$s</string>
+	<string name="manual_start_title">Fasted Started</string>
 </resources>
