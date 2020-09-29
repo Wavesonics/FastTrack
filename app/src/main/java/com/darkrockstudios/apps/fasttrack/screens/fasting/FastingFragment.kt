@@ -135,10 +135,8 @@ class FastingFragment: Fragment()
 	private fun updateStage()
 	{
 		val fastStart = getFastStart()
-		//textview_stage.isVisible = (fastStart != null)
-		//textview_stage.text = ""
+		textview_stage_title.text = ""
 		textview_stage_description.text = ""
-		//textview_next_stage.text = ""
 		textview_energy_mode.text = ""
 
 		if(isFasting() && fastStart != null)
@@ -164,6 +162,7 @@ class FastingFragment: Fragment()
 				textview_energy_mode.text = getString(R.string.fasting_energy_mode, getString(R.string.fasting_energy_mode_glucose))
 			}
 
+			textview_stage_title.text = stage.title
 			textview_stage_description.text = stage.description
 		}
 	}
@@ -207,6 +206,8 @@ class FastingFragment: Fragment()
 	private fun updatePhases(elapsedTime: Duration)
 	{
 		val currentStage = Stages.getCurrentPhase(elapsedTime)
+
+		fast_gauge.elapsedHours = elapsedTime.inHours.toLong()
 
 		// Handle Fat burning
 		updateTimeView(textview_phase_fatburn_time, Stages.PHASE_FAT_BURN, elapsedTime)

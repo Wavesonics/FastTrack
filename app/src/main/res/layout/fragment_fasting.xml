@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/fast_background"
+	android:padding="@dimen/default_padding"
+	tools:context=".screens.fasting.FastingFragment">
+
+	<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
+		android:id="@+id/fast_gauge"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/textview_energy_mode"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle2"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/fast_gauge"
+		tools:text="@string/fasting_energy_mode" />
+
+	<TextView
+		android:id="@+id/chronometer"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/default_margin"
+		android:text="00:00"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline2"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textview_energy_mode" />
+
+	<TextView
+		android:id="@+id/milliseconds"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginBottom="@dimen/default_margin"
+		android:text="00"
+		android:textAlignment="viewStart"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline6"
+		app:layout_constraintBottom_toBottomOf="@+id/chronometer"
+		app:layout_constraintStart_toEndOf="@+id/chronometer" />
+
+	<TextView
+		android:id="@+id/textview_phase_fatburn_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/default_margin"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/chronometer"
+		android:text="Fat Burn:" />
+
+	<TextView
+		android:id="@+id/textview_phase_fatburn_time"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/default_margin"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:layout_constraintStart_toStartOf="@+id/textview_phase_ketosis_time"
+		app:layout_constraintTop_toBottomOf="@+id/chronometer"
+		tools:text="00:00:00" />
+
+	<TextView
+		android:id="@+id/textview_phase_ketosis_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_label"
+		tools:layout_editor_absoluteY="275dp"
+		android:text="Ketosis: " />
+
+	<TextView
+		android:id="@+id/textview_phase_ketosis_time"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:layout_constraintStart_toStartOf="@+id/textview_phase_autophagy_time"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_time"
+		tools:text="00:00:00" />
+
+	<TextView
+		android:id="@+id/textview_phase_autophagy_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_label"
+		android:text="Autophagy:" />
+
+	<TextView
+		android:id="@+id/textview_phase_autophagy_time"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/default_margin"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:layout_constraintStart_toEndOf="@+id/textview_phase_autophagy_label"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_time"
+		tools:text="00:00:00" />
+
+	<TextView
+		android:id="@+id/textview_stage_title"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/default_margin"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_autophagy_label"
+		tools:text="Title" />
+
+	<TextView
+		android:id="@+id/textview_stage_description"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="96dp"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
+		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textview_stage_title"
+		tools:text="description" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/fast_fab_start"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="96dp"
+		android:src="@drawable/ic_start_fast"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/fast_fab_stop"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="96dp"
+		android:src="@drawable/ic_fast_stop"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>
