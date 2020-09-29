@@ -20,7 +20,10 @@ import kotlinx.coroutines.withContext
 import kotlinx.datetime.*
 import org.koin.android.ext.android.inject
 import java.time.format.DateTimeFormatter
+import kotlin.time.ExperimentalTime
+import kotlin.time.hours
 
+@ExperimentalTime
 class ManualAddFragment: DialogFragment()
 {
 	companion object
@@ -147,8 +150,8 @@ class ManualAddFragment: DialogFragment()
 	private fun addEntry()
 	{
 		val startDateTime = viewModel.startDateTime
-		val length = viewModel.length
-		if(startDateTime != null && length != null && length > 0L)
+		val length = viewModel.length?.hours?.inMilliseconds?.toLong() ?: 0L
+		if(startDateTime != null && length != null && length > 0)
 		{
 			GlobalScope.launch(Dispatchers.IO) {
 				val tz = TimeZone.currentSystemDefault()

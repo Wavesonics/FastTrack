@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.log_fragment.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import kotlin.time.ExperimentalTime
 
 class LogFragment: Fragment()
 {
@@ -31,6 +32,7 @@ class LogFragment: Fragment()
 		return inflater.inflate(R.layout.log_fragment, container, false)
 	}
 
+	@ExperimentalTime
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
 	{
 		super.onViewCreated(view, savedInstanceState)

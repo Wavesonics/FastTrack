@@ -11,11 +11,13 @@
 		android:id="@+id/fast_entry_start"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
 		tools:text="Start Time" />
 
 	<TextView
 		android:id="@+id/fast_entry_length"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline6"
 		tools:text="5:00:11" />
 </LinearLayout>
