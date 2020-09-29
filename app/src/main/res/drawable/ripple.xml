@@ -3,7 +3,7 @@
 	android:color="?attr/colorPrimary">
 	<item
 		android:id="@android:id/mask"
-		android:drawable="?attr/colorPrimaryDark"></item>
-	<item android:drawable="?attr/colorBackgroundFloating"></item>
+		android:drawable="?attr/colorPrimaryDark" />
+	<item android:drawable="@color/transparent" />
 
 </ripple>

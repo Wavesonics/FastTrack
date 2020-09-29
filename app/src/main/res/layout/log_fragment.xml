@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:padding="@dimen/default_padding"
-	android:orientation="vertical"
-	tools:context=".screens.log.LogFragment">
+	android:layout_height="match_parent">
 
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="log" />
-
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/log_entries"
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-		tools:itemCount="5"
-		tools:listitem="@layout/fast_entry_item" />
+		android:orientation="vertical"
+		android:padding="@dimen/default_padding"
+		tools:context=".screens.log.LogFragment">
 
-</LinearLayout>
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/log_entries"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:itemCount="5"
+			tools:layout_editor_absoluteX="16dp"
+			tools:listitem="@layout/fast_entry_item" />
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/log_fab_manual_add"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="96dp"
+			android:src="@drawable/ic_add"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

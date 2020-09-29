@@ -49,4 +49,8 @@
 	<string name="profile_height_imper_inches_label">Inches</string>
 	<string name="profile_gender_male">Male</string>
 	<string name="profile_gender_female">Female</string>
+	<string name="manual_add_title">Manual Add</string>
+	<string name="manual_add_length_hint">Hours</string>
+	<string name="manual_add_length">Length of Fast:</string>
+	<string name="manual_add_complete_button">Add</string>
 </resources>

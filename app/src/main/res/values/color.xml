@@ -61,4 +61,6 @@
     <!--color on surface (light)-->
     <color name="black_900">#000000</color>
 
+    <color name="transparent">#00000000</color> <!--Color surface (dark)-->
+
 </resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/frameLayout2"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:paddingBottom="@dimen/default_padding"
+	tools:context=".screens.log.ManualAddFragment">
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/manual_add_toolbar"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:minHeight="?attr/actionBarSize"
+		android:theme="?attr/actionBarTheme"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:id="@+id/textView_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/manual_add_title"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+				android:textColor="?android:attr/textColorPrimaryInverse"
+				tools:layout_editor_absoluteX="16dp"
+				tools:layout_editor_absoluteY="18dp" />
+
+			<ImageButton
+				android:id="@+id/manual_add_close_button"
+				android:layout_width="@dimen/min_touch"
+				android:layout_height="@dimen/min_touch"
+				android:layout_gravity="right"
+				android:background="@drawable/ripple"
+				android:src="@drawable/ic_close"
+				android:tint="@color/white_50" />
+		</FrameLayout>
+	</androidx.appcompat.widget.Toolbar>
+
+	<FrameLayout
+		android:id="@+id/manual_add_date_time_container"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/manual_add_toolbar">
+
+		<DatePicker
+			android:id="@+id/manual_add_date"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/default_margin" />
+
+		<TimePicker
+			android:id="@+id/manual_add_time"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:visibility="gone" />
+	</FrameLayout>
+
+	<TextView
+		android:id="@+id/textView_length"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/default_margin"
+		android:text="@string/manual_add_length"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/manual_add_date_time_container" />
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/textInputLayout_manual_add_length"
+		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf="@+id/textView_length"
+		app:layout_constraintTop_toBottomOf="@+id/textView_length">
+
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/textInput_manual_add_length"
+			android:layout_width="96dp"
+			android:layout_height="wrap_content"
+			android:digits="0123456789\n"
+			android:hint="@string/manual_add_length_hint"
+			android:inputType="number"
+			android:singleLine="true" />
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<Button
+		android:id="@+id/manual_add_button_complete"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="@dimen/default_margin"
+		android:text="@string/manual_add_complete_button"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

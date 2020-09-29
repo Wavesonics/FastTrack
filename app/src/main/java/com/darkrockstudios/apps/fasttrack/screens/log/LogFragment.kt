@@ -35,6 +35,10 @@ class LogFragment: Fragment()
 	{
 		super.onViewCreated(view, savedInstanceState)
 
+		log_fab_manual_add.setOnClickListener {
+			ManualAddFragment.newInstance().show(childFragmentManager, "manual_add")
+		}
+
 		log_entries.adapter = fastAdapter
 		fastAdapter.onClickListener = { _, _, item, _ ->
 			context?.let { ctx ->
