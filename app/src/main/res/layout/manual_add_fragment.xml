@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/frameLayout2"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
+	android:elevation="8dp"
 	android:paddingBottom="@dimen/default_padding"
 	tools:context=".screens.log.ManualAddFragment">
 
@@ -26,8 +26,9 @@
 				android:id="@+id/textView_title"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
 				android:text="@string/manual_add_title"
-				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
 				android:textColor="?android:attr/textColorPrimaryInverse"
 				tools:layout_editor_absoluteX="16dp"
 				tools:layout_editor_absoluteY="18dp" />
@@ -36,20 +37,31 @@
 				android:id="@+id/manual_add_close_button"
 				android:layout_width="@dimen/min_touch"
 				android:layout_height="@dimen/min_touch"
-				android:layout_gravity="right"
+				android:layout_gravity="end|center_vertical"
 				android:background="@drawable/ripple"
 				android:src="@drawable/ic_close"
 				android:tint="@color/white_50" />
 		</FrameLayout>
 	</androidx.appcompat.widget.Toolbar>
 
+	<TextView
+		android:id="@+id/textView_start_display"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/default_margin"
+		android:text="@string/manual_add_fast_started_on"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/manual_add_toolbar" />
+
 	<FrameLayout
 		android:id="@+id/manual_add_date_time_container"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/default_margin"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/manual_add_toolbar">
+		app:layout_constraintTop_toBottomOf="@+id/textView_start_display">
 
 		<DatePicker
 			android:id="@+id/manual_add_date"

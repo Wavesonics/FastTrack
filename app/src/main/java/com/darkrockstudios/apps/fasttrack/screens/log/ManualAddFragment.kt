@@ -17,11 +17,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
+import kotlinx.datetime.*
 import org.koin.android.ext.android.inject
+import java.time.format.DateTimeFormatter
 
 class ManualAddFragment: DialogFragment()
 {
@@ -124,6 +122,25 @@ class ManualAddFragment: DialogFragment()
 				manual_add_time.isVisible = true
 				manual_add_button_complete.isEnabled = true
 			}
+		}
+
+		val startDate = viewModel.startDate
+		val startDateTime = viewModel.startDateTime
+		if(startDateTime != null)
+		{
+			val pattern = DateTimeFormatter.ofPattern("d MMM uuuu - HH:mm")
+			val dateStr = startDateTime.toJavaLocalDateTime().format(pattern)
+			textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
+		}
+		else if(startDate != null)
+		{
+			val pattern = DateTimeFormatter.ofPattern("d MMM uuuu")
+			val dateStr = startDate.toJavaLocalDate().format(pattern)
+			textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
+		}
+		else
+		{
+			textView_start_display.text = getString(R.string.manual_add_fast_started_on, "")
 		}
 	}
 
