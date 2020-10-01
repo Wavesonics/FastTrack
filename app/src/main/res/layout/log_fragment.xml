@@ -27,7 +27,6 @@
 			android:id="@+id/log_fab_manual_add"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginBottom="96dp"
 			android:src="@drawable/ic_add"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent" />

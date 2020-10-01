@@ -133,7 +133,6 @@
 		android:id="@+id/fast_fab_start"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="96dp"
 		android:src="@drawable/ic_start_fast"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent" />
@@ -142,7 +141,6 @@
 		android:id="@+id/fast_fab_stop"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="96dp"
 		android:src="@drawable/ic_fast_stop"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
