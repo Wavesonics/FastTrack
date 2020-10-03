@@ -2,7 +2,6 @@ package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.darkrockstudios.apps.fasttrack.AlertService
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Phase
@@ -42,6 +42,13 @@ class FastingFragment: Fragment()
 {
 	private val uiHandler = Handler(Looper.getMainLooper())
 	private val database by inject<AppDatabase>()
+
+	override fun onCreate(savedInstanceState: Bundle?)
+	{
+		super.onCreate(savedInstanceState)
+
+		setupAlerts()
+	}
 
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
@@ -74,17 +81,40 @@ class FastingFragment: Fragment()
 		fast_share_button.setOnClickListener {
 			shareText()
 		}
+
+		fast_notifications_checkbox.isChecked = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
+		fast_notifications_checkbox.setOnCheckedChangeListener { _, isChecked ->
+			storage.edit {
+				putBoolean(Data.KEY_FAST_ALERTS, isChecked)
+			}
+			setupAlerts()
+		}
 	}
 
-	private fun shareImage(imageUri: Uri)
+	private fun setupAlerts()
 	{
-		val shareIntent: Intent = Intent().apply {
-			action = Intent.ACTION_SEND
-			putExtra(Intent.EXTRA_STREAM, imageUri)
-			type = "image/jpeg"
-		}
+		val ctx = context ?: return
 
-		//startActivity(Intent.createChooser(shareIntent, getText(R.string.share_title)))
+		val shouldAlert = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
+
+		if(isFasting())
+		{
+			if(shouldAlert)
+			{
+				val elapsedTime = getElapsedFastTime()
+				AlertService.scheduleAlerts(elapsedTime, ctx)
+			}
+			// User doesn't want notifications
+			else
+			{
+				AlertService.cancelAlerts(ctx)
+			}
+		}
+		// No notifications if we aren't fasting
+		else
+		{
+			AlertService.cancelAlerts(ctx)
+		}
 	}
 
 	private fun shareText()
@@ -380,6 +410,7 @@ class FastingFragment: Fragment()
 
 			updateUi()
 			startTimerUpdate()
+			setupAlerts()
 
 			i("Started fast!")
 		}
@@ -402,6 +433,7 @@ class FastingFragment: Fragment()
 			i("Fast ended!")
 
 			updateUi()
+			setupAlerts()
 		}
 		else
 		{

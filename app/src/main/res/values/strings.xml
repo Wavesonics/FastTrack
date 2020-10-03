@@ -94,4 +94,20 @@
 
 	<string name="share_text">I\'ve been fasting for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
 	<string name="share_text_past_tense">I fasting for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
+	<string name="stage_alerts_checkbox">Stage Alerts</string>
+
+	<string name="notification_channel_name">Fasting Alerts</string>
+	<string name="notification_channel_description">Alerts that let you know when you have entered a new phase of your fast.</string>
+
+	<string name="notification_fat_burn_title">Fast Stage: Fat Burning</string>
+	<string name="notification_fat_burn_content">You have exhausted your glucose reserves and your body is now consuming fat for energy.</string>
+
+	<string name="notification_ketosis_title">Fast Stage: Ketosis</string>
+	<string name="notification_ketosis_content">You\'re body has not broken down enough fat reserves that you have entered Ketosis.</string>
+
+	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
+	<string name="notification_autophagy_content">You\'re body has entered Autophagy. Old or damaged cells are now being consumed for energy.</string>
+
+	<string name="notification_optimal_autophagy_title">Fast Stage: Optimal Autophagy</string>
+	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and your cellular health is seeing great benefits.</string>
 </resources>

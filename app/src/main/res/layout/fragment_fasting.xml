@@ -117,28 +117,6 @@
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_time"
 		tools:text="00:00:00" />
 
-	<TextView
-		android:id="@+id/textview_stage_title"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/default_margin"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
-		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textview_phase_autophagy_label"
-		tools:text="Title" />
-
-	<TextView
-		android:id="@+id/textview_stage_description"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginEnd="96dp"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
-		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textview_stage_title"
-		tools:text="description" />
-
 	<com.google.android.material.floatingactionbutton.FloatingActionButton
 		android:id="@+id/fast_fab_start"
 		android:layout_width="wrap_content"
@@ -155,4 +133,43 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		android:visibility="gone" />
+
+	<CheckBox
+		android:id="@+id/fast_notifications_checkbox"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/stage_alerts_checkbox"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<ScrollView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@+id/fast_notifications_checkbox"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_autophagy_label">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textview_stage_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/default_margin"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+				tools:text="Title" />
+
+			<TextView
+				android:id="@+id/textview_stage_description"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="96dp"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
+				tools:text="description" />
+		</LinearLayout>
+	</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
