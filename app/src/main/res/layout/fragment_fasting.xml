@@ -7,6 +7,7 @@
 	android:layout_height="match_parent"
 	android:background="@drawable/fast_background"
 	android:padding="@dimen/default_padding"
+	android:clipToPadding="false"
 	tools:context=".screens.fasting.FastingFragment">
 
 	<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
