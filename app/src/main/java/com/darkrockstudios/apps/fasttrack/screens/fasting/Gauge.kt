@@ -44,13 +44,13 @@ class GaugeView @JvmOverloads constructor(
 	private val phasePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
 		style = Paint.Style.FILL
 		color = Color.BLACK
-		strokeWidth = 2f
 	}
 
 	private val needlePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
 		style = Paint.Style.FILL
 		color = Color.BLACK
-		strokeWidth = 32f
+		strokeWidth = 16f
+		strokeCap = Paint.Cap.ROUND
 	}
 
 	private val gaugeColors = arrayOf(Color.WHITE, Color.GREEN, Color.YELLOW, Color.RED, Color.MAGENTA)
@@ -66,7 +66,7 @@ class GaugeView @JvmOverloads constructor(
 			translationY = 0f
 			rotation = 0f
 
-			drawARGB(32, 64, 64, 64)
+			//drawARGB(32, 64, 64, 64)
 
 			if(gaugeRect == null)
 			{
@@ -107,7 +107,7 @@ class GaugeView @JvmOverloads constructor(
 				val rot = availableRot * percent
 
 				val nStart = height.toFloat() * 1.25f
-				val needleLength = rect.height() * 0.35f
+				val needleLength = rect.height() * 0.40f
 				rotate(rotStart + rot, width / 2f, nStart)
 				drawLine(width / 2f, nStart, width / 2f, nStart - needleLength, needlePaint)
 			}
