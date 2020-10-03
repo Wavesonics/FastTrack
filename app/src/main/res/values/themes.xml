@@ -65,11 +65,11 @@
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
     </style>
 
-    <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight">
-		<item name="android:statusBarColor" tools:ignore="NewApi">?attr/colorSurface</item>
-		<item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
-		<item name="android:navigationBarColor" tools:ignore="NewApi">?android:attr/colorBackground</item>
-		<item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
-		<item name="android:navigationBarDividerColor" tools:ignore="NewApi">?attr/colorControlHighlight</item>
-	</style>
+    <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor" tools:ignore="NewApi">?attr/colorSurface</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">?android:attr/colorBackground</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">?attr/colorControlHighlight</item>
+    </style>
 </resources>
