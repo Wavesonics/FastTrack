@@ -66,6 +66,9 @@
 		android:layout_marginEnd="@dimen/default_margin"
 		android:text="@string/fast_fat_burn_label"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:drawableStartCompat="@drawable/ic_more_info"
+		android:drawablePadding="@dimen/info_icon_padding"
+		android:foreground="@drawable/ripple"
 		app:layout_constraintEnd_toStartOf="@+id/textview_phase_fatburn_time"
 		app:layout_constraintTop_toTopOf="@+id/textview_phase_fatburn_time" />
 
@@ -84,6 +87,9 @@
 		android:layout_height="wrap_content"
 		android:text="@string/fast_ketosis_label"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:drawableStartCompat="@drawable/ic_more_info"
+		android:drawablePadding="@dimen/info_icon_padding"
+		android:foreground="@drawable/ripple"
 		app:layout_constraintEnd_toEndOf="@+id/textview_phase_fatburn_label"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_label" />
 
@@ -102,6 +108,9 @@
 		android:layout_height="wrap_content"
 		android:text="@string/fast_autophagy_label"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		app:drawableStartCompat="@drawable/ic_more_info"
+		android:drawablePadding="@dimen/info_icon_padding"
+		android:foreground="@drawable/ripple"
 		app:layout_constraintEnd_toEndOf="@+id/textview_phase_ketosis_label"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_label" />
 

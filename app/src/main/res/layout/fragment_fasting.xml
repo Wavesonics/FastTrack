@@ -67,7 +67,10 @@
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/chronometer"
-		android:text="@string/fast_fat_burn_label" />
+		android:text="@string/fast_fat_burn_label"
+		app:drawableStartCompat="@drawable/ic_more_info"
+		android:drawablePadding="@dimen/info_icon_padding"
+		android:foreground="@drawable/ripple" />
 
 	<TextView
 		android:id="@+id/textview_phase_fatburn_time"
@@ -86,7 +89,9 @@
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_label"
-		tools:layout_editor_absoluteY="275dp"
+		app:drawableStartCompat="@drawable/ic_more_info"
+		android:drawablePadding="@dimen/info_icon_padding"
+		android:foreground="@drawable/ripple"
 		android:text="@string/fast_ketosis_label" />
 
 	<TextView
@@ -105,6 +110,9 @@
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_label"
+		app:drawableStartCompat="@drawable/ic_more_info"
+		android:drawablePadding="@dimen/info_icon_padding"
+		android:foreground="@drawable/ripple"
 		android:text="@string/fast_autophagy_label" />
 
 	<TextView

@@ -11,4 +11,5 @@
 	<dimen name="elevation_small">2dp</dimen>
 	<dimen name="elevation_medium">4dp</dimen>
 	<dimen name="elevation_large">8dp</dimen>
+	<dimen name="info_icon_padding">2dp</dimen>
 </resources>

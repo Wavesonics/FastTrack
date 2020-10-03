@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.isVisible
@@ -88,6 +89,29 @@ class FastingFragment: Fragment()
 				putBoolean(Data.KEY_FAST_ALERTS, isChecked)
 			}
 			setupAlerts()
+		}
+
+		textview_phase_fatburn_label.setOnClickListener {
+			showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content)
+		}
+
+		textview_phase_ketosis_label.setOnClickListener {
+			showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content)
+		}
+
+		textview_phase_autophagy_label.setOnClickListener {
+			showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content)
+		}
+	}
+
+	private fun showInfoDialog(@StringRes titleRes: Int, @StringRes contentRes: Int)
+	{
+		context?.let { ctx ->
+			MaterialAlertDialogBuilder(ctx)
+					.setTitle(titleRes)
+					.setMessage(contentRes)
+					.setPositiveButton(R.string.info_dialog_positive) { _, _ -> endFast() }
+					.show()
 		}
 	}
 
