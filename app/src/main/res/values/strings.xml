@@ -12,7 +12,7 @@
 
 	<string name="fasting_energy_mode">Energy Mode: %1$s</string>
 	<string name="fasting_energy_mode_glucose">Glucose</string>
-	<string name="fasting_energy_mode_fat">Fat</string>
+	<string name="fasting_energy_mode_fat">Ketone Bodies</string>
 
 	<string name="confirm_start_fast_title">Start Fast?</string>
 	<string name="confirm_start_fast_positive">Now</string>
