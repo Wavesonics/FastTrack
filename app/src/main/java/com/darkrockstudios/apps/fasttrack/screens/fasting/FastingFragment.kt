@@ -9,13 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.AlertService
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.Util
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -92,26 +92,15 @@ class FastingFragment: Fragment()
 		}
 
 		textview_phase_fatburn_label.setOnClickListener {
-			showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content)
+			Util.showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content, requireContext())
 		}
 
 		textview_phase_ketosis_label.setOnClickListener {
-			showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content)
+			Util.showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content, requireContext())
 		}
 
 		textview_phase_autophagy_label.setOnClickListener {
-			showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content)
-		}
-	}
-
-	private fun showInfoDialog(@StringRes titleRes: Int, @StringRes contentRes: Int)
-	{
-		context?.let { ctx ->
-			MaterialAlertDialogBuilder(ctx)
-					.setTitle(titleRes)
-					.setMessage(contentRes)
-					.setPositiveButton(R.string.info_dialog_positive) { _, _ -> endFast() }
-					.show()
+			Util.showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content, requireContext())
 		}
 	}
 

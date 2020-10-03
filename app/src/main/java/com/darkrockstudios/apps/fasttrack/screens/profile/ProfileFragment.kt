@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import cafe.adriel.satchel.Satchel
 import cafe.adriel.satchel.ktx.getOrSet
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.Util
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Gender
 import com.darkrockstudios.apps.fasttrack.data.Profile
@@ -55,6 +56,14 @@ class ProfileFragment: Fragment()
 		gender_button_ground.setOnCheckedChangeListener { _, _ -> updateDirty(true) }
 
 		profile_update_button.setOnClickListener { saveProfile() }
+
+		textView_bmi_label.setOnClickListener {
+			Util.showInfoDialog(R.string.info_dialog_bmi_title, R.string.info_dialog_bmi_content, requireContext())
+		}
+
+		textView_bmr_label.setOnClickListener {
+			Util.showInfoDialog(R.string.info_dialog_bmr_title, R.string.info_dialog_bmr_content, requireContext())
+		}
 	}
 
 	private fun saveProfile()

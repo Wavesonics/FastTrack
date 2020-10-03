@@ -31,7 +31,10 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/profile_bmi_label"
-					android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5" />
+					android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+					app:drawableStartCompat="@drawable/ic_more_info"
+					android:drawablePadding="@dimen/info_icon_padding"
+					android:foreground="@drawable/ripple" />
 
 				<TextView
 					android:id="@+id/textView_bmi_value"
@@ -67,6 +70,9 @@
 					android:layout_marginTop="@dimen/default_margin"
 					android:text="@string/profile_bmr_label"
 					android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+					app:drawableStartCompat="@drawable/ic_more_info"
+					android:drawablePadding="@dimen/info_icon_padding"
+					android:foreground="@drawable/ripple"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toBottomOf="@+id/textView_bmi_label" />
 
