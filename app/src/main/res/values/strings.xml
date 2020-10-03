@@ -43,7 +43,7 @@
 	<string name="profile_update_button">Update</string>
 
 	<string name="profile_bmi_label">BMI:</string>
-	<string name="profile_bmi_value">%1$.0f - %2$s</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
 	<string name="profile_bmi_category_underweight">Underweight</string>
 	<string name="profile_bmi_category_normal">Normal</string>
 	<string name="profile_bmi_category_overweight">Overweight</string>

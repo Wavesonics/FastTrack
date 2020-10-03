@@ -188,8 +188,7 @@ class ProfileFragment: Fragment()
 		{
 			// weight (kg) / [height (m)]2
 			val heightM = profile.heightCm / 100
-			val rawBmi = profile.weightKg / (heightM.pow(2.0))
-			floor(rawBmi)
+			profile.weightKg / (heightM.pow(2.0))
 		}
 		else
 		{
