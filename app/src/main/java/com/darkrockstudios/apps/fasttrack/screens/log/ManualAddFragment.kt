@@ -1,6 +1,8 @@
 package com.darkrockstudios.apps.fasttrack.screens.log
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +33,7 @@ class ManualAddFragment: DialogFragment()
 		fun newInstance() = ManualAddFragment()
 	}
 
+	private val uiHandler = Handler(Looper.getMainLooper())
 	private val viewModel by viewModels<ManualAddViewModel>()
 	private val database by inject<AppDatabase>()
 
@@ -51,7 +54,8 @@ class ManualAddFragment: DialogFragment()
 
 		manual_add_date.setOnDateChangedListener { _, year, monthOfYear, dayOfMonth ->
 			viewModel.startDate = LocalDate(year, monthOfYear, dayOfMonth)
-			updateUi()
+			// Delay so that it is not jarring to the user
+			uiHandler.postDelayed({ updateUi() }, 500)
 		}
 
 		manual_add_time.setOnTimeChangedListener { _, hourOfDay, minute ->

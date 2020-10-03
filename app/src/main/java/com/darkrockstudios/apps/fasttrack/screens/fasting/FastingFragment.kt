@@ -1,6 +1,8 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -20,7 +22,6 @@ import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.log4k.d
 import com.log4k.e
 import com.log4k.i
 import com.log4k.w
@@ -69,6 +70,54 @@ class FastingFragment: Fragment()
 						.show()
 			}
 		}
+
+		fast_share_button.setOnClickListener {
+			shareText()
+		}
+	}
+
+	private fun shareImage(imageUri: Uri)
+	{
+		val shareIntent: Intent = Intent().apply {
+			action = Intent.ACTION_SEND
+			putExtra(Intent.EXTRA_STREAM, imageUri)
+			type = "image/jpeg"
+		}
+
+		//startActivity(Intent.createChooser(shareIntent, getText(R.string.share_title)))
+	}
+
+	private fun shareText()
+	{
+		val elapsedHours: Int
+		val elapsedMinutes: Int
+
+		val elapsedTime = getElapsedFastTime()
+		elapsedTime.toComponents { hours, minutes, _, _ ->
+			elapsedHours = hours
+			elapsedMinutes = minutes
+		}
+
+		val curPhase = Stages.getCurrentPhase(elapsedTime)
+		val energyModeStr = if(curPhase.fatBurning) getString(R.string.fasting_energy_mode_fat) else getString(R.string.fasting_energy_mode_glucose)
+
+		val shareText = if(isFasting())
+		{
+			getString(R.string.share_text, elapsedHours, elapsedMinutes, energyModeStr)
+		}
+		else
+		{
+			getString(R.string.share_text_past_tense, elapsedHours, elapsedMinutes, energyModeStr)
+		}
+
+		val sendIntent: Intent = Intent().apply {
+			action = Intent.ACTION_SEND
+			putExtra(Intent.EXTRA_TEXT, shareText)
+			type = "text/plain"
+		}
+
+		val shareIntent = Intent.createChooser(sendIntent, null)
+		startActivity(shareIntent)
 	}
 
 	override fun onStart()
@@ -261,15 +310,10 @@ class FastingFragment: Fragment()
 
 		fast_fab_start.isVisible = !isFasting
 		fast_fab_stop.isVisible = isFasting
+		fast_share_button.isVisible = (getFastStart() != null)
 	}
 
 	private val storage by lazy { requireActivity().getPreferences(Context.MODE_PRIVATE) }
-
-	private fun debug()
-	{
-		d("Fast Start: ${getFastStart()}")
-		d("Fast End: ${getFastEnd()}")
-	}
 
 	private fun isFasting(): Boolean
 	{
@@ -301,6 +345,20 @@ class FastingFragment: Fragment()
 		else
 		{
 			null
+		}
+	}
+
+	private fun getElapsedFastTime(): Duration
+	{
+		val start = getFastStart()
+		val end = getFastEnd()
+		return if(start != null)
+		{
+			end?.minus(start) ?: Clock.System.now().minus(start)
+		}
+		else
+		{
+			Duration.ZERO
 		}
 	}
 

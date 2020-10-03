@@ -29,7 +29,7 @@
 				android:layout_gravity="center_vertical"
 				android:text="@string/manual_add_title"
 				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
-				android:textColor="?android:attr/textColorPrimaryInverse"
+				android:textColor="?attr/colorOnPrimarySurface"
 				tools:layout_editor_absoluteX="16dp"
 				tools:layout_editor_absoluteY="18dp" />
 

@@ -91,4 +91,7 @@
 	<string name="phase_ketosis">Ketosis</string>
 	<string name="phase_autophagy">Autophagy</string>
 	<string name="phase_optimal_autophagy">Optimal Autophagy</string>
+
+	<string name="share_text">I\'ve been fasting for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
+	<string name="share_text_past_tense">I fasting for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
 </resources>
