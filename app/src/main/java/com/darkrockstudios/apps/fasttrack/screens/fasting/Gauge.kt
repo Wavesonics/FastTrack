@@ -1,7 +1,10 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -33,12 +36,13 @@ class GaugeView @JvmOverloads constructor(
 	{
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-		setMeasuredDimension(measuredWidth, measuredWidth / 2)
+		setMeasuredDimension(measuredWidth, measuredWidth / 3)
 	}
 
 	private val phasePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
 		style = Paint.Style.FILL
 		color = Color.BLACK
+		strokeWidth = 2f
 	}
 
 	private val needlePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -49,13 +53,10 @@ class GaugeView @JvmOverloads constructor(
 
 	private val gaugeColors = arrayOf(Color.WHITE, Color.GREEN, Color.YELLOW, Color.RED, Color.MAGENTA)
 
-	private val m = Matrix()
-
 	@ExperimentalTime
 	override fun onDraw(canvas: Canvas)
 	{
 		val lastPhase = Stages.phases.last()
-		val lastPhaseHours = Stages.END_TIME
 		val lastPhaseHoursWeighted = lastPhase.hours * 1.5f
 
 		canvas.apply {
@@ -88,24 +89,25 @@ class GaugeView @JvmOverloads constructor(
 
 					phasePaint.color = gaugeColors[index]
 
+					val arc = 180f
 					drawArc(
 							rect,
-							180f + (percentStart * 180f),
-							percentSweep * 180f,
+							arc + (percentStart * arc),
+							percentSweep * arc,
 							true,
 							phasePaint)
 				}
 
-				val avalibleRot = 130f
-				val rotStart = -(avalibleRot / 2f)
+				val availableRot = 130f
+				val rotStart = -(availableRot / 2f)
 
 				val percent = elapsedHours / lastPhaseHoursWeighted
-				val rot = avalibleRot * percent
+				val rot = availableRot * percent
 
 				val nStart = height.toFloat() * 1.25f
-				val needelLength = rect.height() * 0.35f
+				val needleLength = rect.height() * 0.35f
 				rotate(rotStart + rot, width / 2f, nStart)
-				drawLine(width / 2f, nStart, width / 2f, nStart - needelLength, needlePaint)
+				drawLine(width / 2f, nStart, width / 2f, nStart - needleLength, needlePaint)
 			}
 		}
 	}

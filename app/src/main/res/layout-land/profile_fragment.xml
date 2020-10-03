@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/profile_fragment_layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="@dimen/default_padding"
+	tools:context=".screens.profile.ProfileFragment">
+
+	<com.google.android.material.card.MaterialCardView
+		android:id="@+id/profile_bim"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:elevation="@dimen/elevation_medium"
+		app:cardCornerRadius="@dimen/default_corner">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/constraintLayout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="@dimen/default_padding">
+
+			<TextView
+				android:id="@+id/textView_bmi_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/profile_bmi_label"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintHorizontal_chainStyle="spread"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/textView_bmi_value"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/default_margin"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
+				app:layout_constraintBottom_toBottomOf="@+id/textView_bmi_label"
+				app:layout_constraintHorizontal_chainStyle="packed"
+				app:layout_constraintStart_toEndOf="@+id/textView_bmi_label"
+				app:layout_constraintBaseline_toBaselineOf="@+id/textView_bmi_label"
+				tools:text="---" />
+
+			<TextView
+				android:id="@+id/textView_bmr_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="@dimen/default_margin"
+				android:text="@string/profile_bmr_label"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/textView_bmr_value"
+				app:layout_constraintHorizontal_chainStyle="packed"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<TextView
+				android:id="@+id/textView_bmr_value"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
+				app:layout_constraintBottom_toBottomOf="@+id/textView_bmr_label"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_chainStyle="packed"
+				app:layout_constraintBaseline_toBaselineOf="@+id/textView_bmr_label"
+				tools:text="---" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</com.google.android.material.card.MaterialCardView>
+
+	<com.google.android.material.card.MaterialCardView
+		android:id="@+id/profile_data_entry"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/default_margin"
+		android:layout_weight="1"
+		android:elevation="@dimen/elevation_medium"
+		app:cardCornerRadius="@dimen/default_corner">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="@dimen/default_padding"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<TextView
+				android:id="@+id/textView_height_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/profile_height_label"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/textInputLayout_height_imper_feet"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="@+id/textView_height_title"
+				app:layout_constraintTop_toBottomOf="@+id/textView_height_title">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/TextInputEditText_height_imper_feet"
+					android:layout_width="64dp"
+					android:layout_height="wrap_content"
+					android:digits="0123456789\n"
+					android:hint="@string/profile_height_imper_feet_label"
+					android:inputType="number" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/textInputLayout_height_imper_inches"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/default_margin"
+				app:layout_constraintBottom_toBottomOf="@+id/textInputLayout_height_imper_feet"
+				app:layout_constraintStart_toEndOf="@+id/textInputLayout_height_imper_feet">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/TextInputEditText_height_imper_inches"
+					android:layout_width="96dp"
+					android:layout_height="wrap_content"
+					android:digits="0123456789\n"
+					android:hint="@string/profile_height_imper_inches_label"
+					android:inputType="number" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<TextView
+				android:id="@+id/textView_profile_age"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/default_margin"
+				android:text="@string/profile_age_label"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+				app:layout_constraintStart_toEndOf="@+id/textInputLayout_height_imper_inches"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/textInputLayout_age"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="@+id/textView_profile_age"
+				app:layout_constraintTop_toBottomOf="@+id/textView_profile_age">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/TextInputEditText_age"
+					android:layout_width="64dp"
+					android:layout_height="wrap_content"
+					android:digits="0123456789\n"
+					android:hint="@string/profile_age_years"
+					android:inputType="number" />
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<TextView
+				android:id="@+id/textView_profile_weight_pounds"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/default_margin"
+				android:text="@string/profile_weight_label"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+				app:layout_constraintStart_toEndOf="@+id/textInputLayout_age"
+				app:layout_constraintTop_toTopOf="parent" />
+
+			<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/textInputLayout_weight_pounds"
+				style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="@+id/textView_profile_weight_pounds"
+				app:layout_constraintTop_toBottomOf="@+id/textView_profile_age">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/TextInputEditText_weight_pounds"
+					android:layout_width="96dp"
+					android:layout_height="wrap_content"
+					android:digits="0123456789\n"
+					android:hint="@string/profile_weight_pounds_label"
+					android:inputType="number" />
+
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<RadioGroup
+				android:id="@+id/gender_button_ground"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/default_margin"
+				android:layout_marginEnd="@dimen/default_margin"
+				app:layout_constraintEnd_toStartOf="@+id/profile_update_button"
+				app:layout_constraintStart_toEndOf="@+id/textInputLayout_weight_pounds"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<RadioButton
+					android:id="@+id/gender_button_male"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/profile_gender_male" />
+
+				<RadioButton
+					android:id="@+id/gender_button_female"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/profile_gender_female" />
+			</RadioGroup>
+
+			<Button
+				android:id="@+id/profile_update_button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:enabled="false"
+				android:text="@string/profile_update_button"
+				app:layout_constraintBottom_toBottomOf="@+id/textInputLayout_age"
+				app:layout_constraintEnd_toEndOf="parent" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
