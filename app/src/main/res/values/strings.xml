@@ -64,4 +64,7 @@
 	<string name="manual_add_complete_button">Add</string>
 	<string name="manual_add_fast_started_on">Fast Started On: %1$s</string>
 	<string name="manual_start_title">Fasted Started</string>
+	<string name="fast_autophagy_label">Autophagy:</string>
+	<string name="fast_ketosis_label">Ketosis:</string>
+	<string name="fast_fat_burn_label">Fat Burn:</string>
 </resources>

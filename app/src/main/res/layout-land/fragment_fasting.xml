@@ -6,13 +6,13 @@
 	android:layout_height="match_parent"
 	android:background="@drawable/fast_background"
 	android:padding="@dimen/default_padding"
-	tools:context=".screens.fasting.FastingFragment">
+	tools:context=".MainActivity">
 
 	<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
 		android:id="@+id/fast_gauge"
-		android:layout_width="wrap_content"
+		android:layout_width="256dp"
 		android:layout_height="wrap_content"
-		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/fast_horizontal_split"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,8 +21,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle2"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="@+id/fast_gauge"
+		app:layout_constraintStart_toStartOf="@+id/fast_gauge"
 		app:layout_constraintTop_toBottomOf="@+id/fast_gauge"
 		tools:text="@string/fasting_energy_mode" />
 
@@ -33,7 +33,7 @@
 		android:layout_marginTop="@dimen/default_margin"
 		tools:text="00:00"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline2"
-		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintEnd_toEndOf="@+id/fast_gauge"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/textview_energy_mode" />
 
@@ -53,38 +53,36 @@
 		android:id="@+id/textview_phase_fatburn_label"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/default_margin"
+		android:layout_marginEnd="@dimen/default_margin"
+		android:text="@string/fast_fat_burn_label"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/chronometer"
-		android:text="@string/fast_fat_burn_label" />
+		app:layout_constraintEnd_toStartOf="@+id/textview_phase_fatburn_time"
+		app:layout_constraintTop_toTopOf="@+id/textview_phase_fatburn_time" />
 
 	<TextView
 		android:id="@+id/textview_phase_fatburn_time"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/default_margin"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
-		app:layout_constraintStart_toStartOf="@+id/textview_phase_ketosis_time"
-		app:layout_constraintTop_toBottomOf="@+id/chronometer"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
 		tools:text="00:00:00" />
 
 	<TextView
 		android:id="@+id/textview_phase_ketosis_label"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:text="@string/fast_ketosis_label"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_label"
-		tools:layout_editor_absoluteY="275dp"
-		android:text="@string/fast_ketosis_label" />
+		app:layout_constraintEnd_toEndOf="@+id/textview_phase_fatburn_label"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_label" />
 
 	<TextView
 		android:id="@+id/textview_phase_ketosis_time"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
-		app:layout_constraintStart_toStartOf="@+id/textview_phase_autophagy_time"
+		app:layout_constraintEnd_toEndOf="@+id/textview_phase_fatburn_time"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_fatburn_time"
 		tools:text="00:00:00" />
 
@@ -92,42 +90,51 @@
 		android:id="@+id/textview_phase_autophagy_label"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:text="@string/fast_autophagy_label"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_label"
-		android:text="@string/fast_autophagy_label" />
+		app:layout_constraintEnd_toEndOf="@+id/textview_phase_ketosis_label"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_label" />
 
 	<TextView
 		android:id="@+id/textview_phase_autophagy_time"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="@dimen/default_margin"
 		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
-		app:layout_constraintStart_toEndOf="@+id/textview_phase_autophagy_label"
+		app:layout_constraintEnd_toEndOf="@+id/textview_phase_ketosis_time"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_ketosis_time"
 		tools:text="00:00:00" />
 
-	<TextView
-		android:id="@+id/textview_stage_title"
+	<ScrollView
+		android:id="@+id/fast_stage_container"
 		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/default_margin"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
-		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textview_phase_autophagy_label"
-		tools:text="Title" />
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="@+id/fast_horizontal_split"
+		app:layout_constraintTop_toBottomOf="@+id/textview_phase_autophagy_label">
 
-	<TextView
-		android:id="@+id/textview_stage_description"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginEnd="96dp"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
-		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textview_stage_title"
-		tools:text="description" />
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textview_stage_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+
+				tools:text="Title" />
+
+			<TextView
+				android:id="@+id/textview_stage_description"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="96dp"
+				android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
+				tools:text="description" />
+		</LinearLayout>
+	</ScrollView>
 
 	<com.google.android.material.floatingactionbutton.FloatingActionButton
 		android:id="@+id/fast_fab_start"
@@ -142,7 +149,15 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:src="@drawable/ic_fast_stop"
+		android:visibility="gone"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		android:visibility="gone" />
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/fast_horizontal_split"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		app:layout_constraintGuide_begin="320dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

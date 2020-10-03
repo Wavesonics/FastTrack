@@ -8,6 +8,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import kotlin.math.min
 import kotlin.time.ExperimentalTime
 
 class GaugeView @JvmOverloads constructor(
@@ -15,6 +16,9 @@ class GaugeView @JvmOverloads constructor(
 		attrs: AttributeSet? = null,
 		defStyleAttr: Int = 0): View(context, attrs, defStyleAttr)
 {
+	private var gaugeRect: RectF? = null
+
+	// If anyone sets this value, we need to redraw
 	var elapsedHours = 0L
 		set(value)
 		{
@@ -26,11 +30,9 @@ class GaugeView @JvmOverloads constructor(
 	{
 		super.onSizeChanged(w, h, oldw, oldh)
 
-		invalidate()
 		gaugeRect = null
+		invalidate()
 	}
-
-	private var gaugeRect: RectF? = null
 
 	override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int)
 	{
@@ -101,7 +103,7 @@ class GaugeView @JvmOverloads constructor(
 				val availableRot = 130f
 				val rotStart = -(availableRot / 2f)
 
-				val percent = elapsedHours / lastPhaseHoursWeighted
+				val percent = min(elapsedHours / lastPhaseHoursWeighted, 1.0f)
 				val rot = availableRot * percent
 
 				val nStart = height.toFloat() * 1.25f
