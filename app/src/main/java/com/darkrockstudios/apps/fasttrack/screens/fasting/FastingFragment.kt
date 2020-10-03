@@ -162,8 +162,8 @@ class FastingFragment: Fragment()
 				textview_energy_mode.text = getString(R.string.fasting_energy_mode, getString(R.string.fasting_energy_mode_glucose))
 			}
 
-			textview_stage_title.text = stage.title
-			textview_stage_description.text = stage.description
+			textview_stage_title.text = getString(stage.title)
+			textview_stage_description.text = getString(stage.description)
 		}
 	}
 

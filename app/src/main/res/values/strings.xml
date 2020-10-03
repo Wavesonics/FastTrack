@@ -67,4 +67,28 @@
 	<string name="fast_autophagy_label">Autophagy:</string>
 	<string name="fast_ketosis_label">Ketosis:</string>
 	<string name="fast_fat_burn_label">Fat Burn:</string>
+
+	<string name="stage_fasting_title">Fasting</string>
+	<string name="stage_fasting_description">Your body is consuming it\'s stores of glucose, keep it up!</string>
+
+	<string name="stage_fat_burning_title">Fat Burning</string>
+	<string name="stage_fat_burning_description">Your glucose stores are depleted! Your body is now burning fat for energy. A workout in the next couple hours would be optimal.</string>
+
+	<string name="stage_fat_fasting_sweet_spot_title">Fasting Sweet Spot</string>
+	<string name="stage_fat_fasting_sweet_spot_description">You\'re in the fasting sweet spot, keep it up!</string>
+
+	<string name="stage_fat_peak_fat_burning_title">Peak Fat Burning</string>
+	<string name="stage_fat_peak_fat_burning_description">Your body is burning fat rapidly now, and ketosis has begun.</string>
+
+	<string name="stage_autophagy_title">Autophagy</string>
+	<string name="stage_autophagy_description">Your body has begun atophagy!</string>
+
+	<string name="stage_optimal_autophagy_title">Optimal Autophagy</string>
+	<string name="stage_optimal_autophagy_description">Atophagy is in full swing! Keep it up, between now and 72 hours autophagy will be very effective.</string>
+
+	<string name="phase_glucose">Glucose Burning</string>
+	<string name="phase_fat_burning">Fat Burning</string>
+	<string name="phase_ketosis">Ketosis</string>
+	<string name="phase_autophagy">Autophagy</string>
+	<string name="phase_optimal_autophagy">Optimal Autophagy</string>
 </resources>
