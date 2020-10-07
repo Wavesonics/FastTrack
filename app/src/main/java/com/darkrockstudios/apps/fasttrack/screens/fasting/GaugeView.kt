@@ -100,7 +100,7 @@ class GaugeView @JvmOverloads constructor(
 							phasePaint)
 				}
 
-				val availableRot = 130f
+				val availableRot = 135f
 				val rotStart = -(availableRot / 2f)
 
 				val percent = min(elapsedHours / lastPhaseHoursWeighted, 1.0f)

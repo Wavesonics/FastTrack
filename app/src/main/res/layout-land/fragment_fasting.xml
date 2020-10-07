@@ -10,13 +10,32 @@
 	android:clipToPadding="false"
 	tools:context=".MainActivity">
 
-	<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
-		android:id="@+id/fast_gauge"
-		android:layout_width="256dp"
+	<TextView
+		android:id="@+id/textview_stage_title"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
 		app:layout_constraintEnd_toStartOf="@+id/fast_horizontal_split"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toTopOf="parent"
+		tools:text="Title" />
+
+	<!--
+		<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
+			android:id="@+id/fast_gauge"
+			android:layout_width="256dp"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toStartOf="@+id/fast_horizontal_split"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	-->
+	<com.darkrockstudios.apps.fasttrack.screens.fasting.TimeLineView
+		android:id="@+id/fast_gauge"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/fast_horizontal_split"
+		app:layout_constraintTop_toBottomOf="@+id/textview_stage_title" />
 
 	<ImageButton
 		android:id="@+id/fast_share_button"
@@ -25,7 +44,7 @@
 		android:background="@drawable/ripple"
 		android:src="@drawable/ic_share"
 		app:layout_constraintEnd_toEndOf="@+id/fast_gauge"
-		app:layout_constraintTop_toTopOf="@+id/fast_gauge" />
+		app:layout_constraintTop_toBottomOf="@+id/fast_gauge" />
 
 	<TextView
 		android:id="@+id/textview_energy_mode"
@@ -129,7 +148,7 @@
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/fast_fab_start"
 		app:layout_constraintStart_toStartOf="@+id/fast_horizontal_split"
 		app:layout_constraintTop_toBottomOf="@+id/textview_phase_autophagy_label">
 
@@ -139,18 +158,11 @@
 			android:orientation="vertical">
 
 			<TextView
-				android:id="@+id/textview_stage_title"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
-
-				tools:text="Title" />
-
-			<TextView
 				android:id="@+id/textview_stage_description"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="96dp"
+				android:layout_marginTop="@dimen/default_margin"
+				android:gravity="center_horizontal"
 				android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
 				tools:text="description" />
 		</LinearLayout>

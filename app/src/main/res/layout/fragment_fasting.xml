@@ -9,14 +9,32 @@
 	android:padding="@dimen/default_padding"
 	android:clipToPadding="false"
 	tools:context=".screens.fasting.FastingFragment">
+	<!--
+		<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
+			android:id="@+id/fast_gauge"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+	-->
+	<TextView
+		android:id="@+id/textview_stage_title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+		tools:text="Title" />
 
-	<com.darkrockstudios.apps.fasttrack.screens.fasting.GaugeView
+	<com.darkrockstudios.apps.fasttrack.screens.fasting.TimeLineView
 		android:id="@+id/fast_gauge"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@+id/textview_stage_title" />
 
 	<ImageButton
 		android:id="@+id/fast_share_button"
@@ -24,8 +42,8 @@
 		android:layout_height="@dimen/min_touch"
 		android:background="@drawable/ripple"
 		android:src="@drawable/ic_share"
-		app:layout_constraintEnd_toEndOf="@+id/fast_gauge"
-		app:layout_constraintTop_toTopOf="@+id/fast_gauge" />
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
 
 	<TextView
 		android:id="@+id/textview_energy_mode"
@@ -165,18 +183,10 @@
 			android:orientation="vertical">
 
 			<TextView
-				android:id="@+id/textview_stage_title"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/default_margin"
-				android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
-				tools:text="Title" />
-
-			<TextView
 				android:id="@+id/textview_stage_description"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginEnd="96dp"
+				android:layout_marginTop="@dimen/default_margin"
 				android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
 				tools:text="description" />
 		</LinearLayout>

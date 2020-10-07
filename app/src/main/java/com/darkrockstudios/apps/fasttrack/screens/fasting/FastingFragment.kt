@@ -299,7 +299,7 @@ class FastingFragment: Fragment()
 	{
 		val currentStage = Stages.getCurrentPhase(elapsedTime)
 
-		fast_gauge.elapsedHours = elapsedTime.inHours.toLong()
+		fast_gauge.elapsedHours = elapsedTime.inHours
 
 		// Handle Fat burning
 		updateTimeView(textview_phase_fatburn_time, Stages.PHASE_FAT_BURN, elapsedTime)

@@ -148,6 +148,7 @@ class ProfileFragment: Fragment()
 
 		val weightPounds = Data.kgToLbs(profile.weightKg)
 
+		// Only update the text field if it's actually a different value, prevents update loops
 		if(TextInputEditText_height_imper_feet.text?.toString() != "$feet")
 			TextInputEditText_height_imper_feet.setText("$feet")
 		if(TextInputEditText_height_imper_inches.text?.toString() != "$inches")
