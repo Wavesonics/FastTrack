@@ -1,6 +1,8 @@
 package com.darkrockstudios.apps.fasttrack.screens.profile
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,6 +66,8 @@ class ProfileFragment: Fragment()
 		textView_bmr_label.setOnClickListener {
 			Util.showInfoDialog(R.string.info_dialog_bmr_title, R.string.info_dialog_bmr_content, requireContext())
 		}
+
+		Handler(Looper.getMainLooper()).post { updateDirty(false) }
 	}
 
 	private fun saveProfile()
