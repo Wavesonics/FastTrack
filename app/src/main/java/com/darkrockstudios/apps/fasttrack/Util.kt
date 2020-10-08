@@ -27,10 +27,10 @@ fun Resources.dp2px(dp: Int): Int
 									).toInt()
 }
 
-fun Int.dp2px(resource: Resources, dp: Int): Int
+fun Int.dp2px(resource: Resources): Int
 {
 	return TypedValue.applyDimension(
 			TypedValue.COMPLEX_UNIT_DIP,
-			dp.toFloat(), resource.displayMetrics
+			this.toFloat(), resource.displayMetrics
 									).toInt()
 }

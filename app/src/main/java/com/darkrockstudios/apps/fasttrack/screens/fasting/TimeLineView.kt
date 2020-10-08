@@ -121,8 +121,11 @@ class TimeLineView @JvmOverloads constructor(
 				val halfPadding = padding.toFloat() / 2f
 
 				val startX = (curPhaseIndex * phaseWidth) + (curPhaseIndex * spacing) + padding
-				val x = startX + (phaseWidth * percent)
-				drawLine(x.toFloat(), halfPadding, x.toFloat(), barSize.toFloat() + halfPadding, needlePaint)
+				val x = (startX + (phaseWidth * percent)).toFloat()
+				drawLine(x, halfPadding, x, barSize.toFloat() + halfPadding, needlePaint)
+
+				val radius = 4.dp2px(resources).toFloat()
+				drawCircle(x, barSize.toFloat() + halfPadding + radius, radius, needlePaint)
 			}
 		}
 	}
