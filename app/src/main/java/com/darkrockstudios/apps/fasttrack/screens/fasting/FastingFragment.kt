@@ -1,5 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
 import androidx.core.view.isVisible
@@ -44,6 +46,13 @@ class FastingFragment: Fragment()
 	private val uiHandler = Handler(Looper.getMainLooper())
 	private val database by inject<AppDatabase>()
 	private val fast by inject<FastUtils>()
+
+	@ColorInt
+	private var fatburnLabelColor: Int = Color.WHITE
+	@ColorInt
+	private var ketosisLabelColor: Int = Color.WHITE
+	@ColorInt
+	private var autophagyLabelColor: Int = Color.WHITE
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
@@ -88,14 +97,17 @@ class FastingFragment: Fragment()
 			setupAlerts()
 		}
 
+		fatburnLabelColor = textview_phase_fatburn_label.currentTextColor
 		textview_phase_fatburn_label.setOnClickListener {
 			Utils.showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content, requireContext())
 		}
 
+		ketosisLabelColor = textview_phase_ketosis_label.currentTextColor
 		textview_phase_ketosis_label.setOnClickListener {
 			Utils.showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content, requireContext())
 		}
 
+		autophagyLabelColor = textview_phase_autophagy_label.currentTextColor
 		textview_phase_autophagy_label.setOnClickListener {
 			Utils.showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content, requireContext())
 		}
@@ -266,6 +278,7 @@ class FastingFragment: Fragment()
 		fast_gauge.elapsedHours = elapsedTime.inHours
 
 		// Handle Fat burning
+		textview_phase_fatburn_time.setTextColor(fatburnLabelColor)
 		updateTimeView(textview_phase_fatburn_time, Stages.PHASE_FAT_BURN, elapsedTime)
 
 		// Handle Ketosis
@@ -276,6 +289,7 @@ class FastingFragment: Fragment()
 		else
 		{
 			textview_phase_ketosis_time.text = "--:--:--"
+			textview_phase_ketosis_time.setTextColor(ketosisLabelColor)
 		}
 
 		// Handle Autophagy
@@ -286,6 +300,7 @@ class FastingFragment: Fragment()
 		else
 		{
 			textview_phase_autophagy_time.text = "--:--:--"
+			textview_phase_autophagy_time.setTextColor(autophagyLabelColor)
 		}
 	}
 
