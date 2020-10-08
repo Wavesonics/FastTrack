@@ -1,10 +1,9 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.AlertService
+import com.darkrockstudios.apps.fasttrack.FastUtils
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.Util
 import com.darkrockstudios.apps.fasttrack.data.Data
@@ -43,6 +43,7 @@ class FastingFragment: Fragment()
 {
 	private val uiHandler = Handler(Looper.getMainLooper())
 	private val database by inject<AppDatabase>()
+	private val fast by inject<FastUtils>()
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
@@ -79,10 +80,6 @@ class FastingFragment: Fragment()
 			}
 		}
 
-		fast_share_button.setOnClickListener {
-			shareText()
-		}
-
 		fast_notifications_checkbox.isChecked = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
 		fast_notifications_checkbox.setOnCheckedChangeListener { _, isChecked ->
 			storage.edit {
@@ -110,11 +107,11 @@ class FastingFragment: Fragment()
 
 		val shouldAlert = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
 
-		if(isFasting())
+		if(fast.isFasting())
 		{
 			if(shouldAlert)
 			{
-				val elapsedTime = getElapsedFastTime()
+				val elapsedTime = fast.getElapsedFastTime()
 				AlertService.scheduleAlerts(elapsedTime, ctx)
 			}
 			// User doesn't want notifications
@@ -128,39 +125,6 @@ class FastingFragment: Fragment()
 		{
 			AlertService.cancelAlerts(ctx)
 		}
-	}
-
-	private fun shareText()
-	{
-		val elapsedHours: Int
-		val elapsedMinutes: Int
-
-		val elapsedTime = getElapsedFastTime()
-		elapsedTime.toComponents { hours, minutes, _, _ ->
-			elapsedHours = hours
-			elapsedMinutes = minutes
-		}
-
-		val curPhase = Stages.getCurrentPhase(elapsedTime)
-		val energyModeStr = if(curPhase.fatBurning) getString(R.string.fasting_energy_mode_fat) else getString(R.string.fasting_energy_mode_glucose)
-
-		val shareText = if(isFasting())
-		{
-			getString(R.string.share_text, elapsedHours, elapsedMinutes, energyModeStr)
-		}
-		else
-		{
-			getString(R.string.share_text_past_tense, elapsedHours, elapsedMinutes, energyModeStr)
-		}
-
-		val sendIntent: Intent = Intent().apply {
-			action = Intent.ACTION_SEND
-			putExtra(Intent.EXTRA_TEXT, shareText)
-			type = "text/plain"
-		}
-
-		val shareIntent = Intent.createChooser(sendIntent, null)
-		startActivity(shareIntent)
 	}
 
 	override fun onStart()
@@ -186,7 +150,7 @@ class FastingFragment: Fragment()
 
 	private val updater = Runnable {
 		updateUi()
-		if(isFasting())
+		if(fast.isFasting())
 		{
 			startTimerUpdate()
 		}
@@ -226,12 +190,12 @@ class FastingFragment: Fragment()
 
 	private fun updateStage()
 	{
-		val fastStart = getFastStart()
+		val fastStart = fast.getFastStart()
 		textview_stage_title.text = ""
 		textview_stage_description.text = ""
 		textview_energy_mode.text = ""
 
-		if(isFasting() && fastStart != null)
+		if(fast.isFasting() && fastStart != null)
 		{
 			val elapsedTime = Clock.System.now().minus(fastStart)
 			val elapsedHours = elapsedTime.inHours.toInt()
@@ -262,8 +226,8 @@ class FastingFragment: Fragment()
 	@ExperimentalTime
 	private fun updateTimer()
 	{
-		val fastStart = getFastStart()
-		val fastEnd = getFastEnd()
+		val fastStart = fast.getFastStart()
+		val fastEnd = fast.getFastEnd()
 
 		if(fastStart != null)
 		{
@@ -349,65 +313,17 @@ class FastingFragment: Fragment()
 
 	private fun updateButtons()
 	{
-		val isFasting = isFasting()
+		val isFasting = fast.isFasting()
 
 		fast_fab_start.isVisible = !isFasting
 		fast_fab_stop.isVisible = isFasting
-		fast_share_button.isVisible = (getFastStart() != null)
 	}
 
-	private val storage by lazy { requireActivity().getPreferences(Context.MODE_PRIVATE) }
-
-	private fun isFasting(): Boolean
-	{
-		val fastStart = storage.getLong(Data.KEY_FAST_START, -1)
-		val fastEnd = storage.getLong(Data.KEY_FAST_END, -1)
-		return fastStart != -1L && fastEnd == -1L
-	}
-
-	private fun getFastStart(): Instant?
-	{
-		val mills = storage.getLong(Data.KEY_FAST_START, -1)
-		return if(mills > -1)
-		{
-			Instant.fromEpochMilliseconds(mills)
-		}
-		else
-		{
-			null
-		}
-	}
-
-	private fun getFastEnd(): Instant?
-	{
-		val mills = storage.getLong(Data.KEY_FAST_END, -1)
-		return if(mills > -1)
-		{
-			Instant.fromEpochMilliseconds(mills)
-		}
-		else
-		{
-			null
-		}
-	}
-
-	private fun getElapsedFastTime(): Duration
-	{
-		val start = getFastStart()
-		val end = getFastEnd()
-		return if(start != null)
-		{
-			end?.minus(start) ?: Clock.System.now().minus(start)
-		}
-		else
-		{
-			Duration.ZERO
-		}
-	}
+	private val storage by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
 
 	private fun startFast(timeStartedMills: Long? = null)
 	{
-		if(!isFasting())
+		if(!fast.isFasting())
 		{
 			val mills = if(timeStartedMills == null)
 			{
@@ -418,6 +334,7 @@ class FastingFragment: Fragment()
 			{
 				timeStartedMills
 			}
+
 			storage.edit { putLong(Data.KEY_FAST_START, mills) }
 			storage.edit { putLong(Data.KEY_FAST_END, -1) }
 
@@ -435,13 +352,13 @@ class FastingFragment: Fragment()
 
 	private fun endFast()
 	{
-		if(isFasting())
+		if(fast.isFasting())
 		{
 			val now = Clock.System.now()
 			val mills = now.toEpochMilliseconds()
 			storage.edit { putLong(Data.KEY_FAST_END, mills) }
 
-			GlobalScope.launch { saveFastToLog(getFastStart(), getFastEnd()) }
+			GlobalScope.launch { saveFastToLog(fast.getFastStart(), fast.getFastEnd()) }
 
 			i("Fast ended!")
 
