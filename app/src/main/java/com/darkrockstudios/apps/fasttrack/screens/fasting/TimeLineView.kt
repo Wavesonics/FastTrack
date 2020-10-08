@@ -77,7 +77,7 @@ class TimeLineView @JvmOverloads constructor(
 
 		canvas.apply {
 
-			val availableWidth = width - (padding * 2f)
+			val availableWidth = width - (padding)
 			val phaseWidth = (availableWidth / Stages.phases.size) - spacing
 
 			val curPhase = Stages.getCurrentPhase(elapsedHours.hours)
@@ -85,7 +85,7 @@ class TimeLineView @JvmOverloads constructor(
 			// Draw the bubbles
 			Stages.phases.forEachIndexed { index, phase ->
 
-				val startX = (index * phaseWidth) + (index * spacing) + padding
+				val startX = ((index * phaseWidth) + (index * spacing) + padding).toFloat()
 				val startY = padding.toFloat()
 
 				if(curPhase == phase)
@@ -118,9 +118,11 @@ class TimeLineView @JvmOverloads constructor(
 
 				val percent = min(timeIntoPhase / phaseLength, 1.0)
 
+				val halfPadding = padding.toFloat() / 2f
+
 				val startX = (curPhaseIndex * phaseWidth) + (curPhaseIndex * spacing) + padding
 				val x = startX + (phaseWidth * percent)
-				drawLine(x.toFloat(), 0f, x.toFloat(), (padding + barSize).toFloat(), needlePaint)
+				drawLine(x.toFloat(), halfPadding, x.toFloat(), barSize.toFloat() + halfPadding, needlePaint)
 			}
 		}
 	}
