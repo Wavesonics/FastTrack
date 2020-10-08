@@ -89,6 +89,8 @@ dependencies {
     implementation "com.github.adrielcafe.satchel:satchel-storer-encrypted-file:1.0.3"
     implementation "com.github.adrielcafe.satchel:satchel-serializer-base64-android:1.0.3"
 
+    implementation 'com.github.jrvansuita:MaterialAbout:0.2.4'
+
     implementation 'com.github.florent37:singledateandtimepicker:2.2.6'
 
     testImplementation 'junit:junit:4.13'
