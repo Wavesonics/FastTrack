@@ -126,7 +126,8 @@
 						android:layout_height="wrap_content"
 						android:digits="0123456789\n"
 						android:hint="@string/profile_height_imper_feet_label"
-						android:inputType="number" />
+						android:inputType="number"
+						android:singleLine="true" />
 				</com.google.android.material.textfield.TextInputLayout>
 
 				<com.google.android.material.textfield.TextInputLayout
@@ -144,7 +145,8 @@
 						android:layout_height="wrap_content"
 						android:digits="0123456789\n"
 						android:hint="@string/profile_height_imper_inches_label"
-						android:inputType="number" />
+						android:inputType="number"
+						android:singleLine="true" />
 				</com.google.android.material.textfield.TextInputLayout>
 
 				<TextView
@@ -171,7 +173,8 @@
 						android:layout_height="wrap_content"
 						android:digits="0123456789\n"
 						android:hint="@string/profile_age_years"
-						android:inputType="number" />
+						android:inputType="number"
+						android:singleLine="true" />
 				</com.google.android.material.textfield.TextInputLayout>
 
 				<TextView
@@ -197,9 +200,10 @@
 						android:id="@+id/TextInputEditText_weight_pounds"
 						android:layout_width="96dp"
 						android:layout_height="wrap_content"
-						android:digits="0123456789\n"
+						android:digits="0123456789."
 						android:hint="@string/profile_weight_pounds_label"
-						android:inputType="number" />
+						android:inputType="number"
+						android:singleLine="true" />
 
 				</com.google.android.material.textfield.TextInputLayout>
 
@@ -222,15 +226,6 @@
 						android:layout_height="wrap_content"
 						android:text="@string/profile_gender_female" />
 				</RadioGroup>
-
-				<Button
-					android:id="@+id/profile_update_button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:enabled="false"
-					android:text="@string/profile_update_button"
-					app:layout_constraintBottom_toBottomOf="@+id/textInputLayout_age"
-					app:layout_constraintEnd_toEndOf="parent" />
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
 

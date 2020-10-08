@@ -7,7 +7,7 @@ import androidx.annotation.StringRes
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-object Util
+object Utils
 {
 	fun showInfoDialog(@StringRes titleRes: Int, @StringRes contentRes: Int, context: Context)
 	{

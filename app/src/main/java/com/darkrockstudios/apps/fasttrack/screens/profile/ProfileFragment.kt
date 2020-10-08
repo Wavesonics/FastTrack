@@ -6,18 +6,17 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import cafe.adriel.satchel.Satchel
 import cafe.adriel.satchel.ktx.getOrSet
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.Util
+import com.darkrockstudios.apps.fasttrack.Utils
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Gender
 import com.darkrockstudios.apps.fasttrack.data.Profile
+import com.log4k.i
 import com.log4k.w
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlin.math.floor
@@ -27,7 +26,10 @@ import kotlin.math.pow
 class ProfileFragment: Fragment()
 {
 	private val viewModel by viewModels<ProfileViewModel>()
-	private var dirty = false
+	private val handler = Handler(Looper.getMainLooper())
+	private val profileSaver = Runnable { updateProfile() }
+
+	private var initialPopulationRequired = true
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
@@ -51,23 +53,19 @@ class ProfileFragment: Fragment()
 
 		viewModel.profile.observe(viewLifecycleOwner, ::updateUi)
 
-		TextInputEditText_height_imper_feet.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
-		TextInputEditText_height_imper_inches.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
-		TextInputEditText_age.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
-		TextInputEditText_weight_pounds.doOnTextChanged { _, _, _, _ -> updateDirty(true) }
-		gender_button_ground.setOnCheckedChangeListener { _, _ -> updateDirty(true) }
-
-		profile_update_button.setOnClickListener { saveProfile() }
+		TextInputEditText_height_imper_feet.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		TextInputEditText_height_imper_inches.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		TextInputEditText_age.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		TextInputEditText_weight_pounds.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		gender_button_ground.setOnCheckedChangeListener { _, _ -> updateProfile() }
 
 		textView_bmi_label.setOnClickListener {
-			Util.showInfoDialog(R.string.info_dialog_bmi_title, R.string.info_dialog_bmi_content, requireContext())
+			Utils.showInfoDialog(R.string.info_dialog_bmi_title, R.string.info_dialog_bmi_content, requireContext())
 		}
 
 		textView_bmr_label.setOnClickListener {
-			Util.showInfoDialog(R.string.info_dialog_bmr_title, R.string.info_dialog_bmr_content, requireContext())
+			Utils.showInfoDialog(R.string.info_dialog_bmr_title, R.string.info_dialog_bmr_content, requireContext())
 		}
-
-		Handler(Looper.getMainLooper()).post { updateDirty(false) }
 	}
 
 	private fun saveProfile()
@@ -90,23 +88,111 @@ class ProfileFragment: Fragment()
 		}
 
 		val updatedProfile = Profile(ageYears = age, heightCm = totalCm, weightKg = kg, gender = gender)
-		viewModel.profile.postValue(updatedProfile)
+		if(updatedProfile != viewModel.profile.value)
+		{
+			viewModel.profile.postValue(updatedProfile)
 
-		Satchel.storage.apply {
-			set(Data.KEY_PROFILE, updatedProfile)
+			Satchel.storage.apply {
+				set(Data.KEY_PROFILE, updatedProfile)
+			}
+
+			// Close keyboard
+			//val imm = getSystemService(requireContext(), InputMethodManager::class.java)
+			//imm?.hideSoftInputFromWindow(TextInputEditText_height_imper_feet.windowToken, 0)
+
+			i("Profile saved")
 		}
-
-		// Close keyboard
-		val imm = getSystemService(requireContext(), InputMethodManager::class.java)
-		imm?.hideSoftInputFromWindow(TextInputEditText_height_imper_feet.windowToken, 0)
-
-		updateDirty(false)
 	}
 
-	private fun updateDirty(isDirty: Boolean)
+	private fun updateProfile()
 	{
-		dirty = isDirty
-		profile_update_button.isEnabled = dirty
+		if(validateProfile())
+		{
+			saveProfile()
+		}
+	}
+
+	private fun validateProfile(): Boolean
+	{
+		var isValid = true
+
+		val feetInches = TextInputEditText_height_imper_feet.text
+		if(feetInches?.isEmpty() == true)
+		{
+			TextInputEditText_height_imper_feet.error = getString(R.string.profile_error)
+			isValid = false
+		}
+		else
+		{
+			if(parseInt(feetInches) > 0)
+			{
+				TextInputEditText_height_imper_feet.error = null
+			}
+			else
+			{
+				TextInputEditText_height_imper_feet.error = getString(R.string.profile_error)
+				isValid = false
+			}
+		}
+
+		val inchesText = TextInputEditText_height_imper_inches.text
+		if(inchesText?.isEmpty() == true)
+		{
+			TextInputEditText_height_imper_inches.error = getString(R.string.profile_error)
+			isValid = false
+		}
+		else
+		{
+			if(parseInt(inchesText) > 0)
+			{
+				TextInputEditText_height_imper_inches.error = null
+			}
+			else
+			{
+				TextInputEditText_height_imper_inches.error = getString(R.string.profile_error)
+				isValid = false
+			}
+		}
+
+		val ageText = TextInputEditText_age.text
+		if(ageText?.isEmpty() == true)
+		{
+			TextInputEditText_age.error = getString(R.string.profile_error)
+			isValid = false
+		}
+		else
+		{
+			if(parseInt(ageText) > 0)
+			{
+				TextInputEditText_age.error = null
+			}
+			else
+			{
+				TextInputEditText_age.error = getString(R.string.profile_error)
+				isValid = false
+			}
+		}
+
+		val weightPoundsText = TextInputEditText_weight_pounds.text
+		if(weightPoundsText?.isEmpty() == true)
+		{
+			TextInputEditText_weight_pounds.error = getString(R.string.profile_error)
+			isValid = false
+		}
+		else
+		{
+			if(parseDouble(weightPoundsText) > 0.0)
+			{
+				TextInputEditText_weight_pounds.error = null
+			}
+			else
+			{
+				TextInputEditText_weight_pounds.error = getString(R.string.profile_error)
+				isValid = false
+			}
+		}
+
+		return isValid
 	}
 
 	private fun parseDouble(text: CharSequence?): Double
@@ -143,8 +229,17 @@ class ProfileFragment: Fragment()
 		return number
 	}
 
-	private fun updateUi(profile: Profile)
+	private fun populateInput(profile: Profile)
 	{
+		if(initialPopulationRequired)
+		{
+			initialPopulationRequired = false
+		}
+		else
+		{
+			return
+		}
+
 		val totalInches = Data.cmToInch(profile.heightCm)
 
 		val feet = floor(totalInches / 12.0).toInt()
@@ -162,11 +257,21 @@ class ProfileFragment: Fragment()
 		if(TextInputEditText_weight_pounds.text?.toString() != "$weightPounds")
 			TextInputEditText_weight_pounds.setText("$weightPounds")
 
-		when(profile.gender)
+		if(!isCheckedGender(profile.gender))
 		{
-			Gender.Male -> gender_button_ground.check(R.id.gender_button_male)
-			Gender.Female -> gender_button_ground.check(R.id.gender_button_female)
+			when(profile.gender)
+			{
+				Gender.Male -> gender_button_ground.check(R.id.gender_button_male)
+				Gender.Female -> gender_button_ground.check(R.id.gender_button_female)
+			}
 		}
+
+		updateUi(profile)
+	}
+
+	private fun updateUi(profile: Profile)
+	{
+		populateInput(profile)
 
 		val bmi = calculateBmi(profile)
 		val bmiCategory = when
@@ -183,8 +288,15 @@ class ProfileFragment: Fragment()
 
 		val bmr = calculateBmr(profile)
 		textView_bmr_value.text = getString(R.string.profile_bmr_value, bmr)
+	}
 
-		updateDirty(dirty)
+	private fun isCheckedGender(newGender: Gender): Boolean
+	{
+		return when(newGender)
+		{
+			Gender.Male -> gender_button_ground.checkedRadioButtonId == R.id.gender_button_male
+			Gender.Female -> gender_button_ground.checkedRadioButtonId == R.id.gender_button_female
+		}
 	}
 
 	private fun calculateBmi(profile: Profile): Double

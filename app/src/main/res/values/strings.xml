@@ -51,6 +51,8 @@
 	<string name="profile_bmi_category_obese">Obese</string>
 	<string name="profile_bmi_category_morbidly_obese">Morbidly Obese</string>
 
+	<string name="profile_error">Bad Value</string>
+
 	<string name="profile_bmr_label">BMR:</string>
 	<string name="profile_bmr_value">%.0f" kCal / day</string>
 

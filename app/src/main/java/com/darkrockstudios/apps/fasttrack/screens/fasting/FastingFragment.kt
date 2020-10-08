@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.AlertService
 import com.darkrockstudios.apps.fasttrack.FastUtils
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.Util
+import com.darkrockstudios.apps.fasttrack.Utils
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -89,15 +89,15 @@ class FastingFragment: Fragment()
 		}
 
 		textview_phase_fatburn_label.setOnClickListener {
-			Util.showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content, requireContext())
+			Utils.showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content, requireContext())
 		}
 
 		textview_phase_ketosis_label.setOnClickListener {
-			Util.showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content, requireContext())
+			Utils.showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content, requireContext())
 		}
 
 		textview_phase_autophagy_label.setOnClickListener {
-			Util.showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content, requireContext())
+			Utils.showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content, requireContext())
 		}
 	}
 
