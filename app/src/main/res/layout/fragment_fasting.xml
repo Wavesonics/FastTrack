@@ -25,7 +25,8 @@
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline5"
+		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline4"
+		android:textStyle="bold"
 		tools:text="Title" />
 
 	<com.darkrockstudios.apps.fasttrack.screens.fasting.TimeLineView
