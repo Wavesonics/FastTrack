@@ -11,6 +11,7 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toJavaLocalDateTime
 import kotlinx.datetime.toLocalDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 import kotlin.time.ExperimentalTime
 import kotlin.time.milliseconds
 
@@ -22,16 +23,18 @@ class FastEntryItem(val fast: FastEntry): AbstractBindingItem<FastEntryItemBindi
 	@ExperimentalTime
 	override fun bindView(binding: FastEntryItemBinding, payloads: List<Any>)
 	{
-		val start = Instant.fromEpochMilliseconds(fast.start)
+		val ctx = binding.fastEntryStart.context
 
-		val hours = fast.length.milliseconds.inHours
+		val start = Instant.fromEpochMilliseconds(fast.start)
+		val hours = fast.length.milliseconds.inHours.roundToInt()
 
 		val startDate = start.toLocalDateTime(TimeZone.currentSystemDefault())
-		val dateStr = startDate.toJavaLocalDateTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+		val pattern = DateTimeFormatter.ofPattern("d MMM uuuu - HH:mm")
+		val dateStr = startDate.toJavaLocalDateTime().format(pattern)
 
-		binding.fastEntryStart.text = "Started: $dateStr"
-		binding.fastEntryLength.text = "Length: %.1f hours".format(hours)
+		binding.fastEntryStart.text = ctx.getString(R.string.log_entry_started, dateStr)
+		binding.fastEntryLength.text = ctx.getString(R.string.log_entry_length, hours)
 	}
 
-	override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?): FastEntryItemBinding = FastEntryItemBinding.inflate(inflater, parent, false)
+	override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?) = FastEntryItemBinding.inflate(inflater, parent, false)
 }

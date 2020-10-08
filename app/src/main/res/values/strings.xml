@@ -35,6 +35,9 @@
 
 	<string name="start_fast_button_advanced">*</string>
 
+	<string name="log_entry_started">Started: %1$s</string>
+	<string name="log_entry_length">Length: %1$d hours</string>
+
 	<string name="profile_age_label">Age</string>
 	<string name="profile_age_years">years</string>
 

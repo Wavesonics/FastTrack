@@ -53,7 +53,7 @@ class ManualAddFragment: DialogFragment()
 		}
 
 		manual_add_date.setOnDateChangedListener { _, year, monthOfYear, dayOfMonth ->
-			viewModel.startDate = LocalDate(year, monthOfYear, dayOfMonth)
+			viewModel.startDate = LocalDate(year, monthOfYear + 1, dayOfMonth)
 			// Delay so that it is not jarring to the user
 			uiHandler.postDelayed({ updateUi() }, 500)
 		}
@@ -133,21 +133,24 @@ class ManualAddFragment: DialogFragment()
 
 		val startDate = viewModel.startDate
 		val startDateTime = viewModel.startDateTime
-		if(startDateTime != null)
+		when
 		{
-			val pattern = DateTimeFormatter.ofPattern("d MMM uuuu - HH:mm")
-			val dateStr = startDateTime.toJavaLocalDateTime().format(pattern)
-			textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
-		}
-		else if(startDate != null)
-		{
-			val pattern = DateTimeFormatter.ofPattern("d MMM uuuu")
-			val dateStr = startDate.toJavaLocalDate().format(pattern)
-			textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
-		}
-		else
-		{
-			textView_start_display.text = getString(R.string.manual_add_fast_started_on, "")
+			startDateTime != null ->
+			{
+				val pattern = DateTimeFormatter.ofPattern("d MMM uuuu - HH:mm")
+				val dateStr = startDateTime.toJavaLocalDateTime().format(pattern)
+				textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
+			}
+			startDate != null     ->
+			{
+				val pattern = DateTimeFormatter.ofPattern("d MMM uuuu")
+				val dateStr = startDate.toJavaLocalDate().format(pattern)
+				textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
+			}
+			else                  ->
+			{
+				textView_start_display.text = getString(R.string.manual_add_fast_started_on, "")
+			}
 		}
 	}
 
