@@ -320,7 +320,7 @@ class FastingFragment: Fragment()
 		{
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeSince.toComponents { hours, minutes, seconds, _ ->
-				view.text = "- %d:%02d:%02d".format(kotlin.math.abs(hours), kotlin.math.abs(minutes), kotlin.math.abs(seconds))
+				view.text = "-%d:%02d:%02d".format(kotlin.math.abs(hours), kotlin.math.abs(minutes), kotlin.math.abs(seconds))
 			}
 			view.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_600))
 		}
