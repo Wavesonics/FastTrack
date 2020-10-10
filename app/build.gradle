@@ -95,6 +95,14 @@ dependencies {
 
     implementation 'nl.dionsegijn:konfetti:1.2.5'
 
+    implementation  "io.noties.markwon:core:4.6.0"
+    implementation  "io.noties.markwon:ext-latex:4.6.0"
+    implementation  "io.noties.markwon:ext-strikethrough:4.6.0"
+    implementation  "io.noties.markwon:ext-tables:4.6.0"
+    implementation  "io.noties.markwon:image:4.6.0"
+    implementation  "io.noties.markwon:image-glide:4.6.0"
+    implementation  "io.noties.markwon:linkify:4.6.0"
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -22,6 +22,7 @@ import kotlin.time.ExperimentalTime
 class MainActivity: AppCompatActivity()
 {
 	private val fast by inject<FastUtils>()
+	private val navController by lazy { findNavController(R.id.nav_host_fragment) }
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
@@ -31,7 +32,6 @@ class MainActivity: AppCompatActivity()
 
 		setSupportActionBar(appActionBar)
 
-		val navController = findNavController(R.id.nav_host_fragment)
 		// Passing each menu ID as a set of Ids because each
 		// menu should be considered as top level destinations.
 		val appBarConfiguration = AppBarConfiguration(
@@ -64,6 +64,7 @@ class MainActivity: AppCompatActivity()
 			}
 			R.id.action_info ->
 			{
+				navController.navigate(R.id.infoActivity)
 				true
 			}
 			R.id.action_about ->

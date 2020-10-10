@@ -3,6 +3,7 @@
 	package="com.darkrockstudios.apps.fasttrack">
 
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
 	<application
 		android:name=".FastTrackApp"
 		android:allowBackup="true"
@@ -11,6 +12,11 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/Theme.FastTrackTheme">
+		<activity
+			android:name=".screens.info.InfoActivity"
+			android:label="@string/title_activity_info"
+			android:theme="@style/Theme.FastTrackTheme.NoActionBar"></activity>
+
 		<service
 			android:name=".AlertService"
 			android:enabled="true"

@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!--Components-->
+	<!--Components-->
 
-    <!--Bottom Sheets-->
-    <style name="ThemeOverlay.FastTrackTheme.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
-        <item name="android:windowIsFloating">false</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowAnimationStyle">@style/Animation.FastTrackTheme.BottomSheet.Modal</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="bottomSheetStyle">@style/Widget.FastTrackTheme.BottomSheet.Modal</item>
-        <item name="android:navigationBarColor">?attr/colorSurface</item>
-        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">@android:color/transparent</item>
-    </style>
+	<!--Bottom Sheets-->
+	<style name="ThemeOverlay.FastTrackTheme.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+		<item name="android:windowIsFloating">false</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowAnimationStyle">@style/Animation.FastTrackTheme.BottomSheet.Modal</item>
+		<item name="android:statusBarColor">@android:color/transparent</item>
+		<item name="bottomSheetStyle">@style/Widget.FastTrackTheme.BottomSheet.Modal</item>
+		<item name="android:navigationBarColor">?attr/colorSurface</item>
+		<item name="android:navigationBarDividerColor" tools:ignore="NewApi">@android:color/transparent</item>
+	</style>
 
-    <style name="Widget.FastTrackTheme.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
-        <item name="shapeAppearanceOverlay">?attr/shapeAppearanceLargeComponent</item>
-    </style>
+	<style name="Widget.FastTrackTheme.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+		<item name="shapeAppearanceOverlay">?attr/shapeAppearanceLargeComponent</item>
+	</style>
 
-    <!--Navigation Drawer-->
-    <style name="Widget.FastTrackTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
-        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
-    </style>
+	<!--Navigation Drawer-->
+	<style name="Widget.FastTrackTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+		<item name="itemTextAppearance">?attr/textAppearanceBody2</item>
+	</style>
+
+	<style name="Theme.FastTrackTheme.NoActionBar">
+		<item name="windowActionBar">false</item>
+		<item name="windowNoTitle">true</item>
+	</style>
+
+	<style name="Theme.FastTrackTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+	<style name="Theme.FastTrackTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

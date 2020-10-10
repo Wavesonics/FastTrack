@@ -20,5 +20,10 @@
 		android:name="com.darkrockstudios.apps.fasttrack.screens.profile.ProfileFragment"
 		android:label="@string/title_profile"
 		tools:layout="@layout/profile_fragment" />
+	<activity
+		android:id="@+id/infoActivity"
+		android:name="com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity"
+		android:label="content_info"
+		tools:layout="@layout/content_info" />
 
 </navigation>

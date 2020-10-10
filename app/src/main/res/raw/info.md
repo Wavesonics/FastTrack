@@ -1,0 +1,28 @@
+# Intermittent Fasting
+
+**Intermittent Fasting** is currently a very active field of study, some parts of this are well established, and others are still being studied. So take this all with a grain of salt, and consult the primary sources linked below.
+
+## How and Why fasting works:
+It's believed that in our early development as hunter gatherers, our diet was feast or famine. Maybe a small tribe would get a large kill once a week or less. Thus our bodies are designed well to make the most out of that and store everything possible for later use.
+
+Acquiring carbs in large quantities would have been difficult. Forging for barriers which would be high in sugar would require a lot of effort for not a lot of sugar.
+
+### Thus our bodies developed two primary energy pathways:
+
+1. **Glucose:** Carbohydrates all break down into glucose when consumed. Glucose can be consumed directly by cells for energy. Excess Glucose would be stored as Glycogen in various places around the body such as the liver, and when needed, the stored glycogen could be broken down back into glucose in order to be consumed by your cells.
+2. **Keyton bodies:** These are derived from fat, and cells can consume them instead of Glucose for energy. Excess calories will be stored as atipose tissue (Fat), and when needed, can be broken down into Keyton Bodies which will be used for energy.
+
+In our hunter gatherer days we would have often been primarily deriving our energy from Keton Bodies as well as Glucose.
+
+However today in modern western societies, carbohydrates are so easy to come by that most people can go most of their lives without their bodies having to resort to Keyton bodies.
+
+An active area of research is about what processes the body has that are only active when the body is primarily consuming Keyton Bodies.
+
+## Stages of Fasting:
+
+1. **Glucose burning:** At first your body will be consuming the glucose that is already free in your blood. You may have heard that during cardiovascular exercise it takes 20 minutes to exhaust all your glucose. For endurance athletes such as marathon runners, they are advised to consume more glucose every 20 minutes if possible. As with all the numbers here, this is a rough estimate, a good rule of thumb if you will. This would be affected by many factors: Your own body, the activity you are doing, how much glucose you already had due to your diet, ect. But it's a good enough estimate so we'll go with it.
+2. **Glycogen Breakdown:** As the glucose in your blood depletes your body will replenish it by breaking down your stores of glycogen. People who follow low carb diets will have much less of this, so this phase can vary widely. Someone with a low carb diet may complete this stage in just a few hours, while someone with a high carb diet who does not regularly exercise could take anywhere from 24 to 48 hours to exhaust their stores. Exercise during this stage will accelerate it by forcing your body to burn glucose faster.
+3. **Atipose Tissue Breakdown:** As your glycogen stored begin to deplete, your body will start switching over to breaking down atipose tissue (fat) stores into Keton Bodies. This is the beginning of "Fat Burning"
+4. **Ketosis:** This is the first stage that appears to show more benefits than simple calorie restriction. Ketosis is the state of Keton Bodies being the primary energy source in your blood. Although the mechanism of action is not yet known, this state appears to have significant benefits for inflammation and inflammation related illnesses such as gout.
+5. **Autophagy:** The body has another mechanism for harvesting energy. In this stage your body will begin consuming old or damaged cells for energy. This area of research is still in it's infancy, but it appears this is actually an important mechanism for the body to fix issues. Cancers are simply damaged cells that don't know when to stop dividing, if a body regularly enters autophagy, it appears that those damaged cells are broken down for energy before they have time to become a problem. Another area of research is around altzimer’s disease. We know that cause of altzimer’s is a build up of plauqe amoloids in the brain, so any way to prevent those build ups should prevent the disease from taking root in the first place. Autophagy may do just that, by consuming the plauque before it becomes a problem. Additionally, some places that store glycogen and atipose tissues are fine in small quantities, but become a problem when those stores are never depleted. Serosis of the liver for instance is due to atipose deposits in the liver impeding it’s normal working order. If you often drink alcohol and don’t otherwise follow a low-carb diet, the stored glycogen in your liver will rarely be depleted.
+6. **Optimal Autophagy:** This is probably the newest area of research, so take this with a grain of salt. But when your body has been in autophagy for a long enough period of time, it appears that further “repair” systems are activated. The mechanism of action is not yet known for this. But studies have shown that DNA damage, such as the length of telemeres on the ends of your DNA are repaired, effectively reversing age related DMA damage, and improving your biological age. It appears to not just be autophagy that triggers these systems, stressing the body is a variety of ways can trigger them. Endurance athletes may trigger these systems, which may make sense as it appears our ancestors were endurance hunters, running for hours while stalking prey.

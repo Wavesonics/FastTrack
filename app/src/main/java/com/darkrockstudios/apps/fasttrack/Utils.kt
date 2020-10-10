@@ -3,6 +3,7 @@ package com.darkrockstudios.apps.fasttrack
 import android.content.Context
 import android.content.res.Resources
 import android.util.TypedValue
+import androidx.annotation.RawRes
 import androidx.annotation.StringRes
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -34,3 +35,6 @@ fun Int.dp2px(resource: Resources): Int
 			this.toFloat(), resource.displayMetrics
 									).toInt()
 }
+
+fun Resources.getRawTextFile(@RawRes id: Int) =
+	openRawResource(id).bufferedReader().use { it.readText() }

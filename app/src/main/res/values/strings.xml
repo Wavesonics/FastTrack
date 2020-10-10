@@ -138,4 +138,6 @@
 	<string name="info_dialog_bmr_content">This is an estimate of the number of calories your body will burn in a day while completely at rest. If all you did was lay in bed all day, this is how many calories you could eat without gaining weight.\n\nThis is a critical number for people who are dieting by restricting daily calorie intake.</string>
 
 	<string name="info_dialog_positive">Cool!</string>
+
+	<string name="title_activity_info">Fasting Info</string>
 </resources>
