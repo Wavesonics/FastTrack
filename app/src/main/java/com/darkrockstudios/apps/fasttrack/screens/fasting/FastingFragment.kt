@@ -33,6 +33,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import nl.dionsegijn.konfetti.models.Shape
+import nl.dionsegijn.konfetti.models.Size
 import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.time.Duration
@@ -379,6 +381,20 @@ class FastingFragment: Fragment()
 
 			updateUi()
 			setupAlerts()
+
+			// Show the celebration!
+			konfetti_overlay?.let { kview ->
+				kview.build()
+						.addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA, Color.RED, Color.BLUE)
+						.setDirection(0.0, 359.0)
+						.setSpeed(2f, 5f)
+						.setFadeOutEnabled(true)
+						.setTimeToLive(2000L)
+						.addShapes(Shape.Square, Shape.Circle)
+						.addSizes(Size(12))
+						.setPosition(-50f, kview.width + 50f, -50f, -50f)
+						.streamFor(300, 4000L)
+			}
 		}
 		else
 		{
