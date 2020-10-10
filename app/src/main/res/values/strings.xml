@@ -104,7 +104,7 @@
 	<string name="phase_optimal_autophagy">Optimal Autophagy</string>
 
 	<string name="share_text">I\'ve been fasting for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
-	<string name="share_text_past_tense">I fasted for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
+	<string name="share_text_past_tense">I fasted for  %1$d hours and %2$d minutes!</string>
 	<string name="stage_alerts_checkbox">Stage Alerts</string>
 
 	<string name="notification_channel_name">Fasting Alerts</string>

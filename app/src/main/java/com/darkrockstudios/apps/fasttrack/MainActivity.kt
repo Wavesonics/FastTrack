@@ -88,15 +88,14 @@ class MainActivity: AppCompatActivity()
 		}
 
 		val curPhase = Stages.getCurrentPhase(elapsedTime)
-		val energyModeStr = if(curPhase.fatBurning) getString(R.string.fasting_energy_mode_fat) else getString(R.string.fasting_energy_mode_glucose)
-
 		val shareText = if(fast.isFasting())
 		{
+			val energyModeStr = if(curPhase.fatBurning) getString(R.string.fasting_energy_mode_fat) else getString(R.string.fasting_energy_mode_glucose)
 			getString(R.string.share_text, elapsedHours, elapsedMinutes, energyModeStr)
 		}
 		else
 		{
-			getString(R.string.share_text_past_tense, elapsedHours, elapsedMinutes, energyModeStr)
+			getString(R.string.share_text_past_tense, elapsedHours, elapsedMinutes)
 		}
 
 		val sendIntent: Intent = Intent().apply {
