@@ -27,6 +27,8 @@ class FastEntryItem(val fast: FastEntry): AbstractBindingItem<FastEntryItemBindi
 
 		val start = Instant.fromEpochMilliseconds(fast.start)
 		val hours = fast.length.milliseconds.inHours.roundToInt()
+		val ketosisHours = fast.calculateKetosis().roundToInt()
+		val autophagyHours = fast.calculateAutophagy().roundToInt()
 
 		val startDate = start.toLocalDateTime(TimeZone.currentSystemDefault())
 		val pattern = DateTimeFormatter.ofPattern("d MMM uuuu - HH:mm")
@@ -34,6 +36,8 @@ class FastEntryItem(val fast: FastEntry): AbstractBindingItem<FastEntryItemBindi
 
 		binding.fastEntryStart.text = ctx.getString(R.string.log_entry_started, dateStr)
 		binding.fastEntryLength.text = ctx.getString(R.string.log_entry_length, hours)
+		binding.fastEntryKetosis.text = ctx.getString(R.string.log_entry_ketosis, ketosisHours)
+		binding.fastEntryAutophagy.text = ctx.getString(R.string.log_entry_autophagy, autophagyHours)
 	}
 
 	override fun createBinding(inflater: LayoutInflater, parent: ViewGroup?) = FastEntryItemBinding.inflate(inflater, parent, false)

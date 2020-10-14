@@ -101,10 +101,6 @@ class ProfileFragment: Fragment()
 				set(Data.KEY_PROFILE, updatedProfile)
 			}
 
-			// Close keyboard
-			//val imm = getSystemService(requireContext(), InputMethodManager::class.java)
-			//imm?.hideSoftInputFromWindow(TextInputEditText_height_imper_feet.windowToken, 0)
-
 			i("Profile saved")
 		}
 	}

@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:orientation="vertical"
-	android:padding="@dimen/default_padding"
-	android:background="@drawable/ripple">
+	android:layout_marginBottom="@dimen/default_margin"
+	android:foreground="@drawable/ripple"
+	app:cardBackgroundColor="?attr/colorSurfaceSubtle"
+	android:elevation="@dimen/elevation_medium"
+	app:cardCornerRadius="@dimen/default_corner">
 
-	<TextView
-		android:id="@+id/fast_entry_start"
-		android:layout_width="wrap_content"
+	<LinearLayout
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
-		tools:text="Start Time" />
+		android:padding="@dimen/default_padding"
+		android:orientation="vertical">
 
-	<TextView
-		android:id="@+id/fast_entry_length"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline6"
-		tools:text="5:00:11" />
-</LinearLayout>
+		<TextView
+			android:id="@+id/fast_entry_start"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle1"
+			tools:text="Start Time" />
+
+		<TextView
+			android:id="@+id/fast_entry_length"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline6"
+			tools:text="5:00:11" />
+
+		<TextView
+			tools:text="@string/log_entry_ketosis"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/fast_entry_ketosis"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle2" />
+
+		<TextView
+			tools:text="@string/log_entry_autophagy"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/fast_entry_autophagy"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Subtitle2" />
+	</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

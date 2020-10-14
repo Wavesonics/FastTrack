@@ -42,6 +42,8 @@
 
 	<string name="log_entry_started">Started: %1$s</string>
 	<string name="log_entry_length">Length: %1$d hours</string>
+	<string name="log_entry_ketosis">Ketosis: %1$d hours</string>
+	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
 
 	<string name="profile_age_label">Age</string>
 	<string name="profile_age_years">years</string>
@@ -140,4 +142,7 @@
 	<string name="info_dialog_positive">Cool!</string>
 
 	<string name="title_activity_info">Fasting Info</string>
+	<string name="log_total_autophagy">Total Autophagy:</string>
+	<string name="log_total_ketosis">Total Ketosis:</string>
+	<string name="log_total_hours">%1$d hours</string>
 </resources>

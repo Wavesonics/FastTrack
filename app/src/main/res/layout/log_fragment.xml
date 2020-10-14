@@ -13,16 +13,57 @@
 		android:clipToPadding="false"
 		tools:context=".screens.log.LogFragment">
 
+		<TextView
+			android:text="@string/log_total_ketosis"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/total_ketosis_label"
+			app:layout_constraintTop_toTopOf="@+id/total_ketosis_value"
+			app:layout_constraintStart_toStartOf="parent"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
+			app:layout_constraintBottom_toBottomOf="@+id/total_ketosis_value"
+			app:layout_constraintEnd_toStartOf="@+id/total_ketosis_value" />
+
+		<TextView
+			tools:text="10:23:13"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/total_ketosis_value"
+			app:layout_constraintTop_toTopOf="parent"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline6"
+			app:layout_constraintStart_toStartOf="@+id/total_autophagy_value" />
+
+		<TextView
+			android:text="@string/log_total_autophagy"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/total_autophagy_label"
+			app:layout_constraintStart_toStartOf="parent"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Body1"
+			app:layout_constraintTop_toTopOf="@+id/total_autophagy_value"
+			app:layout_constraintBottom_toBottomOf="@+id/total_autophagy_value" />
+
+		<TextView
+			tools:text="10:23:13"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/default_margin_small"
+			android:id="@+id/total_autophagy_value"
+			app:layout_constraintStart_toEndOf="@+id/total_autophagy_label"
+			app:layout_constraintTop_toBottomOf="@+id/total_ketosis_value"
+			android:textAppearance="@style/TextAppearance.FastTrackTheme.Headline6" />
+
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/log_entries"
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
+			android:layout_marginTop="@dimen/default_margin"
 			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintTop_toTopOf="parent"
 			tools:itemCount="5"
 			tools:layout_editor_absoluteX="16dp"
-			tools:listitem="@layout/fast_entry_item" />
+			tools:listitem="@layout/fast_entry_item"
+			app:layout_constraintTop_toBottomOf="@+id/total_autophagy_label" />
 
 		<com.google.android.material.floatingactionbutton.FloatingActionButton
 			android:id="@+id/log_fab_manual_add"

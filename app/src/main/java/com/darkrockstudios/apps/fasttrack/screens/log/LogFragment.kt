@@ -16,8 +16,10 @@ import kotlinx.android.synthetic.main.log_fragment.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import kotlin.math.roundToInt
 import kotlin.time.ExperimentalTime
 
+@ExperimentalTime
 class LogFragment: Fragment()
 {
 	companion object
@@ -44,7 +46,7 @@ class LogFragment: Fragment()
 		}
 
 		log_entries.adapter = fastAdapter
-		fastAdapter.onClickListener = { _, _, item, _ ->
+		fastAdapter.onLongClickListener = { _, _, item, _ ->
 			context?.let { ctx ->
 				MaterialAlertDialogBuilder(ctx)
 						.setTitle(R.string.confirm_delete_fast_title)
@@ -70,5 +72,11 @@ class LogFragment: Fragment()
 		val items = entries.sortedByDescending { it.start }.map { FastEntryItem(it) }
 		itemAdapter.add(items)
 		fastAdapter.notifyAdapterDataSetChanged()
+
+		val totalKetosisHours = entries.sumByDouble { it.calculateKetosis() }
+		val totalAutophagyHours = entries.sumByDouble { it.calculateAutophagy() }
+
+		total_ketosis_value.text = getString(R.string.log_total_hours, totalKetosisHours.roundToInt())
+		total_autophagy_value.text = getString(R.string.log_total_hours, totalAutophagyHours.roundToInt())
 	}
 }

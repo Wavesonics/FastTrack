@@ -29,6 +29,7 @@
         <item name="colorOnBackground">@color/white_50</item>
         <item name="colorOnSurface">@color/white_50</item>
         <item name="colorOnError">@color/black_900</item>
+        <item name="colorSurfaceSubtle">@color/subtle_background_dark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
     </style>

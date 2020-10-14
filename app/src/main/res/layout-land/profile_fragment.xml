@@ -13,6 +13,7 @@
 		android:id="@+id/profile_bim"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		app:cardBackgroundColor="?attr/colorSurfaceSubtle"
 		android:layout_weight="1"
 		android:elevation="@dimen/elevation_medium"
 		app:cardCornerRadius="@dimen/default_corner">
@@ -79,6 +80,7 @@
 		android:layout_marginTop="@dimen/default_margin"
 		android:layout_weight="1"
 		android:elevation="@dimen/elevation_medium"
+		app:cardBackgroundColor="?attr/colorSurfaceSubtle"
 		app:cardCornerRadius="@dimen/default_corner">
 
 		<androidx.constraintlayout.widget.ConstraintLayout

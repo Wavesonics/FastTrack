@@ -70,4 +70,6 @@
 
     <color name="transparent">#00000000</color> <!--Color surface (dark)-->
 
+    <color name="subtle_background">#E0E8FF</color>
+    <color name="subtle_background_dark">#36195A</color>
 </resources>
