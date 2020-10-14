@@ -41,18 +41,24 @@ import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlin.time.hours
 
-
 @ExperimentalTime
 class FastingFragment: Fragment()
 {
+	companion object
+	{
+		fun instance() = FastingFragment()
+	}
+
 	private val uiHandler = Handler(Looper.getMainLooper())
 	private val database by inject<AppDatabase>()
 	private val fast by inject<FastUtils>()
 
 	@ColorInt
 	private var fatburnLabelColor: Int = Color.WHITE
+
 	@ColorInt
 	private var ketosisLabelColor: Int = Color.WHITE
+
 	@ColorInt
 	private var autophagyLabelColor: Int = Color.WHITE
 

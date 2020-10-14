@@ -20,6 +20,11 @@ import kotlin.time.ExperimentalTime
 
 class LogFragment: Fragment()
 {
+	companion object
+	{
+		fun instance() = LogFragment()
+	}
+
 	private val itemAdapter = ItemAdapter<FastEntryItem>()
 	private val fastAdapter = FastAdapter.with(itemAdapter)
 	private val database by inject<AppDatabase>()
@@ -27,10 +32,7 @@ class LogFragment: Fragment()
 
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?): View?
-	{
-		return inflater.inflate(R.layout.log_fragment, container, false)
-	}
+			savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.log_fragment, container, false)
 
 	@ExperimentalTime
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)

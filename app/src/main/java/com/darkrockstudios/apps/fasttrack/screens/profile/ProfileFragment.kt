@@ -25,6 +25,11 @@ import kotlin.math.pow
 
 class ProfileFragment: Fragment()
 {
+	companion object
+	{
+		fun instance() = ProfileFragment()
+	}
+
 	private val viewModel by viewModels<ProfileViewModel>()
 	private val handler = Handler(Looper.getMainLooper())
 	private val profileSaver = Runnable { updateProfile() }

@@ -6,11 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vansuita.materialabout.builder.AboutBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,26 +17,57 @@ import kotlin.time.ExperimentalTime
 
 
 @ExperimentalTime
-class MainActivity: AppCompatActivity()
+class MainActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener
 {
 	private val fast by inject<FastUtils>()
-	private val navController by lazy { findNavController(R.id.nav_host_fragment) }
 
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
-		val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
 		setSupportActionBar(appActionBar)
 
-		// Passing each menu ID as a set of Ids because each
-		// menu should be considered as top level destinations.
-		val appBarConfiguration = AppBarConfiguration(
-				setOf(
-						R.id.navigation_fasting, R.id.navigation_log, R.id.navigation_profile))
-		setupActionBarWithNavController(navController, appBarConfiguration)
-		navView.setupWithNavController(navController)
+		content_view_pager.adapter = MainViewPagerAdapter(this)
+		content_view_pager.setPageTransformer(ZoomOutPageTransformer())
+
+		nav_view.setOnNavigationItemSelectedListener(this)
+
+		content_view_pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
+														{
+															override fun onPageSelected(position: Int)
+															{
+																when(position)
+																{
+																	0 ->
+																	{
+																		nav_view.menu.findItem(R.id.navigation_fasting).isChecked = true
+																		supportActionBar?.title = getString(R.string.title_fasting)
+																	}
+																	1 ->
+																	{
+																		nav_view.menu.findItem(R.id.navigation_log).isChecked = true
+																		supportActionBar?.title = getString(R.string.title_log)
+																	}
+																	2 ->
+																	{
+																		nav_view.menu.findItem(R.id.navigation_profile).isChecked = true
+																		supportActionBar?.title = getString(R.string.title_profile)
+																	}
+																}
+															}
+														})
+	}
+
+	override fun onNavigationItemSelected(menuItem: MenuItem): Boolean
+	{
+		when(menuItem.itemId)
+		{
+			R.id.navigation_fasting -> content_view_pager.currentItem = 0
+			R.id.navigation_log -> content_view_pager.currentItem = 1
+			R.id.navigation_profile -> content_view_pager.currentItem = 2
+		}
+		return true
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu): Boolean
@@ -64,7 +93,7 @@ class MainActivity: AppCompatActivity()
 			}
 			R.id.action_info ->
 			{
-				navController.navigate(R.id.infoActivity)
+				startActivity(Intent(this, InfoActivity::class.java))
 				true
 			}
 			R.id.action_about ->
