@@ -141,6 +141,9 @@
 
 	<string name="info_dialog_positive">Cool!</string>
 
+	<string name="info_page_title_info">Info</string>
+	<string name="info_page_title_tips">Tips</string>
+
 	<string name="title_activity_info">Fasting Info</string>
 	<string name="log_total_autophagy">Total Autophagy:</string>
 	<string name="log_total_ketosis">Total Ketosis:</string>

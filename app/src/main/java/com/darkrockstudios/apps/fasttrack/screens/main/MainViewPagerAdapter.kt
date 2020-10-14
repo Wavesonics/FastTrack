@@ -1,4 +1,4 @@
-package com.darkrockstudios.apps.fasttrack
+package com.darkrockstudios.apps.fasttrack.screens.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -20,9 +20,9 @@ class MainViewPagerAdapter(fa: FragmentActivity): FragmentStateAdapter(fa)
 	{
 		return when(position)
 		{
-			Screens.FASTING.ordinal -> FastingFragment.instance()
-			Screens.LOG.ordinal -> LogFragment.instance()
-			Screens.PROFILE.ordinal -> ProfileFragment.instance()
+			Screens.FASTING.ordinal -> FastingFragment.newInstance()
+			Screens.LOG.ordinal -> LogFragment.newInstance()
+			Screens.PROFILE.ordinal -> ProfileFragment.newInstance()
 			else                    -> throw IllegalArgumentException("MainViewPagerAdapter bad page: $position")
 		}
 	}

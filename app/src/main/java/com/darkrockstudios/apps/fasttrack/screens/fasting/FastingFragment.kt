@@ -15,14 +15,14 @@ import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.AlertService
-import com.darkrockstudios.apps.fasttrack.FastUtils
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.Utils
 import com.darkrockstudios.apps.fasttrack.data.Data
+import com.darkrockstudios.apps.fasttrack.data.FastUtils
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
+import com.darkrockstudios.apps.fasttrack.utils.Utils
 import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.log4k.e
@@ -46,7 +46,7 @@ class FastingFragment: Fragment()
 {
 	companion object
 	{
-		fun instance() = FastingFragment()
+		fun newInstance() = FastingFragment()
 	}
 
 	private val uiHandler = Handler(Looper.getMainLooper())

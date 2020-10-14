@@ -1,10 +1,11 @@
-package com.darkrockstudios.apps.fasttrack
+package com.darkrockstudios.apps.fasttrack.utils
 
 import android.content.Context
 import android.content.res.Resources
 import android.util.TypedValue
 import androidx.annotation.RawRes
 import androidx.annotation.StringRes
+import com.darkrockstudios.apps.fasttrack.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 

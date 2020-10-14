@@ -1,4 +1,4 @@
-package com.darkrockstudios.apps.fasttrack
+package com.darkrockstudios.apps.fasttrack.screens.main
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

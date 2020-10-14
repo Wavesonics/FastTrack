@@ -12,10 +12,10 @@ import androidx.fragment.app.viewModels
 import cafe.adriel.satchel.Satchel
 import cafe.adriel.satchel.ktx.getOrSet
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.Utils
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Gender
 import com.darkrockstudios.apps.fasttrack.data.Profile
+import com.darkrockstudios.apps.fasttrack.utils.Utils
 import com.log4k.i
 import com.log4k.w
 import kotlinx.android.synthetic.main.profile_fragment.*
@@ -27,7 +27,7 @@ class ProfileFragment: Fragment()
 {
 	companion object
 	{
-		fun instance() = ProfileFragment()
+		fun newInstance() = ProfileFragment()
 	}
 
 	private val viewModel by viewModels<ProfileViewModel>()

@@ -1,4 +1,4 @@
-package com.darkrockstudios.apps.fasttrack
+package com.darkrockstudios.apps.fasttrack.screens.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.data.FastUtils
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,7 +19,7 @@ import kotlin.time.ExperimentalTime
 
 
 @ExperimentalTime
-class MainActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener
+class MainActivity: AppCompatActivity()
 {
 	private val fast by inject<FastUtils>()
 
@@ -31,43 +33,43 @@ class MainActivity: AppCompatActivity(), BottomNavigationView.OnNavigationItemSe
 		content_view_pager.adapter = MainViewPagerAdapter(this)
 		content_view_pager.setPageTransformer(ZoomOutPageTransformer())
 
-		nav_view.setOnNavigationItemSelectedListener(this)
-
-		content_view_pager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback()
-														{
-															override fun onPageSelected(position: Int)
-															{
-																when(position)
-																{
-																	0 ->
-																	{
-																		nav_view.menu.findItem(R.id.navigation_fasting).isChecked = true
-																		supportActionBar?.title = getString(R.string.title_fasting)
-																	}
-																	1 ->
-																	{
-																		nav_view.menu.findItem(R.id.navigation_log).isChecked = true
-																		supportActionBar?.title = getString(R.string.title_log)
-																	}
-																	2 ->
-																	{
-																		nav_view.menu.findItem(R.id.navigation_profile).isChecked = true
-																		supportActionBar?.title = getString(R.string.title_profile)
-																	}
-																}
-															}
-														})
+		nav_view.setOnNavigationItemSelectedListener(navigationListener)
+		content_view_pager.registerOnPageChangeCallback(pageChangeListener)
 	}
 
-	override fun onNavigationItemSelected(menuItem: MenuItem): Boolean
+	private val pageChangeListener = object: ViewPager2.OnPageChangeCallback()
 	{
+		override fun onPageSelected(position: Int)
+		{
+			when(position)
+			{
+				0 ->
+				{
+					nav_view.menu.findItem(R.id.navigation_fasting).isChecked = true
+					supportActionBar?.title = getString(R.string.title_fasting)
+				}
+				1 ->
+				{
+					nav_view.menu.findItem(R.id.navigation_log).isChecked = true
+					supportActionBar?.title = getString(R.string.title_log)
+				}
+				2 ->
+				{
+					nav_view.menu.findItem(R.id.navigation_profile).isChecked = true
+					supportActionBar?.title = getString(R.string.title_profile)
+				}
+			}
+		}
+	}
+
+	private val navigationListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 		when(menuItem.itemId)
 		{
 			R.id.navigation_fasting -> content_view_pager.currentItem = 0
 			R.id.navigation_log -> content_view_pager.currentItem = 1
 			R.id.navigation_profile -> content_view_pager.currentItem = 2
 		}
-		return true
+		true
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu): Boolean

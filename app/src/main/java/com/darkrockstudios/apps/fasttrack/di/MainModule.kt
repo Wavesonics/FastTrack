@@ -1,7 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.di
 
 import androidx.room.Room
-import com.darkrockstudios.apps.fasttrack.FastUtils
+import com.darkrockstudios.apps.fasttrack.data.FastUtils
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import org.koin.dsl.module
 import org.koin.experimental.builder.single

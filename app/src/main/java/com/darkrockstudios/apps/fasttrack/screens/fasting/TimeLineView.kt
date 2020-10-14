@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.darkrockstudios.apps.fasttrack.data.Stages
-import com.darkrockstudios.apps.fasttrack.dp2px
+import com.darkrockstudios.apps.fasttrack.utils.dp2px
 import kotlin.math.min
 import kotlin.time.ExperimentalTime
 import kotlin.time.hours

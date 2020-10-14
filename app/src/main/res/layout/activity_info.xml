@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".screens.info.InfoActivity">
+	tools:context=".screens.info.InfoActivity"
+	android:id="@+id/coordinatorLayout">
 
 	<com.google.android.material.appbar.AppBarLayout
-		android:layout_width="match_parent"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:theme="@style/Theme.FastTrackTheme.AppBarOverlay">
+		android:theme="@style/Theme.FastTrackTheme.AppBarOverlay"
+		android:id="@+id/appBarLayout"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
 
 		<androidx.appcompat.widget.Toolbar
 			android:id="@+id/toolbar"
 			android:layout_width="match_parent"
-			android:layout_height="?attr/actionBarSize"
+			android:layout_height="wrap_content"
 			android:background="?attr/colorPrimary"
 			app:popupTheme="@style/Theme.FastTrackTheme.PopupOverlay" />
 
 	</com.google.android.material.appbar.AppBarLayout>
 
-	<include layout="@layout/content_info" />
+	<androidx.viewpager.widget.ViewPager
+		android:id="@+id/info_pager"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+		app:layout_constraintBottom_toBottomOf="parent">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+		<com.google.android.material.tabs.TabLayout
+			android:id="@+id/tab_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+	</androidx.viewpager.widget.ViewPager>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

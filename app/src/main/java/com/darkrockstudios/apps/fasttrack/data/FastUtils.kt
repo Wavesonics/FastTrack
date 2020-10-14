@@ -1,8 +1,7 @@
-package com.darkrockstudios.apps.fasttrack
+package com.darkrockstudios.apps.fasttrack.data
 
 import android.content.Context
 import android.preference.PreferenceManager
-import com.darkrockstudios.apps.fasttrack.data.Data
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlin.time.Duration

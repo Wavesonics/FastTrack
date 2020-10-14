@@ -24,7 +24,7 @@ class LogFragment: Fragment()
 {
 	companion object
 	{
-		fun instance() = LogFragment()
+		fun newInstance() = LogFragment()
 	}
 
 	private val itemAdapter = ItemAdapter<FastEntryItem>()

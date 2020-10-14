@@ -14,6 +14,7 @@ import androidx.annotation.StringRes
 import androidx.core.app.NotificationCompat
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
 import com.log4k.w
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
