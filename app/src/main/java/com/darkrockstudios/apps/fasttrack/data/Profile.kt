@@ -6,11 +6,12 @@ data class Profile(
 		val ageYears: Int = 0,
 		val heightCm: Double = 0.0,
 		val weightKg: Double = 0.0,
-		val gender: Gender = Gender.Male): Serializable
+		val gender: Gender = Gender.Male,
+		val displayMetric: Boolean = false): Serializable
 {
 	companion object
 	{
-		private const val serialVersionUID = 8712369801924L
+		private const val serialVersionUID = 8712361231924L
 	}
 
 	fun isValid() = ageYears > 0 && heightCm > 0.0 && weightKg > 0.0

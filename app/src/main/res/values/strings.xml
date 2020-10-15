@@ -50,6 +50,7 @@
 
 	<string name="profile_weight_label">Weight</string>
 	<string name="profile_weight_pounds_label">Pounds</string>
+	<string name="profile_weight_kg_label">Kg</string>
 
 	<string name="profile_update_button">Update</string>
 
@@ -69,6 +70,7 @@
 	<string name="profile_height_label">Height</string>
 	<string name="profile_height_imper_feet_label">Feet</string>
 	<string name="profile_height_imper_inches_label">Inches</string>
+	<string name="profile_height_metric_label">Cm</string>
 	<string name="profile_gender_male">Male</string>
 	<string name="profile_gender_female">Female</string>
 	<string name="manual_add_title">Manual Add</string>
@@ -148,4 +150,5 @@
 	<string name="log_total_autophagy">Total Autophagy:</string>
 	<string name="log_total_ketosis">Total Ketosis:</string>
 	<string name="log_total_hours">%1$d hours</string>
+	<string name="profile_metric_switch">Metric</string>
 </resources>

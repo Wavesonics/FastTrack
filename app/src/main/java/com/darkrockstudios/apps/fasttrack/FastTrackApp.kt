@@ -3,9 +3,9 @@ package com.darkrockstudios.apps.fasttrack
 import android.app.Application
 import cafe.adriel.satchel.Satchel
 import cafe.adriel.satchel.encrypter.bypass.BypassSatchelEncrypter
-import cafe.adriel.satchel.serializer.raw.RawSatchelSerializer
 import cafe.adriel.satchel.storer.file.FileSatchelStorer
 import com.darkrockstudios.apps.fasttrack.data.Data
+import com.darkrockstudios.apps.fasttrack.data.SafeRawSatchelSerializer
 import com.darkrockstudios.apps.fasttrack.di.mainModule
 import com.log4k.Level
 import com.log4k.Log4k
@@ -25,7 +25,7 @@ class FastTrackApp: Application()
 		Satchel.init(
 				storer = FileSatchelStorer(File(filesDir, Data.STORAGE_PATH)),
 				encrypter = BypassSatchelEncrypter,
-				serializer = RawSatchelSerializer
+				serializer = SafeRawSatchelSerializer
 					)
 
 		startKoin {
