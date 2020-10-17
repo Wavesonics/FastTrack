@@ -2,12 +2,15 @@ package com.darkrockstudios.apps.fasttrack.screens.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.darkrockstudios.apps.fasttrack.IntroActivity
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.FastUtils
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
@@ -21,6 +24,7 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 class MainActivity: AppCompatActivity()
 {
+	private val storage by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
 	private val fast by inject<FastUtils>()
 
 	override fun onCreate(savedInstanceState: Bundle?)
@@ -35,6 +39,12 @@ class MainActivity: AppCompatActivity()
 
 		nav_view.setOnNavigationItemSelectedListener(navigationListener)
 		content_view_pager.registerOnPageChangeCallback(pageChangeListener)
+
+		// Show the intro if they haven't seen it
+		if(!storage.getBoolean(Data.KEY_INTRO_SEEN, false))
+		{
+			startActivity(Intent(this, IntroActivity::class.java))
+		}
 	}
 
 	private val pageChangeListener = object: ViewPager2.OnPageChangeCallback()

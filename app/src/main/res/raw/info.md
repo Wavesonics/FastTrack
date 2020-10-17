@@ -29,5 +29,5 @@ An active area of research is about what processes the body has that are only ac
 
 ## Sources:
 
-- TBD
-- TBD
+- [How to Slow Aging (and even reverse it)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (*Youtube*)
+- [Effects of Intermittent Fasting on Health, Aging, and Disease](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (*New England Journal of Medicine*)

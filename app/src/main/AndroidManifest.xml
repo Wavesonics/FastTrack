@@ -12,10 +12,14 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/Theme.FastTrackTheme">
+
+		<activity
+			android:name=".IntroActivity"
+			android:label="@string/title_activity_intro" />
 		<activity
 			android:name=".screens.info.InfoActivity"
 			android:label="@string/title_activity_info"
-			android:theme="@style/Theme.FastTrackTheme.NoActionBar"></activity>
+			android:theme="@style/Theme.FastTrackTheme.NoActionBar" />
 
 		<service
 			android:name=".AlertService"
@@ -24,7 +28,7 @@
 			android:permission="android.permission.BIND_JOB_SERVICE" />
 
 		<activity
-			android:name="com.darkrockstudios.apps.fasttrack.screens.main.MainActivity"
+			android:name=".screens.main.MainActivity"
 			android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

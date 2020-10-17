@@ -3,6 +3,7 @@ package com.darkrockstudios.apps.fasttrack.data
 object Data
 {
 	const val STORAGE_PATH = "storage"
+	const val KEY_INTRO_SEEN = "intro_seen"
 	const val KEY_PROFILE = "profile"
 	const val KEY_FAST_START = "fast_start"
 	const val KEY_FAST_END = "fast_end"
