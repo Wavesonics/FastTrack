@@ -19,9 +19,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.*
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
 import org.koin.android.ext.android.inject
-import java.time.format.DateTimeFormatter
 import kotlin.time.ExperimentalTime
 import kotlin.time.hours
 
@@ -39,10 +41,7 @@ class ManualAddFragment: DialogFragment()
 
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?): View?
-	{
-		return inflater.inflate(R.layout.manual_add_fragment, container, false)
-	}
+			savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.manual_add_fragment, container, false)
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
 	{
@@ -130,35 +129,13 @@ class ManualAddFragment: DialogFragment()
 				manual_add_button_complete.isEnabled = true
 			}
 		}
-
-		val startDate = viewModel.startDate
-		val startDateTime = viewModel.startDateTime
-		when
-		{
-			startDateTime != null ->
-			{
-				val pattern = DateTimeFormatter.ofPattern("d MMM uuuu - HH:mm")
-				val dateStr = startDateTime.toJavaLocalDateTime().format(pattern)
-				textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
-			}
-			startDate != null     ->
-			{
-				val pattern = DateTimeFormatter.ofPattern("d MMM uuuu")
-				val dateStr = startDate.toJavaLocalDate().format(pattern)
-				textView_start_display.text = getString(R.string.manual_add_fast_started_on, dateStr)
-			}
-			else                  ->
-			{
-				textView_start_display.text = getString(R.string.manual_add_fast_started_on, "")
-			}
-		}
 	}
 
 	private fun addEntry()
 	{
 		val startDateTime = viewModel.startDateTime
 		val length = viewModel.length?.hours?.inMilliseconds?.toLong() ?: 0L
-		if(startDateTime != null && length != null && length > 0)
+		if(startDateTime != null && length > 0)
 		{
 			GlobalScope.launch(Dispatchers.IO) {
 				val tz = TimeZone.currentSystemDefault()
