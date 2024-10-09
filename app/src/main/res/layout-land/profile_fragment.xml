@@ -245,7 +245,7 @@
 				app:layout_constraintEnd_toEndOf="parent" />
 
 			<RadioGroup
-				android:id="@+id/gender_button_ground"
+				android:id="@+id/gender_button_group"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="@dimen/default_margin"

@@ -10,11 +10,10 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
-import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
-import com.log4k.w
-import kotlinx.android.synthetic.main.manual_add_fragment.*
+import com.darkrockstudios.apps.fasttrack.databinding.ManualAddFragmentBinding
+import io.github.aakira.napier.Napier.w
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -24,8 +23,8 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import org.koin.android.ext.android.inject
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
-import kotlin.time.hours
 
 @ExperimentalTime
 class ManualAddFragment: DialogFragment()
@@ -39,25 +38,31 @@ class ManualAddFragment: DialogFragment()
 	private val viewModel by viewModels<ManualAddViewModel>()
 	private val database by inject<AppDatabase>()
 
+	private lateinit var binding: ManualAddFragmentBinding
+
 	override fun onCreateView(
-			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.manual_add_fragment, container, false)
+			inflater: LayoutInflater,
+			container: ViewGroup?,
+			savedInstanceState: Bundle?): View {
+		binding = ManualAddFragmentBinding.inflate(inflater, container, false)
+		return binding.root
+	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
 	{
 		super.onViewCreated(view, savedInstanceState)
 
-		manual_add_close_button.setOnClickListener {
+		binding.manualAddCloseButton.setOnClickListener {
 			dismissAllowingStateLoss()
 		}
 
-		manual_add_date.setOnDateChangedListener { _, year, monthOfYear, dayOfMonth ->
+		binding.manualAddDate.setOnDateChangedListener { _, year, monthOfYear, dayOfMonth ->
 			viewModel.startDate = LocalDate(year, monthOfYear + 1, dayOfMonth)
 			// Delay so that it is not jarring to the user
 			uiHandler.postDelayed({ updateUi() }, 500)
 		}
 
-		manual_add_time.setOnTimeChangedListener { _, hourOfDay, minute ->
+		binding.manualAddTime.setOnTimeChangedListener { _, hourOfDay, minute ->
 			viewModel.startDate?.let { startDate ->
 				viewModel.startDateTime = LocalDateTime(
 						year = startDate.year,
@@ -71,7 +76,7 @@ class ManualAddFragment: DialogFragment()
 			}
 		}
 
-		textInput_manual_add_length.addTextChangedListener { editable ->
+		binding.textInputManualAddLength.addTextChangedListener { editable ->
 			if(editable != null)
 			{
 				val text = editable.toString()
@@ -88,7 +93,7 @@ class ManualAddFragment: DialogFragment()
 			updateUi()
 		}
 
-		manual_add_button_complete.setOnClickListener {
+		binding.manualAddButtonComplete.setOnClickListener {
 			addEntry()
 		}
 	}
@@ -106,27 +111,27 @@ class ManualAddFragment: DialogFragment()
 		{
 			viewModel.startDate == null     ->
 			{
-				manual_add_date.isVisible = true
-				manual_add_time.isVisible = false
-				manual_add_button_complete.isEnabled = false
+				binding.manualAddDate.isVisible = true
+				binding.manualAddTime.isVisible = false
+				binding.manualAddButtonComplete.isEnabled = false
 			}
 			viewModel.startDateTime == null ->
 			{
-				manual_add_date.isVisible = false
-				manual_add_time.isVisible = true
-				manual_add_button_complete.isEnabled = false
+				binding.manualAddDate.isVisible = false
+				binding.manualAddTime.isVisible = true
+				binding.manualAddButtonComplete.isEnabled = false
 			}
 			viewModel.length == null        ->
 			{
-				manual_add_date.isVisible = false
-				manual_add_time.isVisible = true
-				manual_add_button_complete.isEnabled = false
+				binding.manualAddDate.isVisible = false
+				binding.manualAddTime.isVisible = true
+				binding.manualAddButtonComplete.isEnabled = false
 			}
 			else                            ->
 			{
-				manual_add_date.isVisible = false
-				manual_add_time.isVisible = true
-				manual_add_button_complete.isEnabled = true
+				binding.manualAddDate.isVisible = false
+				binding.manualAddTime.isVisible = true
+				binding.manualAddButtonComplete.isEnabled = true
 			}
 		}
 	}
@@ -134,7 +139,7 @@ class ManualAddFragment: DialogFragment()
 	private fun addEntry()
 	{
 		val startDateTime = viewModel.startDateTime
-		val length = viewModel.length?.hours?.inMilliseconds?.toLong() ?: 0L
+		val length = viewModel.length?.hours?.inWholeMilliseconds ?: 0L
 		if(startDateTime != null && length > 0)
 		{
 			GlobalScope.launch(Dispatchers.IO) {

@@ -20,7 +20,7 @@ object Stages
 
 	fun getCurrentPhase(elapsedTime: Duration): Phase
 	{
-		return phases.findLast { elapsedTime.inHours >= it.hours } ?: PHASE_GLUCOSE
+		return phases.findLast { elapsedTime.inWholeHours >= it.hours } ?: PHASE_GLUCOSE
 	}
 
 	val stage = arrayOf(

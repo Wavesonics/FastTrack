@@ -1,5 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
+import android.app.TimePickerDialog
+import android.app.TimePickerDialog.OnTimeSetListener
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -22,13 +24,10 @@ import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
+import com.darkrockstudios.apps.fasttrack.databinding.FragmentFastingBinding
 import com.darkrockstudios.apps.fasttrack.utils.Utils
-import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.log4k.e
-import com.log4k.i
-import com.log4k.w
-import kotlinx.android.synthetic.main.fragment_fasting.*
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
@@ -38,14 +37,13 @@ import nl.dionsegijn.konfetti.models.Size
 import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
-import kotlin.time.hours
+
 
 @ExperimentalTime
-class FastingFragment: Fragment()
-{
-	companion object
-	{
+class FastingFragment : Fragment() {
+	companion object {
 		fun newInstance() = FastingFragment()
 	}
 
@@ -62,107 +60,115 @@ class FastingFragment: Fragment()
 	@ColorInt
 	private var autophagyLabelColor: Int = Color.WHITE
 
-	override fun onCreate(savedInstanceState: Bundle?)
-	{
+	private lateinit var binding: FragmentFastingBinding
+
+	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
 		setupAlerts()
 	}
 
 	override fun onCreateView(
-			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?
-							 ): View? = inflater.inflate(R.layout.fragment_fasting, container, false)
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		binding = FragmentFastingBinding.inflate(inflater, container, false)
+		return binding.root
+	}
 
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-	{
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		fast_fab_start.setOnClickListener {
+		binding.fastFabStart.setOnClickListener {
 			MaterialAlertDialogBuilder(view.context)
-					.setTitle(R.string.confirm_start_fast_title)
-					.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> startFast() }
-					.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ -> showStartPicker() }
-					.setNegativeButton(R.string.confirm_start_fast_negative, null)
-					.show()
+				.setTitle(R.string.confirm_start_fast_title)
+				.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> startFast() }
+				.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ -> showStartPicker() }
+				.setNegativeButton(R.string.confirm_start_fast_negative, null)
+				.show()
 		}
 
-		fast_fab_stop.setOnClickListener {
+		binding.fastFabStop.setOnClickListener {
 			context?.let { ctx ->
 				MaterialAlertDialogBuilder(ctx)
-						.setTitle(R.string.confirm_end_fast_title)
-						.setPositiveButton(R.string.confirm_end_fast_positive) { _, _ -> endFast() }
-						.setNegativeButton(R.string.confirm_end_fast_negative, null)
-						.show()
+					.setTitle(R.string.confirm_end_fast_title)
+					.setPositiveButton(R.string.confirm_end_fast_positive) { _, _ -> endFast() }
+					.setNegativeButton(R.string.confirm_end_fast_negative, null)
+					.show()
 			}
 		}
 
-		fast_notifications_checkbox.isChecked = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
-		fast_notifications_checkbox.setOnCheckedChangeListener { _, isChecked ->
+		binding.fastNotificationsCheckbox.isChecked = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
+		binding.fastNotificationsCheckbox.setOnCheckedChangeListener { _, isChecked ->
 			storage.edit {
 				putBoolean(Data.KEY_FAST_ALERTS, isChecked)
 			}
 			setupAlerts()
 		}
 
-		fatburnLabelColor = textview_phase_fatburn_label.currentTextColor
-		textview_phase_fatburn_label.setOnClickListener {
-			Utils.showInfoDialog(R.string.info_dialog_fat_burn_title, R.string.info_dialog_fat_burn_content, requireContext())
+		fatburnLabelColor = binding.textviewPhaseFatburnLabel.currentTextColor
+		binding.textviewPhaseFatburnLabel.setOnClickListener {
+			Utils.showInfoDialog(
+				R.string.info_dialog_fat_burn_title,
+				R.string.info_dialog_fat_burn_content,
+				requireContext()
+			)
 		}
 
-		ketosisLabelColor = textview_phase_ketosis_label.currentTextColor
-		textview_phase_ketosis_label.setOnClickListener {
-			Utils.showInfoDialog(R.string.info_dialog_ketosis_title, R.string.info_dialog_ketosis_content, requireContext())
+		ketosisLabelColor = binding.textviewPhaseKetosisLabel.currentTextColor
+		binding.textviewPhaseKetosisLabel.setOnClickListener {
+			Utils.showInfoDialog(
+				R.string.info_dialog_ketosis_title,
+				R.string.info_dialog_ketosis_content,
+				requireContext()
+			)
 		}
 
-		autophagyLabelColor = textview_phase_autophagy_label.currentTextColor
-		textview_phase_autophagy_label.setOnClickListener {
-			Utils.showInfoDialog(R.string.info_dialog_autophagy_title, R.string.info_dialog_autophagy_content, requireContext())
+		autophagyLabelColor = binding.textviewPhaseAutophagyLabel.currentTextColor
+		binding.textviewPhaseAutophagyLabel.setOnClickListener {
+			Utils.showInfoDialog(
+				R.string.info_dialog_autophagy_title,
+				R.string.info_dialog_autophagy_content,
+				requireContext()
+			)
 		}
 	}
 
-	private fun setupAlerts()
-	{
+	private fun setupAlerts() {
 		val ctx = context ?: return
 
 		val shouldAlert = storage.getBoolean(Data.KEY_FAST_ALERTS, true)
 
-		if(fast.isFasting())
-		{
-			if(shouldAlert)
-			{
+		if (fast.isFasting()) {
+			if (shouldAlert) {
 				val elapsedTime = fast.getElapsedFastTime()
 				AlertService.scheduleAlerts(elapsedTime, ctx)
 			}
 			// User doesn't want notifications
-			else
-			{
+			else {
 				AlertService.cancelAlerts(ctx)
 			}
 		}
 		// No notifications if we aren't fasting
-		else
-		{
+		else {
 			AlertService.cancelAlerts(ctx)
 		}
 	}
 
-	override fun onStart()
-	{
+	override fun onStart() {
 		super.onStart()
 
 		startTimerUpdate()
 	}
 
-	override fun onResume()
-	{
+	override fun onResume() {
 		super.onResume()
 
 		updateUi()
 	}
 
-	override fun onStop()
-	{
+	override fun onStop() {
 		super.onStop()
 
 		stopTimerUpdate()
@@ -170,191 +176,177 @@ class FastingFragment: Fragment()
 
 	private val updater = Runnable {
 		updateUi()
-		if(fast.isFasting())
-		{
+		if (fast.isFasting()) {
 			startTimerUpdate()
 		}
 	}
 
-	private fun showStartPicker()
-	{
+	private fun showStartPicker() {
+
+		// Launch Time Picker Dialog
+		val timePickerDialog = TimePickerDialog(
+			context,
+			{ view, hourOfDay, minute ->
+				onDateTimePicked()
+			},
+			mHour,
+			mMinute,
+			false
+		)
+		timePickerDialog.show()
+
 		SingleDateAndTimePickerDialog.Builder(context)
-				.bottomSheet()
-				.curved()
-				.minutesStep(15)
-				.title(getString(R.string.manual_start_title))
-				.listener(::onDateTimePicked).display()
+			.bottomSheet()
+			.curved()
+			.minutesStep(15)
+			.title(getString(R.string.manual_start_title))
+			.listener(::onDateTimePicked).display()
 	}
 
-	private fun onDateTimePicked(date: Date)
-	{
+	private fun onDateTimePicked(date: Date) {
 		startFast(date.time)
 	}
 
-	private fun startTimerUpdate()
-	{
+	private fun startTimerUpdate() {
 		uiHandler.postDelayed(updater, 10)
 	}
 
-	private fun stopTimerUpdate()
-	{
+	private fun stopTimerUpdate() {
 		uiHandler.removeCallbacks(updater)
 	}
 
-	private fun updateUi()
-	{
+	private fun updateUi() {
 		updateButtons()
 		updateTimer()
 		updateStage()
 	}
 
-	private fun updateStage()
-	{
+	private fun updateStage() {
 		val fastStart = fast.getFastStart()
-		textview_stage_title.text = ""
-		textview_stage_description.text = ""
-		textview_energy_mode.text = ""
+		binding.textviewStageTitle.text = ""
+		binding.textviewStageDescription.text = ""
+		binding.textviewEnergyMode.text = ""
 
-		if(fast.isFasting() && fastStart != null)
-		{
+		if (fast.isFasting() && fastStart != null) {
 			val elapsedTime = Clock.System.now().minus(fastStart)
-			val elapsedHours = elapsedTime.inHours.toInt()
+			val elapsedHours = elapsedTime.inWholeHours.toInt()
 
 			var stageIndex = Stages.stage.indexOfLast { it.hours <= elapsedHours }
-			if(stageIndex < 0)
-			{
+			if (stageIndex < 0) {
 				stageIndex = 0
 			}
 
 			val stage = Stages.stage[stageIndex]
 
 			val curPhase = Stages.getCurrentPhase(elapsedTime)
-			if(curPhase.fatBurning)
-			{
-				textview_energy_mode.text = getString(R.string.fasting_energy_mode, getString(R.string.fasting_energy_mode_fat))
-			}
-			else
-			{
-				textview_energy_mode.text = getString(R.string.fasting_energy_mode, getString(R.string.fasting_energy_mode_glucose))
+			if (curPhase.fatBurning) {
+				binding.textviewEnergyMode.text = getString(
+					R.string.fasting_energy_mode,
+					getString(R.string.fasting_energy_mode_fat)
+				)
+			} else {
+				binding.textviewEnergyMode.text = getString(
+					R.string.fasting_energy_mode,
+					getString(R.string.fasting_energy_mode_glucose)
+				)
 			}
 
-			textview_stage_title.text = getString(stage.title)
-			textview_stage_description.text = getString(stage.description)
+			binding.textviewStageTitle.text = getString(stage.title)
+			binding.textviewStageDescription.text = getString(stage.description)
 		}
 	}
 
 	@ExperimentalTime
-	private fun updateTimer()
-	{
+	private fun updateTimer() {
 		val fastStart = fast.getFastStart()
 		val fastEnd = fast.getFastEnd()
 
-		if(fastStart != null)
-		{
-			if(fastEnd == null)
-			{
+		if (fastStart != null) {
+			if (fastEnd == null) {
 				val elapsedTime = Clock.System.now().minus(fastStart)
 				elapsedTime.toComponents(::updateTimerView)
 				updatePhases(elapsedTime)
-			}
-			else
-			{
+			} else {
 				val elapsedTime = fastEnd.minus(fastStart)
 				elapsedTime.toComponents(::updateTimerView)
 				updatePhases(elapsedTime)
 			}
-		}
-		else
-		{
-			chronometer.text = "0:00:00"
+		} else {
+			binding.chronometer.text = "0:00:00"
 		}
 	}
 
-	private fun updateTimerView(hours: Int, minutes: Int, seconds: Int, nanoseconds: Int)
-	{
+	private fun updateTimerView(hours: Long, minutes: Int, seconds: Int, nanoseconds: Int) {
 		val secondsStr = "%02d".format(seconds)
 		val minutesStr = "%02d".format(minutes)
-		chronometer.text = "$hours:$minutesStr:$secondsStr"
+		binding.chronometer.text = "$hours:$minutesStr:$secondsStr"
 
-		milliseconds.text = "${nanoseconds / 10000000}"
+		binding.milliseconds.text = "${nanoseconds / 10000000}"
 	}
 
-	private fun updatePhases(elapsedTime: Duration)
-	{
+	private fun updatePhases(elapsedTime: Duration) {
 		val currentStage = Stages.getCurrentPhase(elapsedTime)
 
-		fast_gauge.elapsedHours = elapsedTime.inHours
+		binding.fastGauge.elapsedHours = elapsedTime.inWholeHours.toDouble()
 
 		// Handle Fat burning
-		textview_phase_fatburn_time.setTextColor(fatburnLabelColor)
-		updateTimeView(textview_phase_fatburn_time, Stages.PHASE_FAT_BURN, elapsedTime)
+		binding.textviewPhaseFatburnTime.setTextColor(fatburnLabelColor)
+		updateTimeView(binding.textviewPhaseFatburnTime, Stages.PHASE_FAT_BURN, elapsedTime)
 
 		// Handle Ketosis
-		if(currentStage.fatBurning)
-		{
-			updateTimeView(textview_phase_ketosis_time, Stages.PHASE_KETOSIS, elapsedTime)
-		}
-		else
-		{
-			textview_phase_ketosis_time.text = "--:--:--"
-			textview_phase_ketosis_time.setTextColor(ketosisLabelColor)
+		if (currentStage.fatBurning) {
+			updateTimeView(binding.textviewPhaseKetosisTime, Stages.PHASE_KETOSIS, elapsedTime)
+		} else {
+			binding.textviewPhaseKetosisTime.text = "--:--:--"
+			binding.textviewPhaseKetosisTime.setTextColor(ketosisLabelColor)
 		}
 
 		// Handle Autophagy
-		if(currentStage.ketosis)
-		{
-			updateTimeView(textview_phase_autophagy_time, Stages.PHASE_AUTOPHAGY, elapsedTime)
-		}
-		else
-		{
-			textview_phase_autophagy_time.text = "--:--:--"
-			textview_phase_autophagy_time.setTextColor(autophagyLabelColor)
+		if (currentStage.ketosis) {
+			updateTimeView(binding.textviewPhaseAutophagyTime, Stages.PHASE_AUTOPHAGY, elapsedTime)
+		} else {
+			binding.textviewPhaseAutophagyTime.text = "--:--:--"
+			binding.textviewPhaseAutophagyTime.setTextColor(autophagyLabelColor)
 		}
 	}
 
-	private fun updateTimeView(view: TextView, phase: Phase, elapsedTime: Duration)
-	{
+	private fun updateTimeView(view: TextView, phase: Phase, elapsedTime: Duration) {
 		val phaseHours = phase.hours
 
-		if(elapsedTime.inHours > phaseHours)
-		{
+		if (elapsedTime.inWholeHours > phaseHours) {
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeSince.toComponents { hours, minutes, seconds, _ ->
 				view.text = "%d:%02d:%02d".format(hours, minutes, seconds)
 			}
 			view.setTextColor(ContextCompat.getColor(requireContext(), R.color.bright_green))
-		}
-		else
-		{
+		} else {
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeSince.toComponents { hours, minutes, seconds, _ ->
-				view.text = "-%d:%02d:%02d".format(kotlin.math.abs(hours), kotlin.math.abs(minutes), kotlin.math.abs(seconds))
+				view.text = "-%d:%02d:%02d".format(
+					kotlin.math.abs(hours),
+					kotlin.math.abs(minutes),
+					kotlin.math.abs(seconds)
+				)
 			}
 			view.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_600))
 		}
 	}
 
-	private fun updateButtons()
-	{
+	private fun updateButtons() {
 		val isFasting = fast.isFasting()
 
-		fast_fab_start.isVisible = !isFasting
-		fast_fab_stop.isVisible = isFasting
+		binding.fastFabStart.isVisible = !isFasting
+		binding.fastFabStop.isVisible = isFasting
 	}
 
 	private val storage by lazy { PreferenceManager.getDefaultSharedPreferences(requireActivity()) }
 
-	private fun startFast(timeStartedMills: Long? = null)
-	{
-		if(!fast.isFasting())
-		{
-			val mills = if(timeStartedMills == null)
-			{
+	private fun startFast(timeStartedMills: Long? = null) {
+		if (!fast.isFasting()) {
+			val mills = if (timeStartedMills == null) {
 				val now = Clock.System.now()
 				now.toEpochMilliseconds()
-			}
-			else
-			{
+			} else {
 				timeStartedMills
 			}
 
@@ -365,60 +357,53 @@ class FastingFragment: Fragment()
 			startTimerUpdate()
 			setupAlerts()
 
-			i("Started fast!")
-		}
-		else
-		{
-			w("Cannot start fast with one in progress")
+			Napier.i("Started fast!")
+		} else {
+			Napier.w("Cannot start fast with one in progress")
 		}
 	}
 
-	private fun endFast()
-	{
-		if(fast.isFasting())
-		{
+	private fun endFast() {
+		if (fast.isFasting()) {
 			val now = Clock.System.now()
 			val mills = now.toEpochMilliseconds()
 			storage.edit { putLong(Data.KEY_FAST_END, mills) }
 
 			GlobalScope.launch { saveFastToLog(fast.getFastStart(), fast.getFastEnd()) }
 
-			i("Fast ended!")
+			Napier.i("Fast ended!")
 
 			updateUi()
 			setupAlerts()
 
 			// Show the celebration!
-			konfetti_overlay?.let { kview ->
+			binding.konfettiOverlay.let { kview ->
 				kview.build()
-						.addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA, Color.RED, Color.BLUE)
-						.setDirection(0.0, 359.0)
-						.setSpeed(2f, 5f)
-						.setFadeOutEnabled(true)
-						.setTimeToLive(2000L)
-						.addShapes(Shape.Square, Shape.Circle)
-						.addSizes(Size(12))
-						.setPosition(-50f, kview.width + 50f, -50f, -50f)
-						.streamFor(300, 4000L)
+					.addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA, Color.RED, Color.BLUE)
+					.setDirection(0.0, 359.0)
+					.setSpeed(2f, 5f)
+					.setFadeOutEnabled(true)
+					.setTimeToLive(2000L)
+					.addShapes(Shape.Square, Shape.Circle)
+					.addSizes(Size(12))
+					.setPosition(-50f, kview.width + 50f, -50f, -50f)
+					.streamFor(300, 4000L)
 			}
-		}
-		else
-		{
-			w("Cannot end fast, there is none started")
+		} else {
+			Napier.w("Cannot end fast, there is none started")
 		}
 	}
 
-	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?)
-	{
-		if(startTime != null && endTime != null)
-		{
+	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?) {
+		if (startTime != null && endTime != null) {
 			val duration = endTime.minus(startTime)
-			val newEntry = FastEntry(start = startTime.toEpochMilliseconds(), length = duration.toLongMilliseconds())
+			val newEntry = FastEntry(
+				start = startTime.toEpochMilliseconds(),
+				length = duration.inWholeMilliseconds
+			)
 			database.fastDao().insertAll(newEntry)
-		}
-		else
-		{
-			e("No start time when ending fast!")
+		} else {
+			Napier.e("No start time when ending fast!")
 		}
 	}
 }

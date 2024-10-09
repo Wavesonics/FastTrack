@@ -14,10 +14,10 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Gender
 import com.darkrockstudios.apps.fasttrack.data.Profile
+import com.darkrockstudios.apps.fasttrack.databinding.ProfileFragmentBinding
 import com.darkrockstudios.apps.fasttrack.utils.Utils
-import com.log4k.i
-import com.log4k.w
-import kotlinx.android.synthetic.main.profile_fragment.*
+import io.github.aakira.napier.Napier.i
+import io.github.aakira.napier.Napier.w
 import kotlin.math.floor
 import kotlin.math.pow
 import kotlin.math.roundToInt
@@ -33,6 +33,8 @@ class ProfileFragment: Fragment()
 	private val viewModel by viewModels<ProfileViewModel>()
 	private var initialPopulationRequired = true
 
+	private lateinit var binding: ProfileFragmentBinding
+
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
 		super.onCreate(savedInstanceState)
@@ -44,9 +46,10 @@ class ProfileFragment: Fragment()
 
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?): View?
+			savedInstanceState: Bundle?): View
 	{
-		return inflater.inflate(R.layout.profile_fragment, container, false)
+		binding = ProfileFragmentBinding.inflate(inflater, container, false)
+		return binding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
@@ -55,23 +58,24 @@ class ProfileFragment: Fragment()
 
 		viewModel.profile.observe(viewLifecycleOwner, ::updateUi)
 
-		TextInputEditText_height_imper_feet.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		TextInputEditText_height_imper_inches.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		TextInputEditText_height_cm.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		TextInputEditText_age.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		TextInputEditText_weight_pounds.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		TextInputEditText_weight_kg.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		gender_button_ground.setOnCheckedChangeListener { _, _ -> updateProfile() }
+		binding.TextInputEditTextHeightImperFeet.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.TextInputEditTextHeightImperInches.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.TextInputEditTextHeightCm.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.TextInputEditTextAge.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.TextInputEditTextWeightPounds.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.TextInputEditTextWeightKg.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.genderButtonGroup.setOnCheckedChangeListener { _, _ -> updateProfile() }
 
-		textView_bmi_label.setOnClickListener {
+
+		binding.textViewBmiLabel.setOnClickListener {
 			Utils.showInfoDialog(R.string.info_dialog_bmi_title, R.string.info_dialog_bmi_content, requireContext())
 		}
 
-		textView_bmr_label.setOnClickListener {
+		binding.textViewBmrLabel.setOnClickListener {
 			Utils.showInfoDialog(R.string.info_dialog_bmr_title, R.string.info_dialog_bmr_content, requireContext())
 		}
 
-		metric_switch.setOnCheckedChangeListener { _, isChecked ->
+		binding.metricSwitch.setOnCheckedChangeListener { _, isChecked ->
 			viewModel.profile.value?.let { profile ->
 				populateInput(profile.copy(displayMetric = isChecked))
 				updateProfile()
@@ -81,30 +85,30 @@ class ProfileFragment: Fragment()
 
 	private fun saveProfile()
 	{
-		val metric = metric_switch.isChecked
+		val metric = binding.metricSwitch.isChecked
 
 		val totalCm: Double
 		val kg: Double
 
 		if(metric)
 		{
-			totalCm = parseInt(TextInputEditText_height_cm.text).toDouble()
-			kg = parseDouble(TextInputEditText_weight_kg.text)
+			totalCm = parseInt(binding.TextInputEditTextHeightCm.text).toDouble()
+			kg = parseDouble(binding.TextInputEditTextWeightKg.text)
 		}
 		else
 		{
-			val feet = parseInt(TextInputEditText_height_imper_feet.text)
-			val inches = parseInt(TextInputEditText_height_imper_inches.text)
+			val feet = parseInt(binding.TextInputEditTextHeightImperFeet.text)
+			val inches = parseInt(binding.TextInputEditTextHeightImperInches.text)
 			val totalInches = (feet * 12) + inches
 			totalCm = Data.inchToCm(totalInches)
 
-			val pounds = parseDouble(TextInputEditText_weight_pounds.text)
+			val pounds = parseDouble(binding.TextInputEditTextWeightPounds.text)
 			kg = Data.lbsToKg(pounds)
 		}
 
-		val age = parseInt(TextInputEditText_age.text)
+		val age = parseInt(binding.TextInputEditTextAge.text)
 
-		val gender = when(gender_button_ground.checkedRadioButtonId)
+		val gender = when(binding.genderButtonGroup.checkedRadioButtonId)
 		{
 			R.id.gender_button_male -> Gender.Male
 			R.id.gender_button_female -> Gender.Female
@@ -135,129 +139,129 @@ class ProfileFragment: Fragment()
 	{
 		var isValid = true
 
-		val metric = metric_switch.isChecked
+		val metric = binding.metricSwitch.isChecked
 		if(metric)
 		{
-			val cmText = TextInputEditText_height_cm.text
+			val cmText = binding.TextInputEditTextHeightCm.text
 			if(cmText?.isEmpty() == true)
 			{
-				TextInputEditText_height_cm.error = getString(R.string.profile_error)
+				binding.TextInputEditTextHeightCm.error = getString(R.string.profile_error)
 				isValid = false
 			}
 			else
 			{
 				if(parseInt(cmText) > 0)
 				{
-					TextInputEditText_height_cm.error = null
+					binding.TextInputEditTextHeightCm.error = null
 				}
 				else
 				{
-					TextInputEditText_height_cm.error = getString(R.string.profile_error)
+					binding.TextInputEditTextHeightCm.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			val weightKgText = TextInputEditText_weight_kg.text
+			val weightKgText = binding.TextInputEditTextWeightKg.text
 			if(weightKgText?.isEmpty() == true)
 			{
-				TextInputEditText_weight_kg.error = getString(R.string.profile_error)
+				binding.TextInputEditTextWeightKg.error = getString(R.string.profile_error)
 				isValid = false
 			}
 			else
 			{
 				if(parseDouble(weightKgText) > 0.0)
 				{
-					TextInputEditText_weight_kg.error = null
+					binding.TextInputEditTextWeightKg.error = null
 				}
 				else
 				{
-					TextInputEditText_weight_kg.error = getString(R.string.profile_error)
+					binding.TextInputEditTextWeightKg.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			TextInputEditText_height_imper_feet.error = null
-			TextInputEditText_height_imper_inches.error = null
-			TextInputEditText_weight_pounds.error = null
+			binding.TextInputEditTextHeightImperFeet.error = null
+			binding.TextInputEditTextHeightImperInches.error = null
+			binding.TextInputEditTextWeightPounds.error = null
 		}
 		else
 		{
-			val feetInches = TextInputEditText_height_imper_feet.text
+			val feetInches = binding.TextInputEditTextHeightImperFeet.text
 			if(feetInches?.isEmpty() == true)
 			{
-				TextInputEditText_height_imper_feet.error = getString(R.string.profile_error)
+				binding.TextInputEditTextHeightImperFeet.error = getString(R.string.profile_error)
 				isValid = false
 			}
 			else
 			{
 				if(parseInt(feetInches) > 0)
 				{
-					TextInputEditText_height_imper_feet.error = null
+					binding.TextInputEditTextHeightImperFeet.error = null
 				}
 				else
 				{
-					TextInputEditText_height_imper_feet.error = getString(R.string.profile_error)
+					binding.TextInputEditTextHeightImperFeet.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			val inchesText = TextInputEditText_height_imper_inches.text
+			val inchesText = binding.TextInputEditTextHeightImperInches.text
 			if(inchesText?.isEmpty() == true)
 			{
-				TextInputEditText_height_imper_inches.error = getString(R.string.profile_error)
+				binding.TextInputEditTextHeightImperInches.error = getString(R.string.profile_error)
 				isValid = false
 			}
 			else
 			{
 				if(parseInt(inchesText) >= 0)
 				{
-					TextInputEditText_height_imper_inches.error = null
+					binding.TextInputEditTextHeightImperInches.error = null
 				}
 				else
 				{
-					TextInputEditText_height_imper_inches.error = getString(R.string.profile_error)
+					binding.TextInputEditTextHeightImperInches.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			val weightPoundsText = TextInputEditText_weight_pounds.text
+			val weightPoundsText = binding.TextInputEditTextWeightPounds.text
 			if(weightPoundsText?.isEmpty() == true)
 			{
-				TextInputEditText_weight_pounds.error = getString(R.string.profile_error)
+				binding.TextInputEditTextWeightPounds.error = getString(R.string.profile_error)
 				isValid = false
 			}
 			else
 			{
 				if(parseDouble(weightPoundsText) > 0.0)
 				{
-					TextInputEditText_weight_pounds.error = null
+					binding.TextInputEditTextWeightPounds.error = null
 				}
 				else
 				{
-					TextInputEditText_weight_pounds.error = getString(R.string.profile_error)
+					binding.TextInputEditTextWeightPounds.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			TextInputEditText_weight_kg.error = null
-			TextInputEditText_height_cm.error = null
+			binding.TextInputEditTextWeightKg.error = null
+			binding.TextInputEditTextHeightCm.error = null
 		}
 
-		val ageText = TextInputEditText_age.text
+		val ageText = binding.TextInputEditTextAge.text
 		if(ageText?.isEmpty() == true)
 		{
-			TextInputEditText_age.error = getString(R.string.profile_error)
+			binding.TextInputEditTextAge.error = getString(R.string.profile_error)
 			isValid = false
 		}
 		else
 		{
 			if(parseInt(ageText) > 0)
 			{
-				TextInputEditText_age.error = null
+				binding.TextInputEditTextAge.error = null
 			}
 			else
 			{
-				TextInputEditText_age.error = getString(R.string.profile_error)
+				binding.TextInputEditTextAge.error = getString(R.string.profile_error)
 				isValid = false
 			}
 		}
@@ -313,35 +317,35 @@ class ProfileFragment: Fragment()
 		val weightKgStr = "%.01f".format(profile.weightKg)
 
 		// Only update the text field if it's actually a different value, prevents update loops
-		if(TextInputEditText_height_imper_feet.text?.toString() != "$feet")
-			TextInputEditText_height_imper_feet.setText("$feet")
-		if(TextInputEditText_height_imper_inches.text?.toString() != "$inches")
-			TextInputEditText_height_imper_inches.setText("$inches")
-		if(TextInputEditText_height_cm.text?.toString() != totalCmStr)
-			TextInputEditText_height_cm.setText(totalCmStr)
-		if(TextInputEditText_age.text?.toString() != "${profile.ageYears}")
-			TextInputEditText_age.setText("${profile.ageYears}")
-		if(TextInputEditText_weight_pounds.text?.toString() != weightPoundsStr)
-			TextInputEditText_weight_pounds.setText(weightPoundsStr)
-		if(TextInputEditText_weight_kg.text?.toString() != weightKgStr)
-			TextInputEditText_weight_kg.setText(weightKgStr)
+		if(binding.TextInputEditTextHeightImperFeet.text?.toString() != "$feet")
+			binding.TextInputEditTextHeightImperFeet.setText("$feet")
+		if(binding.TextInputEditTextHeightImperInches.text?.toString() != "$inches")
+			binding.TextInputEditTextHeightImperInches.setText("$inches")
+		if(binding.TextInputEditTextHeightCm.text?.toString() != totalCmStr)
+			binding.TextInputEditTextHeightCm.setText(totalCmStr)
+		if(binding.TextInputEditTextAge.text?.toString() != "${profile.ageYears}")
+			binding.TextInputEditTextAge.setText("${profile.ageYears}")
+		if(binding.TextInputEditTextWeightPounds.text?.toString() != weightPoundsStr)
+			binding.TextInputEditTextWeightPounds.setText(weightPoundsStr)
+		if(binding.TextInputEditTextWeightKg.text?.toString() != weightKgStr)
+			binding.TextInputEditTextWeightKg.setText(weightKgStr)
 
-		if(metric_switch.isChecked != profile.displayMetric)
-			metric_switch.isChecked = profile.displayMetric
+		if(binding.metricSwitch.isChecked != profile.displayMetric)
+			binding.metricSwitch.isChecked = profile.displayMetric
 
-		textInputLayout_weight_kg.isVisible = profile.displayMetric
-		textInputLayout_weight_pounds.isVisible = !profile.displayMetric
+		binding.TextInputEditTextWeightKg.isVisible = profile.displayMetric
+		binding.TextInputEditTextWeightPounds.isVisible = !profile.displayMetric
 
-		textInputLayout_height_cm.visibility = if(profile.displayMetric) View.VISIBLE else View.INVISIBLE
-		textInputLayout_height_imper_feet.visibility = if(!profile.displayMetric) View.VISIBLE else View.INVISIBLE
-		textInputLayout_height_imper_inches.visibility = if(!profile.displayMetric) View.VISIBLE else View.INVISIBLE
+		binding.TextInputEditTextHeightCm.visibility = if(profile.displayMetric) View.VISIBLE else View.INVISIBLE
+		binding.TextInputEditTextHeightImperFeet.visibility = if(!profile.displayMetric) View.VISIBLE else View.INVISIBLE
+		binding.TextInputEditTextHeightImperInches.visibility = if(!profile.displayMetric) View.VISIBLE else View.INVISIBLE
 
 		if(!isCheckedGender(profile.gender))
 		{
 			when(profile.gender)
 			{
-				Gender.Male -> gender_button_ground.check(R.id.gender_button_male)
-				Gender.Female -> gender_button_ground.check(R.id.gender_button_female)
+				Gender.Male -> binding.genderButtonGroup.check(R.id.gender_button_male)
+				Gender.Female -> binding.genderButtonGroup.check(R.id.gender_button_female)
 			}
 		}
 
@@ -367,20 +371,20 @@ class ProfileFragment: Fragment()
 			else        -> ""
 		}
 
-		metric_switch.isChecked = profile.displayMetric
+		binding.metricSwitch.isChecked = profile.displayMetric
 
-		textView_bmi_value.text = getString(R.string.profile_bmi_value, bmi, bmiCategory)
+		binding.textViewBmiValue.text = getString(R.string.profile_bmi_value, bmi, bmiCategory)
 
 		val bmr = calculateBmr(profile)
-		textView_bmr_value.text = getString(R.string.profile_bmr_value, bmr)
+		binding.textViewBmrValue.text = getString(R.string.profile_bmr_value, bmr)
 	}
 
 	private fun isCheckedGender(newGender: Gender): Boolean
 	{
 		return when(newGender)
 		{
-			Gender.Male -> gender_button_ground.checkedRadioButtonId == R.id.gender_button_male
-			Gender.Female -> gender_button_ground.checkedRadioButtonId == R.id.gender_button_female
+			Gender.Male -> binding.genderButtonGroup.checkedRadioButtonId == R.id.gender_button_male
+			Gender.Female -> binding.genderButtonGroup.checkedRadioButtonId == R.id.gender_button_female
 		}
 	}
 

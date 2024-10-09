@@ -9,8 +9,8 @@ import android.view.View
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.utils.dp2px
 import kotlin.math.min
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
-import kotlin.time.hours
 
 class TimeLineView @JvmOverloads constructor(
 		context: Context,

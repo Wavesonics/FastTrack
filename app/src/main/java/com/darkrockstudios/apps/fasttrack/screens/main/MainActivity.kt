@@ -13,10 +13,10 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.FastUtils
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.databinding.ActivityMainBinding
 import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vansuita.materialabout.builder.AboutBuilder
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import kotlin.time.ExperimentalTime
 
@@ -27,18 +27,21 @@ class MainActivity: AppCompatActivity()
 	private val storage by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
 	private val fast by inject<FastUtils>()
 
+	private lateinit var binding: ActivityMainBinding
+
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main)
+		binding = ActivityMainBinding.inflate(layoutInflater)
+		setContentView(binding.root)
 
-		setSupportActionBar(appActionBar)
+		setSupportActionBar(binding.appActionBar)
 
-		content_view_pager.adapter = MainViewPagerAdapter(this)
-		content_view_pager.setPageTransformer(ZoomOutPageTransformer())
+		binding.contentViewPager.adapter = MainViewPagerAdapter(this)
+		binding.contentViewPager.setPageTransformer(ZoomOutPageTransformer())
 
-		nav_view.setOnNavigationItemSelectedListener(navigationListener)
-		content_view_pager.registerOnPageChangeCallback(pageChangeListener)
+		binding.navView.setOnNavigationItemSelectedListener(navigationListener)
+		binding.contentViewPager.registerOnPageChangeCallback(pageChangeListener)
 
 		// Show the intro if they haven't seen it
 		if(!storage.getBoolean(Data.KEY_INTRO_SEEN, false))
@@ -55,17 +58,17 @@ class MainActivity: AppCompatActivity()
 			{
 				0 ->
 				{
-					nav_view.menu.findItem(R.id.navigation_fasting).isChecked = true
+					binding.navView.menu.findItem(R.id.navigation_fasting).isChecked = true
 					supportActionBar?.title = getString(R.string.title_fasting)
 				}
 				1 ->
 				{
-					nav_view.menu.findItem(R.id.navigation_log).isChecked = true
+					binding.navView.menu.findItem(R.id.navigation_log).isChecked = true
 					supportActionBar?.title = getString(R.string.title_log)
 				}
 				2 ->
 				{
-					nav_view.menu.findItem(R.id.navigation_profile).isChecked = true
+					binding.navView.menu.findItem(R.id.navigation_profile).isChecked = true
 					supportActionBar?.title = getString(R.string.title_profile)
 				}
 			}
@@ -75,9 +78,9 @@ class MainActivity: AppCompatActivity()
 	private val navigationListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
 		when(menuItem.itemId)
 		{
-			R.id.navigation_fasting -> content_view_pager.currentItem = 0
-			R.id.navigation_log -> content_view_pager.currentItem = 1
-			R.id.navigation_profile -> content_view_pager.currentItem = 2
+			R.id.navigation_fasting -> binding.contentViewPager.currentItem = 0
+			R.id.navigation_log -> binding.contentViewPager.currentItem = 1
+			R.id.navigation_profile -> binding.contentViewPager.currentItem = 2
 		}
 		true
 	}
@@ -119,7 +122,7 @@ class MainActivity: AppCompatActivity()
 
 	private fun shareText()
 	{
-		val elapsedHours: Int
+		val elapsedHours: Long
 		val elapsedMinutes: Int
 
 		val elapsedTime = fast.getElapsedFastTime()

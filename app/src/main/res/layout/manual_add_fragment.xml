@@ -40,7 +40,7 @@
 				android:layout_gravity="end|center_vertical"
 				android:background="@drawable/ripple"
 				android:src="@drawable/ic_close"
-				android:tint="@color/white_50" />
+				app:tint="@color/white_50" />
 		</FrameLayout>
 	</androidx.appcompat.widget.Toolbar>
 

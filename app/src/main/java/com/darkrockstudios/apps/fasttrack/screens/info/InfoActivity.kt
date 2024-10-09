@@ -5,21 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.darkrockstudios.apps.fasttrack.R
-import kotlinx.android.synthetic.main.activity_info.*
+import com.darkrockstudios.apps.fasttrack.databinding.ActivityInfoBinding
 
 class InfoActivity: AppCompatActivity()
 {
+	private lateinit var binding: ActivityInfoBinding
+
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_info)
+		binding = ActivityInfoBinding.inflate(layoutInflater)
+		setContentView(binding.root)
 		setSupportActionBar(findViewById(R.id.toolbar))
 
 		supportActionBar?.setDisplayHomeAsUpEnabled(true)
 		supportActionBar?.setDisplayShowHomeEnabled(true)
 
-		info_pager.adapter = adapter
-		tab_layout.setupWithViewPager(info_pager)
+		binding.infoPager.adapter = adapter
+		binding.tabLayout.setupWithViewPager(binding.infoPager)
 	}
 
 	private enum class Pages

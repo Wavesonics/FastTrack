@@ -12,6 +12,7 @@ import kotlinx.datetime.toJavaLocalDateTime
 import kotlinx.datetime.toLocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.ExperimentalTime
 import kotlin.time.milliseconds
 
@@ -26,7 +27,7 @@ class FastEntryItem(val fast: FastEntry): AbstractBindingItem<FastEntryItemBindi
 		val ctx = binding.fastEntryStart.context
 
 		val start = Instant.fromEpochMilliseconds(fast.start)
-		val hours = fast.length.milliseconds.inHours.roundToInt()
+		val hours = fast.length.milliseconds.inWholeHours
 		val ketosisHours = fast.calculateKetosis().roundToInt()
 		val autophagyHours = fast.calculateAutophagy().roundToInt()
 

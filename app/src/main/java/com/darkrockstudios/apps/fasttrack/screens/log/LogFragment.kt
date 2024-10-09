@@ -9,10 +9,10 @@ import androidx.fragment.app.viewModels
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
+import com.darkrockstudios.apps.fasttrack.databinding.LogFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-import kotlinx.android.synthetic.main.log_fragment.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -32,20 +32,25 @@ class LogFragment: Fragment()
 	private val database by inject<AppDatabase>()
 	private val viewModel by viewModels<LogViewModel>()
 
+	private lateinit var binding: LogFragmentBinding
+
 	override fun onCreateView(
 			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?): View? = inflater.inflate(R.layout.log_fragment, container, false)
+			savedInstanceState: Bundle?): View {
+		binding = LogFragmentBinding.inflate(inflater, container, false)
+		return binding.root
+	}
 
 	@ExperimentalTime
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
 	{
 		super.onViewCreated(view, savedInstanceState)
 
-		log_fab_manual_add.setOnClickListener {
+		binding.logFabManualAdd.setOnClickListener {
 			ManualAddFragment.newInstance().show(childFragmentManager, "manual_add")
 		}
 
-		log_entries.adapter = fastAdapter
+		binding.logEntries.adapter = fastAdapter
 		fastAdapter.onLongClickListener = { _, _, item, _ ->
 			context?.let { ctx ->
 				MaterialAlertDialogBuilder(ctx)
@@ -76,7 +81,7 @@ class LogFragment: Fragment()
 		val totalKetosisHours = entries.sumByDouble { it.calculateKetosis() }
 		val totalAutophagyHours = entries.sumByDouble { it.calculateAutophagy() }
 
-		total_ketosis_value.text = getString(R.string.log_total_hours, totalKetosisHours.roundToInt())
-		total_autophagy_value.text = getString(R.string.log_total_hours, totalAutophagyHours.roundToInt())
+		binding.totalKetosisValue.text = getString(R.string.log_total_hours, totalKetosisHours.roundToInt())
+		binding.totalAutophagyValue.text = getString(R.string.log_total_hours, totalAutophagyHours.roundToInt())
 	}
 }

@@ -7,16 +7,13 @@ import android.view.ViewGroup
 import androidx.annotation.RawRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.databinding.InfoFragmentBinding
 import com.darkrockstudios.apps.fasttrack.utils.FragArg
 import com.darkrockstudios.apps.fasttrack.utils.getRawTextFile
 import io.noties.markwon.Markwon
-import kotlinx.android.synthetic.main.info_fragment.*
 
-class InfoFragment: Fragment()
-{
-	companion object
-	{
+class InfoFragment : Fragment() {
+	companion object {
 		fun newInstance(@RawRes infoRes: Int) = InfoFragment().apply {
 			markdownResource = infoRes
 		}
@@ -27,18 +24,20 @@ class InfoFragment: Fragment()
 	private val markwon by lazy { Markwon.create(requireContext()) }
 	private val viewModel: InfoViewModel by viewModels()
 
+	private lateinit var binding: InfoFragmentBinding
+
 	override fun onCreateView(
-			inflater: LayoutInflater, container: ViewGroup?,
-			savedInstanceState: Bundle?): View?
-	{
-		return inflater.inflate(R.layout.info_fragment, container, false)
+		inflater: LayoutInflater, container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		binding = InfoFragmentBinding.inflate(inflater, container, false)
+		return binding.root
 	}
 
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-	{
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
 		val markdown = resources.getRawTextFile(markdownResource)
-		markwon.setMarkdown(info_details, markdown)
+		markwon.setMarkdown(binding.infoDetails, markdown)
 	}
 }

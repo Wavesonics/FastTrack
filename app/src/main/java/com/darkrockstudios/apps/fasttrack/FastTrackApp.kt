@@ -7,9 +7,8 @@ import cafe.adriel.satchel.storer.file.FileSatchelStorer
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.SafeRawSatchelSerializer
 import com.darkrockstudios.apps.fasttrack.di.mainModule
-import com.log4k.Level
-import com.log4k.Log4k
-import com.log4k.android.AndroidAppender
+import io.github.aakira.napier.DebugAntilog
+import io.github.aakira.napier.Napier
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import java.io.File
@@ -20,7 +19,7 @@ class FastTrackApp: Application()
 	{
 		super.onCreate()
 
-		Log4k.add(Level.Verbose, ".*", AndroidAppender())
+		Napier.base(DebugAntilog())
 
 		Satchel.init(
 				storer = FileSatchelStorer(File(filesDir, Data.STORAGE_PATH)),
