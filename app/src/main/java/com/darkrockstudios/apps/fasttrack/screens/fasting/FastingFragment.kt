@@ -1,12 +1,11 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
-import android.app.TimePickerDialog
-import android.app.TimePickerDialog.OnTimeSetListener
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,18 +25,25 @@ import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
 import com.darkrockstudios.apps.fasttrack.databinding.FragmentFastingBinding
 import com.darkrockstudios.apps.fasttrack.utils.Utils
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import kotlinx.datetime.toJavaInstant
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import org.koin.android.ext.android.inject
+import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.minutes
 import kotlin.time.ExperimentalTime
 
 
@@ -183,24 +189,30 @@ class FastingFragment : Fragment() {
 
 	private fun showStartPicker() {
 
-		// Launch Time Picker Dialog
-		val timePickerDialog = TimePickerDialog(
-			context,
-			{ view, hourOfDay, minute ->
-				onDateTimePicked()
-			},
-			mHour,
-			mMinute,
-			false
-		)
-		timePickerDialog.show()
+		val datePicker =
+			MaterialDatePicker.Builder.datePicker()
+				.setTitleText("When did you start your Fast")
+				.setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+				.build()
+		datePicker.show(childFragmentManager, "FastStartDatePicker")
 
-		SingleDateAndTimePickerDialog.Builder(context)
-			.bottomSheet()
-			.curved()
-			.minutesStep(15)
-			.title(getString(R.string.manual_start_title))
-			.listener(::onDateTimePicked).display()
+		datePicker.addOnPositiveButtonClickListener { selectedDateEpochMs ->
+
+			val selectedData = Instant.fromEpochMilliseconds(selectedDateEpochMs)
+
+			val timePicker: MaterialTimePicker = MaterialTimePicker.Builder()
+				.setTitleText("When did you start your Fast")
+				.setTimeFormat(TimeFormat.CLOCK_12H)
+				.build()
+
+			timePicker.show(childFragmentManager, "FastStartTimePicker")
+			timePicker.addOnPositiveButtonClickListener {
+
+				val selectedDateTime = selectedData + timePicker.hour.hours + timePicker.minute.minutes
+				Log.i("TAG", selectedDateTime.toString())
+				onDateTimePicked(Date.from(selectedDateTime.toJavaInstant()))
+			}
+		}
 	}
 
 	private fun onDateTimePicked(date: Date) {
@@ -323,9 +335,9 @@ class FastingFragment : Fragment() {
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeSince.toComponents { hours, minutes, seconds, _ ->
 				view.text = "-%d:%02d:%02d".format(
-					kotlin.math.abs(hours),
-					kotlin.math.abs(minutes),
-					kotlin.math.abs(seconds)
+					abs(hours),
+					abs(minutes),
+					abs(seconds)
 				)
 			}
 			view.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_600))
