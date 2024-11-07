@@ -13,7 +13,7 @@ android {
         applicationId "com.darkrockstudios.apps.fasttrack"
         minSdkVersion 27
         targetSdkVersion 35
-        versionCode 9
+        versionCode 10
         versionName "1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
