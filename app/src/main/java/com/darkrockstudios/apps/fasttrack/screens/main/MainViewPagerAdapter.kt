@@ -13,7 +13,7 @@ class MainViewPagerAdapter(fa: FragmentActivity): FragmentStateAdapter(fa)
 	private enum class Screens
 	{ FASTING, LOG, PROFILE }
 
-	override fun getItemCount() = Screens.values().size
+	override fun getItemCount() = Screens.entries.size
 
 	@ExperimentalTime
 	override fun createFragment(position: Int): Fragment

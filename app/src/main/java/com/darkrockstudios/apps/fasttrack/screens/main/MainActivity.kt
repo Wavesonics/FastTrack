@@ -38,7 +38,7 @@ class MainActivity: AppCompatActivity()
 		setSupportActionBar(binding.appActionBar)
 
 		binding.contentViewPager.adapter = MainViewPagerAdapter(this)
-		binding.contentViewPager.setPageTransformer(ZoomOutPageTransformer())
+		//binding.contentViewPager.setPageTransformer(ZoomOutPageTransformer())
 
 		binding.navView.setOnNavigationItemSelectedListener(navigationListener)
 		binding.contentViewPager.registerOnPageChangeCallback(pageChangeListener)
