@@ -1,0 +1,107 @@
+[versions]
+activityKtx = "1.10.1"
+appcompat = "1.7.0"
+appintro = "6.0.0"
+cardview = "1.0.0"
+collectionKtx = "1.5.0"
+constraintlayout = "2.2.1"
+core = "4.6.0"
+coreKtx = "1.16.0"
+customdatetimepicker = "1.01"
+datastorePreferences = "1.1.4"
+espressoCore = "3.6.1"
+fastadapter = "5.2.3"
+fastadapterExtensionsBinding = "5.2.3"
+fragmentKtx = "1.8.6"
+glide = "4.11.0"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+konfetti = "1.2.5"
+kotlinxCoroutinesAndroid = "1.10.1"
+kotlinxDatetime = "0.6.2"
+kotlinxSerializationCore = "1.7.3"
+ksp = "2.1.10-1.0.31"
+legacySupportV4 = "1.0.0"
+lifecycleExtensions = "2.2.0"
+lifecycleViewmodelKtx = "2.8.7"
+material = "1.12.0"
+materialabout = "0.2.4"
+napier = "2.7.1"
+navigationRuntimeKtx = "2.8.9"
+navigationUiKtx = "2.8.9"
+recyclerview = "1.4.0"
+roomRuntime = "2.6.1"
+satchelCore = "1.0.3"
+satchelSerializerBase64Android = "1.0.3"
+satchelStorerEncryptedFile = "1.0.3"
+versionCode = "10"
+versionName = "1.6"
+
+kotlin = "2.1.10"
+javaVersion = "17"
+agp = "8.9.2"
+targetSdk = "35"
+compileSdk = "35"
+minSdk = "29"
+
+koin-bom = "4.0.3"
+
+[libraries]
+activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
+androidx-lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationRuntimeKtx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+appintro = { module = "com.github.AppIntro:AppIntro", version.ref = "appintro" }
+collection-ktx = { module = "androidx.collection:collection-ktx", version.ref = "collectionKtx" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+core = { module = "io.noties.markwon:core", version.ref = "core" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+customdatetimepicker = { module = "com.github.noowenz:CustomDateTimePicker", version.ref = "customdatetimepicker" }
+ext-latex = { module = "io.noties.markwon:ext-latex", version.ref = "core" }
+ext-tables = { module = "io.noties.markwon:ext-tables", version.ref = "core" }
+ext-strikethrough = { module = "io.noties.markwon:ext-strikethrough", version.ref = "core" }
+fastadapter-extensions-binding = { module = "com.mikepenz:fastadapter-extensions-binding", version.ref = "fastadapterExtensionsBinding" }
+fastadapter = { module = "com.mikepenz:fastadapter", version.ref = "fastadapter" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+image-glide = { module = "io.noties.markwon:image-glide", version.ref = "core" }
+image = { module = "io.noties.markwon:image", version.ref = "core" }
+junit = { module = "junit:junit", version.ref = "junit" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
+koin-core = { module = "io.insert-koin:koin-core" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-androidx-workmanager = { module = "io.insert-koin:koin-androidx-workmanager" }
+koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines" }
+konfetti = { module = "nl.dionsegijn:konfetti", version.ref = "konfetti" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
+linkify = { module = "io.noties.markwon:linkify", version.ref = "core" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+materialabout = { module = "com.github.jrvansuita:MaterialAbout", version.ref = "materialabout" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+satchel-core = { module = "com.github.adrielcafe.satchel:satchel-core", version.ref = "satchelCore" }
+satchel-serializer-base64-android = { module = "com.github.adrielcafe.satchel:satchel-serializer-base64-android", version.ref = "satchelSerializerBase64Android" }
+satchel-storer-encrypted-file = { module = "com.github.adrielcafe.satchel:satchel-storer-encrypted-file", version.ref = "satchelStorerEncryptedFile" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.ExperimentalTime
-import kotlin.time.milliseconds
 
 
 class FastEntryItem(val fast: FastEntry): AbstractBindingItem<FastEntryItemBinding>()

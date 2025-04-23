@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 /app/release/app-release.aab
+.idea
+/.kotlin

@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.ExperimentalTime
-import kotlin.time.milliseconds
 
 @Entity
 data class FastEntry(
