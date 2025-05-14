@@ -3,6 +3,7 @@ package com.darkrockstudios.apps.fasttrack.data
 import androidx.annotation.StringRes
 import com.darkrockstudios.apps.fasttrack.R
 import kotlin.time.Duration
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
 
@@ -20,7 +21,7 @@ object Stages
 
 	fun getCurrentPhase(elapsedTime: Duration): Phase
 	{
-		return phases.findLast { elapsedTime.inWholeHours >= it.hours } ?: PHASE_GLUCOSE
+		return phases.findLast { elapsedTime.toDouble(DurationUnit.HOURS) >= it.hours } ?: PHASE_GLUCOSE
 	}
 
 	val stage = arrayOf(

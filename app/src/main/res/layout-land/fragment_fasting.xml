@@ -169,8 +169,16 @@
 			android:layout_height="wrap_content"
 			android:text="@string/stage_alerts_checkbox"
 			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/chronometer" />
+			app:layout_constraintStart_toStartOf="parent"/>
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:id="@+id/fast_fab_debug"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/default_margin"
+				android:src="@drawable/ic_add"
+				app:layout_constraintBottom_toTopOf="@+id/fast_notifications_checkbox"
+				app:layout_constraintStart_toStartOf="@+id/fast_notifications_checkbox"/>
 
 		<com.google.android.material.floatingactionbutton.FloatingActionButton
 			android:id="@+id/fast_fab_stop"

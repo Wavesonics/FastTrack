@@ -16,6 +16,7 @@ import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.AlertService
+import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.FastUtils
@@ -38,12 +39,12 @@ import kotlinx.datetime.toJavaInstant
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import org.koin.android.ext.android.inject
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
 
@@ -102,6 +103,13 @@ class FastingFragment : Fragment() {
 					.setPositiveButton(R.string.confirm_end_fast_positive) { _, _ -> endFast() }
 					.setNegativeButton(R.string.confirm_end_fast_negative, null)
 					.show()
+			}
+		}
+
+		if (BuildConfig.DEBUG) {
+			binding.fastFabDebug.isVisible = true
+			binding.fastFabDebug.setOnClickListener {
+				increaseFastingTimeByOneHour()
 			}
 		}
 
@@ -172,6 +180,27 @@ class FastingFragment : Fragment() {
 		super.onResume()
 
 		updateUi()
+	}
+
+	/**
+	 * Increases the fasting time by 1 hour by setting the start time to 1 hour earlier.
+	 * This method is only available in debug builds.
+	 */
+	private fun increaseFastingTimeByOneHour() {
+		if (fast.isFasting()) {
+			val currentStartTime = storage.getLong(Data.KEY_FAST_START, -1)
+			if (currentStartTime > 0) {
+				val newStartTime = currentStartTime - (1 * 60 * 60 * 1000)
+
+				storage.edit { putLong(Data.KEY_FAST_START, newStartTime) }
+
+				updateUi()
+
+				Napier.i("Debug: Increased fasting time by 1 hour")
+			}
+		} else {
+			Napier.w("Debug: Cannot increase fasting time when not fasting")
+		}
 	}
 
 	override fun onStop() {
@@ -325,7 +354,7 @@ class FastingFragment : Fragment() {
 	private fun updateTimeView(view: TextView, phase: Phase, elapsedTime: Duration) {
 		val phaseHours = phase.hours
 
-		if (elapsedTime.inWholeHours > phaseHours) {
+		if (elapsedTime.toDouble(DurationUnit.HOURS) > phaseHours) {
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeSince.toComponents { hours, minutes, seconds, _ ->
 				view.text = "%d:%02d:%02d".format(hours, minutes, seconds)
