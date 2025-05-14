@@ -56,12 +56,12 @@ class ProfileFragment : Fragment() {
 
 		viewModel.profile.observe(viewLifecycleOwner, ::updateUi)
 
-		binding.TextInputEditTextHeightImperFeet.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		binding.TextInputEditTextHeightImperInches.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		binding.TextInputEditTextHeightCm.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.textInputEditTextHeightImperFeet.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.textInputEditTextHeightImperInches.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.textInputEditTextHeightCm.doOnTextChanged { _, _, _, _ -> updateProfile() }
 		binding.TextInputEditTextAge.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		binding.TextInputEditTextWeightPounds.doOnTextChanged { _, _, _, _ -> updateProfile() }
-		binding.TextInputEditTextWeightKg.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.textInputEditTextWeightPounds.doOnTextChanged { _, _, _, _ -> updateProfile() }
+		binding.textInputEditTextWeightKg.doOnTextChanged { _, _, _, _ -> updateProfile() }
 		binding.genderButtonGroup.setOnCheckedChangeListener { _, _ -> updateProfile() }
 
 
@@ -88,15 +88,15 @@ class ProfileFragment : Fragment() {
 		val kg: Double
 
 		if (metric) {
-			totalCm = parseInt(binding.TextInputEditTextHeightCm.text).toDouble()
-			kg = parseDouble(binding.TextInputEditTextWeightKg.text)
+			totalCm = parseInt(binding.textInputEditTextHeightCm.text).toDouble()
+			kg = parseDouble(binding.textInputEditTextWeightKg.text)
 		} else {
-			val feet = parseInt(binding.TextInputEditTextHeightImperFeet.text)
-			val inches = parseInt(binding.TextInputEditTextHeightImperInches.text)
+			val feet = parseInt(binding.textInputEditTextHeightImperFeet.text)
+			val inches = parseInt(binding.textInputEditTextHeightImperInches.text)
 			val totalInches = (feet * 12) + inches
 			totalCm = Data.inchToCm(totalInches)
 
-			val pounds = parseDouble(binding.TextInputEditTextWeightPounds.text)
+			val pounds = parseDouble(binding.textInputEditTextWeightPounds.text)
 			kg = Data.lbsToKg(pounds)
 		}
 
@@ -131,77 +131,77 @@ class ProfileFragment : Fragment() {
 
 		val metric = binding.metricSwitch.isChecked
 		if (metric) {
-			val cmText = binding.TextInputEditTextHeightCm.text
+			val cmText = binding.textInputEditTextHeightCm.text
 			if (cmText?.isEmpty() == true) {
-				binding.TextInputEditTextHeightCm.error = getString(R.string.profile_error)
+				binding.textInputEditTextHeightCm.error = getString(R.string.profile_error)
 				isValid = false
 			} else {
 				if (parseInt(cmText) > 0) {
-					binding.TextInputEditTextHeightCm.error = null
+					binding.textInputEditTextHeightCm.error = null
 				} else {
-					binding.TextInputEditTextHeightCm.error = getString(R.string.profile_error)
+					binding.textInputEditTextHeightCm.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			val weightKgText = binding.TextInputEditTextWeightKg.text
+			val weightKgText = binding.textInputEditTextWeightKg.text
 			if (weightKgText?.isEmpty() == true) {
-				binding.TextInputEditTextWeightKg.error = getString(R.string.profile_error)
+				binding.textInputEditTextWeightKg.error = getString(R.string.profile_error)
 				isValid = false
 			} else {
 				if (parseDouble(weightKgText) > 0.0) {
-					binding.TextInputEditTextWeightKg.error = null
+					binding.textInputEditTextWeightKg.error = null
 				} else {
-					binding.TextInputEditTextWeightKg.error = getString(R.string.profile_error)
+					binding.textInputEditTextWeightKg.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			binding.TextInputEditTextHeightImperFeet.error = null
-			binding.TextInputEditTextHeightImperInches.error = null
-			binding.TextInputEditTextWeightPounds.error = null
+			binding.textInputEditTextHeightImperFeet.error = null
+			binding.textInputEditTextHeightImperInches.error = null
+			binding.textInputEditTextWeightPounds.error = null
 		} else {
-			val feetInches = binding.TextInputEditTextHeightImperFeet.text
+			val feetInches = binding.textInputEditTextHeightImperFeet.text
 			if (feetInches?.isEmpty() == true) {
-				binding.TextInputEditTextHeightImperFeet.error = getString(R.string.profile_error)
+				binding.textInputEditTextHeightImperFeet.error = getString(R.string.profile_error)
 				isValid = false
 			} else {
 				if (parseInt(feetInches) > 0) {
-					binding.TextInputEditTextHeightImperFeet.error = null
+					binding.textInputEditTextHeightImperFeet.error = null
 				} else {
-					binding.TextInputEditTextHeightImperFeet.error = getString(R.string.profile_error)
+					binding.textInputEditTextHeightImperFeet.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			val inchesText = binding.TextInputEditTextHeightImperInches.text
+			val inchesText = binding.textInputEditTextHeightImperInches.text
 			if (inchesText?.isEmpty() == true) {
-				binding.TextInputEditTextHeightImperInches.error = getString(R.string.profile_error)
+				binding.textInputEditTextHeightImperInches.error = getString(R.string.profile_error)
 				isValid = false
 			} else {
 				if (parseInt(inchesText) >= 0) {
-					binding.TextInputEditTextHeightImperInches.error = null
+					binding.textInputEditTextHeightImperInches.error = null
 				} else {
-					binding.TextInputEditTextHeightImperInches.error = getString(R.string.profile_error)
+					binding.textInputEditTextHeightImperInches.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			val weightPoundsText = binding.TextInputEditTextWeightPounds.text
+			val weightPoundsText = binding.textInputEditTextWeightPounds.text
 			if (weightPoundsText?.isEmpty() == true) {
-				binding.TextInputEditTextWeightPounds.error = getString(R.string.profile_error)
+				binding.textInputEditTextWeightPounds.error = getString(R.string.profile_error)
 				isValid = false
 			} else {
 				if (parseDouble(weightPoundsText) > 0.0) {
-					binding.TextInputEditTextWeightPounds.error = null
+					binding.textInputEditTextWeightPounds.error = null
 				} else {
-					binding.TextInputEditTextWeightPounds.error = getString(R.string.profile_error)
+					binding.textInputEditTextWeightPounds.error = getString(R.string.profile_error)
 					isValid = false
 				}
 			}
 
-			binding.TextInputEditTextWeightKg.error = null
-			binding.TextInputEditTextHeightCm.error = null
+			binding.textInputEditTextWeightKg.error = null
+			binding.textInputEditTextHeightCm.error = null
 		}
 
 		val ageText = binding.TextInputEditTextAge.text
@@ -259,29 +259,29 @@ class ProfileFragment : Fragment() {
 		val weightKgStr = "%.01f".format(profile.weightKg)
 
 		// Only update the text field if it's actually a different value, prevents update loops
-		if (binding.TextInputEditTextHeightImperFeet.text?.toString() != "$feet")
-			binding.TextInputEditTextHeightImperFeet.setText("$feet")
-		if (binding.TextInputEditTextHeightImperInches.text?.toString() != "$inches")
-			binding.TextInputEditTextHeightImperInches.setText("$inches")
-		if (binding.TextInputEditTextHeightCm.text?.toString() != totalCmStr)
-			binding.TextInputEditTextHeightCm.setText(totalCmStr)
+		if (binding.textInputEditTextHeightImperFeet.text?.toString() != "$feet")
+			binding.textInputEditTextHeightImperFeet.setText("$feet")
+		if (binding.textInputEditTextHeightImperInches.text?.toString() != "$inches")
+			binding.textInputEditTextHeightImperInches.setText("$inches")
+		if (binding.textInputEditTextHeightCm.text?.toString() != totalCmStr)
+			binding.textInputEditTextHeightCm.setText(totalCmStr)
 		if (binding.TextInputEditTextAge.text?.toString() != "${profile.ageYears}")
 			binding.TextInputEditTextAge.setText("${profile.ageYears}")
-		if (binding.TextInputEditTextWeightPounds.text?.toString() != weightPoundsStr)
-			binding.TextInputEditTextWeightPounds.setText(weightPoundsStr)
-		if (binding.TextInputEditTextWeightKg.text?.toString() != weightKgStr)
-			binding.TextInputEditTextWeightKg.setText(weightKgStr)
+		if (binding.textInputEditTextWeightPounds.text?.toString() != weightPoundsStr)
+			binding.textInputEditTextWeightPounds.setText(weightPoundsStr)
+		if (binding.textInputEditTextWeightKg.text?.toString() != weightKgStr)
+			binding.textInputEditTextWeightKg.setText(weightKgStr)
 
 		if (binding.metricSwitch.isChecked != profile.displayMetric)
 			binding.metricSwitch.isChecked = profile.displayMetric
 
-		binding.TextInputEditTextWeightKg.isVisible = profile.displayMetric
-		binding.TextInputEditTextWeightPounds.isVisible = !profile.displayMetric
+		binding.textInputLayoutWeightKg.isVisible = profile.displayMetric
+		binding.textInputLayoutWeightPounds.isVisible = !profile.displayMetric
 
-		binding.TextInputEditTextHeightCm.visibility = if (profile.displayMetric) View.VISIBLE else View.INVISIBLE
-		binding.TextInputEditTextHeightImperFeet.visibility =
+		binding.textInputLayoutHeightCm.visibility = if (profile.displayMetric) View.VISIBLE else View.INVISIBLE
+		binding.textInputLayoutHeightImperFeet.visibility =
 			if (!profile.displayMetric) View.VISIBLE else View.INVISIBLE
-		binding.TextInputEditTextHeightImperInches.visibility =
+		binding.textInputLayoutHeightImperInches.visibility =
 			if (!profile.displayMetric) View.VISIBLE else View.INVISIBLE
 
 		if (!isCheckedGender(profile.gender)) {

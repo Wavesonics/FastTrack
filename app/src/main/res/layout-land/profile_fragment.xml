@@ -108,7 +108,7 @@
 				app:layout_constraintTop_toBottomOf="@+id/textView_height_title">
 
 				<com.google.android.material.textfield.TextInputEditText
-					android:id="@+id/TextInputEditText_height_cm"
+						android:id="@+id/textInputEditText_height_cm"
 					android:layout_width="96dp"
 					android:layout_height="wrap_content"
 					android:digits="0123456789\n"
@@ -127,7 +127,7 @@
 				app:layout_constraintTop_toBottomOf="@+id/textView_height_title">
 
 				<com.google.android.material.textfield.TextInputEditText
-					android:id="@+id/TextInputEditText_height_imper_feet"
+						android:id="@+id/textInputEditText_height_imper_feet"
 					android:layout_width="64dp"
 					android:layout_height="wrap_content"
 					android:digits="0123456789\n"
@@ -147,7 +147,7 @@
 				app:layout_constraintStart_toEndOf="@+id/textInputLayout_height_imper_feet">
 
 				<com.google.android.material.textfield.TextInputEditText
-					android:id="@+id/TextInputEditText_height_imper_inches"
+						android:id="@+id/textInputEditText_height_imper_inches"
 					android:layout_width="96dp"
 					android:layout_height="wrap_content"
 					android:digits="0123456789\n"
@@ -205,7 +205,7 @@
 				app:layout_constraintTop_toBottomOf="@+id/textView_profile_age">
 
 				<com.google.android.material.textfield.TextInputEditText
-					android:id="@+id/TextInputEditText_weight_pounds"
+						android:id="@+id/text_input_edit_text_weight_pounds"
 					android:layout_width="96dp"
 					android:layout_height="wrap_content"
 					android:digits="0123456789\n"
@@ -225,7 +225,7 @@
 				app:layout_constraintTop_toBottomOf="@+id/textView_profile_age">
 
 				<com.google.android.material.textfield.TextInputEditText
-					android:id="@+id/TextInputEditText_weight_kg"
+						android:id="@+id/text_input_edit_text_weight_kg"
 					android:layout_width="96dp"
 					android:layout_height="wrap_content"
 					android:digits="0123456789."
