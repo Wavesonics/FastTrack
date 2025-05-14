@@ -1,0 +1,2 @@
+- Fixed "Already Started" Date/Time picker not taking timezone into account
+- Fixed Stage counters not functioning correctly in the 1 hour after entering a new stage
