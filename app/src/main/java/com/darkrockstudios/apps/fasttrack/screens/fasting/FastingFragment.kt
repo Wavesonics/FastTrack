@@ -1,10 +1,12 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.text.util.LocalePreferences
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.AlertService
@@ -227,9 +230,10 @@ class FastingFragment : Fragment() {
 			val selectedDate = Instant.fromEpochMilliseconds(selectedDateEpochMs)
 			val selectedDateLocal = selectedDate.toLocalDateTime(TimeZone.UTC)
 
+			val timeFormat = if (shouldUse24HourFormat(requireContext())) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
 			val timePicker: MaterialTimePicker = MaterialTimePicker.Builder()
 				.setTitleText(R.string.start_picker_title)
-				.setTimeFormat(TimeFormat.CLOCK_12H)
+				.setTimeFormat(timeFormat)
 				.build()
 
 			timePicker.show(childFragmentManager, "FastStartTimePicker")
@@ -455,6 +459,20 @@ class FastingFragment : Fragment() {
 			database.fastDao().insertAll(newEntry)
 		} else {
 			Napier.e("No start time when ending fast!")
+		}
+	}
+
+	private fun shouldUse24HourFormat(context: Context): Boolean {
+		return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+			when (LocalePreferences.getHourCycle()) {
+				LocalePreferences.HourCycle.H11, LocalePreferences.HourCycle.H12 -> false
+				LocalePreferences.HourCycle.H23, LocalePreferences.HourCycle.H24 -> true
+				else -> {
+					Locale.getDefault() != Locale.US
+				}
+			}
+		} else {
+			DateFormat.is24HourFormat(context)
 		}
 	}
 }
