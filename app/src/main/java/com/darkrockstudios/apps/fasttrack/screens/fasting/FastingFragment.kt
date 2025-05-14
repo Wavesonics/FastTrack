@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,9 +32,8 @@ import com.google.android.material.timepicker.TimeFormat
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import kotlinx.datetime.toJavaInstant
+import kotlinx.datetime.*
+import kotlinx.datetime.TimeZone
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
 import org.koin.android.ext.android.inject
@@ -43,7 +41,6 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
-import kotlin.time.Duration.Companion.minutes
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
@@ -196,10 +193,10 @@ class FastingFragment : Fragment() {
 
 				updateUi()
 
-				Napier.i("Debug: Increased fasting time by 1 hour")
+				Napier.d("Debug: Increased fasting time by 1 hour")
 			}
 		} else {
-			Napier.w("Debug: Cannot increase fasting time when not fasting")
+			Napier.d("Debug: Cannot increase fasting time when not fasting")
 		}
 	}
 
@@ -220,25 +217,38 @@ class FastingFragment : Fragment() {
 
 		val datePicker =
 			MaterialDatePicker.Builder.datePicker()
-				.setTitleText("When did you start your Fast")
+				.setTitleText(R.string.start_picker_title)
 				.setSelection(MaterialDatePicker.todayInUtcMilliseconds())
 				.build()
 		datePicker.show(childFragmentManager, "FastStartDatePicker")
 
 		datePicker.addOnPositiveButtonClickListener { selectedDateEpochMs ->
 
-			val selectedData = Instant.fromEpochMilliseconds(selectedDateEpochMs)
+			val selectedDate = Instant.fromEpochMilliseconds(selectedDateEpochMs)
+			val selectedDateLocal = selectedDate.toLocalDateTime(TimeZone.UTC)
 
 			val timePicker: MaterialTimePicker = MaterialTimePicker.Builder()
-				.setTitleText("When did you start your Fast")
+				.setTitleText(R.string.start_picker_title)
 				.setTimeFormat(TimeFormat.CLOCK_12H)
 				.build()
 
 			timePicker.show(childFragmentManager, "FastStartTimePicker")
 			timePicker.addOnPositiveButtonClickListener {
 
-				val selectedDateTime = selectedData + timePicker.hour.hours + timePicker.minute.minutes
-				Log.i("TAG", selectedDateTime.toString())
+				val localDateTime = LocalDateTime(
+					year = selectedDateLocal.year,
+					month = selectedDateLocal.month,
+					dayOfMonth = selectedDateLocal.dayOfMonth,
+					hour = timePicker.hour,
+					minute = timePicker.minute,
+					second = 0,
+					nanosecond = 0
+				)
+
+				val userTimeZone = TimeZone.currentSystemDefault()
+				val selectedDateTime = localDateTime.toInstant(userTimeZone)
+
+				Napier.i("Selected datetime in user timezone ($userTimeZone): $selectedDateTime")
 				onDateTimePicked(Date.from(selectedDateTime.toJavaInstant()))
 			}
 		}

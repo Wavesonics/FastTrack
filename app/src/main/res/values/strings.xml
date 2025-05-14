@@ -40,6 +40,8 @@
 	<string name="confirm_start_fast_neutral">Already Started</string>
 	<string name="confirm_start_fast_negative">No</string>
 
+	<string name="start_picker_title">When did you start your Fast</string>
+
 	<string name="confirm_end_fast_title">End Fast?</string>
 	<string name="confirm_end_fast_positive">Yes</string>
 	<string name="confirm_end_fast_negative">No</string>
