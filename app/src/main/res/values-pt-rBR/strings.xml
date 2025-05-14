@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="action_share">Compartilhar</string>
+	<string name="action_info">Informação</string>
+	<string name="action_about">Sobre</string>
+	<string name="app_name">Fast Track</string>
+	<string name="intro_00_title">Bem-vindo ao Fast Track!</string>
+	<string name="intro_01_title">Ajuda Motivacional</string>
+	<string name="intro_00_description">Sobre o que é este aplicativo?</string>
+	<string name="intro_02_title">Um aplicativo simples e gratuito</string>
+	<string name="intro_01_description">A ideia principal por trás do Fast Track é ajudar a motivá-lo durante seus
+		jejuns e explicar o que seu corpo está fazendo em diferentes estágios do jejum.
+	</string>
+	<string name="intro_03_title">Jejum Intermitente</string>
+	<string name="intro_04_title">É isso!</string>
+	<string name="intro_04_description">Agora vá começar a jejuar!</string>
+	<string name="intro_02_description">Fast Track é e sempre será gratuito e de código aberto. Não há conta a ser
+		criada, nem compras dentro do aplicativo, nem anúncios a evitar. E ele nem mesmo tem acesso à internet, então
+		não pode enviar seus dados para lugar nenhum.
+	</string>
+	<string name="about_name">Adam Brown</string>
+	<string name="intro_03_description">Esta é uma nova área de estudo que está mostrando muitos benefícios além da
+		simples perda de peso.\n\nPara explorar o que sabemos sobre o jejum e o que a pesquisa está dizendo, confira a
+		seção de Informações deste app!
+	</string>
+	<string name="about_subtitle">Desenvolvedor Mobile</string>
+	<string name="title_fasting">Jejum</string>
+	<string name="title_log">Registro</string>
+	<string name="title_profile">Perfil</string>
+	<string name="about_brief">Escalador, montanhista, engenheiro de software e defensor de código aberto.</string>
+	<string name="fasting_fragment_label">Rápido</string>
+	<string name="start_fast_button">Iniciar Rápido</string>
+	<string name="end_fast_button">Encerrar Rápido</string>
+	<string name="fasting_energy_mode">Modo de Energia: %1$s</string>
+	<string name="fasting_energy_mode_glucose">Glicose</string>
+	<string name="fasting_energy_mode_fat">Corpos Cetônicos</string>
+	<string name="confirm_start_fast_title">Começar Rápido?</string>
+	<string name="confirm_start_fast_positive">Agora</string>
+	<string name="confirm_start_fast_negative">Não</string>
+	<string name="confirm_start_fast_neutral">Já Começou</string>
+	<string name="start_picker_title">Quando você começou seu Jejum?</string>
+	<string name="confirm_end_fast_title">Terminar jejum?</string>
+	<string name="confirm_end_fast_positive">Sim</string>
+	<string name="confirm_end_fast_negative">Não</string>
+	<string name="confirm_delete_fast_title">Excluir Rápido?</string>
+	<string name="confirm_delete_fast_positive">Sim</string>
+	<string name="fast_status_fasting">Jejum em andamento</string>
+	<string name="confirm_delete_fast_negative">Não</string>
+	<string name="fast_status_not_fasting">Você não está jejuando.</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="log_entry_started">Iniciado: %1$s</string>
+	<string name="next_stage">Próxima etapa em: %1$d horas</string>
+	<string name="log_entry_length">Duração: %1$d horas</string>
+	<string name="log_entry_ketosis">Cetoze: %1$d horas</string>
+	<string name="profile_age_label">Idade</string>
+	<string name="log_entry_autophagy">Autofagia: %1$d horas</string>
+	<string name="profile_age_years">anos</string>
+	<string name="profile_weight_label">Peso</string>
+	<string name="profile_weight_pounds_label">Libras</string>
+	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_update_button">Atualizar</string>
+	<string name="profile_bmi_label">IMC:</string>
+	<string name="profile_bmi_category_normal">Normal</string>
+	<string name="profile_bmi_category_overweight">Acima do peso</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_obese">Obeso</string>
+	<string name="profile_bmi_category_underweight">Abaixo do peso</string>
+	<string name="profile_bmi_category_morbidly_obese">Obeso mórbido</string>
+	<string name="profile_error">Valor inválido</string>
+	<string name="profile_bmr_label">BMR:</string>
+	<string name="profile_bmr_value">%.0f" kCal / dia</string>
+	<string name="profile_height_label">Altura</string>
+	<string name="profile_height_imper_inches_label">polegadas</string>
+	<string name="profile_height_imper_feet_label">Pés</string>
+	<string name="profile_height_metric_label">cm</string>
+	<string name="profile_gender_male">Masculino</string>
+	<string name="profile_gender_female">Feminino</string>
+	<string name="manual_add_title">Adição Manual</string>
+	<string name="manual_add_length_hint">Duração (Horas)</string>
+	<string name="manual_add_complete_button">Adicionar</string>
+	<string name="manual_add_fast_started_on">Iniciado rapidamente em: %1$s</string>
+	<string name="manual_start_title">Início Rápido</string>
+	<string name="fast_autophagy_label">Autofagia:</string>
+	<string name="fast_ketosis_label">Cetoacidose:</string>
+	<string name="stage_fasting_title">Jejum</string>
+	<string name="fast_fat_burn_label">Queima de Gordura:</string>
+	<string name="stage_fasting_description">Seu corpo está consumindo suas reservas de glicose, continue assim!
+	</string>
+	<string name="stage_fat_burning_title">Queima de Gordura</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Ponto Doce do Jejum</string>
+	<string name="stage_fat_peak_fat_burning_title">Queima de Gordura Máxima</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Você está no ponto ideal do jejum, continue assim!</string>
+	<string name="stage_fat_burning_description">Seus estoques de glicose estão esgotados! Seu corpo agora está
+		queimando gordura para energia. Um treino nas próximas horas seria o ideal.
+	</string>
+	<string name="stage_autophagy_title">Autofagia</string>
+	<string name="stage_autophagy_description">Seu corpo começou a autófagia!</string>
+	<string name="stage_optimal_autophagy_title">Autofagia Ideal</string>
+	<string name="stage_fat_peak_fat_burning_description">Seu corpo está queimando gordura rapidamente agora, e a cetose
+		começou.
+	</string>
+	<string name="phase_ketosis">Cetoacidose</string>
+	<string name="phase_glucose">Queima de Glicose</string>
+	<string name="phase_autophagy">Autofagia</string>
+	<string name="phase_fat_burning">Queima de Gordura</string>
+	<string name="phase_optimal_autophagy">Autofagia Ótima</string>
+	<string name="stage_optimal_autophagy_description">A autofagia está a todo vapor! Continue assim, entre agora e 72
+		horas a autofagia será muito eficaz.
+	</string>
+	<string name="share_text_past_tense">Eu fastiei por %1$d horas e %2$d minutos!</string>
+	<string name="notification_channel_name">Alertas de Jejum</string>
+	<string name="stage_alerts_checkbox">Alertas de Estágio</string>
+	<string name="share_text">Eu estive jejuando por %1$d horas e %2$d minutos! Meu corpo está consumindo atualmente
+		%3$s para energia.
+	</string>
+	<string name="notification_channel_description">Alertas que informam quando você entrou em uma nova fase do seu
+		jejum.
+	</string>
+	<string name="notification_ketosis_title">Fase Rápida: Cetose</string>
+	<string name="notification_fat_burn_title">Fase Rápida: Queima de Gordura</string>
+	<string name="notification_fat_burn_content">Você esgotou suas reservas de glicose e seu corpo agora está consumindo
+		gordura para obter energia.
+	</string>
+	<string name="notification_autophagy_title">Fase Rápida: Autofagia</string>
+	<string name="notification_optimal_autophagy_title">Fase Rápida: Autofagia Ideal</string>
+	<string name="notification_ketosis_content">Seu corpo agora quebrou reservas de gordura suficientes para que você
+		tenha entrado em Cetoacidose.
+	</string>
+	<string name="notification_autophagy_content">Seu corpo entrou em Autofagia. Células antigas ou danificadas estão
+		sendo consumidas para energia.
+	</string>
+	<string name="info_dialog_ketosis_title">Cetoacidose</string>
+	<string name="info_dialog_fat_burn_title">Queima de Gordura</string>
+	<string name="notification_optimal_autophagy_content">Seu corpo está em Autófago há bastante tempo agora, e sua
+		saúde celular está vendo grandes benefícios.
+	</string>
+	<string name="info_dialog_autophagy_title">Autofagia</string>
+	<string name="info_dialog_bmi_title">Índice de Massa Corporal</string>
+	<string name="info_dialog_fat_burn_content">Neste estágio, seu corpo exauriu suas reservas de glicose. A glicose é
+		armazenada como glicogênio para uso posterior; neste estágio, a maior parte do seu glicogênio armazenado foi
+		decomposta em glicose e consumida como energia.\n\nAgora, ele começa a quebrar o tecido adiposo (gordura) em
+		corpos cetônicos. Além de poder consumir glicose para energia, seu corpo pode alternadamente consumir corpos
+		cetônicos para energia, e à medida que as reservas de glicose diminuem, seu corpo mudará seu modo de energia
+		para corpos cetônicos.
+	</string>
+	<string name="info_dialog_ketosis_content">Nesta fase, seu corpo tem quebrado gordura por tempo suficiente para que
+		ele esteja sendo principalmente alimentado por Corpos Cetônicos em vez de Glicose.\n\nAlém dos benefícios de
+		perda de gordura que isso implica, estudos mostraram benefícios para doenças relacionadas à inflamação, embora o
+		mecanismo de ação para isso atualmente seja desconhecido.
+	</string>
+	<string name="info_dialog_bmr_title">Taxa Metabólica Basal</string>
+	<string name="info_dialog_positive">Legal!</string>
+	<string name="info_dialog_bmi_content">Uma estimativa aproximada do peso saudável que um adulto médio deve ter. É
+		calculada simplesmente dividindo o peso pela altura.\n\nFrequentemente criticada por ser imprecisa, é verdade
+		que existem fatores que podem torná-la enganosa. Por exemplo: um fisiculturista extremamente musculoso, ou uma
+		pessoa muito alta ou muito baixa. Esses casos extremos obtêm resultados imprecisos a partir do cálculo básico do
+		IMC.\n\nMas para a maioria das pessoas, isso é uma estimativa boa o suficiente para saber se você está dentro de
+		uma faixa de peso saudável.
+	</string>
+	<string name="info_dialog_autophagy_content">Neste estágio, seu corpo começou a ativar mais processos para a
+		colheita de energia. Além de quebrar o tecido adiposo em Corpos Cetônicos, ele começou a buscar células velhas
+		ou danificadas e consumi-las para obter mais energia.\n\nA pesquisa sobre esta fase está em seus estágios
+		iniciais, mas parece que este é um mecanismo importante para o corpo evitar problemas antes que eles comecem.
+		Por exemplo, as taxas de câncer são mais baixas em pessoas que regularmente entram em Autofagia. Além disso,
+		alguns estudos também mostraram taxas mais baixas de doença de Alzheimer.
+	</string>
+	<string name="info_dialog_bmr_content">Esta é uma estimativa do número de calorias que seu corpo queimará em um dia
+		enquanto estiver completamente em repouso. Se você só ficasse deitado na cama o dia todo, é essa a quantidade de
+		calorias que você poderia ingerir sem ganhar peso.\n\nEste é um número crítico para pessoas que estão fazendo
+		dieta restringindo a ingestão diária de calorias.
+	</string>
+	<string name="info_page_title_info">Informações</string>
+	<string name="info_page_title_tips">Dicas</string>
+	<string name="title_activity_info">Informações sobre jejum</string>
+	<string name="log_total_autophagy">Autofagia Total:</string>
+	<string name="log_total_ketosis">Total Cetonas:</string>
+	<string name="log_total_hours">%1$d horas</string>
+	<string name="profile_metric_switch">Métrico</string>
+	<string name="title_activity_intro">Introdução</string>
+</resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="action_info">信息</string>
+	<string name="action_about">关于</string>
+	<string name="action_share">分享</string>
+	<string name="app_name">快车道</string>
+	<string name="intro_00_title">欢迎来到 Fast Track！</string>
+	<string name="intro_01_title">激励帮助</string>
+	<string name="intro_02_title">一个简单的免费应用程序</string>
+	<string name="intro_00_description">这个应用程序是关于什么的？</string>
+	<string name="intro_03_title">间歇性禁食</string>
+	<string name="intro_02_description">Fast Track
+		永远是免费的、开源的。无需创建帐户，无法进行应用内购买，也没有广告需要避免。而且它甚至没有网络访问，因此无法将您的数据发送到任何地方。
+	</string>
+	<string name="intro_04_title">就这样！</string>
+	<string name="intro_01_description">Fast Track
+		的主要理念是帮助您在禁食期间保持动力，并向您解释在不同的禁食阶段您的身体正在发生什么。
+	</string>
+	<string name="intro_03_description">
+		这是一个新的研究领域，显示出了超越简单减肥的许多好处。\n\n要了解我们对禁食的了解以及研究结果所表明的内容，请查看此应用的信息部分！
+	</string>
+	<string name="about_name">亚当·布朗</string>
+	<string name="intro_04_description">现在去开始禁食吧！</string>
+	<string name="title_fasting">禁食</string>
+	<string name="about_subtitle">移动开发者</string>
+	<string name="title_log">日志</string>
+	<string name="title_profile">个人资料</string>
+	<string name="start_fast_button">快速开始</string>
+	<string name="about_brief">攀登者、登山者、软件工程师和开源倡导者。</string>
+	<string name="end_fast_button">结束快速</string>
+	<string name="fasting_fragment_label">快速</string>
+	<string name="fasting_energy_mode">能量模式：%1$s</string>
+	<string name="fasting_energy_mode_glucose">葡萄糖</string>
+	<string name="fasting_energy_mode_fat">酮体</string>
+	<string name="confirm_start_fast_title">快速开始吗？</string>
+	<string name="confirm_start_fast_positive">现在</string>
+	<string name="confirm_start_fast_neutral">已经开始</string>
+	<string name="confirm_start_fast_negative">不</string>
+	<string name="confirm_end_fast_title">结束快速吗？</string>
+	<string name="start_picker_title">你什么时候开始你的禁食？</string>
+	<string name="confirm_end_fast_negative">不</string>
+	<string name="confirm_end_fast_positive">是的</string>
+	<string name="confirm_delete_fast_positive">是的</string>
+	<string name="confirm_delete_fast_title">删除快速吗？</string>
+	<string name="confirm_delete_fast_negative">不</string>
+	<string name="fast_status_fasting">禁食进行中</string>
+	<string name="fast_status_not_fasting">你没有禁食。</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="next_stage">下一个阶段在：%1$d 小时后</string>
+	<string name="log_entry_started">开始：%1$s</string>
+	<string name="log_entry_ketosis">酮症：%1$d 小时</string>
+	<string name="log_entry_length">长度：%1$d 小时</string>
+	<string name="log_entry_autophagy">自噬：%1$d 小时</string>
+	<string name="profile_age_years">年</string>
+	<string name="profile_weight_label">体重</string>
+	<string name="profile_weight_pounds_label">磅</string>
+	<string name="profile_update_button">更新</string>
+	<string name="profile_weight_kg_label">千克</string>
+	<string name="profile_bmi_label">体重指数：</string>
+	<string name="profile_bmi_category_underweight">体重过轻</string>
+	<string name="profile_bmi_category_normal">正常</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_overweight">超重</string>
+	<string name="profile_bmi_category_obese">肥胖</string>
+	<string name="profile_bmi_category_morbidly_obese">病态肥胖</string>
+	<string name="profile_error">错误的值</string>
+	<string name="profile_age_label">年龄</string>
+	<string name="profile_bmr_label">基础代谢率：</string>
+	<string name="profile_height_imper_feet_label">英尺</string>
+	<string name="profile_height_label">身高</string>
+	<string name="profile_bmr_value">%.0f" 千卡 / 天</string>
+	<string name="profile_height_imper_inches_label">英寸</string>
+	<string name="profile_height_metric_label">厘米</string>
+	<string name="profile_gender_female">女性</string>
+	<string name="profile_gender_male">男</string>
+	<string name="manual_add_title">手动添加</string>
+	<string name="manual_add_complete_button">添加</string>
+	<string name="manual_add_length_hint">长度（小时）</string>
+	<string name="manual_add_fast_started_on">快速启动于：%1$s</string>
+	<string name="manual_start_title">快速开始</string>
+	<string name="fast_ketosis_label">酮症：</string>
+	<string name="fast_autophagy_label">自噬：</string>
+	<string name="fast_fat_burn_label">脂肪燃烧：</string>
+	<string name="stage_fasting_title">禁食</string>
+	<string name="stage_fat_burning_title">脂肪燃烧</string>
+	<string name="stage_fat_fasting_sweet_spot_title">禁食最佳时机</string>
+	<string name="stage_fasting_description">你的身体正在消耗其葡萄糖储备，继续保持！</string>
+	<string name="stage_fat_burning_description">
+		您的葡萄糖储存已耗尽！您的身体现在正在燃烧脂肪以获取能量。在接下来的几个小时内进行锻炼将是最佳选择。
+	</string>
+	<string name="stage_fat_fasting_sweet_spot_description">你在禁食的最佳状态，继续保持！</string>
+	<string name="stage_fat_peak_fat_burning_title">高峰脂肪燃烧</string>
+	<string name="stage_autophagy_title">自噬</string>
+	<string name="stage_autophagy_description">你的身体已经开始自噬了！</string>
+	<string name="stage_fat_peak_fat_burning_description">你的身体现在正在快速燃烧脂肪，酮症已经开始。</string>
+	<string name="stage_optimal_autophagy_title">最佳自噬</string>
+	<string name="phase_glucose">葡萄糖燃烧</string>
+	<string name="phase_fat_burning">燃脂</string>
+	<string name="stage_optimal_autophagy_description">自噬正在全面进行！继续保持，在接下来的72小时内，自噬将非常有效。
+	</string>
+	<string name="phase_ketosis">酮症</string>
+	<string name="phase_optimal_autophagy">最佳自噬</string>
+	<string name="phase_autophagy">自噬</string>
+	<string name="stage_alerts_checkbox">阶段警报</string>
+	<string name="share_text">我已经禁食了 %1$d 小时和 %2$d 分钟！我的身体目前正在消耗 %3$s 来获取能量。</string>
+	<string name="share_text_past_tense">我禁食了 %1$d 小时和 %2$d 分钟！</string>
+	<string name="notification_channel_name">禁食提醒</string>
+	<string name="notification_channel_description">在您进入禁食的新阶段时的提醒。</string>
+	<string name="notification_fat_burn_title">快速阶段：脂肪燃烧</string>
+	<string name="notification_ketosis_title">快速阶段：酮症</string>
+	<string name="notification_fat_burn_content">您已耗尽葡萄糖储备，您的身体现在正在消耗脂肪以获取能量。</string>
+	<string name="notification_autophagy_title">快速阶段：自噬</string>
+	<string name="notification_ketosis_content">你的身体现在已经消耗了足够的脂肪储备，进入了酮症状态。</string>
+	<string name="notification_optimal_autophagy_title">快速阶段：最佳自噬</string>
+	<string name="notification_autophagy_content">你的身体已经进入自噬状态。旧的或受损的细胞现在正在被消耗以获取能量。
+	</string>
+	<string name="info_dialog_fat_burn_title">脂肪燃烧</string>
+	<string name="notification_optimal_autophagy_content">
+		你的身体已经处于自噬状态很长时间了，你的细胞健康正在看到很大的好处。
+	</string>
+	<string name="info_dialog_ketosis_title">酮症</string>
+	<string name="info_dialog_autophagy_title">自噬</string>
+	<string name="info_dialog_bmi_title">身体质量指数</string>
+	<string name="info_dialog_ketosis_content">
+		在这一阶段，你的身体已经足够长时间地分解脂肪，以至于你的身体主要依靠酮体而非葡萄糖来供能。\n\n除了这意味着脂肪损失的好处外，研究显示这对与炎症相关的疾病也有好处，尽管目前对此的作用机制仍不清楚。
+	</string>
+	<string name="info_dialog_fat_burn_content">
+		在这个阶段，您的身体已经耗尽了葡萄糖储备。葡萄糖以糖原的形式储存以备后用，在这个阶段，您大多数储存的糖原已经被分解为葡萄糖并用于能量消耗。\n\n现在，身体开始将脂肪组织分解为酮体。除了能够消耗葡萄糖作为能量外，您的身体还可以选择消耗酮体作为能量，随着葡萄糖储备的减少，您的身体将切换其能量模式为酮体。
+	</string>
+	<string name="info_dialog_bmr_title">基础代谢率</string>
+	<string name="info_dialog_positive">酷！</string>
+	<string name="info_dialog_autophagy_content">
+		在这个阶段，您的身体已开始激活更多的能量收集过程。除了将脂肪组织分解为酮体，它还开始寻找老旧或受损的细胞，并消耗它们以获取更多能量。\n\n关于这个阶段的研究仍处于早期阶段，但看起来这是身体在问题发生之前防止它们的一个重要机制。例如，定期进入自噬状态的人群癌症发生率较低。此外，一些研究还显示阿尔茨海默病的发生率也较低。
+	</string>
+	<string name="info_page_title_info">信息</string>
+	<string name="info_page_title_tips">提示</string>
+	<string name="info_dialog_bmr_content">
+		这是您在完全静止的状态下，身体每天烧掉的卡路里数的估算。如果您整天躺在床上，那么这是您可以摄入而不会增加体重的卡路里数。\n\n这个数字对通过限制每日摄入卡路里来减肥的人来说至关重要。
+	</string>
+	<string name="title_activity_info">禁食信息</string>
+	<string name="log_total_autophagy">总自噬：</string>
+	<string name="log_total_hours">%1$d 小时</string>
+	<string name="log_total_ketosis">总酮症：</string>
+	<string name="info_dialog_bmi_content">
+		一个平均成年人应该达到的健康体重的粗略估计。它的计算方法很简单，就是将体重除以身高。\n\n尽管常常被批评为不准确，但确实存在一些因素可能导致其误导性。例如：一个极其肌肉发达的健美运动员，或者一个非常高或非常矮的人。这些极端情况将会从基本的
+		BMI 计算中得到不准确的结果。\n\n但对于大多数人来说，这已足够作为判断你是否处于健康体重范围的估计。
+	</string>
+	<string name="profile_metric_switch">公制</string>
+	<string name="title_activity_intro">介绍</string>
+</resources>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="action_info">Información</string>
+	<string name="action_share">Compartir</string>
+	<string name="action_about">Acerca de</string>
+	<string name="app_name">Vía Rápida</string>
+	<string name="intro_01_title">Ayuda Motivacional</string>
+	<string name="intro_00_title">¡Bienvenido a Fast Track!</string>
+	<string name="intro_00_description">¿De qué se trata esta aplicación?</string>
+	<string name="intro_03_title">Ayuno Intermitente</string>
+	<string name="intro_02_title">Una aplicación gratuita y sencilla</string>
+	<string name="intro_01_description">La idea principal detrás de Fast Track es ayudarte a motivarte durante tus
+		ayunos y explicarte qué está haciendo tu cuerpo en las diferentes etapas del ayuno.
+	</string>
+	<string name="intro_04_title">¡Eso es todo!</string>
+	<string name="intro_04_description">¡Ahora ve a empezar el ayuno!</string>
+	<string name="about_name">Adam Brown</string>
+	<string name="intro_03_description">Esta es una nueva área de estudio que está mostrando muchos beneficios más allá
+		de la simple pérdida de peso.\n\nPara explorar lo que sabemos sobre el ayuno y lo que la investigación está
+		diciendo, ¡consulta la sección de Información de esta aplicación!
+	</string>
+	<string name="about_subtitle">Desarrollador móvil</string>
+	<string name="intro_02_description">Fast Track es y siempre será gratis y de código abierto. No hay cuenta que
+		crear, no hay compras dentro de la aplicación, no hay anuncios que evitar. Y ni siquiera tiene acceso a
+		Internet, por lo que no puede enviar tus datos a ningún lugar.
+	</string>
+	<string name="title_fasting">Ayuno</string>
+	<string name="about_brief">Escalador, montañista, ingeniero de software y defensor del código abierto.</string>
+	<string name="title_log">Registro</string>
+	<string name="title_profile">Perfil</string>
+	<string name="fasting_fragment_label">Rápido</string>
+	<string name="start_fast_button">Comenzar Rápido</string>
+	<string name="end_fast_button">Terminar Rápido</string>
+	<string name="fasting_energy_mode_glucose">Glucosa</string>
+	<string name="fasting_energy_mode">Modo de energía: %1$s</string>
+	<string name="fasting_energy_mode_fat">Cuerpos cetónicos</string>
+	<string name="confirm_start_fast_title">¿Comenzar rápido?</string>
+	<string name="confirm_start_fast_neutral">Ya Comenzó</string>
+	<string name="confirm_start_fast_negative">No</string>
+	<string name="start_picker_title">¿Cuándo comenzaste tu ayuno?</string>
+	<string name="confirm_end_fast_positive">Sí</string>
+	<string name="confirm_start_fast_positive">Ahora</string>
+	<string name="confirm_end_fast_title">¿Terminar ayuno?</string>
+	<string name="confirm_end_fast_negative">No</string>
+	<string name="confirm_delete_fast_positive">Sí</string>
+	<string name="confirm_delete_fast_title">¿Eliminar Rápido?</string>
+	<string name="confirm_delete_fast_negative">No</string>
+	<string name="fast_status_fasting">Ayuno en progreso</string>
+	<string name="next_stage">Siguiente etapa en: %1$d horas</string>
+	<string name="fast_status_not_fasting">No estás ayunando.</string>
+	<string name="log_entry_started">Iniciado: %1$s</string>
+	<string name="log_entry_length">Duración: %1$d horas</string>
+	<string name="log_entry_ketosis">Cetosis: %1$d horas</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="log_entry_autophagy">Autofagia: %1$d horas</string>
+	<string name="profile_age_label">Edad</string>
+	<string name="profile_age_years">años</string>
+	<string name="profile_weight_label">Peso</string>
+	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_update_button">Actualizar</string>
+	<string name="profile_weight_pounds_label">Libras</string>
+	<string name="profile_bmi_label">IMC:</string>
+	<string name="profile_bmi_category_underweight">Bajo peso</string>
+	<string name="profile_bmi_category_normal">Normal</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_overweight">Sobrepeso</string>
+	<string name="profile_bmi_category_morbidly_obese">Obesidad mórbida</string>
+	<string name="profile_bmr_label">TMB:</string>
+	<string name="profile_bmi_category_obese">Obeso</string>
+	<string name="profile_error">Valor incorrecto</string>
+	<string name="profile_height_label">Altura</string>
+	<string name="profile_height_imper_feet_label">Pies</string>
+	<string name="profile_bmr_value">%.0f" kCal / día</string>
+	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_gender_male">Masculino</string>
+	<string name="profile_height_imper_inches_label">pulgadas</string>
+	<string name="profile_gender_female">Femenino</string>
+	<string name="manual_add_title">Agregar manualmente</string>
+	<string name="manual_add_complete_button">Agregar</string>
+	<string name="manual_add_length_hint">Duración (Horas)</string>
+	<string name="manual_start_title">Comenzar Rápido</string>
+	<string name="manual_add_fast_started_on">Iniciado rápido en: %1$s</string>
+	<string name="fast_autophagy_label">Autofagia:</string>
+	<string name="fast_ketosis_label">Cetoacidosis:</string>
+	<string name="stage_fasting_title">Ayuno</string>
+	<string name="fast_fat_burn_label">Quema de Grasa:</string>
+	<string name="stage_fat_burning_title">Quema de grasa</string>
+	<string name="stage_fasting_description">¡Tu cuerpo está consumiendo sus reservas de glucosa, ¡sigue así!</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Punto dulce de ayuno</string>
+	<string name="stage_fat_burning_description">¡Tus reservas de glucosa están agotadas! Tu cuerpo ahora está quemando
+		grasa para obtener energía. Un entrenamiento en las próximas horas sería óptimo.
+	</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Estás en el punto dulce del ayuno, ¡sigue así!</string>
+	<string name="stage_autophagy_title">Autofagia</string>
+	<string name="stage_fat_peak_fat_burning_description">Tu cuerpo está quemando grasa rápidamente ahora, y la cetosis
+		ha comenzado.
+	</string>
+	<string name="stage_fat_peak_fat_burning_title">Pico de quema de grasa</string>
+	<string name="stage_autophagy_description">¡Tu cuerpo ha comenzado la autofagia!</string>
+	<string name="stage_optimal_autophagy_title">Autofagia Óptima</string>
+	<string name="phase_glucose">Quema de Glucosa</string>
+	<string name="phase_fat_burning">Quema de grasa</string>
+	<string name="stage_optimal_autophagy_description">¡La autofagia está en pleno auge! ¡Sigue así, entre ahora y 72
+		horas la autofagia será muy efectiva!
+	</string>
+	<string name="phase_ketosis">Cetoacidosis</string>
+	<string name="phase_autophagy">Autofagia</string>
+	<string name="stage_alerts_checkbox">Alertas de etapa</string>
+	<string name="phase_optimal_autophagy">Autofagia Óptima</string>
+	<string name="share_text_past_tense">Ayuné durante %1$d horas y %2$d minutos.</string>
+	<string name="share_text">¡He estado ayunando durante %1$d horas y %2$d minutos! Mi cuerpo está consumiendo
+		actualmente %3$s para obtener energía.
+	</string>
+	<string name="notification_channel_name">Alertas de Ayuno</string>
+	<string name="notification_fat_burn_title">Etapa Rápida: Quema de Grasas</string>
+	<string name="notification_channel_description">Alertas que te notifican cuando has entrado en una nueva fase de tu
+		ayuno.
+	</string>
+	<string name="notification_ketosis_title">Fase Rápida: Cetoacidosis</string>
+	<string name="notification_ketosis_content">Tu cuerpo ha descompuesto suficientes reservas de grasa que has entrado
+		en cetosis.
+	</string>
+	<string name="notification_autophagy_title">Fase Rápida: Autofagia</string>
+	<string name="notification_autophagy_content">Tu cuerpo ha entrado en Autophagy. Las células viejas o dañadas ahora
+		están siendo consumidas para obtener energía.
+	</string>
+	<string name="notification_optimal_autophagy_title">Etapa rápida: Autofagia óptima</string>
+	<string name="notification_optimal_autophagy_content">Tu cuerpo ha estado en autofagia durante mucho tiempo, y tu
+		salud celular está viendo grandes beneficios.
+	</string>
+	<string name="info_dialog_fat_burn_title">Quema de grasa</string>
+	<string name="info_dialog_ketosis_title">Cetoacidosis</string>
+	<string name="info_dialog_autophagy_title">Autofagia</string>
+	<string name="info_dialog_ketosis_content">En esta etapa, tu cuerpo ha estado descomponiendo grasa el tiempo
+		suficiente como para que tu cuerpo se esté alimentando principalmente de Cuerpos Cetónicos en lugar de
+		Glucosa.\n\nAdemás de los beneficios de pérdida de grasa que esto implica, estudios han mostrado beneficios para
+		enfermedades relacionadas con la inflamación, aunque el mecanismo de acción para esto actualmente se desconoce.
+	</string>
+	<string name="notification_fat_burn_content">Has agotado tus reservas de glucosa y tu cuerpo ahora está consumiendo
+		grasa para obtener energía.
+	</string>
+	<string name="info_dialog_bmi_title">Índice de Masa Corporal</string>
+	<string name="info_dialog_autophagy_content">En esta etapa, tu cuerpo ha comenzado a activar algunos procesos
+		adicionales para la obtención de energía. Además de descomponer el tejido adiposo en cuerpos cetónicos, ha
+		comenzado a buscar células viejas o dañadas, y a consumarlas para obtener más energía.\n\nLa investigación sobre
+		esta fase está en sus primeras etapas, pero parece que este es un mecanismo importante para que el cuerpo
+		detenga problemas antes de que comiencen. Por ejemplo, las tasas de cáncer son más bajas en personas que entran
+		regularmente en Autofagia. Además, algunos estudios también han demostrado tasas más bajas de la enfermedad de
+		Alzheimer.
+	</string>
+	<string name="info_dialog_bmr_title">Tasa Metabólica Basal</string>
+	<string name="info_dialog_fat_burn_content">En esta etapa, tu cuerpo ha agotado tus reservas de glucosa. La glucosa
+		se almacena como glucógeno para su uso posterior; en esta etapa, la mayor parte de tu glucógeno almacenado se ha
+		descompuesto en glucosa y se ha consumido para obtener energía.\n\n Ahora comienza a descomponer el tejido
+		adiposo (grasa) en cuerpos cetónicos. Además de poder consumir glucosa para obtener energía, tu cuerpo también
+		puede consumir cuerpos cetónicos como fuente de energía, y a medida que las reservas de glucosa se agotan, tu
+		cuerpo cambiará su modo de energía a cuerpos cetónicos.
+	</string>
+	<string name="info_dialog_positive">¡Genial!</string>
+	<string name="info_page_title_info">Información</string>
+	<string name="info_page_title_tips">Consejos</string>
+	<string name="title_activity_info">Información sobre el ayuno</string>
+	<string name="info_dialog_bmr_content">Esta es una estimación de la cantidad de calorías que tu cuerpo quemará en un
+		día mientras está completamente en reposo. Si solo estuvieras acostado en la cama todo el día, esta es la
+		cantidad de calorías que podrías consumir sin aumentar de peso.\n\nEste es un número crítico para las personas
+		que están a dieta restringiendo la ingesta diaria de calorías.
+	</string>
+	<string name="log_total_autophagy">Autofagia total:</string>
+	<string name="log_total_ketosis">Ceto total:</string>
+	<string name="info_dialog_bmi_content">Una estimación aproximada del peso saludable que un adulto humano promedio
+		debería tener. Se calcula simplemente dividiendo el peso por la altura.\n\nA menudo se critica por ser inexacto,
+		es cierto que hay factores que pueden hacer que sea engañoso. Por ejemplo: un culturista extremadamente
+		muscular, o una persona muy alta o muy baja. Estos casos extremos obtendrán resultados inexactos de la fórmula
+		básica del IMC.\n\nPero para la mayoría de las personas, esta es una estimación lo suficientemente buena para
+		saber si estás en un rango de peso saludable.
+	</string>
+	<string name="profile_metric_switch">Métrico</string>
+	<string name="log_total_hours">%1$d horas</string>
+	<string name="title_activity_intro">Introducción</string>
+</resources>

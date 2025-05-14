@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="action_about">Über</string>
+	<string name="action_info">Info</string>
+	<string name="action_share">Teilen</string>
+	<string name="app_name">Schnellspur</string>
+	<string name="intro_00_title">Willkommen bei Fast Track!</string>
+	<string name="intro_01_title">Motivationshilfe</string>
+	<string name="intro_00_description">Worum geht es in dieser App?</string>
+	<string name="intro_01_description">Die Hauptidee hinter Fast Track besteht darin, Sie während Ihrer Fastenzeit zu
+		motivieren und Ihnen zu erklären, was Ihr Körper in den verschiedenen Phasen des Fastens tut.
+	</string>
+	<string name="intro_02_title">Eine einfache kostenlose App</string>
+	<string name="intro_03_title">Intermittierendes Fasten</string>
+	<string name="intro_02_description">Fast Track ist und wird immer kostenlos und Open Source sein. Es gibt kein Konto
+		zu erstellen, keine In-App-Käufe, keine Werbung, die man vermeiden muss. Und es hat nicht einmal Internetzugang,
+		also kann es Ihre Daten nirgendwohin senden.
+	</string>
+	<string name="intro_04_title">Das ist es!</string>
+	<string name="intro_04_description">Jetzt geh und fang an zu fasten!</string>
+	<string name="about_name">Adam Brown</string>
+	<string name="about_subtitle">Mobile-Entwickler</string>
+	<string name="title_fasting">Fasten</string>
+	<string name="intro_03_description">Dies ist ein neues Studienfeld, das viele Vorteile über einfachen
+		Gewichtsverlust hinaus aufzeigt.\n\nUm zu erkunden, was wir über das Fasten wissen und was die Forschung dazu
+		sagt, schauen Sie sich den Info-Bereich dieser App an!
+	</string>
+	<string name="about_brief">Kletterer, Bergsteiger, Softwareingenieur und Open-Source-Befürworter.</string>
+	<string name="title_log">Protokoll</string>
+	<string name="title_profile">Profil</string>
+	<string name="fasting_fragment_label">Schnell</string>
+	<string name="start_fast_button">Schnell starten</string>
+	<string name="end_fast_button">Schnell beenden</string>
+	<string name="fasting_energy_mode">Energiemodus: %1$s</string>
+	<string name="fasting_energy_mode_glucose">Glukose</string>
+	<string name="fasting_energy_mode_fat">Ketonkörper</string>
+	<string name="confirm_start_fast_title">Schnell starten?</string>
+	<string name="confirm_start_fast_positive">Jetzt</string>
+	<string name="confirm_start_fast_negative">Nein</string>
+	<string name="confirm_start_fast_neutral">Bereits gestartet</string>
+	<string name="start_picker_title">Wann hast du dein Fasten begonnen?</string>
+	<string name="confirm_end_fast_title">Fast beenden?</string>
+	<string name="confirm_end_fast_positive">Ja</string>
+	<string name="confirm_end_fast_negative">Nein</string>
+	<string name="confirm_delete_fast_title">Löschen schnell?</string>
+	<string name="confirm_delete_fast_positive">Ja</string>
+	<string name="confirm_delete_fast_negative">Nein</string>
+	<string name="fast_status_fasting">Fast im Gange</string>
+	<string name="fast_status_not_fasting">Du fastest nicht.</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="next_stage">Nächste Stufe in: %1$d Stunden</string>
+	<string name="log_entry_started">Gestartet: %1$s</string>
+	<string name="log_entry_length">Länge: %1$d Stunden</string>
+	<string name="log_entry_ketosis">Ketose: %1$d Stunden</string>
+	<string name="log_entry_autophagy">Autophagie: %1$d Stunden</string>
+	<string name="profile_age_label">Alter</string>
+	<string name="profile_age_years">Jahre</string>
+	<string name="profile_weight_label">Gewicht</string>
+	<string name="profile_weight_kg_label">kg</string>
+	<string name="profile_update_button">Aktualisieren</string>
+	<string name="profile_weight_pounds_label">Pfund</string>
+	<string name="profile_bmi_label">BMI:</string>
+	<string name="profile_bmi_category_underweight">Untergewicht</string>
+	<string name="profile_bmi_category_normal">Normal</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_overweight">Übergewicht</string>
+	<string name="profile_bmi_category_obese">Fettleibigkeit</string>
+	<string name="profile_bmi_category_morbidly_obese">Fettleibigkeit</string>
+	<string name="profile_error">Ungültiger Wert</string>
+	<string name="profile_bmr_label">BMR:</string>
+	<string name="profile_bmr_value">%.0f" kCal / Tag</string>
+	<string name="profile_height_label">Höhe</string>
+	<string name="profile_height_imper_feet_label">Fuß</string>
+	<string name="profile_height_imper_inches_label">Zoll</string>
+	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_gender_female">Weiblich</string>
+	<string name="profile_gender_male">Männlich</string>
+	<string name="manual_add_title">Manuell hinzufügen</string>
+	<string name="manual_add_length_hint">Länge (Stunden)</string>
+	<string name="manual_add_complete_button">Hinzufügen</string>
+	<string name="manual_start_title">Schnellstart</string>
+	<string name="fast_autophagy_label">Autophagie:</string>
+	<string name="fast_ketosis_label">Ketose:</string>
+	<string name="fast_fat_burn_label">Fettverbrennung:</string>
+	<string name="manual_add_fast_started_on">Schnell gestartet am: %1$s</string>
+	<string name="stage_fasting_title">Fasten</string>
+	<string name="stage_fat_burning_title">Fettverbrennung</string>
+	<string name="stage_fasting_description">Dein Körper verbraucht seine Glukosespeicher, mach weiter so!</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Fasten Süßigkeitspunkt</string>
+	<string name="stage_fat_burning_description">Ihre Glukosespeicher sind erschöpft! Ihr Körper verbrennt jetzt Fett
+		zur Energiegewinnung. Ein Training in den nächsten paar Stunden wäre optimal.
+	</string>
+	<string name="stage_fat_peak_fat_burning_title">Spitzenfettverbrennung</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Du bist im Fasten-Süßpunkt, mach weiter so!</string>
+	<string name="stage_fat_peak_fat_burning_description">Ihr Körper verbrennt jetzt schnell Fett, und die Ketose hat
+		begonnen.
+	</string>
+	<string name="stage_optimal_autophagy_title">Optimale Autophagie</string>
+	<string name="stage_autophagy_description">Ihr Körper hat mit der Autophagie begonnen!</string>
+	<string name="stage_autophagy_title">Autophagie</string>
+	<string name="phase_fat_burning">Fettverbrennung</string>
+	<string name="stage_optimal_autophagy_description">Autophagie ist in vollem Gange! Mach weiter so, zwischen jetzt
+		und 72 Stunden wird die Autophagie sehr effektiv sein.
+	</string>
+	<string name="phase_glucose">Glucoseverbrennung</string>
+	<string name="phase_ketosis">Ketose</string>
+	<string name="phase_autophagy">Autophagie</string>
+	<string name="phase_optimal_autophagy">Optimale Autophagie</string>
+	<string name="stage_alerts_checkbox">Bühnenwarnungen</string>
+	<string name="share_text">Ich faste seit %1$d Stunden und %2$d Minuten! Mein Körper verbraucht derzeit %3$s für
+		Energie.
+	</string>
+	<string name="share_text_past_tense">Ich faste seit %1$d Stunden und %2$d Minuten!</string>
+	<string name="notification_channel_name">Fastenbenachrichtigungen</string>
+	<string name="notification_fat_burn_title">Schnelle Phase: Fettverbrennung</string>
+	<string name="notification_channel_description">Benachrichtigungen, die Sie informieren, wenn Sie in eine neue Phase
+		Ihres Fastens eingetreten sind.
+	</string>
+	<string name="notification_ketosis_title">Schnelle Phase: Ketose</string>
+	<string name="notification_fat_burn_content">Sie haben Ihre Glykogenreserven erschöpft, und Ihr Körper verbrennt
+		jetzt Fett zur Energiegewinnung.
+	</string>
+	<string name="notification_autophagy_title">Schnelle Phase: Autophagie</string>
+	<string name="notification_ketosis_content">Ihr Körper hat jetzt genügend Fettreserven abgebaut, sodass Sie in den
+		Zustand der Ketose eingetreten sind.
+	</string>
+	<string name="notification_optimal_autophagy_title">Schnellphase: Optimale Autophagie</string>
+	<string name="notification_autophagy_content">Ihr Körper hat die Autophagie erreicht. Alte oder beschädigte Zellen
+		werden jetzt zur Energiegewinnung abgebaut.
+	</string>
+	<string name="info_dialog_fat_burn_title">Fettverbrennung</string>
+	<string name="notification_optimal_autophagy_content">Dein Körper befindet sich jetzt schon seit langer Zeit im
+		Autophagie-Zustand, und deine Zellgesundheit profitiert erheblich davon.
+	</string>
+	<string name="info_dialog_ketosis_title">Ketose</string>
+	<string name="info_dialog_autophagy_title">Autophagie</string>
+	<string name="info_dialog_bmi_title">Body-Mass-Index</string>
+	<string name="info_dialog_fat_burn_content">In dieser Phase hat Ihr Körper Ihre Glukosevorräte aufgebraucht. Glukose
+		wird als Glykogen für späteren Gebrauch gespeichert; in dieser Phase wurde das meiste Ihres gespeicherten
+		Glykogens in Glukose umgewandelt und zur Energiegewinnung konsumiert.\n\nJetzt beginnt er, Fettgewebe (adipöses
+		Gewebe) in Ketonkörper abzubauen. Zusätzlich zu der Fähigkeit, Glukose zur Energiegewinnung zu konsumieren, kann
+		Ihr Körper alternativ Ketonkörper zur Energiegewinnung nutzen, und da die Glukosespeicher niedrig sind, wird Ihr
+		Körper in den Energiemodus Ketonkörper umschalten.
+	</string>
+	<string name="info_dialog_ketosis_content">In dieser Phase hat Ihr Körper Fett lange genug abgebaut, sodass er
+		hauptsächlich von Ketonkörpern angetrieben wird, anstatt von Glukose.\n\nZusätzlich zu den Vorteilen des
+		Fettabbaus hat die Forschung Vorteile bei entzündungsbedingten Krankheiten gezeigt, obwohl der Wirkmechanismus
+		dafür derzeit unbekannt ist.
+	</string>
+	<string name="info_dialog_bmr_title">Basal Metabolic Rate</string>
+	<string name="info_dialog_positive">Cool!</string>
+	<string name="info_page_title_info">Info</string>
+	<string name="info_dialog_autophagy_content">In diesem Stadium hat Ihr Körper begonnen, weitere Prozesse zur
+		Energiebeschaffung zu aktivieren. Neben dem Abbau von Fettgewebe in Ketonkörper hat er begonnen, nach alten oder
+		beschädigten Zellen zu suchen und diese zur Energiegewinnung zu verbrauchen.\n\nDie Forschung zu dieser Phase
+		befindet sich noch in den frühen Stadien, aber es scheint, dass dies ein wichtiger Mechanismus für den Körper
+		ist, um Probleme zu verhindern, bevor sie beginnen. Zum Beispiel sind die Krebsraten bei Menschen, die
+		regelmäßig Autophagie durchlaufen, niedriger. Darüber hinaus haben einige Studien auch niedrigere Raten von
+		Alzheimer-Krankheit gezeigt.
+	</string>
+	<string name="info_dialog_bmr_content">Dies ist eine Schätzung der Anzahl der Kalorien, die Ihr Körper an einem Tag
+		verbrennen wird, während Sie sich vollständig in Ruhe befinden. Wenn Sie den ganzen Tag nur im Bett liegen
+		würden, wäre dies die Menge an Kalorien, die Sie essen könnten, ohne zuzunehmen.\n\nDies ist eine wichtige Zahl
+		für Menschen, die eine Diät einhalten, indem sie die tägliche Kalorienaufnahme einschränken.
+	</string>
+	<string name="info_page_title_tips">Tipps</string>
+	<string name="info_dialog_bmi_content">Eine grobe Schätzung des gesunden Gewichts, das ein durchschnittlicher
+		Erwachsener haben sollte. Es wird einfach berechnet, indem das Gewicht durch die Höhe geteilt wird.\n\nEs wird
+		oft kritisiert, dass es ungenau ist, und es stimmt, dass es Faktoren gibt, die dazu führen können, dass es
+		irreführend ist. Zum Beispiel: ein extrem muskulöser Bodybuilder oder eine sehr große oder sehr kleine Person.
+		Diese Grenzfälle erhalten ungenaue Ergebnisse aus der grundlegenden BMI-Berechnung.\n\nAber für die Mehrheit der
+		Menschen ist dies eine gute Schätzung, um zu wissen, ob Sie sich in einem gesunden Gewichtsbereich befinden.
+	</string>
+	<string name="title_activity_info">Fasteninformationen</string>
+	<string name="log_total_autophagy">Gesamte Autophagie:</string>
+	<string name="log_total_ketosis">Gesamtketose:</string>
+	<string name="log_total_hours">%1$d Stunden</string>
+	<string name="profile_metric_switch">Metrik</string>
+	<string name="title_activity_intro">Einführung</string>
+</resources>

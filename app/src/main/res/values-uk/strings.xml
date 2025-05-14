@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="action_share">Поділитися</string>
+	<string name="app_name">Швидкий шлях</string>
+	<string name="action_about">Про нас</string>
+	<string name="action_info">Інформація</string>
+	<string name="intro_00_title">Ласкаво просимо до Fast Track!</string>
+	<string name="intro_01_title">Мотиваційна допомога</string>
+	<string name="intro_00_description">Що це за застосунок?</string>
+	<string name="intro_02_title">Простий безкоштовний додаток</string>
+	<string name="intro_03_title">Перервне голодування</string>
+	<string name="intro_01_description">Головна ідея Fast Track полягає в тому, щоб допомогти вам залишатися
+		мотивованими під час ваших постів та пояснити, що відбувається з вашим тілом на різних етапах голодування.
+	</string>
+	<string name="intro_04_title">Ось і все!</string>
+	<string name="intro_04_description">Тепер ідіть і починайте пост!</string>
+	<string name="about_name">Адам Браун</string>
+	<string name="intro_02_description">Fast Track є і завжди буде безкоштовним та з відкритим вихідним кодом. Вам не
+		потрібно створювати обліковий запис, немає покупок у додатку, немає реклами, яку потрібно уникати. І він навіть
+		не має доступу до інтернету, тому не може відправляти ваші дані куди-небудь.
+	</string>
+	<string name="about_subtitle">Розробник мобільних додатків</string>
+	<string name="intro_03_description">Це нова сфера досліджень, яка показує багато переваг, що виходять за межі
+		простого зниження ваги.\n\nЩоб дізнатися, що ми знаємо про голодування і що говорить дослідження, перегляньте
+		розділ Інформації в цьому додатку!
+	</string>
+	<string name="title_fasting">Голодання</string>
+	<string name="about_brief">Скелелаз, альпініст, програміст, і адвокат з відкритого програмного забезпечення.
+	</string>
+	<string name="title_log">Журнал</string>
+	<string name="title_profile">Профіль</string>
+	<string name="fasting_fragment_label">Швидко</string>
+	<string name="end_fast_button">Завершити голодування</string>
+	<string name="start_fast_button">Швидкий старт</string>
+	<string name="fasting_energy_mode_glucose">Глюкоза</string>
+	<string name="fasting_energy_mode">Режим енергії: %1$s</string>
+	<string name="fasting_energy_mode_fat">Кетонові тіла</string>
+	<string name="confirm_start_fast_positive">Зараз</string>
+	<string name="confirm_start_fast_title">Почати швидко?</string>
+	<string name="confirm_start_fast_neutral">Вже розпочато</string>
+	<string name="confirm_start_fast_negative">Ні</string>
+	<string name="start_picker_title">Коли ви почали свій Піст?</string>
+	<string name="confirm_end_fast_title">Закінчити пост?</string>
+	<string name="confirm_end_fast_positive">Так.</string>
+	<string name="confirm_end_fast_negative">Ні</string>
+	<string name="confirm_delete_fast_positive">Так.</string>
+	<string name="confirm_delete_fast_title">Видалити Fast?</string>
+	<string name="fast_status_fasting">Швидке прогодження посту</string>
+	<string name="fast_status_not_fasting">Ви не голодуєте.</string>
+	<string name="next_stage">Наступний етап о: %1$d годин</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="log_entry_started">Розпочато: %1$s</string>
+	<string name="confirm_delete_fast_negative">Ні</string>
+	<string name="log_entry_ketosis">Кетоз: %1$d годин</string>
+	<string name="log_entry_length">Тривалість: %1$d годин</string>
+	<string name="profile_age_label">Вік</string>
+	<string name="log_entry_autophagy">Автофагія: %1$d годин</string>
+	<string name="profile_age_years">роки</string>
+	<string name="profile_weight_label">Вага</string>
+	<string name="profile_weight_pounds_label">Фунти</string>
+	<string name="profile_update_button">Оновити</string>
+	<string name="profile_bmi_label">ІМТ:</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_normal">Нормальний</string>
+	<string name="profile_bmi_category_underweight">Недостатня вага</string>
+	<string name="profile_weight_kg_label">кг</string>
+	<string name="profile_bmi_category_overweight">Зайва вага</string>
+	<string name="profile_bmi_category_morbidly_obese">Ожиріння III ступеня</string>
+	<string name="profile_bmi_category_obese">Ожиріння</string>
+	<string name="profile_error">Недопустиме значення</string>
+	<string name="profile_bmr_label">BMR:</string>
+	<string name="profile_bmr_value">%.0f" ккал / добу</string>
+	<string name="profile_height_imper_inches_label">дюйми</string>
+	<string name="profile_height_imper_feet_label">Фути</string>
+	<string name="profile_height_label">Висота</string>
+	<string name="profile_height_metric_label">См</string>
+	<string name="profile_gender_male">Чоловічий</string>
+	<string name="profile_gender_female">Жіночий</string>
+	<string name="manual_add_title">Ручне додавання</string>
+	<string name="manual_add_complete_button">Додати</string>
+	<string name="manual_add_fast_started_on">Швидкий старт: %1$s</string>
+	<string name="manual_start_title">Швидкий старт</string>
+	<string name="fast_autophagy_label">Автофагія:</string>
+	<string name="fast_ketosis_label">Кетоз:</string>
+	<string name="fast_fat_burn_label">Схуднення жиру:</string>
+	<string name="manual_add_length_hint">Довжина (Години)</string>
+	<string name="stage_fasting_description">Ваше тіло споживає свої запаси глюкози, тримайтеся!</string>
+	<string name="stage_fasting_title">Постування</string>
+	<string name="stage_fat_burning_title">Спалювання жиру</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Солодка точка голодування</string>
+	<string name="stage_fat_peak_fat_burning_title">Пікова спалювання жиру</string>
+	<string name="stage_fat_burning_description">Ваші запаси глюкози вичерпані! Тепер ваше тіло спалює жир для отримання
+		енергії. Тренування у наступні кілька годин буде оптимальним.
+	</string>
+	<string name="stage_autophagy_title">Аутофагія</string>
+	<string name="stage_fat_peak_fat_burning_description">Ваше тіло зараз швидко спалює жир, і почалася кетоз.</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Ви у солодкій точці голодування, тримайтеся!</string>
+	<string name="stage_autophagy_description">У вашому тілі почався аутофагія!</string>
+	<string name="stage_optimal_autophagy_title">Оптимальна аутофагія</string>
+	<string name="phase_glucose">Спалювання глюкози</string>
+	<string name="phase_fat_burning">Спалювання жирів</string>
+	<string name="stage_optimal_autophagy_description">Аутофагія в повному розпалі! Продовжуйте, протягом наступних 72
+		годин аутофагія буде дуже ефективною.
+	</string>
+	<string name="phase_ketosis">Кетоз</string>
+	<string name="phase_optimal_autophagy">Оптимальна аутофагія</string>
+	<string name="phase_autophagy">Автопагія</string>
+	<string name="share_text_past_tense">Я постував %1$d годин і %2$d хвилин!</string>
+	<string name="share_text">Я fasting for %1$d годин та %2$d хвилин! Моє тіло наразі споживає %3$s для енергії.
+	</string>
+	<string name="stage_alerts_checkbox">Стадійні сповіщення</string>
+	<string name="notification_channel_name">Сповіщення про голодування</string>
+	<string name="notification_fat_burn_title">Швидка стадія: Спалювання жиру</string>
+	<string name="notification_fat_burn_content">Ви виснажили свої запаси глюкози, і ваше тіло тепер споживає жир для
+		енергії.
+	</string>
+	<string name="notification_ketosis_title">Швидка стадія: Кетоз</string>
+	<string name="notification_channel_description">Сповіщення, які повідомляють вас, коли ви увійшли в нову фазу вашого
+		голодування.
+	</string>
+	<string name="notification_autophagy_title">Швидка стадія: Автопагія</string>
+	<string name="notification_optimal_autophagy_title">Швидка стадія: Оптимальна аутофагія</string>
+	<string name="notification_autophagy_content">Ваше тіло увійшло в аутофагію. Стара або пошкоджена клітина тепер
+		споживається для отримання енергії.
+	</string>
+	<string name="notification_optimal_autophagy_content">Ваше тіло вже досить давно перебуває в автогірії, і ваше
+		клітинне здоров\'я отримує великі переваги.
+	</string>
+	<string name="info_dialog_fat_burn_title">Спалювання жиру</string>
+	<string name="notification_ketosis_content">Ваше тіло тепер розщепило достатньо жирових запасів, щоб ви ввійшли в
+		стан кетозу.
+	</string>
+	<string name="info_dialog_ketosis_title">Кетоз</string>
+	<string name="info_dialog_autophagy_title">Автофагія</string>
+	<string name="info_dialog_bmi_title">Індекс маси тіла</string>
+	<string name="info_dialog_ketosis_content">На цьому етапі ваше тіло розщеплює жир настільки довго, що енергія в
+		основному забезпечується кетоновими тілами, а не глюкозою.\n\nНа додаток до переваг у зниженні жиру, дослідження
+		показали переваги для захворювань, пов’язаних із запаленням, хоча механізм дії наразі невідомий.
+	</string>
+	<string name="info_dialog_bmr_title">Базальний обмін речовин</string>
+	<string name="info_dialog_fat_burn_content">На цьому етапі ваше тіло вичерпало запаси глюкози. Глюкоза зберігається
+		у вигляді глікогену для подальшого використання, на цій стадії більшість з ваших запасів глікогену була
+		розкладена на глюкозу та спожита для виробництва енергії.\n\n Тепер воно починає розкладати жирову тканину (жир)
+		на кетонові тіла. Крім можливості споживати глюкозу для енергії, ваше тіло може альтернативно споживати кетонові
+		тіла для енергії, і коли запаси глюкози закінчуються, ваше тіло переключить свій енергетичний режим на кетонові
+		тіла.
+	</string>
+	<string name="info_dialog_autophagy_content">На цьому етапі ваше тіло почало активувати деякі додаткові процеси для
+		отримання енергії. Окрім розщеплення жирової тканини на кетонові тіла, воно почало шукати старі або пошкоджені
+		клітини та споживати їх для отримання більшої енергії.\n\nДослідження цього етапу знаходяться на ранніх стадіях,
+		але схоже, що це важливий механізм для організму, щоб зупиняти проблеми до того, як вони виникнуть. Наприклад,
+		рівень захворюваності на рак нижчий у людей, які регулярно входять в Автофагію. Крім того, деякі дослідження
+		також показали нижчі показники захворювання Альцгеймера.
+	</string>
+	<string name="info_dialog_positive">Класно!</string>
+	<string name="info_dialog_bmi_content">Грубе оцінювання здорової ваги, яку повинен мати середній дорослий. Її просто
+		розраховують, ділячи вагу на зріст.\n\nЧасто критикується за неточність, і справді є фактори, які можуть зробити
+		її оманливою. Наприклад, надзвичайно мускулистий бодібілдер або дуже високий чи дуже низький чоловік. Ці крайні
+		випадки можуть отримувати неточні результати з основного розрахунку ІМТ.\n\nАле для більшості людей це достатньо
+		хороша оцінка, щоб знати, чи ви у здоровому ваговому діапазоні.
+	</string>
+	<string name="info_dialog_bmr_content">Це оцінка кількості калорій, які ваше тіло витратить за день, перебуваючи
+		повністю в спокої. Якщо б ви просто лежали в ліжку весь день, це кількість калорій, яку ви могли б вжити, не
+		набираючи вагу.\n\nЦе критично важливе число для людей, які дотримуються дієти, обмежуючи добове споживання
+		калорій.
+	</string>
+	<string name="info_page_title_tips">Поради</string>
+	<string name="info_page_title_info">Інформація</string>
+	<string name="title_activity_info">Інформація про голодування</string>
+	<string name="log_total_hours">%1$d годин</string>
+	<string name="log_total_ketosis">Загальний кетоз:</string>
+	<string name="log_total_autophagy">Загальна Автофагія:</string>
+	<string name="profile_metric_switch">Метрична система</string>
+	<string name="title_activity_intro">Вступ</string>
+</resources>
