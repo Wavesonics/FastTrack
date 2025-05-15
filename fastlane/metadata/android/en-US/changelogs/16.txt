@@ -1,0 +1,5 @@
+- Support edge-2-edge
+- Support predictive back
+- Added fasting widget
+- Added App shortcuts for starting and stopping fasts
+- Implemented app backup and transfer
