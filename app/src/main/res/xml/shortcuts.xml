@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+	<shortcut
+			android:shortcutId="start_fast"
+			android:enabled="true"
+			android:icon="@drawable/ic_shortcut_start_fast_options"
+			android:shortcutShortLabel="@string/start_fast_button"
+			android:shortcutLongLabel="@string/start_fast_button">
+		<intent
+				android:action="android.intent.action.VIEW"
+				android:targetPackage="com.darkrockstudios.apps.fasttrack"
+				android:targetClass="com.darkrockstudios.apps.fasttrack.screens.main.MainActivity">
+			<extra android:name="START_FAST" android:value="true"/>
+		</intent>
+		<categories android:name="android.shortcut.conversation"/>
+	</shortcut>
+	<shortcut
+			android:shortcutId="start_fast_now"
+			android:enabled="true"
+			android:icon="@drawable/ic_shortcut_start_fast_now"
+			android:shortcutShortLabel="@string/start_fast_now_button"
+			android:shortcutLongLabel="@string/start_fast_now_button">
+		<intent
+				android:action="android.intent.action.VIEW"
+				android:targetPackage="com.darkrockstudios.apps.fasttrack"
+				android:targetClass="com.darkrockstudios.apps.fasttrack.screens.main.MainActivity">
+			<extra android:name="START_FAST" android:value="true"/>
+			<extra android:name="START_FAST_NOW" android:value="true"/>
+		</intent>
+		<categories android:name="android.shortcut.conversation"/>
+	</shortcut>
+	<shortcut
+			android:shortcutId="stop_fast"
+			android:enabled="true"
+			android:icon="@drawable/ic_shortcut_stop_fast"
+			android:shortcutShortLabel="@string/end_fast_button"
+			android:shortcutLongLabel="@string/end_fast_button">
+		<intent
+				android:action="android.intent.action.VIEW"
+				android:targetPackage="com.darkrockstudios.apps.fasttrack"
+				android:targetClass="com.darkrockstudios.apps.fasttrack.screens.main.MainActivity">
+			<extra android:name="STOP_FAST" android:value="true"/>
+		</intent>
+		<categories android:name="android.shortcut.conversation"/>
+	</shortcut>
+</shortcuts>

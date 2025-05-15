@@ -10,12 +10,13 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
 import com.darkrockstudios.apps.fasttrack.databinding.ManualAddFragmentBinding
+import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
 import io.github.aakira.napier.Napier.w
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDate
@@ -62,6 +63,7 @@ class ManualAddFragment: DialogFragment()
 			uiHandler.postDelayed({ updateUi() }, 500)
 		}
 
+		binding.manualAddTime.setIs24HourView(shouldUse24HourFormat(view.context))
 		binding.manualAddTime.setOnTimeChangedListener { _, hourOfDay, minute ->
 			viewModel.startDate?.let { startDate ->
 				viewModel.startDateTime = LocalDateTime(
@@ -142,9 +144,8 @@ class ManualAddFragment: DialogFragment()
 		val length = viewModel.length?.hours?.inWholeMilliseconds ?: 0L
 		if(startDateTime != null && length > 0)
 		{
-			GlobalScope.launch(Dispatchers.IO) {
-				val tz = TimeZone.currentSystemDefault()
-				val startInstant = startDateTime.toInstant(tz)
+			lifecycleScope.launch(Dispatchers.IO) {
+				val startInstant = startDateTime.toInstant(TimeZone.UTC)
 				val startMills = startInstant.toEpochMilliseconds()
 
 				val newEntry = FastEntry(start = startMills, length = length)

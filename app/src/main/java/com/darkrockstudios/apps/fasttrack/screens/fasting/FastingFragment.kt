@@ -1,12 +1,10 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.preference.PreferenceManager
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +12,9 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
-import androidx.core.text.util.LocalePreferences
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.darkrockstudios.apps.fasttrack.AlertService
 import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.R
@@ -27,13 +25,15 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.database.AppDatabase
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
 import com.darkrockstudios.apps.fasttrack.databinding.FragmentFastingBinding
+import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
 import com.darkrockstudios.apps.fasttrack.utils.Utils
+import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
+import com.darkrockstudios.apps.fasttrack.widget.WidgetUpdater
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import io.github.aakira.napier.Napier
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.datetime.*
 import kotlinx.datetime.TimeZone
@@ -88,12 +88,7 @@ class FastingFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		binding.fastFabStart.setOnClickListener {
-			MaterialAlertDialogBuilder(view.context)
-				.setTitle(R.string.confirm_start_fast_title)
-				.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> startFast() }
-				.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ -> showStartPicker() }
-				.setNegativeButton(R.string.confirm_start_fast_negative, null)
-				.show()
+			showStartFastSelector()
 		}
 
 		binding.fastFabStop.setOnClickListener {
@@ -147,6 +142,33 @@ class FastingFragment : Fragment() {
 				requireContext()
 			)
 		}
+
+		parentFragmentManager.setFragmentResultListener(MainActivity.START_FAST_EXTRA, this) { _, b ->
+			if (b.getBoolean(MainActivity.START_FAST_EXTRA)) {
+				if (b.getBoolean(MainActivity.START_FAST_NOW_EXTRA)) {
+					startFast()
+				} else {
+					showStartFastSelector()
+				}
+			}
+		}
+
+		parentFragmentManager.setFragmentResultListener(MainActivity.STOP_FAST_EXTRA, this) { _, b ->
+			if (b.getBoolean(MainActivity.STOP_FAST_EXTRA) && fast.isFasting()) {
+				endFast()
+			}
+		}
+	}
+
+	private fun showStartFastSelector() {
+		if (fast.isFasting().not()) {
+			MaterialAlertDialogBuilder(requireContext())
+				.setTitle(R.string.confirm_start_fast_title)
+				.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> startFast() }
+				.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ -> showStartPicker() }
+				.setNegativeButton(R.string.confirm_start_fast_negative, null)
+				.show()
+		}
 	}
 
 	private fun setupAlerts() {
@@ -196,6 +218,8 @@ class FastingFragment : Fragment() {
 
 				updateUi()
 
+				updateWidgets()
+
 				Napier.d("Debug: Increased fasting time by 1 hour")
 			}
 		} else {
@@ -216,7 +240,7 @@ class FastingFragment : Fragment() {
 		}
 	}
 
-	private fun showStartPicker() {
+	fun showStartPicker() {
 
 		val datePicker =
 			MaterialDatePicker.Builder.datePicker()
@@ -412,6 +436,8 @@ class FastingFragment : Fragment() {
 			startTimerUpdate()
 			setupAlerts()
 
+			updateWidgets()
+
 			Napier.i("Started fast!")
 		} else {
 			Napier.w("Cannot start fast with one in progress")
@@ -424,12 +450,14 @@ class FastingFragment : Fragment() {
 			val mills = now.toEpochMilliseconds()
 			storage.edit { putLong(Data.KEY_FAST_END, mills) }
 
-			GlobalScope.launch { saveFastToLog(fast.getFastStart(), fast.getFastEnd()) }
+			lifecycleScope.launch { saveFastToLog(fast.getFastStart(), fast.getFastEnd()) }
 
 			Napier.i("Fast ended!")
 
 			updateUi()
 			setupAlerts()
+
+			updateWidgets()
 
 			// Show the celebration!
 			binding.konfettiOverlay.let { kview ->
@@ -449,6 +477,10 @@ class FastingFragment : Fragment() {
 		}
 	}
 
+	private fun updateWidgets() {
+		context?.let { ctx -> WidgetUpdater.updateWidgets(ctx) }
+	}
+
 	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?) {
 		if (startTime != null && endTime != null) {
 			val duration = endTime.minus(startTime)
@@ -459,20 +491,6 @@ class FastingFragment : Fragment() {
 			database.fastDao().insertAll(newEntry)
 		} else {
 			Napier.e("No start time when ending fast!")
-		}
-	}
-
-	private fun shouldUse24HourFormat(context: Context): Boolean {
-		return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-			when (LocalePreferences.getHourCycle()) {
-				LocalePreferences.HourCycle.H11, LocalePreferences.HourCycle.H12 -> false
-				LocalePreferences.HourCycle.H23, LocalePreferences.HourCycle.H24 -> true
-				else -> {
-					Locale.getDefault() != Locale.US
-				}
-			}
-		} else {
-			DateFormat.is24HourFormat(context)
 		}
 	}
 }

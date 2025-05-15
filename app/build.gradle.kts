@@ -3,6 +3,7 @@ plugins {
 	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.ksp)
+	alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -29,6 +30,11 @@ android {
 	buildFeatures {
 		viewBinding = true
 		buildConfig = true
+		compose = true
+	}
+
+	composeOptions {
+		kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
 	}
 	buildTypes {
 		release {
@@ -123,6 +129,16 @@ dependencies {
 	implementation(libs.linkify)
 
 	implementation(libs.appintro)
+
+	implementation(libs.compose.ui)
+	implementation(libs.compose.ui.tooling.preview)
+	implementation(libs.compose.foundation)
+	implementation(libs.compose.material)
+	debugImplementation(libs.compose.ui.tooling)
+
+	implementation(libs.glance)
+	implementation(libs.glance.appwidget)
+	implementation(libs.glance.material)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)

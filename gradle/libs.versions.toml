@@ -4,6 +4,8 @@ appcompat = "1.7.0"
 appintro = "6.0.0"
 cardview = "1.0.0"
 collectionKtx = "1.5.0"
+compose = "1.6.7"
+compose-compiler = "1.5.10"
 constraintlayout = "2.2.1"
 core = "4.6.0"
 coreKtx = "1.16.0"
@@ -13,6 +15,7 @@ espressoCore = "3.6.1"
 fastadapter = "5.2.3"
 fastadapterExtensionsBinding = "5.2.3"
 fragmentKtx = "1.8.6"
+glance = "1.0.0"
 glide = "4.11.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -62,6 +65,14 @@ androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx",
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+glance = { module = "androidx.glance:glance", version.ref = "glance" }
+glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
+glance-material = { module = "androidx.glance:glance-material", version.ref = "glance" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 appintro = { module = "com.github.AppIntro:AppIntro", version.ref = "appintro" }
 collection-ktx = { module = "androidx.collection:collection-ktx", version.ref = "collectionKtx" }

@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.bundle.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -39,6 +40,8 @@ class MainActivity: AppCompatActivity()
 
 		enableEdgeToEdge()
 
+		handleStartFastExtra(intent)
+
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
@@ -61,6 +64,23 @@ class MainActivity: AppCompatActivity()
 		if(!storage.getBoolean(Data.KEY_INTRO_SEEN, false))
 		{
 			startActivity(Intent(this, IntroActivity::class.java))
+		}
+	}
+
+	override fun onNewIntent(intent: Intent) {
+		super.onNewIntent(intent)
+		handleStartFastExtra(intent)
+	}
+
+	private fun handleStartFastExtra(intent: Intent?) {
+		if (intent?.getBooleanExtra(START_FAST_EXTRA, false) == true) {
+			val startNow = intent.getBooleanExtra(START_FAST_NOW_EXTRA, false)
+			supportFragmentManager.setFragmentResult(
+				START_FAST_EXTRA,
+				bundleOf(START_FAST_EXTRA to true, START_FAST_NOW_EXTRA to startNow)
+			)
+		} else if (intent?.getBooleanExtra(STOP_FAST_EXTRA, false) == true) {
+			supportFragmentManager.setFragmentResult(STOP_FAST_EXTRA, bundleOf(STOP_FAST_EXTRA to true))
 		}
 	}
 
@@ -188,5 +208,11 @@ class MainActivity: AppCompatActivity()
 				.build()
 
 		AlertDialog.Builder(this).setView(view).create().show()
+	}
+
+	companion object {
+		const val START_FAST_EXTRA = "START_FAST"
+		const val START_FAST_NOW_EXTRA = "START_FAST_NOW"
+		const val STOP_FAST_EXTRA = "STOP_FAST"
 	}
 }

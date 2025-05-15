@@ -8,13 +8,21 @@
 	<string name="intro_00_description">What is this app all about?</string>
 
 	<string name="intro_01_title">Motivational Help</string>
-	<string name="intro_01_description">The main idea behind Fast Track is to help motivate you during your fasts and explain to you what your body is doing at the different stages of fasting.</string>
+	<string name="intro_01_description">The main idea behind Fast Track is to help motivate you during your fasts and
+		explain to you what your body is doing at the different stages of fasting.
+	</string>
 
 	<string name="intro_02_title">A simple free app</string>
-	<string name="intro_02_description">Fast Track is and will always be free and open source. There is no account to create, no in-app purchases, no ads to avoid. And it doesn\'t even have internet access, so it can\'t send your data anywhere.</string>
+	<string name="intro_02_description">Fast Track is and will always be free and open source. There is no account to
+		create, no in-app purchases, no ads to avoid. And it doesn\'t even have internet access, so it can\'t send your
+		data anywhere.
+	</string>
 
 	<string name="intro_03_title">Intermittent Fasting</string>
-	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info section of this app!</string>
+	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
+		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
+		section of this app!
+	</string>
 
 	<string name="intro_04_title">That\'s it!</string>
 	<string name="intro_04_description">Now go start fasting!</string>
@@ -29,6 +37,7 @@
 
 	<string name="fasting_fragment_label">Fast</string>
 	<string name="start_fast_button">Start Fast</string>
+	<string name="start_fast_now_button">Start Fast Now</string>
 	<string name="end_fast_button">End Fast</string>
 
 	<string name="fasting_energy_mode">Energy Mode: %1$s</string>
@@ -103,19 +112,24 @@
 	<string name="stage_fasting_description">Your body is consuming it\'s stores of glucose, keep it up!</string>
 
 	<string name="stage_fat_burning_title">Fat Burning</string>
-	<string name="stage_fat_burning_description">Your glucose stores are depleted! Your body is now burning fat for energy. A workout in the next couple hours would be optimal.</string>
+	<string name="stage_fat_burning_description">Your glucose stores are depleted! Your body is now burning fat for
+		energy. A workout in the next couple hours would be optimal.
+	</string>
 
 	<string name="stage_fat_fasting_sweet_spot_title">Fasting Sweet Spot</string>
 	<string name="stage_fat_fasting_sweet_spot_description">You\'re in the fasting sweet spot, keep it up!</string>
 
 	<string name="stage_fat_peak_fat_burning_title">Peak Fat Burning</string>
-	<string name="stage_fat_peak_fat_burning_description">Your body is burning fat rapidly now, and ketosis has begun.</string>
+	<string name="stage_fat_peak_fat_burning_description">Your body is burning fat rapidly now, and ketosis has begun.
+	</string>
 
 	<string name="stage_autophagy_title">Autophagy</string>
 	<string name="stage_autophagy_description">Your body has begun auutophagy!</string>
 
 	<string name="stage_optimal_autophagy_title">Optimal Autophagy</string>
-	<string name="stage_optimal_autophagy_description">Autophagy is in full swing! Keep it up, between now and 72 hours autophagy will be very effective.</string>
+	<string name="stage_optimal_autophagy_description">Autophagy is in full swing! Keep it up, between now and 72 hours
+		autophagy will be very effective.
+	</string>
 
 	<string name="phase_glucose">Glucose Burning</string>
 	<string name="phase_fat_burning">Fat Burning</string>
@@ -123,39 +137,75 @@
 	<string name="phase_autophagy">Autophagy</string>
 	<string name="phase_optimal_autophagy">Optimal Autophagy</string>
 
-	<string name="share_text">I\'ve been fasting for  %1$d hours and %2$d minutes! My body is currently consuming %3$s for energy.</string>
-	<string name="share_text_past_tense">I fasted for  %1$d hours and %2$d minutes!</string>
+	<string name="share_text">I\'ve been fasting for %1$d hours and %2$d minutes! My body is currently consuming %3$s
+		for energy.
+	</string>
+	<string name="share_text_past_tense">I fasted for %1$d hours and %2$d minutes!</string>
 	<string name="stage_alerts_checkbox">Stage Alerts</string>
 
 	<string name="notification_channel_name">Fasting Alerts</string>
-	<string name="notification_channel_description">Alerts that let you know when you have entered a new phase of your fast.</string>
+	<string name="notification_channel_description">Alerts that let you know when you have entered a new phase of your
+		fast.
+	</string>
 
 	<string name="notification_fat_burn_title">Fast Stage: Fat Burning</string>
-	<string name="notification_fat_burn_content">You have exhausted your glucose reserves and your body is now consuming fat for energy.</string>
+	<string name="notification_fat_burn_content">You have exhausted your glucose reserves and your body is now consuming
+		fat for energy.
+	</string>
 
 	<string name="notification_ketosis_title">Fast Stage: Ketosis</string>
-	<string name="notification_ketosis_content">You\'re body has now broken down enough fat reserves that you have entered Ketosis.</string>
+	<string name="notification_ketosis_content">You\'re body has now broken down enough fat reserves that you have
+		entered Ketosis.
+	</string>
 
 	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
-	<string name="notification_autophagy_content">You\'re body has entered Autophagy. Old or damaged cells are now being consumed for energy.</string>
+	<string name="notification_autophagy_content">You\'re body has entered Autophagy. Old or damaged cells are now being
+		consumed for energy.
+	</string>
 
 	<string name="notification_optimal_autophagy_title">Fast Stage: Optimal Autophagy</string>
-	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and your cellular health is seeing great benefits.</string>
+	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and
+		your cellular health is seeing great benefits.
+	</string>
 
 	<string name="info_dialog_fat_burn_title">Fat Burning</string>
-	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose and consumed for energy.\n\n Now it begins to break down adipose tissue (fat) into Ketone Bodies. In addition to being able to consume glucose for energy, your body can alternatively consume ketone bodies for energy, and as glucose stores run low, your body will switch it\'s energy mode to Ketone Bodies.</string>
+	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is
+		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
+		and consumed for energy.\n\n Now it begins to break down adipose tissue (fat) into Ketone Bodies. In addition to
+		being able to consume glucose for energy, your body can alternatively consume ketone bodies for energy, and as
+		glucose stores run low, your body will switch it\'s energy mode to Ketone Bodies.
+	</string>
 
 	<string name="info_dialog_ketosis_title">Ketosis</string>
-	<string name="info_dialog_ketosis_content">In this stage your body has been breaking down fat for long enough that your body is primarily being powered by Ketone Bodies rather than Glucose.\n\nIn addition to the fat loss benefits this implies, studies have shown benefits for inflammation related illnesses, though the mechanism of action for this is currently unknown.</string>
+	<string name="info_dialog_ketosis_content">In this stage your body has been breaking down fat for long enough that
+		your body is primarily being powered by Ketone Bodies rather than Glucose.\n\nIn addition to the fat loss
+		benefits this implies, studies have shown benefits for inflammation related illnesses, though the mechanism of
+		action for this is currently unknown.
+	</string>
 
 	<string name="info_dialog_autophagy_title">Autophagy</string>
-	<string name="info_dialog_autophagy_content">In this stage your body has begun to activate some more processes for harvesting energy. In addition to breaking down adipose tissue into Ketone Bodies, it has begun seeking out old or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in it\'s early stages, but it appears this is an important mechanism for the body to stop problems before they start. For instance, cancer rates are lower in people who regularly enter Autophagy. Additionally, some studies have also shown lower rates of Alzheimer\'s disease.</string>
+	<string name="info_dialog_autophagy_content">In this stage your body has begun to activate some more processes for
+		harvesting energy. In addition to breaking down adipose tissue into Ketone Bodies, it has begun seeking out old
+		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in it\'s early stages,
+		but it appears this is an important mechanism for the body to stop problems before they start. For instance,
+		cancer rates are lower in people who regularly enter Autophagy. Additionally, some studies have also shown lower
+		rates of Alzheimer\'s disease.
+	</string>
 
 	<string name="info_dialog_bmi_title">Body Mass Index</string>
-	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that there are factors that can cause it to be misleading. For instance: an extremely muscular body builder, or a very tall or very short person. These edge cases will get inaccurate results from the basic BMI calculation.\n\nBut for the majority of people this is a good enough estimate to know if you are in a healthy weight range.</string>
+	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It
+		is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that
+		there are factors that can cause it to be misleading. For instance: an extremely muscular body builder, or a
+		very tall or very short person. These edge cases will get inaccurate results from the basic BMI
+		calculation.\n\nBut for the majority of people this is a good enough estimate to know if you are in a healthy
+		weight range.
+	</string>
 
 	<string name="info_dialog_bmr_title">Basal Metabolic Rate</string>
-	<string name="info_dialog_bmr_content">This is an estimate of the number of calories your body will burn in a day while completely at rest. If all you did was lay in bed all day, this is how many calories you could eat without gaining weight.\n\nThis is a critical number for people who are dieting by restricting daily calorie intake.</string>
+	<string name="info_dialog_bmr_content">This is an estimate of the number of calories your body will burn in a day
+		while completely at rest. If all you did was lay in bed all day, this is how many calories you could eat without
+		gaining weight.\n\nThis is a critical number for people who are dieting by restricting daily calorie intake.
+	</string>
 
 	<string name="info_dialog_positive">Cool!</string>
 
@@ -168,4 +218,9 @@
 	<string name="log_total_hours">%1$d hours</string>
 	<string name="profile_metric_switch">Metric</string>
 	<string name="title_activity_intro">Intro</string>
+	<string name="app_widget_description">Track your fasting progress from your home screen</string>
+	<string name="app_widget_not_fasting">Not fasting</string>
+	<string name="app_widget_fast_in_progress">Fasting in progress</string>
+	<string name="app_widget_time">%1$d hours</string>
+	<string name="app_widget_start_fast_button">Start Fast</string>
 </resources>

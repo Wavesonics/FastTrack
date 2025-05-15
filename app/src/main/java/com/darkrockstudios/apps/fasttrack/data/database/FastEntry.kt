@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
 @Entity
@@ -15,7 +16,7 @@ data class FastEntry(
 					)
 {
 	@ExperimentalTime
-	fun lengthHours() = length.milliseconds.inWholeHours
+	fun lengthHours() = length.milliseconds.toDouble(DurationUnit.HOURS)
 
 	@ExperimentalTime
 	fun calculateKetosis(): Double
