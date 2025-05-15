@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.viewpager2.widget.ViewPager2
 import com.darkrockstudios.apps.fasttrack.IntroActivity
 import com.darkrockstudios.apps.fasttrack.R
@@ -32,6 +36,9 @@ class MainActivity: AppCompatActivity()
 	override fun onCreate(savedInstanceState: Bundle?)
 	{
 		super.onCreate(savedInstanceState)
+
+		enableEdgeToEdge()
+
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
@@ -42,6 +49,13 @@ class MainActivity: AppCompatActivity()
 
 		binding.navView.setOnNavigationItemSelectedListener(navigationListener)
 		binding.contentViewPager.registerOnPageChangeCallback(pageChangeListener)
+
+		ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, windowInsets ->
+			val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+			binding.appActionBar.updatePadding(top = insets.top)
+			binding.navView.updatePadding(bottom = insets.bottom)
+			windowInsets
+		}
 
 		// Show the intro if they haven't seen it
 		if(!storage.getBoolean(Data.KEY_INTRO_SEEN, false))

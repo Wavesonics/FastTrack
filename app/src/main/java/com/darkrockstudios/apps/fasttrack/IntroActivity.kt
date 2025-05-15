@@ -3,7 +3,11 @@ package com.darkrockstudios.apps.fasttrack
 import android.graphics.Color
 import android.os.Bundle
 import android.preference.PreferenceManager
+import androidx.activity.enableEdgeToEdge
 import androidx.core.content.edit
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.github.appintro.AppIntro
@@ -14,6 +18,8 @@ class IntroActivity : AppIntro() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+
+		enableEdgeToEdge()
 
 		addSlide(
 			AppIntroFragment.newInstance(
