@@ -8,20 +8,20 @@
 	<string name="intro_01_title">Aide motivationnelle</string>
 	<string name="intro_00_description">De quoi s\'agit-il dans cette application ?</string>
 	<string name="intro_02_title">Une simple application gratuite</string>
-	<string name="intro_01_description">L\'idée principale derrière Fast Track est de vous aider à vous motiver durant
-		vos jeûnes et de vous expliquer ce que votre corps fait à différentes étapes du jeûne.
+	<string name="intro_01_description">L\'idée principale derrière Fast Track est de vous aider à vous motiver pendant
+		vos jeûnes et de vous expliquer ce que votre corps fait aux différentes étapes du jeûne.
 	</string>
 	<string name="intro_03_title">Jeûne intermittent</string>
 	<string name="intro_04_title">C\'est tout !</string>
 	<string name="intro_04_description">Maintenant, allons commencer à jeûner !</string>
 	<string name="about_name">Adam Brown</string>
-	<string name="intro_03_description">Il s\'agit d\'un nouveau domaine d\'étude qui montre de nombreux avantages
-		au-delà de la simple perte de poids.\n\nPour explorer ce que nous savons sur le jeûne et ce que la recherche
-		dit, consultez la section Info de cette application !
+	<string name="intro_03_description">C\'est un nouveau domaine d\'étude qui montre de nombreux avantages au-delà de
+		la simple perte de poids.\n\nPour explorer ce que nous savons sur le jeûne et ce que la recherche dit, consultez
+		la section Infos de cette application !
 	</string>
 	<string name="intro_02_description">Fast Track est et sera toujours gratuit et open source. Il n\'y a pas de compte
-		à créer, pas d\'achats in-app, pas de publicités à éviter. Et il n\'a même pas accès à Internet, donc il ne peut
-		pas envoyer vos données ailleurs.
+		à créer, pas d\'achats intégrés, pas de publicités à éviter. Et il n\'a même pas accès à Internet, donc il ne
+		peut pas envoyer vos données nulle part.
 	</string>
 	<string name="about_subtitle">Développeur Mobile</string>
 	<string name="title_fasting">Jeûne</string>
@@ -88,14 +88,15 @@
 	<string name="stage_fat_burning_title">Brûlage des graisses</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Point idéal du jeûne</string>
 	<string name="stage_fat_burning_description">Vos réserves de glucose sont épuisées ! Votre corps brûle maintenant
-		des graisses pour obtenir de l\'énergie. Un entraînement dans les prochaines heures serait optimal.
+		des graisses pour
+		énergie. Un entraînement dans les prochaines heures serait optimal.
 	</string>
 	<string name="stage_fat_peak_fat_burning_title">Pic maximal de combustion des graisses</string>
 	<string name="stage_autophagy_title">Autophagie</string>
 	<string name="stage_fat_fasting_sweet_spot_description">Vous êtes dans la zone de jeûne idéale, continuez comme ça
 		!
 	</string>
-	<string name="stage_fat_peak_fat_burning_description">Votre corps brûle rapidement les graisses maintenant, et la
+	<string name="stage_fat_peak_fat_burning_description">Votre corps brûle rapidement des graisses maintenant, et la
 		cétose a commencé.
 	</string>
 	<string name="stage_autophagy_description">Votre corps a commencé l\'autophagie !</string>
@@ -104,80 +105,85 @@
 	<string name="phase_fat_burning">Brûlage des graisses</string>
 	<string name="phase_ketosis">Cétose</string>
 	<string name="phase_autophagy">Autophagie</string>
-	<string name="stage_optimal_autophagy_description">L\'autophagie est en plein essor ! Continue comme ça, entre
+	<string name="stage_optimal_autophagy_description">L\'autophagie est en plein essor ! Continuez comme ça, entre
 		maintenant et 72 heures, l\'autophagie sera très efficace.
 	</string>
 	<string name="phase_optimal_autophagy">Autophagie optimale</string>
 	<string name="share_text_past_tense">J\'ai jeûné pendant %1$d heures et %2$d minutes !</string>
-	<string name="share_text">J\'ai jeûné pendant %1$d heures et %2$d minutes ! Mon corps utilise actuellement %3$s
-		comme énergie.
+	<string name="share_text">Je jeûne depuis %1$d heures et %2$d minutes ! Mon corps consomme actuellement %3$s pour
+		l\'énergie.
 	</string>
 	<string name="stage_alerts_checkbox">Alertes de scène</string>
 	<string name="notification_channel_name">Alertes de jeûne</string>
-	<string name="notification_channel_description">Alertes qui vous informent lorsque vous avez entré une nouvelle
+	<string name="notification_channel_description">Alertes qui vous informent lorsque vous entrez dans une nouvelle
 		phase de votre jeûne.
 	</string>
 	<string name="notification_fat_burn_title">Phase rapide : brûlage de graisse</string>
 	<string name="notification_ketosis_title">Phase rapide : cétose</string>
-	<string name="notification_fat_burn_content">Vous avez épuisé vos réserves de glucose et votre corps utilise
-		maintenant des graisses pour son énergie.
+	<string name="notification_fat_burn_content">Vous avez épuisé vos réserves de glucose et votre corps consomme
+		maintenant des graisses pour obtenir de l\'énergie.
 	</string>
 	<string name="notification_optimal_autophagy_title">Phase Rapide : Autophagie Optimale</string>
-	<string name="notification_ketosis_content">Votre corps a maintenant décomposé suffisamment de réserves de graisse
-		pour entrer en cétose.
+	<string name="notification_ketosis_content">Votre corps a désormais décomposé suffisamment de réserves de graisse
+		pour que vous soyez entré dans la cétose.
 	</string>
 	<string name="notification_autophagy_title">Étape Rapide : Autophagie</string>
-	<string name="notification_autophagy_content">Votre corps est entré en autophagie. Les cellules anciennes ou
-		endommagées sont maintenant consommées pour produire de l\'énergie.
+	<string name="notification_autophagy_content">Votre corps est entré en autophagie. Les vieilles cellules ou les
+		cellules endommagées sont maintenant consommées pour produire de l\'énergie.
 	</string>
 	<string name="info_dialog_fat_burn_title">Brûlage de graisses</string>
 	<string name="notification_optimal_autophagy_content">Votre corps est en autophagie depuis longtemps maintenant, et
-		votre santé cellulaire en tire de grands bénéfices.
+		votre santé cellulaire en tire de grands avantages.
 	</string>
 	<string name="info_dialog_ketosis_title">Cétose</string>
 	<string name="info_dialog_autophagy_title">Autophagie</string>
-	<string name="info_dialog_fat_burn_content">À ce stade, votre corps a épuisé ses réserves de glucose. Le glucose est
+	<string name="info_dialog_fat_burn_content">À ce stade, votre corps a épuisé vos réserves de glucose. Le glucose est
 		stocké sous forme de glycogène pour une utilisation ultérieure, à ce stade, la plupart de votre glycogène stocké
-		a été décomposé en glucose et consommé pour l\'énergie.\n\n Maintenant, il commence à décomposer le tissu
-		adipeux (graisse) en corps cétoniques. En plus de pouvoir consommer du glucose pour l\'énergie, votre corps peut
-		alternativement consommer des corps cétoniques pour l\'énergie, et à mesure que les réserves de glucose
-		diminuent, votre corps changera son mode énergétique pour les corps cétoniques.
+		a été décomposé en glucose et utilisé comme source d\'énergie.\n\n Maintenant, il commence à décomposer le tissu
+		adipeux (gras) en corps cétoniques. En plus de pouvoir consommer du glucose pour l\'énergie, votre corps peut
+		alternativement consommer des corps cétoniques pour obtenir de l\'énergie, et à mesure que les réserves de
+		glucose s\'épuisent, votre corps passera à un mode d\'énergie basé sur les corps cétoniques.
 	</string>
 	<string name="info_dialog_bmi_title">Indice de masse corporelle</string>
-	<string name="info_dialog_ketosis_content">À ce stade, votre corps a décomposé des graisses pendant suffisamment
-		longtemps pour que votre corps soit principalement alimenté par des corps cétoniques plutôt que par du
-		glucose.\n\nEn plus des avantages en matière de perte de graisse que cela implique, des études ont montré des
-		bénéfices pour les maladies liées à l\'inflammation, bien que le mécanisme d\'action de cela soit actuellement
-		inconnu.
+	<string name="info_dialog_ketosis_content">À ce stade, votre corps a suffisamment décomposé les graisses pour que
+		principalement, votre corps soit alimenté par des corps cétoniques plutôt que par du glucose.\n\nEn plus des
+		avantages de la perte de graisse que cela implique, des études ont montré des bénéfices pour les maladies liées
+		à l\'inflammation, bien que le mécanisme d\'action de ceci soit actuellement inconnu.
 	</string>
 	<string name="info_dialog_bmr_title">Taux Métabolique de Base</string>
-	<string name="info_dialog_autophagy_content">À ce stade, votre corps a commencé à activer davantage de processus
-		pour récolter de l\'énergie. En plus de décomposer le tissu adipeux en corps cétoniques, il a commencé à
-		rechercher d\'anciennes cellules ou des cellules endommagées et à les consommer pour obtenir plus
-		d\'énergie.\n\nLa recherche sur cette phase en est à ses débuts, mais il semble que cela soit un mécanisme
-		important pour le corps afin d\'arrêter les problèmes avant qu\'ils ne commencent. Par exemple, les taux de
-		cancer sont plus faibles chez les personnes qui entrent régulièrement en autophagie. De plus, certaines études
-		ont également montré des taux plus faibles de la maladie d\'Alzheimer.
+	<string name="info_dialog_autophagy_content">À ce stade, votre corps a commencé à activer d\'autres processus pour
+		récolter de l\'énergie. En plus de décomposer le tissu adipeux en corps cétoniques, il a commencé à rechercher
+		des cellules anciennes ou endommagées et à les consommer pour obtenir plus d\'énergie.\n\nLes recherches sur
+		cette phase en sont à leurs débuts, mais il semble que ce soit un mécanisme important pour le corps afin
+		d\'arrêter les problèmes avant qu\'ils ne commencent. Par exemple, les taux de cancer sont plus faibles chez les
+		personnes qui entrent régulièrement en autophagie. De plus, certaines études ont également montré des taux plus
+		bas de la maladie d\'Alzheimer.
 	</string>
 	<string name="info_dialog_positive">Génial !</string>
 	<string name="info_page_title_info">Informations</string>
 	<string name="info_page_title_tips">Astuces</string>
-	<string name="info_dialog_bmr_content">Ceci est une estimation du nombre de calories que votre corps brûlera en un
-		jour tout en étant complètement au repos. Si vous restiez allongé au lit toute la journée, c\'est le nombre de
-		calories que vous pourriez consommer sans prendre de poids.\n\nC\'est un chiffre essentiel pour les personnes
-		qui suivent un régime en réduisant leur apport calorique quotidien.
+	<string name="info_dialog_bmr_content">Ceci est une estimation du nombre de calories que votre corps va brûler en
+		une journée, lorsque vous êtes complètement au repos. Si vous ne faisiez que rester allongé au lit toute la
+		journée, c\'est le nombre de calories que vous pourriez manger sans prendre de poids.\n\nC\'est un chiffre
+		critique pour les personnes qui suivent un régime en restreignant leur apport calorique quotidien.
 	</string>
 	<string name="title_activity_info">Infos sur le jeûne</string>
 	<string name="log_total_autophagy">Autophagie totale :</string>
 	<string name="log_total_ketosis">Cétose totale :</string>
-	<string name="info_dialog_bmi_content">Une estimation grossière du poids santé qu\'un adulte moyen devrait avoir. Il
-		est calculé simplement en divisant le poids par la taille.\n\nSouvent critiqué pour son manque de précision, il
-		est vrai qu\'il existe des facteurs qui peuvent le rendre trompeur. Par exemple : un bodybuilder extrêmement
-		musclé, ou une personne très grande ou très petite. Ces cas extrêmes donneront des résultats inexactes du calcul
-		de l\'IMC de base.\n\nMais pour la majorité des gens, c\'est une estimation suffisamment bonne pour savoir si
-		vous êtes dans une fourchette de poids santé.
+	<string name="info_dialog_bmi_content">Une estimation approximative du poids santé qu\'un adulte moyen devrait
+		avoir. Il est calculé simplement en divisant le poids par la taille.\n\nSouvent critiqué pour son inexactitude,
+		il est vrai qu\'il existe des facteurs qui peuvent rendre ce calcul trompeur. Par exemple : un culturiste
+		extrêmement musclé, ou une personne très grande ou très petite. Ces cas extrêmes donneront des résultats
+		inexacts à partir du calcul de l\'IMC de base.\n\nMais pour la majorité des gens, c\'est une estimation
+		suffisante pour savoir si vous êtes dans une fourchette de poids saine.
 	</string>
 	<string name="profile_metric_switch">Métrique</string>
 	<string name="title_activity_intro">Introduction</string>
 	<string name="log_total_hours">%1$d heures</string>
+	<string name="start_fast_now_button">Démarrer rapidement maintenant</string>
+	<string name="app_widget_description">Suivez vos progrès de jeûne depuis votre écran d\'accueil.</string>
+	<string name="app_widget_not_fasting">Ne pas jeûner</string>
+	<string name="app_widget_fast_in_progress">Jeûne en cours</string>
+	<string name="app_widget_time">%1$d heures</string>
+	<string name="app_widget_start_fast_button">Démarrer rapidement</string>
 </resources>

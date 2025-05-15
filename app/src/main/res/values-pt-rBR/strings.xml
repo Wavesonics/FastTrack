@@ -9,19 +9,19 @@
 	<string name="intro_00_description">Sobre o que é este aplicativo?</string>
 	<string name="intro_02_title">Um aplicativo simples e gratuito</string>
 	<string name="intro_01_description">A ideia principal por trás do Fast Track é ajudar a motivá-lo durante seus
-		jejuns e explicar o que seu corpo está fazendo em diferentes estágios do jejum.
+		jejuns e explicar o que seu corpo está fazendo nas diferentes fases do jejum.
 	</string>
 	<string name="intro_03_title">Jejum Intermitente</string>
 	<string name="intro_04_title">É isso!</string>
 	<string name="intro_04_description">Agora vá começar a jejuar!</string>
-	<string name="intro_02_description">Fast Track é e sempre será gratuito e de código aberto. Não há conta a ser
-		criada, nem compras dentro do aplicativo, nem anúncios a evitar. E ele nem mesmo tem acesso à internet, então
-		não pode enviar seus dados para lugar nenhum.
+	<string name="intro_02_description">Fast Track é e sempre será gratuito e de código aberto. Não há conta para criar,
+		compras dentro do aplicativo, nem anúncios a evitar. E ele nem mesmo tem acesso à internet, então não pode
+		enviar seus dados para lugar algum.
 	</string>
 	<string name="about_name">Adam Brown</string>
 	<string name="intro_03_description">Esta é uma nova área de estudo que está mostrando muitos benefícios além da
 		simples perda de peso.\n\nPara explorar o que sabemos sobre o jejum e o que a pesquisa está dizendo, confira a
-		seção de Informações deste app!
+		seção de Informações deste aplicativo!
 	</string>
 	<string name="about_subtitle">Desenvolvedor Mobile</string>
 	<string name="title_fasting">Jejum</string>
@@ -104,14 +104,14 @@
 	<string name="phase_autophagy">Autofagia</string>
 	<string name="phase_fat_burning">Queima de Gordura</string>
 	<string name="phase_optimal_autophagy">Autofagia Ótima</string>
-	<string name="stage_optimal_autophagy_description">A autofagia está a todo vapor! Continue assim, entre agora e 72
-		horas a autofagia será muito eficaz.
+	<string name="stage_optimal_autophagy_description">A autofagia está em plena atividade! Continue assim, entre agora
+		e 72 horas a autofagia será muito eficaz.
 	</string>
-	<string name="share_text_past_tense">Eu fastiei por %1$d horas e %2$d minutos!</string>
+	<string name="share_text_past_tense">Eu jejuava por %1$d horas e %2$d minutos!</string>
 	<string name="notification_channel_name">Alertas de Jejum</string>
 	<string name="stage_alerts_checkbox">Alertas de Estágio</string>
-	<string name="share_text">Eu estive jejuando por %1$d horas e %2$d minutos! Meu corpo está consumindo atualmente
-		%3$s para energia.
+	<string name="share_text">Eu estou jejuando há %1$d horas e %2$d minutos! Meu corpo está atualmente consumindo %3$s
+		para energia.
 	</string>
 	<string name="notification_channel_description">Alertas que informam quando você entrou em uma nova fase do seu
 		jejum.
@@ -119,55 +119,56 @@
 	<string name="notification_ketosis_title">Fase Rápida: Cetose</string>
 	<string name="notification_fat_burn_title">Fase Rápida: Queima de Gordura</string>
 	<string name="notification_fat_burn_content">Você esgotou suas reservas de glicose e seu corpo agora está consumindo
-		gordura para obter energia.
+		gordura para energia.
 	</string>
 	<string name="notification_autophagy_title">Fase Rápida: Autofagia</string>
 	<string name="notification_optimal_autophagy_title">Fase Rápida: Autofagia Ideal</string>
 	<string name="notification_ketosis_content">Seu corpo agora quebrou reservas de gordura suficientes para que você
-		tenha entrado em Cetoacidose.
+		tenha
+		entrado em cetose.
 	</string>
-	<string name="notification_autophagy_content">Seu corpo entrou em Autofagia. Células antigas ou danificadas estão
-		sendo consumidas para energia.
+	<string name="notification_autophagy_content">Seu corpo entrou em Autofagia. Células velhas ou danificadas estão
+		sendo consumidas em busca de energia.
 	</string>
 	<string name="info_dialog_ketosis_title">Cetoacidose</string>
 	<string name="info_dialog_fat_burn_title">Queima de Gordura</string>
-	<string name="notification_optimal_autophagy_content">Seu corpo está em Autófago há bastante tempo agora, e sua
+	<string name="notification_optimal_autophagy_content">Seu corpo está em autofagia há bastante tempo agora, e sua
 		saúde celular está vendo grandes benefícios.
 	</string>
 	<string name="info_dialog_autophagy_title">Autofagia</string>
 	<string name="info_dialog_bmi_title">Índice de Massa Corporal</string>
-	<string name="info_dialog_fat_burn_content">Neste estágio, seu corpo exauriu suas reservas de glicose. A glicose é
-		armazenada como glicogênio para uso posterior; neste estágio, a maior parte do seu glicogênio armazenado foi
-		decomposta em glicose e consumida como energia.\n\nAgora, ele começa a quebrar o tecido adiposo (gordura) em
-		corpos cetônicos. Além de poder consumir glicose para energia, seu corpo pode alternadamente consumir corpos
+	<string name="info_dialog_fat_burn_content">Nesta fase, seu corpo esgotou suas reservas de glicose. A glicose é
+		armazenada como glicogênio para uso posterior, nesta fase, a maior parte do seu glicogênio armazenado foi
+		degradado em glicose e consumido para energia.\n\n Agora, ele começa a decompor o tecido adiposo (gordura) em
+		corpos cetônicos. Além de poder consumir glicose para energia, seu corpo pode alternativamente consumir corpos
 		cetônicos para energia, e à medida que as reservas de glicose diminuem, seu corpo mudará seu modo de energia
 		para corpos cetônicos.
 	</string>
-	<string name="info_dialog_ketosis_content">Nesta fase, seu corpo tem quebrado gordura por tempo suficiente para que
-		ele esteja sendo principalmente alimentado por Corpos Cetônicos em vez de Glicose.\n\nAlém dos benefícios de
+	<string name="info_dialog_ketosis_content">Neste estágio, seu corpo tem quebrado gordura por tempo suficiente para
+		que ele esteja sendo alimentado principalmente por Corpos Cetônicos em vez de Glicose.\n\nAlém dos benefícios de
 		perda de gordura que isso implica, estudos mostraram benefícios para doenças relacionadas à inflamação, embora o
 		mecanismo de ação para isso atualmente seja desconhecido.
 	</string>
 	<string name="info_dialog_bmr_title">Taxa Metabólica Basal</string>
 	<string name="info_dialog_positive">Legal!</string>
-	<string name="info_dialog_bmi_content">Uma estimativa aproximada do peso saudável que um adulto médio deve ter. É
-		calculada simplesmente dividindo o peso pela altura.\n\nFrequentemente criticada por ser imprecisa, é verdade
-		que existem fatores que podem torná-la enganosa. Por exemplo: um fisiculturista extremamente musculoso, ou uma
-		pessoa muito alta ou muito baixa. Esses casos extremos obtêm resultados imprecisos a partir do cálculo básico do
-		IMC.\n\nMas para a maioria das pessoas, isso é uma estimativa boa o suficiente para saber se você está dentro de
-		uma faixa de peso saudável.
+	<string name="info_dialog_bmi_content">Uma estimativa aproximada do peso saudável que um adulto humano médio deve
+		ter. É calculado simplesmente dividindo o peso pela altura.\n\nFrequentemente criticado por ser impreciso, é
+		verdade que existem fatores que podem torná-lo enganoso. Por exemplo: um bodybuilder extremamente musculoso, ou
+		uma pessoa muito alta ou muito baixa. Esses casos extremos irão obter resultados imprecisos a partir do cálculo
+		básico do IMC.\n\nMas para a maioria das pessoas, essa é uma estimativa boa o suficiente para saber se você está
+		dentro de uma faixa de peso saudável.
 	</string>
-	<string name="info_dialog_autophagy_content">Neste estágio, seu corpo começou a ativar mais processos para a
-		colheita de energia. Além de quebrar o tecido adiposo em Corpos Cetônicos, ele começou a buscar células velhas
-		ou danificadas e consumi-las para obter mais energia.\n\nA pesquisa sobre esta fase está em seus estágios
-		iniciais, mas parece que este é um mecanismo importante para o corpo evitar problemas antes que eles comecem.
-		Por exemplo, as taxas de câncer são mais baixas em pessoas que regularmente entram em Autofagia. Além disso,
+	<string name="info_dialog_autophagy_content">Nesta fase, seu corpo começou a ativar alguns processos adicionais para
+		a colheita de energia. Além de decompor o tecido adiposo em corpos cetônicos, ele começou a buscar células
+		antigas ou danificadas e consumi-las para mais energia.\n\nA pesquisa sobre essa fase está em seus estágios
+		iniciais, mas parece que esse é um mecanismo importante para o corpo evitar problemas antes que eles comecem.
+		Por exemplo, as taxas de câncer são mais baixas em pessoas que entram regularmente em Autophagy. Além disso,
 		alguns estudos também mostraram taxas mais baixas de doença de Alzheimer.
 	</string>
 	<string name="info_dialog_bmr_content">Esta é uma estimativa do número de calorias que seu corpo queimará em um dia
-		enquanto estiver completamente em repouso. Se você só ficasse deitado na cama o dia todo, é essa a quantidade de
-		calorias que você poderia ingerir sem ganhar peso.\n\nEste é um número crítico para pessoas que estão fazendo
-		dieta restringindo a ingestão diária de calorias.
+		enquanto estiver completamente em repouso. Se tudo o que você fizesse fosse ficar deitado na cama o dia todo, é
+		assim que muitas calorias você poderia consumir sem ganhar peso.\n\nEste é um número crítico para pessoas que
+		estão fazendo dieta restringindo a ingestão diária de calorias.
 	</string>
 	<string name="info_page_title_info">Informações</string>
 	<string name="info_page_title_tips">Dicas</string>
@@ -177,4 +178,10 @@
 	<string name="log_total_hours">%1$d horas</string>
 	<string name="profile_metric_switch">Métrico</string>
 	<string name="title_activity_intro">Introdução</string>
+	<string name="start_fast_now_button">Comece Rápido Agora</string>
+	<string name="app_widget_description">Acompanhe seu progresso de jejum a partir da tela inicial.</string>
+	<string name="app_widget_not_fasting">Não está jejuando</string>
+	<string name="app_widget_fast_in_progress">Jejum em progresso</string>
+	<string name="app_widget_time">%1$d horas</string>
+	<string name="app_widget_start_fast_button">Começar Rápido</string>
 </resources>
