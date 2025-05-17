@@ -35,6 +35,22 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 
+# KotlinX DateTime
+-keep class kotlinx.datetime.** { *; }
+-keepclassmembers class kotlinx.datetime.** { *; }
+-keep class kotlinx.datetime.Clock { *; }
+-keep class kotlinx.datetime.Clock$System { *; }
+-keepclassmembers class kotlinx.datetime.Clock$System {
+    public static ** INSTANCE;
+    public ** now();
+}
+
+# Android Preferences
+-keep class android.preference.PreferenceManager { *; }
+-keepclassmembers class android.preference.PreferenceManager { 
+    public static android.content.SharedPreferences getDefaultSharedPreferences(android.content.Context);
+}
+
 # Koin
 -keepnames class org.koin.** { *; }
 -keep class org.koin.** { *; }
@@ -72,6 +88,19 @@
 # Compose
 -keep class androidx.compose.** { *; }
 -dontwarn androidx.compose.**
+
+-dontwarn com.caverock.androidsvg.SVG
+-dontwarn com.caverock.androidsvg.SVGParseException
+-dontwarn kotlin.Experimental$Level
+-dontwarn kotlin.Experimental
+-dontwarn okhttp3.Call$Factory
+-dontwarn okhttp3.Call
+-dontwarn okhttp3.OkHttpClient
+-dontwarn okhttp3.Request$Builder
+-dontwarn okhttp3.Request
+-dontwarn okhttp3.Response
+-dontwarn okhttp3.ResponseBody
+-dontwarn pl.droidsonroids.gif.GifDrawable
 
 # Keep all classes in the app package
 -keeppackagenames com.darkrockstudios.apps.fasttrack.**
