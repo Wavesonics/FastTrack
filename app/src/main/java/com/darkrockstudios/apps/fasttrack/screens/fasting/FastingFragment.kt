@@ -34,7 +34,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import io.github.aakira.napier.Napier
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.*
 import kotlinx.datetime.TimeZone
 import nl.dionsegijn.konfetti.models.Shape
@@ -481,7 +483,7 @@ class FastingFragment : Fragment() {
 		context?.let { ctx -> WidgetUpdater.updateWidgets(ctx) }
 	}
 
-	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?) {
+	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?) = withContext(Dispatchers.Default) {
 		if (startTime != null && endTime != null) {
 			val duration = endTime.minus(startTime)
 			val newEntry = FastEntry(
