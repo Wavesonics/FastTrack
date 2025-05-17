@@ -1,0 +1,2 @@
+- Fixed Proguard crash on Fast start
+- Fixed main-thread DB access crash on Fast end

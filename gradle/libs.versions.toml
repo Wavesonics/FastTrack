@@ -1,4 +1,14 @@
 [versions]
+versionCode = "17"
+versionName = "2.0.1"
+
+kotlin = "2.1.20"
+javaVersion = "17"
+agp = "8.9.3"
+targetSdk = "35"
+compileSdk = "35"
+minSdk = "29"
+
 activityKtx = "1.10.1"
 appcompat = "1.7.0"
 appintro = "6.0.0"
@@ -37,16 +47,6 @@ roomRuntime = "2.7.1"
 satchelCore = "1.0.3"
 satchelSerializerBase64Android = "1.0.3"
 satchelStorerEncryptedFile = "1.0.3"
-versionCode = "16"
-versionName = "2.0.0"
-
-kotlin = "2.1.20"
-javaVersion = "17"
-agp = "8.9.3"
-targetSdk = "35"
-compileSdk = "35"
-minSdk = "29"
-
 koin-bom = "4.0.4"
 
 [libraries]
