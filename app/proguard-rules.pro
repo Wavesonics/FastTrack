@@ -18,6 +18,61 @@
 -keepnames class kotlinx.coroutines.DefaultExecutor { *; }
 -keepnames class kotlinx.coroutines.android.AndroidDispatcherFactory { *; }
 
+# Kotlin Serialization
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.AnnotationsKt
+-keepclassmembers class kotlinx.serialization.json.** {
+    *** Companion;
+}
+-keepclasseswithmembers class kotlinx.serialization.json.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+-keep,includedescriptorclasses class com.darkrockstudios.apps.fasttrack.**$$serializer { *; }
+-keepclassmembers class com.darkrockstudios.apps.fasttrack.** {
+    *** Companion;
+}
+-keepclasseswithmembers class com.darkrockstudios.apps.fasttrack.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# Koin
+-keepnames class org.koin.** { *; }
+-keep class org.koin.** { *; }
+-keep class org.koin.core.qualifier.** { *; }
+-keep class org.koin.core.annotation.** { *; }
+
+# Room
+-keep class * extends androidx.room.RoomDatabase
+-keep @androidx.room.Entity class *
+-dontwarn androidx.room.paging.**
+
+# Markwon (Markdown)
+-keep class io.noties.markwon.** { *; }
+-keep class org.commonmark.** { *; }
+
+# Satchel (Encrypted Storage)
+-keep class com.github.adrielcafe.satchel.** { *; }
+
+# FastAdapter
+-keep class com.mikepenz.fastadapter.** { *; }
+
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep class * extends com.bumptech.glide.module.AppGlideModule {
+ <init>(...);
+}
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
+}
+
+# Compose
+-keep class androidx.compose.** { *; }
+-dontwarn androidx.compose.**
+
 # Keep all classes in the app package
 -keeppackagenames com.darkrockstudios.apps.fasttrack.**
 -keep class com.darkrockstudios.apps.fasttrack.** { *; }
