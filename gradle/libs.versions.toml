@@ -42,7 +42,7 @@ versionName = "2.0.0"
 
 kotlin = "2.1.20"
 javaVersion = "17"
-agp = "8.9.2"
+agp = "8.9.3"
 targetSdk = "35"
 compileSdk = "35"
 minSdk = "29"
