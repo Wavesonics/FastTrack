@@ -5,17 +5,19 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+-keepattributes SourceFile,LineNumberTable
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Keep Glance widget related classes
+-keepclassmembers class * extends androidx.glance.** {
+  <fields>;
+}
+-keep public class * extends androidx.glance.appwidget.action.ActionCallback
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Coroutines
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory { *; }
+-keepnames class kotlinx.coroutines.DefaultExecutor { *; }
+-keepnames class kotlinx.coroutines.android.AndroidDispatcherFactory { *; }
+
+# Keep all classes in the app package
+-keeppackagenames com.darkrockstudios.apps.fasttrack.**
+-keep class com.darkrockstudios.apps.fasttrack.** { *; }
