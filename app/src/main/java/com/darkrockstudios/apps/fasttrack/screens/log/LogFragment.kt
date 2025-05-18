@@ -14,6 +14,7 @@ import com.darkrockstudios.apps.fasttrack.databinding.LogFragmentBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import kotlin.math.roundToInt
@@ -68,7 +69,7 @@ class LogFragment: Fragment()
 
 	private fun deleteFast(item: FastEntryItem)
 	{
-		lifecycleScope.launch { database.fastDao().delete(item.fast) }
+		lifecycleScope.launch(Dispatchers.IO) { database.fastDao().delete(item.fast) }
 	}
 
 	private fun updateEntries(entries: List<FastEntry>)

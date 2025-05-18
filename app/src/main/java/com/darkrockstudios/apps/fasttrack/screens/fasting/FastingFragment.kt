@@ -452,7 +452,7 @@ class FastingFragment : Fragment() {
 			val mills = now.toEpochMilliseconds()
 			storage.edit { putLong(Data.KEY_FAST_END, mills) }
 
-			lifecycleScope.launch { saveFastToLog(fast.getFastStart(), fast.getFastEnd()) }
+			lifecycleScope.launch(Dispatchers.IO) { saveFastToLog(fast.getFastStart(), fast.getFastEnd()) }
 
 			Napier.i("Fast ended!")
 
