@@ -56,6 +56,19 @@
 					android:name="android.app.shortcuts"
 					android:resource="@xml/shortcuts"/>
 		</activity>
+
+		<service
+				android:name=".complication.FastingComplicationProviderService"
+				android:exported="true"
+				android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
+			<intent-filter>
+				<action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+			</intent-filter>
+			<meta-data
+					android:name="android.support.wearable.complications.PROVIDER_CONFIG"
+					android:resource="@xml/fasting_complication_info" />
+		</service>
+
 	</application>
 
 </manifest>

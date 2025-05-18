@@ -94,6 +94,9 @@ dependencies {
 	implementation(libs.androidx.room.runtime)
 	implementation(libs.androidx.cardview)
 	implementation(libs.androidx.lifecycle.livedata.ktx)
+	implementation(libs.wear.complications.provider)
+	implementation(libs.wear.complications.data.source.ktx)
+	implementation(libs.wear.complications.data)
 	ksp(libs.androidx.room.compiler)
 	implementation(libs.androidx.room.ktx)
 
