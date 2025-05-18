@@ -62,11 +62,19 @@
 				android:exported="true"
 				android:permission="com.google.android.wearable.permission.BIND_COMPLICATION_PROVIDER">
 			<intent-filter>
-				<action android:name="android.support.wearable.complications.ACTION_COMPLICATION_UPDATE_REQUEST" />
+				<action android:name="androidx.wear.complications.ACTION_COMPLICATION_UPDATE_REQUEST"/>
 			</intent-filter>
 			<meta-data
-					android:name="android.support.wearable.complications.PROVIDER_CONFIG"
+					android:name="androidx.wear.complications.PROVIDER_CONFIG"
 					android:resource="@xml/fasting_complication_info" />
+
+			<meta-data
+					android:name="androidx.wear.complications.SUPPORTED_TYPES"
+					android:value="RANGED_VALUE,SHORT_TEXT,LONG_TEXT"/>
+
+			<meta-data
+					android:name="androidx.wear.complications.UPDATE_PERIOD_SECONDS"
+					android:value="1800"/>
 		</service>
 
 	</application>

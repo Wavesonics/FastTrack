@@ -50,6 +50,7 @@ satchelStorerEncryptedFile = "1.0.3"
 koin-bom = "4.0.4"
 wearComplications = "1.0.0"
 wearComplicationsData = "1.0.0-alpha22"
+wearComplicationsProvider = "1.0.0-alpha17"
 
 [libraries]
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -113,7 +114,7 @@ satchel-serializer-base64-android = { module = "com.github.adrielcafe.satchel:sa
 satchel-storer-encrypted-file = { module = "com.github.adrielcafe.satchel:satchel-storer-encrypted-file", version.ref = "satchelStorerEncryptedFile" }
 wear-complications-data = { group = "androidx.wear", name = "wear-complications-data", version.ref = "wearComplicationsData" }
 wear-complications-data-source-ktx = { group = "androidx.wear", name = "wear-complications-data-source-ktx", version.ref = "wearComplicationsData" }
-wear-complications-provider = { group = "androidx.wear", name = "wear-complications-provider", version.ref = "wearComplications" }
+wear-complications-provider = { group = "androidx.wear", name = "wear-complications-provider", version.ref = "wearComplicationsProvider" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
