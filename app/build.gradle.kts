@@ -38,7 +38,8 @@ android {
 	}
 	buildTypes {
 		release {
-			isMinifyEnabled = true
+			// TODO: True produces a crash when you start a fast
+			isMinifyEnabled = false
 			proguardFiles(
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
