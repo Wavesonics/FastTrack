@@ -6,7 +6,7 @@ Free and Open Source app for tracking Fasting
 [![F-Droid](https://img.shields.io/f-droid/v/com.darkrockstudios.apps.fasttrack?logo=FDROID)](https://f-droid.org/en/packages/com.darkrockstudios.apps.fasttrack/)
 [![GitHub](https://img.shields.io/github/v/release/Wavesonics/FastTrack?include_prereleases&logo=github)](https://github.com/Wavesonics/FastTrack/releases/latest)
 
-Intermittent fasting has many benefits! But it can be very hard to stay motivated dur a fast.
+Intermittent fasting has many benefits! But it can be very hard to stay motivated during a fast.
 
 This is a simple FOSS app intended to help keep you motivated. It is not a medical app and does not provide medical
 advice.
