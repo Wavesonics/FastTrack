@@ -4,11 +4,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.preference.PreferenceManager
-import androidx.wear.complications.data.ComplicationData
-import androidx.wear.complications.data.ComplicationType
-import androidx.wear.complications.data.NoDataComplicationData
-import androidx.wear.complications.data.PlainComplicationText
-import androidx.wear.complications.data.ShortTextComplicationData
+import androidx.wear.complications.data.*
 import androidx.wear.complications.datasource.ComplicationRequest
 import androidx.wear.complications.datasource.SuspendingComplicationDataSourceService
 import com.darkrockstudios.apps.fasttrack.R
@@ -68,6 +64,49 @@ class FastingComplicationProviderService : SuspendingComplicationDataSourceServi
 				}
 			}
 
+			ComplicationType.LONG_TEXT -> {
+				if (isFasting) {
+					val elapsedTime = getElapsedFastTime(context)
+					if (elapsedTime != null) {
+						LongTextComplicationData.Builder(
+							text = PlainComplicationText.Builder(
+								context.getString(R.string.app_widget_time, elapsedTime.inWholeHours)
+							).build(),
+							contentDescription = PlainComplicationText.Builder(
+								context.getString(R.string.app_widget_fast_in_progress)
+							).build()
+						)
+							.setTapAction(pendingIntent)
+							.build()
+					} else {
+						NoDataComplicationData()
+					}
+				} else {
+					LongTextComplicationData.Builder(
+						text = PlainComplicationText.Builder(
+							context.getString(R.string.app_widget_not_fasting)
+						).build(),
+						contentDescription = PlainComplicationText.Builder(
+							context.getString(R.string.app_widget_not_fasting)
+						).build()
+					)
+						.setTapAction(pendingIntent)
+						.build()
+				}
+			}
+
+			ComplicationType.RANGED_VALUE -> {
+				RangedValueComplicationData.Builder(
+					contentDescription = PlainComplicationText.Builder(
+						getString(R.string.app_widget_fast_in_progress)
+					).build(),
+					min = 0f,
+					max = 100f,
+					value = 50f,
+				)
+					.build()
+			}
+
 			else -> NoDataComplicationData()
 		}
 
@@ -83,6 +122,28 @@ class FastingComplicationProviderService : SuspendingComplicationDataSourceServi
 					contentDescription = PlainComplicationText.Builder(
 						getString(R.string.app_widget_fast_in_progress)
 					).build()
+				)
+					.build()
+			}
+
+			ComplicationType.LONG_TEXT -> {
+				LongTextComplicationData.Builder(
+					text = PlainComplicationText.Builder("16h").build(),
+					contentDescription = PlainComplicationText.Builder(
+						getString(R.string.app_widget_fast_in_progress)
+					).build()
+				)
+					.build()
+			}
+
+			ComplicationType.RANGED_VALUE -> {
+				RangedValueComplicationData.Builder(
+					contentDescription = PlainComplicationText.Builder(
+						getString(R.string.app_widget_fast_in_progress)
+					).build(),
+					min = 0f,
+					max = 100f,
+					value = 50f,
 				)
 					.build()
 			}
