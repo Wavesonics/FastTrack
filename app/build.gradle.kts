@@ -129,12 +129,13 @@ dependencies {
 	implementation(libs.image.glide)
 	implementation(libs.linkify)
 
-	implementation(libs.appintro)
 
 	implementation(libs.compose.ui)
 	implementation(libs.compose.ui.tooling.preview)
 	implementation(libs.compose.foundation)
 	implementation(libs.compose.material)
+	implementation(libs.activity.compose)
+	implementation(libs.compose.material.icons.extended)
 	debugImplementation(libs.compose.ui.tooling)
 
 	implementation(libs.glance)

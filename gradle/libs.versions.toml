@@ -10,12 +10,13 @@ compileSdk = "35"
 minSdk = "29"
 
 activityKtx = "1.10.1"
-appcompat = "1.7.0"
-appintro = "6.0.0"
+appcompat = "1.7.1"
 cardview = "1.0.0"
 collectionKtx = "1.5.0"
 compose = "1.8.2"
 compose-compiler = "1.5.10"
+activity-compose = "1.10.1"
+compose-material-icons-extended = "1.7.8"
 constraintlayout = "2.2.1"
 core = "4.6.0"
 coreKtx = "1.16.0"
@@ -24,7 +25,7 @@ datastorePreferences = "1.1.7"
 espressoCore = "3.6.1"
 fastadapter = "5.2.3"
 fastadapterExtensionsBinding = "5.2.3"
-fragmentKtx = "1.8.7"
+fragmentKtx = "1.8.8"
 glance = "1.1.1"
 glide = "4.11.0"
 junit = "4.13.2"
@@ -36,7 +37,7 @@ kotlinxSerializationCore = "1.8.1"
 ksp = "2.1.20-2.0.0"
 legacySupportV4 = "1.0.0"
 lifecycleExtensions = "2.2.0"
-lifecycleViewmodelKtx = "2.9.0"
+lifecycleViewmodelKtx = "2.9.1"
 material = "1.12.0"
 materialabout = "0.2.4"
 napier = "2.7.1"
@@ -70,11 +71,12 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose-material-icons-extended" }
 glance = { module = "androidx.glance:glance", version.ref = "glance" }
 glance-appwidget = { module = "androidx.glance:glance-appwidget", version.ref = "glance" }
 glance-material = { module = "androidx.glance:glance-material", version.ref = "glance" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
-appintro = { module = "com.github.AppIntro:AppIntro", version.ref = "appintro" }
 collection-ktx = { module = "androidx.collection:collection-ktx", version.ref = "collectionKtx" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
