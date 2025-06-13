@@ -23,9 +23,7 @@
 		<item name="itemTextAppearance">?attr/textAppearanceBody2</item>
 	</style>
 
-	<style name="Theme.FastTrackTheme.NoActionBar">
-		<item name="windowActionBar">false</item>
-		<item name="windowNoTitle">true</item>
+	<style name="Theme.FastTrackTheme.NoActionBar" parent="android:Theme.Material.Light.NoActionBar">
 	</style>
 
 	<style name="Theme.FastTrackTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

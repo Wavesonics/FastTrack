@@ -6,44 +6,35 @@ import androidx.room.PrimaryKey
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
 
+/**
+ * start - a linux UTC epoch timestamp in milliseconds
+ * length - duration in milliseconds of the fast
+ */
 @Entity
 data class FastEntry(
-		@PrimaryKey(autoGenerate = true) val uid: Int = 0,
-		@ColumnInfo val start: Long,
-		@ColumnInfo val length: Long
-					)
-{
-	@ExperimentalTime
+	@PrimaryKey(autoGenerate = true) val uid: Int = 0,
+	@ColumnInfo val start: Long,
+	@ColumnInfo val length: Long
+) {
 	fun lengthHours() = length.milliseconds.toDouble(DurationUnit.HOURS)
 
-	@ExperimentalTime
-	fun calculateKetosis(): Double
-	{
+	fun calculateKetosis(): Double {
 		val ketosisStart = Stages.PHASE_KETOSIS.hours.toDouble()
 		val lenHours = lengthHours()
-		return if(lenHours > ketosisStart)
-		{
+		return if (lenHours > ketosisStart) {
 			return lenHours - ketosisStart
-		}
-		else
-		{
+		} else {
 			0.0
 		}
 	}
 
-	@ExperimentalTime
-	fun calculateAutophagy(): Double
-	{
+	fun calculateAutophagy(): Double {
 		val autophagyStart = Stages.PHASE_AUTOPHAGY.hours.toDouble()
 		val lenHours = lengthHours()
-		return if(lenHours > autophagyStart)
-		{
+		return if (lenHours > autophagyStart) {
 			return lenHours - autophagyStart
-		}
-		else
-		{
+		} else {
 			0.0
 		}
 	}

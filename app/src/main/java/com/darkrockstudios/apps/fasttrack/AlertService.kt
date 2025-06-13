@@ -19,9 +19,7 @@ import io.github.aakira.napier.Napier
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
-import kotlin.time.ExperimentalTime
 
-@ExperimentalTime
 class AlertService : JobService() {
 	override fun onStartJob(params: JobParameters): Boolean {
 		when (params.jobId) {

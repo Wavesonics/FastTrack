@@ -223,4 +223,22 @@
 	<string name="app_widget_fast_in_progress">Fasting in progress</string>
 	<string name="app_widget_time">%1$d hours</string>
 	<string name="app_widget_start_fast_button">Start Fast</string>
+	<string name="close_button_content_description">Close</string>
+	<string name="cancel_button">Cancel</string>
+	<string name="next_button">Next</string>
+	<string name="previous_button">Previous</string>
+	<string name="skip_button">Skip</string>
+	<string name="done_button">Done</string>
+	<string name="debug_add_hour_button">Debug: Add 1 hour</string>
+	<string name="stop_fast_button_description">Stop Fast</string>
+	<string name="start_fast_button_description">Start Fast</string>
+	<string name="bmi_info_button_description">BMI Info</string>
+	<string name="bmr_info_button_description">BMR Info</string>
+	<string name="profile_gender_label">Gender</string>
+	<string name="more_options_button_description">More options</string>
+	<string name="manual_add_close_button_description">Close</string>
+	<string name="manual_add_selected_date">Selected date: %1$s</string>
+	<string name="manual_add_selected_time">Selected time: %1$s:%2$s</string>
+	<string name="manual_add_cancel_button">Cancel</string>
+	<string name="manual_add_next_button">Next</string>
 </resources>

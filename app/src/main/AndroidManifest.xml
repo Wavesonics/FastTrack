@@ -2,22 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
 		  package="com.darkrockstudios.apps.fasttrack">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove"/>
 
 	<application
-		android:name=".FastTrackApp"
-		android:allowBackup="true"
-		android:backupAgent=".FastTrackBackupAgent"
-		android:fullBackupContent="@xml/backup_rules"
-		android:dataExtractionRules="@xml/data_extraction_rules"
-		android:icon="@mipmap/ic_launcher"
-		android:label="@string/app_name"
-		android:roundIcon="@mipmap/ic_launcher_round"
-		android:supportsRtl="true"
-		android:theme="@style/Theme.FastTrackTheme"
-		android:enableOnBackInvokedCallback="true">
+			android:name=".FastTrackApp"
+			android:allowBackup="true"
+			android:backupAgent=".FastTrackBackupAgent"
+			android:fullBackupContent="@xml/backup_rules"
+			android:dataExtractionRules="@xml/data_extraction_rules"
+			android:icon="@mipmap/ic_launcher"
+			android:label="@string/app_name"
+			android:roundIcon="@mipmap/ic_launcher_round"
+			android:supportsRtl="true"
+			android:theme="@style/Theme.FastTrackTheme"
+			android:enableOnBackInvokedCallback="true">
 
 		<receiver
 				android:name=".widget.FastingWidgetReceiver"
@@ -31,26 +31,25 @@
 		</receiver>
 
 		<activity
-			android:name=".IntroActivity"
-			android:label="@string/title_activity_intro"/>
+				android:name=".screens.intro.IntroActivity"
+				android:label="@string/title_activity_intro"/>
 		<activity
-			android:name=".screens.info.InfoActivity"
-			android:label="@string/title_activity_info"
-			android:theme="@style/Theme.FastTrackTheme.NoActionBar"/>
+				android:name=".screens.info.InfoActivity"
+				android:label="@string/title_activity_info"/>
 
 		<service
-			android:name=".AlertService"
-			android:enabled="true"
-			android:exported="false"
-			android:permission="android.permission.BIND_JOB_SERVICE" />
+				android:name=".AlertService"
+				android:enabled="true"
+				android:exported="false"
+				android:permission="android.permission.BIND_JOB_SERVICE"/>
 
 		<activity
-			android:name=".screens.main.MainActivity"
-            android:exported="true">
+				android:name=".screens.main.MainActivity"
+				android:exported="true">
 			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN"/>
 
-				<category android:name="android.intent.category.LAUNCHER" />
+				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 			<meta-data
 					android:name="android.app.shortcuts"

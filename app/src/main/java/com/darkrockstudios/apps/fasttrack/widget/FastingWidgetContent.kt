@@ -20,8 +20,9 @@ import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
-@OptIn(kotlin.time.ExperimentalTime::class)
+@OptIn(ExperimentalTime::class)
 @Composable
 fun FastingWidgetContent() {
 	val context = LocalContext.current

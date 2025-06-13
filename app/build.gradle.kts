@@ -28,7 +28,6 @@ android {
 		}
 	}
 	buildFeatures {
-		viewBinding = true
 		buildConfig = true
 		compose = true
 	}
@@ -46,6 +45,10 @@ android {
 			)
 			signingConfig = signingConfigs.getByName("release")
 		}
+		debug {
+			applicationIdSuffix = ".dev"
+			resValue("string", "app_name", "FastTrackDev")
+		}
 	}
 	compileOptions {
 		sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
@@ -53,6 +56,10 @@ android {
 	}
 	kotlinOptions {
 		jvmTarget = libs.versions.javaVersion.get()
+		freeCompilerArgs = listOf(
+			"-opt-in=kotlin.time.ExperimentalTime",
+			"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+		)
 	}
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
@@ -72,10 +79,8 @@ dependencies {
 	implementation(libs.collection.ktx)
 	implementation(libs.fragment.ktx)
 	implementation(libs.recyclerview)
-	implementation(libs.material)
 
 	implementation(libs.appcompat)
-	implementation(libs.material)
 	implementation(libs.constraintlayout)
 
 	implementation(libs.navigation.runtime.ktx)
@@ -94,6 +99,11 @@ dependencies {
 	implementation(libs.androidx.room.runtime)
 	implementation(libs.androidx.cardview)
 	implementation(libs.androidx.lifecycle.livedata.ktx)
+	implementation(libs.androidx.material3.android)
+	implementation(libs.androidx.material3.window.sizeclass)
+	implementation(libs.androidx.material3.adaptive.navigation.suite)
+	implementation(libs.androidx.adaptive.navigation)
+
 	ksp(libs.androidx.room.compiler)
 	implementation(libs.androidx.room.ktx)
 
@@ -109,6 +119,7 @@ dependencies {
 	implementation(libs.koin.core)
 	implementation(libs.koin.android)
 	implementation(libs.koin.core.coroutines)
+	implementation(libs.koin.androidx.compose)
 	implementation(libs.koin.androidx.workmanager)
 
 	implementation(libs.customdatetimepicker)
@@ -117,9 +128,9 @@ dependencies {
 	implementation(libs.satchel.storer.encrypted.file)
 	implementation(libs.satchel.serializer.base64.android)
 
-	implementation(libs.materialabout)
+	implementation(libs.compose.markdown)
 
-	implementation(libs.konfetti)
+	implementation(libs.materialabout)
 
 	implementation(libs.core)
 	implementation(libs.ext.latex)
@@ -129,14 +140,15 @@ dependencies {
 	implementation(libs.image.glide)
 	implementation(libs.linkify)
 
-
 	implementation(libs.compose.ui)
 	implementation(libs.compose.ui.tooling.preview)
 	implementation(libs.compose.foundation)
-	implementation(libs.compose.material)
 	implementation(libs.activity.compose)
 	implementation(libs.compose.material.icons.extended)
 	debugImplementation(libs.compose.ui.tooling)
+
+	implementation(libs.accompanist.pager)
+	implementation(libs.accompanist.pager.indicators)
 
 	implementation(libs.glance)
 	implementation(libs.glance.appwidget)
@@ -145,4 +157,7 @@ dependencies {
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
 	androidTestImplementation(libs.androidx.espresso.core)
+
+	androidTestImplementation(libs.androidx.compose.ui.test)
+	debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
