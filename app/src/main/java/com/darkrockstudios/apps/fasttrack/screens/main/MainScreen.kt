@@ -49,7 +49,7 @@ fun MainScreen(
 	val profileTitle = stringResource(id = R.string.title_profile)
 
 	val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
-	val compactHeight = windowSizeClass.isHeightAtLeastBreakpoint(600).not()
+	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
 
 	LaunchedEffect(pagerState.currentPage) {
 		currentTitle = when (pagerState.currentPage) {
