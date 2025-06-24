@@ -2,7 +2,7 @@ package com.darkrockstudios.apps.fasttrack.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Light theme colors
+val Purple100 = Color(0xFFBE91FF)
 val Purple200 = Color(0xFFA15BF8)
 val Purple500 = Color(0xFF6200EE)
 val Purple600 = Color(0xFF4B01D0)

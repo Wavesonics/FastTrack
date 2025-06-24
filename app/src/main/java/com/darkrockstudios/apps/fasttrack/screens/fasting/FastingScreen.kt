@@ -2,6 +2,7 @@ package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.res.Configuration
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -26,10 +27,26 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.confetti.ConfettiState
 import com.darkrockstudios.apps.fasttrack.screens.confetti.confettiEffect
 import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
+import com.darkrockstudios.apps.fasttrack.ui.theme.Purple100
+import com.darkrockstudios.apps.fasttrack.ui.theme.Purple700
 import com.darkrockstudios.apps.fasttrack.ui.theme.fastBackgroundGradient
 import com.darkrockstudios.apps.fasttrack.utils.Utils
 import kotlinx.coroutines.delay
 import org.koin.compose.viewmodel.koinViewModel
+
+private val phaseTextColor_Light = Purple700
+private val phaseTextColor_Dark = Purple100
+
+@Composable
+fun phaseTextColor(): Color {
+	val isDark: Boolean = isSystemInDarkTheme()
+	return if (isDark) {
+		phaseTextColor_Dark
+	} else {
+		phaseTextColor_Light
+	}
+}
+
 
 @Composable
 fun FastingScreen(
@@ -268,9 +285,8 @@ private fun FastDetailsContent(
 					)
 					Text(
 						text = stringResource(id = R.string.fast_fat_burn_label),
-						style = MaterialTheme.typography.headlineMedium.copy(
-							shadow = stageDropShadow,
-						),
+						style = MaterialTheme.typography.headlineMedium,
+						color = phaseTextColor(),
 					)
 				}
 				Text(
@@ -303,9 +319,8 @@ private fun FastDetailsContent(
 					)
 					Text(
 						text = stringResource(id = R.string.fast_ketosis_label),
-						style = MaterialTheme.typography.headlineMedium.copy(
-							shadow = stageDropShadow,
-						),
+						style = MaterialTheme.typography.headlineMedium,
+						color = phaseTextColor(),
 					)
 				}
 				Text(
@@ -338,9 +353,8 @@ private fun FastDetailsContent(
 					)
 					Text(
 						text = stringResource(id = R.string.fast_autophagy_label),
-						style = MaterialTheme.typography.headlineMedium.copy(
-							shadow = stageDropShadow,
-						),
+						style = MaterialTheme.typography.headlineMedium,
+						color = phaseTextColor(),
 					)
 				}
 				Text(
