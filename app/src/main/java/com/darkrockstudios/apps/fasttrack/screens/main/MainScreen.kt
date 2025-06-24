@@ -18,7 +18,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepositoryImpl
 import com.darkrockstudios.apps.fasttrack.screens.fasting.FastingScreen
@@ -247,11 +246,10 @@ fun MainScreen(
 			Box(
 				modifier = Modifier
 					.fillMaxSize()
-					.padding(paddingValues)
 			) {
 				Content(
 					Modifier.fillMaxSize(),
-					contentPaddingValues = PaddingValues(0.dp),
+					contentPaddingValues = paddingValues,
 					pagerState,
 				)
 			}

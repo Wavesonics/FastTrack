@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -66,7 +67,10 @@ fun LogScreen(
 		) {
 			// Total Ketosis and Autophagy Hours
 			Column(
-				modifier = Modifier.fillMaxWidth(),
+				modifier = Modifier
+					.fillMaxWidth()
+					.padding(top = contentPaddingValues.calculateTopPadding()),
+
 			) {
 				// Total Ketosis
 				Row {
@@ -100,12 +104,16 @@ fun LogScreen(
 			}
 
 			Spacer(modifier = Modifier.height(16.dp))
-
+			val direction = LocalLayoutDirection.current
 			LazyColumn(
 				modifier = Modifier
 					.fillMaxWidth()
 					.weight(1f),
-				contentPadding = contentPaddingValues,
+				contentPadding = PaddingValues(
+					start = contentPaddingValues.calculateStartPadding(direction),
+					end = contentPaddingValues.calculateEndPadding(direction),
+					bottom = contentPaddingValues.calculateBottomPadding(),
+				),
 			) {
 				items(uiState.entries, key = { it.id }) { entry ->
 					FastEntryItem(
