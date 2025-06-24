@@ -1,0 +1,2 @@
+- Fixed screen bounds on certain devices
+- Fixed dark mode text contrast
