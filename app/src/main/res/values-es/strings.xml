@@ -183,4 +183,25 @@
 	<string name="app_widget_fast_in_progress">Ayuno en progreso</string>
 	<string name="app_widget_time">%1$d horas</string>
 	<string name="app_widget_start_fast_button">Iniciar Rápido</string>
+	<string name="already_started_dialog_title">Ya ha comenzado</string>
+	<string name="manual_add_set_end_title">Establecer Fin Rápido</string>
+	<string name="manual_add_set_end_complete">Calcular</string>
+	<string name="cancel_button">Cancelar</string>
+	<string name="close_button_content_description">Cerrar</string>
+	<string name="next_button">Siguiente</string>
+	<string name="previous_button">Anterior</string>
+	<string name="skip_button">Omitir</string>
+	<string name="debug_add_hour_button">Depurar: Agregar 1 hora</string>
+	<string name="done_button">Hecho</string>
+	<string name="stop_fast_button_description">Detener Rápido</string>
+	<string name="bmi_info_button_description">Información de IMC</string>
+	<string name="more_options_button_description">Más opciones</string>
+	<string name="profile_gender_label">Género</string>
+	<string name="start_fast_button_description">Iniciar rápido</string>
+	<string name="bmr_info_button_description">Información del BMR</string>
+	<string name="manual_add_close_button_description">Cerrar</string>
+	<string name="manual_add_selected_start">Iniciado: %1$s</string>
+	<string name="manual_add_cancel_button">Cancelar</string>
+	<string name="manual_add_next_button">Siguiente</string>
+	<string name="manual_add_calculate_from_end">Calcular desde el final</string>
 </resources>

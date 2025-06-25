@@ -48,6 +48,7 @@
 	<string name="confirm_start_fast_positive">Now</string>
 	<string name="confirm_start_fast_neutral">Already Started</string>
 	<string name="confirm_start_fast_negative">No</string>
+	<string name="already_started_dialog_title">Already Started</string>
 
 	<string name="start_picker_title">When did you start your Fast</string>
 
@@ -104,6 +105,8 @@
 	<string name="manual_add_complete_button">Add</string>
 	<string name="manual_add_fast_started_on">Fast Started On: %1$s</string>
 	<string name="manual_start_title">Fasted Started</string>
+	<string name="manual_add_set_end_title">Set Fast End</string>
+	<string name="manual_add_set_end_complete">Calculate</string>
 	<string name="fast_autophagy_label">Autophagy:</string>
 	<string name="fast_ketosis_label">Ketosis:</string>
 	<string name="fast_fat_burn_label">Fat Burn:</string>
@@ -237,8 +240,8 @@
 	<string name="profile_gender_label">Gender</string>
 	<string name="more_options_button_description">More options</string>
 	<string name="manual_add_close_button_description">Close</string>
-	<string name="manual_add_selected_date">Selected date: %1$s</string>
-	<string name="manual_add_selected_time">Selected time: %1$s:%2$s</string>
+	<string name="manual_add_selected_start">Started: %1$s</string>
 	<string name="manual_add_cancel_button">Cancel</string>
 	<string name="manual_add_next_button">Next</string>
+	<string name="manual_add_calculate_from_end">Calculate From End</string>
 </resources>

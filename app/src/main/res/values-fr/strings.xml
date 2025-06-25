@@ -186,4 +186,25 @@
 	<string name="app_widget_fast_in_progress">Jeûne en cours</string>
 	<string name="app_widget_time">%1$d heures</string>
 	<string name="app_widget_start_fast_button">Démarrer rapidement</string>
+	<string name="already_started_dialog_title">Déjà commencé</string>
+	<string name="manual_add_set_end_complete">Calculer</string>
+	<string name="manual_add_set_end_title">Définir la fin rapide</string>
+	<string name="close_button_content_description">Fermer</string>
+	<string name="next_button">Suivant</string>
+	<string name="cancel_button">Annuler</string>
+	<string name="previous_button">Précédent</string>
+	<string name="done_button">Fait</string>
+	<string name="stop_fast_button_description">Arrêter rapidement</string>
+	<string name="debug_add_hour_button">Débogage : Ajouter 1 heure</string>
+	<string name="start_fast_button_description">Commencer rapidement</string>
+	<string name="bmr_info_button_description">Informations BMR</string>
+	<string name="bmi_info_button_description">Informations sur l\'IMC</string>
+	<string name="profile_gender_label">Genre</string>
+	<string name="more_options_button_description">Plus d\'options</string>
+	<string name="manual_add_close_button_description">Fermer</string>
+	<string name="manual_add_selected_start">Commencé : %1$s</string>
+	<string name="manual_add_cancel_button">Annuler</string>
+	<string name="manual_add_next_button">Suivant</string>
+	<string name="manual_add_calculate_from_end">Calculer à partir de la fin</string>
+	<string name="skip_button">Passer</string>
 </resources>
