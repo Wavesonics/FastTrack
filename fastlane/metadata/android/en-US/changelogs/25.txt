@@ -1,0 +1,3 @@
+- Log Book: Manual Add dialog now can calculate the fast duration by setting an end date/time
+- Fix Manual Add button not showing on the Log screen
+- Minor color tweaks to fasting screen
