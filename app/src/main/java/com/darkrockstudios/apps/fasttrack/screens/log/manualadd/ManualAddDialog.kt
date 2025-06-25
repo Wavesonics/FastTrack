@@ -5,9 +5,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -16,15 +14,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.screens.fasting.DateTimePickerDialog
+import com.darkrockstudios.apps.fasttrack.screens.fasting.rememberDateTimePickerDialogState
 import com.darkrockstudios.apps.fasttrack.utils.PastAndTodaySelectableDates
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 @Composable
 fun ManualAddDialog(
 	onDismiss: () -> Unit,
 	viewModel: IManualAddViewModel = koinViewModel<ManualAddViewModel>()
 ) {
 	val uiState by viewModel.uiState.collectAsState()
+	var showEndDateTimePicker by remember { mutableStateOf(false) }
 
 	Dialog(
 		onDismissRequest = {
@@ -69,17 +72,30 @@ fun ManualAddDialog(
 				val timePickerState = rememberTimePickerState()
 
 				when (uiState.currentStep) {
-					0 -> {
+					ManualAddStep.StartDate -> {
 						DatePicker(datePickerState)
 					}
 
-					1 -> {
+					ManualAddStep.StartTime -> {
 						TimePicker(timePickerState)
 					}
 
-					2 -> {
+					ManualAddStep.SetDuration -> {
 						// Length Input
-						Column {
+						Column(modifier = Modifier.padding(16.dp)) {
+							// Show summary of selections
+							uiState.selectedDateTime?.let { dateTime ->
+								Text(
+									text = stringResource(
+										id = R.string.manual_add_selected_start,
+										"${dateTime.date} ${dateTime.hour}:${
+											dateTime.minute.toString().padStart(2, '0')
+										}"
+									),
+									style = MaterialTheme.typography.bodyMedium
+								)
+							}
+
 							OutlinedTextField(
 								value = uiState.lengthHours,
 								onValueChange = { viewModel.onLengthChanged(it) },
@@ -90,24 +106,26 @@ fun ManualAddDialog(
 								modifier = Modifier.fillMaxWidth()
 							)
 
-							Spacer(modifier = Modifier.height(16.dp))
+							Spacer(modifier = Modifier.height(8.dp))
 
-							// Show summary of selections
-							uiState.selectedDateTime?.let { dateTime ->
-								Text(
-									text = stringResource(
-										id = R.string.manual_add_selected_date,
-										dateTime.date.toString()
-									),
-									style = MaterialTheme.typography.bodyMedium
-								)
-								Text(
-									text = stringResource(
-										id = R.string.manual_add_selected_time,
-										dateTime.hour.toString(),
-										dateTime.minute.toString().padStart(2, '0')
-									),
-									style = MaterialTheme.typography.bodyMedium
+							// Button to calculate length from end date/time
+							Button(
+								onClick = { showEndDateTimePicker = true },
+							) {
+								Text(stringResource(id = R.string.manual_add_calculate_from_end))
+							}
+
+							if (showEndDateTimePicker) {
+								val dateTimePickerState = rememberDateTimePickerDialogState()
+								DateTimePickerDialog(
+									onDismiss = { showEndDateTimePicker = false },
+									onDateTimeSelected = { instant ->
+										viewModel.onEndDateTimeSelected(instant)
+										showEndDateTimePicker = false
+									},
+									title = stringResource(R.string.manual_add_set_end_title),
+									finishButton = stringResource(id = R.string.manual_add_set_end_complete),
+									state = dateTimePickerState
 								)
 							}
 						}
@@ -135,27 +153,27 @@ fun ManualAddDialog(
 					Button(
 						onClick = {
 							when (uiState.currentStep) {
-								0 -> {
+								ManualAddStep.StartDate -> {
 									datePickerState.selectedDateMillis?.let { ms ->
 										viewModel.onDateSelected(ms)
 									}
 								}
 
-								1 -> {
+								ManualAddStep.StartTime -> {
 									viewModel.onTimeSelected(timePickerState.hour, timePickerState.minute)
 								}
 
-								2 -> {
+								ManualAddStep.SetDuration -> {
 									viewModel.onAddEntry()
 									viewModel.onDismiss()
 									onDismiss()
 								}
 							}
 						},
-						enabled = if (uiState.currentStep < 2) uiState.isNextButtonEnabled else uiState.isCompleteButtonEnabled
+						enabled = if (uiState.currentStep.isFinalStep.not()) uiState.isNextButtonEnabled else uiState.isCompleteButtonEnabled
 					) {
 						Text(
-							text = if (uiState.currentStep < 2) {
+							text = if (uiState.currentStep.isFinalStep.not()) {
 								stringResource(id = R.string.next_button)
 							} else {
 								stringResource(id = R.string.manual_add_complete_button)

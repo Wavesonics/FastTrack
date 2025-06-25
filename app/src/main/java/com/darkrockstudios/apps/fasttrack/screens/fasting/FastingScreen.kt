@@ -20,7 +20,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.R
@@ -86,6 +85,8 @@ fun FastingScreen(
 				viewModel.startFast(selectedDateTime)
 				showDateTimePicker = false
 			},
+			title = stringResource(R.string.already_started_dialog_title),
+			finishButton = stringResource(id = R.string.start_fast_button),
 			state = dateTimePickerState,
 		)
 	}
@@ -141,12 +142,13 @@ fun FastingScreen(
 			) {
 				FastHeadingContent(
 					uiState = uiState,
-					spacer = 16.dp,
 					modifier = Modifier
 						.weight(1f)
 						.fillMaxHeight()
 						.padding(end = 8.dp)
 				)
+
+				Spacer(modifier = Modifier.size(height = 16.dp, width = 1.dp))
 
 				FastDetailsContent(
 					uiState = uiState,
@@ -169,9 +171,10 @@ fun FastingScreen(
 			) {
 				FastHeadingContent(
 					uiState = uiState,
-					spacer = 64.dp,
 					modifier = Modifier.fillMaxWidth()
 				)
+
+				Spacer(modifier = Modifier.size(height = 64.dp, width = 1.dp))
 
 				FastDetailsContent(
 					uiState = uiState,
@@ -189,7 +192,6 @@ fun FastingScreen(
 @Composable
 private fun FastHeadingContent(
 	uiState: IFastingViewModel.FastingUiState,
-	spacer: Dp,
 	modifier: Modifier = Modifier
 ) {
 	Column(
@@ -222,7 +224,7 @@ private fun FastHeadingContent(
 			modifier = Modifier.padding(bottom = 16.dp)
 		)
 
-		Spacer(modifier = Modifier.size(height = spacer, width = 1.dp))
+		Spacer(modifier = Modifier.size(height = 16.dp, width = 1.dp))
 
 		// Timer
 		Row(
@@ -280,6 +282,7 @@ private fun FastDetailsContent(
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_more_info),
+						tint = phaseTextColor(),
 						contentDescription = null,
 						modifier = Modifier.padding(end = 8.dp)
 					)
@@ -314,6 +317,7 @@ private fun FastDetailsContent(
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_more_info),
+						tint = phaseTextColor(),
 						contentDescription = null,
 						modifier = Modifier.padding(end = 8.dp)
 					)
@@ -348,6 +352,7 @@ private fun FastDetailsContent(
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_more_info),
+						tint = phaseTextColor(),
 						contentDescription = null,
 						modifier = Modifier.padding(end = 8.dp)
 					)

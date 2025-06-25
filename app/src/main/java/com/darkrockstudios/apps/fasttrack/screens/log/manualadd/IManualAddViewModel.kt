@@ -6,7 +6,7 @@ import kotlinx.datetime.LocalDateTime
 
 interface IManualAddViewModel {
 	data class ManualAddUiState(
-		val currentStep: Int = 0,
+		val currentStep: ManualAddStep = ManualAddStep.StartDate,
 		val selectedDate: LocalDate? = null,
 		val selectedDateTime: LocalDateTime? = null,
 		val lengthHours: String = "",
@@ -19,6 +19,11 @@ interface IManualAddViewModel {
 	fun onDateSelected(dateTimestamp: Long)
 	fun onTimeSelected(hour: Int, minute: Int)
 	fun onLengthChanged(length: String)
+	fun onEndDateTimeSelected(instant: kotlinx.datetime.Instant)
 	fun onAddEntry(): Boolean
 	fun onDismiss()
+}
+
+enum class ManualAddStep(val isFinalStep: Boolean = false) {
+	StartDate, StartTime, SetDuration(true)
 }

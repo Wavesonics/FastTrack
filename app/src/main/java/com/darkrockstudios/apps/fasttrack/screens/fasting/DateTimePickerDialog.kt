@@ -43,6 +43,8 @@ fun rememberDateTimePickerDialogState(): DateTimePickerDialogState {
 fun DateTimePickerDialog(
 	onDismiss: () -> Unit,
 	onDateTimeSelected: (Instant) -> Unit,
+	title: String,
+	finishButton: String,
 	state: DateTimePickerDialogState = rememberDateTimePickerDialogState()
 ) {
 	val datePickerState = rememberDatePickerState(
@@ -82,7 +84,7 @@ fun DateTimePickerDialog(
 					verticalAlignment = Alignment.CenterVertically
 				) {
 					Text(
-						text = stringResource(id = R.string.confirm_start_fast_neutral),
+						text = title,
 						style = MaterialTheme.typography.headlineSmall
 					)
 					IconButton(onClick = onDismiss) {
@@ -151,7 +153,7 @@ fun DateTimePickerDialog(
 							text = if (state.currentStep < 1) {
 								stringResource(id = R.string.next_button)
 							} else {
-								stringResource(id = R.string.start_fast_button)
+								finishButton
 							}
 						)
 					}

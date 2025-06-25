@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 
@@ -15,6 +16,7 @@ class FakeManualAddViewModel(initialState: IManualAddViewModel.ManualAddUiState 
 	override fun onDateSelected(dateTimestamp: Long) {}
 	override fun onTimeSelected(hour: Int, minute: Int) {}
 	override fun onLengthChanged(length: String) {}
+	override fun onEndDateTimeSelected(instant: Instant) {}
 	override fun onAddEntry() = true
 	override fun onDismiss() {}
 }
@@ -26,7 +28,7 @@ fun ManualAddDialogPreviewStep0() {
 		onDismiss = {},
 		viewModel = FakeManualAddViewModel(
 			IManualAddViewModel.ManualAddUiState(
-				currentStep = 0,
+				currentStep = ManualAddStep.StartDate,
 				isNextButtonEnabled = true
 			)
 		)
@@ -41,7 +43,7 @@ fun ManualAddDialogPreviewStep1() {
 		onDismiss = {},
 		viewModel = FakeManualAddViewModel(
 			IManualAddViewModel.ManualAddUiState(
-				currentStep = 1,
+				currentStep = ManualAddStep.StartTime,
 				selectedDate = selectedDate,
 				lengthHours = "16",
 				isNextButtonEnabled = true
@@ -58,7 +60,7 @@ fun ManualAddDialogPreviewStep2() {
 		onDismiss = {},
 		viewModel = FakeManualAddViewModel(
 			IManualAddViewModel.ManualAddUiState(
-				currentStep = 2,
+				currentStep = ManualAddStep.SetDuration,
 				selectedDateTime = selectedDateTime,
 				lengthHours = "16",
 				isCompleteButtonEnabled = true

@@ -20,8 +20,8 @@ class ManualAddViewModel(
 	private val _uiState = MutableStateFlow(IManualAddViewModel.ManualAddUiState())
 	override val uiState: StateFlow<IManualAddViewModel.ManualAddUiState> = _uiState.asStateFlow()
 
-	override fun onDateSelected(dateTimestampMs: Long) {
-		val instant = Instant.fromEpochMilliseconds(dateTimestampMs)
+	override fun onDateSelected(dateTimestamp: Long) {
+		val instant = Instant.fromEpochMilliseconds(dateTimestamp)
 		val localDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
 
 		val selectedDate = LocalDate(
@@ -33,7 +33,7 @@ class ManualAddViewModel(
 		_uiState.update { currentState ->
 			currentState.copy(
 				selectedDate = selectedDate,
-				currentStep = 1
+				currentStep = ManualAddStep.StartTime
 			)
 		}
 	}
@@ -53,7 +53,7 @@ class ManualAddViewModel(
 			_uiState.update { state ->
 				state.copy(
 					selectedDateTime = selectedDateTime,
-					currentStep = 2
+					currentStep = ManualAddStep.SetDuration
 				)
 			}
 		}
@@ -74,6 +74,24 @@ class ManualAddViewModel(
 			}
 		} catch (e: NumberFormatException) {
 			w("Failed to parse length input")
+		}
+	}
+
+	override fun onEndDateTimeSelected(instant: Instant) {
+		val currentState = _uiState.value
+		val startDateTime = currentState.selectedDateTime
+
+		if (startDateTime != null) {
+			val startInstant = startDateTime.toInstant(TimeZone.currentSystemDefault())
+			val durationMillis = instant.toEpochMilliseconds() - startInstant.toEpochMilliseconds()
+
+			// Convert milliseconds to hours, rounded to nearest whole number
+			val hours = (durationMillis / (1000.0 * 60 * 60)).toLong()
+
+			// Only update if the end time is after the start time
+			if (hours > 0) {
+				onLengthChanged(hours.toString())
+			}
 		}
 	}
 

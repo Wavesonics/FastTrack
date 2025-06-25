@@ -131,7 +131,12 @@ fun LogScreen(
 			onClick = { viewModel.showManualAddDialog() },
 			modifier = Modifier
 				.align(Alignment.BottomEnd)
-				.padding(16.dp)
+				.padding(
+					top = 16.dp,
+					bottom = contentPaddingValues.calculateBottomPadding() + 16.dp,
+					start = 16.dp,
+					end = 16.dp,
+				)
 		) {
 			Icon(
 				imageVector = Icons.Default.Add,

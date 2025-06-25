@@ -27,6 +27,23 @@ import com.darkrockstudios.apps.fasttrack.utils.Utils
 import kotlinx.coroutines.launch
 import kotlin.time.ExperimentalTime
 
+enum class ScreenPages {
+	Fasting,
+	Log,
+	Profile;
+
+	companion object {
+		fun fromOrdinal(ordinal: Int): ScreenPages {
+			return when (ordinal) {
+				0 -> Fasting
+				1 -> Log
+				2 -> Profile
+				else -> throw IllegalArgumentException("Invalid ordinal")
+			}
+		}
+	}
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @ExperimentalTime
 @Composable
@@ -36,7 +53,8 @@ fun MainScreen(
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
 ) {
-	val pagerState = rememberPagerState(initialPage = 0, pageCount = { 3 })
+	val pagerState =
+		rememberPagerState(initialPage = ScreenPages.Fasting.ordinal, pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
 	var currentTitle by remember { mutableStateOf("") }
@@ -51,11 +69,10 @@ fun MainScreen(
 	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
 
 	LaunchedEffect(pagerState.currentPage) {
-		currentTitle = when (pagerState.currentPage) {
-			0 -> fastingTitle
-			1 -> logTitle
-			2 -> profileTitle
-			else -> ""
+		currentTitle = when (ScreenPages.fromOrdinal(pagerState.currentPage)) {
+			ScreenPages.Fasting -> fastingTitle
+			ScreenPages.Log -> logTitle
+			ScreenPages.Profile -> profileTitle
 		}
 	}
 
@@ -135,7 +152,7 @@ fun MainScreen(
 							)
 						},
 						label = { Text(fastingTitle) },
-						selected = pagerState.currentPage == 0,
+						selected = pagerState.currentPage == ScreenPages.Fasting.ordinal,
 						onClick = {
 							coroutineScope.launch {
 								pagerState.animateScrollToPage(0)
@@ -269,7 +286,7 @@ private fun Content(
 		key = { page -> page }
 	) { page ->
 		PageContainer(
-			page = page,
+			page = ScreenPages.fromOrdinal(page),
 			contentPaddingValues = contentPaddingValues,
 		)
 	}
@@ -278,24 +295,23 @@ private fun Content(
 @ExperimentalTime
 @Composable
 private fun PageContainer(
-	page: Int,
+	page: ScreenPages,
 	contentPaddingValues: PaddingValues,
 ) {
 	when (page) {
-		0 -> {
+		ScreenPages.Fasting -> {
 			FastingScreen(contentPaddingValues)
 		}
 
-		1 -> {
+		ScreenPages.Log -> {
 			LogScreen(contentPaddingValues)
 		}
 
-		2 -> {
+		ScreenPages.Profile -> {
 			val context = LocalContext.current
 			ProfileScreen(
 				contentPaddingValues = contentPaddingValues,
 				onShowInfoDialog = { titleRes, contentRes ->
-					// Show info dialog
 					Utils.showInfoDialog(
 						titleRes,
 						contentRes,
@@ -303,10 +319,6 @@ private fun PageContainer(
 					)
 				}
 			)
-		}
-
-		else -> {
-			error("Unknown page: $page")
 		}
 	}
 }

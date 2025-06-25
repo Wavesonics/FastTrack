@@ -1,7 +1,9 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.darkrockstudios.apps.fasttrack.R
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -12,6 +14,8 @@ fun DateTimePickerDialogStep0Preview() {
 	DateTimePickerDialog(
 		onDismiss = {},
 		onDateTimeSelected = {},
+		title = stringResource(R.string.already_started_dialog_title),
+		finishButton = stringResource(id = R.string.start_fast_button),
 		state = state
 	)
 }
@@ -26,6 +30,8 @@ fun DateTimePickerDialogStep1Preview() {
 	DateTimePickerDialog(
 		onDismiss = {},
 		onDateTimeSelected = {},
+		title = stringResource(R.string.already_started_dialog_title),
+		finishButton = stringResource(id = R.string.start_fast_button),
 		state = state
 	)
 }
