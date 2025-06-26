@@ -13,12 +13,22 @@ class FakeFastingLogDatasource : FastingLogDatasource {
 	private val entries = mutableListOf<FastEntry>()
 	private val entriesFlow = MutableStateFlow<List<FastEntry>>(emptyList())
 
+	private var nextId = 1
+
 	override fun getAll(): List<FastEntry> = entries.toList()
 
 	override fun loadAll(): Flow<List<FastEntry>> = entriesFlow.asStateFlow()
 
-	override fun insertAll(vararg entries: FastEntry) {
-		this.entries.addAll(entries)
+	override fun insertAll(vararg newEntries: FastEntry) {
+		newEntries.forEach { entry ->
+			if (entry.uid == 0) {
+				val newId = entry.copy(uid = nextId++)
+				entries.add(newId)
+			} else {
+				entries.add(entry)
+			}
+		}
+
 		updateFlow()
 	}
 

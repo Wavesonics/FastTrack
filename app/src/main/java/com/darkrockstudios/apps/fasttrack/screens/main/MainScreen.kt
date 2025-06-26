@@ -19,7 +19,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepositoryImpl
+import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.screens.fasting.FastingScreen
 import com.darkrockstudios.apps.fasttrack.screens.log.LogScreen
 import com.darkrockstudios.apps.fasttrack.screens.profile.ProfileScreen
@@ -48,10 +48,12 @@ enum class ScreenPages {
 @ExperimentalTime
 @Composable
 fun MainScreen(
-	repository: ActiveFastRepositoryImpl,
+	repository: ActiveFastRepository,
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
+	onExportClick: () -> Unit,
+	onImportClick: () -> Unit,
 ) {
 	val pagerState =
 		rememberPagerState(initialPage = ScreenPages.Fasting.ordinal, pageCount = { ScreenPages.entries.size })
@@ -130,6 +132,22 @@ fun MainScreen(
 							text = { Text(stringResource(id = R.string.action_about)) },
 							onClick = {
 								onAboutClick()
+								showMenu = false
+							},
+						)
+
+						DropdownMenuItem(
+							text = { Text(stringResource(id = R.string.action_export)) },
+							onClick = {
+								onExportClick()
+								showMenu = false
+							},
+						)
+
+						DropdownMenuItem(
+							text = { Text(stringResource(id = R.string.action_import)) },
+							onClick = {
+								onImportClick()
 								showMenu = false
 							},
 						)

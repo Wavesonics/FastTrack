@@ -1,7 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.Context
-import android.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.darkrockstudios.apps.fasttrack.AlertService
@@ -141,45 +140,48 @@ class FastingViewModel(
 		_uiState.update { it.copy(elapsedHours = elapsedTime.inWholeHours.toDouble()) }
 
 		// Handle Fat burning
-		val fatBurnTimeAndColor = getPhaseTimeAndColor(Stages.PHASE_FAT_BURN, elapsedTime)
+		val fatBurnTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_FAT_BURN, elapsedTime)
 
 		// Handle Ketosis
-		val ketosisTimeAndColor = if (currentStage.fatBurning) {
-			getPhaseTimeAndColor(Stages.PHASE_KETOSIS, elapsedTime)
+		val ketosisTimeAndState = if (currentStage.fatBurning) {
+			getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
 		} else {
-			Pair("--:--:--", Color.RED)
+			Pair("--:--:--", IFastingViewModel.StageState.StartedInactive)
 		}
 
 		// Handle Autophagy
-		val autophagyTimeAndColor = if (currentStage.ketosis) {
-			getPhaseTimeAndColor(Stages.PHASE_AUTOPHAGY, elapsedTime)
+		val autophagyTimeAndState = if (currentStage.ketosis) {
+			getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
 		} else {
-			Pair("--:--:--", Color.RED)
+			Pair("--:--:--", IFastingViewModel.StageState.StartedInactive)
 		}
 
 		_uiState.update {
 			it.copy(
-				fatBurnTime = fatBurnTimeAndColor.first,
-				fatBurnTimeColor = fatBurnTimeAndColor.second,
-				ketosisTime = ketosisTimeAndColor.first,
-				ketosisTimeColor = ketosisTimeAndColor.second,
-				autophagyTime = autophagyTimeAndColor.first,
-				autophagyTimeColor = autophagyTimeAndColor.second
+				fatBurnTime = fatBurnTimeAndState.first,
+				fatBurnStageState = fatBurnTimeAndState.second,
+				ketosisTime = ketosisTimeAndState.first,
+				ketosisStageState = ketosisTimeAndState.second,
+				autophagyTime = autophagyTimeAndState.first,
+				autophagyStageState = autophagyTimeAndState.second
 			)
 		}
 	}
 
-	private fun getPhaseTimeAndColor(phase: Phase, elapsedTime: Duration): Pair<String, Int> {
+	private fun getPhaseTimeAndStageState(
+		phase: Phase,
+		elapsedTime: Duration
+	): Pair<String, IFastingViewModel.StageState> {
 		val phaseHours = phase.hours
 		val timeText: String
-		val timeColor: Int
+		val stageState: IFastingViewModel.StageState
 
 		if (elapsedTime.toDouble(DurationUnit.HOURS) > phaseHours) {
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeText = timeSince.toComponents { hours, minutes, seconds, _ ->
 				"%d:%02d:%02d".format(hours, minutes, seconds)
 			}
-			timeColor = Color.GREEN
+			stageState = IFastingViewModel.StageState.StartedActive
 		} else {
 			val timeSince = elapsedTime.minus(phaseHours.hours)
 			timeText = timeSince.toComponents { hours, minutes, seconds, _ ->
@@ -189,10 +191,10 @@ class FastingViewModel(
 					abs(seconds)
 				)
 			}
-			timeColor = Color.RED
+			stageState = IFastingViewModel.StageState.StartedInactive
 		}
 
-		return Pair(timeText, timeColor)
+		return Pair(timeText, stageState)
 	}
 
 	override fun startFast(timeStartedMills: Instant?) {

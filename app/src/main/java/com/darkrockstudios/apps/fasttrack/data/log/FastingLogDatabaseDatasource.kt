@@ -11,7 +11,7 @@ class FastingLogDatabaseDatasource(
 
 	override fun getAll(): List<FastEntry> = dao.getAll()
 	override fun loadAll(): Flow<List<FastEntry>> = dao.loadAll()
-	override fun insertAll(vararg entries: FastEntry) = dao.insertAll(*entries)
+	override fun insertAll(vararg newEntries: FastEntry) = dao.insertAll(*newEntries)
 	override fun delete(entry: FastEntry): Boolean = dao.delete(entry) > 0
 	override fun deleteByStartTime(startTime: Long): Boolean = dao.deleteByStartTime(startTime) > 0
 	override fun deleteByUid(uid: Int): Boolean = dao.deleteByUid(uid) > 0

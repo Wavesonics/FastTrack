@@ -39,10 +39,15 @@ class ProfileViewModel(
         val totalInches = Data.cmToInch(profile.heightCm)
         val feet = floor(totalInches / 12.0).toInt()
         val inches = (totalInches % 12).toInt()
-        val totalCmStr = profile.heightCm.roundToInt().toString()
+
+        val totalCmStr = if (profile.heightCm == 0.0) "" else profile.heightCm.roundToInt().toString()
+        val feetStr = if (profile.heightCm == 0.0) "" else feet.toString()
+        val inchesStr = if (profile.heightCm == 0.0) "" else inches.toString()
+
         val pounds = Data.kgToLbs(profile.weightKg)
-        val weightPoundsStr = "%.01f".format(pounds)
-        val weightKgStr = "%.01f".format(profile.weightKg)
+
+        val weightPoundsStr = if (profile.weightKg == 0.0) "" else "%.01f".format(pounds)
+        val weightKgStr = if (profile.weightKg == 0.0) "" else "%.01f".format(profile.weightKg)
 
         val bmi = calculateBmi(profile)
         val bmiCategory = when {
@@ -60,11 +65,11 @@ class ProfileViewModel(
             it.copy(
                 isMetric = profile.displayMetric,
                 heightCm = totalCmStr,
-                heightFeet = feet.toString(),
-                heightInches = inches.toString(),
+                heightFeet = feetStr,
+                heightInches = inchesStr,
                 weightKg = weightKgStr,
                 weightLbs = weightPoundsStr,
-                age = profile.ageYears.toString(),
+                age = if (profile.ageYears == 0) "" else profile.ageYears.toString(),
                 gender = profile.gender,
                 bmiValue = appContext.getString(R.string.profile_bmi_value, bmi, bmiCategory),
                 bmrValue = appContext.getString(R.string.profile_bmr_value, bmr)

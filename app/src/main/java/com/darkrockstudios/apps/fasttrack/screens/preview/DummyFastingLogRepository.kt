@@ -16,4 +16,6 @@ class DummyFastingLogRepository(private val entries: List<FastingLogEntry> = emp
 	override fun loadAll(): Flow<List<FastingLogEntry>> = flow {}
 	override fun delete(item: FastingLogEntry) = true
 	override fun addLogEntry(start: LocalDateTime, length: Duration) {}
+	override suspend fun exportLog(): String = ""
+	override suspend fun importLog(cvsExport: String) = true
 }

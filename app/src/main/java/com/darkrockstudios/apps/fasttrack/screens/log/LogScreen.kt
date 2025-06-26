@@ -25,9 +25,6 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
 import com.darkrockstudios.apps.fasttrack.utils.formatAs
-import com.darkrockstudios.apps.fasttrack.utils.utcToLocal
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.math.roundToInt
 import kotlin.time.DurationUnit
@@ -213,8 +210,6 @@ fun FastEntryItem(
 				.fillMaxWidth()
 				.padding(16.dp)
 		) {
-			// Convert LocalDateTime to Instant
-			val start = entry.start.toInstant(TimeZone.currentSystemDefault())
 			val hours = entry.length.toDouble(DurationUnit.HOURS).roundToInt()
 
 			// Calculate ketosis hours
@@ -234,9 +229,8 @@ fun FastEntryItem(
 				0
 			}
 
-			val dateStr = remember(start) {
-				val startDate = start.utcToLocal()
-				startDate.formatAs("d MMM uuuu - HH:mm")
+			val dateStr = remember(entry.start) {
+				entry.start.formatAs("d MMM uuuu - HH:mm")
 			}
 
 			Text(

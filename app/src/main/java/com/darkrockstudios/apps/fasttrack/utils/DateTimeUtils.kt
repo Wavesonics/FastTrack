@@ -15,5 +15,13 @@ fun Instant.formatAs(
 	return ldt.toJavaLocalDateTime().format(formatter)
 }
 
+fun LocalDateTime.formatAs(
+	pattern: String,
+	locale: Locale = Locale.getDefault()
+): String {
+	val formatter = DateTimeFormatter.ofPattern(pattern, locale)
+	return this.toJavaLocalDateTime().format(formatter)
+}
+
 fun Instant.utcToLocal(): Instant =
 	toLocalDateTime(TimeZone.UTC).toInstant(TimeZone.currentSystemDefault())

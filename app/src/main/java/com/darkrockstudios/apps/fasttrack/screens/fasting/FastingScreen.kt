@@ -295,7 +295,7 @@ private fun FastDetailsContent(
 				Text(
 					text = uiState.fatBurnTime,
 					style = MaterialTheme.typography.headlineMedium,
-					color = Color(uiState.fatBurnTimeColor)
+					color = stageColor(uiState.fatBurnStageState)
 				)
 			}
 
@@ -330,7 +330,7 @@ private fun FastDetailsContent(
 				Text(
 					text = uiState.ketosisTime,
 					style = MaterialTheme.typography.headlineMedium,
-					color = Color(uiState.ketosisTimeColor)
+					color = stageColor(uiState.ketosisStageState)
 				)
 			}
 
@@ -365,7 +365,7 @@ private fun FastDetailsContent(
 				Text(
 					text = uiState.autophagyTime,
 					style = MaterialTheme.typography.headlineMedium,
-					color = Color(uiState.autophagyTimeColor)
+					color = stageColor(uiState.autophagyStageState)
 				)
 			}
 		}
@@ -444,6 +444,13 @@ private fun FastDetailsContent(
 			}
 		}
 	}
+}
+
+@Composable
+private fun stageColor(stageState: IFastingViewModel.StageState): Color = when (stageState) {
+	IFastingViewModel.StageState.StartedActive -> Color.Green
+	IFastingViewModel.StageState.StartedInactive -> Color.Red
+	IFastingViewModel.StageState.NotStarted -> Color.White
 }
 
 private val stageDropShadow = Shadow(

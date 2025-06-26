@@ -3,6 +3,11 @@
 	<string name="action_share">Share</string>
 	<string name="action_info">Info</string>
 	<string name="action_about">About</string>
+	<string name="action_export">Export Logbook</string>
+	<string name="action_import">Import Logbook</string>
+	<string name="import_success">Logbook imported successfully</string>
+	<string name="import_failed">Failed to import logbook</string>
+	<string name="export_failed">Failed to export logbook</string>
 
 	<string name="intro_00_title">Welcome to Fast Track!</string>
 	<string name="intro_00_description">What is this app all about?</string>

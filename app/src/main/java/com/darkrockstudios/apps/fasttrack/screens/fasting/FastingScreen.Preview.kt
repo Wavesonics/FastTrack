@@ -2,11 +2,11 @@ package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
-import android.graphics.Color
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.darkrockstudios.apps.fasttrack.screens.fasting.IFastingViewModel.StageState
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -30,11 +30,11 @@ fun FastingScreenPreview(
 	fatBurnTime: String = "--:--:--",
 	ketosisTime: String = "--:--:--",
 	autophagyTime: String = "--:--:--",
-	fatBurnTimeColor: Int = Color.WHITE,
-	ketosisTimeColor: Int = Color.WHITE,
-	autophagyTimeColor: Int = Color.WHITE,
+	fatBurnStageState: StageState = StageState.NotStarted,
+	ketosisStageState: StageState = StageState.NotStarted,
+	autophagyStageState: StageState = StageState.NotStarted,
 	alertsEnabled: Boolean = true,
-	darkTheme: Boolean = false
+	darkTheme: Boolean = false,
 ) {
 	val initialState = IFastingViewModel.FastingUiState(
 		isFasting = isFasting,
@@ -47,9 +47,9 @@ fun FastingScreenPreview(
 		fatBurnTime = fatBurnTime,
 		ketosisTime = ketosisTime,
 		autophagyTime = autophagyTime,
-		fatBurnTimeColor = fatBurnTimeColor,
-		ketosisTimeColor = ketosisTimeColor,
-		autophagyTimeColor = autophagyTimeColor,
+		fatBurnStageState = fatBurnStageState,
+		ketosisStageState = ketosisStageState,
+		autophagyStageState = autophagyStageState,
 		alertsEnabled = alertsEnabled,
 	)
 
@@ -121,9 +121,9 @@ private fun FastingScreenPreviewFatBurning() {
 		fatBurnTime = "2:00:00",
 		ketosisTime = "-4:00:00",
 		autophagyTime = "-10:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.RED,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 	)
 }
@@ -148,9 +148,9 @@ private fun FastingScreenPreviewFatBurningDark() {
 		fatBurnTime = "2:00:00",
 		ketosisTime = "-4:00:00",
 		autophagyTime = "-10:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.RED,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 		darkTheme = true
 	)
@@ -175,9 +175,9 @@ private fun FastingScreenPreviewKetosis() {
 		fatBurnTime = "12:00:00",
 		ketosisTime = "6:00:00",
 		autophagyTime = "-12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 	)
 }
@@ -202,9 +202,9 @@ private fun FastingScreenPreviewKetosisDark() {
 		fatBurnTime = "12:00:00",
 		ketosisTime = "6:00:00",
 		autophagyTime = "-12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 		darkTheme = true
 	)
@@ -229,9 +229,9 @@ private fun FastingScreenPreviewAutophagy() {
 		fatBurnTime = "36:00:00",
 		ketosisTime = "30:00:00",
 		autophagyTime = "12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.GREEN,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedActive,
 		alertsEnabled = true,
 	)
 }
@@ -256,9 +256,9 @@ private fun FastingScreenPreviewAutophagyDark() {
 		fatBurnTime = "36:00:00",
 		ketosisTime = "30:00:00",
 		autophagyTime = "12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.GREEN,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedActive,
 		alertsEnabled = true,
 		darkTheme = true
 	)
@@ -283,9 +283,9 @@ private fun FastingScreenPreviewDebugMode() {
 		fatBurnTime = "12:00:00",
 		ketosisTime = "6:00:00",
 		autophagyTime = "-12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 	)
 }
@@ -310,9 +310,9 @@ private fun FastingScreenPreviewDebugModeDark() {
 		fatBurnTime = "12:00:00",
 		ketosisTime = "6:00:00",
 		autophagyTime = "-12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 		darkTheme = true
 	)
@@ -337,9 +337,9 @@ private fun FastingScreenPreviewTablet() {
 		fatBurnTime = "36:00:00",
 		ketosisTime = "30:00:00",
 		autophagyTime = "12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.GREEN,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedActive,
 		alertsEnabled = true,
 	)
 }
@@ -364,9 +364,9 @@ private fun FastingScreenPreviewTabletDark() {
 		fatBurnTime = "36:00:00",
 		ketosisTime = "30:00:00",
 		autophagyTime = "12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.GREEN,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedActive,
 		alertsEnabled = true,
 		darkTheme = true
 	)
@@ -391,9 +391,9 @@ private fun FastingScreenPreviewLandscapePhone() {
 		fatBurnTime = "12:00:00",
 		ketosisTime = "6:00:00",
 		autophagyTime = "-12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 	)
 }
@@ -418,9 +418,9 @@ private fun FastingScreenPreviewLandscapePhoneDark() {
 		fatBurnTime = "12:00:00",
 		ketosisTime = "6:00:00",
 		autophagyTime = "-12:00:00",
-		fatBurnTimeColor = Color.GREEN,
-		ketosisTimeColor = Color.GREEN,
-		autophagyTimeColor = Color.RED,
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 		darkTheme = true
 	)

@@ -10,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.log.FakeFastingLogDatasource
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
+import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepositoryImpl
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -35,7 +36,7 @@ class LogScreenComposeTest {
 
 	private val context = InstrumentationRegistry.getInstrumentation().targetContext
 	private lateinit var fakeDatasource: FakeFastingLogDatasource
-	private lateinit var repository: FastingLogRepositoryImpl
+	private lateinit var repository: FastingLogRepository
 	private lateinit var viewModel: LogViewModel
 
 	@Before
@@ -77,14 +78,17 @@ class LogScreenComposeTest {
 		fakeDatasource.clear()
 
 		val entry1 = createTestEntry(
+			0,
 			LocalDateTime(2023, 1, 1, 12, 0),
 			24.hours // 24 hours fast (will have ketosis but no autophagy)
 		)
 		val entry2 = createTestEntry(
+			1,
 			LocalDateTime(2023, 1, 2, 12, 0),
 			16.hours // 16 hours fast (will have no ketosis or autophagy)
 		)
 		val entry3 = createTestEntry(
+			2,
 			LocalDateTime(2023, 1, 3, 12, 0),
 			32.hours // 32 hours fast (will have ketosis and autophagy)
 		)
@@ -120,7 +124,7 @@ class LogScreenComposeTest {
 	}
 
 	// Helper function to create a test FastingLogEntry
-	private fun createTestEntry(start: LocalDateTime, length: kotlin.time.Duration): FastingLogEntry {
-		return FastingLogEntry(id = start.dayOfMonth, start, length)
+	private fun createTestEntry(id: Int, start: LocalDateTime, length: kotlin.time.Duration): FastingLogEntry {
+		return FastingLogEntry(id = id, start, length)
 	}
 }
