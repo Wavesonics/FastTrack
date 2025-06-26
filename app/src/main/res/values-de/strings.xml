@@ -203,4 +203,9 @@
 	<string name="manual_add_next_button">Weiter</string>
 	<string name="stop_fast_button_description">Schnell anhalten</string>
 	<string name="manual_add_calculate_from_end">Von Ende berechnen</string>
+	<string name="import_failed">Importieren des Logbuchs fehlgeschlagen</string>
+	<string name="action_export">Exportieren Sie das Fahrtenbuch</string>
+	<string name="import_success">Logbuch erfolgreich importiert</string>
+	<string name="action_import">Logbuch importieren</string>
+	<string name="export_failed">Fehler beim Exportieren des Logbuchs</string>
 </resources>

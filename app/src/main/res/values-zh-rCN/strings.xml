@@ -173,4 +173,9 @@
 	<string name="manual_add_selected_start">已开始：%1$s</string>
 	<string name="manual_add_next_button">下一步</string>
 	<string name="manual_add_calculate_from_end">从末尾计算</string>
+	<string name="action_export">导出日志簿</string>
+	<string name="import_success">日志成功导入</string>
+	<string name="import_failed">导入日志本失败</string>
+	<string name="action_import">导入日志簿</string>
+	<string name="export_failed">导出日志簿失败</string>
 </resources>

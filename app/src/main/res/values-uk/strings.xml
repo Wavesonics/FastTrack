@@ -201,4 +201,9 @@
 	<string name="manual_add_next_button">Далі</string>
 	<string name="bmr_info_button_description">Інформація про BMR</string>
 	<string name="manual_add_calculate_from_end">Розрахувати від кінця</string>
+	<string name="import_success">Журнал успішно імпортовано</string>
+	<string name="action_export">Експортувати журнал діяльності</string>
+	<string name="import_failed">Не вдалося імпортувати журнал.</string>
+	<string name="action_import">Імпортувати Журнал записів</string>
+	<string name="export_failed">Не вдалося експортувати журнал.</string>
 </resources>

@@ -205,4 +205,9 @@
 	<string name="manual_add_next_button">Próximo</string>
 	<string name="manual_add_cancel_button">Cancelar</string>
 	<string name="manual_add_calculate_from_end">Calcular do Fim</string>
+	<string name="import_success">Registro importado com sucesso</string>
+	<string name="import_failed">Falha ao importar o logbook</string>
+	<string name="action_import">Importar Logbook</string>
+	<string name="action_export">Exportar Registro</string>
+	<string name="export_failed">Falha ao exportar o diário de bordo</string>
 </resources>

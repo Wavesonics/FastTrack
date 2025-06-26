@@ -207,4 +207,9 @@
 	<string name="manual_add_next_button">Suivant</string>
 	<string name="manual_add_calculate_from_end">Calculer à partir de la fin</string>
 	<string name="skip_button">Passer</string>
+	<string name="action_import">Importer le registre</string>
+	<string name="action_export">Exporter le carnet de bord</string>
+	<string name="import_failed">Échec de l\'importation du logbook</string>
+	<string name="import_success">Journal importé avec succès</string>
+	<string name="export_failed">Échec de l\'exportation du journal de bord</string>
 </resources>

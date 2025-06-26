@@ -204,4 +204,9 @@
 	<string name="manual_add_cancel_button">Cancelar</string>
 	<string name="manual_add_next_button">Siguiente</string>
 	<string name="manual_add_calculate_from_end">Calcular desde el final</string>
+	<string name="import_success">Registro importado con éxito</string>
+	<string name="action_export">Exportar Registro</string>
+	<string name="action_import">Importar Logbook</string>
+	<string name="export_failed">Error al exportar el libro de registro</string>
+	<string name="import_failed">Error al importar el diario de bitácora</string>
 </resources>

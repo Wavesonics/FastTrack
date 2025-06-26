@@ -209,4 +209,9 @@
 	<string name="manual_add_next_button">Successivo</string>
 	<string name="manual_add_calculate_from_end">Calcola dalla fine</string>
 	<string name="profile_gender_label">Genere</string>
+	<string name="import_success">Registro importato con successo</string>
+	<string name="import_failed">Importazione del logbook non riuscita</string>
+	<string name="action_export">Esporta il Logbook</string>
+	<string name="action_import">Importa Logbook</string>
+	<string name="export_failed">Esportazione del diario fallita</string>
 </resources>
