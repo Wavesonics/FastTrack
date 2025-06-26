@@ -16,7 +16,7 @@ jobs:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           source-lang-code: 'en'
           file-name-pattern: 'values-{language}/strings.xml'
-          target-lang-codes: 'de,es,fr,it,pr-BR,uk,zh-CN,ja'
+          target-lang-codes: 'de,es,fr,it,pr,uk,zh,ja'
           localization-root-path: 'app/src/main/res/'
           context: |
             You are translating for "FastTrack", a simple app for tracking intermittent fasting.
