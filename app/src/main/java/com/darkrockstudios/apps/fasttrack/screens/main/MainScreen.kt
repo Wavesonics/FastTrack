@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.*
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -59,7 +60,6 @@ fun MainScreen(
 		rememberPagerState(initialPage = ScreenPages.Fasting.ordinal, pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
-	var currentTitle by remember { mutableStateOf("") }
 	var showMenu by remember { mutableStateOf(false) }
 	val shareEnabled = remember { mutableStateOf(repository.getFastStart() != null) }
 
@@ -70,8 +70,8 @@ fun MainScreen(
 	val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
 
-	LaunchedEffect(pagerState.currentPage) {
-		currentTitle = when (ScreenPages.fromOrdinal(pagerState.currentPage)) {
+	val currentTitle = remember(pagerState.currentPage, fastingTitle, logTitle, profileTitle) {
+		when (ScreenPages.fromOrdinal(pagerState.currentPage)) {
 			ScreenPages.Fasting -> fastingTitle
 			ScreenPages.Log -> logTitle
 			ScreenPages.Profile -> profileTitle
@@ -298,15 +298,19 @@ private fun Content(
 	contentPaddingValues: PaddingValues,
 	pagerState: PagerState,
 ) {
+	val stateHolder = rememberSaveableStateHolder()
 	HorizontalPager(
 		modifier = modifier,
 		state = pagerState,
-		key = { page -> page }
+		key = { page -> page },
+		beyondViewportPageCount = pagerState.pageCount,
 	) { page ->
-		PageContainer(
-			page = ScreenPages.fromOrdinal(page),
-			contentPaddingValues = contentPaddingValues,
-		)
+		stateHolder.SaveableStateProvider(key = page) {
+			PageContainer(
+				page = ScreenPages.fromOrdinal(page),
+				contentPaddingValues = contentPaddingValues,
+			)
+		}
 	}
 }
 
