@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.edit
+import androidx.core.view.WindowCompat
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
@@ -39,6 +40,7 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
+	    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
 
         setContent {
             FastTrackTheme {
@@ -62,8 +64,6 @@ class IntroActivity : AppCompatActivity() {
 fun IntroScreen(onComplete: () -> Unit) {
     val pagerState = rememberPagerState(pageCount = { 5 })
     val coroutineScope = rememberCoroutineScope()
-
-    val systemBarsPadding = WindowInsets.systemBars.asPaddingValues()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -113,15 +113,15 @@ fun IntroScreen(onComplete: () -> Unit) {
         // Navigation controls at the bottom
         Column(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(16.dp)
-                .fillMaxWidth()
+	            .align(Alignment.BottomCenter)
+	            .padding(16.dp)
+	            .fillMaxWidth()
         ) {
             // Page indicator dots
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
+	                .fillMaxWidth()
+	                .padding(8.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
                 repeat(5) { iteration ->
@@ -132,9 +132,9 @@ fun IntroScreen(onComplete: () -> Unit) {
                     }
                     Box(
                         modifier = Modifier
-                            .padding(4.dp)
-                            .size(8.dp)
-                            .background(color = color, shape = MaterialTheme.shapes.small)
+	                        .padding(4.dp)
+	                        .size(8.dp)
+	                        .background(color = color, shape = MaterialTheme.shapes.small)
                     )
                 }
             }
@@ -142,8 +142,8 @@ fun IntroScreen(onComplete: () -> Unit) {
             // Navigation buttons
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
+	                .fillMaxWidth()
+	                .padding(8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 // Previous button or Skip button
@@ -200,13 +200,13 @@ fun IntroSlide(
 ) {
     Box(
         modifier = modifier
-            .fillMaxSize()
-            .background(color = androidx.compose.ui.graphics.Color(backgroundColor))
+	        .fillMaxSize()
+	        .background(color = androidx.compose.ui.graphics.Color(backgroundColor))
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
+	            .fillMaxSize()
+	            .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
