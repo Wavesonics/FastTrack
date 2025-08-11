@@ -1,8 +1,8 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.datetime.Instant
 import kotlin.time.Duration
+import kotlin.time.Instant
 
 interface IFastingViewModel {
 	enum class StageState {

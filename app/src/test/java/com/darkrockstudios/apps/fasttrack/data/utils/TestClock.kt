@@ -1,7 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.data.utils
 
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 class TestClock : Clock {
 	var currentTime: Instant = Instant.fromEpochMilliseconds(0)

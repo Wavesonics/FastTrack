@@ -4,7 +4,7 @@ import android.content.Context
 import android.preference.PreferenceManager
 import androidx.core.content.edit
 import com.darkrockstudios.apps.fasttrack.data.Data
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 class ActiveFastPreferencesDataSource(appContext: Context) : ActiveFastDataSource {
 

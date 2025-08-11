@@ -4,9 +4,9 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlin.time.Duration
+import kotlin.time.Instant
 
 /**
  * Dummy implementation of FastingLogRepository for preview purposes

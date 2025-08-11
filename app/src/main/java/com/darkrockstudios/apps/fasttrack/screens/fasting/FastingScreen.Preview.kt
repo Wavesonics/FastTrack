@@ -10,7 +10,7 @@ import com.darkrockstudios.apps.fasttrack.screens.fasting.IFastingViewModel.Stag
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * This file contains preview implementations for the FastingScreen.

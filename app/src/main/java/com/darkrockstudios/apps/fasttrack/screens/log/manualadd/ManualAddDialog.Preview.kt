@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
+import kotlin.time.Instant
 
 class FakeManualAddViewModel(initialState: IManualAddViewModel.ManualAddUiState = IManualAddViewModel.ManualAddUiState()) :
 	IManualAddViewModel {

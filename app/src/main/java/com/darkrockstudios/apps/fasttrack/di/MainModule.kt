@@ -20,11 +20,11 @@ import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.IManualAddViewMo
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddViewModel
 import com.darkrockstudios.apps.fasttrack.screens.profile.IProfileViewModel
 import com.darkrockstudios.apps.fasttrack.screens.profile.ProfileViewModel
-import kotlinx.datetime.Clock
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
+import kotlin.time.Clock
 
 val mainModule = module {
 	single {

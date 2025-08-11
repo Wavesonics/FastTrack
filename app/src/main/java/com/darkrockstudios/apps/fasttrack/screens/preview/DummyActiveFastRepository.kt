@@ -1,9 +1,9 @@
 package com.darkrockstudios.apps.fasttrack.screens.preview
 
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
-import kotlinx.datetime.Instant
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Instant
 
 /**
  * Dummy implementation of ActiveFastRepository for preview purposes

@@ -19,7 +19,7 @@ interface IManualAddViewModel {
 	fun onDateSelected(dateTimestamp: Long)
 	fun onTimeSelected(hour: Int, minute: Int)
 	fun onLengthChanged(length: String)
-	fun onEndDateTimeSelected(instant: kotlinx.datetime.Instant)
+	fun onEndDateTimeSelected(instant: kotlin.time.Instant)
 	fun onAddEntry(): Boolean
 	fun onDismiss()
 }

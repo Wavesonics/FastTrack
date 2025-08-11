@@ -1,7 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.data.activefast
 
-import kotlinx.datetime.Instant
 import kotlin.time.Duration
+import kotlin.time.Instant
 
 interface ActiveFastRepository {
 	fun isFasting(): Boolean

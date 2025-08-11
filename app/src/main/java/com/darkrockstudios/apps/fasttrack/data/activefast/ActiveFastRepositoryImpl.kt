@@ -1,8 +1,8 @@
 package com.darkrockstudios.apps.fasttrack.data.activefast
 
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
+import kotlin.time.Clock
 import kotlin.time.Duration
+import kotlin.time.Instant
 
 class ActiveFastRepositoryImpl(
 	private val datasource: ActiveFastDataSource,

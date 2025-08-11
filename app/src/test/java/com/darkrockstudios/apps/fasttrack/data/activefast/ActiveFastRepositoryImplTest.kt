@@ -1,15 +1,11 @@
 package com.darkrockstudios.apps.fasttrack.data.activefast
 
 import com.darkrockstudios.apps.fasttrack.data.utils.TestClock
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Instant
 
 class ActiveFastRepositoryImplTest {
 	private lateinit var fakeDataSource: FakeActiveFastDataSource

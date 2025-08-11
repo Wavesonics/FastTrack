@@ -11,8 +11,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.core.bundle.bundleOf
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.coroutineScope
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		enableEdgeToEdge()
+		WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
 
 		handleStartFastExtra(intent)
 

@@ -1,6 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.data.activefast
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 interface ActiveFastDataSource {
 	fun getFastStart(): Instant?
