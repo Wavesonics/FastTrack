@@ -26,7 +26,4 @@ locally.
 FastTrack is not in active development; however, I will fix bugs if they are reported. If you have some neat feature
 you'd like to contribute, open an issue to discuss it.
 
-### Release
-
-- Update `versionCode` and `versionName` in [libs.versions.toml](/gradle/libs.versions.toml)
-- Create a **semvar** tag in the form of "v1.0.0" on `master` and push it, this will trigger a release.
+See [docs](docs/HOW-TO-RELEASE.md) on how to publish a new release.
