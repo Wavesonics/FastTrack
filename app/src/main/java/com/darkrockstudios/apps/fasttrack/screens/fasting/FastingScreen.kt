@@ -3,13 +3,36 @@ package com.darkrockstudios.apps.fasttrack.screens.fasting
 import android.content.res.Configuration
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -50,7 +73,8 @@ fun phaseTextColor(): Color {
 @Composable
 fun FastingScreen(
 	contentPaddingValues: PaddingValues,
-	viewModel: IFastingViewModel = koinViewModel<FastingViewModel>()
+	viewModel: IFastingViewModel = koinViewModel<FastingViewModel>(),
+	externalRequests: ExternalRequests = ExternalRequests(),
 ) {
 	val context = getContext()
 	val scope = rememberCoroutineScope()
@@ -108,6 +132,28 @@ fun FastingScreen(
 			contentRes,
 			context
 		)
+	}
+
+	// Handle deep link requests to show dialogs or start/stop directly
+	LaunchedEffect(externalRequests.startFastRequest) {
+		externalRequests.startFastRequest?.let { req ->
+			if (!uiState.isFasting) {
+				if (req.startNow) {
+					viewModel.startFast()
+				} else {
+					onShowStartFastSelector()
+				}
+			}
+			externalRequests.consumeStartFastRequest()
+		}
+	}
+	LaunchedEffect(externalRequests.stopFastRequested) {
+		if (externalRequests.stopFastRequested) {
+			if (uiState.isFasting) {
+				onShowEndFastConfirmation()
+			}
+			externalRequests.consumeStopFastRequest()
+		}
 	}
 
 	DisposableEffect(Unit) {

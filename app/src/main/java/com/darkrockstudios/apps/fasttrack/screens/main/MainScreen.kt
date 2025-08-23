@@ -2,7 +2,13 @@ package com.darkrockstudios.apps.fasttrack.screens.main
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -10,10 +16,28 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.*
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -21,6 +45,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
+import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.FastingScreen
 import com.darkrockstudios.apps.fasttrack.screens.log.LogScreen
 import com.darkrockstudios.apps.fasttrack.screens.profile.ProfileScreen
@@ -55,6 +80,7 @@ fun MainScreen(
 	onAboutClick: () -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit,
+	externalRequests: ExternalRequests = ExternalRequests(),
 ) {
 	val pagerState =
 		rememberPagerState(initialPage = ScreenPages.Fasting.ordinal, pageCount = { ScreenPages.entries.size })
@@ -274,7 +300,8 @@ fun MainScreen(
 						end = paddingValues.calculateEndPadding(LocalLayoutDirection.current),
 						bottom = paddingValues.calculateBottomPadding(),
 					),
-					pagerState
+					pagerState,
+					externalRequests,
 				)
 			}
 		} else {
@@ -286,6 +313,7 @@ fun MainScreen(
 					Modifier.fillMaxSize(),
 					contentPaddingValues = paddingValues,
 					pagerState,
+					externalRequests,
 				)
 			}
 		}
@@ -297,6 +325,7 @@ private fun Content(
 	modifier: Modifier,
 	contentPaddingValues: PaddingValues,
 	pagerState: PagerState,
+	externalRequests: ExternalRequests,
 ) {
 	val stateHolder = rememberSaveableStateHolder()
 	HorizontalPager(
@@ -309,6 +338,7 @@ private fun Content(
 			PageContainer(
 				page = ScreenPages.fromOrdinal(page),
 				contentPaddingValues = contentPaddingValues,
+				externalRequests = externalRequests,
 			)
 		}
 	}
@@ -319,10 +349,14 @@ private fun Content(
 private fun PageContainer(
 	page: ScreenPages,
 	contentPaddingValues: PaddingValues,
+	externalRequests: ExternalRequests,
 ) {
 	when (page) {
 		ScreenPages.Fasting -> {
-			FastingScreen(contentPaddingValues)
+			FastingScreen(
+				contentPaddingValues = contentPaddingValues,
+				externalRequests = externalRequests,
+			)
 		}
 
 		ScreenPages.Log -> {

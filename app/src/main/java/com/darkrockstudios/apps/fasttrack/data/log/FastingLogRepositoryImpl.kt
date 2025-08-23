@@ -1,6 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.data.log
 
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -99,6 +100,7 @@ class FastingLogRepositoryImpl(
 						javaDateTime.minute
 					)
 				} catch (e: Exception) {
+					Napier.w("Failed to import log entry", e)
 					continue
 				}
 
