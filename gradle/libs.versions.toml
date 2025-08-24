@@ -1,10 +1,10 @@
 [versions]
-versionCode = "29"
-versionName = "3.3.2"
+versionCode = "30"
+versionName = "3.3.3"
 
-kotlin = "2.2.10"
+kotlin = "2.1.20"
 javaVersion = "17"
-agp = "8.12.1"
+agp = "8.10.0"
 targetSdk = "36"
 compileSdk = "36"
 minSdk = "29"

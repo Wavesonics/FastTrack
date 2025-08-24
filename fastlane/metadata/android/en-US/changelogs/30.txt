@@ -1,0 +1,3 @@
+- Minified release binaries (huge size reduction)
+- Fixed widget deep links
+- Fixed Import/Export functions
