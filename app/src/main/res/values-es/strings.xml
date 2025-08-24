@@ -209,4 +209,5 @@
 	<string name="action_import">Importar Logbook</string>
 	<string name="export_failed">Error al exportar el libro de registro</string>
 	<string name="import_failed">Error al importar el diario de bitácora</string>
+    <string name="app_widget_stop_fast_button">Detener Rápido</string>
 </resources>

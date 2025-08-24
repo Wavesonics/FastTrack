@@ -1,5 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.main
 
+import android.app.ComponentCaller
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -80,6 +81,11 @@ class MainActivity : AppCompatActivity() {
 				)
 			}
 		}
+	}
+
+	override fun onNewIntent(intent: Intent, caller: ComponentCaller) {
+		super.onNewIntent(intent, caller)
+		handleStartFastExtra(intent)
 	}
 
 	private fun registerImportCallback() {

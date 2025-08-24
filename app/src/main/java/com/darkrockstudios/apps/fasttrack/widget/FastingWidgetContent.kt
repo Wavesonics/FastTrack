@@ -1,43 +1,49 @@
 package com.darkrockstudios.apps.fasttrack.widget
 
-import android.content.Context
-import android.content.Intent
-import android.preference.PreferenceManager
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
-import androidx.glance.*
+import androidx.glance.Button
+import androidx.glance.GlanceModifier
+import androidx.glance.GlanceTheme
+import androidx.glance.action.Action
 import androidx.glance.action.clickable
-import androidx.glance.appwidget.action.actionStartActivity
+import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.appWidgetBackground
-import androidx.glance.layout.*
+import androidx.glance.background
+import androidx.glance.layout.Alignment
+import androidx.glance.layout.Column
+import androidx.glance.layout.Spacer
+import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.height
+import androidx.glance.layout.padding
 import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Stages
-import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
-import kotlin.time.Clock
-import kotlin.time.Duration
+import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
+import org.koin.compose.koinInject
 import kotlin.time.ExperimentalTime
-import kotlin.time.Instant
 
 @OptIn(ExperimentalTime::class)
 @Composable
-fun FastingWidgetContent() {
-	val context = LocalContext.current
+fun FastingWidgetContent(
+	activeFastRepository: ActiveFastRepository = koinInject<ActiveFastRepository>(),
+	onClick: Action = actionRunCallback<NoOpAction>(),
+	onStartFast: Action = actionRunCallback<NoOpAction>(),
+	onStopFast: Action = actionRunCallback<NoOpAction>(),
+) {
+	val context = getGlanceContext()
 
-	val isFasting = isFasting(context)
-	val elapsedTime = if (isFasting) {
-		getElapsedFastTime(context)
-	} else {
-		null
-	}
-
-	val mainActivityIntent = Intent(context, MainActivity::class.java)
-
-	val startFastIntent = Intent(context, MainActivity::class.java).apply {
-		putExtra(MainActivity.START_FAST_EXTRA, true)
+	val isFasting = activeFastRepository.isFasting()
+	val elapsedTime = remember(isFasting) {
+		if (isFasting) {
+			activeFastRepository.getElapsedFastTime()
+		} else {
+			null
+		}
 	}
 
 	Column(
@@ -45,7 +51,7 @@ fun FastingWidgetContent() {
 			.fillMaxSize()
 			.appWidgetBackground()
 			.background(GlanceTheme.colors.background)
-			.clickable(actionStartActivity(mainActivityIntent)),
+			.clickable(onClick),
 		horizontalAlignment = Alignment.CenterHorizontally,
 	) {
 		if (isFasting && elapsedTime != null) {
@@ -94,6 +100,14 @@ fun FastingWidgetContent() {
 						color = GlanceTheme.colors.onBackground,
 					)
 				)
+
+				Spacer(modifier = GlanceModifier.height(16.dp))
+
+				Button(
+					text = context.getString(R.string.app_widget_stop_fast_button),
+					onClick = onStopFast,
+					modifier = GlanceModifier.padding(16.dp)
+				)
 			}
 		} else {
 			Text(
@@ -109,36 +123,9 @@ fun FastingWidgetContent() {
 
 			Button(
 				text = context.getString(R.string.app_widget_start_fast_button),
-				onClick = actionStartActivity(startFastIntent),
+				onClick = onStartFast,
 				modifier = GlanceModifier.padding(16.dp)
 			)
 		}
-	}
-}
-
-/**
- * Check if a fast is currently in progress.
- */
-private fun isFasting(context: Context): Boolean {
-	val storage = PreferenceManager.getDefaultSharedPreferences(context)
-	val fastStart = storage.getLong(Data.KEY_FAST_START, -1)
-	val fastEnd = storage.getLong(Data.KEY_FAST_END, -1)
-
-	return fastStart > 0 && fastEnd <= 0
-}
-
-/**
- * Get the elapsed time of the current fast.
- */
-private fun getElapsedFastTime(context: Context): Duration? {
-	val storage = PreferenceManager.getDefaultSharedPreferences(context)
-	val fastStart = storage.getLong(Data.KEY_FAST_START, -1)
-
-	return if (fastStart > 0) {
-		val startInstant = Instant.fromEpochMilliseconds(fastStart)
-		val now = Clock.System.now()
-		now - startInstant
-	} else {
-		null
 	}
 }

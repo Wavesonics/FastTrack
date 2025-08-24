@@ -34,7 +34,11 @@ class FastingViewModel(
 	private val clock: Clock,
 ) : ViewModel(), IFastingViewModel {
 
-	private val _uiState = MutableStateFlow(IFastingViewModel.FastingUiState())
+	private val _uiState = MutableStateFlow(
+		IFastingViewModel.FastingUiState(
+			isFasting = repository.isFasting()
+		)
+	)
 	override val uiState: StateFlow<IFastingViewModel.FastingUiState> = _uiState.asStateFlow()
 
 	override fun onCreate() {

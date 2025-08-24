@@ -212,4 +212,5 @@
 	<string name="import_failed">Échec de l\'importation du logbook</string>
 	<string name="import_success">Journal importé avec succès</string>
 	<string name="export_failed">Échec de l\'exportation du journal de bord</string>
+    <string name="app_widget_stop_fast_button">Arrêter rapidement</string>
 </resources>

@@ -153,6 +153,8 @@ dependencies {
 	implementation(libs.glance)
 	implementation(libs.glance.appwidget)
 	implementation(libs.glance.material)
+	debugImplementation(libs.glance.preview)
+	debugImplementation(libs.glance.appwidget.preview)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)

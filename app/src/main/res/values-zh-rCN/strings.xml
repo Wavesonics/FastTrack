@@ -178,4 +178,5 @@
 	<string name="import_failed">导入日志本失败</string>
 	<string name="action_import">导入日志簿</string>
 	<string name="export_failed">导出日志簿失败</string>
+    <string name="app_widget_stop_fast_button">停止快速</string>
 </resources>

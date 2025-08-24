@@ -206,4 +206,5 @@
 	<string name="import_failed">Не вдалося імпортувати журнал.</string>
 	<string name="action_import">Імпортувати Журнал записів</string>
 	<string name="export_failed">Не вдалося експортувати журнал.</string>
+    <string name="app_widget_stop_fast_button">Зупинити швидко</string>
 </resources>

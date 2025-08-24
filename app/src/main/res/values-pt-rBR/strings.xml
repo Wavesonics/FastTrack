@@ -210,4 +210,5 @@
 	<string name="action_import">Importar Logbook</string>
 	<string name="action_export">Exportar Registro</string>
 	<string name="export_failed">Falha ao exportar o diário de bordo</string>
+    <string name="app_widget_stop_fast_button">Parar Rápido</string>
 </resources>
