@@ -69,6 +69,18 @@ android {
 		includeInApk = false
 		includeInBundle = false
 	}
+	testOptions {
+		animationsDisabled = true
+		managedDevices {
+			allDevices {
+				create<com.android.build.api.dsl.ManagedVirtualDevice>("pixel6Api34") {
+					device = "Pixel 6"
+					apiLevel = 34
+					systemImageSource = "aosp-atd" // super-lightweight, headless
+				}
+			}
+		}
+	}
 }
 
 dependencies {
