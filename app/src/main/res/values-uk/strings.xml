@@ -97,7 +97,7 @@
 		діяти.
 	</string>
 	<string name="stage_fat_fasting_sweet_spot_description">Ви у солодкій точці голодування, тримайтеся!</string>
-	<string name="stage_autophagy_description">У вашому тілі почався аутофагія!</string>
+    <string name="stage_autophagy_description">Ваше тіло розпочало аутофагію!</string>
 	<string name="stage_optimal_autophagy_title">Оптимальна аутофагія</string>
 	<string name="phase_glucose">Спалювання глюкози</string>
 	<string name="phase_fat_burning">Спалювання жирів</string>

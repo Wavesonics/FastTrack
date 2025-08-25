@@ -94,7 +94,7 @@
 		queimando gordura para energia. Um treino nas próximas horas seria o ideal.
 	</string>
 	<string name="stage_autophagy_title">Autofagia</string>
-	<string name="stage_autophagy_description">Seu corpo começou a autófagia!</string>
+    <string name="stage_autophagy_description">Seu corpo começou a autofagia!</string>
 	<string name="stage_optimal_autophagy_title">Autofagia Ideal</string>
 	<string name="stage_fat_peak_fat_burning_description">Seu corpo está queimando gordura rapidamente agora, e a cetose
 		começou.

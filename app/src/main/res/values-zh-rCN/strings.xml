@@ -91,7 +91,7 @@
 	<string name="stage_fat_fasting_sweet_spot_description">你在禁食的最佳状态，继续保持！</string>
 	<string name="stage_fat_peak_fat_burning_title">高峰脂肪燃烧</string>
 	<string name="stage_autophagy_title">自噬</string>
-	<string name="stage_autophagy_description">你的身体已经开始自噬了！</string>
+    <string name="stage_autophagy_description">你的身体已经开始自噬！</string>
 	<string name="stage_fat_peak_fat_burning_description">你身体现在正在快速燃烧脂肪，酮症已经开始。</string>
 	<string name="stage_optimal_autophagy_title">最佳自噬</string>
 	<string name="phase_glucose">葡萄糖燃烧</string>
