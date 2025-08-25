@@ -83,6 +83,15 @@ android {
 	}
 }
 
+ksp {
+	arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+android {
+	// Include the exported Room schemas in androidTest assets
+	sourceSets.getByName("androidTest").assets.srcDirs(files("$projectDir/schemas"))
+}
+
 dependencies {
 	implementation(libs.kotlinx.datetime)
 	implementation(libs.kotlinx.serialization.core)
