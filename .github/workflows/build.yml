@@ -7,12 +7,8 @@ on:
     branches: [ "**" ]
 
 jobs:
-  build:
+  build-and-unit-tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        api-level: [ 29, 33, 36 ]
-
     steps:
       - uses: actions/checkout@v5
 
@@ -39,6 +35,27 @@ jobs:
 
       - name: Run Unit Tests
         run: ./gradlew test
+
+  instrumentation-tests:
+    needs: build-and-unit-tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        api-level: [ 29, 33, 35 ]
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Enable KVM
         run: |
