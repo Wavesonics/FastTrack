@@ -27,3 +27,13 @@ FastTrack is not in active development; however, I will fix bugs if they are rep
 you'd like to contribute, open an issue to discuss it.
 
 See [docs](docs/HOW-TO-RELEASE.md) on how to publish a new release.
+
+## 🪨 Dark Rock Studios
+
+[**Dark Rock Studios**](https://darkrock.studio/) is all about building **Free and Open Source Software**.
+
+🐛 Found bugs?  
+💡 Have suggestions?  
+📚 Want to help translate?  
+🎮 Interested in our other apps?  
+👉 Join our community of Open Source enthusiasts on [**Discord**](https://discord.gg/ju2RQa5x8W)!
