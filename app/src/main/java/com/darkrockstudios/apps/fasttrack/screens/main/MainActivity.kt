@@ -16,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.coroutineScope
 import com.darkrockstudios.apps.fasttrack.R
@@ -182,7 +183,7 @@ class MainActivity : AppCompatActivity() {
 
 	private fun showAbout() {
 		val view = AboutBuilder.with(this)
-			.setPhoto(R.mipmap.profile_picture)
+			.setPhoto(R.drawable.darkrockstudios_logo)
 			.setCover(R.mipmap.profile_cover)
 			.setName(R.string.about_name)
 			.setSubTitle(R.string.about_subtitle)
@@ -191,6 +192,7 @@ class MainActivity : AppCompatActivity() {
 			.setAppName(R.string.app_name)
 			.addGitHubLink("Wavesonics")
 			.addWebsiteLink("https://darkrock.studio/")
+			.addLink(R.drawable.ic_discord, R.string.about_discord, "https://discord.gg/ju2RQa5x8W".toUri())
 			.addFiveStarsAction()
 			.setVersionNameAsAppSubTitle()
 			.addShareAction(R.string.app_name)
