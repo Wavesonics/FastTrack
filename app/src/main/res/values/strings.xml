@@ -32,9 +32,11 @@
 	<string name="intro_04_title">That\'s it!</string>
 	<string name="intro_04_description">Now go start fasting!</string>
 
-	<string name="about_name">Adam Brown</string>
-	<string name="about_subtitle">Mobile Developer</string>
+	<string name="about_name">Dark Rock Studios</string>
+	<string name="about_subtitle">Open Source Development</string>
 	<string name="about_brief">Climber, mountaineer, software engineer, and open source advocate.</string>
+
+	<string name="about_discord">Discord</string>
 
 	<string name="title_fasting">Fasting</string>
 	<string name="title_log">Log</string>
