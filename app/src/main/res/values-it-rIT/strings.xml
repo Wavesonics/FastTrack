@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Traccia Veloce</string>
+	<string name="action_share">Condividi</string>
+	<string name="action_info">Informazioni</string>
+	<string name="action_about">Informazioni</string>
+	<string name="action_export">Esporta Logbook</string>
+	<string name="action_import">Importa Logbook</string>
+	<string name="import_success">Logbook importato con successo</string>
+	<string name="import_failed">Importazione del registro non riuscita</string>
+	<string name="export_failed">Esportazione della rubrica di registro non riuscita</string>
+	<string name="intro_00_title">Benvenuto su Fast Track!</string>
+	<string name="intro_00_description">Di cosa si tratta questa applicazione?</string>
+	<string name="intro_01_title">Guida Motivazionale</string>
+	<string name="intro_01_description">L\'idea principale dietro Fast Track è quello di aiutare a motivarvi durante i vostri digiuni e
+		&lt;unk&gt; spiegare a voi cosa il vostro corpo sta facendo nelle diverse fasi del digiuno.</string>
+	<string name="intro_02_title">Una semplice app gratuita</string>
+	<string name="intro_02_description">Fast Track è e sarà sempre gratuito e open source. Non c\'è alcun account per
+		&lt;unk&gt; &lt;unk&gt; creare, nessun acquisto in-app, nessun annuncio da evitare. E non ha nemmeno accesso a Internet, quindi non può inviare i tuoi dati
+		&lt;unk&gt; &lt;unk&gt; da nessuna parte.</string>
+	<string name="intro_03_title">digiuno Intermittente</string>
+	<string name="intro_03_description">Questa è una nuova area di studio che sta mostrando un sacco di benefici oltre la semplice
+		&lt;unk&gt; &lt;unk&gt; perdita di peso.\n\nPer esplorare ciò che sappiamo sul digiuno e quello che la ricerca sta dicendo, consulta la sezione Info
+		&lt;unk&gt; &lt;unk&gt; di questa app!</string>
+	<string name="intro_04_title">È tutto!</string>
+	<string name="intro_04_description">Ora vai a iniziare il digiuno!</string>
+	<string name="about_name">Dark Rock Studios</string>
+	<string name="about_subtitle">Sviluppo Open Source</string>
+	<string name="about_brief">Climber, alpinista, ingegnere del software e sostenitore open source.</string>
+	<string name="about_discord">Discord</string>
+	<string name="title_fasting">digiuno</string>
+	<string name="title_log">Registro</string>
+	<string name="title_profile">Profilo</string>
+	<string name="fasting_fragment_label">Veloce</string>
+	<string name="start_fast_button">Avvia Veloce</string>
+	<string name="start_fast_now_button">Inizia Veloce Ora</string>
+	<string name="end_fast_button">End Fast</string>
+	<string name="fasting_energy_mode">Modalità Energetica: %1$s</string>
+	<string name="fasting_energy_mode_glucose">Glucosio</string>
+	<string name="fasting_energy_mode_fat">Corpi Di Chetoni</string>
+	<string name="confirm_start_fast_title">Avviare Veloce?</string>
+	<string name="confirm_start_fast_positive">Ora</string>
+	<string name="confirm_start_fast_neutral">Già Iniziato</string>
+	<string name="confirm_start_fast_negative">No</string>
+	<string name="already_started_dialog_title">Già Iniziato</string>
+	<string name="start_picker_title">Quando hai iniziato il tuo Veloce</string>
+	<string name="confirm_end_fast_title">Fine Veloce?</string>
+	<string name="confirm_end_fast_positive">Sì</string>
+	<string name="confirm_end_fast_negative">No</string>
+	<string name="confirm_delete_fast_title">Eliminare Veloce?</string>
+	<string name="confirm_delete_fast_positive">Sì</string>
+	<string name="confirm_delete_fast_negative">No</string>
+	<string name="fast_status_fasting">Veloce in corso</string>
+	<string name="fast_status_not_fasting">Non stai digiunando</string>
+	<string name="next_stage">Prossima tappa a: %1$d ore</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="log_entry_started">Iniziato: %1$s</string>
+	<string name="log_entry_length">Lunghezza: %1$d ore</string>
+	<string name="log_entry_ketosis">Ketosi: %1$d ore</string>
+	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
+	<string name="profile_age_label">Età</string>
+	<string name="profile_age_years">anni</string>
+	<string name="profile_weight_label">Peso</string>
+	<string name="profile_weight_pounds_label">Sterline</string>
+	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_update_button">Aggiorna</string>
+	<string name="profile_bmi_label">BMI:</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_underweight">Sottopeso</string>
+	<string name="profile_bmi_category_normal">Normale</string>
+	<string name="profile_bmi_category_overweight">Sovrappeso</string>
+	<string name="profile_bmi_category_obese">Obese</string>
+	<string name="profile_bmi_category_morbidly_obese">Morbidamente Obeso</string>
+	<string name="profile_error">Valore Errato</string>
+	<string name="profile_bmr_label">BMR:</string>
+	<string name="profile_bmr_value">%.0f\" kCal / giorno</string>
+	<string name="profile_height_label">Altezza</string>
+	<string name="profile_height_imper_feet_label">Piedi</string>
+	<string name="profile_height_imper_inches_label">Pollici</string>
+	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_gender_male">Maschio</string>
+	<string name="profile_gender_female">Femmina</string>
+	<string name="manual_add_title">Aggiungi Manuale</string>
+	<string name="manual_add_length_hint">Lunghezza (Ore)</string>
+	<string name="manual_add_complete_button">Aggiungi</string>
+	<string name="manual_add_fast_started_on">Avvio Rapido: %1$s</string>
+	<string name="manual_start_title">Fast Iniziato</string>
+	<string name="manual_add_set_end_title">Imposta Fine Veloce</string>
+	<string name="manual_add_set_end_complete">Calcola</string>
+	<string name="fast_autophagy_label">Autophagy:</string>
+	<string name="fast_ketosis_label">Ketosis:</string>
+	<string name="fast_fat_burn_label">Bruciatura Grassa:</string>
+	<string name="stage_fasting_title">digiuno</string>
+	<string name="stage_fasting_description">Il tuo corpo sta consumando i suoi depositi di glucosio, mantienilo su!</string>
+	<string name="stage_fat_burning_title">Bruciamento Grasso</string>
+	<string name="stage_fat_burning_description">I tuoi negozi di glucosio sono esauriti! Il tuo corpo sta ora bruciando i grassi per l\'energia
+		&lt;unk&gt; &lt;unk&gt; . Un allenamento nelle prossime ore sarebbe ottimale.</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Degustazione Dolce Spot</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Sei nel punto dolce di digiuno, continua!</string>
+	<string name="stage_fat_peak_fat_burning_title">Peak Grat Burning</string>
+	<string name="stage_fat_peak_fat_burning_description">Il vostro corpo sta bruciando i grassi rapidamente ora, e la chetosi è iniziata.</string>
+	<string name="stage_autophagy_title">Autophagy</string>
+	<string name="stage_autophagy_description">Il tuo corpo ha iniziato l\'autofagy!</string>
+	<string name="stage_optimal_autophagy_title">Autofagia Ottimale</string>
+	<string name="stage_optimal_autophagy_description">Autophagy è in pieno svolgimento! Tienilo su, tra ora e 72 ore
+		&lt;unk&gt; L\'autofagia sarà molto efficace.</string>
+	<string name="phase_glucose">Bruciamento Glucosio</string>
+	<string name="phase_fat_burning">Bruciamento Grasso</string>
+	<string name="phase_ketosis">Ketosis</string>
+	<string name="phase_autophagy">Autophagy</string>
+	<string name="phase_optimal_autophagy">Autofagia Ottimale</string>
+	<string name="share_text">Sono stato a digiuno per %1$d ore e %2$d minuti! Il mio corpo sta consumando %3$s
+		&lt;unk&gt; &lt;unk&gt; per l\'energia.</string>
+	<string name="share_text_past_tense">Ho digiunato per %1$d ore e %2$d minuti!</string>
+	<string name="stage_alerts_checkbox">Avvisi Stage</string>
+	<string name="notification_channel_name">Avvisi Di digiuno</string>
+	<string name="notification_channel_description">Avvisi che ti fanno sapere quando sei entrato in una nuova fase del tuo
+		&lt;unk&gt; &lt;unk&gt; fast.</string>
+	<string name="notification_fat_burn_title">Fase Veloce: Bruciamento Grasso</string>
+	<string name="notification_fat_burn_content">Hai esaurito le riserve di glucosio e il tuo corpo sta consumando grassi
+		per l\'energia.</string>
+	<string name="notification_ketosis_title">Fase Veloce: Chetosi</string>
+	<string name="notification_ketosis_content">Il tuo corpo ha ora distrutto abbastanza riserve di grasso che hai
+		&lt;unk&gt; &lt;unk&gt; entrato Ketosi.</string>
+	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
+	<string name="notification_autophagy_content">Il tuo corpo è entrato in Autofagia. Le cellule vecchie o danneggiate sono ora
+		&lt;unk&gt; consumate per l\'energia.</string>
+	<string name="notification_optimal_autophagy_title">Fase Veloce: Autofagia Ottimale</string>
+	<string name="notification_optimal_autophagy_content">Sei il corpo è stato in Autophagy da molto tempo, e
+		&lt;unk&gt; &lt;unk&gt; la tua salute cellulare sta vedendo grandi benefici.</string>
+	<string name="info_dialog_fat_burn_title">Bruciamento Grasso</string>
+	<string name="info_dialog_fat_burn_content">In questa fase il tuo corpo ha esaurito le riserve di glucosio. Il glucosio è
+		&lt;unk&gt; &lt;unk&gt; conservato come glicogeno per un uso successivo, in questa fase, la maggior parte del vostro glicogeno immagazzinato è stato scomposto in glucosio
+		&lt;unk&gt; &lt;unk&gt; &lt;unk&gt; e consumato per l\'energia.\n\n Ora inizia a scomporre il tessuto adiposo (grasso) in corpi chetonici. Oltre ad
+		&lt;unk&gt; &lt;unk&gt; essere in grado di consumare glucosio per l\'energia, il vostro corpo può in alternativa consumare corpi chetoni per l\'energia, e come
+		&lt;unk&gt; &lt;unk&gt; negozi di glucosio eseguire basso, il vostro corpo cambierà la sua modalità di energia a corpi chetonici.</string>
+	<string name="info_dialog_ketosis_title">Ketosis</string>
+	<string name="info_dialog_ketosis_content">In questa fase il vostro corpo è stato abbattere il grasso per abbastanza tempo che
+		&lt;unk&gt; &lt;unk&gt; il vostro corpo è principalmente essere alimentato da corpi chetone piuttosto che Glucosio.\n\nOltre alla perdita di grasso
+		&lt;unk&gt; &lt;unk&gt; vantaggi questo implica, studi hanno mostrato benefici per le malattie correlate all\'infiammazione, anche se il meccanismo di
+		&lt;unk&gt; &lt;unk&gt; azione per questo è attualmente sconosciuto.</string>
+	<string name="info_dialog_autophagy_title">Autophagy</string>
+	<string name="info_dialog_autophagy_content">In questa fase il vostro corpo ha iniziato ad attivare alcuni processi per
+		&lt;unk&gt; &lt;unk&gt; energia di raccolta. Oltre a scomporre il tessuto adiposo in corpi chetone, ha iniziato a cercare vecchie
+		o cellule danneggiate, e consumarle per più energia.\n\nLa ricerca su questa fase è nelle fasi iniziali,
+		&lt;unk&gt; &lt;unk&gt; ma sembra che questo sia un meccanismo importante per il corpo di fermare i problemi prima che inizino. Per esempio, i tassi di cancro
+		&lt;unk&gt; &lt;unk&gt; sono più bassi nelle persone che entrano regolarmente in Autophagy. Inoltre, alcuni studi hanno anche mostrato tassi più bassi di
+		&lt;unk&gt; &lt;unk&gt; della malattia di Alzheimer.</string>
+	<string name="info_dialog_bmi_title">Indice Di Massa Corporea</string>
+	<string name="info_dialog_bmi_content">Una stima approssimativa del peso sano dovrebbe essere un uomo adulto medio.
+		&lt;unk&gt; &lt;unk&gt; è calcolato semplicemente dividendo il peso per altezza.\n\nSpesso criticato per essere impreciso, è vero che
+		&lt;unk&gt; &lt;unk&gt; ci sono fattori che possono causare essere fuorvianti. Per esempio: un body builder estremamente muscoloso, o una persona
+		&lt;unk&gt; &lt;unk&gt; molto alta o molto corta. Questi casi di bordo otterranno risultati imprecisi dal calcolo di base BMI
+		&lt;unk&gt; &lt;unk&gt; .\n\nMa per la maggior parte delle persone questa è una stima abbastanza buona per sapere se siete in un campo di peso sano
+		&lt;unk&gt; &lt;unk&gt; .</string>
+	<string name="info_dialog_bmr_title">Tasso Metabolico Basale</string>
+	<string name="info_dialog_bmr_content">Questa è una stima del numero di calorie il vostro corpo brucerà in un giorno
+		&lt;unk&gt; &lt;unk&gt; , mentre completamente a riposo. Se tutto quello che hai fatto è stato posto a letto tutto il giorno, questo è quante calorie si potrebbe mangiare senza
+\n\nQuesto è un numero critico per le persone che stanno alimentando limitando l\'apporto calorico giornaliero.</string>
+	<string name="info_dialog_positive">Cool!</string>
+	<string name="info_page_title_info">Informazioni</string>
+	<string name="info_page_title_tips">Suggerimenti</string>
+	<string name="title_activity_info">Informazioni Di digiuno</string>
+	<string name="log_total_autophagy">Autofagia Totale:</string>
+	<string name="log_total_ketosis">Chetosi Totale:</string>
+	<string name="log_total_hours">%1$d ore</string>
+	<string name="profile_metric_switch">Metrico</string>
+	<string name="title_activity_intro">Introduzione</string>
+	<string name="app_widget_description">Traccia i tuoi progressi di digiuno dalla schermata iniziale</string>
+	<string name="app_widget_not_fasting">Non digiuno</string>
+	<string name="app_widget_fast_in_progress">digiuno in corso</string>
+	<string name="app_widget_time">%1$d ore</string>
+	<string name="app_widget_start_fast_button">Avvia Veloce</string>
+	<string name="app_widget_stop_fast_button">Ferma Veloce</string>
+	<string name="close_button_content_description">Chiudi</string>
+	<string name="cancel_button">Annulla</string>
+	<string name="next_button">Successivo</string>
+	<string name="previous_button">Precedente</string>
+	<string name="skip_button">Salta</string>
+	<string name="done_button">Fatto</string>
+	<string name="debug_add_hour_button">Debug: Aggiungi 1 ora</string>
+	<string name="stop_fast_button_description">Ferma Veloce</string>
+	<string name="start_fast_button_description">Avvia Veloce</string>
+	<string name="bmi_info_button_description">Informazioni BMI</string>
+	<string name="bmr_info_button_description">Info BMR</string>
+	<string name="profile_gender_label">Sesso</string>
+	<string name="more_options_button_description">Altre opzioni</string>
+	<string name="manual_add_close_button_description">Chiudi</string>
+	<string name="manual_add_selected_start">Iniziato: %1$s</string>
+	<string name="manual_add_cancel_button">Annulla</string>
+	<string name="manual_add_next_button">Successivo</string>
+	<string name="manual_add_calculate_from_end">Calcola Dalla Fine</string>
+</resources>
