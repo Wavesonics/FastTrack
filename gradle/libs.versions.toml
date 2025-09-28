@@ -7,7 +7,7 @@ javaVersion = "17"
 agp = "8.11.2"
 targetSdk = "36"
 compileSdk = "36"
-minSdk = "29"
+minSdk = "26"
 
 activityKtx = "1.11.0"
 appcompat = "1.7.1"
