@@ -6,7 +6,7 @@ Free and Open Source app for tracking Fasting
 [![F-Droid](https://img.shields.io/f-droid/v/com.darkrockstudios.apps.fasttrack?logo=FDROID)](https://f-droid.org/en/packages/com.darkrockstudios.apps.fasttrack/)
 [![GitHub](https://img.shields.io/github/v/release/Wavesonics/FastTrack?include_prereleases&logo=github)](https://github.com/Wavesonics/FastTrack/releases/latest)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d2d0d1911b4648f1857ecde9c71fb441)](https://app.codacy.com/gh/Wavesonics/FastTrack/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d2d0d1911b4648f1857ecde9c71fb441)](https://app.codacy.com/gh/Wavesonics/FastTrack/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Crowdin](https://badges.crowdin.net/fasttrack-android/localized.svg)](https://crowdin.com/project/fasttrack-android)
 
 Intermittent fasting has many benefits! But it can be very hard to stay motivated during a fast.
 
