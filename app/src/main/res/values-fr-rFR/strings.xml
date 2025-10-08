@@ -54,8 +54,8 @@
 	<string name="fast_status_not_fasting">Vous ne jeûnez pas</string>
 	<string name="next_stage">Prochaine étape à: %1$d heures</string>
 	<string name="start_fast_button_advanced">*</string>
-	<string name="log_entry_started">Démarré : %1$s</string>
-	<string name="log_entry_length">Longueur : %1$d heures</string>
+	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_length">%1$d hours</string>
 	<string name="log_entry_ketosis">Ketosis : %1$d heures</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
 	<string name="profile_age_label">Âge</string>
@@ -161,8 +161,8 @@
 	<string name="info_page_title_info">Infos</string>
 	<string name="info_page_title_tips">Conseils</string>
 	<string name="title_activity_info">Infos de jeûne</string>
-	<string name="log_total_autophagy">Autophagie totale:</string>
-	<string name="log_total_ketosis">Ketosis total:</string>
+	<string name="log_total_autophagy">🧬 Autophagy:</string>
+	<string name="log_total_ketosis">🔥 Ketosis:</string>
 	<string name="log_total_hours">%1$d hours</string>
 	<string name="profile_metric_switch">Métrique</string>
 	<string name="title_activity_intro">Introduction</string>
@@ -190,4 +190,13 @@
 	<string name="manual_add_cancel_button">Abandonner</string>
 	<string name="manual_add_next_button">Suivant</string>
 	<string name="manual_add_calculate_from_end">Calculer depuis la fin</string>
+	<string name="action_settings">Réglages</string>
+	<string name="title_activity_settings">Réglages</string>
+	<string name="settings_placeholder">Paramètres à venir bientôt</string>
+	<string name="back">Précédent</string>
+	<string name="settings_fancy_background_title">Afficher l\'arrière-plan fantaisie</string>
+	<string name="settings_fancy_background_subtitle">Désactiver pour un arrière-plan rapide plus simple</string>
+	<string name="log_no_entries">Pas encore d\'entrées!</string>
+	<string name="log_logbook_label">Carnet de bord</string>
+	<string name="log_stats_label">Statistiques à vie</string>
 </resources>
