@@ -1,6 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.res.Configuration
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -22,8 +23,13 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TooltipAnchorPosition
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -55,7 +61,9 @@ import com.darkrockstudios.apps.fasttrack.ui.theme.Purple700
 import com.darkrockstudios.apps.fasttrack.ui.theme.fastBackgroundGradient
 import com.darkrockstudios.apps.fasttrack.utils.Utils
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Duration.Companion.seconds
 
 private val phaseTextColor_Light = Purple700
 private val phaseTextColor_Dark = Purple100
@@ -240,6 +248,20 @@ private fun FastHeadingContent(
 	uiState: IFastingViewModel.FastingUiState,
 	modifier: Modifier = Modifier
 ) {
+	val scope = rememberCoroutineScope()
+	val tooltipState = rememberTooltipState()
+
+	@StringRes
+	var phaseTooltipResId by remember { mutableStateOf<Int?>(null) }
+
+	LaunchedEffect(tooltipState.isVisible) {
+		if (tooltipState.isVisible) {
+			delay(4.seconds)
+			tooltipState.dismiss()
+			phaseTooltipResId = null
+		}
+	}
+
 	Column(
 		modifier = modifier,
 		horizontalAlignment = Alignment.CenterHorizontally
@@ -254,12 +276,30 @@ private fun FastHeadingContent(
 			modifier = Modifier.padding(bottom = 8.dp)
 		)
 
-		TimeLine(
-			elapsedHours = uiState.elapsedHours,
-			modifier = Modifier
-				.fillMaxWidth()
-				.padding(vertical = 8.dp)
-		)
+		TooltipBox(
+			modifier = modifier,
+			positionProvider = TooltipDefaults
+				.rememberTooltipPositionProvider(TooltipAnchorPosition.Below),
+			tooltip = {
+				phaseTooltipResId?.let { stringRes ->
+					PlainTooltip { Text(stringResource(stringRes)) }
+				}
+			},
+			state = tooltipState,
+		) {
+			TimeLine(
+				elapsedHours = uiState.elapsedHours,
+				modifier = Modifier
+					.fillMaxWidth()
+					.padding(vertical = 8.dp),
+				onPhaseClick = { phase ->
+					phaseTooltipResId = phase.title
+					scope.launch {
+						tooltipState.show()
+					}
+				}
+			)
+		}
 
 		// Energy Mode
 		Text(

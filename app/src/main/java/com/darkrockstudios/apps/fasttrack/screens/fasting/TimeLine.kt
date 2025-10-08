@@ -1,6 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
@@ -9,8 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
+import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import kotlin.math.abs
 import kotlin.math.min
 import kotlin.time.Duration.Companion.hours
 
@@ -28,7 +32,8 @@ val gaugeColors = listOf(
 @Composable
 fun TimeLine(
 	elapsedHours: Double,
-	modifier: Modifier = Modifier
+	modifier: Modifier = Modifier,
+	onPhaseClick: (Phase) -> Unit = {}
 ) {
 	val padding = 16.dp
 	val spacing = 18.dp
@@ -42,6 +47,27 @@ fun TimeLine(
 		modifier = modifier
 			.fillMaxWidth()
 			.height(padding + barSize)
+			.pointerInput(Stages.phases) {
+				detectTapGestures { offset ->
+					val paddingPx = padding.toPx()
+					val spacingPx = spacing.toPx()
+					val barSizePx = barSize.toPx()
+					val availableWidth = size.width - paddingPx
+					val phaseWidth = (availableWidth / Stages.phases.size) - spacingPx
+					val startY = paddingPx
+					val yOk = abs(offset.y - startY) <= (barSizePx / 2f)
+					if (yOk) {
+						Stages.phases.forEachIndexed { index, phase ->
+							val startX = (index * phaseWidth) + (index * spacingPx) + paddingPx
+							val endX = startX + phaseWidth
+							if (offset.x in startX..endX) {
+								onPhaseClick(phase)
+								return@detectTapGestures
+							}
+						}
+					}
+				}
+			}
 	) {
 		val lastPhase = Stages.phases.last()
 		val lastPhaseHoursWeighted = lastPhase.hours * 1.5f
