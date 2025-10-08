@@ -54,8 +54,8 @@
 	<string name="fast_status_not_fasting">No estás ayunando</string>
 	<string name="next_stage">Próxima etapa en: %1$d horas</string>
 	<string name="start_fast_button_advanced">*</string>
-	<string name="log_entry_started">Iniciado: %1$s</string>
-	<string name="log_entry_length">Longitud: %1$d horas</string>
+	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_length">%1$d horas</string>
 	<string name="log_entry_ketosis">Ketosis: %1$d horas</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
 	<string name="profile_age_label">Edad</string>
@@ -161,8 +161,8 @@
 	<string name="info_page_title_info">Info</string>
 	<string name="info_page_title_tips">Consejos</string>
 	<string name="title_activity_info">Información de Fusión</string>
-	<string name="log_total_autophagy">Autofagia total:</string>
-	<string name="log_total_ketosis">Total Ketosis:</string>
+	<string name="log_total_autophagy">🧬 Autophagy:</string>
+	<string name="log_total_ketosis">🔥 Ketosis:</string>
 	<string name="log_total_hours">%1$d horas</string>
 	<string name="profile_metric_switch">Métrica</string>
 	<string name="title_activity_intro">Introducción</string>
@@ -190,4 +190,13 @@
 	<string name="manual_add_cancel_button">Cancelar</string>
 	<string name="manual_add_next_button">Siguiente</string>
 	<string name="manual_add_calculate_from_end">Calcular desde el final</string>
+	<string name="action_settings">Ajustes</string>
+	<string name="title_activity_settings">Ajustes</string>
+	<string name="settings_placeholder">Configuración próximamente</string>
+	<string name="back">Atrás</string>
+	<string name="settings_fancy_background_title">Mostrar fondo elegante</string>
+	<string name="settings_fancy_background_subtitle">Desactivar para un fondo de limpieza más simple</string>
+	<string name="log_no_entries">¡Aún no hay entradas!</string>
+	<string name="log_logbook_label">Bitácora</string>
+	<string name="log_stats_label">Estadísticas de por vida</string>
 </resources>
