@@ -279,6 +279,7 @@ private fun FastHeadingContent(
 			Text(
 				text = uiState.timerText,
 				style = MaterialTheme.typography.displayLarge,
+				color = MaterialTheme.colorScheme.onBackground,
 				fontWeight = FontWeight.Bold,
 			)
 			Text(

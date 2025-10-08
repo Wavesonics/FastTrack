@@ -35,6 +35,7 @@ fun FastingScreenPreview(
 	autophagyStageState: StageState = StageState.NotStarted,
 	alertsEnabled: Boolean = true,
 	darkTheme: Boolean = false,
+	showGradientBackground: Boolean = true,
 ) {
 	val initialState = IFastingViewModel.FastingUiState(
 		isFasting = isFasting,
@@ -51,6 +52,7 @@ fun FastingScreenPreview(
 		ketosisStageState = ketosisStageState,
 		autophagyStageState = autophagyStageState,
 		alertsEnabled = alertsEnabled,
+		showGradientBackground = showGradientBackground,
 	)
 
 	val viewModel = FakeFastingViewModel(initialState)
@@ -153,6 +155,62 @@ private fun FastingScreenPreviewFatBurningDark() {
 		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 		darkTheme = true
+	)
+}
+
+@Preview(
+	name = "Fasting Screen - No Background - Fat Burning Phase",
+	showBackground = true,
+	widthDp = 360,
+	heightDp = 640
+)
+@Composable
+private fun FastingScreenPreviewFatBurningNoBackground() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+		showGradientBackground = false
+	)
+}
+
+@Preview(
+	name = "Fasting Screen - No Background - Fat Burning Phase (Dark)",
+	showBackground = true,
+	widthDp = 360,
+	heightDp = 640,
+	uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun FastingScreenPreviewFatBurningDarkNoBackground() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+		darkTheme = true,
+		showGradientBackground = false,
 	)
 }
 
