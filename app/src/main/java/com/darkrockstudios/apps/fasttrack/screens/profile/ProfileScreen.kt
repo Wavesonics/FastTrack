@@ -315,81 +315,90 @@ fun ProfileDataEntryCard(
 				}
 			}
 
-			// Age Section
-			Text(
-				text = stringResource(id = R.string.profile_age_label),
-				style = MaterialTheme.typography.headlineMedium,
-				color = MaterialTheme.colorScheme.onSurface,
-				modifier = Modifier.padding(top = 16.dp)
-			)
-
-			OutlinedTextField(
-				value = age,
-				onValueChange = onAgeChanged,
-				label = { Text(stringResource(id = R.string.profile_age_years)) },
-				isError = ageError != null,
-				keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-				modifier = Modifier
-					.padding(top = 8.dp)
-					.width(100.dp)
-			)
-
-			if (ageError != null) {
-				Text(
-					text = ageError,
-					color = MaterialTheme.colorScheme.error,
-					style = MaterialTheme.typography.bodySmall,
-					modifier = Modifier.padding(start = 16.dp)
-				)
-			}
-
-			// Weight Section
-			Text(
-				text = stringResource(id = R.string.profile_weight_label),
-				style = MaterialTheme.typography.headlineMedium,
-				color = MaterialTheme.colorScheme.onSurface,
-				modifier = Modifier.padding(top = 16.dp)
-			)
-
-			if (isMetric) {
-				OutlinedTextField(
-					value = weightKg,
-					onValueChange = onWeightKgChanged,
-					label = { Text(stringResource(id = R.string.profile_weight_kg_label)) },
-					isError = weightKgError != null,
-					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-					modifier = Modifier
-						.padding(top = 8.dp)
-						.width(120.dp)
-				)
-
-				if (weightKgError != null) {
+			Row(
+				modifier = Modifier.fillMaxWidth(),
+				horizontalArrangement = Arrangement.SpaceBetween,
+			) {
+				// Weight Section
+				Column {
 					Text(
-						text = weightKgError,
-						color = MaterialTheme.colorScheme.error,
-						style = MaterialTheme.typography.bodySmall,
-						modifier = Modifier.padding(start = 16.dp)
+						text = stringResource(id = R.string.profile_weight_label),
+						style = MaterialTheme.typography.headlineMedium,
+						color = MaterialTheme.colorScheme.onSurface,
+						modifier = Modifier.padding(top = 16.dp)
 					)
+
+					if (isMetric) {
+						OutlinedTextField(
+							value = weightKg,
+							onValueChange = onWeightKgChanged,
+							label = { Text(stringResource(id = R.string.profile_weight_kg_label)) },
+							isError = weightKgError != null,
+							keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+							modifier = Modifier
+								.padding(top = 8.dp)
+								.width(120.dp)
+						)
+
+						if (weightKgError != null) {
+							Text(
+								text = weightKgError,
+								color = MaterialTheme.colorScheme.error,
+								style = MaterialTheme.typography.bodySmall,
+								modifier = Modifier.padding(start = 16.dp)
+							)
+						}
+					} else {
+						OutlinedTextField(
+							value = weightLbs,
+							onValueChange = onWeightLbsChanged,
+							label = { Text(stringResource(id = R.string.profile_weight_pounds_label)) },
+							isError = weightLbsError != null,
+							keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+							modifier = Modifier
+								.padding(top = 8.dp)
+								.width(120.dp)
+						)
+
+						if (weightLbsError != null) {
+							Text(
+								text = weightLbsError,
+								color = MaterialTheme.colorScheme.error,
+								style = MaterialTheme.typography.bodySmall,
+								modifier = Modifier.padding(start = 16.dp)
+							)
+						}
+					}
 				}
-			} else {
-				OutlinedTextField(
-					value = weightLbs,
-					onValueChange = onWeightLbsChanged,
-					label = { Text(stringResource(id = R.string.profile_weight_pounds_label)) },
-					isError = weightLbsError != null,
-					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-					modifier = Modifier
-						.padding(top = 8.dp)
-						.width(120.dp)
-				)
 
-				if (weightLbsError != null) {
+				// Age Section
+				Column {
 					Text(
-						text = weightLbsError,
-						color = MaterialTheme.colorScheme.error,
-						style = MaterialTheme.typography.bodySmall,
-						modifier = Modifier.padding(start = 16.dp)
+						text = stringResource(id = R.string.profile_age_label),
+						style = MaterialTheme.typography.headlineMedium,
+						color = MaterialTheme.colorScheme.onSurface,
+						modifier = Modifier.padding(top = 16.dp)
 					)
+
+					OutlinedTextField(
+						value = age,
+						onValueChange = onAgeChanged,
+						label = { Text(stringResource(id = R.string.profile_age_years)) },
+						isError = ageError != null,
+						keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+						modifier = Modifier
+							.padding(top = 8.dp)
+							.width(100.dp)
+					)
+
+					if (ageError != null) {
+						Text(
+							text = ageError,
+							color = MaterialTheme.colorScheme.error,
+							style = MaterialTheme.typography.bodySmall,
+							modifier = Modifier.padding(start = 16.dp)
+						)
+					}
 				}
 			}
 
