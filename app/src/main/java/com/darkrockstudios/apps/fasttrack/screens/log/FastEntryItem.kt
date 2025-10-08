@@ -2,7 +2,8 @@ package com.darkrockstudios.apps.fasttrack.screens.log
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -44,11 +44,11 @@ fun FastEntryItem(
 		modifier = Modifier.Companion
 			.fillMaxWidth()
 			.padding(bottom = 8.dp)
-			.pointerInput(Unit) {
-				detectTapGestures(
-					onLongPress = { onLongClick() }
-				)
-			},
+			.combinedClickable(
+				interactionSource = remember { MutableInteractionSource() },
+				onClick = {},
+				onLongClick = { onLongClick() }
+			),
 		colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
 		elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
 	) {
