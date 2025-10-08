@@ -299,7 +299,8 @@ private fun FastingScreenPreviewAutophagy() {
 	showBackground = true,
 	widthDp = 360,
 	heightDp = 640,
-	uiMode = Configuration.UI_MODE_NIGHT_YES
+	uiMode = Configuration.UI_MODE_NIGHT_YES,
+	locale = "es"
 )
 @Composable
 private fun FastingScreenPreviewAutophagyDark() {

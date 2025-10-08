@@ -43,6 +43,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.R
@@ -439,6 +440,7 @@ private fun StageInfo(
 		verticalAlignment = Alignment.CenterVertically
 	) {
 		TextButton(
+			modifier = Modifier.weight(1f),
 			onClick = { onShowInfoDialog(titleRes, contentRes) }
 		) {
 			Icon(
@@ -449,14 +451,21 @@ private fun StageInfo(
 			)
 			Text(
 				text = stringResource(id = labelRes),
-				style = MaterialTheme.typography.headlineMedium,
+				style = MaterialTheme.typography.headlineSmall,
 				color = phaseTextColor(),
+				maxLines = 1,
+				softWrap = false,
+				overflow = TextOverflow.Ellipsis,
+				modifier = Modifier.weight(1f)
 			)
 		}
 		Text(
 			text = timeText,
 			style = MaterialTheme.typography.headlineMedium,
-			color = stageColor(stageState)
+			color = stageColor(stageState),
+			maxLines = 1,
+			softWrap = false,
+			overflow = TextOverflow.Visible,
 		)
 	}
 }
