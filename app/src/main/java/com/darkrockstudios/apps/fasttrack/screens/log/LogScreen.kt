@@ -1,33 +1,49 @@
 package com.darkrockstudios.apps.fasttrack.screens.log
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
-import com.darkrockstudios.apps.fasttrack.utils.formatAs
 import org.koin.compose.viewmodel.koinViewModel
-import kotlin.math.roundToInt
-import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -63,41 +79,28 @@ fun LogScreen(
 				.padding(16.dp)
 		) {
 			// Total Ketosis and Autophagy Hours
-			Column(
+			Row(
 				modifier = Modifier
 					.fillMaxWidth()
 					.padding(top = contentPaddingValues.calculateTopPadding()),
-
+				horizontalArrangement = Arrangement.spacedBy(12.dp)
 			) {
-				// Total Ketosis
-				Row {
-					Text(
-						text = stringResource(id = R.string.log_total_ketosis),
-						style = MaterialTheme.typography.bodyLarge,
-						color = MaterialTheme.colorScheme.onBackground,
-					)
-					Spacer(modifier = Modifier.width(8.dp))
-					Text(
-						text = stringResource(id = R.string.log_total_hours, uiState.totalKetosisHours),
-						style = MaterialTheme.typography.headlineSmall,
-						color = MaterialTheme.colorScheme.onBackground,
-					)
-				}
-
-				// Total Autophagy
-				Row {
-					Text(
-						text = stringResource(id = R.string.log_total_autophagy),
-						style = MaterialTheme.typography.bodyLarge,
-						color = MaterialTheme.colorScheme.onBackground,
-					)
-					Spacer(modifier = Modifier.width(8.dp))
-					Text(
-						text = stringResource(id = R.string.log_total_hours, uiState.totalAutophagyHours),
-						style = MaterialTheme.typography.headlineSmall,
-						color = MaterialTheme.colorScheme.onBackground,
-					)
-				}
+				StatCard(
+					title = stringResource(id = R.string.log_total_ketosis),
+					valueText = stringResource(
+						id = R.string.log_total_hours,
+						uiState.totalKetosisHours
+					),
+					modifier = Modifier.weight(1f)
+				)
+				StatCard(
+					title = stringResource(id = R.string.log_total_autophagy),
+					valueText = stringResource(
+						id = R.string.log_total_hours,
+						uiState.totalAutophagyHours
+					),
+					modifier = Modifier.weight(1f)
+				)
 			}
 
 			Spacer(modifier = Modifier.height(16.dp))
@@ -187,72 +190,31 @@ private fun ConfirmDelete(
 	}
 }
 
-@ExperimentalTime
+
 @Composable
-fun FastEntryItem(
-	entry: FastingLogEntry,
-	onLongClick: () -> Unit
+private fun StatCard(
+	title: String,
+	valueText: String,
+	modifier: Modifier = Modifier,
 ) {
-	Card(
-		modifier = Modifier
-			.fillMaxWidth()
-			.padding(bottom = 8.dp)
-			.pointerInput(Unit) {
-				detectTapGestures(
-					onLongPress = { onLongClick() }
-				)
-			},
-		colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-		elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+	ElevatedCard(
+		modifier = modifier,
 	) {
 		Column(
 			modifier = Modifier
 				.fillMaxWidth()
-				.padding(16.dp)
+				.padding(16.dp),
+			verticalArrangement = Arrangement.spacedBy(6.dp)
 		) {
-			val hours = entry.length.toDouble(DurationUnit.HOURS).roundToInt()
-
-			// Calculate ketosis hours
-			val ketosisStart = Stages.PHASE_KETOSIS.hours.toDouble()
-			val lenHours = entry.length.toDouble(DurationUnit.HOURS)
-			val ketosisHours = if (lenHours > ketosisStart) {
-				(lenHours - ketosisStart).roundToInt()
-			} else {
-				0
-			}
-
-			// Calculate autophagy hours
-			val autophagyStart = Stages.PHASE_AUTOPHAGY.hours.toDouble()
-			val autophagyHours = if (lenHours > autophagyStart) {
-				(lenHours - autophagyStart).roundToInt()
-			} else {
-				0
-			}
-
-			val dateStr = remember(entry.start) {
-				entry.start.formatAs("d MMM uuuu - HH:mm")
-			}
-
 			Text(
-				text = stringResource(id = R.string.log_entry_started, dateStr),
-				style = MaterialTheme.typography.titleLarge,
-				color = MaterialTheme.colorScheme.onSurface,
+				text = title,
+				style = MaterialTheme.typography.labelLarge,
+				color = MaterialTheme.colorScheme.onSurfaceVariant
 			)
 			Text(
-				text = stringResource(id = R.string.log_entry_length, hours),
-				style = MaterialTheme.typography.headlineSmall,
-				color = MaterialTheme.colorScheme.onSurface,
-				fontWeight = FontWeight.Bold
-			)
-			Text(
-				text = stringResource(id = R.string.log_entry_ketosis, ketosisHours),
-				style = MaterialTheme.typography.titleMedium,
-				color = MaterialTheme.colorScheme.onSurface,
-			)
-			Text(
-				text = stringResource(id = R.string.log_entry_autophagy, autophagyHours),
-				style = MaterialTheme.typography.titleMedium,
-				color = MaterialTheme.colorScheme.onSurface,
+				text = valueText,
+				style = MaterialTheme.typography.headlineMedium,
+				color = MaterialTheme.colorScheme.onSurface
 			)
 		}
 	}
