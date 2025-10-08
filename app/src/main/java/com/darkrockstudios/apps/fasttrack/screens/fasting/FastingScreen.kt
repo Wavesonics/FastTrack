@@ -315,109 +315,34 @@ private fun FastDetailsContent(
 				.padding(bottom = 16.dp)
 		) {
 			// Fat Burn Phase
-			Row(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = 4.dp),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				TextButton(
-					onClick = {
-						onShowInfoDialog(
-							R.string.info_dialog_fat_burn_title,
-							R.string.info_dialog_fat_burn_content
-						)
-					}
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_more_info),
-						tint = phaseTextColor(),
-						contentDescription = null,
-						modifier = Modifier.padding(end = 8.dp)
-					)
-					Text(
-						text = stringResource(id = R.string.fast_fat_burn_label),
-						style = MaterialTheme.typography.headlineMedium,
-						color = phaseTextColor(),
-					)
-				}
-				Text(
-					text = uiState.fatBurnTime,
-					style = MaterialTheme.typography.headlineMedium,
-					color = stageColor(uiState.fatBurnStageState)
-				)
-			}
+			StageInfo(
+				onShowInfoDialog = onShowInfoDialog,
+				titleRes = R.string.info_dialog_fat_burn_title,
+				contentRes = R.string.info_dialog_fat_burn_content,
+				labelRes = R.string.fast_fat_burn_label,
+				timeText = uiState.fatBurnTime,
+				stageState = uiState.fatBurnStageState
+			)
 
 			// Ketosis Phase
-			Row(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = 4.dp),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				TextButton(
-					onClick = {
-						onShowInfoDialog(
-							R.string.info_dialog_ketosis_title,
-							R.string.info_dialog_ketosis_content
-						)
-					}
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_more_info),
-						tint = phaseTextColor(),
-						contentDescription = null,
-						modifier = Modifier.padding(end = 8.dp)
-					)
-					Text(
-						text = stringResource(id = R.string.fast_ketosis_label),
-						style = MaterialTheme.typography.headlineMedium,
-						color = phaseTextColor(),
-					)
-				}
-				Text(
-					text = uiState.ketosisTime,
-					style = MaterialTheme.typography.headlineMedium,
-					color = stageColor(uiState.ketosisStageState)
-				)
-			}
+			StageInfo(
+				onShowInfoDialog = onShowInfoDialog,
+				titleRes = R.string.info_dialog_ketosis_title,
+				contentRes = R.string.info_dialog_ketosis_content,
+				labelRes = R.string.fast_ketosis_label,
+				timeText = uiState.ketosisTime,
+				stageState = uiState.ketosisStageState
+			)
 
 			// Autophagy Phase
-			Row(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = 4.dp),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				TextButton(
-					onClick = {
-						onShowInfoDialog(
-							R.string.info_dialog_autophagy_title,
-							R.string.info_dialog_autophagy_content
-						)
-					}
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_more_info),
-						tint = phaseTextColor(),
-						contentDescription = null,
-						modifier = Modifier.padding(end = 8.dp)
-					)
-					Text(
-						text = stringResource(id = R.string.fast_autophagy_label),
-						style = MaterialTheme.typography.headlineMedium,
-						color = phaseTextColor(),
-					)
-				}
-				Text(
-					text = uiState.autophagyTime,
-					style = MaterialTheme.typography.headlineMedium,
-					color = stageColor(uiState.autophagyStageState)
-				)
-			}
+			StageInfo(
+				onShowInfoDialog = onShowInfoDialog,
+				titleRes = R.string.info_dialog_autophagy_title,
+				contentRes = R.string.info_dialog_autophagy_content,
+				labelRes = R.string.fast_autophagy_label,
+				timeText = uiState.autophagyTime,
+				stageState = uiState.autophagyStageState
+			)
 		}
 
 		// Stage Description
@@ -498,10 +423,49 @@ private fun FastDetailsContent(
 }
 
 @Composable
+private fun StageInfo(
+	onShowInfoDialog: (Int, Int) -> Unit,
+	titleRes: Int,
+	contentRes: Int,
+	labelRes: Int,
+	timeText: String,
+	stageState: IFastingViewModel.StageState
+) {
+	Row(
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(vertical = 4.dp),
+		horizontalArrangement = Arrangement.SpaceBetween,
+		verticalAlignment = Alignment.CenterVertically
+	) {
+		TextButton(
+			onClick = { onShowInfoDialog(titleRes, contentRes) }
+		) {
+			Icon(
+				painter = painterResource(id = R.drawable.ic_more_info),
+				tint = phaseTextColor(),
+				contentDescription = null,
+				modifier = Modifier.padding(end = 8.dp)
+			)
+			Text(
+				text = stringResource(id = labelRes),
+				style = MaterialTheme.typography.headlineMedium,
+				color = phaseTextColor(),
+			)
+		}
+		Text(
+			text = timeText,
+			style = MaterialTheme.typography.headlineMedium,
+			color = stageColor(stageState)
+		)
+	}
+}
+
+@Composable
 private fun stageColor(stageState: IFastingViewModel.StageState): Color = when (stageState) {
 	IFastingViewModel.StageState.StartedActive -> Color.Green
 	IFastingViewModel.StageState.StartedInactive -> Color.Red
-	IFastingViewModel.StageState.NotStarted -> Color.White
+	IFastingViewModel.StageState.NotStarted -> MaterialTheme.colorScheme.onBackground
 }
 
 private val stageDropShadow = Shadow(
