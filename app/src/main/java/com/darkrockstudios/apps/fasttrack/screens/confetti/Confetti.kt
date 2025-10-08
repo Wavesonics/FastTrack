@@ -2,7 +2,15 @@ package com.darkrockstudios.apps.fasttrack.screens.confetti
 
 import android.content.Context
 import android.view.WindowManager
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
@@ -13,6 +21,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.CoroutineScope
@@ -136,8 +145,8 @@ fun Modifier.confettiEffect(
 
 	val windowManager = LocalContext.current.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 	// Calculate frame delay based on refresh rate
-	val frameDelay = remember {
-		val refreshRate = windowManager.defaultDisplay.refreshRate
+	val refreshRate = rememberRefreshRate()
+	val frameDelay = remember(refreshRate) {
 		(1000f / refreshRate).toLong().coerceAtLeast(8)
 	}
 
@@ -206,4 +215,25 @@ fun Modifier.confettiEffect(
 				}
 			}
 		}
+}
+
+@Composable
+private fun rememberRefreshRate(): Float {
+	val context = LocalContext.current
+	val isInPreview = LocalInspectionMode.current
+
+	return remember(isInPreview) {
+		if (isInPreview) {
+			60f // Default refresh rate for preview
+		} else {
+			try {
+				val windowManager =
+					context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+				@Suppress("DEPRECATION")
+				windowManager.defaultDisplay.refreshRate
+			} catch (e: Exception) {
+				60f // Fallback if any error occurs
+			}
+		}
+	}
 }
