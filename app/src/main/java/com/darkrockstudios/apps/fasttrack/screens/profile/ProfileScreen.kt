@@ -1,11 +1,30 @@
 package com.darkrockstudios.apps.fasttrack.screens.profile
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -18,6 +37,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Gender
+import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 import com.darkrockstudios.apps.fasttrack.utils.combinePadding
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -32,55 +52,64 @@ fun ProfileScreen(
 	LaunchedEffect(Unit) {
 		viewModel.onCreate()
 	}
+	Box(modifier = Modifier.fillMaxSize()) {
+		Column(
+			modifier = Modifier
+				.widthIn(max = MAX_COLUMN_WIDTH)
+				.fillMaxHeight()
+				.align(Alignment.Center)
+				.verticalScroll(rememberScrollState())
+				.padding(combinePadding(contentPaddingValues, PaddingValues(16.dp)))
+		) {
+			BmiCard(
+				bmiValue = uiState.bmiValue,
+				onInfoClick = {
+					onShowInfoDialog(
+						R.string.info_dialog_bmi_title,
+						R.string.info_dialog_bmi_content
+					)
+				}
+			)
 
-	Column(
-		modifier = Modifier
-			.background(MaterialTheme.colorScheme.background)
-			.fillMaxSize()
-			.verticalScroll(rememberScrollState())
-			.padding(combinePadding(contentPaddingValues, PaddingValues(16.dp)))
-	) {
-		// BMI Card
-		BmiCard(
-			bmiValue = uiState.bmiValue,
-			onInfoClick = { onShowInfoDialog(R.string.info_dialog_bmi_title, R.string.info_dialog_bmi_content) }
-		)
+			Spacer(modifier = Modifier.height(16.dp))
 
-		Spacer(modifier = Modifier.height(16.dp))
+			BmrCard(
+				bmrValue = uiState.bmrValue,
+				onInfoClick = {
+					onShowInfoDialog(
+						R.string.info_dialog_bmr_title,
+						R.string.info_dialog_bmr_content
+					)
+				}
+			)
 
-		// BMR Card
-		BmrCard(
-			bmrValue = uiState.bmrValue,
-			onInfoClick = { onShowInfoDialog(R.string.info_dialog_bmr_title, R.string.info_dialog_bmr_content) }
-		)
+			Spacer(modifier = Modifier.height(16.dp))
 
-		Spacer(modifier = Modifier.height(16.dp))
-
-		// Profile Data Entry Card
-		ProfileDataEntryCard(
-			isMetric = uiState.isMetric,
-			heightCm = uiState.heightCm,
-			heightFeet = uiState.heightFeet,
-			heightInches = uiState.heightInches,
-			weightKg = uiState.weightKg,
-			weightLbs = uiState.weightLbs,
-			age = uiState.age,
-			gender = uiState.gender,
-			heightCmError = uiState.heightCmError,
-			heightFeetError = uiState.heightFeetError,
-			heightInchesError = uiState.heightInchesError,
-			weightKgError = uiState.weightKgError,
-			weightLbsError = uiState.weightLbsError,
-			ageError = uiState.ageError,
-			onHeightCmChanged = viewModel::updateHeightCm,
-			onHeightFeetChanged = viewModel::updateHeightFeet,
-			onHeightInchesChanged = viewModel::updateHeightInches,
-			onWeightKgChanged = viewModel::updateWeightKg,
-			onWeightLbsChanged = viewModel::updateWeightLbs,
-			onAgeChanged = viewModel::updateAge,
-			onGenderChanged = viewModel::updateGender,
-			onMetricSwitchChanged = viewModel::updateMetricSystem
-		)
+			ProfileDataEntryCard(
+				isMetric = uiState.isMetric,
+				heightCm = uiState.heightCm,
+				heightFeet = uiState.heightFeet,
+				heightInches = uiState.heightInches,
+				weightKg = uiState.weightKg,
+				weightLbs = uiState.weightLbs,
+				age = uiState.age,
+				gender = uiState.gender,
+				heightCmError = uiState.heightCmError,
+				heightFeetError = uiState.heightFeetError,
+				heightInchesError = uiState.heightInchesError,
+				weightKgError = uiState.weightKgError,
+				weightLbsError = uiState.weightLbsError,
+				ageError = uiState.ageError,
+				onHeightCmChanged = viewModel::updateHeightCm,
+				onHeightFeetChanged = viewModel::updateHeightFeet,
+				onHeightInchesChanged = viewModel::updateHeightInches,
+				onWeightKgChanged = viewModel::updateWeightKg,
+				onWeightLbsChanged = viewModel::updateWeightLbs,
+				onAgeChanged = viewModel::updateAge,
+				onGenderChanged = viewModel::updateGender,
+				onMetricSwitchChanged = viewModel::updateMetricSystem
+			)
+		}
 	}
 }
 

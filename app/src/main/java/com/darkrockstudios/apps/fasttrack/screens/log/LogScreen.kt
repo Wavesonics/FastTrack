@@ -1,6 +1,5 @@
 package com.darkrockstudios.apps.fasttrack.screens.log
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -75,7 +74,6 @@ fun LogScreen(
 	Box(
 		modifier = Modifier
 			.fillMaxSize()
-			.background(MaterialTheme.colorScheme.background)
 	) {
 		Column(
 			modifier = Modifier

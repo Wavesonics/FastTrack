@@ -252,6 +252,25 @@ private fun ProfileScreenPreviewTablet() {
 }
 
 @Preview(
+	name = "Profile Screen - Tablet Landscape",
+	showBackground = true,
+	widthDp = 800,
+	heightDp = 600
+)
+@Composable
+private fun ProfileScreenPreviewTabletLandscape() {
+	ProfileScreenPreview(
+		isMetric = true,
+		heightCm = "175",
+		weightKg = "70.0",
+		age = "30",
+		gender = Gender.Male,
+		bmiValue = "BMI: 22.9 (Normal)",
+		bmrValue = "BMR: 1,655 calories/day"
+	)
+}
+
+@Preview(
 	name = "Profile Screen - Tablet (Dark)",
 	showBackground = true,
 	widthDp = 600,
