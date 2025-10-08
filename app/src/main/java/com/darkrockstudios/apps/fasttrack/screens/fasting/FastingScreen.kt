@@ -285,6 +285,7 @@ private fun FastHeadingContent(
 			Text(
 				text = uiState.milliseconds,
 				style = MaterialTheme.typography.headlineMedium,
+				color = MaterialTheme.colorScheme.onBackground,
 				modifier = Modifier.padding(start = 8.dp, bottom = 4.dp)
 			)
 		}
@@ -302,8 +303,11 @@ private fun FastDetailsContent(
 ) {
 	Column(
 		modifier = modifier,
-		horizontalAlignment = Alignment.CenterHorizontally
+		horizontalAlignment = Alignment.CenterHorizontally,
+		verticalArrangement = Arrangement.Center,
 	) {
+		Spacer(modifier = Modifier.weight(1f))
+
 		// Phase Information
 		Column(
 			modifier = Modifier
@@ -419,7 +423,6 @@ private fun FastDetailsContent(
 		// Stage Description
 		Box(
 			modifier = Modifier
-				.weight(1f)
 				.fillMaxWidth()
 				.verticalScroll(rememberScrollState())
 		) {
@@ -430,6 +433,8 @@ private fun FastDetailsContent(
 				modifier = Modifier.padding(top = 16.dp)
 			)
 		}
+
+		Spacer(modifier = Modifier.weight(1f))
 
 		// Bottom Controls
 		Row(

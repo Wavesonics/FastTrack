@@ -403,6 +403,32 @@ private fun FastingScreenPreviewTablet() {
 }
 
 @Preview(
+	name = "Fasting Screen - Tablet Landscape",
+	showBackground = true,
+	widthDp = 800,
+	heightDp = 600
+)
+@Composable
+private fun FastingScreenPreviewTabletLandscape() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Autophagy",
+		stageDescription = "Your cells are recycling old components and damaged proteins.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 48.0,
+		timerText = "48:00:00",
+		milliseconds = "0",
+		fatBurnTime = "36:00:00",
+		ketosisTime = "30:00:00",
+		autophagyTime = "12:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedActive,
+		alertsEnabled = true,
+	)
+}
+
+@Preview(
 	name = "Fasting Screen - Tablet (Dark)",
 	showBackground = true,
 	widthDp = 600,
