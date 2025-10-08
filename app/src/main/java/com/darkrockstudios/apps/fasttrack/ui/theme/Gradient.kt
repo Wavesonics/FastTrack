@@ -29,19 +29,19 @@ val DarkGradientEndColor = Color(0xFF8E8E8E) // #8E8E8E
  * - endColor: #8E8E8E
  * - angle: 90 degrees (bottom to top)
  */
-fun Modifier.fastBackgroundGradient(): Modifier = composed {
-	// Determine if we're in dark mode
-	val isDarkTheme = isSystemInDarkTheme()
+fun Modifier.fastBackgroundGradient(show: Boolean): Modifier = composed {
+	if (show) {
+		val isDarkTheme = isSystemInDarkTheme()
 
-	// Select appropriate colors based on theme
-	val startColor = if (isDarkTheme) DarkGradientStartColor else LightGradientStartColor
-	val endColor = if (isDarkTheme) DarkGradientEndColor else LightGradientEndColor
+		val startColor = if (isDarkTheme) DarkGradientStartColor else LightGradientStartColor
+		val endColor = if (isDarkTheme) DarkGradientEndColor else LightGradientEndColor
 
-	// Create a vertical gradient (bottom to top) to match angle=90 in XML
-	val gradientBrush = Brush.verticalGradient(
-		colors = listOf(startColor, endColor)
-	)
+		val gradientBrush = Brush.verticalGradient(
+			colors = listOf(startColor, endColor)
+		)
 
-	// Apply the gradient as background
-	this.background(brush = gradientBrush)
+		this.background(brush = gradientBrush)
+	} else {
+		this
+	}
 }

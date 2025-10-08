@@ -252,4 +252,10 @@
 	<string name="manual_add_cancel_button">Cancel</string>
 	<string name="manual_add_next_button">Next</string>
 	<string name="manual_add_calculate_from_end">Calculate From End</string>
+	<string name="action_settings">Settings</string>
+	<string name="title_activity_settings">Settings</string>
+	<string name="settings_placeholder">Settings coming soon</string>
+	<string name="back">Back</string>
+	<string name="settings_fancy_background_title">Show Fancy Background</string>
+	<string name="settings_fancy_background_subtitle">Disable for a simpler Fasting background</string>
 </resources>

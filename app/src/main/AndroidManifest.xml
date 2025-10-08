@@ -36,6 +36,9 @@
 		<activity
 				android:name=".screens.info.InfoActivity"
 				android:label="@string/title_activity_info"/>
+		<activity
+			android:name=".screens.settings.SettingsActivity"
+			android:label="@string/title_activity_settings" />
 
 		<service
 				android:name=".AlertService"

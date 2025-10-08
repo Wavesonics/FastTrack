@@ -3,17 +3,16 @@ package com.darkrockstudios.apps.fasttrack.screens.fasting
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import kotlin.math.min
 import kotlin.time.Duration.Companion.hours
-import kotlin.time.ExperimentalTime
 
 /**
  * Fasting Stages view
@@ -37,6 +36,8 @@ fun TimeLine(
 		Color.Magenta
 	)
 
+	val outlineColor = MaterialTheme.colorScheme.onBackground
+
 	Canvas(
 		modifier = modifier
 			.fillMaxWidth()
@@ -55,31 +56,38 @@ fun TimeLine(
 			val startX = (index * phaseWidth) + (index * spacing.toPx()) + padding.toPx()
 			val startY = padding.toPx()
 
+			// Current phase, thicket orange outline
 			if (curPhase == phase) {
+				// Outline
+				drawLine(
+					color = Color(0xFFE67E22),
+					start = Offset(startX, startY),
+					end = Offset(startX + phaseWidth, startY),
+					strokeWidth = barSize.toPx(),
+					cap = StrokeCap.Round
+				)
+
 				// Current phase - filled
 				drawLine(
 					color = gaugeColors[index],
 					start = Offset(startX, startY),
 					end = Offset(startX + phaseWidth, startY),
-					strokeWidth = barSize.toPx(),
+					strokeWidth = barSize.toPx() * 0.7f,
 					cap = StrokeCap.Round
 				)
 			} else {
-				// Other phases - outlined
-				// For outlined phases, we'll simulate a stroke by drawing two lines:
-				// 1. A thicker line with the background color
-				// 2. A thinner line with the phase color
+				// Other phases - thinner "onBackground" outline
 
-				// First, draw a thicker line with the background color (or a very light version of the phase color)
+				// Thinner outline
 				drawLine(
-					color = Color.White, // Use background color or very light version of phase color
+					color = outlineColor,
 					start = Offset(startX, startY),
 					end = Offset(startX + phaseWidth, startY),
 					strokeWidth = barSize.toPx(),
 					cap = StrokeCap.Round
 				)
 
-				// Then, draw a thinner line with the phase color around the edges
+				// Phase color
 				drawLine(
 					color = gaugeColors[index],
 					start = Offset(startX, startY),

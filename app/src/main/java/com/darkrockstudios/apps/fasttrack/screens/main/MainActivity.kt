@@ -28,6 +28,7 @@ import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.StartFastRequest
 import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.darkrockstudios.apps.fasttrack.screens.intro.IntroActivity
+import com.darkrockstudios.apps.fasttrack.screens.settings.SettingsActivity
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import com.vansuita.materialabout.builder.AboutBuilder
 import io.github.aakira.napier.Napier
@@ -53,8 +54,8 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 
 		enableEdgeToEdge()
-		WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
-			false
+		WindowCompat.getInsetsController(window, window.decorView)
+			.isAppearanceLightStatusBars = false
 
 		handleStartFastExtra(intent)
 
@@ -73,6 +74,7 @@ class MainActivity : AppCompatActivity() {
 					onAboutClick = { showAbout() },
 					onExportClick = { onExportLogBook() },
 					onImportClick = { onImportLogBook() },
+					onSettingsClick = { startActivity(Intent(this, SettingsActivity::class.java)) },
 					externalRequests = ExternalRequests(
 						startFastRequest = startFastRequestState,
 						stopFastRequested = stopFastRequestState,
@@ -192,7 +194,11 @@ class MainActivity : AppCompatActivity() {
 			.setAppName(R.string.app_name)
 			.addGitHubLink("Wavesonics")
 			.addWebsiteLink("https://darkrock.studio/")
-			.addLink(R.drawable.ic_discord, R.string.about_discord, "https://discord.gg/ju2RQa5x8W".toUri())
+			.addLink(
+				R.drawable.ic_discord,
+				R.string.about_discord,
+				"https://discord.gg/ju2RQa5x8W".toUri()
+			)
 			.addFiveStarsAction()
 			.setVersionNameAsAppSubTitle()
 			.addShareAction(R.string.app_name)

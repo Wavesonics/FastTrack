@@ -36,13 +36,21 @@ class FastingViewModel(
 
 	private val _uiState = MutableStateFlow(
 		IFastingViewModel.FastingUiState(
-			isFasting = repository.isFasting()
+			isFasting = repository.isFasting(),
+			showGradientBackground = settingsDatasource.getShowFancyBackground(),
 		)
 	)
 	override val uiState: StateFlow<IFastingViewModel.FastingUiState> = _uiState.asStateFlow()
 
 	override fun onCreate() {
 		_uiState.update { it.copy(alertsEnabled = settingsDatasource.getFastingAlerts()) }
+
+		viewModelScope.launch {
+			settingsDatasource.showFancyBackgroundFlow().collect { enabled ->
+				_uiState.update { state -> state.copy(showGradientBackground = enabled) }
+			}
+		}
+
 		updateUi()
 	}
 
@@ -140,20 +148,16 @@ class FastingViewModel(
 	private fun updatePhases(elapsedTime: Duration) {
 		val currentStage = Stages.getCurrentPhase(elapsedTime)
 
-		// Update elapsed hours for the gauge
 		_uiState.update { it.copy(elapsedHours = elapsedTime.inWholeHours.toDouble()) }
 
-		// Handle Fat burning
 		val fatBurnTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_FAT_BURN, elapsedTime)
 
-		// Handle Ketosis
 		val ketosisTimeAndState = if (currentStage.fatBurning) {
 			getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
 		} else {
 			Pair("--:--:--", IFastingViewModel.StageState.StartedInactive)
 		}
 
-		// Handle Autophagy
 		val autophagyTimeAndState = if (currentStage.ketosis) {
 			getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
 		} else {

@@ -88,12 +88,11 @@ fun FastingScreen(
 	var showDateTimePicker by remember { mutableStateOf(false) }
 
 	fun onShowStartFastSelector() {
-		if (!viewModel.uiState.value.isFasting) {
+		if (!uiState.isFasting) {
 			AlertDialog.Builder(context)
 				.setTitle(R.string.confirm_start_fast_title)
 				.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> viewModel.startFast() }
 				.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ ->
-					// Show date/time picker dialog
 					showDateTimePicker = true
 				}
 				.setNegativeButton(R.string.confirm_start_fast_negative, null)
@@ -175,7 +174,7 @@ fun FastingScreen(
 	Box(
 		modifier = Modifier
 			.fillMaxSize()
-			.fastBackgroundGradient()
+			.fastBackgroundGradient(show = uiState.showGradientBackground)
 			.confettiEffect(confetti)
 			.padding(contentPaddingValues)
 	) {

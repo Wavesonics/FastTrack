@@ -24,7 +24,8 @@ interface IFastingViewModel {
 		val elapsedHours: Double = 0.0,
 		val milliseconds: String = "00",
 		val timerText: String = "00:00:00",
-		val alertsEnabled: Boolean = true
+		val alertsEnabled: Boolean = true,
+		val showGradientBackground: Boolean = true,
 	)
 
 	val uiState: StateFlow<FastingUiState>
