@@ -159,6 +159,25 @@ private fun LogScreenPreviewTabletDark() {
 
 @ExperimentalTime
 @Preview(
+	name = "Log Screen - Tablet Landscape (Dark)",
+	showBackground = true,
+	widthDp = 2000,
+	heightDp = 1024,
+	uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LogScreenPreviewLargeTabletDark() {
+	LogScreenPreview(
+		entries = entries,
+		totalKetosisHours = 52,
+		totalAutophagyHours = 24,
+		showManualAddDialog = false,
+		darkTheme = true
+	)
+}
+
+@ExperimentalTime
+@Preview(
 	name = "Log Screen - Landscape Phone",
 	showBackground = true,
 	widthDp = 640,

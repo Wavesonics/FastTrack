@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.material3.SelectableDates
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.dp
 import java.time.LocalDate as JavaLocalDate
 
 @Composable
@@ -30,3 +31,5 @@ class PastAndTodaySelectableDates : SelectableDates {
 		return !date.isAfter(today)
 	}
 }
+
+val MAX_COLUMN_WIDTH = 600.dp

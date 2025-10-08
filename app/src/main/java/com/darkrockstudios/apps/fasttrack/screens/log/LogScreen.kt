@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -35,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.Lifecycle
@@ -43,6 +46,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
+import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.ExperimentalTime
 
@@ -75,9 +79,18 @@ fun LogScreen(
 	) {
 		Column(
 			modifier = Modifier
-				.fillMaxSize()
+				.fillMaxHeight()
+				.widthIn(max = MAX_COLUMN_WIDTH)
+				.align(Alignment.Center)
 				.padding(16.dp)
 		) {
+			Text(
+				stringResource(R.string.log_stats_label),
+				style = MaterialTheme.typography.labelLarge,
+				color = MaterialTheme.colorScheme.onSurfaceVariant,
+				modifier = Modifier.padding(bottom = 8.dp)
+			)
+
 			// Total Ketosis and Autophagy Hours
 			Row(
 				modifier = Modifier
@@ -104,6 +117,14 @@ fun LogScreen(
 			}
 
 			Spacer(modifier = Modifier.height(16.dp))
+
+			Text(
+				stringResource(R.string.log_logbook_label),
+				style = MaterialTheme.typography.labelLarge,
+				color = MaterialTheme.colorScheme.onSurfaceVariant,
+				modifier = Modifier.padding(bottom = 8.dp)
+			)
+
 			val direction = LocalLayoutDirection.current
 			LazyColumn(
 				modifier = Modifier
@@ -115,13 +136,28 @@ fun LogScreen(
 					bottom = contentPaddingValues.calculateBottomPadding(),
 				),
 			) {
-				items(uiState.entries, key = { it.id }) { entry ->
-					FastEntryItem(
-						entry = entry,
-						onLongClick = {
-							entryToDelete = entry
-						}
-					)
+				if (uiState.entries.isNotEmpty()) {
+					items(uiState.entries, key = { it.id }) { entry ->
+						FastEntryItem(
+							entry = entry,
+							onLongClick = {
+								entryToDelete = entry
+							}
+						)
+					}
+				} else {
+					item {
+						Text(
+							stringResource(R.string.log_no_entries),
+							style = MaterialTheme.typography.bodyMedium,
+							color = MaterialTheme.colorScheme.onSurfaceVariant,
+							modifier = Modifier
+								.fillMaxWidth()
+								.padding(bottom = 8.dp)
+								.align(Alignment.CenterHorizontally),
+							textAlign = TextAlign.Center
+						)
+					}
 				}
 			}
 		}

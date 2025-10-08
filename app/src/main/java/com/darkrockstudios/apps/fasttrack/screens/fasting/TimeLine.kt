@@ -14,6 +14,14 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import kotlin.math.min
 import kotlin.time.Duration.Companion.hours
 
+val gaugeColors = listOf(
+	Color.White,
+	Color.Green,
+	Color.Yellow,
+	Color.Red,
+	Color.Magenta
+)
+
 /**
  * Fasting Stages view
  */
@@ -27,14 +35,6 @@ fun TimeLine(
 	val barSize = 16.dp
 	val needleSize = 3.dp
 	val needleRadius = 4.dp
-
-	val gaugeColors = listOf(
-		Color.White,
-		Color.Green,
-		Color.Yellow,
-		Color.Red,
-		Color.Magenta
-	)
 
 	val outlineColor = MaterialTheme.colorScheme.onBackground
 

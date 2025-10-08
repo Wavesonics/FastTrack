@@ -51,8 +51,8 @@
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">Розпочато: %1$s</string>
 	<string name="confirm_delete_fast_negative">Ні</string>
-	<string name="log_entry_ketosis">Кетоз: %1$d годин</string>
-	<string name="log_entry_length">Тривалість: %1$d годин</string>
+	<string name="log_entry_ketosis">%1$d годин</string>
+	<string name="log_entry_length">%1$d годин</string>
 	<string name="profile_age_label">Вік</string>
 	<string name="log_entry_autophagy">Автофагія: %1$d годин</string>
 	<string name="profile_age_years">роки</string>

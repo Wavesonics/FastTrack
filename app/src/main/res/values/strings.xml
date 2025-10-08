@@ -74,8 +74,8 @@
 
 	<string name="start_fast_button_advanced">*</string>
 
-	<string name="log_entry_started">Started: %1$s</string>
-	<string name="log_entry_length">Length: %1$d hours</string>
+	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_length">%1$d hours</string>
 	<string name="log_entry_ketosis">Ketosis: %1$d hours</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
 
@@ -223,8 +223,8 @@
 	<string name="info_page_title_tips">Tips</string>
 
 	<string name="title_activity_info">Fasting Info</string>
-	<string name="log_total_autophagy">Total Autophagy:</string>
-	<string name="log_total_ketosis">Total Ketosis:</string>
+	<string name="log_total_autophagy">🧬 Autophagy:</string>
+	<string name="log_total_ketosis">🔥 Ketosis:</string>
 	<string name="log_total_hours">%1$d hours</string>
 	<string name="profile_metric_switch">Metric</string>
 	<string name="title_activity_intro">Intro</string>
@@ -258,4 +258,7 @@
 	<string name="back">Back</string>
 	<string name="settings_fancy_background_title">Show Fancy Background</string>
 	<string name="settings_fancy_background_subtitle">Disable for a simpler Fasting background</string>
+	<string name="log_no_entries">No entries yet!</string>
+	<string name="log_logbook_label">Logbook</string>
+	<string name="log_stats_label">Lifetime stats</string>
 </resources>

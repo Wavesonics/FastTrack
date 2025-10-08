@@ -51,9 +51,9 @@
 	<string name="start_fast_button_advanced">*</string>
 	<string name="next_stage">Prossima fase tra: %1$d ore</string>
 	<string name="log_entry_started">Iniziato: %1$s</string>
-	<string name="log_entry_length">Lunghezza: %1$d ore</string>
+	<string name="log_entry_length">%1$d ore</string>
 	<string name="log_entry_autophagy">Autofagia: %1$d ore</string>
-	<string name="log_entry_ketosis">Cheto: %1$d ore</string>
+	<string name="log_entry_ketosis">%1$d ore</string>
 	<string name="profile_age_label">Età</string>
 	<string name="profile_age_years">anni</string>
 	<string name="profile_weight_label">Peso</string>

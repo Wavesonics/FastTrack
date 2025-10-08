@@ -4,8 +4,11 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -23,12 +26,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.core.view.WindowCompat
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
+import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 import org.koin.android.ext.android.inject
 
 class SettingsActivity : AppCompatActivity() {
@@ -84,21 +89,29 @@ private fun SettingsScreen(
 private fun SettingsList(paddingValues: PaddingValues, settings: SettingsDatasource) {
 	var fancyBackground by remember { mutableStateOf(settings.getShowFancyBackground()) }
 
-	LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = paddingValues) {
-		item(key = "fancy_background") {
-			ListItem(
-				headlineContent = { Text(text = stringResource(id = R.string.settings_fancy_background_title)) },
-				supportingContent = { Text(text = stringResource(id = R.string.settings_fancy_background_subtitle)) },
-				trailingContent = {
-					Switch(
-						checked = fancyBackground,
-						onCheckedChange = { checked ->
-							fancyBackground = checked
-							settings.setShowFancyBackground(checked)
-						}
-					)
-				}
-			)
+	Box(modifier = Modifier.fillMaxSize()) {
+		LazyColumn(
+			modifier = Modifier
+				.widthIn(max = MAX_COLUMN_WIDTH)
+				.fillMaxHeight()
+				.align(Alignment.Center),
+			contentPadding = paddingValues
+		) {
+			item(key = "fancy_background") {
+				ListItem(
+					headlineContent = { Text(text = stringResource(id = R.string.settings_fancy_background_title)) },
+					supportingContent = { Text(text = stringResource(id = R.string.settings_fancy_background_subtitle)) },
+					trailingContent = {
+						Switch(
+							checked = fancyBackground,
+							onCheckedChange = { checked ->
+								fancyBackground = checked
+								settings.setShowFancyBackground(checked)
+							}
+						)
+					}
+				)
+			}
 		}
 	}
 }
