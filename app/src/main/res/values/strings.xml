@@ -7,6 +7,10 @@
 	<string name="action_import">Import Logbook</string>
 	<string name="import_success">Logbook imported successfully</string>
 	<string name="import_failed">Failed to import logbook</string>
+
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Show Fasting Notification</string>
+	<string name="settings_fasting_notification_subtitle">Provides realtime info during a fast</string>
 	<string name="export_failed">Failed to export logbook</string>
 
 	<string name="intro_00_title">Welcome to Fast Track!</string>
@@ -29,8 +33,14 @@
 		section of this app!
 	</string>
 
-	<string name="intro_04_title">That\'s it!</string>
-	<string name="intro_04_description">Now go start fasting!</string>
+	<string name="intro_04_title">Stay Motivated with Notifications</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!
+	</string>
+
+	<string name="intro_05_title">That\'s it!</string>
+	<string name="intro_05_description">Now go start fasting!</string>
 
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Open Source Development</string>
@@ -63,6 +73,8 @@
 	<string name="confirm_end_fast_positive">Yes</string>
 	<string name="confirm_end_fast_negative">No</string>
 
+	<string name="menu_edit">Edit</string>
+	<string name="menu_delete">Delete</string>
 	<string name="confirm_delete_fast_title">Delete Fast?</string>
 	<string name="confirm_delete_fast_positive">Yes</string>
 	<string name="confirm_delete_fast_negative">No</string>
@@ -108,9 +120,14 @@
 	<string name="profile_gender_male">Male</string>
 	<string name="profile_gender_female">Female</string>
 	<string name="manual_add_title">Manual Add</string>
+	<string name="manual_edit_title">Edit Entry</string>
 	<string name="manual_add_length_hint">Length (Hours)</string>
 	<string name="manual_add_complete_button">Add</string>
+	<string name="manual_add_save_button">Save</string>
 	<string name="manual_add_fast_started_on">Fast Started On: %1$s</string>
+	<string name="manual_add_start_date_time_label">Start Date and Time</string>
+	<string name="edit_date">Edit date</string>
+	<string name="edit_time">Edit time</string>
 	<string name="manual_start_title">Fasted Started</string>
 	<string name="manual_add_set_end_title">Set Fast End</string>
 	<string name="manual_add_set_end_complete">Calculate</string>
@@ -178,6 +195,13 @@
 		your cellular health is seeing great benefits.
 	</string>
 
+	<string name="notification_fasting_channel_name">Fasting Status</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.
+	</string>
+	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_energy_mode">Energy Mode: %1$s</string>
+
 	<string name="info_dialog_fat_burn_title">Fat Burning</string>
 	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is
 		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
@@ -232,8 +256,11 @@
 	<string name="app_widget_not_fasting">Not fasting</string>
 	<string name="app_widget_fast_in_progress">Fasting in progress</string>
 	<string name="app_widget_time">%1$d hours</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Start Fast</string>
 	<string name="app_widget_stop_fast_button">Stop Fast</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Tap to Start</string>
 	<string name="close_button_content_description">Close</string>
 	<string name="cancel_button">Cancel</string>
 	<string name="next_button">Next</string>
