@@ -8,6 +8,9 @@
 	<string name="action_import">Importa Logbook</string>
 	<string name="import_success">Logbook importato con successo</string>
 	<string name="import_failed">Importazione del registro non riuscita</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Mostra Notifiche Di digiuno</string>
+	<string name="settings_fasting_notification_subtitle">Fornisce informazioni in tempo reale durante un veloce</string>
 	<string name="export_failed">Esportazione della rubrica di registro non riuscita</string>
 	<string name="intro_00_title">Benvenuto su Fast Track!</string>
 	<string name="intro_00_description">Di cosa si tratta questa applicazione?</string>
@@ -22,8 +25,12 @@
 	<string name="intro_03_description">Questa è una nuova area di studio che sta mostrando un sacco di benefici oltre la semplice
 		&lt;unk&gt; &lt;unk&gt; perdita di peso.\n\nPer esplorare ciò che sappiamo sul digiuno e quello che la ricerca sta dicendo, consulta la sezione Info
 		&lt;unk&gt; &lt;unk&gt; di questa app!</string>
-	<string name="intro_04_title">È tutto!</string>
-	<string name="intro_04_description">Ora vai a iniziare il digiuno!</string>
+	<string name="intro_04_title">Rimani motivato con le notifiche</string>
+	<string name="intro_04_description">Traccia veloce può mostrarti utili notifiche per tenerti motivato durante la tua
+		&lt;unk&gt; &lt;unk&gt; veloce .\n\nVedrai il tuo tempo di digiuno corrente, in quale fase sei e in quale modalità di energia il tuo corpo è
+		&lt;unk&gt; usando.\n\nQuesto ti aiuta a rimanere in pista senza dover aprire l\'app!</string>
+	<string name="intro_05_title">È tutto!</string>
+	<string name="intro_05_description">Ora vai a iniziare il digiuno!</string>
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Sviluppo Open Source</string>
 	<string name="about_brief">Climber, alpinista, ingegnere del software e sostenitore open source.</string>
@@ -47,6 +54,8 @@
 	<string name="confirm_end_fast_title">Fine Veloce?</string>
 	<string name="confirm_end_fast_positive">Sì</string>
 	<string name="confirm_end_fast_negative">No</string>
+	<string name="menu_edit">Modifica</string>
+	<string name="menu_delete">Elimina</string>
 	<string name="confirm_delete_fast_title">Eliminare Veloce?</string>
 	<string name="confirm_delete_fast_positive">Sì</string>
 	<string name="confirm_delete_fast_negative">No</string>
@@ -81,9 +90,14 @@
 	<string name="profile_gender_male">Maschio</string>
 	<string name="profile_gender_female">Femmina</string>
 	<string name="manual_add_title">Aggiungi Manuale</string>
+	<string name="manual_edit_title">Modifica Voce</string>
 	<string name="manual_add_length_hint">Lunghezza (Ore)</string>
 	<string name="manual_add_complete_button">Aggiungi</string>
+	<string name="manual_add_save_button">Salva</string>
 	<string name="manual_add_fast_started_on">Avvio Rapido: %1$s</string>
+	<string name="manual_add_start_date_time_label">Data e ora di inizio</string>
+	<string name="edit_date">Modifica data</string>
+	<string name="edit_time">Modifica ora</string>
 	<string name="manual_start_title">Fast Iniziato</string>
 	<string name="manual_add_set_end_title">Imposta Fine Veloce</string>
 	<string name="manual_add_set_end_complete">Calcola</string>
@@ -128,6 +142,11 @@
 	<string name="notification_optimal_autophagy_title">Fase Veloce: Autofagia Ottimale</string>
 	<string name="notification_optimal_autophagy_content">Sei il corpo è stato in Autophagy da molto tempo, e
 		&lt;unk&gt; &lt;unk&gt; la tua salute cellulare sta vedendo grandi benefici.</string>
+	<string name="notification_fasting_channel_name">Stato Di digiuno</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.</string>
+	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_energy_mode">Modalità Energetica: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Bruciamento Grasso</string>
 	<string name="info_dialog_fat_burn_content">In questa fase il tuo corpo ha esaurito le riserve di glucosio. Il glucosio è
 		&lt;unk&gt; &lt;unk&gt; conservato come glicogeno per un uso successivo, in questa fase, la maggior parte del vostro glicogeno immagazzinato è stato scomposto in glucosio
@@ -170,8 +189,11 @@
 	<string name="app_widget_not_fasting">Non digiuno</string>
 	<string name="app_widget_fast_in_progress">digiuno in corso</string>
 	<string name="app_widget_time">%1$d ore</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Avvia Veloce</string>
 	<string name="app_widget_stop_fast_button">Ferma Veloce</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Tap to Start</string>
 	<string name="close_button_content_description">Chiudi</string>
 	<string name="cancel_button">Annulla</string>
 	<string name="next_button">Successivo</string>
