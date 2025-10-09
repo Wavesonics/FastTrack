@@ -143,9 +143,9 @@
 	<string name="notification_optimal_autophagy_content">Du bist Körper seit langem im Autophagy und
 		deine zelluläre Gesundheit hat große Vorteile.</string>
 	<string name="notification_fasting_channel_name">Füllstatus</string>
-	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
-		progress.</string>
-	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_channel_description">Laufende Benachrichtigung, die deinen aktuellen Fast-Status und
+		Fortschritt anzeigt.</string>
+	<string name="notification_fasting_title">Schnell: %1$s Stunden</string>
 	<string name="notification_fasting_energy_mode">Energiemodus: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Fett brennen</string>
 	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is
@@ -193,7 +193,7 @@
 	<string name="app_widget_start_fast_button">Schnell starten</string>
 	<string name="app_widget_stop_fast_button">Schnell stoppen</string>
 	<string name="app_widget_start_compact">Start</string>
-	<string name="app_widget_start">Tap to Start</string>
+	<string name="app_widget_start">Zum Start tippen</string>
 	<string name="close_button_content_description">Schließen</string>
 	<string name="cancel_button">Abbrechen</string>
 	<string name="next_button">Nächste</string>
