@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,6 +60,7 @@ fun FastEntryItem(
 				Text(
 					text = stringResource(id = R.string.log_entry_started, dateStr),
 					style = MaterialTheme.typography.titleMedium,
+					fontStyle = FontStyle.Italic,
 					color = MaterialTheme.colorScheme.onSurface,
 					modifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
 				)
