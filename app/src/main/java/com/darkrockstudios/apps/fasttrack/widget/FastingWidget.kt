@@ -17,13 +17,19 @@ import kotlin.time.Clock
 
 class FastingWidget : GlanceAppWidget() {
 
-	override val previewSizeMode = SizeMode.Responsive(
-		setOf(
-			// TODO These are just the defaults, should figure out our own
-			DpSize(180.dp, 110.dp), // min size
-			DpSize(250.dp, 110.dp)  // next breakpoint
+	companion object {
+		val smallSquare = DpSize(64.dp, 64.dp)
+		val horizontalRect = DpSize(128.dp, 64.dp)
+		val largeRect = DpSize(196.dp, 128.dp)
+		private val sizes = setOf(
+			smallSquare,  // 1x1 - Small square
+			horizontalRect,  // 2x1 - Horizontal rectangle
+			largeRect   // 3x2 - Larger rectangle
 		)
-	)
+	}
+
+	override val previewSizeMode = SizeMode.Responsive(sizes)
+	override val sizeMode: SizeMode = SizeMode.Responsive(sizes)
 
 	override suspend fun provideGlance(context: Context, id: GlanceId) {
 		val repository: ActiveFastRepository = ActiveFastRepositoryImpl(
