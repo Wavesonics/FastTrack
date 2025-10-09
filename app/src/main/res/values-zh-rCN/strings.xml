@@ -134,7 +134,7 @@
 	<string name="notification_fasting_channel_name">退货状态</string>
 	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
 		progress.</string>
-	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_title">快速︰ %1$s 小时</string>
 	<string name="notification_fasting_energy_mode">能量模式：%1$s</string>
 	<string name="info_dialog_fat_burn_title">脂肪燃烧</string>
 	<string name="info_dialog_fat_burn_content">在这个阶段，您的身体已经耗尽了葡萄糖储备。葡萄糖以糖原的形式储存以备后用，在这个阶段，您大部分储存的糖原已经被分解为葡萄糖并用作能量。\n\n
@@ -160,11 +160,11 @@
 	<string name="app_widget_not_fasting">不禁食</string>
 	<string name="app_widget_fast_in_progress">禁食进行中</string>
 	<string name="app_widget_time">%1$d 小时</string>
-	<string name="app_widget_time_compact">%1$d h</string>
+	<string name="app_widget_time_compact">%1$d 小时</string>
 	<string name="app_widget_start_fast_button">快速开始</string>
 	<string name="app_widget_stop_fast_button">停止快速</string>
-	<string name="app_widget_start_compact">Start</string>
-	<string name="app_widget_start">Tap to Start</string>
+	<string name="app_widget_start_compact">开始</string>
+	<string name="app_widget_start">点击开始</string>
 	<string name="close_button_content_description">关闭</string>
 	<string name="cancel_button">取消</string>
 	<string name="next_button">下一步</string>
