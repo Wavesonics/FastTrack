@@ -73,6 +73,8 @@
 	<string name="confirm_end_fast_positive">Yes</string>
 	<string name="confirm_end_fast_negative">No</string>
 
+	<string name="menu_edit">Edit</string>
+	<string name="menu_delete">Delete</string>
 	<string name="confirm_delete_fast_title">Delete Fast?</string>
 	<string name="confirm_delete_fast_positive">Yes</string>
 	<string name="confirm_delete_fast_negative">No</string>
@@ -118,9 +120,14 @@
 	<string name="profile_gender_male">Male</string>
 	<string name="profile_gender_female">Female</string>
 	<string name="manual_add_title">Manual Add</string>
+	<string name="manual_edit_title">Edit Entry</string>
 	<string name="manual_add_length_hint">Length (Hours)</string>
 	<string name="manual_add_complete_button">Add</string>
+	<string name="manual_add_save_button">Save</string>
 	<string name="manual_add_fast_started_on">Fast Started On: %1$s</string>
+	<string name="manual_add_start_date_time_label">Start Date and Time</string>
+	<string name="edit_date">Edit date</string>
+	<string name="edit_time">Edit time</string>
 	<string name="manual_start_title">Fasted Started</string>
 	<string name="manual_add_set_end_title">Set Fast End</string>
 	<string name="manual_add_set_end_complete">Calculate</string>

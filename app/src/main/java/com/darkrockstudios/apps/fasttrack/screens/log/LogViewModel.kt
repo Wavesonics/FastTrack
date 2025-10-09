@@ -12,9 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.datetime.LocalDateTime
 import kotlin.math.roundToInt
-import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
@@ -76,17 +74,14 @@ class LogViewModel(
 	}
 
 	override fun showManualAddDialog() {
-		_uiState.update { it.copy(showManualAddDialog = true) }
+		_uiState.update { it.copy(showManualAddDialog = true, entryToEdit = null) }
+	}
+
+	override fun showEditDialog(entry: FastingLogEntry) {
+		_uiState.update { it.copy(showManualAddDialog = true, entryToEdit = entry) }
 	}
 
 	override fun hideManualAddDialog() {
-		_uiState.update { it.copy(showManualAddDialog = false) }
-	}
-
-	override fun addEntry(startTime: LocalDateTime, length: Duration) {
-		viewModelScope.launch(Dispatchers.IO) {
-			repository.addLogEntry(startTime, length)
-			hideManualAddDialog()
-		}
+		_uiState.update { it.copy(showManualAddDialog = false, entryToEdit = null) }
 	}
 }

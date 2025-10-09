@@ -45,6 +45,19 @@ class FastingLogRepositoryImpl(
 		datasource.insertAll(newEntry)
 	}
 
+	override fun updateLogEntry(entry: FastingLogEntry, start: LocalDateTime, length: Duration): Boolean {
+		// Convert LocalDateTime to Instant (UTC time)
+		val startInstant = start.toInstant(TimeZone.currentSystemDefault())
+
+		// Create updated FastEntry with the same ID but new values
+		val updatedEntry = FastEntry(
+			uid = entry.id,
+			start = startInstant.toEpochMilliseconds(),
+			length = length.inWholeMilliseconds
+		)
+		return datasource.update(updatedEntry)
+	}
+
 	override suspend fun exportLog(): String {
 		val entries = loadAll().first()
 

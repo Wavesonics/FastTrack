@@ -15,9 +15,8 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
 import com.darkrockstudios.apps.fasttrack.utils.PastAndTodaySelectableDates
 import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.*
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
 import java.util.*
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -45,16 +44,38 @@ fun DateTimePickerDialog(
 	onDateTimeSelected: (Instant) -> Unit,
 	title: String,
 	finishButton: String,
-	state: DateTimePickerDialogState = rememberDateTimePickerDialogState()
+	state: DateTimePickerDialogState = rememberDateTimePickerDialogState(),
+	initialInstant: Instant? = null
 ) {
+	val initialDateTime = remember(initialInstant) {
+		initialInstant?.let { instant ->
+			val kotlinxInstant = Instant.fromEpochMilliseconds(instant.toEpochMilliseconds())
+			kotlinxInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+		}
+	}
+
+	val initialDateMillis = remember(initialDateTime) {
+		initialDateTime?.let { dateTime ->
+			LocalDate(
+				year = dateTime.year,
+				month = dateTime.month,
+				day = dateTime.day
+			).atStartOfDayIn(TimeZone.currentSystemDefault()).toEpochMilliseconds()
+		}
+	}
+
 	val datePickerState = rememberDatePickerState(
+		initialSelectedDateMillis = initialDateMillis,
 		selectableDates = PastAndTodaySelectableDates()
 	)
 
-	val currentTime = Calendar.getInstance()
+	// Use initial time if provided, otherwise use current time
+	val initialHour = initialDateTime?.hour ?: Calendar.getInstance()[Calendar.HOUR_OF_DAY]
+	val initialMinute = initialDateTime?.minute ?: Calendar.getInstance()[Calendar.MINUTE]
+
 	val timePickerState = rememberTimePickerState(
-		initialHour = currentTime[Calendar.HOUR_OF_DAY],
-		initialMinute = currentTime[Calendar.MINUTE],
+		initialHour = initialHour,
+		initialMinute = initialMinute,
 		is24Hour = shouldUse24HourFormat(getContext()),
 	)
 

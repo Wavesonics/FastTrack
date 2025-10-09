@@ -112,7 +112,10 @@ fun LogScreen(
 				items(uiState.entries, key = { it.id }) { entry ->
 					FastEntryItem(
 						entry = entry,
-						onLongClick = {
+						onEdit = {
+							viewModel.showEditDialog(entry)
+						},
+						onDelete = {
 							entryToDelete = entry
 						}
 					)
@@ -150,10 +153,11 @@ fun LogScreen(
 			)
 		}
 
-		// Manual Add Dialog
+		// Manual Add/Edit Dialog
 		if (uiState.showManualAddDialog) {
 			ManualAddDialog(
 				onDismiss = { viewModel.hideManualAddDialog() },
+				entryToEdit = uiState.entryToEdit
 			)
 		}
 	}

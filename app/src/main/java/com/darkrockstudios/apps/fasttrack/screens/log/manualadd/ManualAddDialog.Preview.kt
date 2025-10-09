@@ -2,6 +2,7 @@ package com.darkrockstudios.apps.fasttrack.screens.log.manualadd
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.datetime.LocalDate
@@ -19,6 +20,9 @@ class FakeManualAddViewModel(initialState: IManualAddViewModel.ManualAddUiState 
 	override fun onEndDateTimeSelected(instant: Instant) {}
 	override fun onAddEntry() = true
 	override fun onDismiss() {}
+	override fun initializeWithEntry(entry: FastingLogEntry) {}
+	override fun onPreviousStep() {}
+	override fun goToStep(step: ManualAddStep) {}
 }
 
 @Preview(showBackground = true, name = "Step 0 - Date Selection")

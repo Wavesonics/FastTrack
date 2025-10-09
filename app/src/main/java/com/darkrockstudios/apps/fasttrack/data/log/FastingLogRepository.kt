@@ -10,6 +10,7 @@ interface FastingLogRepository {
 	fun loadAll(): Flow<List<FastingLogEntry>>
 	fun delete(item: FastingLogEntry): Boolean
 	fun addLogEntry(start: LocalDateTime, length: Duration)
+	fun updateLogEntry(entry: FastingLogEntry, start: LocalDateTime, length: Duration): Boolean
 	suspend fun exportLog(): String
 	suspend fun importLog(cvsExport: String): Boolean
 }

@@ -32,6 +32,17 @@ class FakeFastingLogDatasource : FastingLogDatasource {
 		updateFlow()
 	}
 
+	override fun update(entry: FastEntry): Boolean {
+		val index = entries.indexOfFirst { it.uid == entry.uid }
+		return if (index != -1) {
+			entries[index] = entry
+			updateFlow()
+			true
+		} else {
+			false
+		}
+	}
+
 	override fun delete(entry: FastEntry): Boolean {
 		val deleted = entries.remove(entry)
 		updateFlow()

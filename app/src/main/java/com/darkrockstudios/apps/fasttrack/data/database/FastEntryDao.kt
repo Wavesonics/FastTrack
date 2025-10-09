@@ -1,9 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.data.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,6 +14,9 @@ interface FastEntryDao
 
 	@Insert
 	fun insertAll(vararg entries: FastEntry)
+
+	@Update
+	fun update(entry: FastEntry): Int
 
 	@Delete
 	fun delete(entry: FastEntry): Int

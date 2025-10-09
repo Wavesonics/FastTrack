@@ -10,10 +10,8 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -264,7 +262,7 @@ class FakeLogViewModel(state: ILogViewModel.LogUiState) : ILogViewModel {
 	override val uiState = MutableStateFlow(state).asStateFlow()
 	override fun deleteFast(item: FastingLogEntry) {}
 	override fun showManualAddDialog() {}
+	override fun showEditDialog(entry: FastingLogEntry) {}
 	override fun hideManualAddDialog() {}
-	override fun addEntry(startTime: LocalDateTime, length: Duration) {}
 	override fun loadEntries() {}
 }

@@ -1,9 +1,11 @@
 package com.darkrockstudios.apps.fasttrack.screens.log.manualadd
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +19,8 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.fasting.DateTimePickerDialog
 import com.darkrockstudios.apps.fasttrack.screens.fasting.rememberDateTimePickerDialogState
 import com.darkrockstudios.apps.fasttrack.utils.PastAndTodaySelectableDates
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atStartOfDayIn
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.ExperimentalTime
 
@@ -24,8 +28,14 @@ import kotlin.time.ExperimentalTime
 @Composable
 fun ManualAddDialog(
 	onDismiss: () -> Unit,
+	entryToEdit: com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry? = null,
 	viewModel: IManualAddViewModel = koinViewModel<ManualAddViewModel>()
 ) {
+	// Initialize with entry if editing
+	LaunchedEffect(entryToEdit) {
+		entryToEdit?.let { viewModel.initializeWithEntry(it) }
+	}
+
 	val uiState by viewModel.uiState.collectAsState()
 	var showEndDateTimePicker by remember { mutableStateOf(false) }
 
@@ -50,7 +60,9 @@ fun ManualAddDialog(
 					verticalAlignment = Alignment.CenterVertically
 				) {
 					Text(
-						text = stringResource(id = R.string.manual_add_title),
+						text = stringResource(
+							id = if (entryToEdit != null) R.string.manual_edit_title else R.string.manual_add_title
+						),
 						style = MaterialTheme.typography.headlineSmall
 					)
 					IconButton(onClick = {
@@ -66,10 +78,21 @@ fun ManualAddDialog(
 
 				Spacer(modifier = Modifier.height(16.dp))
 
+				// Initialize picker states with existing values when editing
+				val initialDateMillis =
+					uiState.selectedDate?.atStartOfDayIn(TimeZone.currentSystemDefault())?.toEpochMilliseconds()
+
 				val datePickerState = rememberDatePickerState(
+					initialSelectedDateMillis = initialDateMillis,
 					selectableDates = PastAndTodaySelectableDates()
 				)
-				val timePickerState = rememberTimePickerState()
+
+				val initialHour = uiState.selectedDateTime?.hour ?: 0
+				val initialMinute = uiState.selectedDateTime?.minute ?: 0
+				val timePickerState = rememberTimePickerState(
+					initialHour = initialHour,
+					initialMinute = initialMinute
+				)
 
 				when (uiState.currentStep) {
 					ManualAddStep.StartDate -> {
@@ -83,17 +106,63 @@ fun ManualAddDialog(
 					ManualAddStep.SetDuration -> {
 						// Length Input
 						Column(modifier = Modifier.padding(16.dp)) {
-							// Show summary of selections
+							// Show summary of selections with clickable edit options
 							uiState.selectedDateTime?.let { dateTime ->
 								Text(
-									text = stringResource(
-										id = R.string.manual_add_selected_start,
-										"${dateTime.date} ${dateTime.hour}:${
-											dateTime.minute.toString().padStart(2, '0')
-										}"
-									),
-									style = MaterialTheme.typography.bodyMedium
+									text = stringResource(id = R.string.manual_add_start_date_time_label),
+									style = MaterialTheme.typography.labelMedium,
+									color = MaterialTheme.colorScheme.onSurfaceVariant
 								)
+
+								Spacer(modifier = Modifier.height(4.dp))
+
+								// Date row - clickable
+								Row(
+									modifier = Modifier
+										.fillMaxWidth()
+										.clickable { viewModel.goToStep(ManualAddStep.StartDate) }
+										.padding(vertical = 8.dp),
+									horizontalArrangement = Arrangement.SpaceBetween,
+									verticalAlignment = Alignment.CenterVertically
+								) {
+									Text(
+										text = "${dateTime.date}",
+										style = MaterialTheme.typography.bodyLarge
+									)
+									Icon(
+										imageVector = Icons.Default.Edit,
+										contentDescription = stringResource(id = R.string.edit_date),
+										modifier = Modifier.size(20.dp),
+										tint = MaterialTheme.colorScheme.primary
+									)
+								}
+
+								HorizontalDivider()
+
+								// Time row - clickable
+								Row(
+									modifier = Modifier
+										.fillMaxWidth()
+										.clickable { viewModel.goToStep(ManualAddStep.StartTime) }
+										.padding(vertical = 8.dp),
+									horizontalArrangement = Arrangement.SpaceBetween,
+									verticalAlignment = Alignment.CenterVertically
+								) {
+									Text(
+										text = "${dateTime.hour}:${dateTime.minute.toString().padStart(2, '0')}",
+										style = MaterialTheme.typography.bodyLarge
+									)
+									Icon(
+										imageVector = Icons.Default.Edit,
+										contentDescription = stringResource(id = R.string.edit_time),
+										modifier = Modifier.size(20.dp),
+										tint = MaterialTheme.colorScheme.primary
+									)
+								}
+
+								HorizontalDivider()
+
+								Spacer(modifier = Modifier.height(16.dp))
 							}
 
 							OutlinedTextField(
@@ -117,6 +186,8 @@ fun ManualAddDialog(
 
 							if (showEndDateTimePicker) {
 								val dateTimePickerState = rememberDateTimePickerDialogState()
+								val initialEndInstant = uiState.end()
+
 								DateTimePickerDialog(
 									onDismiss = { showEndDateTimePicker = false },
 									onDateTimeSelected = { instant ->
@@ -125,7 +196,8 @@ fun ManualAddDialog(
 									},
 									title = stringResource(R.string.manual_add_set_end_title),
 									finishButton = stringResource(id = R.string.manual_add_set_end_complete),
-									state = dateTimePickerState
+									state = dateTimePickerState,
+									initialInstant = initialEndInstant
 								)
 							}
 						}
@@ -139,46 +211,66 @@ fun ManualAddDialog(
 					modifier = Modifier
 						.padding(16.dp)
 						.fillMaxWidth(),
-					horizontalArrangement = Arrangement.End
+					horizontalArrangement = Arrangement.SpaceBetween
 				) {
-					TextButton(onClick = {
-						viewModel.onDismiss()
-						onDismiss()
-					}) {
-						Text(stringResource(id = R.string.cancel_button))
+					// Left side: Previous button (only show if not on first step)
+					if (uiState.currentStep != ManualAddStep.StartDate) {
+						TextButton(onClick = {
+							viewModel.onPreviousStep()
+						}) {
+							Text(stringResource(id = R.string.previous_button))
+						}
+					} else {
+						Spacer(modifier = Modifier.width(1.dp)) // Placeholder for alignment
 					}
 
-					Spacer(modifier = Modifier.width(8.dp))
+					// Right side: Cancel and Next/Complete buttons
+					Row {
+						TextButton(onClick = {
+							viewModel.onDismiss()
+							onDismiss()
+						}) {
+							Text(stringResource(id = R.string.cancel_button))
+						}
 
-					Button(
-						onClick = {
-							when (uiState.currentStep) {
-								ManualAddStep.StartDate -> {
-									datePickerState.selectedDateMillis?.let { ms ->
-										viewModel.onDateSelected(ms)
+						Spacer(modifier = Modifier.width(8.dp))
+
+						Button(
+							onClick = {
+								when (uiState.currentStep) {
+									ManualAddStep.StartDate -> {
+										datePickerState.selectedDateMillis?.let { ms ->
+											viewModel.onDateSelected(ms)
+										}
+									}
+
+									ManualAddStep.StartTime -> {
+										viewModel.onTimeSelected(timePickerState.hour, timePickerState.minute)
+									}
+
+									ManualAddStep.SetDuration -> {
+										if (viewModel.onAddEntry()) {
+											viewModel.onDismiss()
+											onDismiss()
+										}
 									}
 								}
-
-								ManualAddStep.StartTime -> {
-									viewModel.onTimeSelected(timePickerState.hour, timePickerState.minute)
+							},
+							enabled = if (uiState.currentStep.isFinalStep.not()) uiState.isNextButtonEnabled else uiState.isCompleteButtonEnabled
+						) {
+							Text(
+								text = if (uiState.currentStep.isFinalStep.not()) {
+									stringResource(id = R.string.next_button)
+								} else {
+									// Show "Save" when editing, "Add" when creating new
+									if (entryToEdit != null) {
+										stringResource(id = R.string.manual_add_save_button)
+									} else {
+										stringResource(id = R.string.manual_add_complete_button)
+									}
 								}
-
-								ManualAddStep.SetDuration -> {
-									viewModel.onAddEntry()
-									viewModel.onDismiss()
-									onDismiss()
-								}
-							}
-						},
-						enabled = if (uiState.currentStep.isFinalStep.not()) uiState.isNextButtonEnabled else uiState.isCompleteButtonEnabled
-					) {
-						Text(
-							text = if (uiState.currentStep.isFinalStep.not()) {
-								stringResource(id = R.string.next_button)
-							} else {
-								stringResource(id = R.string.manual_add_complete_button)
-							}
-						)
+							)
+						}
 					}
 				}
 			}

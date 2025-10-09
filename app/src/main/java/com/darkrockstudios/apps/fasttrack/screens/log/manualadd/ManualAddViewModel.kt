@@ -2,6 +2,7 @@ package com.darkrockstudios.apps.fasttrack.screens.log.manualadd
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import io.github.aakira.napier.Napier.w
 import kotlinx.coroutines.Dispatchers
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.*
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.DurationUnit
 
 class ManualAddViewModel(
 	private val repository: FastingLogRepository
@@ -99,11 +101,18 @@ class ManualAddViewModel(
 		val currentState = _uiState.value
 		val selectedDateTime = currentState.selectedDateTime
 		val lengthHours = currentState.lengthHours.toLongOrNull() ?: 0
+		val entryToEdit = currentState.entryToEdit
 
 		return if (selectedDateTime != null && lengthHours > 0) {
 			val length = lengthHours.hours
 			viewModelScope.launch(Dispatchers.IO) {
-				repository.addLogEntry(selectedDateTime, length)
+				if (entryToEdit != null) {
+					// Update existing entry
+					repository.updateLogEntry(entryToEdit, selectedDateTime, length)
+				} else {
+					// Add new entry
+					repository.addLogEntry(selectedDateTime, length)
+				}
 			}
 			true
 		} else {
@@ -116,5 +125,40 @@ class ManualAddViewModel(
 		_uiState.update {
 			IManualAddViewModel.ManualAddUiState()
 		}
+	}
+
+	override fun initializeWithEntry(entry: FastingLogEntry) {
+		val selectedDate = LocalDate(
+			year = entry.start.year,
+			month = entry.start.month,
+			dayOfMonth = entry.start.dayOfMonth
+		)
+
+		val lengthHours = entry.length.toDouble(DurationUnit.HOURS).toLong().toString()
+
+		_uiState.update {
+			it.copy(
+				currentStep = ManualAddStep.SetDuration,
+				selectedDate = selectedDate,
+				selectedDateTime = entry.start,
+				lengthHours = lengthHours,
+				isCompleteButtonEnabled = true,
+				entryToEdit = entry
+			)
+		}
+	}
+
+	override fun onPreviousStep() {
+		val currentState = _uiState.value
+		val previousStep = when (currentState.currentStep) {
+			ManualAddStep.StartTime -> ManualAddStep.StartDate
+			ManualAddStep.SetDuration -> ManualAddStep.StartTime
+			else -> return // Already at first step
+		}
+		_uiState.update { it.copy(currentStep = previousStep) }
+	}
+
+	override fun goToStep(step: ManualAddStep) {
+		_uiState.update { it.copy(currentStep = step) }
 	}
 }
