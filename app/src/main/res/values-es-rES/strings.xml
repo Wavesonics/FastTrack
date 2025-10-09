@@ -145,7 +145,7 @@
 	<string name="notification_fasting_channel_name">Estado de Fasting</string>
 	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
 		progress.</string>
-	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_title">Rápido: %1$s horas</string>
 	<string name="notification_fasting_energy_mode">Modo Energía: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Quemado de grasa</string>
 	<string name="info_dialog_fat_burn_content">En esta etapa su cuerpo ha agotado sus reservas de glucosa. La glucosa es
@@ -192,8 +192,8 @@
 	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Iniciar rápido</string>
 	<string name="app_widget_stop_fast_button">Parar rápido</string>
-	<string name="app_widget_start_compact">Start</string>
-	<string name="app_widget_start">Tap to Start</string>
+	<string name="app_widget_start_compact">Comenzar</string>
+	<string name="app_widget_start">Toca para iniciar</string>
 	<string name="close_button_content_description">Cerrar</string>
 	<string name="cancel_button">Cancelar</string>
 	<string name="next_button">Siguiente</string>
