@@ -54,4 +54,11 @@ class SettingsPreferencesDatasource(
 		storage.registerOnSharedPreferenceChangeListener(listener)
 		awaitClose { storage.unregisterOnSharedPreferenceChangeListener(listener) }
 	}
+
+	override fun getShowFastingNotification(): Boolean =
+		storage.getBoolean(Data.KEY_FASTING_NOTIFICATION, true)
+
+	override fun setShowFastingNotification(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_FASTING_NOTIFICATION, enabled) }
+	}
 }

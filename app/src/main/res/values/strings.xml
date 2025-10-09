@@ -7,6 +7,10 @@
 	<string name="action_import">Import Logbook</string>
 	<string name="import_success">Logbook imported successfully</string>
 	<string name="import_failed">Failed to import logbook</string>
+
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Show Fasting Notification</string>
+	<string name="settings_fasting_notification_subtitle">Provides realtime info during a fast</string>
 	<string name="export_failed">Failed to export logbook</string>
 
 	<string name="intro_00_title">Welcome to Fast Track!</string>
@@ -29,8 +33,14 @@
 		section of this app!
 	</string>
 
-	<string name="intro_04_title">That\'s it!</string>
-	<string name="intro_04_description">Now go start fasting!</string>
+	<string name="intro_04_title">Stay Motivated with Notifications</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!
+	</string>
+
+	<string name="intro_05_title">That\'s it!</string>
+	<string name="intro_05_description">Now go start fasting!</string>
 
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Open Source Development</string>
@@ -177,6 +187,13 @@
 	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and
 		your cellular health is seeing great benefits.
 	</string>
+
+	<string name="notification_fasting_channel_name">Fasting Status</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.
+	</string>
+	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_energy_mode">Energy Mode: %1$s</string>
 
 	<string name="info_dialog_fat_burn_title">Fat Burning</string>
 	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is

@@ -13,4 +13,7 @@ interface SettingsDatasource {
 	fun setShowFancyBackground(enabled: Boolean)
 
 	fun showFancyBackgroundFlow(): Flow<Boolean>
+
+	fun getShowFastingNotification(): Boolean
+	fun setShowFastingNotification(enabled: Boolean)
 }

@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+		android:height="48dp"
+		android:viewportHeight="24"
+		android:viewportWidth="24"
+		android:width="48dp">
+
+	<!-- White border (slightly larger, drawn first) -->
+	<path
+			android:fillColor="#111111"
+			android:pathData="M6.5,3.5v17l14,-8.5z"/>
+
+	<!-- Orange fill -->
+	<path
+			android:fillColor="#FF9541"
+			android:pathData="M8,5v14l11,-7z"/>
+
+</vector>

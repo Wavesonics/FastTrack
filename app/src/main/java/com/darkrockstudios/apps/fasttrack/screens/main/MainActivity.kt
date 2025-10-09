@@ -19,6 +19,7 @@ import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.coroutineScope
+import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
@@ -83,6 +84,22 @@ class MainActivity : AppCompatActivity() {
 					),
 				)
 			}
+		}
+	}
+
+	override fun onStart() {
+		super.onStart()
+		setupFastingNotification()
+	}
+
+	private fun setupFastingNotification() {
+		val shouldShowNotification = settings.getShowFastingNotification()
+
+		if (fastingRepository.isFasting() && shouldShowNotification) {
+			val elapsedTime = fastingRepository.getElapsedFastTime()
+			FastingNotificationManager.postFastingNotification(this, elapsedTime)
+		} else {
+			FastingNotificationManager.cancelFastingNotification(this)
 		}
 	}
 

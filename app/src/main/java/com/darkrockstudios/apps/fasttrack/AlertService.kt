@@ -10,42 +10,72 @@ import android.app.job.JobService
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationCompat
+import androidx.work.Configuration
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
+import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
 import io.github.aakira.napier.Napier
+import org.koin.android.ext.android.inject
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
-class AlertService : JobService() {
+class AlertService : JobService(), Configuration.Provider {
+	private val repository: ActiveFastRepository by inject()
+	private val settingsDatasource: SettingsDatasource by inject()
+
 	override fun onStartJob(params: JobParameters): Boolean {
 		when (params.jobId) {
-			JobId.FAT_BURN.id -> postNotification(
-				R.string.notification_fat_burn_title,
-				R.string.notification_fat_burn_content,
-				NOTIFICATION_ID_FAT_BURN
-			)
+			JobId.FAT_BURN.id -> {
+				postNotification(
+					R.string.notification_fat_burn_title,
+					R.string.notification_fat_burn_content,
+					NOTIFICATION_ID_FAT_BURN
+				)
+				updateFastingNotification()
+			}
 
-			JobId.KETOSIS.id -> postNotification(
-				R.string.notification_ketosis_title,
-				R.string.notification_ketosis_content,
-				NOTIFICATION_ID_KETOSIS
-			)
+			JobId.KETOSIS.id -> {
+				postNotification(
+					R.string.notification_ketosis_title,
+					R.string.notification_ketosis_content,
+					NOTIFICATION_ID_KETOSIS
+				)
+				updateFastingNotification()
+			}
 
-			JobId.AUTOPHAGY.id -> postNotification(
-				R.string.notification_autophagy_title,
-				R.string.notification_autophagy_content,
-				NOTIFICATION_ID_AUTOPHAGY
-			)
+			JobId.AUTOPHAGY.id -> {
+				postNotification(
+					R.string.notification_autophagy_title,
+					R.string.notification_autophagy_content,
+					NOTIFICATION_ID_AUTOPHAGY
+				)
+				updateFastingNotification()
+			}
 
-			JobId.OPTIMAL_AUTOPHAGY.id -> postNotification(
-				R.string.notification_optimal_autophagy_title,
-				R.string.notification_optimal_autophagy_content,
-				NOTIFICATION_ID_OPTIMAL_AUTOPHAGY
-			)
+			JobId.OPTIMAL_AUTOPHAGY.id -> {
+				postNotification(
+					R.string.notification_optimal_autophagy_title,
+					R.string.notification_optimal_autophagy_content,
+					NOTIFICATION_ID_OPTIMAL_AUTOPHAGY
+				)
+				updateFastingNotification()
+			}
+
+			JobId.HOURLY_UPDATE.id -> {
+				// Hourly update job: update the fasting notification
+				updateFastingNotification()
+
+				// Schedule the next hourly update if still fasting
+				if (repository.isFasting() && settingsDatasource.getShowFastingNotification()) {
+					scheduleHourlyUpdate(this)
+				}
+			}
 		}
 
 		jobFinished(params, false)
@@ -100,6 +130,13 @@ class AlertService : JobService() {
 		notificationManager.createNotificationChannel(channel)
 	}
 
+	private fun updateFastingNotification() {
+		if (repository.isFasting() && settingsDatasource.getShowFastingNotification()) {
+			val elapsedTime = repository.getElapsedFastTime()
+			FastingNotificationManager.postFastingNotification(this, elapsedTime)
+		}
+	}
+
 	companion object {
 		const val ALERTS_CHANNEL_ID = "fast_alerts"
 		const val NOTIFICATION_TAG = "alerts"
@@ -114,21 +151,31 @@ class AlertService : JobService() {
 			KETOSIS(2),
 			AUTOPHAGY(3),
 			OPTIMAL_AUTOPHAGY(4),
+			HOURLY_UPDATE(5),
 		}
 
 		private val LEEWAY = 30.minutes
 
 		fun cancelAlerts(context: Context) {
 			val jobScheduler = context.getSystemService(JobScheduler::class.java)
-			JobId.values().forEach { jobId ->
-				jobScheduler.cancel(jobId.id)
-			}
+			// Cancel stage alerts
+			jobScheduler.cancel(JobId.FAT_BURN.id)
+			jobScheduler.cancel(JobId.KETOSIS.id)
+			jobScheduler.cancel(JobId.AUTOPHAGY.id)
+			jobScheduler.cancel(JobId.OPTIMAL_AUTOPHAGY.id)
+			// Cancel hourly updates
+			cancelHourlyUpdates(context)
+		}
+
+		fun cancelHourlyUpdates(context: Context) {
+			val jobScheduler = context.getSystemService(JobScheduler::class.java)
+			jobScheduler.cancel(JobId.HOURLY_UPDATE.id)
 		}
 
 		fun scheduleAlerts(elapsedTime: Duration, context: Context) {
 			val elapsedHours = elapsedTime.inWholeHours
 
-			JobId.values().forEach { jobId ->
+			JobId.entries.forEach { jobId ->
 				when (jobId) {
 					JobId.FAT_BURN -> schedulePhase(
 						elapsedHours,
@@ -157,6 +204,10 @@ class AlertService : JobService() {
 						jobId.id,
 						context
 					)
+
+					JobId.HOURLY_UPDATE -> {
+						scheduleHourlyUpdate(context)
+					}
 				}
 			}
 		}
@@ -184,5 +235,32 @@ class AlertService : JobService() {
 				Napier.w("Tried to schedule Alert Job, but it was already scheduled.")
 			}
 		}
+
+		fun scheduleHourlyUpdate(context: Context) {
+			val jobScheduler = context.getSystemService(JobScheduler::class.java)
+			val jobId = JobId.HOURLY_UPDATE.id
+
+			// Cancel any existing hourly update job first
+			jobScheduler.cancel(jobId)
+
+			val msUntil = 1.hours.inWholeMilliseconds
+
+			val builder = JobInfo.Builder(jobId, ComponentName(context, AlertService::class.java))
+			val job = builder
+				.setPersisted(true)
+				.setMinimumLatency(msUntil)
+				.setOverrideDeadline(msUntil + LEEWAY.inWholeMilliseconds)
+				.build()
+
+			jobScheduler.schedule(job)
+			Napier.d("Scheduled next hourly update in 1 hour (jobId: $jobId)")
+		}
 	}
+
+	override val workManagerConfiguration: Configuration
+		get() = Configuration.Builder()
+			.setMinimumLoggingLevel(Log.INFO)
+			// Reserve job IDs 1000-2000 for WorkManager (AlertService uses 1-5)
+			.setJobSchedulerJobIdRange(1000, 2000)
+			.build()
 }

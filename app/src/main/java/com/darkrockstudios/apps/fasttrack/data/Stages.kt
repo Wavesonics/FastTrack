@@ -46,6 +46,16 @@ object Stages {
 	)
 }
 
+fun phaseForStage(stage: Stage): Phase {
+	return when {
+		stage.hours >= 48 -> Stages.PHASE_OPTIMAL_AUTOPHAGY
+		stage.hours >= 24 -> Stages.PHASE_AUTOPHAGY
+		stage.hours >= 20 -> Stages.PHASE_KETOSIS
+		stage.hours >= 16 -> Stages.PHASE_FAT_BURN
+		else -> Stages.PHASE_GLUCOSE
+	}
+}
+
 sealed class Phase(
 	val hours: Int,
 	@StringRes val title: Int,

@@ -11,6 +11,7 @@ class FakeSettingsDatasource : SettingsDatasource {
 	private var fastingAlerts: Boolean = true
 	private var introSeen: Boolean = false
 	private var showFancyBackground: Boolean = false
+	private var showFastingNotification: Boolean = true
 
 	override fun getFastingAlerts(): Boolean = fastingAlerts
 
@@ -32,6 +33,12 @@ class FakeSettingsDatasource : SettingsDatasource {
 
 	override fun showFancyBackgroundFlow(): Flow<Boolean> = flowOf(getShowFancyBackground())
 
+	override fun getShowFastingNotification(): Boolean = showFastingNotification
+
+	override fun setShowFastingNotification(enabled: Boolean) {
+		showFastingNotification = enabled
+	}
+
 	/**
 	 * Clears all data - useful for test setup/teardown
 	 */
@@ -39,5 +46,6 @@ class FakeSettingsDatasource : SettingsDatasource {
 		fastingAlerts = true
 		introSeen = false
 		showFancyBackground = false
+		showFastingNotification = true
 	}
 }

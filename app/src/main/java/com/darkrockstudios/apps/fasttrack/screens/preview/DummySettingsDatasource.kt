@@ -23,4 +23,8 @@ class DummySettingsDatasource(
 	override fun setShowFancyBackground(enabled: Boolean) {}
 
 	override fun showFancyBackgroundFlow(): Flow<Boolean> = flowOf(getShowFancyBackground())
+
+	override fun getShowFastingNotification(): Boolean = true
+
+	override fun setShowFastingNotification(enabled: Boolean) {}
 }

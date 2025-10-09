@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.darkrockstudios.apps.fasttrack.AlertService
+import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -52,6 +53,7 @@ class FastingViewModel(
 		}
 
 		updateUi()
+		setupFastingNotification()
 	}
 
 	override fun updateUi() {
@@ -211,6 +213,7 @@ class FastingViewModel(
 
 			updateUi()
 			setupAlerts()
+			setupFastingNotification()
 			updateWidgets()
 
 			Napier.i("Started fast!")
@@ -229,6 +232,7 @@ class FastingViewModel(
 
 			updateUi()
 			setupAlerts()
+			setupFastingNotification()
 			updateWidgets()
 		} else {
 			Napier.w("Cannot end fast, there is none started")
@@ -260,6 +264,19 @@ class FastingViewModel(
 		}
 	}
 
+	private fun setupFastingNotification() {
+		val shouldShowNotification = settingsDatasource.getShowFastingNotification()
+
+		if (repository.isFasting() && shouldShowNotification) {
+			val elapsedTime = repository.getElapsedFastTime()
+			FastingNotificationManager.postFastingNotification(appContext, elapsedTime)
+			AlertService.scheduleHourlyUpdate(appContext)
+		} else {
+			FastingNotificationManager.cancelFastingNotification(appContext)
+			AlertService.cancelHourlyUpdates(appContext)
+		}
+	}
+
 	override fun debugIncreaseFastingTimeByOneHour() {
 		if (repository.isFasting()) {
 
@@ -271,6 +288,7 @@ class FastingViewModel(
 
 				updateUi()
 				updateWidgets()
+				setupFastingNotification()
 
 				Napier.d("Debug: Increased fasting time by 1 hour")
 			}
