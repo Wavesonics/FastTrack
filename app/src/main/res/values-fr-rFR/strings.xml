@@ -143,9 +143,9 @@
 	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and
 		your cellular health is seeing great benefits.</string>
 	<string name="notification_fasting_channel_name">Statut de jeûne</string>
-	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
-		progress.</string>
-	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_channel_description">Notification en cours montrant votre statut de jeûne actuel et
+		progression.</string>
+	<string name="notification_fasting_title">Le jeûne: %1$s heures</string>
 	<string name="notification_fasting_energy_mode">Mode Energie : %1$s</string>
 	<string name="info_dialog_fat_burn_title">Brûlure des graisses</string>
 	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is
@@ -192,8 +192,8 @@
 	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Démarrage rapide</string>
 	<string name="app_widget_stop_fast_button">Arrêter vite</string>
-	<string name="app_widget_start_compact">Start</string>
-	<string name="app_widget_start">Tap to Start</string>
+	<string name="app_widget_start_compact">Début</string>
+	<string name="app_widget_start">Appuyez pour démarrer</string>
 	<string name="close_button_content_description">Fermer</string>
 	<string name="cancel_button">Abandonner</string>
 	<string name="next_button">Suivant</string>
