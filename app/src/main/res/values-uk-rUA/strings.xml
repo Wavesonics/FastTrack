@@ -189,11 +189,11 @@
 	<string name="app_widget_not_fasting">Не швидкий</string>
 	<string name="app_widget_fast_in_progress">Закінчується</string>
 	<string name="app_widget_time">%1$d годин</string>
-	<string name="app_widget_time_compact">%1$d h</string>
+	<string name="app_widget_time_compact">%1$d год</string>
 	<string name="app_widget_start_fast_button">Запуск швидкого запуску</string>
 	<string name="app_widget_stop_fast_button">Швидка затримка</string>
-	<string name="app_widget_start_compact">Start</string>
-	<string name="app_widget_start">Tap to Start</string>
+	<string name="app_widget_start_compact">Старт</string>
+	<string name="app_widget_start">Торкніться, щоб почати</string>
 	<string name="close_button_content_description">Закрити</string>
 	<string name="cancel_button">Скасувати</string>
 	<string name="next_button">Уперед</string>
