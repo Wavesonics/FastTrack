@@ -8,6 +8,9 @@
 	<string name="action_import">Importer le journal de bord</string>
 	<string name="import_success">Livre de bord importé avec succès</string>
 	<string name="import_failed">Impossible d\'importer le journal de bord</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Afficher la notification rapide</string>
+	<string name="settings_fasting_notification_subtitle">Fournit des informations en temps réel pendant une période rapide</string>
 	<string name="export_failed">Impossible d\'exporter le journal de bord</string>
 	<string name="intro_00_title">Bienvenue sur Fast Track !</string>
 	<string name="intro_00_description">De quoi traite cette application?</string>
@@ -22,8 +25,12 @@
 	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
 		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
 		section of this app!</string>
-	<string name="intro_04_title">Voilà!</string>
-	<string name="intro_04_description">Maintenant, commencez à jeûner!</string>
+	<string name="intro_04_title">Restez motivé avec les notifications</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">Voilà!</string>
+	<string name="intro_05_description">Maintenant, commencez à jeûner!</string>
 	<string name="about_name">Studios Dark Rock</string>
 	<string name="about_subtitle">Développement Open Source</string>
 	<string name="about_brief">Escalade, alpiniste, ingénieur logiciel et défenseur de l\'open source.</string>
@@ -47,6 +54,8 @@
 	<string name="confirm_end_fast_title">Fin Rapide?</string>
 	<string name="confirm_end_fast_positive">Oui</string>
 	<string name="confirm_end_fast_negative">Non</string>
+	<string name="menu_edit">Editer</string>
+	<string name="menu_delete">Supprimez</string>
 	<string name="confirm_delete_fast_title">Supprimer Rapide?</string>
 	<string name="confirm_delete_fast_positive">Oui</string>
 	<string name="confirm_delete_fast_negative">Non</string>
@@ -81,9 +90,14 @@
 	<string name="profile_gender_male">Homme</string>
 	<string name="profile_gender_female">Femme</string>
 	<string name="manual_add_title">Ajout manuel</string>
+	<string name="manual_edit_title">Modifier l\'entrée</string>
 	<string name="manual_add_length_hint">Longueur (heures)</string>
 	<string name="manual_add_complete_button">Ajouter</string>
+	<string name="manual_add_save_button">Enregistrer</string>
 	<string name="manual_add_fast_started_on">Début Rapide : %1$s</string>
+	<string name="manual_add_start_date_time_label">Date et heure de début</string>
+	<string name="edit_date">Modifier la date</string>
+	<string name="edit_time">Modifier l\'heure</string>
 	<string name="manual_start_title">Début du jeûne</string>
 	<string name="manual_add_set_end_title">Définir la fin rapide</string>
 	<string name="manual_add_set_end_complete">Calculer</string>
@@ -128,6 +142,11 @@
 	<string name="notification_optimal_autophagy_title">Étape rapide: Autophage optimal</string>
 	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and
 		your cellular health is seeing great benefits.</string>
+	<string name="notification_fasting_channel_name">Statut de jeûne</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.</string>
+	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_energy_mode">Mode Energie : %1$s</string>
 	<string name="info_dialog_fat_burn_title">Brûlure des graisses</string>
 	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is
 		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
@@ -170,8 +189,11 @@
 	<string name="app_widget_not_fasting">Ne jeûne pas</string>
 	<string name="app_widget_fast_in_progress">En cours de jeûne</string>
 	<string name="app_widget_time">%1$d hours</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Démarrage rapide</string>
 	<string name="app_widget_stop_fast_button">Arrêter vite</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Tap to Start</string>
 	<string name="close_button_content_description">Fermer</string>
 	<string name="cancel_button">Abandonner</string>
 	<string name="next_button">Suivant</string>
