@@ -143,9 +143,9 @@
 	<string name="notification_optimal_autophagy_content">Sei il corpo è stato in Autophagy da molto tempo, e
 		&lt;unk&gt; &lt;unk&gt; la tua salute cellulare sta vedendo grandi benefici.</string>
 	<string name="notification_fasting_channel_name">Stato Di digiuno</string>
-	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
-		progress.</string>
-	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_channel_description">Notifica in corso che mostra il tuo attuale stato di digiuno e
+		&lt;unk&gt; &lt;unk&gt; progresso.</string>
+	<string name="notification_fasting_title">Chiusura: %1$s ore</string>
 	<string name="notification_fasting_energy_mode">Modalità Energetica: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Bruciamento Grasso</string>
 	<string name="info_dialog_fat_burn_content">In questa fase il tuo corpo ha esaurito le riserve di glucosio. Il glucosio è
@@ -192,8 +192,8 @@
 	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Avvia Veloce</string>
 	<string name="app_widget_stop_fast_button">Ferma Veloce</string>
-	<string name="app_widget_start_compact">Start</string>
-	<string name="app_widget_start">Tap to Start</string>
+	<string name="app_widget_start_compact">Inizia</string>
+	<string name="app_widget_start">Tocca per iniziare</string>
 	<string name="close_button_content_description">Chiudi</string>
 	<string name="cancel_button">Annulla</string>
 	<string name="next_button">Successivo</string>
