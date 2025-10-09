@@ -8,6 +8,9 @@
 	<string name="action_import">导入日志簿</string>
 	<string name="import_success">日志成功导入</string>
 	<string name="import_failed">导入日志本失败</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">显示退货通知</string>
+	<string name="settings_fasting_notification_subtitle">快速提供实时信息</string>
 	<string name="export_failed">导出日志簿失败</string>
 	<string name="intro_00_title">欢迎来到 Fast Track！</string>
 	<string name="intro_00_description">这个应用程序是关于什么的？</string>
@@ -19,8 +22,12 @@
 		永远是免费的开源软件。无需创建帐户，无需内购，也没有广告需要避免。而且它甚至没有互联网访问权限，因此无法将您的数据发送到任何地方。</string>
 	<string name="intro_03_title">间歇性禁食</string>
 	<string name="intro_03_description">这是一个新的研究领域，展现了超越简单减重的诸多好处。\n\n要探索我们对禁食的了解以及研究结果，请查看本应用的资讯部分！</string>
-	<string name="intro_04_title">就这样！</string>
-	<string name="intro_04_description">现在去开始禁食吧！</string>
+	<string name="intro_04_title">随时保持通知</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">就是这样！</string>
+	<string name="intro_05_description">现在开始快速！</string>
 	<string name="about_name">亚当·布朗</string>
 	<string name="about_subtitle">移动开发者</string>
 	<string name="about_brief">攀登者、登山者、软件工程师和开源倡导者。</string>
@@ -44,6 +51,8 @@
 	<string name="confirm_end_fast_title">结束快速吗？</string>
 	<string name="confirm_end_fast_positive">是的</string>
 	<string name="confirm_end_fast_negative">不</string>
+	<string name="menu_edit">编辑</string>
+	<string name="menu_delete">删除</string>
 	<string name="confirm_delete_fast_title">删除快速吗？</string>
 	<string name="confirm_delete_fast_positive">是的</string>
 	<string name="confirm_delete_fast_negative">不</string>
@@ -78,9 +87,14 @@
 	<string name="profile_gender_male">男</string>
 	<string name="profile_gender_female">女性</string>
 	<string name="manual_add_title">手动添加</string>
+	<string name="manual_edit_title">编辑条目</string>
 	<string name="manual_add_length_hint">长度（小时）</string>
 	<string name="manual_add_complete_button">添加</string>
+	<string name="manual_add_save_button">保存</string>
 	<string name="manual_add_fast_started_on">快速启动于：%1$s</string>
+	<string name="manual_add_start_date_time_label">开始日期和时间</string>
+	<string name="edit_date">编辑日期</string>
+	<string name="edit_time">编辑时间</string>
 	<string name="manual_start_title">快速开始</string>
 	<string name="manual_add_set_end_title">设置快速结束</string>
 	<string name="manual_add_set_end_complete">计算</string>
@@ -117,6 +131,11 @@
 	<string name="notification_autophagy_content">你的身体已经进入自噬状态。旧的或受损的细胞现在正在被消耗以产生能量。</string>
 	<string name="notification_optimal_autophagy_title">快速阶段：最佳自噬</string>
 	<string name="notification_optimal_autophagy_content">你的身体已经在自噬中持续了很长时间，现在你的细胞健康正在获得巨大的好处。</string>
+	<string name="notification_fasting_channel_name">退货状态</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.</string>
+	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_energy_mode">能量模式：%1$s</string>
 	<string name="info_dialog_fat_burn_title">脂肪燃烧</string>
 	<string name="info_dialog_fat_burn_content">在这个阶段，您的身体已经耗尽了葡萄糖储备。葡萄糖以糖原的形式储存以备后用，在这个阶段，您大部分储存的糖原已经被分解为葡萄糖并用作能量。\n\n
 		现在，它开始将脂肪组织（脂肪）分解为酮体。除了能够消耗葡萄糖作为能量外，您的身体还可以选择使用酮体作为能量，随着葡萄糖储备的减少，您的身体将切换到酮体的能量模式。</string>
@@ -141,8 +160,11 @@
 	<string name="app_widget_not_fasting">不禁食</string>
 	<string name="app_widget_fast_in_progress">禁食进行中</string>
 	<string name="app_widget_time">%1$d 小时</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">快速开始</string>
 	<string name="app_widget_stop_fast_button">停止快速</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Tap to Start</string>
 	<string name="close_button_content_description">关闭</string>
 	<string name="cancel_button">取消</string>
 	<string name="next_button">下一步</string>
