@@ -8,6 +8,9 @@
 	<string name="action_import">Importar bitácora</string>
 	<string name="import_success">Bitácora importada correctamente</string>
 	<string name="import_failed">Error al importar bitácora</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Mostrar notificación de limpieza</string>
+	<string name="settings_fasting_notification_subtitle">Proporciona información en tiempo real durante un rápido</string>
 	<string name="export_failed">Error al exportar bitácora</string>
 	<string name="intro_00_title">¡Bienvenido a Fast Track!</string>
 	<string name="intro_00_description">¿De qué trata esta aplicación?</string>
@@ -22,8 +25,12 @@
 	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
 		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
 		section of this app!</string>
-	<string name="intro_04_title">¡Eso es todo!</string>
-	<string name="intro_04_description">¡Ahora empieza a ayunar!</string>
+	<string name="intro_04_title">Mantenerse motivado con las notificaciones</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">¡Eso es todo!</string>
+	<string name="intro_05_description">¡Ahora empieza a ayunar!</string>
 	<string name="about_name">Estudios de roca oscura</string>
 	<string name="about_subtitle">Desarrollo de código abierto</string>
 	<string name="about_brief">Escalera, montañista, ingeniero de software y defensor de código abierto.</string>
@@ -47,6 +54,8 @@
 	<string name="confirm_end_fast_title">¿Finalizar rápido?</string>
 	<string name="confirm_end_fast_positive">Sí</string>
 	<string name="confirm_end_fast_negative">Nu</string>
+	<string name="menu_edit">Editar</string>
+	<string name="menu_delete">Eliminar</string>
 	<string name="confirm_delete_fast_title">¿Eliminar rápido?</string>
 	<string name="confirm_delete_fast_positive">Sí</string>
 	<string name="confirm_delete_fast_negative">Nu</string>
@@ -81,9 +90,14 @@
 	<string name="profile_gender_male">Hombre</string>
 	<string name="profile_gender_female">Mujer</string>
 	<string name="manual_add_title">Añadir manual</string>
+	<string name="manual_edit_title">Editar entrada</string>
 	<string name="manual_add_length_hint">Longitud (Horas)</string>
 	<string name="manual_add_complete_button">Añadir</string>
+	<string name="manual_add_save_button">Guardar</string>
 	<string name="manual_add_fast_started_on">Rápido Comenzando En: %1$s</string>
+	<string name="manual_add_start_date_time_label">Fecha y hora de inicio</string>
+	<string name="edit_date">Editar fecha</string>
+	<string name="edit_time">Editar hora</string>
 	<string name="manual_start_title">Rápido iniciado</string>
 	<string name="manual_add_set_end_title">Fijar Fin Rápido</string>
 	<string name="manual_add_set_end_complete">Calcular</string>
@@ -128,6 +142,11 @@
 	<string name="notification_optimal_autophagy_title">Etapa rápida: Autofagia óptima</string>
 	<string name="notification_optimal_autophagy_content">Usted es el cuerpo ha estado en Autofagia durante mucho tiempo, y
 		su salud celular está viendo grandes beneficios.</string>
+	<string name="notification_fasting_channel_name">Estado de Fasting</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.</string>
+	<string name="notification_fasting_title">Fasting: %1$s hours</string>
+	<string name="notification_fasting_energy_mode">Modo Energía: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Quemado de grasa</string>
 	<string name="info_dialog_fat_burn_content">En esta etapa su cuerpo ha agotado sus reservas de glucosa. La glucosa es
 		almacenada como glicogeno para su uso posterior, en esta etapa, la mayor parte de tu glicogeno almacenado se ha descompuesto en glucosa
@@ -170,8 +189,11 @@
 	<string name="app_widget_not_fasting">No ayunar</string>
 	<string name="app_widget_fast_in_progress">Fasting en progreso</string>
 	<string name="app_widget_time">%1$d horas</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Iniciar rápido</string>
 	<string name="app_widget_stop_fast_button">Parar rápido</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Tap to Start</string>
 	<string name="close_button_content_description">Cerrar</string>
 	<string name="cancel_button">Cancelar</string>
 	<string name="next_button">Siguiente</string>
