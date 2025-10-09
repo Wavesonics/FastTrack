@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
@@ -44,47 +45,7 @@ fun FastEntryItem(
 			colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
 			elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
 		) {
-		Row(
-			modifier = Modifier.Companion
-				.fillMaxWidth()
-				.padding(16.dp),
-			horizontalArrangement = Arrangement.spacedBy(16.dp),
-			verticalAlignment = Alignment.CenterVertically
-		) {
-			val lenHours = entry.length.toDouble(DurationUnit.HOURS)
-			val hours = lenHours.roundToInt()
-
-			// Determine highest stage reached
-			val highestStage = remember(lenHours) {
-				Stages.phases.lastOrNull { lenHours >= it.hours } ?: Stages.phases.first()
-			}
-
-			val stageIndex = Stages.phases.indexOf(highestStage).coerceAtLeast(0)
-			val ovalColor = gaugeColors.getOrElse(stageIndex) { MaterialTheme.colorScheme.primary }
-
-			Box(
-				modifier = Modifier
-					.width(56.dp)
-					.height(36.dp)
-					.background(ovalColor, shape = RoundedCornerShape(percent = 30))
-					.border(
-						width = 2.dp,
-						color = MaterialTheme.colorScheme.onBackground,
-						shape = RoundedCornerShape(percent = 30)
-					),
-			)
-
-			Column(modifier = Modifier.weight(1f)) {
-				val ketosisStart = Stages.PHASE_KETOSIS.hours.toDouble()
-				val ketosisHours = if (lenHours > ketosisStart) {
-					(lenHours - ketosisStart).roundToInt()
-				} else 0
-
-				val autophagyStart = Stages.PHASE_AUTOPHAGY.hours.toDouble()
-				val autophagyHours = if (lenHours > autophagyStart) {
-					(lenHours - autophagyStart).roundToInt()
-				} else 0
-
+			Column {
 				val dateStr = remember(entry.start) {
 					entry.start.formatAs("d MMM uuuu - HH:mm")
 				}
@@ -93,27 +54,76 @@ fun FastEntryItem(
 					text = stringResource(id = R.string.log_entry_started, dateStr),
 					style = MaterialTheme.typography.titleMedium,
 					color = MaterialTheme.colorScheme.onSurface,
+					modifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
 				)
-				Spacer(modifier = Modifier.height(2.dp))
-				Text(
-					text = "⏱️ " + stringResource(id = R.string.log_entry_length, hours),
-					style = MaterialTheme.typography.headlineSmall,
-					color = MaterialTheme.colorScheme.onSurface,
-					fontWeight = FontWeight.Bold
-				)
-				Spacer(modifier = Modifier.height(2.dp))
-				Text(
-					text = "🔥 " + stringResource(id = R.string.log_entry_ketosis, ketosisHours),
-					style = MaterialTheme.typography.titleSmall,
-					color = MaterialTheme.colorScheme.onSurface,
-				)
-				Text(
-					text = "🧬 " + stringResource(id = R.string.log_entry_autophagy, autophagyHours),
-					style = MaterialTheme.typography.titleSmall,
-					color = MaterialTheme.colorScheme.onSurface,
-				)
+
+				Row(
+					modifier = Modifier.Companion
+						.fillMaxWidth()
+						.padding(16.dp),
+					horizontalArrangement = Arrangement.spacedBy(16.dp),
+					verticalAlignment = Alignment.CenterVertically
+				) {
+					val lenHours = entry.length.toDouble(DurationUnit.HOURS)
+					val hours = lenHours.roundToInt()
+
+					// Determine highest stage reached
+					val highestStage = remember(lenHours) {
+						Stages.phases.lastOrNull { lenHours >= it.hours } ?: Stages.phases.first()
+					}
+
+					val stageIndex = Stages.phases.indexOf(highestStage).coerceAtLeast(0)
+					val ovalColor = gaugeColors.getOrElse(stageIndex) { MaterialTheme.colorScheme.primary }
+
+					Box(
+						modifier = Modifier
+							.width(12.dp)
+							.height(36.dp)
+							.background(ovalColor, shape = RoundedCornerShape(percent = 30))
+							.border(
+								width = 2.dp,
+								color = MaterialTheme.colorScheme.onBackground,
+								shape = RoundedCornerShape(percent = 30)
+							),
+					)
+
+					Row(
+						verticalAlignment = Alignment.CenterVertically
+					) {
+						val ketosisStart = Stages.PHASE_KETOSIS.hours.toDouble()
+						val ketosisHours = if (lenHours > ketosisStart) {
+							(lenHours - ketosisStart).roundToInt()
+						} else 0
+
+						val autophagyStart = Stages.PHASE_AUTOPHAGY.hours.toDouble()
+						val autophagyHours = if (lenHours > autophagyStart) {
+							(lenHours - autophagyStart).roundToInt()
+						} else 0
+
+						Text(
+							text = "⏱️ " + stringResource(id = R.string.log_entry_length, hours),
+							style = MaterialTheme.typography.headlineSmall.copy(fontSize = 18.sp),
+							color = MaterialTheme.colorScheme.onSurface,
+							fontWeight = FontWeight.Bold,
+						)
+
+						Spacer(modifier = Modifier.weight(1f))
+
+						Column {
+							Text(
+								text = "🔥 " + stringResource(id = R.string.log_entry_ketosis, ketosisHours),
+								style = MaterialTheme.typography.titleSmall,
+								color = MaterialTheme.colorScheme.onSurface,
+							)
+							Text(
+								text = "🧬 " + stringResource(id = R.string.log_entry_autophagy, autophagyHours),
+								style = MaterialTheme.typography.titleSmall,
+								color = MaterialTheme.colorScheme.onSurface,
+							)
+						}
+					}
+				}
 			}
-		}
 		}
 
 		DropdownMenu(
