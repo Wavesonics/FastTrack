@@ -1,0 +1,7 @@
+- Rewrote Log book UI
+- Rewrote Widget UI, it looks nice now!
+- Added an optional on-going notification during a Fast
+- Fast entries can not be edited in the log book
+- Can now optionally disable the fancy background
+- Add tool tips to the fasting timeline
+- UI now has better tablet support
