@@ -249,9 +249,11 @@
 	<string name="app_widget_not_fasting">Not fasting</string>
 	<string name="app_widget_fast_in_progress">Fasting in progress</string>
 	<string name="app_widget_time">%1$d hours</string>
-	<string name="app_widget_time_compact">%1$dh</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Start Fast</string>
 	<string name="app_widget_stop_fast_button">Stop Fast</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Tap to Start</string>
 	<string name="close_button_content_description">Close</string>
 	<string name="cancel_button">Cancel</string>
 	<string name="next_button">Next</string>
@@ -279,5 +281,4 @@
 	<string name="log_no_entries">No entries yet!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Lifetime stats</string>
-	<string name="widget_start">Start</string>
 </resources>

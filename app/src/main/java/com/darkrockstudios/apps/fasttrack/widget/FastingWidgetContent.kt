@@ -2,7 +2,6 @@ package com.darkrockstudios.apps.fasttrack.widget
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.*
@@ -118,7 +117,7 @@ private fun SmallWidgetContent(
 
 				// Time display
 				Text(
-					text = stringResource(R.string.app_widget_time_compact, elapsedTime.inWholeHours),
+					text = context.getString(R.string.app_widget_time_compact, elapsedTime.inWholeHours),
 					style = TextStyle(
 						fontWeight = FontWeight.Bold,
 						color = GlanceTheme.colors.onBackground,
@@ -141,7 +140,7 @@ private fun SmallWidgetContent(
 				)
 				Spacer(modifier = GlanceModifier.size(2.dp))
 				Text(
-					text = stringResource(R.string.widget_start),
+					text = context.getString(R.string.app_widget_start_compact),
 					style = TextStyle(
 						fontWeight = FontWeight.Medium,
 						color = GlanceTheme.colors.onBackground,
@@ -213,14 +212,42 @@ private fun MediumWidgetContent(
 				)
 			}
 		} else {
-			Text(
-				text = context.getString(R.string.app_widget_not_fasting),
-				style = TextStyle(
-					fontWeight = FontWeight.Medium,
-					color = GlanceTheme.colors.onBackground,
-					fontSize = 14.sp
+			Column(
+				horizontalAlignment = Alignment.CenterHorizontally,
+			) {
+				Text(
+					text = context.getString(R.string.app_widget_not_fasting),
+					style = TextStyle(
+						fontWeight = FontWeight.Bold,
+						color = GlanceTheme.colors.onBackground,
+						fontSize = 18.sp
+					)
 				)
-			)
+
+				Spacer(modifier = GlanceModifier.size(8.dp))
+
+				Row(
+					horizontalAlignment = Alignment.CenterHorizontally,
+					verticalAlignment = Alignment.CenterVertically
+				) {
+					Text(
+						text = "▶️",
+						style = TextStyle(
+							color = GlanceTheme.colors.onBackground,
+							fontSize = 20.sp
+						)
+					)
+					Spacer(modifier = GlanceModifier.size(8.dp))
+					Text(
+						text = context.getString(R.string.app_widget_start),
+						style = TextStyle(
+							fontWeight = FontWeight.Medium,
+							color = GlanceTheme.colors.onBackground,
+							fontSize = 14.sp
+						)
+					)
+				}
+			}
 		}
 	}
 }
