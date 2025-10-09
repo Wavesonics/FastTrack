@@ -46,7 +46,11 @@ fun ManualAddDialog(
 		},
 		properties = DialogProperties(usePlatformDefaultWidth = false),
 	) {
-		Card {
+		Card(
+			modifier = Modifier
+				.widthIn(max = 600.dp)
+				.heightIn(max = 800.dp)
+		) {
 			Column(
 				verticalArrangement = Arrangement.Center,
 				horizontalAlignment = Alignment.CenterHorizontally
