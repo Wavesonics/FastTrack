@@ -1,5 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.log
 
+import android.os.VibrationEffect
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
@@ -19,6 +20,7 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.fasting.gaugeColors
 import com.darkrockstudios.apps.fasttrack.utils.formatAs
+import com.darkrockstudios.apps.fasttrack.utils.rememberVibrator
 import kotlin.math.roundToInt
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
@@ -31,6 +33,7 @@ fun FastEntryItem(
 	onDelete: () -> Unit
 ) {
 	var showMenu by remember { mutableStateOf(false) }
+	val vibrator = rememberVibrator()
 
 	Box {
 		Card(
@@ -40,7 +43,10 @@ fun FastEntryItem(
 				.combinedClickable(
 					interactionSource = remember { MutableInteractionSource() },
 					onClick = {},
-					onLongClick = { showMenu = true }
+					onLongClick = {
+						vibrator?.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+						showMenu = true
+					}
 				),
 			colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
 			elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),

@@ -1,12 +1,16 @@
 package com.darkrockstudios.apps.fasttrack.utils
 
+import android.os.Vibrator
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.material3.SelectableDates
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.core.content.getSystemService
 import java.time.LocalDate as JavaLocalDate
 
 @Composable
@@ -33,3 +37,9 @@ class PastAndTodaySelectableDates : SelectableDates {
 }
 
 val MAX_COLUMN_WIDTH = 600.dp
+
+@Composable
+fun rememberVibrator(): Vibrator? {
+	val context = LocalContext.current
+	return remember { context.getSystemService<Vibrator>() }
+}
