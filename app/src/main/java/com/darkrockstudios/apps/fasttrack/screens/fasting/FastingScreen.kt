@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -41,9 +42,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -277,7 +276,6 @@ private fun FastHeadingContent(
 		)
 
 		TooltipBox(
-			modifier = modifier,
 			positionProvider = TooltipDefaults
 				.rememberTooltipPositionProvider(TooltipAnchorPosition.Below),
 			tooltip = {
@@ -345,7 +343,6 @@ private fun FastDetailsContent(
 	Column(
 		modifier = modifier,
 		horizontalAlignment = Alignment.CenterHorizontally,
-		verticalArrangement = Arrangement.Center,
 	) {
 		Spacer(modifier = Modifier.weight(1f))
 
@@ -390,6 +387,7 @@ private fun FastDetailsContent(
 		Box(
 			modifier = Modifier
 				.fillMaxWidth()
+				.weight(1f)
 				.verticalScroll(rememberScrollState())
 		) {
 			Text(
@@ -400,12 +398,11 @@ private fun FastDetailsContent(
 			)
 		}
 
-		Spacer(modifier = Modifier.weight(1f))
-
-		// Bottom Controls
+		// Bottom Controls Row
 		Row(
 			modifier = Modifier
 				.fillMaxWidth()
+				.wrapContentHeight()
 				.padding(top = 16.dp),
 			horizontalArrangement = Arrangement.SpaceBetween,
 			verticalAlignment = Alignment.CenterVertically
@@ -430,7 +427,8 @@ private fun FastDetailsContent(
 			if (BuildConfig.DEBUG) {
 				FloatingActionButton(
 					onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
-					modifier = Modifier.padding(end = 16.dp)
+					modifier = Modifier
+						.padding(end = 16.dp)
 				) {
 					Icon(
 						imageVector = Icons.Default.Add,
@@ -442,7 +440,7 @@ private fun FastDetailsContent(
 			// Start/Stop Button
 			if (uiState.isFasting) {
 				FloatingActionButton(
-					onClick = onShowEndFastConfirmation
+					onClick = onShowEndFastConfirmation,
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_fast_stop),
@@ -451,7 +449,7 @@ private fun FastDetailsContent(
 				}
 			} else {
 				FloatingActionButton(
-					onClick = onShowStartFastSelector
+					onClick = onShowStartFastSelector,
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_start_fast),
@@ -516,9 +514,3 @@ private fun stageColor(stageState: IFastingViewModel.StageState): Color = when (
 	IFastingViewModel.StageState.StartedInactive -> Color.Red
 	IFastingViewModel.StageState.NotStarted -> MaterialTheme.colorScheme.onBackground
 }
-
-private val stageDropShadow = Shadow(
-	color = Color.White.copy(alpha = 0.5f),
-	offset = Offset(1f, 1f),
-	blurRadius = 1f
-)
