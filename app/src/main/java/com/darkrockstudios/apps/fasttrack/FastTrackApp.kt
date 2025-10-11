@@ -4,9 +4,11 @@ import android.app.Application
 import android.appwidget.AppWidgetProviderInfo
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.collection.intSetOf
 import androidx.glance.appwidget.GlanceAppWidgetManager
+import androidx.work.Configuration
 import cafe.adriel.satchel.Satchel
 import cafe.adriel.satchel.encrypter.bypass.BypassSatchelEncrypter
 import cafe.adriel.satchel.storer.file.FileSatchelStorer
@@ -23,7 +25,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import java.io.File
 
-class FastTrackApp : Application() {
+class FastTrackApp : Application(), Configuration.Provider {
 	@OptIn(DelicateCoroutinesApi::class)
 	override fun onCreate() {
 		super.onCreate()
@@ -55,4 +57,11 @@ class FastTrackApp : Application() {
 			widgetCategories = intSetOf(AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN)
 		)
 	}
+
+	override val workManagerConfiguration: Configuration
+		get() = Configuration.Builder()
+			.setMinimumLoggingLevel(Log.INFO)
+			// Reserve job IDs 1000-2000 for WorkManager (AlertService uses 1-5)
+			.setJobSchedulerJobIdRange(1000, 2000)
+			.build()
 }

@@ -10,10 +10,8 @@ import android.app.job.JobService
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationCompat
-import androidx.work.Configuration
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
@@ -25,7 +23,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 
-class AlertService : JobService(), Configuration.Provider {
+class AlertService : JobService() {
 	private val repository: ActiveFastRepository by inject()
 	private val settingsDatasource: SettingsDatasource by inject()
 
@@ -256,11 +254,4 @@ class AlertService : JobService(), Configuration.Provider {
 			Napier.d("Scheduled next hourly update in 1 hour (jobId: $jobId)")
 		}
 	}
-
-	override val workManagerConfiguration: Configuration
-		get() = Configuration.Builder()
-			.setMinimumLoggingLevel(Log.INFO)
-			// Reserve job IDs 1000-2000 for WorkManager (AlertService uses 1-5)
-			.setJobSchedulerJobIdRange(1000, 2000)
-			.build()
 }
