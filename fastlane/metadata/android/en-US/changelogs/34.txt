@@ -1,0 +1,2 @@
+- Fixed timer not visible on Tablets
+- Fixed FABs being squished on certain screen sizes
