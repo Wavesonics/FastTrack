@@ -131,6 +131,32 @@ private fun FastingScreenPreviewFatBurning() {
 }
 
 @Preview(
+	name = "Fasting Screen - Small Screen",
+	showBackground = true,
+	widthDp = 300,
+	heightDp = 512
+)
+@Composable
+private fun FastingScreenPreviewSmallScreen() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+	)
+}
+
+@Preview(
 	name = "Fasting Screen - Fat Burning Phase (Dark)",
 	showBackground = true,
 	widthDp = 360,

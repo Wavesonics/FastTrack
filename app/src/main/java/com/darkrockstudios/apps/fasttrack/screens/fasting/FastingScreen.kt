@@ -227,8 +227,6 @@ fun FastingScreen(
 					modifier = Modifier.fillMaxWidth()
 				)
 
-				Spacer(modifier = Modifier.size(height = 64.dp, width = 1.dp))
-
 				FastDetailsContent(
 					uiState = uiState,
 					onShowInfoDialog = ::onShowInfoDialog,
