@@ -52,8 +52,10 @@
 	<string name="already_started_dialog_title">Déjà démarré</string>
 	<string name="start_picker_title">Quand avez-vous commencé votre Rapide</string>
 	<string name="confirm_end_fast_title">Fin Rapide?</string>
-	<string name="confirm_end_fast_positive">Oui</string>
+	<string name="confirm_end_fast_positive">Maintenant</string>
+	<string name="confirm_end_fast_neutral">Déjà arrêté?</string>
 	<string name="confirm_end_fast_negative">Non</string>
+	<string name="already_stopped_dialog_title">Quand êtes-vous arrêté?</string>
 	<string name="menu_edit">Editer</string>
 	<string name="menu_delete">Supprimez</string>
 	<string name="confirm_delete_fast_title">Supprimer Rapide?</string>
