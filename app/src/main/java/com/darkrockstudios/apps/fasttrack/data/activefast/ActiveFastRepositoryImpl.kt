@@ -36,10 +36,10 @@ class ActiveFastRepositoryImpl(
 		datasource.clearFastEnd()
 	}
 
-	override fun endFast() {
+	override fun endFast(timeEnded: Instant?) {
 		if (isFasting().not()) error("Cannot end a fast, one was not running")
-		val now = clock.now()
-		datasource.setFastEnd(now)
+		val endedMills = timeEnded ?: clock.now()
+		datasource.setFastEnd(endedMills)
 	}
 
 	override fun debugOverrideFastStart(newStart: Instant) = datasource.setFastStart(newStart)

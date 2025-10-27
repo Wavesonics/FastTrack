@@ -93,7 +93,8 @@ fun FastingScreen(
 		viewModel.onCreate()
 	}
 
-	var showDateTimePicker by remember { mutableStateOf(false) }
+	var showStartDateTimePicker by remember { mutableStateOf(false) }
+	var showEndDateTimePicker by remember { mutableStateOf(false) }
 
 	fun onShowStartFastSelector() {
 		if (!uiState.isFasting) {
@@ -101,20 +102,20 @@ fun FastingScreen(
 				.setTitle(R.string.confirm_start_fast_title)
 				.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> viewModel.startFast() }
 				.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ ->
-					showDateTimePicker = true
+					showStartDateTimePicker = true
 				}
 				.setNegativeButton(R.string.confirm_start_fast_negative, null)
 				.show()
 		}
 	}
 
-	if (showDateTimePicker) {
+	if (showStartDateTimePicker) {
 		val dateTimePickerState = rememberDateTimePickerDialogState()
 		DateTimePickerDialog(
-			onDismiss = { showDateTimePicker = false },
+			onDismiss = { showStartDateTimePicker = false },
 			onDateTimeSelected = { selectedDateTime ->
 				viewModel.startFast(selectedDateTime)
-				showDateTimePicker = false
+				showStartDateTimePicker = false
 			},
 			title = stringResource(R.string.already_started_dialog_title),
 			finishButton = stringResource(id = R.string.start_fast_button),
@@ -129,8 +130,26 @@ fun FastingScreen(
 				viewModel.endFast()
 				confetti.start(scope)
 			}
+			.setNeutralButton(R.string.confirm_end_fast_neutral) { _, _ ->
+				showEndDateTimePicker = true
+			}
 			.setNegativeButton(R.string.confirm_end_fast_negative, null)
 			.show()
+	}
+
+	if (showEndDateTimePicker) {
+		val dateTimePickerState = rememberDateTimePickerDialogState()
+		DateTimePickerDialog(
+			onDismiss = { showEndDateTimePicker = false },
+			onDateTimeSelected = { selectedDateTime ->
+				viewModel.endFast(selectedDateTime)
+				showEndDateTimePicker = false
+				confetti.start(scope)
+			},
+			title = stringResource(R.string.already_stopped_dialog_title),
+			finishButton = stringResource(id = R.string.end_fast_button),
+			state = dateTimePickerState,
+		)
 	}
 
 	fun onShowInfoDialog(titleRes: Int, contentRes: Int) {

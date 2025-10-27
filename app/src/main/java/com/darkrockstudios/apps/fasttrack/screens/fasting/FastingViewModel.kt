@@ -222,9 +222,9 @@ class FastingViewModel(
 		}
 	}
 
-	override fun endFast() {
+	override fun endFast(timeEnded: Instant?) {
 		if (repository.isFasting()) {
-			repository.endFast()
+			repository.endFast(timeEnded)
 
 			viewModelScope.launch(Dispatchers.IO) { saveFastToLog(repository.getFastStart(), repository.getFastEnd()) }
 

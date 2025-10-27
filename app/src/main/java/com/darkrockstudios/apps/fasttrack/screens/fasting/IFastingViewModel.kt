@@ -33,7 +33,7 @@ interface IFastingViewModel {
 	fun onCreate()
 	fun updateUi()
 	fun startFast(timeStartedMills: Instant? = null)
-	fun endFast()
+	fun endFast(timeEnded: Instant? = null)
 	fun setAlertsEnabled(enabled: Boolean)
 	fun setupAlerts()
 	fun debugIncreaseFastingTimeByOneHour()

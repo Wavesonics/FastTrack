@@ -9,6 +9,6 @@ interface ActiveFastRepository {
 	fun getFastStart(): Instant?
 	fun getFastEnd(): Instant?
 	fun startFast(timeStarted: Instant?)
-	fun endFast()
+	fun endFast(timeEnded: Instant? = null)
 	fun debugOverrideFastStart(newStart: Instant)
 }

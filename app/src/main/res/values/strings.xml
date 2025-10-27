@@ -70,8 +70,10 @@
 	<string name="start_picker_title">When did you start your Fast</string>
 
 	<string name="confirm_end_fast_title">End Fast?</string>
-	<string name="confirm_end_fast_positive">Yes</string>
+	<string name="confirm_end_fast_positive">Now</string>
+	<string name="confirm_end_fast_neutral">Already Stopped?</string>
 	<string name="confirm_end_fast_negative">No</string>
+	<string name="already_stopped_dialog_title">When did you stop?</string>
 
 	<string name="menu_edit">Edit</string>
 	<string name="menu_delete">Delete</string>
