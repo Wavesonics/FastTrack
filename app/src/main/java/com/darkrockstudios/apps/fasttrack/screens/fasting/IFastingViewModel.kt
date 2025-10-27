@@ -12,6 +12,7 @@ interface IFastingViewModel {
 	data class FastingUiState(
 		val isFasting: Boolean = false,
 		val elapsedTime: Duration? = null,
+		val fastStartTime: Instant? = null,
 		val stageTitle: String = "",
 		val stageDescription: String = "",
 		val energyMode: String = "",

@@ -120,11 +120,12 @@ class FastingViewModel(
 			updateTimerView(elapsedTime)
 			updatePhases(elapsedTime)
 
-			_uiState.update { it.copy(elapsedTime = elapsedTime) }
+			_uiState.update { it.copy(elapsedTime = elapsedTime, fastStartTime = fastStart) }
 		} else {
 			_uiState.update {
 				it.copy(
 					elapsedTime = null,
+					fastStartTime = null,
 					elapsedHours = 0.0
 				)
 			}

@@ -149,6 +149,7 @@ fun FastingScreen(
 			title = stringResource(R.string.already_stopped_dialog_title),
 			finishButton = stringResource(id = R.string.end_fast_button),
 			state = dateTimePickerState,
+			minInstant = uiState.fastStartTime
 		)
 	}
 
