@@ -52,8 +52,10 @@
 	<string name="already_started_dialog_title">Bereits gestartet</string>
 	<string name="start_picker_title">Wann hast du deine Schnelle gestartet</string>
 	<string name="confirm_end_fast_title">Schnell beenden?</string>
-	<string name="confirm_end_fast_positive">Ja</string>
+	<string name="confirm_end_fast_positive">Jetzt</string>
+	<string name="confirm_end_fast_neutral">Bereits gestoppt?</string>
 	<string name="confirm_end_fast_negative">Nein</string>
+	<string name="already_stopped_dialog_title">Wann haben Sie gestoppt?</string>
 	<string name="menu_edit">Bearbeiten</string>
 	<string name="menu_delete">Löschen</string>
 	<string name="confirm_delete_fast_title">Schnell löschen?</string>
