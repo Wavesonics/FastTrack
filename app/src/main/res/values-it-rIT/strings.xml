@@ -52,8 +52,10 @@
 	<string name="already_started_dialog_title">Già Iniziato</string>
 	<string name="start_picker_title">Quando hai iniziato il tuo Veloce</string>
 	<string name="confirm_end_fast_title">Fine Veloce?</string>
-	<string name="confirm_end_fast_positive">Sì</string>
+	<string name="confirm_end_fast_positive">Ora</string>
+	<string name="confirm_end_fast_neutral">Sei Già Interrotto?</string>
 	<string name="confirm_end_fast_negative">No</string>
+	<string name="already_stopped_dialog_title">Quando vi siete fermate?</string>
 	<string name="menu_edit">Modifica</string>
 	<string name="menu_delete">Elimina</string>
 	<string name="confirm_delete_fast_title">Eliminare Veloce?</string>
