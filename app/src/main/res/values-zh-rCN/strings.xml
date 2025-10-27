@@ -49,8 +49,10 @@
 	<string name="already_started_dialog_title">已经开始</string>
 	<string name="start_picker_title">你什么时候开始你的禁食？</string>
 	<string name="confirm_end_fast_title">结束快速吗？</string>
-	<string name="confirm_end_fast_positive">是的</string>
+	<string name="confirm_end_fast_positive">现在</string>
+	<string name="confirm_end_fast_neutral">已经停止？</string>
 	<string name="confirm_end_fast_negative">不</string>
+	<string name="already_stopped_dialog_title">您何时停止？</string>
 	<string name="menu_edit">编辑</string>
 	<string name="menu_delete">删除</string>
 	<string name="confirm_delete_fast_title">删除快速吗？</string>
