@@ -52,8 +52,10 @@
 	<string name="already_started_dialog_title">Вже розпочато</string>
 	<string name="start_picker_title">Коли ви починали свою швидкість</string>
 	<string name="confirm_end_fast_title">Кінець раннього періоду?</string>
-	<string name="confirm_end_fast_positive">Так</string>
+	<string name="confirm_end_fast_positive">Зараз</string>
+	<string name="confirm_end_fast_neutral">Вже зупинено?</string>
 	<string name="confirm_end_fast_negative">Ні</string>
+	<string name="already_stopped_dialog_title">Коли ти зупинилася?</string>
 	<string name="menu_edit">Редагувати</string>
 	<string name="menu_delete">Видалити</string>
 	<string name="confirm_delete_fast_title">Видалити швидку?</string>
