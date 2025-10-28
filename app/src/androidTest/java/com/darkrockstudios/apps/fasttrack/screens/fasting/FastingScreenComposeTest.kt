@@ -41,7 +41,6 @@ class FastingScreenComposeTest {
 			fatBurnTime = "--:--:--",
 			ketosisTime = "--:--:--",
 			autophagyTime = "--:--:--",
-			alertsEnabled = true
 		)
 		val vm = FakeFastingViewModel(state)
 
@@ -61,10 +60,6 @@ class FastingScreenComposeTest {
 			.assertCountEquals(1)
 		composeTestRule.onAllNodesWithText(context.getString(R.string.fast_autophagy_label))
 			.assertCountEquals(1)
-
-		// Alerts checkbox label exists
-		composeTestRule.onNodeWithText(context.getString(R.string.stage_alerts_checkbox))
-			.assertExists()
 
 		// Start FAB exists; Stop FAB does not
 		composeTestRule.onNodeWithContentDescription(context.getString(R.string.start_fast_button_description))
@@ -87,7 +82,6 @@ class FastingScreenComposeTest {
 			fatBurnTime = "12:00:00",
 			ketosisTime = "6:00:00",
 			autophagyTime = "-12:00:00",
-			alertsEnabled = true
 		)
 		val vm = FakeFastingViewModel(state)
 
@@ -107,10 +101,6 @@ class FastingScreenComposeTest {
 			.assertCountEquals(1)
 		composeTestRule.onAllNodesWithText(context.getString(R.string.fast_autophagy_label))
 			.assertCountEquals(1)
-
-		// Alerts checkbox label exists
-		composeTestRule.onNodeWithText(context.getString(R.string.stage_alerts_checkbox))
-			.assertExists()
 
 		// Stop FAB exists; Start FAB does not
 		composeTestRule.onNodeWithContentDescription(context.getString(R.string.stop_fast_button_description))
