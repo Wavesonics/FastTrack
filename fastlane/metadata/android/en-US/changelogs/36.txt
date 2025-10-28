@@ -1,0 +1,5 @@
+- Optimize for small screens
+- Moved Import/Export to Settings
+- Moved Alert stages to Settings
+- Fixed Import not being able to select CSV files
+- Added "Already Stopped" option when ending a fast
