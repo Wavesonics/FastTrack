@@ -5,12 +5,21 @@
 	<string name="action_info">Infos</string>
 	<string name="action_about">À propos de</string>
 	<string name="action_export">Exporter le livre de bord</string>
+	<string name="action_export_description">Produire un fichier CVS de votre livre de bord pour la sauvegarde</string>
 	<string name="action_import">Importer le journal de bord</string>
+	<string name="action_import_description">Remplir votre journal de bord à partir d\'une exportation précédente</string>
 	<string name="import_success">Livre de bord importé avec succès</string>
 	<string name="import_failed">Impossible d\'importer le journal de bord</string>
+	<!-- Settings -->
+	<string name="settings_section_notifications">Notifications</string>
+	<string name="settings_section_ui">Interface</string>
+	<string name="settings_section_logbook">Carnet de bord</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Afficher la notification rapide</string>
 	<string name="settings_fasting_notification_subtitle">Fournit des informations en temps réel pendant une période rapide</string>
+	<!-- Settings: Stage alerts -->
+	<string name="settings_stage_alerts_title">Alertes d\'étape</string>
+	<string name="settings_stage_alerts_subtitle">Soyez averti lorsque vous entrez dans de nouvelles étapes de jeûne</string>
 	<string name="export_failed">Impossible d\'exporter le journal de bord</string>
 	<string name="intro_00_title">Bienvenue sur Fast Track !</string>
 	<string name="intro_00_description">De quoi traite cette application?</string>
@@ -25,7 +34,7 @@
 	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
 		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
 		section of this app!</string>
-	<string name="intro_04_title">Restez motivé avec les notifications</string>
+	<string name="intro_04_title">Voilà!</string>
 	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
 		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
 		using.\n\nThis helps you stay on track without having to open the app!</string>
@@ -65,8 +74,8 @@
 	<string name="fast_status_not_fasting">Vous ne jeûnez pas</string>
 	<string name="next_stage">Prochaine étape à: %1$d heures</string>
 	<string name="start_fast_button_advanced">*</string>
-	<string name="log_entry_started">%1$s</string>
-	<string name="log_entry_length">%1$d hours</string>
+	<string name="log_entry_started">Démarré : %1$s</string>
+	<string name="log_entry_length">Longueur : %1$d heures</string>
 	<string name="log_entry_ketosis">Ketosis : %1$d heures</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
 	<string name="profile_age_label">Âge</string>
@@ -182,8 +191,8 @@
 	<string name="info_page_title_info">Infos</string>
 	<string name="info_page_title_tips">Conseils</string>
 	<string name="title_activity_info">Infos de jeûne</string>
-	<string name="log_total_autophagy">🧬 Autophagy:</string>
-	<string name="log_total_ketosis">🔥 Ketosis:</string>
+	<string name="log_total_autophagy">Autophagie totale:</string>
+	<string name="log_total_ketosis">Ketosis total:</string>
 	<string name="log_total_hours">%1$d hours</string>
 	<string name="profile_metric_switch">Métrique</string>
 	<string name="title_activity_intro">Introduction</string>
