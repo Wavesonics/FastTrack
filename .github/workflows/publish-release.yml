@@ -133,7 +133,7 @@ jobs:
   publish-play-store:
     name: Publish to Play Store
     runs-on: ubuntu-latest
-    needs: build-and-test
+    needs: publish-github-release
 
     steps:
       - name: Checkout code
@@ -171,14 +171,3 @@ jobs:
 
       - name: Deploy to Play Store
         run: fastlane deploy
-
-  notify:
-    needs: publish-play-store
-    runs-on: ubuntu-latest
-    steps:
-      - name: Discord notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@master
-        with:
-          args: '**New FastTrack release:** {{ EVENT_PAYLOAD.release.name }} \n\n **Download Here:** \n\n {{ EVENT_PAYLOAD.release.html_url }}'
