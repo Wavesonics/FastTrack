@@ -25,9 +25,11 @@ locally.
 
 ## Development
 
-FastTrack is not in active development; however, I will fix bugs if they are reported. If you have some neat feature
-you'd like to contribute, open an issue to discuss it.
+FastTrack is in active development; feel free to log bugs, request features, and join our [Discord community](https://discord.gg/ju2RQa5x8W)!
 
+Pull requests are very much welcomed, feel free to open an issue to discuss it first though to make sure it is a direction we want to go.
+
+#### Releasing
 See [docs](docs/HOW-TO-RELEASE.md) on how to publish a new release.
 
 ## 🪨 Dark Rock Studios
