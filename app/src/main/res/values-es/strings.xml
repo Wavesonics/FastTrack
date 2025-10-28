@@ -3,7 +3,7 @@
 	<string name="action_info">Información</string>
 	<string name="action_share">Compartir</string>
 	<string name="action_about">Acerca de</string>
-	<string name="app_name">Vía Rápida</string>
+	<string name="app_name">Fast Track</string>
 	<string name="intro_01_title">Ayuda Motivacional</string>
 	<string name="intro_00_title">¡Bienvenido a Fast Track!</string>
 	<string name="intro_00_description">¿De qué se trata esta aplicación?</string>
@@ -49,7 +49,7 @@
 	<string name="next_stage">Siguiente etapa en: %1$d horas</string>
 	<string name="fast_status_not_fasting">No estás ayunando.</string>
 	<string name="log_entry_started">Iniciado: %1$s</string>
-	<string name="log_entry_length">Duración: %1$d horas</string>
+	<string name="log_entry_length">%1$d horas</string>
 	<string name="log_entry_ketosis">Cetosis: %1$d horas</string>
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_autophagy">Autofagia: %1$d horas</string>

@@ -35,6 +35,7 @@ fun FastingScreenPreview(
 	autophagyStageState: StageState = StageState.NotStarted,
 	alertsEnabled: Boolean = true,
 	darkTheme: Boolean = false,
+	showGradientBackground: Boolean = true,
 ) {
 	val initialState = IFastingViewModel.FastingUiState(
 		isFasting = isFasting,
@@ -51,6 +52,7 @@ fun FastingScreenPreview(
 		ketosisStageState = ketosisStageState,
 		autophagyStageState = autophagyStageState,
 		alertsEnabled = alertsEnabled,
+		showGradientBackground = showGradientBackground,
 	)
 
 	val viewModel = FakeFastingViewModel(initialState)
@@ -129,6 +131,32 @@ private fun FastingScreenPreviewFatBurning() {
 }
 
 @Preview(
+	name = "Fasting Screen - Small Screen",
+	showBackground = true,
+	widthDp = 300,
+	heightDp = 512
+)
+@Composable
+private fun FastingScreenPreviewSmallScreen() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+	)
+}
+
+@Preview(
 	name = "Fasting Screen - Fat Burning Phase (Dark)",
 	showBackground = true,
 	widthDp = 360,
@@ -153,6 +181,62 @@ private fun FastingScreenPreviewFatBurningDark() {
 		autophagyStageState = StageState.StartedInactive,
 		alertsEnabled = true,
 		darkTheme = true
+	)
+}
+
+@Preview(
+	name = "Fasting Screen - No Background - Fat Burning Phase",
+	showBackground = true,
+	widthDp = 360,
+	heightDp = 640
+)
+@Composable
+private fun FastingScreenPreviewFatBurningNoBackground() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+		showGradientBackground = false
+	)
+}
+
+@Preview(
+	name = "Fasting Screen - No Background - Fat Burning Phase (Dark)",
+	showBackground = true,
+	widthDp = 360,
+	heightDp = 640,
+	uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun FastingScreenPreviewFatBurningDarkNoBackground() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+		darkTheme = true,
+		showGradientBackground = false,
 	)
 }
 
@@ -241,7 +325,8 @@ private fun FastingScreenPreviewAutophagy() {
 	showBackground = true,
 	widthDp = 360,
 	heightDp = 640,
-	uiMode = Configuration.UI_MODE_NIGHT_YES
+	uiMode = Configuration.UI_MODE_NIGHT_YES,
+	locale = "es"
 )
 @Composable
 private fun FastingScreenPreviewAutophagyDark() {
@@ -326,6 +411,32 @@ private fun FastingScreenPreviewDebugModeDark() {
 )
 @Composable
 private fun FastingScreenPreviewTablet() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Autophagy",
+		stageDescription = "Your cells are recycling old components and damaged proteins.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 48.0,
+		timerText = "48:00:00",
+		milliseconds = "0",
+		fatBurnTime = "36:00:00",
+		ketosisTime = "30:00:00",
+		autophagyTime = "12:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedActive,
+		autophagyStageState = StageState.StartedActive,
+		alertsEnabled = true,
+	)
+}
+
+@Preview(
+	name = "Fasting Screen - Tablet Landscape",
+	showBackground = true,
+	widthDp = 800,
+	heightDp = 600
+)
+@Composable
+private fun FastingScreenPreviewTabletLandscape() {
 	FastingScreenPreview(
 		isFasting = true,
 		stageTitle = "Autophagy",
@@ -431,7 +542,7 @@ class FakeFastingViewModel(state: IFastingViewModel.FastingUiState) : IFastingVi
 	override fun onCreate() {}
 	override fun updateUi() {}
 	override fun startFast(timeStartedMills: Instant?) {}
-	override fun endFast() {}
+	override fun endFast(timeEnded: Instant?) {}
 	override fun setAlertsEnabled(enabled: Boolean) {}
 	override fun setupAlerts() {}
 	override fun debugIncreaseFastingTimeByOneHour() {}

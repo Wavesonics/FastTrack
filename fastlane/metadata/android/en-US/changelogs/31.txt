@@ -1,0 +1,3 @@
+- Updated About
+- Updated libraries
+- Italian translation improvement (thanks LucaCerina!)

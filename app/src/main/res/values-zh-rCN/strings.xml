@@ -63,8 +63,8 @@
 	<string name="next_stage">下一个阶段在：%1$d 小时后</string>
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">开始：%1$s</string>
-	<string name="log_entry_length">%1$d 小时</string>
 	<string name="log_entry_ketosis">%1$d 小时</string>
+	<string name="log_entry_length">%1$d 小时</string>
 	<string name="log_entry_autophagy">自噬：%1$d 小时</string>
 	<string name="profile_age_label">年龄</string>
 	<string name="profile_age_years">年</string>

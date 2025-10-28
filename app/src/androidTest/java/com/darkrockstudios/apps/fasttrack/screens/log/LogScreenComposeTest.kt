@@ -115,11 +115,26 @@ class LogScreenComposeTest {
 			.assertCountEquals(1)
 
 		// Verify entries exist by checking for their length values
-		composeTestRule.onAllNodesWithText(context.getString(R.string.log_entry_length, 24))
+		composeTestRule.onAllNodesWithText(
+			"⏱️ " + context.getString(
+				R.string.log_entry_length,
+				entry1.length.inWholeHours
+			)
+		)
 			.assertCountEquals(1)
-		composeTestRule.onAllNodesWithText(context.getString(R.string.log_entry_length, 16))
+		composeTestRule.onAllNodesWithText(
+			"⏱️ " + context.getString(
+				R.string.log_entry_length,
+				entry2.length.inWholeHours
+			)
+		)
 			.assertCountEquals(1)
-		composeTestRule.onAllNodesWithText(context.getString(R.string.log_entry_length, 32))
+		composeTestRule.onAllNodesWithText(
+			"⏱️ " + context.getString(
+				R.string.log_entry_length,
+				entry3.length.inWholeHours
+			)
+		)
 			.assertCountEquals(1)
 	}
 

@@ -80,10 +80,13 @@ fun MainScreen(
 	onAboutClick: () -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit,
+	onSettingsClick: () -> Unit,
 	externalRequests: ExternalRequests = ExternalRequests(),
 ) {
 	val pagerState =
-		rememberPagerState(initialPage = ScreenPages.Fasting.ordinal, pageCount = { ScreenPages.entries.size })
+		rememberPagerState(
+			initialPage = ScreenPages.Fasting.ordinal,
+			pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
 	var showMenu by remember { mutableStateOf(false) }
@@ -158,6 +161,14 @@ fun MainScreen(
 							text = { Text(stringResource(id = R.string.action_about)) },
 							onClick = {
 								onAboutClick()
+								showMenu = false
+							},
+						)
+
+						DropdownMenuItem(
+							text = { Text(stringResource(id = R.string.action_settings)) },
+							onClick = {
+								onSettingsClick()
 								showMenu = false
 							},
 						)
@@ -241,9 +252,11 @@ fun MainScreen(
 	) { paddingValues ->
 		if (compactHeight) {
 
-			Row(modifier = Modifier
-				.padding(top = paddingValues.calculateTopPadding())
-				.fillMaxSize()) {
+			Row(
+				modifier = Modifier
+					.padding(top = paddingValues.calculateTopPadding())
+					.fillMaxSize()
+			) {
 				NavigationRail {
 					NavigationRailItem(
 						icon = {

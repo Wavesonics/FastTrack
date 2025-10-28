@@ -1,10 +1,34 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TimePicker
+import androidx.compose.material3.getSelectedDate
+import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.rememberTimePickerState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -13,12 +37,15 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
-import com.darkrockstudios.apps.fasttrack.utils.PastAndTodaySelectableDates
+import com.darkrockstudios.apps.fasttrack.utils.DateRangeSelectableDates
 import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.atStartOfDayIn
 import kotlinx.datetime.toInstant
-import java.util.*
+import kotlinx.datetime.toLocalDateTime
+import java.util.Calendar
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -45,23 +72,90 @@ fun DateTimePickerDialog(
 	onDateTimeSelected: (Instant) -> Unit,
 	title: String,
 	finishButton: String,
-	state: DateTimePickerDialogState = rememberDateTimePickerDialogState()
+	state: DateTimePickerDialogState = rememberDateTimePickerDialogState(),
+	initialInstant: Instant? = null,
+	minInstant: Instant? = null
 ) {
+	val initialDateTime = remember(initialInstant) {
+		initialInstant?.let { instant ->
+			val kotlinxInstant = Instant.fromEpochMilliseconds(instant.toEpochMilliseconds())
+			kotlinxInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+		}
+	}
+
+	val minDateTime = remember(minInstant) {
+		minInstant?.let { instant ->
+			val kotlinxInstant = Instant.fromEpochMilliseconds(instant.toEpochMilliseconds())
+			kotlinxInstant.toLocalDateTime(TimeZone.currentSystemDefault())
+		}
+	}
+
+	val minDateMillis = remember(minDateTime) {
+		minDateTime?.let { dateTime ->
+			LocalDate(
+				year = dateTime.year,
+				month = dateTime.month,
+				day = dateTime.day
+			).atStartOfDayIn(TimeZone.currentSystemDefault()).toEpochMilliseconds()
+		}
+	}
+
+	val initialDateMillis = remember(initialDateTime) {
+		initialDateTime?.let { dateTime ->
+			LocalDate(
+				year = dateTime.year,
+				month = dateTime.month,
+				day = dateTime.day
+			).atStartOfDayIn(TimeZone.currentSystemDefault()).toEpochMilliseconds()
+		}
+	}
+
 	val datePickerState = rememberDatePickerState(
-		selectableDates = PastAndTodaySelectableDates()
+		initialSelectedDateMillis = initialDateMillis,
+		selectableDates = DateRangeSelectableDates(minDateMillis)
 	)
 
-	val currentTime = Calendar.getInstance()
+	// Use initial time if provided, otherwise use current time
+	val initialHour = initialDateTime?.hour ?: Calendar.getInstance()[Calendar.HOUR_OF_DAY]
+	val initialMinute = initialDateTime?.minute ?: Calendar.getInstance()[Calendar.MINUTE]
+
 	val timePickerState = rememberTimePickerState(
-		initialHour = currentTime[Calendar.HOUR_OF_DAY],
-		initialMinute = currentTime[Calendar.MINUTE],
+		initialHour = initialHour,
+		initialMinute = initialMinute,
 		is24Hour = shouldUse24HourFormat(getContext()),
 	)
 
-	val isNextButtonEnabled = remember(datePickerState.getSelectedDate(), timePickerState) {
+	val isNextButtonEnabled = remember(
+		datePickerState.selectedDateMillis,
+		timePickerState.hour,
+		timePickerState.minute,
+		state.currentStep,
+		minDateTime
+	) {
 		when (state.currentStep) {
 			0 -> datePickerState.selectedDateMillis != null
-			1 -> true
+			1 -> {
+				// Check if selected datetime is valid (not before minDateTime)
+				val selectedDate = datePickerState.getSelectedDate()
+				if (selectedDate != null && minDateTime != null) {
+					// Check if we're on the same day as minDateTime
+					val isSameDay = selectedDate.year == minDateTime.year &&
+							selectedDate.monthValue == minDateTime.monthNumber &&
+							selectedDate.dayOfMonth == minDateTime.dayOfMonth
+
+					if (isSameDay) {
+						// Validate time is not before minDateTime's time
+						val selectedMinutes = timePickerState.hour * 60 + timePickerState.minute
+						val minMinutes = minDateTime.hour * 60 + minDateTime.minute
+						selectedMinutes >= minMinutes
+					} else {
+						// Different day, already validated by date picker
+						true
+					}
+				} else {
+					true
+				}
+			}
 			else -> false
 		}
 	}
@@ -70,7 +164,11 @@ fun DateTimePickerDialog(
 		onDismissRequest = onDismiss,
 		properties = DialogProperties(usePlatformDefaultWidth = false),
 	) {
-		Card {
+		Card(
+			modifier = Modifier
+				.widthIn(max = 600.dp)
+				.heightIn(max = 800.dp)
+		) {
 			Column(
 				verticalArrangement = Arrangement.Center,
 				horizontalAlignment = Alignment.CenterHorizontally

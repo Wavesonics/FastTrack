@@ -10,10 +10,8 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -159,6 +157,25 @@ private fun LogScreenPreviewTabletDark() {
 
 @ExperimentalTime
 @Preview(
+	name = "Log Screen - Tablet Landscape (Dark)",
+	showBackground = true,
+	widthDp = 2000,
+	heightDp = 1024,
+	uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun LogScreenPreviewLargeTabletDark() {
+	LogScreenPreview(
+		entries = entries,
+		totalKetosisHours = 52,
+		totalAutophagyHours = 24,
+		showManualAddDialog = false,
+		darkTheme = true
+	)
+}
+
+@ExperimentalTime
+@Preview(
 	name = "Log Screen - Landscape Phone",
 	showBackground = true,
 	widthDp = 640,
@@ -245,7 +262,7 @@ class FakeLogViewModel(state: ILogViewModel.LogUiState) : ILogViewModel {
 	override val uiState = MutableStateFlow(state).asStateFlow()
 	override fun deleteFast(item: FastingLogEntry) {}
 	override fun showManualAddDialog() {}
+	override fun showEditDialog(entry: FastingLogEntry) {}
 	override fun hideManualAddDialog() {}
-	override fun addEntry(startTime: LocalDateTime, length: Duration) {}
 	override fun loadEntries() {}
 }

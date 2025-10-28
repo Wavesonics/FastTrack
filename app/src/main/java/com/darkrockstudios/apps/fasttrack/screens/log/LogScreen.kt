@@ -1,7 +1,5 @@
 package com.darkrockstudios.apps.fasttrack.screens.log
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,23 +9,19 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
-import com.darkrockstudios.apps.fasttrack.utils.formatAs
+import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 import org.koin.compose.viewmodel.koinViewModel
-import kotlin.math.roundToInt
-import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -55,69 +49,87 @@ fun LogScreen(
 	Box(
 		modifier = Modifier
 			.fillMaxSize()
-			.background(MaterialTheme.colorScheme.background)
 	) {
-		Column(
+		val direction = LocalLayoutDirection.current
+		LazyColumn(
 			modifier = Modifier
-				.fillMaxSize()
-				.padding(16.dp)
+				.fillMaxHeight()
+				.widthIn(max = MAX_COLUMN_WIDTH)
+				.align(Alignment.Center)
+				.padding(16.dp),
+			contentPadding = PaddingValues(
+				top = contentPaddingValues.calculateTopPadding(),
+				start = contentPaddingValues.calculateStartPadding(direction),
+				end = contentPaddingValues.calculateEndPadding(direction),
+				bottom = contentPaddingValues.calculateBottomPadding(),
+			),
 		) {
-			// Total Ketosis and Autophagy Hours
-			Column(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(top = contentPaddingValues.calculateTopPadding()),
-
-			) {
-				// Total Ketosis
-				Row {
-					Text(
-						text = stringResource(id = R.string.log_total_ketosis),
-						style = MaterialTheme.typography.bodyLarge,
-						color = MaterialTheme.colorScheme.onBackground,
+			item {
+				Text(
+					stringResource(R.string.log_stats_label),
+					style = MaterialTheme.typography.labelLarge,
+					color = MaterialTheme.colorScheme.onSurfaceVariant,
+					modifier = Modifier.padding(bottom = 8.dp)
+				)
+			}
+			item {
+				// Total Ketosis and Autophagy Hours
+				Row(
+					modifier = Modifier
+						.fillMaxWidth()
+						.padding(bottom = 16.dp),
+					horizontalArrangement = Arrangement.spacedBy(12.dp)
+				) {
+					StatCard(
+						title = stringResource(id = R.string.log_total_ketosis),
+						valueText = stringResource(
+							id = R.string.log_total_hours,
+							uiState.totalKetosisHours
+						),
+						modifier = Modifier.weight(1f)
 					)
-					Spacer(modifier = Modifier.width(8.dp))
-					Text(
-						text = stringResource(id = R.string.log_total_hours, uiState.totalKetosisHours),
-						style = MaterialTheme.typography.headlineSmall,
-						color = MaterialTheme.colorScheme.onBackground,
-					)
-				}
-
-				// Total Autophagy
-				Row {
-					Text(
-						text = stringResource(id = R.string.log_total_autophagy),
-						style = MaterialTheme.typography.bodyLarge,
-						color = MaterialTheme.colorScheme.onBackground,
-					)
-					Spacer(modifier = Modifier.width(8.dp))
-					Text(
-						text = stringResource(id = R.string.log_total_hours, uiState.totalAutophagyHours),
-						style = MaterialTheme.typography.headlineSmall,
-						color = MaterialTheme.colorScheme.onBackground,
+					StatCard(
+						title = stringResource(id = R.string.log_total_autophagy),
+						valueText = stringResource(
+							id = R.string.log_total_hours,
+							uiState.totalAutophagyHours
+						),
+						modifier = Modifier.weight(1f)
 					)
 				}
 			}
 
-			Spacer(modifier = Modifier.height(16.dp))
-			val direction = LocalLayoutDirection.current
-			LazyColumn(
-				modifier = Modifier
-					.fillMaxWidth()
-					.weight(1f),
-				contentPadding = PaddingValues(
-					start = contentPaddingValues.calculateStartPadding(direction),
-					end = contentPaddingValues.calculateEndPadding(direction),
-					bottom = contentPaddingValues.calculateBottomPadding(),
-				),
-			) {
+			item {
+				Text(
+					stringResource(R.string.log_logbook_label),
+					style = MaterialTheme.typography.labelLarge,
+					color = MaterialTheme.colorScheme.onSurfaceVariant,
+					modifier = Modifier.padding(bottom = 8.dp)
+				)
+			}
+
+			if (uiState.entries.isNotEmpty()) {
 				items(uiState.entries, key = { it.id }) { entry ->
 					FastEntryItem(
 						entry = entry,
-						onLongClick = {
+						onEdit = {
+							viewModel.showEditDialog(entry)
+						},
+						onDelete = {
 							entryToDelete = entry
 						}
+					)
+				}
+			} else {
+				item {
+					Text(
+						stringResource(R.string.log_no_entries),
+						style = MaterialTheme.typography.bodyMedium,
+						color = MaterialTheme.colorScheme.onSurfaceVariant,
+						modifier = Modifier
+							.fillMaxWidth()
+							.padding(bottom = 8.dp),
+						textAlign = TextAlign.Center
 					)
 				}
 			}
@@ -141,10 +153,11 @@ fun LogScreen(
 			)
 		}
 
-		// Manual Add Dialog
+		// Manual Add/Edit Dialog
 		if (uiState.showManualAddDialog) {
 			ManualAddDialog(
 				onDismiss = { viewModel.hideManualAddDialog() },
+				entryToEdit = uiState.entryToEdit
 			)
 		}
 	}
@@ -187,72 +200,31 @@ private fun ConfirmDelete(
 	}
 }
 
-@ExperimentalTime
+
 @Composable
-fun FastEntryItem(
-	entry: FastingLogEntry,
-	onLongClick: () -> Unit
+private fun StatCard(
+	title: String,
+	valueText: String,
+	modifier: Modifier = Modifier,
 ) {
-	Card(
-		modifier = Modifier
-			.fillMaxWidth()
-			.padding(bottom = 8.dp)
-			.pointerInput(Unit) {
-				detectTapGestures(
-					onLongPress = { onLongClick() }
-				)
-			},
-		colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-		elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+	ElevatedCard(
+		modifier = modifier,
 	) {
 		Column(
 			modifier = Modifier
 				.fillMaxWidth()
-				.padding(16.dp)
+				.padding(16.dp),
+			verticalArrangement = Arrangement.spacedBy(6.dp)
 		) {
-			val hours = entry.length.toDouble(DurationUnit.HOURS).roundToInt()
-
-			// Calculate ketosis hours
-			val ketosisStart = Stages.PHASE_KETOSIS.hours.toDouble()
-			val lenHours = entry.length.toDouble(DurationUnit.HOURS)
-			val ketosisHours = if (lenHours > ketosisStart) {
-				(lenHours - ketosisStart).roundToInt()
-			} else {
-				0
-			}
-
-			// Calculate autophagy hours
-			val autophagyStart = Stages.PHASE_AUTOPHAGY.hours.toDouble()
-			val autophagyHours = if (lenHours > autophagyStart) {
-				(lenHours - autophagyStart).roundToInt()
-			} else {
-				0
-			}
-
-			val dateStr = remember(entry.start) {
-				entry.start.formatAs("d MMM uuuu - HH:mm")
-			}
-
 			Text(
-				text = stringResource(id = R.string.log_entry_started, dateStr),
-				style = MaterialTheme.typography.titleLarge,
-				color = MaterialTheme.colorScheme.onSurface,
+				text = title,
+				style = MaterialTheme.typography.labelLarge,
+				color = MaterialTheme.colorScheme.onSurfaceVariant
 			)
 			Text(
-				text = stringResource(id = R.string.log_entry_length, hours),
-				style = MaterialTheme.typography.headlineSmall,
-				color = MaterialTheme.colorScheme.onSurface,
-				fontWeight = FontWeight.Bold
-			)
-			Text(
-				text = stringResource(id = R.string.log_entry_ketosis, ketosisHours),
-				style = MaterialTheme.typography.titleMedium,
-				color = MaterialTheme.colorScheme.onSurface,
-			)
-			Text(
-				text = stringResource(id = R.string.log_entry_autophagy, autophagyHours),
-				style = MaterialTheme.typography.titleMedium,
-				color = MaterialTheme.colorScheme.onSurface,
+				text = valueText,
+				style = MaterialTheme.typography.headlineMedium,
+				color = MaterialTheme.colorScheme.onSurface
 			)
 		}
 	}

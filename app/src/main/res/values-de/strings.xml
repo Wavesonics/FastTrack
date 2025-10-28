@@ -50,7 +50,7 @@
 	<string name="start_fast_button_advanced">*</string>
 	<string name="next_stage">Nächste Stufe in: %1$d Stunden</string>
 	<string name="log_entry_started">Gestartet: %1$s</string>
-	<string name="log_entry_length">Länge: %1$d Stunden</string>
+	<string name="log_entry_length">%1$d Stunden</string>
 	<string name="log_entry_ketosis">Ketose: %1$d Stunden</string>
 	<string name="log_entry_autophagy">Autophagie: %1$d Stunden</string>
 	<string name="profile_age_label">Alter</string>

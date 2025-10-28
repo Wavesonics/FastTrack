@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.darkrockstudios.apps.fasttrack.AlertService
+import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -36,14 +37,23 @@ class FastingViewModel(
 
 	private val _uiState = MutableStateFlow(
 		IFastingViewModel.FastingUiState(
-			isFasting = repository.isFasting()
+			isFasting = repository.isFasting(),
+			showGradientBackground = settingsDatasource.getShowFancyBackground(),
 		)
 	)
 	override val uiState: StateFlow<IFastingViewModel.FastingUiState> = _uiState.asStateFlow()
 
 	override fun onCreate() {
 		_uiState.update { it.copy(alertsEnabled = settingsDatasource.getFastingAlerts()) }
+
+		viewModelScope.launch {
+			settingsDatasource.showFancyBackgroundFlow().collect { enabled ->
+				_uiState.update { state -> state.copy(showGradientBackground = enabled) }
+			}
+		}
+
 		updateUi()
+		setupFastingNotification()
 	}
 
 	override fun updateUi() {
@@ -110,11 +120,12 @@ class FastingViewModel(
 			updateTimerView(elapsedTime)
 			updatePhases(elapsedTime)
 
-			_uiState.update { it.copy(elapsedTime = elapsedTime) }
+			_uiState.update { it.copy(elapsedTime = elapsedTime, fastStartTime = fastStart) }
 		} else {
 			_uiState.update {
 				it.copy(
 					elapsedTime = null,
+					fastStartTime = null,
 					elapsedHours = 0.0
 				)
 			}
@@ -140,20 +151,16 @@ class FastingViewModel(
 	private fun updatePhases(elapsedTime: Duration) {
 		val currentStage = Stages.getCurrentPhase(elapsedTime)
 
-		// Update elapsed hours for the gauge
 		_uiState.update { it.copy(elapsedHours = elapsedTime.inWholeHours.toDouble()) }
 
-		// Handle Fat burning
 		val fatBurnTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_FAT_BURN, elapsedTime)
 
-		// Handle Ketosis
 		val ketosisTimeAndState = if (currentStage.fatBurning) {
 			getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
 		} else {
 			Pair("--:--:--", IFastingViewModel.StageState.StartedInactive)
 		}
 
-		// Handle Autophagy
 		val autophagyTimeAndState = if (currentStage.ketosis) {
 			getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
 		} else {
@@ -207,6 +214,7 @@ class FastingViewModel(
 
 			updateUi()
 			setupAlerts()
+			setupFastingNotification()
 			updateWidgets()
 
 			Napier.i("Started fast!")
@@ -215,9 +223,9 @@ class FastingViewModel(
 		}
 	}
 
-	override fun endFast() {
+	override fun endFast(timeEnded: Instant?) {
 		if (repository.isFasting()) {
-			repository.endFast()
+			repository.endFast(timeEnded)
 
 			viewModelScope.launch(Dispatchers.IO) { saveFastToLog(repository.getFastStart(), repository.getFastEnd()) }
 
@@ -225,6 +233,7 @@ class FastingViewModel(
 
 			updateUi()
 			setupAlerts()
+			setupFastingNotification()
 			updateWidgets()
 		} else {
 			Napier.w("Cannot end fast, there is none started")
@@ -256,6 +265,19 @@ class FastingViewModel(
 		}
 	}
 
+	private fun setupFastingNotification() {
+		val shouldShowNotification = settingsDatasource.getShowFastingNotification()
+
+		if (repository.isFasting() && shouldShowNotification) {
+			val elapsedTime = repository.getElapsedFastTime()
+			FastingNotificationManager.postFastingNotification(appContext, elapsedTime)
+			AlertService.scheduleHourlyUpdate(appContext)
+		} else {
+			FastingNotificationManager.cancelFastingNotification(appContext)
+			AlertService.cancelHourlyUpdates(appContext)
+		}
+	}
+
 	override fun debugIncreaseFastingTimeByOneHour() {
 		if (repository.isFasting()) {
 
@@ -267,6 +289,7 @@ class FastingViewModel(
 
 				updateUi()
 				updateWidgets()
+				setupFastingNotification()
 
 				Napier.d("Debug: Increased fasting time by 1 hour")
 			}

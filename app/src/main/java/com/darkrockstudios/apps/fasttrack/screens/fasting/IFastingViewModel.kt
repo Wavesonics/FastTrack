@@ -12,6 +12,7 @@ interface IFastingViewModel {
 	data class FastingUiState(
 		val isFasting: Boolean = false,
 		val elapsedTime: Duration? = null,
+		val fastStartTime: Instant? = null,
 		val stageTitle: String = "",
 		val stageDescription: String = "",
 		val energyMode: String = "",
@@ -24,7 +25,8 @@ interface IFastingViewModel {
 		val elapsedHours: Double = 0.0,
 		val milliseconds: String = "00",
 		val timerText: String = "00:00:00",
-		val alertsEnabled: Boolean = true
+		val alertsEnabled: Boolean = true,
+		val showGradientBackground: Boolean = true,
 	)
 
 	val uiState: StateFlow<FastingUiState>
@@ -32,7 +34,7 @@ interface IFastingViewModel {
 	fun onCreate()
 	fun updateUi()
 	fun startFast(timeStartedMills: Instant? = null)
-	fun endFast()
+	fun endFast(timeEnded: Instant? = null)
 	fun setAlertsEnabled(enabled: Boolean)
 	fun setupAlerts()
 	fun debugIncreaseFastingTimeByOneHour()

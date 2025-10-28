@@ -6,6 +6,8 @@ Free and Open Source app for tracking Fasting
 [![F-Droid](https://img.shields.io/f-droid/v/com.darkrockstudios.apps.fasttrack?logo=FDROID)](https://f-droid.org/en/packages/com.darkrockstudios.apps.fasttrack/)
 [![GitHub](https://img.shields.io/github/v/release/Wavesonics/FastTrack?include_prereleases&logo=github)](https://github.com/Wavesonics/FastTrack/releases/latest)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d2d0d1911b4648f1857ecde9c71fb441)](https://app.codacy.com/gh/Wavesonics/FastTrack/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Crowdin](https://badges.crowdin.net/fasttrack-android/localized.svg)](https://crowdin.com/project/fasttrack-android)
+
 Intermittent fasting has many benefits! But it can be very hard to stay motivated during a fast.
 
 This is a simple FOSS app intended to help keep you motivated. It is not a medical app and does not provide medical
@@ -27,3 +29,13 @@ FastTrack is not in active development; however, I will fix bugs if they are rep
 you'd like to contribute, open an issue to discuss it.
 
 See [docs](docs/HOW-TO-RELEASE.md) on how to publish a new release.
+
+## 🪨 Dark Rock Studios
+
+[**Dark Rock Studios**](https://darkrock.studio/) is all about building **Free and Open Source Software**.
+
+🐛 Found bugs?  
+💡 Have suggestions?  
+📚 Want to help translate?  
+🎮 Interested in our other apps?  
+👉 Join our community of Open Source enthusiasts on [**Discord**](https://discord.gg/ju2RQa5x8W)!

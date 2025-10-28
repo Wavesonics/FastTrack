@@ -1,6 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
 import android.content.res.Configuration
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -22,8 +24,13 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TooltipAnchorPosition
+import androidx.compose.material3.TooltipBox
+import androidx.compose.material3.TooltipDefaults
+import androidx.compose.material3.rememberTooltipState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -35,14 +42,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.R
@@ -54,7 +60,9 @@ import com.darkrockstudios.apps.fasttrack.ui.theme.Purple700
 import com.darkrockstudios.apps.fasttrack.ui.theme.fastBackgroundGradient
 import com.darkrockstudios.apps.fasttrack.utils.Utils
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Duration.Companion.seconds
 
 private val phaseTextColor_Light = Purple700
 private val phaseTextColor_Dark = Purple100
@@ -85,29 +93,29 @@ fun FastingScreen(
 		viewModel.onCreate()
 	}
 
-	var showDateTimePicker by remember { mutableStateOf(false) }
+	var showStartDateTimePicker by remember { mutableStateOf(false) }
+	var showEndDateTimePicker by remember { mutableStateOf(false) }
 
 	fun onShowStartFastSelector() {
-		if (!viewModel.uiState.value.isFasting) {
+		if (!uiState.isFasting) {
 			AlertDialog.Builder(context)
 				.setTitle(R.string.confirm_start_fast_title)
 				.setPositiveButton(R.string.confirm_start_fast_positive) { _, _ -> viewModel.startFast() }
 				.setNeutralButton(R.string.confirm_start_fast_neutral) { _, _ ->
-					// Show date/time picker dialog
-					showDateTimePicker = true
+					showStartDateTimePicker = true
 				}
 				.setNegativeButton(R.string.confirm_start_fast_negative, null)
 				.show()
 		}
 	}
 
-	if (showDateTimePicker) {
+	if (showStartDateTimePicker) {
 		val dateTimePickerState = rememberDateTimePickerDialogState()
 		DateTimePickerDialog(
-			onDismiss = { showDateTimePicker = false },
+			onDismiss = { showStartDateTimePicker = false },
 			onDateTimeSelected = { selectedDateTime ->
 				viewModel.startFast(selectedDateTime)
-				showDateTimePicker = false
+				showStartDateTimePicker = false
 			},
 			title = stringResource(R.string.already_started_dialog_title),
 			finishButton = stringResource(id = R.string.start_fast_button),
@@ -122,8 +130,27 @@ fun FastingScreen(
 				viewModel.endFast()
 				confetti.start(scope)
 			}
+			.setNeutralButton(R.string.confirm_end_fast_neutral) { _, _ ->
+				showEndDateTimePicker = true
+			}
 			.setNegativeButton(R.string.confirm_end_fast_negative, null)
 			.show()
+	}
+
+	if (showEndDateTimePicker) {
+		val dateTimePickerState = rememberDateTimePickerDialogState()
+		DateTimePickerDialog(
+			onDismiss = { showEndDateTimePicker = false },
+			onDateTimeSelected = { selectedDateTime ->
+				viewModel.endFast(selectedDateTime)
+				showEndDateTimePicker = false
+				confetti.start(scope)
+			},
+			title = stringResource(R.string.already_stopped_dialog_title),
+			finishButton = stringResource(id = R.string.end_fast_button),
+			state = dateTimePickerState,
+			minInstant = uiState.fastStartTime
+		)
 	}
 
 	fun onShowInfoDialog(titleRes: Int, contentRes: Int) {
@@ -175,7 +202,7 @@ fun FastingScreen(
 	Box(
 		modifier = Modifier
 			.fillMaxSize()
-			.fastBackgroundGradient()
+			.fastBackgroundGradient(show = uiState.showGradientBackground)
 			.confettiEffect(confetti)
 			.padding(contentPaddingValues)
 	) {
@@ -220,8 +247,6 @@ fun FastingScreen(
 					modifier = Modifier.fillMaxWidth()
 				)
 
-				Spacer(modifier = Modifier.size(height = 64.dp, width = 1.dp))
-
 				FastDetailsContent(
 					uiState = uiState,
 					onShowInfoDialog = ::onShowInfoDialog,
@@ -240,6 +265,20 @@ private fun FastHeadingContent(
 	uiState: IFastingViewModel.FastingUiState,
 	modifier: Modifier = Modifier
 ) {
+	val scope = rememberCoroutineScope()
+	val tooltipState = rememberTooltipState()
+
+	@StringRes
+	var phaseTooltipResId by remember { mutableStateOf<Int?>(null) }
+
+	LaunchedEffect(tooltipState.isVisible) {
+		if (tooltipState.isVisible) {
+			delay(4.seconds)
+			tooltipState.dismiss()
+			phaseTooltipResId = null
+		}
+	}
+
 	Column(
 		modifier = modifier,
 		horizontalAlignment = Alignment.CenterHorizontally
@@ -254,12 +293,29 @@ private fun FastHeadingContent(
 			modifier = Modifier.padding(bottom = 8.dp)
 		)
 
-		TimeLine(
-			elapsedHours = uiState.elapsedHours,
-			modifier = Modifier
-				.fillMaxWidth()
-				.padding(vertical = 8.dp)
-		)
+		TooltipBox(
+			positionProvider = TooltipDefaults
+				.rememberTooltipPositionProvider(TooltipAnchorPosition.Below),
+			tooltip = {
+				phaseTooltipResId?.let { stringRes ->
+					PlainTooltip { Text(stringResource(stringRes)) }
+				}
+			},
+			state = tooltipState,
+		) {
+			TimeLine(
+				elapsedHours = uiState.elapsedHours,
+				modifier = Modifier
+					.fillMaxWidth()
+					.padding(vertical = 8.dp),
+				onPhaseClick = { phase ->
+					phaseTooltipResId = phase.title
+					scope.launch {
+						tooltipState.show()
+					}
+				}
+			)
+		}
 
 		// Energy Mode
 		Text(
@@ -280,11 +336,13 @@ private fun FastHeadingContent(
 			Text(
 				text = uiState.timerText,
 				style = MaterialTheme.typography.displayLarge,
+				color = MaterialTheme.colorScheme.onBackground,
 				fontWeight = FontWeight.Bold,
 			)
 			Text(
 				text = uiState.milliseconds,
 				style = MaterialTheme.typography.headlineMedium,
+				color = MaterialTheme.colorScheme.onBackground,
 				modifier = Modifier.padding(start = 8.dp, bottom = 4.dp)
 			)
 		}
@@ -302,8 +360,10 @@ private fun FastDetailsContent(
 ) {
 	Column(
 		modifier = modifier,
-		horizontalAlignment = Alignment.CenterHorizontally
+		horizontalAlignment = Alignment.CenterHorizontally,
 	) {
+		Spacer(modifier = Modifier.weight(1f))
+
 		// Phase Information
 		Column(
 			modifier = Modifier
@@ -311,116 +371,41 @@ private fun FastDetailsContent(
 				.padding(bottom = 16.dp)
 		) {
 			// Fat Burn Phase
-			Row(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = 4.dp),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				TextButton(
-					onClick = {
-						onShowInfoDialog(
-							R.string.info_dialog_fat_burn_title,
-							R.string.info_dialog_fat_burn_content
-						)
-					}
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_more_info),
-						tint = phaseTextColor(),
-						contentDescription = null,
-						modifier = Modifier.padding(end = 8.dp)
-					)
-					Text(
-						text = stringResource(id = R.string.fast_fat_burn_label),
-						style = MaterialTheme.typography.headlineMedium,
-						color = phaseTextColor(),
-					)
-				}
-				Text(
-					text = uiState.fatBurnTime,
-					style = MaterialTheme.typography.headlineMedium,
-					color = stageColor(uiState.fatBurnStageState)
-				)
-			}
+			StageInfo(
+				onShowInfoDialog = onShowInfoDialog,
+				titleRes = R.string.info_dialog_fat_burn_title,
+				contentRes = R.string.info_dialog_fat_burn_content,
+				labelRes = R.string.fast_fat_burn_label,
+				timeText = uiState.fatBurnTime,
+				stageState = uiState.fatBurnStageState
+			)
 
 			// Ketosis Phase
-			Row(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = 4.dp),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				TextButton(
-					onClick = {
-						onShowInfoDialog(
-							R.string.info_dialog_ketosis_title,
-							R.string.info_dialog_ketosis_content
-						)
-					}
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_more_info),
-						tint = phaseTextColor(),
-						contentDescription = null,
-						modifier = Modifier.padding(end = 8.dp)
-					)
-					Text(
-						text = stringResource(id = R.string.fast_ketosis_label),
-						style = MaterialTheme.typography.headlineMedium,
-						color = phaseTextColor(),
-					)
-				}
-				Text(
-					text = uiState.ketosisTime,
-					style = MaterialTheme.typography.headlineMedium,
-					color = stageColor(uiState.ketosisStageState)
-				)
-			}
+			StageInfo(
+				onShowInfoDialog = onShowInfoDialog,
+				titleRes = R.string.info_dialog_ketosis_title,
+				contentRes = R.string.info_dialog_ketosis_content,
+				labelRes = R.string.fast_ketosis_label,
+				timeText = uiState.ketosisTime,
+				stageState = uiState.ketosisStageState
+			)
 
 			// Autophagy Phase
-			Row(
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = 4.dp),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				TextButton(
-					onClick = {
-						onShowInfoDialog(
-							R.string.info_dialog_autophagy_title,
-							R.string.info_dialog_autophagy_content
-						)
-					}
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_more_info),
-						tint = phaseTextColor(),
-						contentDescription = null,
-						modifier = Modifier.padding(end = 8.dp)
-					)
-					Text(
-						text = stringResource(id = R.string.fast_autophagy_label),
-						style = MaterialTheme.typography.headlineMedium,
-						color = phaseTextColor(),
-					)
-				}
-				Text(
-					text = uiState.autophagyTime,
-					style = MaterialTheme.typography.headlineMedium,
-					color = stageColor(uiState.autophagyStageState)
-				)
-			}
+			StageInfo(
+				onShowInfoDialog = onShowInfoDialog,
+				titleRes = R.string.info_dialog_autophagy_title,
+				contentRes = R.string.info_dialog_autophagy_content,
+				labelRes = R.string.fast_autophagy_label,
+				timeText = uiState.autophagyTime,
+				stageState = uiState.autophagyStageState
+			)
 		}
 
 		// Stage Description
 		Box(
 			modifier = Modifier
-				.weight(1f)
 				.fillMaxWidth()
+				.weight(1f)
 				.verticalScroll(rememberScrollState())
 		) {
 			Text(
@@ -431,10 +416,11 @@ private fun FastDetailsContent(
 			)
 		}
 
-		// Bottom Controls
+		// Bottom Controls Row
 		Row(
 			modifier = Modifier
 				.fillMaxWidth()
+				.wrapContentHeight()
 				.padding(top = 16.dp),
 			horizontalArrangement = Arrangement.SpaceBetween,
 			verticalAlignment = Alignment.CenterVertically
@@ -459,7 +445,8 @@ private fun FastDetailsContent(
 			if (BuildConfig.DEBUG) {
 				FloatingActionButton(
 					onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
-					modifier = Modifier.padding(end = 16.dp)
+					modifier = Modifier
+						.padding(end = 16.dp)
 				) {
 					Icon(
 						imageVector = Icons.Default.Add,
@@ -471,7 +458,7 @@ private fun FastDetailsContent(
 			// Start/Stop Button
 			if (uiState.isFasting) {
 				FloatingActionButton(
-					onClick = onShowEndFastConfirmation
+					onClick = onShowEndFastConfirmation,
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_fast_stop),
@@ -480,7 +467,7 @@ private fun FastDetailsContent(
 				}
 			} else {
 				FloatingActionButton(
-					onClick = onShowStartFastSelector
+					onClick = onShowStartFastSelector,
 				) {
 					Icon(
 						painter = painterResource(id = R.drawable.ic_start_fast),
@@ -493,14 +480,55 @@ private fun FastDetailsContent(
 }
 
 @Composable
+private fun StageInfo(
+	onShowInfoDialog: (Int, Int) -> Unit,
+	titleRes: Int,
+	contentRes: Int,
+	labelRes: Int,
+	timeText: String,
+	stageState: IFastingViewModel.StageState
+) {
+	Row(
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(vertical = 4.dp),
+		horizontalArrangement = Arrangement.SpaceBetween,
+		verticalAlignment = Alignment.CenterVertically
+	) {
+		TextButton(
+			modifier = Modifier.weight(1f),
+			onClick = { onShowInfoDialog(titleRes, contentRes) }
+		) {
+			Icon(
+				painter = painterResource(id = R.drawable.ic_more_info),
+				tint = phaseTextColor(),
+				contentDescription = null,
+				modifier = Modifier.padding(end = 8.dp)
+			)
+			Text(
+				text = stringResource(id = labelRes),
+				style = MaterialTheme.typography.headlineSmall,
+				color = phaseTextColor(),
+				maxLines = 1,
+				softWrap = false,
+				overflow = TextOverflow.Ellipsis,
+				modifier = Modifier.weight(1f)
+			)
+		}
+		Text(
+			text = timeText,
+			style = MaterialTheme.typography.headlineMedium,
+			color = stageColor(stageState),
+			maxLines = 1,
+			softWrap = false,
+			overflow = TextOverflow.Visible,
+		)
+	}
+}
+
+@Composable
 private fun stageColor(stageState: IFastingViewModel.StageState): Color = when (stageState) {
 	IFastingViewModel.StageState.StartedActive -> Color.Green
 	IFastingViewModel.StageState.StartedInactive -> Color.Red
-	IFastingViewModel.StageState.NotStarted -> Color.White
+	IFastingViewModel.StageState.NotStarted -> MaterialTheme.colorScheme.onBackground
 }
-
-private val stageDropShadow = Shadow(
-	color = Color.White.copy(alpha = 0.5f),
-	offset = Offset(1f, 1f),
-	blurRadius = 1f
-)
