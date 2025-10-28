@@ -4,7 +4,7 @@ versionName = "4.0.2"
 
 kotlin = "2.2.21"
 javaVersion = "17"
-agp = "8.13.0"
+agp = "8.12.0"
 targetSdk = "36"
 compileSdk = "36"
 minSdk = "26"

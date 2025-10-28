@@ -1,34 +1,12 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TimePicker
-import androidx.compose.material3.getSelectedDate
-import androidx.compose.material3.rememberDatePickerState
-import androidx.compose.material3.rememberTimePickerState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -39,13 +17,9 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
 import com.darkrockstudios.apps.fasttrack.utils.DateRangeSelectableDates
 import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.*
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.atStartOfDayIn
-import kotlinx.datetime.toInstant
-import kotlinx.datetime.toLocalDateTime
-import java.util.Calendar
+import java.util.*
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
@@ -168,6 +142,7 @@ fun DateTimePickerDialog(
 			modifier = Modifier
 				.widthIn(max = 600.dp)
 				.heightIn(max = 800.dp)
+				.verticalScroll(rememberScrollState())
 		) {
 			Column(
 				verticalArrangement = Arrangement.Center,
@@ -176,7 +151,7 @@ fun DateTimePickerDialog(
 				// Header with title and close button
 				Row(
 					modifier = Modifier
-						.padding(16.dp)
+						.padding(start = 16.dp)
 						.fillMaxWidth(),
 					horizontalArrangement = Arrangement.SpaceBetween,
 					verticalAlignment = Alignment.CenterVertically
@@ -193,7 +168,7 @@ fun DateTimePickerDialog(
 					}
 				}
 
-				Spacer(modifier = Modifier.height(16.dp))
+				Spacer(modifier = Modifier.height(8.dp))
 
 				when (state.currentStep) {
 					0 -> {
@@ -209,11 +184,9 @@ fun DateTimePickerDialog(
 					}
 				}
 
-				Spacer(modifier = Modifier.height(16.dp))
-
 				Row(
 					modifier = Modifier
-						.padding(16.dp)
+						.padding(8.dp)
 						.fillMaxWidth(),
 					horizontalArrangement = Arrangement.End
 				) {

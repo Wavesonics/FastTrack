@@ -44,8 +44,6 @@ class FastingViewModel(
 	override val uiState: StateFlow<IFastingViewModel.FastingUiState> = _uiState.asStateFlow()
 
 	override fun onCreate() {
-		_uiState.update { it.copy(alertsEnabled = settingsDatasource.getFastingAlerts()) }
-
 		viewModelScope.launch {
 			settingsDatasource.showFancyBackgroundFlow().collect { enabled ->
 				_uiState.update { state -> state.copy(showGradientBackground = enabled) }
@@ -238,12 +236,6 @@ class FastingViewModel(
 		} else {
 			Napier.w("Cannot end fast, there is none started")
 		}
-	}
-
-	override fun setAlertsEnabled(enabled: Boolean) {
-		settingsDatasource.setFastingAlerts(enabled)
-		_uiState.update { it.copy(alertsEnabled = enabled) }
-		setupAlerts()
 	}
 
 	override fun setupAlerts() {

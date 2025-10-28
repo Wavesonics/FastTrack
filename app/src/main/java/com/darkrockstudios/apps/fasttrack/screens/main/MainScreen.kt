@@ -2,13 +2,7 @@ package com.darkrockstudios.apps.fasttrack.screens.main
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -16,28 +10,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.NavigationRailItem
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.*
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -78,8 +54,6 @@ fun MainScreen(
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
-	onExportClick: () -> Unit,
-	onImportClick: () -> Unit,
 	onSettingsClick: () -> Unit,
 	externalRequests: ExternalRequests = ExternalRequests(),
 ) {
@@ -169,22 +143,6 @@ fun MainScreen(
 							text = { Text(stringResource(id = R.string.action_settings)) },
 							onClick = {
 								onSettingsClick()
-								showMenu = false
-							},
-						)
-
-						DropdownMenuItem(
-							text = { Text(stringResource(id = R.string.action_export)) },
-							onClick = {
-								onExportClick()
-								showMenu = false
-							},
-						)
-
-						DropdownMenuItem(
-							text = { Text(stringResource(id = R.string.action_import)) },
-							onClick = {
-								onImportClick()
 								showMenu = false
 							},
 						)

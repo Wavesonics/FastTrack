@@ -51,7 +51,6 @@ fun FastingScreenPreview(
 		fatBurnStageState = fatBurnStageState,
 		ketosisStageState = ketosisStageState,
 		autophagyStageState = autophagyStageState,
-		alertsEnabled = alertsEnabled,
 		showGradientBackground = showGradientBackground,
 	)
 
@@ -543,7 +542,6 @@ class FakeFastingViewModel(state: IFastingViewModel.FastingUiState) : IFastingVi
 	override fun updateUi() {}
 	override fun startFast(timeStartedMills: Instant?) {}
 	override fun endFast(timeEnded: Instant?) {}
-	override fun setAlertsEnabled(enabled: Boolean) {}
 	override fun setupAlerts() {}
 	override fun debugIncreaseFastingTimeByOneHour() {}
 }

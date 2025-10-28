@@ -3,43 +3,13 @@ package com.darkrockstudios.apps.fasttrack.screens.fasting
 import android.content.res.Configuration
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.PlainTooltip
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TooltipAnchorPosition
-import androidx.compose.material3.TooltipBox
-import androidx.compose.material3.TooltipDefaults
-import androidx.compose.material3.rememberTooltipState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -55,28 +25,12 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.confetti.ConfettiState
 import com.darkrockstudios.apps.fasttrack.screens.confetti.confettiEffect
 import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
-import com.darkrockstudios.apps.fasttrack.ui.theme.Purple100
-import com.darkrockstudios.apps.fasttrack.ui.theme.Purple700
 import com.darkrockstudios.apps.fasttrack.ui.theme.fastBackgroundGradient
 import com.darkrockstudios.apps.fasttrack.utils.Utils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.Duration.Companion.seconds
-
-private val phaseTextColor_Light = Purple700
-private val phaseTextColor_Dark = Purple100
-
-@Composable
-fun phaseTextColor(): Color {
-	val isDark: Boolean = isSystemInDarkTheme()
-	return if (isDark) {
-		phaseTextColor_Dark
-	} else {
-		phaseTextColor_Light
-	}
-}
-
 
 @Composable
 fun FastingScreen(
@@ -195,66 +149,75 @@ fun FastingScreen(
 		}
 	}
 
-	// Get the current configuration to check orientation
 	val configuration = LocalConfiguration.current
 	val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-	Box(
+	BoxWithConstraints(
 		modifier = Modifier
 			.fillMaxSize()
 			.fastBackgroundGradient(show = uiState.showGradientBackground)
 			.confettiEffect(confetti)
 			.padding(contentPaddingValues)
 	) {
-		if (isLandscape) {
-			Row(
-				modifier = Modifier
-					.fillMaxSize()
-					.padding(16.dp),
-				verticalAlignment = Alignment.Top
-			) {
-				FastHeadingContent(
-					uiState = uiState,
+		val isCompact = remember(maxHeight) { maxHeight < 500.dp }
+
+		val spacing = rememberFastingSpacing(isCompact)
+		val typography = rememberFastingTypography(isCompact)
+
+		CompositionLocalProvider(
+			LocalFastingSpacing provides spacing,
+			LocalFastingTypography provides typography
+		) {
+			if (isLandscape) {
+				Row(
 					modifier = Modifier
-						.weight(1f)
-						.fillMaxHeight()
-						.padding(end = 8.dp)
-				)
+						.fillMaxSize()
+						.padding(spacing.large),
+					verticalAlignment = Alignment.Top
+				) {
+					FastHeadingContent(
+						uiState = uiState,
+						modifier = Modifier
+							.weight(1f)
+							.fillMaxHeight()
+							.padding(end = spacing.medium)
+					)
 
-				Spacer(modifier = Modifier.size(height = 16.dp, width = 1.dp))
+					Spacer(modifier = Modifier.size(height = spacing.large, width = 1.dp))
 
-				FastDetailsContent(
-					uiState = uiState,
-					onShowInfoDialog = ::onShowInfoDialog,
-					viewModel = viewModel,
-					onShowEndFastConfirmation = ::onShowEndFastConfirmation,
-					onShowStartFastSelector = ::onShowStartFastSelector,
+					FastDetailsContent(
+						uiState = uiState,
+						onShowInfoDialog = ::onShowInfoDialog,
+						viewModel = viewModel,
+						onShowEndFastConfirmation = ::onShowEndFastConfirmation,
+						onShowStartFastSelector = ::onShowStartFastSelector,
+						modifier = Modifier
+							.weight(1f)
+							.fillMaxHeight()
+							.padding(start = spacing.medium)
+					)
+				}
+			} else {
+				Column(
 					modifier = Modifier
-						.weight(1f)
-						.fillMaxHeight()
-						.padding(start = 8.dp)
-				)
-			}
-		} else {
-			Column(
-				modifier = Modifier
-					.fillMaxSize()
-					.padding(16.dp),
-				horizontalAlignment = Alignment.CenterHorizontally
-			) {
-				FastHeadingContent(
-					uiState = uiState,
-					modifier = Modifier.fillMaxWidth()
-				)
+						.fillMaxSize()
+						.padding(spacing.large),
+					horizontalAlignment = Alignment.CenterHorizontally
+				) {
+					FastHeadingContent(
+						uiState = uiState,
+						modifier = Modifier.fillMaxWidth()
+					)
 
-				FastDetailsContent(
-					uiState = uiState,
-					onShowInfoDialog = ::onShowInfoDialog,
-					viewModel = viewModel,
-					onShowEndFastConfirmation = ::onShowEndFastConfirmation,
-					onShowStartFastSelector = ::onShowStartFastSelector,
-					modifier = Modifier.fillMaxWidth()
-				)
+					FastDetailsContent(
+						uiState = uiState,
+						onShowInfoDialog = ::onShowInfoDialog,
+						viewModel = viewModel,
+						onShowEndFastConfirmation = ::onShowEndFastConfirmation,
+						onShowStartFastSelector = ::onShowStartFastSelector,
+						modifier = Modifier.fillMaxWidth()
+					)
+				}
 			}
 		}
 	}
@@ -267,6 +230,8 @@ private fun FastHeadingContent(
 ) {
 	val scope = rememberCoroutineScope()
 	val tooltipState = rememberTooltipState()
+	val spacing = fastingSpacing()
+	val typography = fastingTypography()
 
 	@StringRes
 	var phaseTooltipResId by remember { mutableStateOf<Int?>(null) }
@@ -286,11 +251,11 @@ private fun FastHeadingContent(
 		// Stage Title
 		Text(
 			text = uiState.stageTitle,
-			style = MaterialTheme.typography.headlineMedium,
+			style = typography.stageTitle(),
 			color = MaterialTheme.colorScheme.onBackground,
 			fontWeight = FontWeight.Bold,
 			textAlign = TextAlign.Center,
-			modifier = Modifier.padding(bottom = 8.dp)
+			modifier = Modifier.padding(bottom = spacing.small)
 		)
 
 		TooltipBox(
@@ -307,7 +272,7 @@ private fun FastHeadingContent(
 				elapsedHours = uiState.elapsedHours,
 				modifier = Modifier
 					.fillMaxWidth()
-					.padding(vertical = 8.dp),
+					.padding(vertical = spacing.medium),
 				onPhaseClick = { phase ->
 					phaseTooltipResId = phase.title
 					scope.launch {
@@ -320,30 +285,30 @@ private fun FastHeadingContent(
 		// Energy Mode
 		Text(
 			text = uiState.energyMode,
-			style = MaterialTheme.typography.labelMedium,
+			style = typography.energyMode(),
 			color = MaterialTheme.colorScheme.onBackground,
 			textAlign = TextAlign.Center,
-			modifier = Modifier.padding(bottom = 16.dp)
+			modifier = Modifier.padding(bottom = spacing.medium)
 		)
 
-		Spacer(modifier = Modifier.size(height = 16.dp, width = 1.dp))
+		Spacer(modifier = Modifier.size(height = spacing.large, width = 1.dp))
 
 		// Timer
 		Row(
 			verticalAlignment = Alignment.Bottom,
-			modifier = Modifier.padding(bottom = 16.dp)
+			modifier = Modifier.padding(bottom = spacing.large)
 		) {
 			Text(
 				text = uiState.timerText,
-				style = MaterialTheme.typography.displayLarge,
+				style = typography.timerText(),
 				color = MaterialTheme.colorScheme.onBackground,
 				fontWeight = FontWeight.Bold,
 			)
 			Text(
 				text = uiState.milliseconds,
-				style = MaterialTheme.typography.headlineMedium,
+				style = typography.timerMilliseconds(),
 				color = MaterialTheme.colorScheme.onBackground,
-				modifier = Modifier.padding(start = 8.dp, bottom = 4.dp)
+				modifier = Modifier.padding(start = spacing.small, bottom = spacing.small)
 			)
 		}
 	}
@@ -358,6 +323,9 @@ private fun FastDetailsContent(
 	onShowStartFastSelector: () -> Unit,
 	modifier: Modifier = Modifier
 ) {
+	val spacing = fastingSpacing()
+	val typography = fastingTypography()
+
 	Column(
 		modifier = modifier,
 		horizontalAlignment = Alignment.CenterHorizontally,
@@ -368,7 +336,7 @@ private fun FastDetailsContent(
 		Column(
 			modifier = Modifier
 				.fillMaxWidth()
-				.padding(bottom = 16.dp)
+				.padding(bottom = spacing.medium)
 		) {
 			// Fat Burn Phase
 			StageInfo(
@@ -405,14 +373,14 @@ private fun FastDetailsContent(
 		Box(
 			modifier = Modifier
 				.fillMaxWidth()
-				.weight(1f)
+				.weight(2f)
 				.verticalScroll(rememberScrollState())
 		) {
 			Text(
 				text = uiState.stageDescription,
-				style = MaterialTheme.typography.bodyMedium,
+				style = typography.stageDescription(),
 				color = MaterialTheme.colorScheme.onBackground,
-				modifier = Modifier.padding(top = 16.dp)
+				modifier = Modifier.padding(top = spacing.medium)
 			)
 		}
 
@@ -421,32 +389,15 @@ private fun FastDetailsContent(
 			modifier = Modifier
 				.fillMaxWidth()
 				.wrapContentHeight()
-				.padding(top = 16.dp),
-			horizontalArrangement = Arrangement.SpaceBetween,
+				.padding(top = spacing.medium),
+			horizontalArrangement = Arrangement.End,
 			verticalAlignment = Alignment.CenterVertically
 		) {
-			// Notifications Checkbox
-			Row(
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				Checkbox(
-					checked = uiState.alertsEnabled,
-					onCheckedChange = { viewModel.setAlertsEnabled(it) }
-				)
-				Text(
-					text = stringResource(id = R.string.stage_alerts_checkbox),
-					style = MaterialTheme.typography.labelLarge,
-					color = MaterialTheme.colorScheme.onBackground,
-					modifier = Modifier.padding(start = 8.dp)
-				)
-			}
-
 			// Debug Button (only in debug builds)
 			if (BuildConfig.DEBUG) {
 				FloatingActionButton(
 					onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
-					modifier = Modifier
-						.padding(end = 16.dp)
+					modifier = Modifier.padding(end = spacing.medium)
 				) {
 					Icon(
 						imageVector = Icons.Default.Add,
@@ -488,26 +439,35 @@ private fun StageInfo(
 	timeText: String,
 	stageState: IFastingViewModel.StageState
 ) {
+	val spacing = fastingSpacing()
+	val typography = fastingTypography()
+
 	Row(
 		modifier = Modifier
 			.fillMaxWidth()
-			.padding(vertical = 4.dp),
+			.padding(vertical = spacing.small),
 		horizontalArrangement = Arrangement.SpaceBetween,
 		verticalAlignment = Alignment.CenterVertically
 	) {
 		TextButton(
 			modifier = Modifier.weight(1f),
-			onClick = { onShowInfoDialog(titleRes, contentRes) }
+			onClick = { onShowInfoDialog(titleRes, contentRes) },
+			contentPadding = PaddingValues(
+				horizontal = spacing.buttonPaddingHorizontal,
+				vertical = spacing.buttonPaddingVertical
+			)
 		) {
 			Icon(
 				painter = painterResource(id = R.drawable.ic_more_info),
 				tint = phaseTextColor(),
 				contentDescription = null,
-				modifier = Modifier.padding(end = 8.dp)
+				modifier = Modifier
+					.padding(end = spacing.small)
+					.size(spacing.iconSize)
 			)
 			Text(
 				text = stringResource(id = labelRes),
-				style = MaterialTheme.typography.headlineSmall,
+				style = typography.phaseLabel(),
 				color = phaseTextColor(),
 				maxLines = 1,
 				softWrap = false,
@@ -517,7 +477,7 @@ private fun StageInfo(
 		}
 		Text(
 			text = timeText,
-			style = MaterialTheme.typography.headlineMedium,
+			style = typography.phaseTime(),
 			color = stageColor(stageState),
 			maxLines = 1,
 			softWrap = false,
@@ -528,7 +488,7 @@ private fun StageInfo(
 
 @Composable
 private fun stageColor(stageState: IFastingViewModel.StageState): Color = when (stageState) {
-	IFastingViewModel.StageState.StartedActive -> Color.Green
+	IFastingViewModel.StageState.StartedActive -> Color(0xFF00DD00)
 	IFastingViewModel.StageState.StartedInactive -> Color.Red
 	IFastingViewModel.StageState.NotStarted -> MaterialTheme.colorScheme.onBackground
 }
