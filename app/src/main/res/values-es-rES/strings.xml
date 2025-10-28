@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Pista rápida</string>
+	<string name="action_share">Compartir</string>
+	<string name="action_info">Info</string>
+	<string name="action_about">Acerca de</string>
+	<string name="action_export">Exportar bitácora</string>
+	<string name="action_import">Importar bitácora</string>
+	<string name="import_success">Bitácora importada correctamente</string>
+	<string name="import_failed">Error al importar bitácora</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Mostrar notificación de limpieza</string>
+	<string name="settings_fasting_notification_subtitle">Proporciona información en tiempo real durante un rápido</string>
+	<string name="export_failed">Error al exportar bitácora</string>
+	<string name="intro_00_title">¡Bienvenido a Fast Track!</string>
+	<string name="intro_00_description">¿De qué trata esta aplicación?</string>
+	<string name="intro_01_title">Ayuda Motivacional</string>
+	<string name="intro_01_description">The main idea behind Fast Track is to help motivate you during your fasts and
+		explain to you what your body is doing at the different stages of fasting.</string>
+	<string name="intro_02_title">Una simple aplicación gratis</string>
+	<string name="intro_02_description">Fast Track es y siempre será gratis y de código abierto. No hay cuenta para
+		crear, no hay compras dentro de la aplicación, no hay anuncios que evitar. Y ni siquiera tiene acceso a internet, por lo que no puede enviar sus datos
+		en ningún lugar.</string>
+	<string name="intro_03_title">Fasting intermitente</string>
+	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
+		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
+		section of this app!</string>
+	<string name="intro_04_title">Mantenerse motivado con las notificaciones</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">¡Eso es todo!</string>
+	<string name="intro_05_description">¡Ahora empieza a ayunar!</string>
+	<string name="about_name">Estudios de roca oscura</string>
+	<string name="about_subtitle">Desarrollo de código abierto</string>
+	<string name="about_brief">Escalera, montañista, ingeniero de software y defensor de código abierto.</string>
+	<string name="about_discord">Discordia</string>
+	<string name="title_fasting">Fabricación</string>
+	<string name="title_log">Logo</string>
+	<string name="title_profile">Perfil</string>
+	<string name="fasting_fragment_label">Rápido</string>
+	<string name="start_fast_button">Iniciar rápido</string>
+	<string name="start_fast_now_button">Comenzar rápido ahora</string>
+	<string name="end_fast_button">End Fast</string>
+	<string name="fasting_energy_mode">Modo Energía: %1$s</string>
+	<string name="fasting_energy_mode_glucose">Glucosa</string>
+	<string name="fasting_energy_mode_fat">Cuerpos de cetona</string>
+	<string name="confirm_start_fast_title">¿Iniciar rápido?</string>
+	<string name="confirm_start_fast_positive">Ahora</string>
+	<string name="confirm_start_fast_neutral">Ya iniciado</string>
+	<string name="confirm_start_fast_negative">Nu</string>
+	<string name="already_started_dialog_title">Ya iniciado</string>
+	<string name="start_picker_title">¿Cuándo comenzaste tu Rápido</string>
+	<string name="confirm_end_fast_title">¿Finalizar rápido?</string>
+	<string name="confirm_end_fast_positive">Ahora</string>
+	<string name="confirm_end_fast_neutral">¿Ya está detenido?</string>
+	<string name="confirm_end_fast_negative">Nu</string>
+	<string name="already_stopped_dialog_title">¿Cuándo se detuviste?</string>
+	<string name="menu_edit">Editar</string>
+	<string name="menu_delete">Eliminar</string>
+	<string name="confirm_delete_fast_title">¿Eliminar rápido?</string>
+	<string name="confirm_delete_fast_positive">Sí</string>
+	<string name="confirm_delete_fast_negative">Nu</string>
+	<string name="fast_status_fasting">Rápido en progreso</string>
+	<string name="fast_status_not_fasting">No estás ayunando</string>
+	<string name="next_stage">Próxima etapa en: %1$d horas</string>
+	<string name="start_fast_button_advanced">*</string>
+	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_length">%1$d horas</string>
+	<string name="log_entry_ketosis">Ketosis: %1$d horas</string>
+	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
+	<string name="profile_age_label">Edad</string>
+	<string name="profile_age_years">años</string>
+	<string name="profile_weight_label">Peso</string>
+	<string name="profile_weight_pounds_label">Libras</string>
+	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_update_button">Actualizar</string>
+	<string name="profile_bmi_label">BMI:</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
+	<string name="profile_bmi_category_underweight">Bajo peso</string>
+	<string name="profile_bmi_category_normal">Normal</string>
+	<string name="profile_bmi_category_overweight">Superpeso</string>
+	<string name="profile_bmi_category_obese">Obeso</string>
+	<string name="profile_bmi_category_morbidly_obese">Obeso morbidal</string>
+	<string name="profile_error">Valor incorrecto</string>
+	<string name="profile_bmr_label">BMR:</string>
+	<string name="profile_bmr_value">%.0f\" kCal / día</string>
+	<string name="profile_height_label">Altura</string>
+	<string name="profile_height_imper_feet_label">Carácter</string>
+	<string name="profile_height_imper_inches_label">Pulgadas</string>
+	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_gender_male">Hombre</string>
+	<string name="profile_gender_female">Mujer</string>
+	<string name="manual_add_title">Añadir manual</string>
+	<string name="manual_edit_title">Editar entrada</string>
+	<string name="manual_add_length_hint">Longitud (Horas)</string>
+	<string name="manual_add_complete_button">Añadir</string>
+	<string name="manual_add_save_button">Guardar</string>
+	<string name="manual_add_fast_started_on">Rápido Comenzando En: %1$s</string>
+	<string name="manual_add_start_date_time_label">Fecha y hora de inicio</string>
+	<string name="edit_date">Editar fecha</string>
+	<string name="edit_time">Editar hora</string>
+	<string name="manual_start_title">Rápido iniciado</string>
+	<string name="manual_add_set_end_title">Fijar Fin Rápido</string>
+	<string name="manual_add_set_end_complete">Calcular</string>
+	<string name="fast_autophagy_label">Autophagy:</string>
+	<string name="fast_ketosis_label">Ketosis:</string>
+	<string name="fast_fat_burn_label">Quemado Graso:</string>
+	<string name="stage_fasting_title">Fabricación</string>
+	<string name="stage_fasting_description">Su cuerpo está consumiendo sus almacenes de glucosa, ¡siga adelante!</string>
+	<string name="stage_fat_burning_title">Quemado de grasa</string>
+	<string name="stage_fat_burning_description">¡Tus tiendas de glucosa están agotadas! Tu cuerpo ahora está quemando grasa para
+		de energía. Un entrenamiento en las próximas horas sería óptimo.</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Limpieza de Dulce Spot</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Estás en el ayuno dulce, ¡sigue así!</string>
+	<string name="stage_fat_peak_fat_burning_title">Quemado de grasa pico</string>
+	<string name="stage_fat_peak_fat_burning_description">Tu cuerpo está quemando gorda rápidamente ahora y la ketosis ha comenzado.</string>
+	<string name="stage_autophagy_title">Autophagy</string>
+	<string name="stage_autophagy_description">¡Tu cuerpo ha empezado a autofagar!</string>
+	<string name="stage_optimal_autophagy_title">Autofagia óptima</string>
+	<string name="stage_optimal_autophagy_description">¡La autofagia está en pleno impulso! Continúalo de aquí a 72 horas
+		la autofagia será muy efectiva.</string>
+	<string name="phase_glucose">Quemado de glucosa</string>
+	<string name="phase_fat_burning">Quemado de grasa</string>
+	<string name="phase_ketosis">Ketosis</string>
+	<string name="phase_autophagy">Autophagy</string>
+	<string name="phase_optimal_autophagy">Autofagia óptima</string>
+	<string name="share_text">He estado ayunando durante %1$d horas y %2$d minutos! Mi cuerpo consume %3$s
+		para energía.</string>
+	<string name="share_text_past_tense">He ayunado por %1$d horas y %2$d minutos!</string>
+	<string name="stage_alerts_checkbox">Alertas de etapa</string>
+	<string name="notification_channel_name">Alertas de limpieza</string>
+	<string name="notification_channel_description">Alertas que te informan cuando has entrado en una nueva fase de tu
+		rápido.</string>
+	<string name="notification_fat_burn_title">Etapa rápida: Quemado de grasa</string>
+	<string name="notification_fat_burn_content">You have exhausted your glucose reserves and your body is now consuming
+		fat for energy.</string>
+	<string name="notification_ketosis_title">Etapa rápida: Ketosis</string>
+	<string name="notification_ketosis_content">You\'re body has now broken down enough fat reserves that you have
+		entered Ketosis.</string>
+	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
+	<string name="notification_autophagy_content">You\'re body has entered Autophagy. Old or damaged cells are now being
+		consumed for energy.</string>
+	<string name="notification_optimal_autophagy_title">Etapa rápida: Autofagia óptima</string>
+	<string name="notification_optimal_autophagy_content">Usted es el cuerpo ha estado en Autofagia durante mucho tiempo, y
+		su salud celular está viendo grandes beneficios.</string>
+	<string name="notification_fasting_channel_name">Estado de Fasting</string>
+	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
+		progress.</string>
+	<string name="notification_fasting_title">Rápido: %1$s horas</string>
+	<string name="notification_fasting_energy_mode">Modo Energía: %1$s</string>
+	<string name="info_dialog_fat_burn_title">Quemado de grasa</string>
+	<string name="info_dialog_fat_burn_content">En esta etapa su cuerpo ha agotado sus reservas de glucosa. La glucosa es
+		almacenada como glicogeno para su uso posterior, en esta etapa, la mayor parte de tu glicogeno almacenado se ha descompuesto en glucosa
+		y se ha consumido con energía.\n\n Ahora comienza a descomponer el tejido adiposo (grasa) en los cuerpos de Ketone. Además de que
+		sea capaz de consumir glucosa por energía, su cuerpo puede consumir energía alternativamente cuerpos de ketona. y como
+		los almacenes de glucosa son bajos, su cuerpo cambiará su modo de energía a los cuerpos de Ketone.</string>
+	<string name="info_dialog_ketosis_title">Ketosis</string>
+	<string name="info_dialog_ketosis_content">En esta etapa, el cuerpo ha estado descomponiendo la grasa durante el tiempo suficiente para que
+		su cuerpo esté siendo alimentado principalmente por cuerpos de Ketone en lugar de por Glucosa.\n\nAdemás de la pérdida de grasa
+		esto implica, los estudios han mostrado beneficios para las enfermedades relacionadas con la inflamación, aunque actualmente se desconoce el mecanismo de acción
+		para esto.</string>
+	<string name="info_dialog_autophagy_title">Autophagy</string>
+	<string name="info_dialog_autophagy_content">En esta etapa tu cuerpo ha comenzado a activar algunos más procesos para la recolección de energía
+		. Además de romper el tejido adipose en cuerpos de Ketone, ha comenzado a buscar células viejas
+		o dañadas, y consumiéndolas para obtener más energía.\n\nLa investigación en esta fase está en sus primeras etapas,
+		pero parece que se trata de un mecanismo importante para que el cuerpo detenga los problemas antes de que comiencen. Por ejemplo, las tasas de cáncer
+		son más bajas en las personas que entran regularmente a la Autofagia. Además, algunos estudios también han mostrado tasas
+		más bajas de la enfermedad del heimer.</string>
+	<string name="info_dialog_bmi_title">Índice de masa corporal</string>
+	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It
+		is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that
+		there are factors that can cause it to be misleading. For instance: an extremely muscular body builder, or a
+		very tall or very short person. These edge cases will get inaccurate results from the basic BMI
+		calculation.\n\nBut for the majority of people this is a good enough estimate to know if you are in a healthy
+		weight range.</string>
+	<string name="info_dialog_bmr_title">Frecuencia de metabólicos basales</string>
+	<string name="info_dialog_bmr_content">This is an estimate of the number of calories your body will burn in a day
+		while completely at rest. If all you did was lay in bed all day, this is how many calories you could eat without
+		gaining weight.\n\nThis is a critical number for people who are dieting by restricting daily calorie intake.</string>
+	<string name="info_dialog_positive">¡Enfriado!</string>
+	<string name="info_page_title_info">Info</string>
+	<string name="info_page_title_tips">Consejos</string>
+	<string name="title_activity_info">Información de Fusión</string>
+	<string name="log_total_autophagy">🧬 Autophagy:</string>
+	<string name="log_total_ketosis">🔥 Ketosis:</string>
+	<string name="log_total_hours">%1$d horas</string>
+	<string name="profile_metric_switch">Métrica</string>
+	<string name="title_activity_intro">Introducción</string>
+	<string name="app_widget_description">Registra tu progreso de ayuno desde tu pantalla de inicio</string>
+	<string name="app_widget_not_fasting">No ayunar</string>
+	<string name="app_widget_fast_in_progress">Fasting en progreso</string>
+	<string name="app_widget_time">%1$d horas</string>
+	<string name="app_widget_time_compact">%1$d h</string>
+	<string name="app_widget_start_fast_button">Iniciar rápido</string>
+	<string name="app_widget_stop_fast_button">Parar rápido</string>
+	<string name="app_widget_start_compact">Comenzar</string>
+	<string name="app_widget_start">Toca para iniciar</string>
+	<string name="close_button_content_description">Cerrar</string>
+	<string name="cancel_button">Cancelar</string>
+	<string name="next_button">Siguiente</string>
+	<string name="previous_button">Anterior</string>
+	<string name="skip_button">Saltar</string>
+	<string name="done_button">Hecho</string>
+	<string name="debug_add_hour_button">Depuración: Añadir 1 hora</string>
+	<string name="stop_fast_button_description">Parar rápido</string>
+	<string name="start_fast_button_description">Iniciar rápido</string>
+	<string name="bmi_info_button_description">Info de BMI</string>
+	<string name="bmr_info_button_description">Información BMR</string>
+	<string name="profile_gender_label">Sexo</string>
+	<string name="more_options_button_description">Más opciones</string>
+	<string name="manual_add_close_button_description">Cerrar</string>
+	<string name="manual_add_selected_start">Iniciado: %1$s</string>
+	<string name="manual_add_cancel_button">Cancelar</string>
+	<string name="manual_add_next_button">Siguiente</string>
+	<string name="manual_add_calculate_from_end">Calcular desde el final</string>
+	<string name="action_settings">Ajustes</string>
+	<string name="title_activity_settings">Ajustes</string>
+	<string name="settings_placeholder">Configuración próximamente</string>
+	<string name="back">Atrás</string>
+	<string name="settings_fancy_background_title">Mostrar fondo elegante</string>
+	<string name="settings_fancy_background_subtitle">Desactivar para un fondo de limpieza más simple</string>
+	<string name="log_no_entries">¡Aún no hay entradas!</string>
+	<string name="log_logbook_label">Bitácora</string>
+	<string name="log_stats_label">Estadísticas de por vida</string>
+</resources>
