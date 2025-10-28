@@ -5,12 +5,21 @@
 	<string name="action_info">Informazioni</string>
 	<string name="action_about">Informazioni</string>
 	<string name="action_export">Esporta Logbook</string>
+	<string name="action_export_description">Produci un file CVS del registro per il backup</string>
 	<string name="action_import">Importa Logbook</string>
+	<string name="action_import_description">Popolare il registro da un\'esportazione precedente</string>
 	<string name="import_success">Logbook importato con successo</string>
 	<string name="import_failed">Importazione del registro non riuscita</string>
+	<!-- Settings -->
+	<string name="settings_section_notifications">Notifiche</string>
+	<string name="settings_section_ui">Interfaccia</string>
+	<string name="settings_section_logbook">Logbook</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Mostra Notifiche Di digiuno</string>
 	<string name="settings_fasting_notification_subtitle">Fornisce informazioni in tempo reale durante un veloce</string>
+	<!-- Settings: Stage alerts -->
+	<string name="settings_stage_alerts_title">Avvisi Stage</string>
+	<string name="settings_stage_alerts_subtitle">Ricevi una notifica quando entri in nuovi stadi di digiuno</string>
 	<string name="export_failed">Esportazione della rubrica di registro non riuscita</string>
 	<string name="intro_00_title">Benvenuto su Fast Track!</string>
 	<string name="intro_00_description">Di cosa si tratta questa applicazione?</string>
@@ -25,7 +34,7 @@
 	<string name="intro_03_description">Questa è una nuova area di studio che sta mostrando un sacco di benefici oltre la semplice
 		&lt;unk&gt; &lt;unk&gt; perdita di peso.\n\nPer esplorare ciò che sappiamo sul digiuno e quello che la ricerca sta dicendo, consulta la sezione Info
 		&lt;unk&gt; &lt;unk&gt; di questa app!</string>
-	<string name="intro_04_title">Rimani motivato con le notifiche</string>
+	<string name="intro_04_title">È tutto!</string>
 	<string name="intro_04_description">Traccia veloce può mostrarti utili notifiche per tenerti motivato durante la tua
 		&lt;unk&gt; &lt;unk&gt; veloce .\n\nVedrai il tuo tempo di digiuno corrente, in quale fase sei e in quale modalità di energia il tuo corpo è
 		&lt;unk&gt; usando.\n\nQuesto ti aiuta a rimanere in pista senza dover aprire l\'app!</string>
@@ -65,7 +74,7 @@
 	<string name="fast_status_not_fasting">Non stai digiunando</string>
 	<string name="next_stage">Prossima tappa a: %1$d ore</string>
 	<string name="start_fast_button_advanced">*</string>
-	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_started">Iniziato: %1$s</string>
 	<string name="log_entry_length">%1$d ore</string>
 	<string name="log_entry_ketosis">Ketosi: %1$d ore</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
@@ -182,8 +191,8 @@
 	<string name="info_page_title_info">Informazioni</string>
 	<string name="info_page_title_tips">Suggerimenti</string>
 	<string name="title_activity_info">Informazioni Di digiuno</string>
-	<string name="log_total_autophagy">🧬 Autophagy:</string>
-	<string name="log_total_ketosis">🔥 Ketosis:</string>
+	<string name="log_total_autophagy">Autofagia Totale:</string>
+	<string name="log_total_ketosis">Chetosi Totale:</string>
 	<string name="log_total_hours">%1$d ore</string>
 	<string name="profile_metric_switch">Metrico</string>
 	<string name="title_activity_intro">Introduzione</string>

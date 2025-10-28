@@ -5,12 +5,21 @@
 	<string name="action_info">Інформація</string>
 	<string name="action_about">Про програму</string>
 	<string name="action_export">Експортувати журнал</string>
+	<string name="action_export_description">Створити CVS файл з журналами для резервного копіювання</string>
 	<string name="action_import">Імпортувати журнал</string>
+	<string name="action_import_description">Заповніть вашу книгу із попереднього експорту</string>
 	<string name="import_success">Журнал успішно імпортовано</string>
 	<string name="import_failed">Не вдалося імпортувати записник</string>
+	<!-- Settings -->
+	<string name="settings_section_notifications">Сповіщення</string>
+	<string name="settings_section_ui">Інтерфейс</string>
+	<string name="settings_section_logbook">Логук</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Показати швидке повідомлення</string>
 	<string name="settings_fasting_notification_subtitle">Надає інформацію в реальному часі під час швидкого запуску</string>
+	<!-- Settings: Stage alerts -->
+	<string name="settings_stage_alerts_title">Сповіщення про стадію</string>
+	<string name="settings_stage_alerts_subtitle">Отримувати сповіщення при вході на нові стадії</string>
 	<string name="export_failed">Не вдалося експортувати журнал</string>
 	<string name="intro_00_title">Ласкаво просимо в Fast Track!</string>
 	<string name="intro_00_description">Про що цей додаток?</string>
@@ -25,7 +34,7 @@
 	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
 		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
 		section of this app!</string>
-	<string name="intro_04_title">Залишайтеся на мотивованих сповіщеннях</string>
+	<string name="intro_04_title">Ось і все!</string>
 	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
 		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
 		using.\n\nThis helps you stay on track without having to open the app!</string>
@@ -65,7 +74,7 @@
 	<string name="fast_status_not_fasting">Ви не швидкоплинні</string>
 	<string name="next_stage">Наступний етап: %1$d годин</string>
 	<string name="start_fast_button_advanced">*</string>
-	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_started">Started: %1$s</string>
 	<string name="log_entry_length">%1$d годин</string>
 	<string name="log_entry_ketosis">Ketos: %1$d годин</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
@@ -182,8 +191,8 @@
 	<string name="info_page_title_info">Інформація</string>
 	<string name="info_page_title_tips">Рекомендації</string>
 	<string name="title_activity_info">Інформація про залишок</string>
-	<string name="log_total_autophagy">🧬 Autophagy:</string>
-	<string name="log_total_ketosis">🔥 Ketosis:</string>
+	<string name="log_total_autophagy">Всього автоприховування:</string>
+	<string name="log_total_ketosis">Усього кетосів:</string>
 	<string name="log_total_hours">%1$d годин</string>
 	<string name="profile_metric_switch">Метрична система</string>
 	<string name="title_activity_intro">Вступ</string>
