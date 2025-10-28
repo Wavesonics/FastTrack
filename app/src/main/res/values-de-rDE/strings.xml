@@ -5,12 +5,21 @@
 	<string name="action_info">Info</string>
 	<string name="action_about">Über</string>
 	<string name="action_export">Logbuch exportieren</string>
+	<string name="action_export_description">Erstellen Sie eine CVS-Datei Ihres Logbuchs zur Sicherung</string>
 	<string name="action_import">Logbuch importieren</string>
+	<string name="action_import_description">Befüllen Sie Ihr Logbuch aus einem früheren Export</string>
 	<string name="import_success">Logbuch erfolgreich importiert</string>
 	<string name="import_failed">Fehler beim Importieren des Logbuchs</string>
+	<!-- Settings -->
+	<string name="settings_section_notifications">Benachrichtigungen</string>
+	<string name="settings_section_ui">Schnittstelle</string>
+	<string name="settings_section_logbook">Logbuch</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Fast-Benachrichtigung anzeigen</string>
 	<string name="settings_fasting_notification_subtitle">Stellt Echtzeit-Informationen während einer Schnelligkeit bereit</string>
+	<!-- Settings: Stage alerts -->
+	<string name="settings_stage_alerts_title">Bühnen-Alarme</string>
+	<string name="settings_stage_alerts_subtitle">Benachrichtigt werden, wenn neue Fast-Stufen betreten werden</string>
 	<string name="export_failed">Fehler beim Exportieren des Logbuchs</string>
 	<string name="intro_00_title">Willkommen bei Fast Track!</string>
 	<string name="intro_00_description">Worum geht es bei dieser App?</string>
@@ -25,7 +34,7 @@
 	<string name="intro_03_description">Dies ist ein neuer Studienbereich, der über den einfachen
 		Gewichtsverlust hinaus viele Vorteile aufweist.\n\nUm zu erforschen, was wir über Fasting wissen und was die Forschung sagt, schauen Sie sich die Info
 		Abschnitt dieser App an!</string>
-	<string name="intro_04_title">Mit Benachrichtigungen motiviert bleiben</string>
+	<string name="intro_04_title">Das war\'s!</string>
 	<string name="intro_04_description">Fast Track kann dir hilfreiche Benachrichtigungen zeigen, um dich während deiner
 		schnell zu motivieren.\n\nDu wirst deine aktuelle Fastzeit sehen, in welcher Stufe du bist und in welchem Energiemodus dein Körper
 		nutzt.\n\nDies hilft dir auf dem Laufenden zu bleiben, ohne die App öffnen zu müssen!</string>
@@ -65,7 +74,7 @@
 	<string name="fast_status_not_fasting">Du faßst nicht</string>
 	<string name="next_stage">Nächste Stufe um: %1$d Stunden</string>
 	<string name="start_fast_button_advanced">*</string>
-	<string name="log_entry_started">%1$s</string>
+	<string name="log_entry_started">Gestartet: %1$s</string>
 	<string name="log_entry_length">%1$d Stunden</string>
 	<string name="log_entry_ketosis">Ketosis: %1$d Stunden</string>
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
@@ -182,8 +191,8 @@
 	<string name="info_page_title_info">Info</string>
 	<string name="info_page_title_tips">Tipps</string>
 	<string name="title_activity_info">Fast-Info</string>
-	<string name="log_total_autophagy">🧬 Autophagy:</string>
-	<string name="log_total_ketosis">🔥 Ketosis:</string>
+	<string name="log_total_autophagy">Gesamt Autophag:</string>
+	<string name="log_total_ketosis">Ketose insgesamt:</string>
 	<string name="log_total_hours">%1$d Stunden</string>
 	<string name="profile_metric_switch">Metrisch</string>
 	<string name="title_activity_intro">Einleitung</string>
