@@ -4,7 +4,7 @@
 	<string name="action_info">Info</string>
 	<string name="action_about">About</string>
 	<string name="action_export">Export Logbook</string>
-    <string name="action_export_description">Produce a CVS file of your log book for backup</string>
+    <string name="action_export_description">Produce a CSV file of your log book for backup</string>
 	<string name="action_import">Import Logbook</string>
     <string name="action_import_description">Populate your log book from a previous export</string>
 	<string name="import_success">Logbook imported successfully</string>
@@ -17,7 +17,7 @@
 
     <!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Show Fasting Notification</string>
-	<string name="settings_fasting_notification_subtitle">Provides realtime info during a fast</string>
+	<string name="settings_fasting_notification_subtitle">Provides real-time info during a fast</string>
 
     <!-- Settings: Stage alerts -->
     <string name="settings_stage_alerts_title">Stage Alerts</string>
@@ -35,7 +35,7 @@
 
 	<string name="intro_02_title">A simple free app</string>
 	<string name="intro_02_description">Fast Track is and will always be free and open source. There is no account to
-		create, no in-app purchases, no ads to avoid. And it doesn\'t even have internet access, so it can\'t send your
+		create, no in-app purchases, no ads to avoid. And it doesn’t even have internet access, so it can’t send your
 		data anywhere.
 	</string>
 
@@ -47,11 +47,11 @@
 
 	<string name="intro_04_title">Stay Motivated with Notifications</string>
 	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
-		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
 		using.\n\nThis helps you stay on track without having to open the app!
 	</string>
 
-	<string name="intro_05_title">That\'s it!</string>
+	<string name="intro_05_title">That’s it!</string>
 	<string name="intro_05_description">Now go start fasting!</string>
 
 	<string name="about_name">Dark Rock Studios</string>
@@ -125,7 +125,7 @@
 	<string name="profile_error">Bad Value</string>
 
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f" kCal / day</string>
+	<string name="profile_bmr_value">%.0f kCal / day</string>
 
 	<string name="profile_height_label">Height</string>
 	<string name="profile_height_imper_feet_label">Feet</string>
@@ -150,7 +150,7 @@
 	<string name="fast_fat_burn_label">Fat Burn:</string>
 
 	<string name="stage_fasting_title">Fasting</string>
-	<string name="stage_fasting_description">Your body is consuming it\'s stores of glucose, keep it up!</string>
+	<string name="stage_fasting_description">Your body is consuming its stores of glucose, keep it up!</string>
 
 	<string name="stage_fat_burning_title">Fat Burning</string>
 	<string name="stage_fat_burning_description">Your glucose stores are depleted! Your body is now burning fat for
@@ -158,7 +158,7 @@
 	</string>
 
 	<string name="stage_fat_fasting_sweet_spot_title">Fasting Sweet Spot</string>
-	<string name="stage_fat_fasting_sweet_spot_description">You\'re in the fasting sweet spot, keep it up!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">You’re in the fasting sweet spot, keep it up!</string>
 
 	<string name="stage_fat_peak_fat_burning_title">Peak Fat Burning</string>
 	<string name="stage_fat_peak_fat_burning_description">Your body is burning fat rapidly now, and ketosis has begun.
@@ -178,7 +178,7 @@
 	<string name="phase_autophagy">Autophagy</string>
 	<string name="phase_optimal_autophagy">Optimal Autophagy</string>
 
-	<string name="share_text">I\'ve been fasting for %1$d hours and %2$d minutes! My body is currently consuming %3$s
+	<string name="share_text">I’ve been fasting for %1$d hours and %2$d minutes! My body is currently consuming %3$s
 		for energy.
 	</string>
 	<string name="share_text_past_tense">I fasted for %1$d hours and %2$d minutes!</string>
@@ -195,17 +195,17 @@
 	</string>
 
 	<string name="notification_ketosis_title">Fast Stage: Ketosis</string>
-	<string name="notification_ketosis_content">You\'re body has now broken down enough fat reserves that you have
+	<string name="notification_ketosis_content">Your body has now broken down enough fat reserves that you have
 		entered Ketosis.
 	</string>
 
 	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
-	<string name="notification_autophagy_content">You\'re body has entered Autophagy. Old or damaged cells are now being
+	<string name="notification_autophagy_content">Your body has entered Autophagy. Old or damaged cells are now being
 		consumed for energy.
 	</string>
 
 	<string name="notification_optimal_autophagy_title">Fast Stage: Optimal Autophagy</string>
-	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and
+	<string name="notification_optimal_autophagy_content">Your body has been in autophagy for a long time now, and
 		your cellular health is seeing great benefits.
 	</string>
 
@@ -221,7 +221,7 @@
 		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
 		and consumed for energy.\n\n Now it begins to break down adipose tissue (fat) into Ketone Bodies. In addition to
 		being able to consume glucose for energy, your body can alternatively consume ketone bodies for energy, and as
-		glucose stores run low, your body will switch it\'s energy mode to Ketone Bodies.
+		glucose stores run low, your body will switch its energy mode to Ketone Bodies.
 	</string>
 
 	<string name="info_dialog_ketosis_title">Ketosis</string>
@@ -234,10 +234,10 @@
 	<string name="info_dialog_autophagy_title">Autophagy</string>
 	<string name="info_dialog_autophagy_content">In this stage your body has begun to activate some more processes for
 		harvesting energy. In addition to breaking down adipose tissue into Ketone Bodies, it has begun seeking out old
-		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in it\'s early stages,
+		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in its early stages,
 		but it appears this is an important mechanism for the body to stop problems before they start. For instance,
 		cancer rates are lower in people who regularly enter Autophagy. Additionally, some studies have also shown lower
-		rates of Alzheimer\'s disease.
+		rates of Alzheimer’s disease.
 	</string>
 
 	<string name="info_dialog_bmi_title">Body Mass Index</string>
