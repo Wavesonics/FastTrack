@@ -5,7 +5,7 @@
 	<string name="action_info">Інформація</string>
 	<string name="action_about">Про програму</string>
 	<string name="action_export">Експортувати журнал</string>
-	<string name="action_export_description">Створити CSV файл для резервного копіювання журналу</string>
+	<string name="action_export_description">Produce a CSV file of your log book for backup</string>
 	<string name="action_import">Імпортувати журнал</string>
 	<string name="action_import_description">Заповнити журнал попередньо експортованими даними</string>
 	<string name="import_success">Журнал успішно імпортовано</string>
@@ -16,7 +16,7 @@
 	<string name="settings_section_logbook">Журнал</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Показувати сповіщення про голодування</string>
-	<string name="settings_fasting_notification_subtitle">Надає інформацію в реальному часі під час голодування</string>
+	<string name="settings_fasting_notification_subtitle">Provides real-time info during a fast</string>
 	<!-- Settings: Stage alerts -->
 	<string name="settings_stage_alerts_title">Сповіщення про стадії</string>
 	<string name="settings_stage_alerts_subtitle">Отримувати сповіщення при переході на нові стадії голодування</string>
@@ -27,17 +27,17 @@
 	<string name="intro_01_description">Головна ідея Fast Track полягає в тому, щоби допомогти мотивувати Вас під час голодувань і
 		пояснити, що відбувається з Вашим організмом на різних стадіях голодування.</string>
 	<string name="intro_02_title">Простий безкоштовний додаток</string>
-	<string name="intro_02_description">Fast Track є і завжди буде безкоштовним додатком з відкритим вихідним кодом. Тут не потрібно реєструватися, робити якісь покупки
-		чи тікати від реклами. У нього навіть немає доступу до інтернету, тому Ваші дані нікуди не
-		надсилаються.</string>
+	<string name="intro_02_description">Fast Track is and will always be free and open source. There is no account to
+		create, no in-app purchases, no ads to avoid. And it doesn’t even have internet access, so it can’t send your
+		data anywhere.</string>
 	<string name="intro_03_title">Інтервальне голодування</string>
 	<string name="intro_03_description">Це новий напрямок досліджень, що може принести набагато більше користі, ніж просте схуднення.
 		\n\nЩоби дізнатися більше про інтервальне голодування та про результати наукових досліджень, перегляньте розділ «Інформація» в цьому додатку!</string>
 	<string name="intro_04_title">Залишайтеся вмотивованими завдяки сповіщенням</string>
-	<string name="intro_04_description">Fast Track може показувати Вам корисні сповіщення, щоби Ви залишалися вмотивованими протягом голодування.
-		\n\nВи бачитимете поточний час голодування, на якій Ви стадії, і яке джерело енергії використовується Вашим організмом.
-		\n\nЦе допоможе Вам не зійти з курсу, не відкриваючи додаток!</string>
-	<string name="intro_05_title">Ось і все!</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">That’s it!</string>
 	<string name="intro_05_description">А тепер починайте голодувати!</string>
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Розробки з відкритим вихідним кодом</string>
@@ -92,7 +92,7 @@
 	<string name="profile_bmi_category_morbidly_obese">Патологічне ожиріння</string>
 	<string name="profile_error">Неправильне значення</string>
 	<string name="profile_bmr_label">Основний обмін:</string>
-	<string name="profile_bmr_value">%.0f ккал / день</string>
+	<string name="profile_bmr_value">%.0f kCal / day</string>
 	<string name="profile_height_label">Висота</string>
 	<string name="profile_height_imper_feet_label">футів</string>
 	<string name="profile_height_imper_inches_label">дюймів</string>
@@ -115,12 +115,12 @@
 	<string name="fast_ketosis_label">Кетоз:</string>
 	<string name="fast_fat_burn_label">Спалювання жиру:</string>
 	<string name="stage_fasting_title">Голодування</string>
-	<string name="stage_fasting_description">Ваш організм споживає свої запаси глюкози, так тримати!</string>
+	<string name="stage_fasting_description">Your body is consuming its stores of glucose, keep it up!</string>
 	<string name="stage_fat_burning_title">Спалювання жиру</string>
 	<string name="stage_fat_burning_description">Запаси глюкози закінчилися! Тепер Ваш організм спалює жир задля
 		енергії. Наступні кілька годин ідеально підходять для занять спортом.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Золота середина голодування</string>
-	<string name="stage_fat_fasting_sweet_spot_description">Ви досягли золотої середини голодування, так тримати!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">You’re in the fasting sweet spot, keep it up!</string>
 	<string name="stage_fat_peak_fat_burning_title">Пік спалювання жиру</string>
 	<string name="stage_fat_peak_fat_burning_description">Тепер Ваш організм швидко спалює жир, і вже розпочався кетоз.</string>
 	<string name="stage_autophagy_title">Автофагія</string>
@@ -132,7 +132,8 @@
 	<string name="phase_ketosis">Кетоз</string>
 	<string name="phase_autophagy">Автофагія</string>
 	<string name="phase_optimal_autophagy">Оптимальна автофагія</string>
-	<string name="share_text">Я голодую вже %1$d годин і %2$d хвилин! Зараз джерелом енергії для мого тіла є %3$s</string>
+	<string name="share_text">I’ve been fasting for %1$d hours and %2$d minutes! My body is currently consuming %3$s
+		for energy.</string>
 	<string name="share_text_past_tense">Я проголодував %1$d годин і %2$d хвилин!</string>
 	<string name="stage_alerts_checkbox">Сповіщення про стадії</string>
 	<string name="notification_channel_name">Сповіщення про голодування</string>
@@ -142,14 +143,14 @@
 	<string name="notification_fat_burn_content">Ваші запаси глюкози закінчилися, і тепер Ваш організм використовує
 		жир як джерело енергії.</string>
 	<string name="notification_ketosis_title">Стадія голодування: кетоз</string>
-	<string name="notification_ketosis_content">Ваш організм спалив достатню кількість жиру, і тепер Ви
-		перейшли в кетоз.</string>
+	<string name="notification_ketosis_content">Your body has now broken down enough fat reserves that you have
+		entered Ketosis.</string>
 	<string name="notification_autophagy_title">Стадія голодування: автофагія</string>
-	<string name="notification_autophagy_content">Ваш організм розпочав автофагію. Старі чи пошкоджені клітини тепер
-		переробляються в енергію.</string>
+	<string name="notification_autophagy_content">Your body has entered Autophagy. Old or damaged cells are now being
+		consumed for energy.</string>
 	<string name="notification_optimal_autophagy_title">Стадія голодування: оптимальна автофагія</string>
-	<string name="notification_optimal_autophagy_content">Ваше тіло вже довго займається автофагією, від чого
-		значно покращується здоров\'я Ваших клітин.</string>
+	<string name="notification_optimal_autophagy_content">Your body has been in autophagy for a long time now, and
+		your cellular health is seeing great benefits.</string>
 	<string name="notification_fasting_channel_name">Стан голодування</string>
 	<string name="notification_fasting_channel_description">Постійне сповіщення, що показує поточний стан та прогрес
 		голодування.</string>
@@ -160,7 +161,7 @@
 		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
 		and consumed for energy.\n\n Now it begins to break down adipose tissue (fat) into Ketone Bodies. In addition to
 		being able to consume glucose for energy, your body can alternatively consume ketone bodies for energy, and as
-		glucose stores run low, your body will switch it\'s energy mode to Ketone Bodies.</string>
+		glucose stores run low, your body will switch its energy mode to Ketone Bodies.</string>
 	<string name="info_dialog_ketosis_title">Кетоз</string>
 	<string name="info_dialog_ketosis_content">In this stage your body has been breaking down fat for long enough that
 		your body is primarily being powered by Ketone Bodies rather than Glucose.\n\nIn addition to the fat loss
@@ -169,10 +170,10 @@
 	<string name="info_dialog_autophagy_title">Автофагія</string>
 	<string name="info_dialog_autophagy_content">In this stage your body has begun to activate some more processes for
 		harvesting energy. In addition to breaking down adipose tissue into Ketone Bodies, it has begun seeking out old
-		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in it\'s early stages,
+		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in its early stages,
 		but it appears this is an important mechanism for the body to stop problems before they start. For instance,
 		cancer rates are lower in people who regularly enter Autophagy. Additionally, some studies have also shown lower
-		rates of Alzheimer\'s disease.</string>
+		rates of Alzheimer’s disease.</string>
 	<string name="info_dialog_bmi_title">Індекс маси тіла</string>
 	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It
 		is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that
