@@ -5,7 +5,7 @@
 	<string name="action_info">Info</string>
 	<string name="action_about">About</string>
 	<string name="action_export">Export Logbook</string>
-	<string name="action_export_description">Produce a CVS file of your log book for backup</string>
+	<string name="action_export_description">Produza um arquivo CSV de seu diário de bordo para backup</string>
 	<string name="action_import">Import Logbook</string>
 	<string name="action_import_description">Populate your log book from a previous export</string>
 	<string name="import_success">Logbook imported successfully</string>
@@ -16,7 +16,7 @@
 	<string name="settings_section_logbook">Logbook</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Show Fasting Notification</string>
-	<string name="settings_fasting_notification_subtitle">Provides realtime info during a fast</string>
+	<string name="settings_fasting_notification_subtitle">Fornece informações em tempo real durante um rápido</string>
 	<!-- Settings: Stage alerts -->
 	<string name="settings_stage_alerts_title">Stage Alerts</string>
 	<string name="settings_stage_alerts_subtitle">Get notified when entering new fasting stages</string>
@@ -27,18 +27,18 @@
 	<string name="intro_01_description">The main idea behind Fast Track is to help motivate you during your fasts and
 		explain to you what your body is doing at the different stages of fasting.</string>
 	<string name="intro_02_title">A simple free app</string>
-	<string name="intro_02_description">Fast Track is and will always be free and open source. There is no account to
-		create, no in-app purchases, no ads to avoid. And it doesn\'t even have internet access, so it can\'t send your
-		data anywhere.</string>
+	<string name="intro_02_description">O Fast Track é e sempre será gratuito e de código aberto. Não há nenhuma conta para
+		├criar, sem compras no aplicativo, sem anúncios para evitar. E ele nem sequer tem acesso à internet, então ele não pode enviar seus
+		├dados em lugar algum.</string>
 	<string name="intro_03_title">Intermittent Fasting</string>
 	<string name="intro_03_description">This is a new area of study which is showing lots of benefits beyond simple
 		weight loss.\n\nTo explore what we know about fasting and what the research is saying, check out the Info
 		section of this app!</string>
 	<string name="intro_04_title">Stay Motivated with Notifications</string>
 	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
-		fast.\n\nYou\'ll see your current fasting time, what stage you\'re in, and what energy mode your body is
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
 		using.\n\nThis helps you stay on track without having to open the app!</string>
-	<string name="intro_05_title">That\'s it!</string>
+	<string name="intro_05_title">É isso!</string>
 	<string name="intro_05_description">Now go start fasting!</string>
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Open Source Development</string>
@@ -93,7 +93,7 @@
 	<string name="profile_bmi_category_morbidly_obese">Morbidly Obese</string>
 	<string name="profile_error">Bad Value</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f\" kCal / day</string>
+	<string name="profile_bmr_value">%.0f kCal / dia</string>
 	<string name="profile_height_label">Height</string>
 	<string name="profile_height_imper_feet_label">Feet</string>
 	<string name="profile_height_imper_inches_label">Inches</string>
@@ -116,12 +116,12 @@
 	<string name="fast_ketosis_label">Ketosis:</string>
 	<string name="fast_fat_burn_label">Fat Burn:</string>
 	<string name="stage_fasting_title">Fasting</string>
-	<string name="stage_fasting_description">Your body is consuming it\'s stores of glucose, keep it up!</string>
+	<string name="stage_fasting_description">Seu corpo está consumindo suas lojas de glicose, continue assim!</string>
 	<string name="stage_fat_burning_title">Fat Burning</string>
 	<string name="stage_fat_burning_description">Your glucose stores are depleted! Your body is now burning fat for
 		energy. A workout in the next couple hours would be optimal.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Fasting Sweet Spot</string>
-	<string name="stage_fat_fasting_sweet_spot_description">You\'re in the fasting sweet spot, keep it up!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Você está no campo doce de jeito, continue assim!</string>
 	<string name="stage_fat_peak_fat_burning_title">Peak Fat Burning</string>
 	<string name="stage_fat_peak_fat_burning_description">Your body is burning fat rapidly now, and ketosis has begun.</string>
 	<string name="stage_autophagy_title">Autophagy</string>
@@ -134,8 +134,8 @@
 	<string name="phase_ketosis">Ketosis</string>
 	<string name="phase_autophagy">Autophagy</string>
 	<string name="phase_optimal_autophagy">Optimal Autophagy</string>
-	<string name="share_text">I\'ve been fasting for %1$d hours and %2$d minutes! My body is currently consuming %3$s
-		for energy.</string>
+	<string name="share_text">Andei de jejando por %1$d horas e %2$d minutos! Meu corpo está atualmente consumindo %3$s
+		£por energia.</string>
 	<string name="share_text_past_tense">I fasted for %1$d hours and %2$d minutes!</string>
 	<string name="stage_alerts_checkbox">Stage Alerts</string>
 	<string name="notification_channel_name">Fasting Alerts</string>
@@ -145,14 +145,14 @@
 	<string name="notification_fat_burn_content">You have exhausted your glucose reserves and your body is now consuming
 		fat for energy.</string>
 	<string name="notification_ketosis_title">Fast Stage: Ketosis</string>
-	<string name="notification_ketosis_content">You\'re body has now broken down enough fat reserves that you have
-		entered Ketosis.</string>
+	<string name="notification_ketosis_content">Seu corpo foi dividido em reservas de gordura o suficiente que você tem
+		\'named@@1\' entrou em Ketosis.</string>
 	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
-	<string name="notification_autophagy_content">You\'re body has entered Autophagy. Old or damaged cells are now being
-		consumed for energy.</string>
+	<string name="notification_autophagy_content">Seu corpo entrou em Autofagia. Células Antigas ou danificadas estão agora sendo
+		Econômica consumida por energia.</string>
 	<string name="notification_optimal_autophagy_title">Fast Stage: Optimal Autophagy</string>
-	<string name="notification_optimal_autophagy_content">You\'re body has been in Autophagy for a long time now, and
-		your cellular health is seeing great benefits.</string>
+	<string name="notification_optimal_autophagy_content">Seu corpo está em autofagia há muito tempo, e
+		Econômica a sua saúde celular está obtendo grandes benefícios.</string>
 	<string name="notification_fasting_channel_name">Fasting Status</string>
 	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
 		progress.</string>
@@ -163,19 +163,19 @@
 		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
 		and consumed for energy.\n\n Now it begins to break down adipose tissue (fat) into Ketone Bodies. In addition to
 		being able to consume glucose for energy, your body can alternatively consume ketone bodies for energy, and as
-		glucose stores run low, your body will switch it\'s energy mode to Ketone Bodies.</string>
+		glucose stores run low, your body will switch its energy mode to Ketone Bodies.</string>
 	<string name="info_dialog_ketosis_title">Ketosis</string>
 	<string name="info_dialog_ketosis_content">In this stage your body has been breaking down fat for long enough that
 		your body is primarily being powered by Ketone Bodies rather than Glucose.\n\nIn addition to the fat loss
 		benefits this implies, studies have shown benefits for inflammation related illnesses, though the mechanism of
 		action for this is currently unknown.</string>
 	<string name="info_dialog_autophagy_title">Autophagy</string>
-	<string name="info_dialog_autophagy_content">In this stage your body has begun to activate some more processes for
-		harvesting energy. In addition to breaking down adipose tissue into Ketone Bodies, it has begun seeking out old
-		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in it\'s early stages,
-		but it appears this is an important mechanism for the body to stop problems before they start. For instance,
-		cancer rates are lower in people who regularly enter Autophagy. Additionally, some studies have also shown lower
-		rates of Alzheimer\'s disease.</string>
+	<string name="info_dialog_autophagy_content">Nesta fase o seu corpo começou a ativar mais alguns processos para
+		£ede energia. Além de decompor tecido adiposo em bordos de Ketone, começou a procurar antigas células
+		is ou danificadas e consumiu-as para mais energia.\n\nA pesquisa sobre esta fase está em suas fases iniciais.
+		eVerificar se, mas parece que este é um mecanismo importante para o corpo parar os problemas antes de começar. Por exemplo,
+		e% as taxas de cancro são mais baixas nas pessoas que entram regularmente na Autofagia. Além disso, alguns estudos também mostraram índices
+		de doença de Alzheimer mais baixos.</string>
 	<string name="info_dialog_bmi_title">Body Mass Index</string>
 	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It
 		is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that
