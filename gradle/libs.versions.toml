@@ -1,10 +1,10 @@
 [versions]
-versionCode = "36"
-versionName = "4.1.0"
+versionCode = "37"
+versionName = "4.1.1"
 
 kotlin = "2.2.21"
 javaVersion = "17"
-agp = "8.12.0"
+agp = "8.11.2"
 targetSdk = "36"
 compileSdk = "36"
 minSdk = "26"
