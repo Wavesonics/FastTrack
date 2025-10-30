@@ -5,7 +5,7 @@
 	<string name="action_info">Informazioni</string>
 	<string name="action_about">Informazioni</string>
 	<string name="action_export">Esporta Logbook</string>
-	<string name="action_export_description">Produci un file CVS del registro per il backup</string>
+	<string name="action_export_description">Produce a CSV file of your log book for backup</string>
 	<string name="action_import">Importa Logbook</string>
 	<string name="action_import_description">Popolare il registro da un\'esportazione precedente</string>
 	<string name="import_success">Logbook importato con successo</string>
@@ -16,7 +16,7 @@
 	<string name="settings_section_logbook">Logbook</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Mostra Notifiche Di digiuno</string>
-	<string name="settings_fasting_notification_subtitle">Fornisce informazioni in tempo reale durante un veloce</string>
+	<string name="settings_fasting_notification_subtitle">Provides real-time info during a fast</string>
 	<!-- Settings: Stage alerts -->
 	<string name="settings_stage_alerts_title">Avvisi Stage</string>
 	<string name="settings_stage_alerts_subtitle">Ricevi una notifica quando entri in nuovi stadi di digiuno</string>
@@ -27,18 +27,18 @@
 	<string name="intro_01_description">L\'idea principale dietro Fast Track è quello di aiutare a motivarvi durante i vostri digiuni e
 		&lt;unk&gt; spiegare a voi cosa il vostro corpo sta facendo nelle diverse fasi del digiuno.</string>
 	<string name="intro_02_title">Una semplice app gratuita</string>
-	<string name="intro_02_description">Fast Track è e sarà sempre gratuito e open source. Non c\'è alcun account per
-		&lt;unk&gt; &lt;unk&gt; creare, nessun acquisto in-app, nessun annuncio da evitare. E non ha nemmeno accesso a Internet, quindi non può inviare i tuoi dati
-		&lt;unk&gt; &lt;unk&gt; da nessuna parte.</string>
+	<string name="intro_02_description">Fast Track is and will always be free and open source. There is no account to
+		create, no in-app purchases, no ads to avoid. And it doesn’t even have internet access, so it can’t send your
+		data anywhere.</string>
 	<string name="intro_03_title">digiuno Intermittente</string>
 	<string name="intro_03_description">Questa è una nuova area di studio che sta mostrando un sacco di benefici oltre la semplice
 		&lt;unk&gt; &lt;unk&gt; perdita di peso.\n\nPer esplorare ciò che sappiamo sul digiuno e quello che la ricerca sta dicendo, consulta la sezione Info
 		&lt;unk&gt; &lt;unk&gt; di questa app!</string>
 	<string name="intro_04_title">È tutto!</string>
-	<string name="intro_04_description">Traccia veloce può mostrarti utili notifiche per tenerti motivato durante la tua
-		&lt;unk&gt; &lt;unk&gt; veloce .\n\nVedrai il tuo tempo di digiuno corrente, in quale fase sei e in quale modalità di energia il tuo corpo è
-		&lt;unk&gt; usando.\n\nQuesto ti aiuta a rimanere in pista senza dover aprire l\'app!</string>
-	<string name="intro_05_title">È tutto!</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">That’s it!</string>
 	<string name="intro_05_description">Ora vai a iniziare il digiuno!</string>
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Sviluppo Open Source</string>
@@ -93,7 +93,7 @@
 	<string name="profile_bmi_category_morbidly_obese">Morbidamente Obeso</string>
 	<string name="profile_error">Valore Errato</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f\" kCal / giorno</string>
+	<string name="profile_bmr_value">%.0f kCal / day</string>
 	<string name="profile_height_label">Altezza</string>
 	<string name="profile_height_imper_feet_label">Piedi</string>
 	<string name="profile_height_imper_inches_label">Pollici</string>
@@ -116,12 +116,12 @@
 	<string name="fast_ketosis_label">Ketosis:</string>
 	<string name="fast_fat_burn_label">Bruciatura Grassa:</string>
 	<string name="stage_fasting_title">digiuno</string>
-	<string name="stage_fasting_description">Il tuo corpo sta consumando i suoi depositi di glucosio, mantienilo su!</string>
+	<string name="stage_fasting_description">Your body is consuming its stores of glucose, keep it up!</string>
 	<string name="stage_fat_burning_title">Bruciamento Grasso</string>
 	<string name="stage_fat_burning_description">I tuoi negozi di glucosio sono esauriti! Il tuo corpo sta ora bruciando i grassi per l\'energia
 		&lt;unk&gt; &lt;unk&gt; . Un allenamento nelle prossime ore sarebbe ottimale.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Degustazione Dolce Spot</string>
-	<string name="stage_fat_fasting_sweet_spot_description">Sei nel punto dolce di digiuno, continua!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">You’re in the fasting sweet spot, keep it up!</string>
 	<string name="stage_fat_peak_fat_burning_title">Peak Grat Burning</string>
 	<string name="stage_fat_peak_fat_burning_description">Il vostro corpo sta bruciando i grassi rapidamente ora, e la chetosi è iniziata.</string>
 	<string name="stage_autophagy_title">Autophagy</string>
@@ -134,8 +134,8 @@
 	<string name="phase_ketosis">Ketosis</string>
 	<string name="phase_autophagy">Autophagy</string>
 	<string name="phase_optimal_autophagy">Autofagia Ottimale</string>
-	<string name="share_text">Sono stato a digiuno per %1$d ore e %2$d minuti! Il mio corpo sta consumando %3$s
-		&lt;unk&gt; &lt;unk&gt; per l\'energia.</string>
+	<string name="share_text">I’ve been fasting for %1$d hours and %2$d minutes! My body is currently consuming %3$s
+		for energy.</string>
 	<string name="share_text_past_tense">Ho digiunato per %1$d ore e %2$d minuti!</string>
 	<string name="stage_alerts_checkbox">Avvisi Stage</string>
 	<string name="notification_channel_name">Avvisi Di digiuno</string>
@@ -145,37 +145,37 @@
 	<string name="notification_fat_burn_content">Hai esaurito le riserve di glucosio e il tuo corpo sta consumando grassi
 		per l\'energia.</string>
 	<string name="notification_ketosis_title">Fase Veloce: Chetosi</string>
-	<string name="notification_ketosis_content">Il tuo corpo ha ora distrutto abbastanza riserve di grasso che hai
-		&lt;unk&gt; &lt;unk&gt; entrato Ketosi.</string>
+	<string name="notification_ketosis_content">Your body has now broken down enough fat reserves that you have
+		entered Ketosis.</string>
 	<string name="notification_autophagy_title">Fast Stage: Autophagy</string>
-	<string name="notification_autophagy_content">Il tuo corpo è entrato in Autofagia. Le cellule vecchie o danneggiate sono ora
-		&lt;unk&gt; consumate per l\'energia.</string>
+	<string name="notification_autophagy_content">Your body has entered Autophagy. Old or damaged cells are now being
+		consumed for energy.</string>
 	<string name="notification_optimal_autophagy_title">Fase Veloce: Autofagia Ottimale</string>
-	<string name="notification_optimal_autophagy_content">Sei il corpo è stato in Autophagy da molto tempo, e
-		&lt;unk&gt; &lt;unk&gt; la tua salute cellulare sta vedendo grandi benefici.</string>
+	<string name="notification_optimal_autophagy_content">Your body has been in autophagy for a long time now, and
+		your cellular health is seeing great benefits.</string>
 	<string name="notification_fasting_channel_name">Stato Di digiuno</string>
 	<string name="notification_fasting_channel_description">Notifica in corso che mostra il tuo attuale stato di digiuno e
 		&lt;unk&gt; &lt;unk&gt; progresso.</string>
 	<string name="notification_fasting_title">Chiusura: %1$s ore</string>
 	<string name="notification_fasting_energy_mode">Modalità Energetica: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Bruciamento Grasso</string>
-	<string name="info_dialog_fat_burn_content">In questa fase il tuo corpo ha esaurito le riserve di glucosio. Il glucosio è
-		&lt;unk&gt; &lt;unk&gt; conservato come glicogeno per un uso successivo, in questa fase, la maggior parte del vostro glicogeno immagazzinato è stato scomposto in glucosio
-		&lt;unk&gt; &lt;unk&gt; &lt;unk&gt; e consumato per l\'energia.\n\n Ora inizia a scomporre il tessuto adiposo (grasso) in corpi chetonici. Oltre ad
-		&lt;unk&gt; &lt;unk&gt; essere in grado di consumare glucosio per l\'energia, il vostro corpo può in alternativa consumare corpi chetoni per l\'energia, e come
-		&lt;unk&gt; &lt;unk&gt; negozi di glucosio eseguire basso, il vostro corpo cambierà la sua modalità di energia a corpi chetonici.</string>
+	<string name="info_dialog_fat_burn_content">In this stage your body has exhausted your glucose reserves. Glucose is
+		stored as glycogen for later use, in this stage, most of your stored glycogen has been broken down into glucose
+		and consumed for energy.\n\n Now it begins to break down adipose tissue (fat) into Ketone Bodies. In addition to
+		being able to consume glucose for energy, your body can alternatively consume ketone bodies for energy, and as
+		glucose stores run low, your body will switch its energy mode to Ketone Bodies.</string>
 	<string name="info_dialog_ketosis_title">Ketosis</string>
 	<string name="info_dialog_ketosis_content">In questa fase il vostro corpo è stato abbattere il grasso per abbastanza tempo che
 		&lt;unk&gt; &lt;unk&gt; il vostro corpo è principalmente essere alimentato da corpi chetone piuttosto che Glucosio.\n\nOltre alla perdita di grasso
 		&lt;unk&gt; &lt;unk&gt; vantaggi questo implica, studi hanno mostrato benefici per le malattie correlate all\'infiammazione, anche se il meccanismo di
 		&lt;unk&gt; &lt;unk&gt; azione per questo è attualmente sconosciuto.</string>
 	<string name="info_dialog_autophagy_title">Autophagy</string>
-	<string name="info_dialog_autophagy_content">In questa fase il vostro corpo ha iniziato ad attivare alcuni processi per
-		&lt;unk&gt; &lt;unk&gt; energia di raccolta. Oltre a scomporre il tessuto adiposo in corpi chetone, ha iniziato a cercare vecchie
-		o cellule danneggiate, e consumarle per più energia.\n\nLa ricerca su questa fase è nelle fasi iniziali,
-		&lt;unk&gt; &lt;unk&gt; ma sembra che questo sia un meccanismo importante per il corpo di fermare i problemi prima che inizino. Per esempio, i tassi di cancro
-		&lt;unk&gt; &lt;unk&gt; sono più bassi nelle persone che entrano regolarmente in Autophagy. Inoltre, alcuni studi hanno anche mostrato tassi più bassi di
-		&lt;unk&gt; &lt;unk&gt; della malattia di Alzheimer.</string>
+	<string name="info_dialog_autophagy_content">In this stage your body has begun to activate some more processes for
+		harvesting energy. In addition to breaking down adipose tissue into Ketone Bodies, it has begun seeking out old
+		or damaged cells, and consuming them for more energy.\n\nThe research on this phase is in its early stages,
+		but it appears this is an important mechanism for the body to stop problems before they start. For instance,
+		cancer rates are lower in people who regularly enter Autophagy. Additionally, some studies have also shown lower
+		rates of Alzheimer’s disease.</string>
 	<string name="info_dialog_bmi_title">Indice Di Massa Corporea</string>
 	<string name="info_dialog_bmi_content">Una stima approssimativa del peso sano dovrebbe essere un uomo adulto medio.
 		&lt;unk&gt; &lt;unk&gt; è calcolato semplicemente dividendo il peso per altezza.\n\nSpesso criticato per essere impreciso, è vero che
