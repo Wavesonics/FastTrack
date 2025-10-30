@@ -3,3 +3,5 @@ files:
     translation: /app/src/main/res/values-%android_code%/%original_file_name%
     translate_attributes: 0
     content_segmentation: 0
+  - source: /app/src/main/res/raw/*.md
+    translation: /app/src/main/res/raw-%android_code%/%file_name%
