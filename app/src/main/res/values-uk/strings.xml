@@ -5,7 +5,7 @@
 	<string name="action_info">Інформація</string>
 	<string name="action_about">Про нас</string>
 	<string name="action_export">Експортувати журнал</string>
-	<string name="action_export_description">Створити CSV файл для резервного копіювання журналу</string>
+	<string name="action_export_description">Створити CSV-файл для резервного копіювання журналу</string>
 	<string name="action_import">Імпортувати журнал</string>
 	<string name="action_import_description">Заповнити журнал попередньо експортованими даними</string>
 	<string name="import_success">Журнал успішно імпортовано</string>
@@ -22,10 +22,10 @@
 	<string name="settings_stage_alerts_subtitle">Отримувати сповіщення при переході на нові стадії голодування</string>
 	<string name="export_failed">Не вдалося експортувати журнал</string>
 	<string name="intro_00_title">Ласкаво просимо до Fast Track!</string>
-	<string name="intro_00_description">Що це за застосунок?</string>
+	<string name="intro_00_description">Що це за програма?</string>
 	<string name="intro_01_title">Мотиваційна допомога</string>
-	<string name="intro_01_description">Головна ідея Fast Track полягає в тому, щоб допомогти вам мотивуватися під час
-		ваших постів і пояснити, що відбувається у вашому тілі на різних етапах голодування.</string>
+	<string name="intro_01_description">Головна ідея Fast Track полягає в тому, щоби допомогти мотивувати Вас під час голодувань і
+		пояснити, що відбувається з Вашим організмом на різних стадіях голодування.</string>
 	<string name="intro_02_title">Простий безкоштовний додаток</string>
 	<string name="intro_02_description">Fast Track є і завжди буде безкоштовним додатком з відкритим
 		вихідним кодом. Тут не потрібно реєструватися, робити якісь покупки чи тікати від реклами. У нього навіть немає доступу до
