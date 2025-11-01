@@ -1,82 +1,34 @@
-# Jejum intermitente
+# Jejum Intermitente
 
-**O jejum intermitente** é atualmente um campo de estudo muito ativo. Algumas partes desse tema estão bem estabelecidas,
-enquanto outras ainda estão sendo pesquisadas. Portanto, leve tudo isso com cautela e consulte as fontes primárias
-listadas abaixo.
+**Intermittent Fasting** is currently a very active field of study, some parts of this are well established, and others are still being studied. So take this all with a grain of salt, and consult the primary sources linked below.
 
-## Como e por que o jejum funciona:
+## How and why fasting works:
 
-Acredita-se que, no início do nosso desenvolvimento como caçadores-coletores, nossa dieta era baseada em períodos de
-fartura ou escassez. Talvez uma pequena tribo conseguisse abater uma grande presa uma vez por semana ou até com menos
-frequência. Assim, nossos corpos são bem projetados para aproveitar ao máximo esses períodos e armazenar tudo o que for
-possível para uso posterior.
+It's believed that in our early development as hunter gatherers, our diet was feast or famine. Maybe a small tribe would get a large kill once a week or less. Thus our bodies are well designed to make the most out of that and store everything possible for later use.
 
-Obter carboidratos em grandes quantidades seria difícil. Por exemplo: colher frutas vermelhas, que são ricas em açúcar,
-exigia muito esforço para uma pequena quantidade de açúcar.
+Acquiring carbs in large quantities would have been difficult. For instance: foraging for berries, which would be high in sugar, would require a lot of effort for only a small amount of sugar.
 
-### Assim, nossos corpos desenvolveram duas principais vias energéticas:
+### Thus our bodies developed two primary energy pathways:
 
-1. **Glicose:** Os carboidratos se decompõem em glicose quando consumidos. A glicose pode ser usada diretamente pelas
-   células como fonte de energia. O excesso de glicose é então armazenado como glicogênio em várias partes do corpo,
-   como o fígado e os músculos esqueléticos. Quando as reservas de glicogênio estão cheias, a glicose restante é
-   transformada em tecido adiposo. Quando necessário, o glicogênio armazenado pode ser novamente convertido em glicose
-   para ser usado pelas células.
-2. **Corpos cetônicos:** Estes são derivados da metabolização de gordura, e as células podem utilizá-los no lugar da
-   glicose para gerar energia. As calorias excedentes provenientes de carboidratos ou proteínas (*que se decompõem em
-   glicose e aminoácidos, respectivamente*) serão armazenadas como tecido adiposo (*gordura*), e, quando necessário,
-   podem ser transformadas em corpos cetônicos que serão usados como fonte de energia pelas células.
+1. **Glucose:** Carbohydrates all break down into glucose when consumed. Glucose can be consumed directly by cells for energy. Excess glucose is then be stored as glycogen in various places around the body such as the liver and skeletal muscle. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
+2. **Ketone Bodies:** These are derived by metabolizing fat, and cells can consume them instead of glucose for energy. Excess calories from carbohydrates or protein (_which break down into glucose and amino acids respectively_)  will be stored as adipose tissue (_fat_), and when needed, can be broken down into ketone bodies which will be used for energy by your cells.
 
-Na época dos caçadores-coletores, frequentemente obtínhamos nossa energia tanto dos corpos cetônicos quanto da glicose.
+In our hunter gatherer days we would have often been deriving our energy from ketone bodies as well as glucose.
 
-Entretanto, hoje, nas sociedades ocidentais modernas, os carboidratos são tão facilmente acessíveis que as pessoas podem
-passar a maior parte da vida sem que seus corpos precisem recorrer aos corpos cetônicos como fonte de energia.
+However, today in modern western societies carbohydrates are so easy to come by that people can go most of their lives without their bodies having to resort to ketone bodies for energy.
 
-Uma área ativa de pesquisa investiga quais processos corporais só são ativados quando o corpo está consumindo
-principalmente corpos cetônicos.
+An active area of research is about what processes the body has that are only active when the body is primarily consuming ketone bodies.
 
-## Estágios do jejum:
+## Stages of Fasting:
 
-1. **Queima de glicose:** Inicialmente, seu corpo consumirá a glicose que já está livre em seu sangue. Você pode ter
-   ouvido que durante o exercício cardiovascular leva cerca de 20 minutos para esgotar toda a glicose. Para atletas de
-   resistência, como maratonistas, é recomendado consumir mais glicose a cada 20 minutos, se possível. Como todos os
-   números mencionados aqui, isso é apenas uma estimativa aproximada, uma regra prática. Isso será afetado por muitos
-   fatores: seu próprio corpo, a atividade que está realizando, quanto glicose você já tinha devido à sua dieta, etc.
-   Mas é uma estimativa boa o suficiente para ser usada.
-2. **Degradação do glicogênio:** À medida que a glicose no sangue se esgota, seu corpo a repõe degradando suas reservas
-   de glicogênio. Pessoas que seguem dietas com baixo teor de carboidratos terão reservas de glicogênio menores, então
-   essa fase pode variar bastante. Alguém com uma dieta pobre em carboidratos pode completar essa fase em apenas algumas
-   horas, enquanto alguém com uma dieta rica em carboidratos que não pratica exercícios regularmente pode levar de 24 a
-   48 horas para esgotar suas reservas. Exercitar-se durante essa fase acelerará o processo, forçando o corpo a queimar
-   a glicose mais rapidamente.
-3. **Degradação do tecido adiposo:** À medida que as reservas de glicogênio começam a diminuir, o corpo começará a
-   degradar o tecido adiposo (*gordura*) em corpos cetônicos. Esse é o início da "queima de gordura".
-4. **Cetose:** Este é o primeiro estágio que parece mostrar mais benefícios do que apenas a restrição calórica. Cetose é
-   o estado em que os corpos cetônicos são a principal fonte de energia no sangue. Embora o mecanismo de ação ainda não
-   seja conhecido, esse estado parece ter benefícios significativos para inflamações e doenças relacionadas à
-   inflamação, como a gota.
-5. **Autofagia:** O corpo possui outro mecanismo para obter energia. Neste estágio, ele começa a consumir células velhas
-   ou danificadas para gerar energia. Essa área de pesquisa ainda está em fase inicial, mas parece ser um mecanismo
-   importante pelo qual o corpo corrige problemas. Os cânceres são simplesmente células danificadas que não sabem quando
-   parar de se dividir. Se o corpo entra regularmente em autofagia, parece que essas células danificadas são degradadas
-   para obter energia antes que tenham tempo de se tornar um problema. Outra área de pesquisa é sobre a Doença de
-   Alzheimer. Sabemos que a causa do Alzheimer é o acúmulo de placas de amiloide no cérebro, então qualquer maneira de
-   impedir esses acúmulos deve prevenir a doença desde o início. A autofagia pode fazer exatamente isso, consumindo as
-   placas antes que se tornem um problema. Além disso, alguns locais que armazenam glicogênio e tecido adiposo são
-   inofensivos em pequenas quantidades, mas se tornam problemáticos quando essas reservas nunca são esgotadas. A cirrose
-   hepática, por exemplo, pode ser causada por depósitos de gordura no fígado que prejudicam seu funcionamento normal.
-   Se você consome álcool com frequência e não segue uma dieta pobre em carboidratos, o glicogênio armazenado no seu
-   fígado raramente será esgotado.
-6. **Autofagia ótima:** Esta é provavelmente a área de pesquisa mais recente, então leve isso com cautela. Mas quando
-   seu corpo está em autofagia por um período suficientemente longo, parece que outros sistemas de "reparo" são
-   ativados. O mecanismo de ação ainda não é conhecido. No entanto, estudos mostraram que danos ao DNA, como o
-   comprimento dos telômeros nas extremidades do DNA, são reparados, revertendo efetivamente danos relacionados à idade
-   no DNA e reduzindo sua idade biológica. Parece que não é apenas a autofagia que desencadeia esses sistemas; estressar
-   o corpo de várias maneiras também pode ativá-los. Atletas de resistência podem ativar esses sistemas, o que faz
-   sentido, já que parece que nossos ancestrais eram caçadores de resistência, correndo por horas enquanto perseguiam
-   suas presas.
+1. **Glucose burning:** At first your body will be consuming the glucose that is already free in your blood. You may have heard that during cardiovascular exercise it takes 20 minutes to exhaust all your glucose. For endurance athletes such as marathon runners, they are advised to consume more glucose every 20 minutes if possible. As with all the numbers here, this is a rough estimate, a good rule of thumb if you will. This will be affected by many factors: your own body, the activity you are doing, how much glucose you already had due to your diet, etc. But it's a good enough estimate so we'll go with it.
+2. **Glycogen Breakdown:** As the glucose in your blood depletes, your body will replenish it by breaking down your stores of glycogen. People who follow low carb diets will have smaller glycogen stores, so this phase can vary widely. Someone with a low carb diet may complete this stage in just a few hours, while someone with a high carb diet who does not regularly exercise could take anywhere from 24 to 48 hours to exhaust their stores. Exercise during this stage will accelerate it by forcing your body to burn glucose faster.
+3. **Adipose Tissue Breakdown:** As your glycogen stores begin to deplete, your body will start switching over to breaking down adipose tissue (_fat_) into ketone bodies. This is the beginning of "Fat Burning."
+4. **Ketosis:** This is the first stage that appears to show more benefits than simple calorie restriction. Ketosis is the state of ketone bodies being the primary energy source in your blood. Although the mechanism of action is not yet known, this state appears to have significant benefits for inflammation and inflammation related illnesses such as gout.
+5. **Autophagy:** The body has another mechanism for harvesting energy. In this stage your body will begin consuming old or damaged cells for energy. This area of research is still in its infancy, but it appears this is actually an important mechanism for the body to fix issues. Cancers are simply damaged cells that don't know when to stop dividing. If a body regularly enters autophagy, it appears that those damaged cells are broken down for energy before they have time to become a problem. Another area of research is around Alzheimer's Disease. We know the cause of Alzheimer's is a build up of plaque amyloid in the brain, so any way to prevent those build ups should prevent the disease from taking root in the first place. Autophagy may do just that, by consuming the plaque before it becomes a problem. Additionally, some places that store glycogen and adipose tissues are fine in small quantities, but become a problem when those stores are never depleted. Cirrhosis of the liver for instance can be caused by fatty deposits in the liver impeding its normal function. If you often drink alcohol and don’t otherwise follow a low-carb diet, the stored glycogen in your liver will rarely be depleted.
+6. **Optimal Autophagy:** This is probably the newest area of research, so take this with a grain of salt. But when your body has been in autophagy for a long enough period of time, it appears that further “repair” systems are activated. The mechanism of action is not yet known for this. But studies have shown that DNA damage, such as the length of telomeres on the ends of your DNA are repaired, effectively reversing age related DNA damage, and lowering your biological age. It appears to not just be autophagy that triggers these systems, stressing the body in a variety of ways can trigger them. Endurance athletes may trigger these systems, which may make sense as it appears our ancestors were endurance hunters, running for hours while stalking prey.
 
-## Fontes:
+## Sources:
 
-- [Como retardar o envelhecimento (e até reverter)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (*YouTube*)
-- [Efeitos do jejum intermitente na saúde, no envelhecimento e nas doenças](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (
-  *New England Journal of Medicine*)
+- [How to Slow Aging (and even reverse it)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (_Youtube_)
+- [Effects of Intermittent Fasting on Health, Aging, and Disease](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_New England Journal of Medicine_)
