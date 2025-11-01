@@ -1,37 +1,33 @@
 # Tipps
 
-Fasten kann schwierig sein! Hier sind einige Hinweise, die helfen können.
+Fastenzeit kann schwierig sein! Hier sind einige Zeiger zu helfen.
 
-## Langsam anfangen:
+## Start langsam:
 
-- Versuche zu Beginn ein paar 16-stündige Fastenperioden, dann steigere dich zu 30 Stunden und so weiter.
-- Je öfter du fastest, desto einfacher wird es.
-- Wenn du beginnst, mehrtägige Fasten durchzuführen, ist der erste Tag im Allgemeinen schwieriger als der zweite.
+- Versuchen Sie ein paar 16 Stunden schnell zu beginnen, dann bewegen Sie sich auf 30 Stunden schnell, und so weiter.
+- Je mehr Sie schnell sind, desto einfacher wird es.
+- Wenn Sie anfangen, mehrtägige Schnelligkeiten zu machen, ist in der Regel der erste Tag schwieriger als der zweite Tag.
 
-## Null-Kalorien-Lebensmittel
+## Nullkalorienfutter
 
-- **Viel Wasser trinken:** Neben den gesundheitlichen Vorteilen hilft es, den Magen mit viel Volumen zu füllen, damit du
-  dich für eine Weile satt fühlst.
-- **Getränke ohne Kalorien trinken:**
-    - Aromatisierte Sprudelwasser sind dafür großartig!
-    - Ungesüßter Tee (*heiß oder kalt*)
-    - Wasser mit Limetten- oder Zitronensaft
+- **Trinken Sie viel Wasser:** Neben dem Wohlbefinden für Sie wird Ihnen das Füllen Ihres Magens mit viel Volumen helfen, sich für eine Weile voll zu fühlen.
+- **Getränke ohne Kaloriengetränke:**
+  - Geniestes Seltzer-Wasser sind dafür ideal!
+  - Ungesüßter Tee (_Heiß oder Eis_)
+  - Wasser mit Zitronen- oder Zitronensaft
 
-## Sehr kalorienarme Lebensmittel
+## Sehr niedrige Kalorienfutter
 
-Du kannst tatsächlich ein paar Kalorien während des Fastens zu dir nehmen und dennoch genauso effektiv bleiben.
-Versuche, unter 100 Kalorien pro Tag zu bleiben. Hier ist ein Rezept, das sich sehr effektiv anfühlt wie „richtiges
-Essen“, während es nur etwa 5 Kalorien pro Portion hat:
+Sie können tatsächlich ein paar Kalorien während Ihrer Schnelligkeit essen und immer noch genauso effektiv sein. Versuchen Sie, es unter 100 Kalorien pro Tag zu halten. Zu diesem Zweck ist hier ein Rezept finde ich sehr effektiv bei "Fühlen wie Nahrung" während es nur etwa 5 Kalorien pro Servier:
 
-**Würzige Hühnerbrühe:**
+**Gewürzige Hühnerbrüche:**
 
-- 1 TL Hühnerbrühepulver
-- 8 oz (1 Tasse) kochendes Wasser
-- Ein Spritzer Habanero-Hot-Sauce
-- Ein Spritzer Limettensaft
+- 1 Stück Hühnerbouillon
+- 8oz (1 Tasse) kochendes Wasser
+- Waschen der hitzigen Sauce
+- Kalksaft
 
-## Appetitzügler
+## Appetit suppressants
 
-- **Kaffee:** Füllt nicht nur den Magen ein wenig, um sich satt zu fühlen, sondern unterdrückt auch aktiv den Appetit
-  für eine Weile.
-- **Scharfe Soße:** Normalerweise kalorienfrei und hilft ebenfalls, Hungergefühle abzuwehren.
+- **Kaffee:** mehr als nur den Magen zu füllen um sich voll zu fühlen, wird deinen Appetit für eine Weile aktiv unterdrücken
+- **Heiße Sauce:** Normalerweise sind sie null Kalorien, und sie werden auch helfen, Hungergefühle abzuwenden
