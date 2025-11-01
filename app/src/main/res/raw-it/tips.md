@@ -1,35 +1,33 @@
-# Consigli
+# Suggerimenti
 
-Il digiuno può essere difficile! Ecco alcuni suggerimenti per aiutarti.
+Il digiuno può essere difficile! Ecco alcuni indicatori da aiutare.
 
-## Inizia lentamente:
+## Avvia lento:
 
-- Prova a fare alcuni digiuni di 16 ore per cominciare, poi passa a 30 ore e così via.
-- Più digiuniamo, più diventa facile.
-- Quando inizi a fare digiuni di più giorni, generalmente il primo giorno è più difficile del secondo.
+- Prova un paio di 16 ore di digiuno per cominciare, poi passare a 30 ore di digiuni, e così via.
+- Più velocemente, le cose più facili arriveranno.
+- Quando si inizia a fare più giorni digiuni, generalmente il primo giorno è più difficile del secondo giorno.
 
-## Alimenti a zero calorie
+## Zero Calorie Foods
 
-- **Bevi molta acqua:** Oltre a far bene, riempire lo stomaco con tanto volume ti aiuterà a sentirti sazio per un po'.
-- **Bevi bevande senza calorie:**
-    - L'acqua frizzante aromatizzata è ottima per questo!
-    - Tè non zuccherato (*caldo o freddo*)
-    - Acqua con succo di lime o limone
+- **Bevi molta acqua:** Oltre ad essere buono per te, riempire lo stomaco con un sacco di volume ti aiuterà a sentirti pieno per un po'.
+- **Bevi bevande calorie zero:**
+  - Le acque di seltzer aromatizzate sono fantastiche per questo!
+  - Tè senza edulcorato (_Hot o Iced_)
+  - Acqua con succo di limone o di limone
 
-## Alimenti a bassissimo contenuto calorico
+## Alimenti Calorici Molto Basso
 
-Puoi effettivamente consumare qualche caloria durante il digiuno e continuare a essere altrettanto efficace. Cerca di
-rimanere sotto le 100 calorie al giorno. A questo scopo, ecco una ricetta che trovo molto efficace per "sembrare cibo"
-pur avendo solo circa 5 calorie per porzione:
+Si può effettivamente mangiare un paio di calorie durante il vostro veloce e ancora essere altrettanto efficace. Cercate di tenerlo sotto 100 calorie al giorno. A tal fine, ecco una ricetta che trovo molto efficace a "sentirsi come il cibo" mentre solo circa 5 calorie per porzione:
 
-**Brodo di pollo piccante:**
+**Brodo Di Pollo Piccante:**
 
-- 1 cucchiaino di dado di brodo di pollo
-- 8 oz (1 tazza) di acqua bollente
-- Un tocco di salsa piccante al habanero
-- Un tocco di succo di lime
+- 1 cucchiaino di brodo di pollo
+- 8oz (1 tazza) acqua bollente
+- Scatto di salsa calda habanero
+- Estratto di succo di lime
 
 ## Soppressori dell'appetito
 
-- **Caffè:** Oltre a riempire un po' lo stomaco per sentirsi sazi, sopprime attivamente l'appetito per un po'.
-- **Salsa piccante:** Di solito senza calorie, aiuta anche a respingere la sensazione di fame.
+- **Caffè:** più che solo riempire lo stomaco un po 'per sentirsi pieno, sopprimerà attivamente il tuo appetito per un po '
+- **Hot Sauce:** Di solito queste sono zero calorie, e aiuterà anche a evitare sentimenti di fame
