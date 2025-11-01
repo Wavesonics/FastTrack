@@ -1,81 +1,34 @@
 # Intermittierendes Fasten
 
-**Intermittierendes Fasten** ist derzeit ein sehr aktives Forschungsfeld. Einige Aspekte sind gut belegt, andere werden
-noch untersucht. Genieße daher alles mit Vorsicht und konsultiere die unten verlinkten Primärquellen.
+**Intermittent Fasting** ist derzeit ein sehr aktives Studienfeld, einige Teile davon sind gut etabliert, andere werden noch untersucht. Also nehmen Sie dies alles mit einem Korn Salz, und konsultieren Sie die primären Quellen unten verlinkt.
 
-## Wie und warum Fasten wirkt:
+## Wie und warum Fasten funktioniert:
 
-Man geht davon aus, dass unsere Ernährung in der Frühzeit als Jäger und Sammler von Festmahlen und Hungerperioden
-geprägt war. Vielleicht gelang es einem kleinen Stamm, einmal pro Woche oder seltener ein größeres Tier zu erlegen.
-Unsere Körper sind daher bestens darauf ausgelegt, das Maximum daraus zu ziehen und alles Mögliche für später zu
-speichern.
+Es wird geglaubt, dass in unserer frühen Entwicklung als Jäger-Sammler unsere Ernährung Fest oder Hungersnot war. Vielleicht würde ein kleiner Stamm einmal pro Woche oder weniger einen großen Kill bekommen. So sind unsere Körper gut ausgelegt, um daraus das Beste zu machen und alles Mögliche für einen späteren Gebrauch zu speichern.
 
-Kohlenhydrate in großen Mengen zu beschaffen war schwierig. Zum Beispiel erfordert das Sammeln von Beeren, die reich an
-Zucker sind, viel Aufwand für nur eine geringe Menge Zucker.
+Der Erwerb von Kohlenhydraten in großen Mengen wäre schwierig gewesen. Zum Beispiel würde die Verfütterung von Beeren, die einen hohen Zucker aufweisen würde, viel Aufwand für nur eine geringe Menge Zucker erfordern.
 
-### So entwickelten unsere Körper zwei primäre Energiepfade:
+### So entwickelten unsere Körper zwei Primärenergiewege:
 
-1. **Glukose:** Kohlenhydrate werden beim Verzehr vollständig zu Glukose abgebaut. Glukose kann von den Zellen direkt
-   als Energie genutzt werden. Überschüssige Glukose wird anschließend als Glykogen an verschiedenen Stellen im Körper
-   wie Leber und Skelettmuskulatur gespeichert. Sobald deine Glykogenspeicher voll sind, wird die verbleibende Glukose
-   in Fettgewebe umgewandelt. Bei Bedarf kann das gespeicherte Glykogen wieder zu Glukose abgebaut werden, damit deine
-   Zellen es verwenden können.
-2. **Ketonkörper:** Diese entstehen durch den Abbau von Fett, und Zellen können sie anstelle von Glukose zur
-   Energiegewinnung nutzen. Überschüssige Kalorien aus Kohlenhydraten oder Proteinen (*die jeweils zu Glukose bzw.
-   Aminosäuren abgebaut werden*) werden als Fettgewebe (*Fett*) gespeichert und können bei Bedarf in Ketonkörper
-   umgewandelt werden, die dann von deinen Zellen als Energie verwendet werden.
+1. **Glukose:** Kohlenhydrate brechen beim Verbrauch in Glukose ab. Glukose kann direkt von Zellen für Energie konsumiert werden. Überschüssige Glukose wird dann als Glykogen an verschiedenen Stellen rund um den Körper gelagert, wie die Leber und die Skelettmuskulatur. Sobald Ihre Glykogenreserven voll sind, wird die verbleibende Glukose in Fettgewebe umgewandelt. Bei Bedarf kann der gespeicherte Glykogen wieder in Glukose abgebaut werden, um von Ihren Zellen konsumiert zu werden.
+2. **Keton-Körper:** Diese werden durch die Metabolisierung von Fett abgeleitet, und Zellen können sie verbrauchen statt Glukose für Energie. Überschüssige Kalorien aus Kohlenhydraten oder Protein (_die in Glukose bzw. Aminosäuren zersetzen_) werden als Fettgewebe (_fat_) gelagert und bei Bedarf in Ketone-Körper zerlegt werden können, die für die Energie Ihrer Zellen verwendet werden.
 
-In unseren Zeiten als Jäger und Sammler gewannen wir unsere Energie häufig sowohl aus Ketonkörpern als auch aus Glukose.
+In unseren Jägersammlertagen hätten wir unsere Energie oft aus Ketonkörpern und Glukose gewonnen.
 
-Heutzutage sind in modernen westlichen Gesellschaften Kohlenhydrate so leicht verfügbar, dass Menschen den Großteil
-ihres Lebens verbringen können, ohne dass ihre Körper jemals auf Ketonkörper als Energiequelle zurückgreifen müssen.
+Allerdings, heute in modernen westlichen Gesellschaften Kohlenhydrate sind so leicht zu kommen, dass Menschen können den Großteil ihres Lebens ohne ihren Körper zu Ketone-Körper für Energie.
 
-Ein aktives Forschungsgebiet untersucht, welche Prozesse im Körper nur aktiv sind, wenn er hauptsächlich Ketonkörper
-verbrennt.
+Ein aktiver Forschungsbereich ist die Frage, welche Prozesse der Körper hat, die nur aktiv sind, wenn der Körper in erster Linie Keton-Körper verbraucht.
 
-## Phasen des Fastens:
+## Etappen der Beschleunigung:
 
-1. **Glukoseverbrennung:** Zunächst verbraucht dein Körper die Glukose, die bereits frei in deinem Blut vorhanden ist.
-   Du hast vielleicht gehört, dass es bei Ausdauertraining etwa 20 Minuten dauert, bis die gesamte Glukose verbraucht
-   ist. Marathonläufern beispielsweise wird empfohlen, alle 20 Minuten zusätzliche Glukose aufzunehmen. Wie alle hier
-   genannten Zahlen ist dies nur eine grobe Schätzung, eine Faustregel. Viele Faktoren beeinflussen dies: dein eigener
-   Körper, die ausgeübte Aktivität, wie viel Glukose du bereits aufgrund deiner Ernährung hattest usw. Trotzdem ist es
-   ein brauchbarer Richtwert.
-2. **Glykogenabbau:** Wenn die Glukose in deinem Blut abnimmt, füllt dein Körper sie durch den Abbau deiner
-   Glykogenspeicher wieder auf. Menschen mit kohlenhydratarmer Ernährung haben kleinere Glykogenspeicher, daher kann
-   diese Phase stark variieren. Jemand mit Low-Carb-Ernährung kann diese Phase in nur wenigen Stunden abschließen,
-   während jemand mit kohlenhydratreicher Ernährung, der sich nicht regelmäßig bewegt, 24 bis 48 Stunden benötigen kann,
-   um seine Speicher zu erschöpfen. Sport während dieser Phase beschleunigt den Prozess, da dein Körper Glukose
-   schneller verbrennt.
-3. **Fettgewebeabbau:** Wenn deine Glykogenspeicher zu schwinden beginnen, schaltet dein Körper auf den Abbau von
-   Fettgewebe (*Fett*) zu Ketonkörpern um. Dies ist der Beginn der „Fettverbrennung“.
-4. **Ketose:** Dies ist die erste Phase, die mehr Vorteile als reine Kalorienbeschränkung zu bieten scheint. Ketose
-   bezeichnet den Zustand, in dem Ketonkörper die primäre Energiequelle in deinem Blut sind. Obwohl der Wirkmechanismus
-   noch nicht bekannt ist, scheint dieser Zustand erhebliche Vorteile bei Entzündungen und entzündungsbedingten
-   Erkrankungen wie Gicht zu haben.
-5. **Autophagie:** Der Körper verfügt über einen weiteren Mechanismus zur Energiegewinnung. In dieser Phase beginnt dein
-   Körper, alte oder beschädigte Zellen zur Energiegewinnung zu verzehren. Dieses Forschungsgebiet steckt noch in den
-   Kinderschuhen, doch es scheint ein wichtiger Mechanismus zu sein, mit dem der Körper Probleme behebt.
-   Krebserkrankungen sind einfach beschädigte Zellen, die nicht wissen, wann sie sich nicht mehr teilen sollen. Wenn ein
-   Körper regelmäßig in die Autophagie eintritt, werden diese beschädigten Zellen offenbar zur Energiegewinnung
-   abgebaut, bevor sie zum Problem werden können. Ein weiteres Forschungsgebiet betrifft die Alzheimer-Krankheit. Wir
-   wissen, dass deren Ursache eine Ansammlung von Amyloid-Plaques im Gehirn ist; jede Methode, diese Ablagerungen zu
-   verhindern, sollte somit die Krankheit von vornherein verhindern. Autophagie könnte genau das tun, indem sie die
-   Plaques verzehrt, bevor sie zum Problem werden. Außerdem sind einige Orte, an denen Glykogen und Fettgewebe
-   gespeichert werden, in kleinen Mengen unproblematisch, werden jedoch zum Problem, wenn diese Speicher nie geleert
-   werden. Leberzirrhose kann beispielsweise durch Fetteinlagerungen in der Leber entstehen, die ihre normale Funktion
-   beeinträchtigen. Wenn du häufig Alkohol trinkst und sonst keine kohlenhydratarme Ernährung einhältst, wird das
-   gespeicherte Glykogen in deiner Leber selten aufgebraucht.
-6. **Optimale Autophagie:** Dies ist vermutlich das neueste Forschungsgebiet, daher ist Vorsicht geboten. Doch scheint
-   es, dass nach einer ausreichend langen Phase der Autophagie weitere „Reparatur“-Systeme aktiviert werden. Der
-   Wirkmechanismus ist dafür noch unbekannt. Studien haben jedoch gezeigt, dass DNA-Schäden, etwa die Länge der Telomere
-   an den Enden deiner DNA, repariert werden, was altersbedingte DNA-Schäden effektiv umkehrt und dein biologisches
-   Alter senkt. Es scheint nicht nur die Autophagie zu sein, die diese Systeme auslöst; den Körper auf verschiedene
-   Weise zu stressen, kann sie ebenfalls aktivieren. Ausdauersportler könnten diese Systeme auslösen, was Sinn ergibt,
-   da unsere Vorfahren offenbar Ausdauerjäger waren, die stundenlang liefen, während sie ihre Beute verfolgten.
+1. **Glukose-Verbrennung:** Zuerst verbraucht dein Körper die Glukose, die bereits im Blut frei ist. Sie haben vielleicht gehört, dass es bei Herz-Kreislauf-Übungen 20 Minuten dauert, bis Sie alle Ihre Glukose erschöpfen. Für Ausdauersportler wie Marathonläufer wird empfohlen, nach Möglichkeit alle 20 Minuten mehr Glukose zu konsumieren. Wie bei allen Zahlen hier ist dies eine grobe Schätzung, eine gute Faustregel, wenn Sie wollen. Dies wird von vielen Faktoren beeinflusst: deinem eigenen Körper, deiner Aktivität, Wie viel Glukose Sie bereits durch Ihre Ernährung hatten, etc. Aber es ist eine gut genug geschätzte Schätzung, so dass wir mit ihr gehen.
+2. **Glycogen Breakdown:** Da der Glukose in deinem Blut erschöpft, wird dein Körper ihn auffüllen, indem er deine Glykogenläden aufteilt. Menschen mit niedrigem Kohlenhydrat werden kleinere Glykogenspeicher haben, so dass diese Phase sehr unterschiedlich sein kann. Jemand mit niedriger Karbon-Ernährung kann diese Etappe in nur wenigen Stunden abschließen während jemand mit einer hohen Karbon-Ernährung, die nicht regelmäßig trainiert, könnte irgendwo von 24 bis 48 Stunden bis zu erschöpfen ihre Läden. Übung in dieser Phase beschleunigt es, indem Sie Ihren Körper dazu zwingen, Glukose schneller zu verbrennen.
+3. **Entgib Tissue Breakdown:** Wenn dein Glykogenspeicher erschöpft ist, beginnt dein Körper zu wechseln, um Fettgewebe (_fett_) in Ketone-Körper zu zerlegen. Dies ist der Anfang des ,,Fettverbrennens".
+4. **Ketosis:** Dies ist die erste Phase, die mehr Vorteile als eine einfache Kalorienbeschränkung zu zeigen scheint. Ketose ist der Zustand, dass Ketonkörper die primäre Energiequelle in deinem Blut sind. Obwohl der Wirkungsmechanismus noch nicht bekannt ist, scheint dieser Zustand erhebliche Vorteile für Entzündungen und entzündliche Erkrankungen wie Gicht zu haben.
+5. **Autophagie:** Der Körper hat einen anderen Mechanismus um Energie zu sammeln. In dieser Phase beginnt Ihr Körper mit dem Verzehr alter oder beschädigter Zellen für Energie. Dieser Bereich der Forschung steckt noch in den Kinderschuhen, aber es scheint, dass dies ein wichtiger Mechanismus für das Gremium ist, um Probleme zu lösen. Krebs sind schlicht beschädigte Zellen, die nicht wissen, wann sie die Teilung stoppen sollen. Wenn ein Körper regelmäßig in Autophagen eindringt, sieht es so aus, als ob diese beschädigten Zellen in Energie zerlegt werden, bevor sie Zeit haben, zu einem Problem zu werden. Ein weiterer Forschungsbereich ist die Alzheimer-Krankheit. Wir wissen, dass die Ursache der Alzheimer eine Plaque-Amyloid im Gehirn ist, so dass jede Möglichkeit, diese Aufstände zu verhindern, sollte die Krankheit von vornherein verhindern. Autophagie kann genau das tun, indem sie die Plaque verzehrt, bevor sie zu einem Problem wird. Außerdem sind einige Orte, an denen Glykogen und Fettgewebe gelagert werden, in kleinen Mengen in Ordnung, werden aber zu einem Problem, wenn diese Läden nie erschöpft sind. Zirrhose der Leber kann zum Beispiel durch Fettablagerungen in der Leber verursacht werden, die ihre normale Funktion behindern. Wenn Sie oft Alkohol trinken und nicht anderweitig eine kohlenstoffarme Ernährung verfolgen, wird der in Ihrer Leber gelagerte Glykogen selten erschöpft.
+6. **Optimale Autophagie:** Dies ist wahrscheinlich das neueste Forschungsgebiet, also nehmen Sie es mit einem Salz auf. Aber wenn Ihr Körper schon lange genug im Autophat ist, scheint es, dass weitere „Reparatur“-Systeme aktiviert werden. Der Handlungsmechanismus ist dafür noch nicht bekannt. Studien haben jedoch gezeigt, dass DNA-Schäden, wie die Länge von Telomeren am Ende deiner DNA, repariert werden. eine wirksame Umkehrung altersbedingter DNA-Schäden und eine Senkung des biologischen Alters. Es scheint nicht nur eine Autophage zu sein, die diese Systeme auslöst und den Körper auf verschiedene Weise betätigt, kann sie auslösen. Ausdauersportler können diese Systeme auslösen, was vielleicht Sinn machen kann, da unsere Vorfahren waren Ausdauerjäger, die stundenlang laufen während der Beute.
 
 ## Quellen:
 
-- [Wie man das Altern verlangsamt (und sogar umkehrt)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (*YouTube*)
-- [Auswirkungen des intermittierenden Fastens auf Gesundheit, Altern und Krankheit](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (
-  *New England Journal of Medicine*)
+- [Wie man das Altern verlangsamt (und sogar umkehrt)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (_Youtube_)
+- [Effekte der Intermittent Fasting on Health, Aging, and Disease](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_New England Journal of Medicine_)
