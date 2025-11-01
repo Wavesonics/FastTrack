@@ -1,82 +1,34 @@
-# Digiuno intermittente
+# Digiuno Intermittente
 
-**Il digiuno intermittente** è attualmente un campo di studio molto attivo. Alcuni aspetti sono ben consolidati, altri
-sono ancora oggetto di studio. Quindi prendi tutto questo con cautela e consulta le fonti primarie collegate qui sotto.
+**Il digiuno intermittente** è attualmente un campo di studio molto attivo, alcune parti di questo sono ben consolidate e altre sono ancora in fase di studio. Quindi prendete tutto questo con un chicco di sale, e consultate le fonti primarie collegate qui sotto.
 
-## Come e perché funziona il digiuno:
+## Come e perché il digiuno funziona:
 
-Si ritiene che, durante le prime fasi del nostro sviluppo come cacciatori-raccoglitori, la nostra dieta fosse
-caratterizzata da periodi di abbondanza alternati a carestie. Forse una piccola tribù riusciva a catturare una grande
-preda una volta alla settimana o meno. I nostri corpi sono quindi ben progettati per trarre il massimo da queste
-situazioni e immagazzinare tutto il possibile per un uso successivo.
+Si ritiene che nel nostro sviluppo precoce come cacciatore raccoglitori, la nostra dieta era festa o carestia. Forse una piccola tribù otterrebbe una grande uccisione una volta alla settimana o meno. Così i nostri corpi sono ben progettati per fare il massimo di questo e memorizzare tutto il possibile per un uso successivo.
 
-Ottenere carboidrati in grandi quantità sarebbe stato difficile. Ad esempio: raccogliere bacche, ricche di zucchero,
-richiedeva molto sforzo per una piccola quantità di zucchero.
+Acquisire carboidrati in grandi quantità sarebbe stato difficile. Ad esempio: foraggiare per frutti di bosco, che sarebbe elevato di zucchero, richiederebbe molto sforzo solo per una piccola quantità di zucchero.
 
-### Così i nostri corpi hanno sviluppato due principali vie energetiche:
+### Così i nostri corpi hanno sviluppato due percorsi energetici primari:
 
-1. **Glucosio:** I carboidrati vengono scomposti in glucosio quando consumati. Il glucosio può essere utilizzato
-   direttamente dalle cellule per produrre energia. Il glucosio in eccesso viene poi immagazzinato sotto forma di
-   glicogeno in varie parti del corpo come il fegato e i muscoli scheletrici. Una volta che le riserve di glicogeno sono
-   piene, il glucosio rimanente viene trasformato in tessuto adiposo. Quando necessario, il glicogeno immagazzinato può
-   essere nuovamente scomposto in glucosio per essere utilizzato dalle cellule.
-2. **Corpi chetonici:** Questi derivano dalla metabolizzazione dei grassi, e le cellule possono utilizzarli al posto del
-   glucosio per ottenere energia. Le calorie in eccesso provenienti da carboidrati o proteine (*che si scompongono
-   rispettivamente in glucosio e amminoacidi*) verranno immagazzinate come tessuto adiposo (*grasso*) e, quando
-   necessario, possono essere scomposte in corpi chetonici che verranno utilizzati come energia dalle cellule.
+1. **Glucosio:** I carboidrati si suddividono tutti in glucosio quando consumati. Il glucosio può essere consumato direttamente dalle cellule per l'energia. Il glucosio in eccesso viene quindi conservato come glicogeno in varie parti del corpo come il fegato e il muscolo scheletrico. Una volta che le riserve di glicogeno sono piene, il glucosio rimanente sarà trasformato in tessuto adiposo. Se necessario, il glicogeno conservato può essere scomposto in glucosio per essere consumato dalle cellule.
+2. **Ketone Bodies:** Questi sono derivati metabolizzando i grassi, e le cellule possono consumarli invece di glucosio per energia. Le calorie in eccesso di carboidrati o proteine (_che si suddividono rispettivamente in glucosio e aminoacidi_) saranno conservate come tessuto adiposo (_grasso_), e quando necessario, può essere suddiviso in corpi chetoni che saranno utilizzati per l'energia dalle cellule.
 
-Durante l'era dei cacciatori-raccoglitori, spesso traevamo energia sia dai corpi chetonici che dal glucosio.
+Nelle nostre giornate cacciatore raccoglitore avremmo spesso derivato la nostra energia da corpi chetoni e glucosio.
 
-Oggi, nelle società occidentali moderne, i carboidrati sono così facilmente disponibili che le persone possono
-trascorrere la maggior parte della loro vita senza che i loro corpi debbano ricorrere ai corpi chetonici per ottenere
-energia.
+Tuttavia, oggi nelle società occidentali moderne i carboidrati sono così facili da venire da che la gente può andare la maggior parte della loro vita senza il loro corpo dover ricorrere a corpi chetoni per l'energia.
 
-Un'area di ricerca attiva studia quali processi corporei sono attivi solo quando il corpo consuma principalmente corpi
-chetonici.
+Uno spazio attivo di ricerca è su quali processi il corpo ha che sono attivi solo quando il corpo è principalmente il consumo di corpi chetone.
 
-## Fasi del digiuno:
+## Fasi di digiuno:
 
-1. **Combustione del glucosio:** All'inizio, il corpo consumerà il glucosio già presente nel sangue. Potresti aver
-   sentito dire che durante l'esercizio cardiovascolare ci vogliono circa 20 minuti per esaurire tutto il glucosio. Per
-   gli atleti di resistenza, come i maratoneti, si consiglia di assumere più glucosio ogni 20 minuti, se possibile. Come
-   per tutti i numeri qui riportati, si tratta di una stima approssimativa, una regola pratica. Questa sarà influenzata
-   da molti fattori: il tuo corpo, l'attività che stai svolgendo, la quantità di glucosio già presente a causa della tua
-   dieta, ecc. Ma è una stima abbastanza affidabile, quindi la useremo.
-2. **Scomposizione del glicogeno:** Man mano che il glucosio nel sangue si esaurisce, il corpo lo reintegrerà
-   scomponendo le riserve di glicogeno. Le persone che seguono diete a basso contenuto di carboidrati avranno riserve di
-   glicogeno più piccole, quindi questa fase può variare notevolmente. Qualcuno con una dieta a basso contenuto di
-   carboidrati può completare questa fase in poche ore, mentre qualcuno con una dieta ricca di carboidrati che non si
-   allena regolarmente potrebbe impiegare dalle 24 alle 48 ore per esaurire le proprie riserve. L'esercizio fisico
-   durante questa fase lo accelererà costringendo il corpo a bruciare il glucosio più rapidamente.
-3. **Scomposizione del tessuto adiposo:** Quando le riserve di glicogeno cominciano a esaurirsi, il corpo inizierà a
-   scomporre il tessuto adiposo (*grasso*) in corpi chetonici. Questo è l'inizio della "combustione dei grassi".
-4. **Chetonemia:** Questa è la prima fase che sembra mostrare più benefici della semplice restrizione calorica. La
-   chetonemia è lo stato in cui i corpi chetonici sono la principale fonte di energia nel sangue. Sebbene il meccanismo
-   d'azione non sia ancora noto, questo stato sembra avere benefici significativi per l'infiammazione e le malattie
-   correlate all'infiammazione come la gotta.
-5. **Autofagia:** Il corpo ha un altro meccanismo per ottenere energia. In questa fase, il corpo inizierà a consumare
-   cellule vecchie o danneggiate per ottenere energia. Questo campo di ricerca è ancora agli inizi, ma sembra essere un
-   importante meccanismo attraverso il quale il corpo risolve problemi. I tumori sono semplicemente cellule danneggiate
-   che non sanno quando smettere di dividersi. Se un corpo entra regolarmente in autofagia, sembra che queste cellule
-   danneggiate vengano scomposte per ottenere energia prima che abbiano il tempo di diventare un problema. Un'altra area
-   di ricerca riguarda il morbo di Alzheimer. Sappiamo che la causa dell'Alzheimer è l'accumulo di placche amiloidi nel
-   cervello, quindi qualsiasi modo per prevenire questi accumuli dovrebbe impedire alla malattia di attecchire.
-   L'autofagia potrebbe fare proprio questo, consumando le placche prima che diventino un problema. Inoltre, alcuni
-   luoghi che immagazzinano glicogeno e tessuto adiposo vanno bene in piccole quantità, ma diventano un problema quando
-   queste riserve non vengono mai esaurite. La cirrosi epatica, ad esempio, può essere causata da depositi di grasso nel
-   fegato che ne ostacolano il normale funzionamento. Se bevi frequentemente alcol e non segui una dieta a basso
-   contenuto di carboidrati, il glicogeno immagazzinato nel fegato verrà raramente esaurito.
-6. **Autofagia ottimale:** Probabilmente questa è l'area di ricerca più recente, quindi prendi queste informazioni con
-   cautela. Ma quando il corpo è stato in autofagia per un periodo di tempo sufficientemente lungo, sembra che vengano
-   attivati ulteriori sistemi di "riparazione". Il meccanismo d'azione non è ancora noto. Tuttavia, studi hanno
-   dimostrato che i danni al DNA, come la lunghezza dei telomeri alle estremità del DNA, vengono riparati, invertendo
-   efficacemente i danni al DNA legati all'età e abbassando l'età biologica. Sembra che non sia solo l'autofagia a
-   innescare questi sistemi; sottoporre il corpo a vari tipi di stress può attivarli anch'essi. Gli atleti di resistenza
-   possono innescare questi sistemi, il che ha senso dato che sembra che i nostri antenati fossero cacciatori di
-   resistenza, correndo per ore mentre inseguivano la preda.
+1. **Bruciatura di glucosio:** All'inizio il tuo corpo consumerà il glucosio che è già libero nel sangue. Potrebbe aver sentito che durante l’esercizio cardiovascolare ci vogliono 20 minuti per esaurire tutto il glucosio. Per gli atleti di resistenza come i corridori di maratona, si consiglia loro di consumare più glucosio ogni 20 minuti, se possibile. Come per tutti i numeri qui, questa è una stima approssimativa, una buona regola di pollice se si vuole. Questo sarà influenzato da molti fattori: il tuo corpo, l'attività che stai facendo, quanto glucosio avevi già a causa della tua dieta, ecc. Ma è una stima abbastanza buona quindi andremo con esso.
+2. **Glycogen Breakdown:** Come il glucosio nel tuo sangue, il tuo corpo lo reintegrerà distruggendo i tuoi negozi di glicogeno. Le persone che seguono basse diete di carboidrati avranno più piccoli negozi di glicogeno, quindi questa fase può variare ampiamente. Qualcuno con una dieta a basso contenuto di carboidrati può completare questa fase in poche ore, mentre qualcuno con una dieta ad alto contenuto di carboidrati che non esercita regolarmente potrebbe prendere da 24 a 48 ore per esaurire i loro negozi. Esercizio durante questa fase accelererà costringendo il vostro corpo a bruciare più velocemente glucosio.
+3. **Ripartizione del tessuto adiposo:** Mentre i tuoi negozi di glicogeno iniziano a esaurirsi, il tuo corpo inizierà a passare alla rottura del tessuto adiposo (_grasso_) in corpi chetonici. Questo è l'inizio di "Fat Burning".
+4. **Ketosis:** Questa è la prima fase che sembra mostrare più benefici di semplice restrizione calorica. La chetosi è lo stato di corpi chetoni essere la principale fonte di energia nel sangue. Anche se il meccanismo d'azione non è ancora noto, questo stato sembra avere benefici significativi per l'infiammazione e le malattie correlate all'infiammazione come la gotta.
+5. **Autofagy:** Il corpo ha un altro meccanismo per raccogliere energia. In questa fase il vostro corpo inizierà a consumare vecchie o cellule danneggiate per l'energia. Questo settore di ricerca è ancora agli inizi, ma sembra che questo sia in realtà un meccanismo importante per il corpo per risolvere i problemi. I tumori sono semplicemente cellule danneggiate che non sanno quando smettere di dividere. Se un corpo entra regolarmente in autofagia, sembra che quelle cellule danneggiate sono ripartite per l'energia prima di avere il tempo di diventare un problema. Un altro settore di ricerca è intorno alla malattia di Alzheimer. Sappiamo che la causa del morbo di Alzheimer è un accumulo di amiloide a placche nel cervello, quindi qualsiasi modo per prevenire questi accumuli dovrebbe impedire che la malattia si radica in primo luogo. Autophagy può fare proprio questo, consumando la targa prima che diventi un problema. Inoltre, alcuni luoghi che conservano glicogeno e tessuti adiposi sono bene in piccole quantità, ma diventano un problema quando quei negozi non vengono mai esauriti. La cirrosi del fegato, ad esempio, può essere causata da depositi di grasso nel fegato che ostacolano la sua normale funzione. Se beve spesso alcool e non segue altrimenti una dieta a basso contenuto di carboidrati, il glicogeno conservato nel fegato raramente sarà esaurito.
+6. **Autofagia ottimale:** Questa è probabilmente la più recente area di ricerca, quindi prendi questo con un grano di sale. Ma quando il vostro corpo è stato in autofagia per un periodo di tempo abbastanza lungo, sembra che ulteriori sistemi di “riparazione” sono attivati. Il meccanismo d'azione non è ancora noto. Ma gli studi hanno dimostrato che i danni al DNA, come la lunghezza dei telomeri alle estremità del vostro DNA sono riparati, invertire efficacemente il danno al DNA correlato all’età e abbassare la sua età biologica. Sembra non essere solo autofagia che innesca questi sistemi, sottolineando il corpo in una varietà di modi possono innescarli. Gli atleti di resistenza possono attivare questi sistemi, che possono avere senso in quanto sembra che i nostri antenati fossero cacciatori di resistenza, correndo per ore mentre stalking predy.
 
 ## Fonti:
 
-- [Come rallentare l'invecchiamento (e persino invertirlo)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (*YouTube*)
-- [Effetti del digiuno intermittente sulla salute, l'invecchiamento e le malattie](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (
-  *New England Journal of Medicine*)
+- [Come allentare l'invecchiamento (e persino invertirlo)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (_Youtube_)
+- [Effetti del digiuno intermittente su salute, invecchiamento e malattia](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_New England Journal of Medicine_)
