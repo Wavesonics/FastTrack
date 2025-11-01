@@ -5,7 +5,7 @@
 	<string name="action_info">Інформація</string>
 	<string name="action_about">Про нас</string>
 	<string name="action_export">Експортувати журнал</string>
-	<string name="action_export_description">Створити CSV-файл для резервного копіювання журналу</string>
+	<string name="action_export_description">Створити CSV файл для резервного копіювання журналу</string>
 	<string name="action_import">Імпортувати журнал</string>
 	<string name="action_import_description">Заповнити журнал попередньо експортованими даними</string>
 	<string name="import_success">Журнал успішно імпортовано</string>
@@ -22,10 +22,10 @@
 	<string name="settings_stage_alerts_subtitle">Отримувати сповіщення при переході на нові стадії голодування</string>
 	<string name="export_failed">Не вдалося експортувати журнал</string>
 	<string name="intro_00_title">Ласкаво просимо до Fast Track!</string>
-	<string name="intro_00_description">Що це за програма?</string>
+	<string name="intro_00_description">Що це за додаток?</string>
 	<string name="intro_01_title">Мотиваційна допомога</string>
-	<string name="intro_01_description">Головна ідея Fast Track полягає в тому, щоби допомогти мотивувати Вас під час голодувань і
-		пояснити, що відбувається з Вашим організмом на різних стадіях голодування.</string>
+	<string name="intro_01_description">Головна ідея Fast Track полягає в тому, щоб допомогти вам мотивуватися під час
+		ваших постів і пояснити, що відбувається у вашому тілі на різних етапах голодування.</string>
 	<string name="intro_02_title">Простий безкоштовний додаток</string>
 	<string name="intro_02_description">Fast Track є і завжди буде безкоштовним додатком з відкритим
 		вихідним кодом. Тут не потрібно реєструватися, робити якісь покупки чи тікати від реклами. У нього навіть немає доступу до
@@ -40,7 +40,7 @@
 	<string name="intro_05_description">А тепер починайте голодувати!</string>
 	<string name="about_name">Адам Браун</string>
 	<string name="about_subtitle">Розробник мобільних додатків</string>
-	<string name="about_brief">Скелелаз, альпініст, програміст і прибічник відкритого програмного забезпечення.</string>
+	<string name="about_brief">Скелелаз, альпініст, програміст, і адвокат з відкритого програмного забезпечення.</string>
 	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Голодування</string>
 	<string name="title_log">Журнал</string>
@@ -91,7 +91,7 @@
 	<string name="profile_bmi_category_morbidly_obese">Ожиріння III ступеня</string>
 	<string name="profile_error">Недопустиме значення</string>
 	<string name="profile_bmr_label">Основний обмін:</string>
-	<string name="profile_bmr_value">%.0f ккал / добу</string>
+	<string name="profile_bmr_value">%.0f ккал / день</string>
 	<string name="profile_height_label">Висота</string>
 	<string name="profile_height_imper_feet_label">Фути</string>
 	<string name="profile_height_imper_inches_label">дюйми</string>
@@ -121,7 +121,8 @@
 	<string name="stage_fat_fasting_sweet_spot_title">Золота середина голодування</string>
 	<string name="stage_fat_fasting_sweet_spot_description">Ви досягли золотої середини голодування, так тримати!</string>
 	<string name="stage_fat_peak_fat_burning_title">Пік спалювання жиру</string>
-	<string name="stage_fat_peak_fat_burning_description">Тепер Ваш організм швидко спалює жир, і вже розпочався кетоз.</string>
+	<string name="stage_fat_peak_fat_burning_description">Ваше тіло зараз швидко спалює жир, і кето-система почала
+		діяти.</string>
 	<string name="stage_autophagy_title">Автофагія</string>
 	<string name="stage_autophagy_description">Ваш організм розпочав автофагію!</string>
 	<string name="stage_optimal_autophagy_title">Оптимальна автофагія</string>
@@ -136,8 +137,8 @@
 	<string name="share_text_past_tense">Я проголодував %1$d годин і %2$d хвилин!</string>
 	<string name="stage_alerts_checkbox">Сповіщення про стадії</string>
 	<string name="notification_channel_name">Сповіщення про голодування</string>
-	<string name="notification_channel_description">Сповіщення, що приходять, коли Ви переходите на нову стадію
-		голодування.</string>
+	<string name="notification_channel_description">Сповіщення, що інформують вас про те, коли ви ввійшли в нову фазу
+		вашого посту.</string>
 	<string name="notification_fat_burn_title">Стадія голодування: спалювання жиру</string>
 	<string name="notification_fat_burn_content">Ви вичерпали свої резерви глюкози, і тепер ваше тіло споживає жир для
 		енергії.</string>
@@ -145,11 +146,11 @@
 	<string name="notification_ketosis_content">Ваш організм спалив достатню кількість жиру, і тепер Ви перейшли
 		в кетоз.</string>
 	<string name="notification_autophagy_title">Стадія голодування: автофагія</string>
-	<string name="notification_autophagy_content">Ваш організм розпочав автофагію. Старі чи пошкоджені клітини тепер
-		переробляються в енергію.</string>
+	<string name="notification_autophagy_content">Ваше тіло вступило в автопагію. Старі або пошкоджені клітини тепер
+		споживаються для отримання енергії.</string>
 	<string name="notification_optimal_autophagy_title">Стадія голодування: оптимальна автофагія</string>
-	<string name="notification_optimal_autophagy_content">Ваше тіло вже довго займається автофагією, від чого
-		значно покращується здоров\'я Ваших клітин.</string>
+	<string name="notification_optimal_autophagy_content">Ваше тіло вже давно перебуває в Автофагії, і ваше клітинне
+		здоров’я має великі переваги.</string>
 	<string name="notification_fasting_channel_name">Стан голодування</string>
 	<string name="notification_fasting_channel_description">Постійне сповіщення, що показує поточний стан та прогрес
 		голодування.</string>
@@ -174,12 +175,11 @@
 		рівень раку нижчий у людей, які регулярно входять в автопагію. Крім того, деякі дослідження також показали
 		знижені рівні хвороби Альцгеймера.</string>
 	<string name="info_dialog_bmi_title">Індекс маси тіла</string>
-	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It
-		is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that
-		there are factors that can cause it to be misleading. For instance: an extremely muscular body builder, or a
-		very tall or very short person. These edge cases will get inaccurate results from the basic BMI
-		calculation.\n\nBut for the majority of people this is a good enough estimate to know if you are in a healthy
-		weight range.</string>
+	<string name="info_dialog_bmi_content">Грубе оцінювання здорової ваги, якою повинен бути середній дорослий. Воно
+		розраховується просто шляхом ділення ваги на зріст.\n\nЧасто критикується за свою неточність, проте є фактори,
+		які можуть зробити його обманливим. Наприклад: надзвичайно мускулистий бодібілдер чи дуже високий або дуже
+		низький чоловік. Ці крайні випадки дадуть неточні результати від основного розрахунку ІМТ.\n\nАле для більшості
+		людей це достатня оцінка, щоб знати, чи входите ви в здоровий ваговий діапазон.</string>
 	<string name="info_dialog_bmr_title">Базальний обмін речовин</string>
 	<string name="info_dialog_bmr_content">Це оцінка кількості калорій, які ваше тіло спалить за день, коли повністю в
 		спокої. Якщо б ви просто лежали в ліжку весь день, це кількість калорій, яку ви могли б спожити, не набираючи
