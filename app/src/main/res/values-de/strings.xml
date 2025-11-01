@@ -1,53 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="action_about">Über</string>
-	<string name="action_info">Info</string>
+	<string name="app_name">Schnellspur</string>
 	<string name="action_share">Teilen</string>
-	<string name="app_name">Fast Track</string>
+	<string name="action_info">Info</string>
+	<string name="action_about">Über</string>
+	<string name="action_export">Exportieren Sie das Logbuchs</string>
+	<string name="action_export_description">Erstellen Sie eine CSV-Datei Ihres Logbuchs zur Sicherung</string>
+	<string name="action_import">Logbuch importieren</string>
+	<string name="action_import_description">Befüllen Sie Ihr Logbuch aus einem früheren Export</string>
+	<string name="import_success">Logbuch erfolgreich importiert</string>
+	<string name="import_failed">Importieren des Logbuchs fehlgeschlagen</string>
+	<!-- Settings -->
+	<string name="settings_section_notifications">Benachrichtigungen</string>
+	<string name="settings_section_ui">Schnittstelle</string>
+	<string name="settings_section_logbook">Logbuch</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Fast-Benachrichtigung anzeigen</string>
+	<string name="settings_fasting_notification_subtitle">Stellt Echtzeit-Informationen während einer Schnelligkeit bereit</string>
+	<!-- Settings: Stage alerts -->
+	<string name="settings_stage_alerts_title">Bühnen-Alarme</string>
+	<string name="settings_stage_alerts_subtitle">Benachrichtigt werden, wenn neue Fast-Stufen betreten werden</string>
+	<string name="export_failed">Fehler beim Exportieren des Logbuchs</string>
 	<string name="intro_00_title">Willkommen bei Fast Track!</string>
-	<string name="intro_01_title">Motivationshilfe</string>
 	<string name="intro_00_description">Worum geht es in dieser App?</string>
+	<string name="intro_01_title">Motivationshilfe</string>
 	<string name="intro_01_description">Die Hauptidee hinter Fast Track ist es, Sie während Ihrer Fastenperioden zu
-		motivieren und Ihnen zu erklären, was Ihr Körper in den verschiedenen Phasen des Fastens tut.
-	</string>
+		motivieren und Ihnen zu erklären, was Ihr Körper in den verschiedenen Phasen des Fastens tut.</string>
 	<string name="intro_02_title">Eine einfache kostenlose App</string>
-	<string name="intro_03_title">Intermittierendes Fasten</string>
 	<string name="intro_02_description">Fast Track ist und wird immer kostenlos und Open Source sein. Es muss kein Konto erstellt werden, es gibt keine In-App-Käufe und keine Werbung! Die App benötigt nicht einmal Internetzugang und
-		kann somit Ihre Daten nicht weitergeben.
-	</string>
-	<string name="intro_04_title">Das ist es!</string>
-	<string name="intro_04_description">Jetzt geh und fang an zu fasten!</string>
-	<string name="about_name">Adam Brown</string>
-	<string name="about_subtitle">Mobile-Entwickler</string>
-	<string name="title_fasting">Fasten</string>
+		kann somit Ihre Daten nicht weitergeben.</string>
+	<string name="intro_03_title">Intermittierendes Fasten</string>
 	<string name="intro_03_description">Dies ist ein neues Studienfeld, das viele Vorteile über den einfachen
 		Gewichtsverlust hinaus zeigt.\n\nUm zu erkunden, was wir über das Fasten wissen und was die Forschung dazu sagt,
-		schauen Sie sich den Bereich Info dieser App an!
-	</string>
+		schauen Sie sich den Bereich Info dieser App an!</string>
+	<string name="intro_04_title">Das ist es!</string>
+	<string name="intro_04_description">Jetzt geh und fang an zu fasten!</string>
+	<string name="intro_05_title">Das war\'s!</string>
+	<string name="intro_05_description">Jetzt starten Sie das Fasten!</string>
+	<string name="about_name">Adam Brown</string>
+	<string name="about_subtitle">Mobile-Entwickler</string>
 	<string name="about_brief">Kletterer, Bergsteiger, Softwareingenieur und Open-Source-Befürworter.</string>
+	<string name="about_discord">Discord</string>
+	<string name="title_fasting">Fasten</string>
 	<string name="title_log">Protokoll</string>
 	<string name="title_profile">Profil</string>
 	<string name="fasting_fragment_label">Fasten</string>
 	<string name="start_fast_button">Fasten beginnen</string>
+	<string name="start_fast_now_button">Jetzt Fasten beginnen</string>
 	<string name="end_fast_button">Fasten beenden</string>
 	<string name="fasting_energy_mode">Energiemodus: %1$s</string>
 	<string name="fasting_energy_mode_glucose">Glukose</string>
 	<string name="fasting_energy_mode_fat">Ketonkörper</string>
 	<string name="confirm_start_fast_title">Fasten beginnen?</string>
 	<string name="confirm_start_fast_positive">Jetzt</string>
-	<string name="confirm_start_fast_negative">Nein</string>
 	<string name="confirm_start_fast_neutral">Bereits gestartet</string>
+	<string name="confirm_start_fast_negative">Nein</string>
+	<string name="already_started_dialog_title">Bereits gestartet</string>
 	<string name="start_picker_title">Wann hast du dein Fasten begonnen?</string>
 	<string name="confirm_end_fast_title">Fasten beenden?</string>
-	<string name="confirm_end_fast_positive">Ja</string>
+	<string name="confirm_end_fast_positive">Jetzt</string>
+	<string name="confirm_end_fast_neutral">Bereits gestoppt?</string>
 	<string name="confirm_end_fast_negative">Nein</string>
+	<string name="already_stopped_dialog_title">Wann haben Sie gestoppt?</string>
+	<string name="menu_edit">Bearbeiten</string>
+	<string name="menu_delete">Löschen</string>
 	<string name="confirm_delete_fast_title">Fasteneintrag löschen?</string>
 	<string name="confirm_delete_fast_positive">Ja</string>
 	<string name="confirm_delete_fast_negative">Nein</string>
 	<string name="fast_status_fasting">Fasten im Gange</string>
 	<string name="fast_status_not_fasting">Du fastest nicht.</string>
-	<string name="start_fast_button_advanced">*</string>
 	<string name="next_stage">Nächste Stufe in: %1$d Stunden</string>
+	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">Gestartet: %1$s</string>
 	<string name="log_entry_length">%1$d Stunden</string>
 	<string name="log_entry_ketosis">Ketose: %1$d Stunden</string>
@@ -55,157 +78,158 @@
 	<string name="profile_age_label">Alter</string>
 	<string name="profile_age_years">Jahre</string>
 	<string name="profile_weight_label">Gewicht</string>
+	<string name="profile_weight_pounds_label">Pfund</string>
 	<string name="profile_weight_kg_label">kg</string>
 	<string name="profile_update_button">Aktualisieren</string>
-	<string name="profile_weight_pounds_label">Pfund</string>
 	<string name="profile_bmi_label">BMI:</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
 	<string name="profile_bmi_category_underweight">Untergewicht</string>
 	<string name="profile_bmi_category_normal">Normal</string>
-	<string name="profile_bmi_value">%1$.1f - %2$s</string>
 	<string name="profile_bmi_category_overweight">Übergewicht</string>
 	<string name="profile_bmi_category_obese">Fettleibigkeit</string>
 	<string name="profile_bmi_category_morbidly_obese">Fettleibigkeit</string>
 	<string name="profile_error">Ungültiger Wert</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f" kCal / Tag</string>
+	<string name="profile_bmr_value">%.0f\" kCal / Tag</string>
 	<string name="profile_height_label">Höhe</string>
 	<string name="profile_height_imper_feet_label">Fuß</string>
 	<string name="profile_height_imper_inches_label">Zoll</string>
 	<string name="profile_height_metric_label">Cm</string>
-	<string name="profile_gender_female">Weiblich</string>
 	<string name="profile_gender_male">Männlich</string>
+	<string name="profile_gender_female">Weiblich</string>
 	<string name="manual_add_title">Manuell hinzufügen</string>
+	<string name="manual_edit_title">Eintrag bearbeiten</string>
 	<string name="manual_add_length_hint">Länge (Stunden)</string>
 	<string name="manual_add_complete_button">Hinzufügen</string>
+	<string name="manual_add_save_button">Speichern</string>
+	<string name="manual_add_fast_started_on">Fasten gestartet am: %1$s</string>
+	<string name="manual_add_start_date_time_label">Startdatum und Uhrzeit</string>
+	<string name="edit_date">Datum bearbeiten</string>
+	<string name="edit_time">Bearbeitungszeit</string>
 	<string name="manual_start_title">Schnellstart</string>
+	<string name="manual_add_set_end_title">Fasten-Ende festlegen</string>
+	<string name="manual_add_set_end_complete">Berechnen</string>
 	<string name="fast_autophagy_label">Autophagie:</string>
 	<string name="fast_ketosis_label">Ketose:</string>
 	<string name="fast_fat_burn_label">Fettverbrennung:</string>
-	<string name="manual_add_fast_started_on">Fasten gestartet am: %1$s</string>
 	<string name="stage_fasting_title">Fasten</string>
-	<string name="stage_fat_burning_title">Fettverbrennung</string>
 	<string name="stage_fasting_description">Dein Körper braucht seine Glukosespeicher auf, mach weiter so!</string>
-	<string name="stage_fat_fasting_sweet_spot_title">Optimale Fettverbrennung</string>
+	<string name="stage_fat_burning_title">Fettverbrennung</string>
 	<string name="stage_fat_burning_description">Ihre Glukosespeicher sind erschöpft! Ihr Körper verbrennt jetzt Fett
-		für Energie. Ein Training in den nächsten paar Stunden wäre optimal.
-	</string>
-	<string name="stage_fat_peak_fat_burning_title">Spitzenfettverbrennung</string>
+		für Energie. Ein Training in den nächsten paar Stunden wäre optimal.</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Optimale Fettverbrennung</string>
 	<string name="stage_fat_fasting_sweet_spot_description">Du bist in der perfekten Fettverbrennungsphase, mach weiter so!</string>
+	<string name="stage_fat_peak_fat_burning_title">Spitzenfettverbrennung</string>
 	<string name="stage_fat_peak_fat_burning_description">Ihr Körper verbrennt jetzt schnell Fett, und die Ketose hat
-		begonnen.
-	</string>
-	<string name="stage_optimal_autophagy_title">Optimale Autophagie</string>
-	<string name="stage_autophagy_description">Dein Körper hat mit der Autophagie begonnen!</string>
+		begonnen.</string>
 	<string name="stage_autophagy_title">Autophagie</string>
-	<string name="phase_fat_burning">Fettverbrennung</string>
+	<string name="stage_autophagy_description">Dein Körper hat mit der Autophagie begonnen!</string>
+	<string name="stage_optimal_autophagy_title">Optimale Autophagie</string>
 	<string name="stage_optimal_autophagy_description">Die Autophagie ist in vollem Gange! Mach weiter so, zwischen
-		jetzt und 72 Stunden wird die Autophagie sehr effektiv sein.
-	</string>
+		jetzt und 72 Stunden wird die Autophagie sehr effektiv sein.</string>
 	<string name="phase_glucose">Glucoseverbrennung</string>
+	<string name="phase_fat_burning">Fettverbrennung</string>
 	<string name="phase_ketosis">Ketose</string>
 	<string name="phase_autophagy">Autophagie</string>
 	<string name="phase_optimal_autophagy">Optimale Autophagie</string>
-	<string name="stage_alerts_checkbox">Benachrichtigungen</string>
 	<string name="share_text">Ich faste seit %1$d Stunden und %2$d Minuten! Mein Körper verbraucht gerade %3$s für
-		Energie.
-	</string>
+		Energie.</string>
 	<string name="share_text_past_tense">Ich fastete für %1$d Stunden und %2$d Minuten!</string>
+	<string name="stage_alerts_checkbox">Benachrichtigungen</string>
 	<string name="notification_channel_name">Fastenbenachrichtigungen</string>
-	<string name="notification_fat_burn_title">Fasten-Phase: Fettverbrennung</string>
 	<string name="notification_channel_description">Benachrichtigungen, die Sie informieren, wenn Sie eine neue Phase
-		Ihres Fastens erreicht haben.
-	</string>
-	<string name="notification_ketosis_title">Fasten-Phase: Ketose</string>
+		Ihres Fastens erreicht haben.</string>
+	<string name="notification_fat_burn_title">Fasten-Phase: Fettverbrennung</string>
 	<string name="notification_fat_burn_content">Sie haben Ihre Glukosevorräte erschöpft und Ihr Körper verbrennt jetzt
-		Fett zur Energiegewinnung.
-	</string>
-	<string name="notification_autophagy_title">Fasten-Phase: Autophagie</string>
+		Fett zur Energiegewinnung.</string>
+	<string name="notification_ketosis_title">Fasten-Phase: Ketose</string>
 	<string name="notification_ketosis_content">Ihr Körper hat jetzt genügend Fettreserven abgebaut, sodass Sie in die
-		Ketose eingetreten sind.
-	</string>
-	<string name="notification_optimal_autophagy_title">Fasten-Phase: Optimale Autophagie</string>
+		Ketose eingetreten sind.</string>
+	<string name="notification_autophagy_title">Fasten-Phase: Autophagie</string>
 	<string name="notification_autophagy_content">Ihr Körper hat die Autophagie erreicht. Alte oder beschädigte Zellen
-		werden jetzt zur Energiegewinnung konsumiert.
-	</string>
-	<string name="info_dialog_fat_burn_title">Fettverbrennung</string>
+		werden jetzt zur Energiegewinnung konsumiert.</string>
+	<string name="notification_optimal_autophagy_title">Fasten-Phase: Optimale Autophagie</string>
 	<string name="notification_optimal_autophagy_content">Ihr Körper befindet sich schon lange im Autophagie-Zustand,
-		und Ihre zelluläre Gesundheit profitiert enorm davon.
-	</string>
-	<string name="info_dialog_ketosis_title">Ketose</string>
-	<string name="info_dialog_autophagy_title">Autophagie</string>
-	<string name="info_dialog_bmi_title">Body-Mass-Index</string>
+		und Ihre zelluläre Gesundheit profitiert enorm davon.</string>
+	<string name="notification_fasting_channel_name">Füllstatus</string>
+	<string name="notification_fasting_channel_description">Laufende Benachrichtigung, die deinen aktuellen Fast-Status und
+		Fortschritt anzeigt.</string>
+	<string name="notification_fasting_title">Schnell: %1$s Stunden</string>
+	<string name="notification_fasting_energy_mode">Energiemodus: %1$s</string>
+	<string name="info_dialog_fat_burn_title">Fettverbrennung</string>
 	<string name="info_dialog_fat_burn_content">In diesem Stadium hat Ihr Körper Ihre Glukosevorräte erschöpft. Glukose
 		wird als Glykogen für die spätere Verwendung gespeichert. In diesem Stadium wurde das meiste Ihres gespeicherten
 		Glykogens in Glukose zerlegt und zur Energiegewinnung verbraucht.\n\n Jetzt beginnt es, das Fettgewebe (Adipose)
 		in Ketonkörper abzubauen. Neben der Fähigkeit, Glukose zur Energiegewinnung zu konsumieren, kann Ihr Körper
 		alternativ Ketonkörper zur Energiegewinnung nutzen, und sobald die Glukosespeicher niedrig sind, wird Ihr Körper
-		seinen Energiemodus auf Ketonkörper umschalten.
-	</string>
+		seinen Energiemodus auf Ketonkörper umschalten.</string>
+	<string name="info_dialog_ketosis_title">Ketose</string>
 	<string name="info_dialog_ketosis_content">In dieser Phase hat Ihr Körper genug Zeit gehabt, um Fett abzubauen,
 		sodass Ihr Körper hauptsächlich von Ketonkörpern anstatt von Glukose betrieben wird.\n\nNeben den damit
 		verbundenen Vorteilen des Fettverlusts haben Studien Vorteile bei entzündungsbedingten Krankheiten gezeigt,
-		obwohl der Wirkmechanismus derzeit unbekannt ist.
-	</string>
-	<string name="info_dialog_bmr_title">Grundumsatz</string>
-	<string name="info_dialog_positive">Cool!</string>
-	<string name="info_page_title_info">Info</string>
+		obwohl der Wirkmechanismus derzeit unbekannt ist.</string>
+	<string name="info_dialog_autophagy_title">Autophagie</string>
 	<string name="info_dialog_autophagy_content">In dieser Phase hat dein Körper begonnen, weitere Prozesse zur
 		Energiegewinnung zu aktivieren. Neben dem Abbau von Fettgewebe zu Ketonkörpern hat er begonnen, alte oder
 		beschädigte Zellen aufzuspüren und sie zur Energiegewinnung zu verbrauchen. \n\nDie Forschung zu diesem Phase
 		steht noch am Anfang, aber es scheint, dass dies ein wichtiger Mechanismus für den Körper ist, um Probleme zu
 		stoppen, bevor sie auftreten. Zum Beispiel sind die Krebsraten bei Menschen, die regelmäßig in die Autophagie
-		eintreten, niedriger. Darüber hinaus haben einige Studien auch niedrigere Raten von Alzheimer gezeigt.
-	</string>
-	<string name="info_dialog_bmr_content">Der Grundumsatz ist eine Schätzung der Anzahl der Kalorien, die Ihr Körper an einem Tag
-		im völligen Ruhezustand verbrennen wird. Wenn Sie den ganzen Tag im Bett liegen würden, wäre dies die Anzahl der
-		Kalorien, die Sie ohne Gewichtszunahme essen könnten.\n\nDiese Zahl ist entscheidend für Menschen, die durch
-		Einschränkung der täglichen Kalorienaufnahme diäten.
-	</string>
-	<string name="info_page_title_tips">Tipps</string>
+		eintreten, niedriger. Darüber hinaus haben einige Studien auch niedrigere Raten von Alzheimer gezeigt.</string>
+	<string name="info_dialog_bmi_title">Body-Mass-Index</string>
 	<string name="info_dialog_bmi_content">Eine grobe Schätzung des gesunden Gewichts, das ein durchschnittlicher
 		Erwachsener haben sollte. Es wird einfach berechnet, indem das Gewicht durch die Höhe geteilt wird.\n\nOft als
 		ungenau kritisiert, ist es wahr, dass es Faktoren gibt, die dazu führen können, dass es irreführend ist. Zum
 		Beispiel: ein extrem muskulöser Bodybuilder oder eine sehr große oder sehr kleine Person. Diese Grenzfälle
 		erhalten ungenaue Ergebnisse aus der grundlegenden BMI-Berechnung.\n\nAber für die Mehrheit der Menschen ist
-		dies eine ausreichende Schätzung, um zu wissen, ob Sie sich im gesunden Gewichtsbereich befinden.
-	</string>
+		dies eine ausreichende Schätzung, um zu wissen, ob Sie sich im gesunden Gewichtsbereich befinden.</string>
+	<string name="info_dialog_bmr_title">Grundumsatz</string>
+	<string name="info_dialog_bmr_content">Der Grundumsatz ist eine Schätzung der Anzahl der Kalorien, die Ihr Körper an einem Tag
+		im völligen Ruhezustand verbrennen wird. Wenn Sie den ganzen Tag im Bett liegen würden, wäre dies die Anzahl der
+		Kalorien, die Sie ohne Gewichtszunahme essen könnten.\n\nDiese Zahl ist entscheidend für Menschen, die durch
+		Einschränkung der täglichen Kalorienaufnahme diäten.</string>
+	<string name="info_dialog_positive">Cool!</string>
+	<string name="info_page_title_info">Info</string>
+	<string name="info_page_title_tips">Tipps</string>
 	<string name="title_activity_info">Fasteninformationen</string>
 	<string name="log_total_autophagy">Gesamte Autophagie:</string>
 	<string name="log_total_ketosis">Gesamtketose:</string>
 	<string name="log_total_hours">%1$d Stunden</string>
 	<string name="profile_metric_switch">Metrik</string>
 	<string name="title_activity_intro">Einführung</string>
-	<string name="start_fast_now_button">Jetzt Fasten beginnen</string>
 	<string name="app_widget_description">Verfolgen Sie Ihren Fastenfortschritt von Ihrem Startbildschirm aus.</string>
 	<string name="app_widget_not_fasting">Nicht fasten</string>
 	<string name="app_widget_fast_in_progress">Fasten in Arbeit</string>
 	<string name="app_widget_time">%1$d Stunden</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Fasten beginnen</string>
+	<string name="app_widget_stop_fast_button">Fasten beenden</string>
+	<string name="app_widget_start_compact">Start</string>
+	<string name="app_widget_start">Zum Start tippen</string>
 	<string name="close_button_content_description">Schließen</string>
-	<string name="already_started_dialog_title">Bereits gestartet</string>
-	<string name="manual_add_set_end_complete">Berechnen</string>
-	<string name="next_button">Weiter</string>
 	<string name="cancel_button">Abbrechen</string>
-	<string name="manual_add_set_end_title">Fasten-Ende festlegen</string>
-	<string name="debug_add_hour_button">Debug: 1 Stunde hinzufügen</string>
-	<string name="done_button">Fertig</string>
+	<string name="next_button">Weiter</string>
+	<string name="previous_button">Vorherige</string>
 	<string name="skip_button">Überspringen</string>
+	<string name="done_button">Fertig</string>
+	<string name="debug_add_hour_button">Debug: 1 Stunde hinzufügen</string>
+	<string name="stop_fast_button_description">Fasten beenden</string>
 	<string name="start_fast_button_description">Fasten beginnen</string>
 	<string name="bmi_info_button_description">BMI-Informationen</string>
-	<string name="previous_button">Vorherige</string>
-	<string name="profile_gender_label">Geschlecht</string>
 	<string name="bmr_info_button_description">BMR-Info</string>
+	<string name="profile_gender_label">Geschlecht</string>
 	<string name="more_options_button_description">Weitere Optionen</string>
 	<string name="manual_add_close_button_description">Schließen</string>
 	<string name="manual_add_selected_start">Gestartet: %1$s</string>
 	<string name="manual_add_cancel_button">Abbrechen</string>
 	<string name="manual_add_next_button">Weiter</string>
-	<string name="stop_fast_button_description">Fasten beenden</string>
 	<string name="manual_add_calculate_from_end">Von Ende berechnen</string>
-	<string name="import_failed">Importieren des Logbuchs fehlgeschlagen</string>
-	<string name="action_export">Exportieren Sie das Logbuchs</string>
-	<string name="import_success">Logbuch erfolgreich importiert</string>
-	<string name="action_import">Logbuch importieren</string>
-	<string name="export_failed">Fehler beim Exportieren des Logbuchs</string>
-	<string name="app_widget_stop_fast_button">Fasten beenden</string>
+	<string name="action_settings">Einstellungen</string>
+	<string name="title_activity_settings">Einstellungen</string>
+	<string name="settings_placeholder">Einstellungen kommen bald</string>
+	<string name="back">Zurück</string>
+	<string name="settings_fancy_background_title">Schicker Hintergrund anzeigen</string>
+	<string name="settings_fancy_background_subtitle">Für einen einfacheren Fast-Hintergrund deaktivieren</string>
+	<string name="log_no_entries">Noch keine Einträge!</string>
+	<string name="log_logbook_label">Logbuch</string>
+	<string name="log_stats_label">Lebenslange Statistiken</string>
 </resources>
