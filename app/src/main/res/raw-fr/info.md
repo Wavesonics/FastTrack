@@ -1,86 +1,34 @@
 # Jeûne intermittent
 
-**Le jeûne intermittent** est actuellement un domaine d'étude très actif. Certaines parties de ce sujet sont bien
-établies, d'autres sont encore en cours d'étude. Donc, prenez tout cela avec précaution et consultez les sources
-primaires liées ci-dessous.
+**Intermittent Fasting** est actuellement un domaine d'étude très actif, certaines parties sont bien établies, d'autres sont encore en cours d'étude. Alors prenez tout cela avec un grain de sel, et consultez les sources primaires liées ci-dessous.
 
-## Comment et pourquoi le jeûne fonctionne :
+## Comment et pourquoi le jeûne fonctionne:
 
-On pense que, dans nos débuts en tant que chasseurs-cueilleurs, notre régime alimentaire alternait entre festins et
-famines. Une petite tribu pouvait peut-être obtenir une grosse proie une fois par semaine ou moins. Ainsi, nos corps
-sont bien conçus pour tirer le maximum de ces repas et stocker autant que possible pour une utilisation ultérieure.
+On croit que dans notre développement précoce en tant que cueilleurs de chasseurs, notre régime alimentaire était un festin ou une famine. Peut-être qu'une petite tribu obtiendra une grande mort une fois par semaine ou moins. Ainsi, nos corps sont bien conçus pour en tirer le meilleur parti et stocker tout ce qui est possible pour une utilisation ultérieure.
 
-Obtenir des glucides en grande quantité aurait été difficile. Par exemple : cueillir des baies, riches en sucre,
-nécessitait beaucoup d'efforts pour une petite quantité de sucre.
+L'acquisition de glucides en grandes quantités aurait été difficile. Par exemple : le glanage de baies qui seraient riches en sucre, nécessiterait beaucoup d'efforts pour une petite quantité de sucre.
 
-### Ainsi, nos corps ont développé deux principales voies énergétiques :
+### Ainsi, nos corps ont développé deux voies énergétiques primaires :
 
-1. **Glucose :** Les glucides se décomposent en glucose lorsqu'ils sont consommés. Le glucose peut être utilisé
-   directement par les cellules pour produire de l'énergie. L'excès de glucose est ensuite stocké sous forme de
-   glycogène dans diverses parties du corps, comme le foie et les muscles squelettiques. Une fois que vos réserves de
-   glycogène sont pleines, le glucose restant est transformé en tissu adipeux. En cas de besoin, le glycogène stocké
-   peut être à nouveau décomposé en glucose pour être consommé par vos cellules.
-2. **Corps cétoniques :** Ceux-ci sont dérivés de la métabolisation des graisses, et les cellules peuvent les consommer
-   à la place du glucose pour produire de l'énergie. Les calories excédentaires provenant des glucides ou des
-   protéines (*qui se décomposent respectivement en glucose et en acides aminés*) seront stockées sous forme de tissu
-   adipeux (*graisse*), et en cas de besoin, peuvent être décomposées en corps cétoniques qui seront utilisés comme
-   énergie par vos cellules.
+1. **Glycémie :** Les glucides se décomposent tous en glucose lorsqu'ils sont consommés. Le glucose peut être consommé directement par les cellules pour l’énergie. L’excès de glucose est ensuite stocké sous forme de glycogène dans divers endroits du corps tels que le foie et le muscle squelettique. Une fois que vos réserves de glycogène sont pleines, le glucose restant sera transformé en tissu adiposé. Si nécessaire, le glycogène stocké peut être décomposé en glucose pour être consommé par vos cellules.
+2. **Corps de Ketone :** Ils sont dérivés de la métabolisation des graisses et les cellules peuvent les consommer au lieu du glucose pour l'énergie. Les excès de calories provenant des glucides ou des protéines (_qui se décomposent respectivement en glucose et acides aminés_) seront stockés en tant que tissus adipeux (_gras_), et, le cas échéant, peuvent être décomposées en corps de ketone qui seront utilisés pour l'énergie de vos cellules.
 
-À l'époque des chasseurs-cueilleurs, nous tirions souvent notre énergie à la fois des corps cétoniques et du glucose.
+Dans nos jours de chasseurs, nous aurions souvent produit notre énergie à partir de corps de kétone et de glucose.
 
-Cependant, aujourd'hui, dans les sociétés occidentales modernes, les glucides sont si facilement accessibles que les
-gens peuvent passer la majeure partie de leur vie sans que leurs corps aient besoin de recourir aux corps cétoniques
-pour produire de l'énergie.
+Cependant, Aujourd'hui, dans les sociétés occidentales modernes, les glucides sont si faciles à venir que les gens peuvent passer la plupart de leur vie sans avoir à recourir à des corps de kétone pour l'énergie.
 
-Un domaine de recherche actif étudie quels processus corporels ne sont actifs que lorsque le corps consomme
-principalement des corps cétoniques.
+Un domaine de recherche actif consiste à savoir quels sont les processus dont dispose le corps qui ne sont actifs que lorsque le corps consomme principalement des corps de kétone.
 
-## Étapes du jeûne :
+## Étapes de jeûne:
 
-1. **Brûlage de glucose :** Au début, votre corps consommera le glucose déjà présent dans votre sang. Vous avez
-   peut-être entendu dire que, pendant l'exercice cardiovasculaire, il faut 20 minutes pour épuiser tout votre glucose.
-   Pour les athlètes d'endurance comme les marathoniens, il est conseillé de consommer plus de glucose toutes les 20
-   minutes si possible. Comme pour tous les chiffres ici, il s'agit d'une estimation approximative, une règle empirique.
-   Cela sera affecté par de nombreux facteurs : votre propre corps, l'activité que vous faites, la quantité de glucose
-   que vous avez déjà en raison de votre alimentation, etc. Mais c'est une estimation suffisante pour que nous l'
-   utilisions.
-2. **Dégradation du glycogène :** À mesure que le glucose dans votre sang diminue, votre corps le reconstituera en
-   décomposant vos réserves de glycogène. Les personnes qui suivent des régimes pauvres en glucides auront des réserves
-   de glycogène plus faibles, cette phase peut donc varier considérablement. Quelqu'un suivant un régime pauvre en
-   glucides peut terminer cette phase en seulement quelques heures, tandis qu'une personne avec un régime riche en
-   glucides qui ne fait pas d'exercice régulièrement pourrait prendre entre 24 et 48 heures pour épuiser ses réserves.
-   Faire de l'exercice pendant cette phase l'accélérera en forçant votre corps à brûler le glucose plus rapidement.
-3. **Dégradation du tissu adipeux :** À mesure que vos réserves de glycogène commencent à s'épuiser, votre corps
-   commencera à décomposer le tissu adipeux (*graisse*) en corps cétoniques. C'est le début de la « combustion des
-   graisses ».
-4. **Cétose :** C'est la première étape qui semble montrer plus de bénéfices que la simple restriction calorique. La
-   cétose est l'état où les corps cétoniques sont la principale source d'énergie dans votre sang. Bien que le mécanisme
-   d'action ne soit pas encore connu, cet état semble avoir des avantages significatifs contre l'inflammation et les
-   maladies liées à l'inflammation, telles que la goutte.
-5. **Autophagie :** Le corps dispose d'un autre mécanisme pour produire de l'énergie. À ce stade, votre corps commencera
-   à consommer des cellules anciennes ou endommagées pour produire de l'énergie. Ce domaine de recherche en est encore à
-   ses débuts, mais il semble que ce soit un mécanisme important permettant au corps de résoudre des problèmes. Les
-   cancers sont simplement des cellules endommagées qui ne savent pas quand arrêter de se diviser. Si un corps entre
-   régulièrement en autophagie, il semble que ces cellules endommagées soient décomposées pour produire de l'énergie
-   avant qu'elles n'aient le temps de devenir un problème. Un autre domaine de recherche concerne la maladie
-   d'Alzheimer. Nous savons que la cause d'Alzheimer est une accumulation de plaques amyloïdes dans le cerveau, donc
-   toute méthode pour empêcher ces accumulations devrait empêcher la maladie de s'installer. L'autophagie pourrait faire
-   exactement cela, en consommant les plaques avant qu'elles ne deviennent un problème. De plus, certains endroits qui
-   stockent le glycogène et les tissus adipeux sont acceptables en petites quantités, mais deviennent problématiques
-   lorsque ces réserves ne sont jamais épuisées. La cirrhose du foie, par exemple, peut être causée par des dépôts
-   graisseux dans le foie qui entravent son fonctionnement normal. Si vous buvez souvent de l'alcool et ne suivez pas un
-   régime pauvre en glucides, le glycogène stocké dans votre foie sera rarement épuisé.
-6. **Autophagie optimale :** C'est probablement le domaine de recherche le plus récent, donc prenez-le avec précaution.
-   Mais lorsque votre corps est en autophagie depuis suffisamment longtemps, il semble que d'autres systèmes de «
-   réparation » soient activés. Le mécanisme d'action n'est pas encore connu. Mais des études ont montré que les
-   dommages à l'ADN, tels que la longueur des télomères aux extrémités de votre ADN, sont réparés, inversant
-   efficacement les dommages liés à l'âge de l'ADN et abaissant votre âge biologique. Il semble que ce ne soit pas
-   seulement l'autophagie qui déclenche ces systèmes ; stresser le corps de diverses manières peut également les
-   activer. Les athlètes d'endurance peuvent déclencher ces systèmes, ce qui a du sens puisqu'il semble que nos ancêtres
-   étaient des chasseurs d'endurance, courant pendant des heures en poursuivant leurs proies.
+1. **Brûlure de glucose:** Au début, votre corps consommera le glucose qui est déjà libre dans votre sang. Vous avez peut-être entendu que pendant l'exercice cardiovasculaire, il faut 20 minutes pour épuiser tout votre glucose. Pour les athlètes d'endurance comme les coureurs de marathon, il est recommandé de consommer plus de glucose toutes les 20 minutes si possible. Comme tous les chiffres ici, c'est une estimation approximative, une bonne règle du pouce si vous voulez. Cela sera affecté par de nombreux facteurs : votre propre corps, l'activité que vous faites, Combien de glucose vous aviez déjà dû à votre alimentation, etc. Mais c'est une estimation assez bonne pour que nous l'allions.
+2. **Répartition du glycogène :** Au fur et à mesure que le glucose dans votre sang s'épuise, votre corps le reconstituera en brisant vos réserves de glycogène. Les personnes qui suivent des régimes à faible teneur en glucides auront des réserves de glycogène plus petites, de sorte que cette phase peut varier considérablement. Quelqu'un ayant un régime pauvre en glucides peut terminer cette étape en quelques heures, alors que les personnes qui ont un régime élevé en glucides et qui ne font pas régulièrement de l'exercice peuvent prendre entre 24 et 48 heures pour épuiser leurs stocks. L'exercice à cette étape l'accélérera en forçant votre corps à brûler plus rapidement le glucose.
+3. **Adipose Tissue Breakdown:** Lorsque vos réserves de glycogène commencent à s'épuiser, votre corps va commencer à basculer pour décomposer les tissus adipeux (_gras_) en corps de ketone. C'est le début de la « brûlure de graisses ».
+4. **Ketosis:** C'est la première étape qui semble montrer plus d'avantages que la simple restriction calorique. La kétose est l’état du corps de kétone qui est la principale source d’énergie dans le sang. Bien que le mécanisme d'action ne soit pas encore connu, cet état semble avoir des effets significatifs sur les maladies liées à l'inflammation et à l'inflammation comme la goutte.
+5. **Autophagy:** Le corps a un autre mécanisme pour récolter de l'énergie. Dans cette phase, votre corps va commencer à consommer de vieilles cellules ou endommagées pour de l'énergie. Ce domaine de la recherche en est encore à ses balbutiements, mais il semble qu'il s'agisse en fait d'un mécanisme important pour l'organe de résolution des problèmes. Les cancers sont simplement des cellules endommagées qui ne savent pas quand arrêter de diviser. Si un corps entre régulièrement dans l'autophagie, il semble que ces cellules endommagées soient ventilées pour de l'énergie avant d'avoir le temps de devenir un problème. Un autre domaine de recherche concerne la maladie d'Alzheimer. Nous savons que la cause de la maladie d'Alzheimer est une accumulation de plaque amyloïde dans le cerveau, de sorte que toute façon de prévenir ces accumulations devrait empêcher la maladie de prendre racine en premier lieu. L'autophagie peut faire exactement cela, en consommant la plaque avant qu'elle ne devienne un problème. De plus, certains endroits qui stockent du glycogène et des tissus adipeux sont bien en petites quantités, mais deviennent un problème lorsque ces magasins ne sont jamais épuisés. Par exemple, la cirrhose du foie peut être causée par des dépôts de graisses dans le foie qui entravent sa fonction normale. Si vous buvez souvent de l’alcool et que vous ne suivez pas un régime à faible teneur en glucides, le glycogène stocké dans votre foie sera rarement épuisé.
+6. **Autophagie optimale:** C'est probablement le domaine de recherche le plus récent, alors prenez ceci avec un grain de sel. Mais lorsque votre corps est en autophagie depuis assez longtemps, il semble que d’autres systèmes de « réparation » soient activés. Le mécanisme d'action n'est pas encore connu pour cela. Mais des études ont montré que les dommages à l'ADN, comme la longueur des téomères aux extrémités de votre ADN, sont réparés, inverser efficacement les dommages liés à l'ADN et réduire votre âge biologique. Il ne semble pas seulement être l'autophagie qui déclenche ces systèmes, en soulignant le corps de diverses manières peut les déclencher. Les athlètes d'endurance peuvent déclencher ces systèmes, ce qui peut avoir un sens, car il semble que nos ancêtres ont été des chasseurs d'endurance, qui courent pendant des heures en traquant des proies.
 
 ## Sources :
 
-- [Comment ralentir le vieillissement (et même l'inverser)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (*YouTube*)
-- [Effets du jeûne intermittent sur la santé, le vieillissement et les maladies](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (
-  *New England Journal of Medicine*)
+- [Comment ralentir le vieillissement (et même l'inverser)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (_Youtube_)
+- [Effects of Intermittent Fasting on Health, Aging and Disease](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_New England Journal of Medicine_)
