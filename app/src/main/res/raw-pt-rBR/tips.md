@@ -1,36 +1,33 @@
 # Dicas
 
-Jejuar pode ser difícil! Aqui estão algumas dicas para ajudar.
+Fasting can be difficult! Here are some pointers to help.
 
-## Comece devagar:
+## Start slow:
 
-- Tente alguns jejuns de 16 horas para começar, depois avance para jejuns de 30 horas, e assim por diante.
-- Quanto mais você jejua, mais fácil fica.
-- Quando você começar a fazer jejuns de vários dias, geralmente o primeiro dia é mais difícil que o segundo.
+- Try a couple 16 hour fasts to begin with, then move to 30 hour fasts, and so on.
+- The more you fast, the easier things will get.
+- When you start doing multi-day fasts, generally the first day is harder than the second day.
 
-## Alimentos de zero calorias
+## Zero Calorie Foods
 
-- **Beba muita água:** Além de ser boa para você, encher o estômago com muito volume vai te ajudar a se sentir saciado
-  por um tempo.
-- **Beba bebidas sem calorias:**
-    - Águas com gás saborizadas são ótimas para isso!
-    - Chá sem açúcar (*quente ou gelado*)
-    - Água com suco de limão ou lima
+- **Drink lots of water:** Besides being good for you, filling up your stomach with lots of volume will help you feel full for a while.
+- **Drink zero calorie beverages:**
+  - Flavored seltzer waters are great for this!
+  - Unsweetened Tea (_Hot or Iced_)
+  - Water with Lime or Lemon juice
 
-## Alimentos com baixíssimas calorias
+## Very Low Calorie Foods
 
-Você pode consumir algumas calorias durante o jejum e ainda ser igualmente eficaz. Tente manter abaixo de 100 calorias
-por dia. Para isso, aqui está uma receita que acho muito eficaz para "parecer comida" enquanto tem apenas cerca de 5
-calorias por porção:
+You can actually eat a couple calories during your fast and still be just as effective. Try to keep it under 100 calories per day. To this end, here is a recipe I find very effective at "feeling like food" while only being about 5 calories per serving:
 
-**Caldo de frango picante:**
+**Spicy Chicken Broth:**
 
-- 1 colher de chá de caldo de galinha em pó
-- 8 oz (1 xícara) de água fervente
-- Um toque de molho de pimenta habanero
-- Um toque de suco de lima
+- 1 tsp of chicken bouillon
+- 8oz (1 cup) boiling water
+- Dash of habanero hot sauce
+- Dash of lime juice
 
-## Supressores de apetite
+## Appetite suppressants
 
-- **Café:** Além de encher um pouco o estômago para se sentir saciado, suprime ativamente o apetite por um tempo.
-- **Molho de pimenta:** Normalmente sem calorias, também ajuda a afastar a sensação de fome.
+- **Coffee:** more than just filling your stomach up a bit to feel full, will actively suppress your appetite for a while
+- **Hot Sauce:** Usually these are zero calories, and will also help stave off feelings of hunger

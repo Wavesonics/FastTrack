@@ -1,37 +1,33 @@
 # Consejos
 
-¡Ayunar puede ser difícil! Aquí tienes algunos consejos que te pueden ayudar.
+¡La limpieza puede ser difícil! He aquí algunos punteros para ayudar.
 
-## Comienza despacio:
+## Iniciar lentamente:
 
-- Empieza con ayunos de 16 horas un par de veces, luego avanza a ayunos de 30 horas, y así sucesivamente.
-- Cuanto más ayunes, más fácil se vuelve.
-- Cuando comiences con ayunos de varios días, generalmente el primer día es más difícil que el segundo.
+- Pruebe un par de ayunas de 16 horas para empezar, luego mueva a 30 horas de ayuno, y así sucesivamente.
+- Cuanto más rápido vayas, más fácil obtendrán las cosas.
+- Cuando empiezas a hacer un ayuno de varios días, generalmente el primer día es más difícil que el segundo día.
 
-## Alimentos de cero calorías
+## Alimentos de Calorie Cero
 
-- **Bebe mucha agua:** Además de ser buena para ti, llenar el estómago con mucho volumen te ayudará a sentirte lleno por
-  un tiempo.
-- **Bebe bebidas sin calorías:**
-    - Aguas con gas saborizadas son excelentes para esto.
-    - Té sin azúcar (*caliente o helado*)
-    - Agua con jugo de lima o limón
+- **Beba mucha agua:** Además de ser bueno para ti, llenar tu estómago con un montón de volumen te ayudará a sentirte lleno durante un tiempo.
+- **Beber cero bebidas calorías:**
+  - ¡Las aguas de seltzer saboreadas son excelentes para esto!
+  - Té no endulzado (_Caliente o hielo_)
+  - Agua con zumo de limón o limón
 
-## Alimentos muy bajos en calorías
+## Alimentos muy bajos de Calorie
 
-De hecho, puedes consumir algunas calorías durante el ayuno y seguir siendo igual de efectivo. Trata de mantenerlo por
-debajo de 100 calorías al día. Con este fin, aquí tienes una receta que encuentro muy efectiva para "sentirse como
-comida" mientras solo tiene unas 5 calorías por porción:
+Usted puede realmente comer un par de calorías durante su ayuno y aún así ser igual de eficaz. Trata de mantenerlo por debajo de 100 calorías al día. Con este fin, aquí hay una receta que encuentro muy efectiva en "sentirse comida" mientras que sólo es de 5 calorías por porción:
 
-**Caldo de pollo picante:**
+**Caldo picante de pollo:**
 
-- 1 cucharadita de caldo de pollo en polvo
-- 8 oz (1 taza) de agua hirviendo
-- Un toque de salsa picante de habanero
-- Un toque de jugo de lima
+- 1 tsp de pollo
+- 8oz (1 taza) agua de ebullición
+- Rayo de salsa de habanero caliente
+- Zumo de cal
 
-## Supresores del apetito
+## Supresores de Appetitos
 
-- **Café:** No solo llena un poco el estómago para sentirse lleno, sino que también suprime activamente el apetito
-  durante un tiempo.
-- **Salsa picante:** Por lo general, no contiene calorías y también ayuda a evitar la sensación de hambre.
+- **Coffe:** más que llenar tu estómago un poco para sentirte lleno, reprimirá activamente tu apetito por un tiempo
+- **Salsa caliente:** Normalmente estas son calorías cero, y también ayudarán a evitar los sentimientos de hambre

@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<string name="app_name">Fast Track</string>
 	<string name="action_share">Partager</string>
 	<string name="action_info">Info</string>
 	<string name="action_about">À propos</string>
-	<string name="app_name">Fast Track</string>
+	<string name="action_export">Exporter le carnet de bord</string>
+	<string name="action_export_description">Produire un fichier CSV de votre livre de bord pour la sauvegarde</string>
+	<string name="action_import">Importer le registre</string>
+	<string name="action_import_description">Remplir votre journal de bord à partir d\'une exportation précédente</string>
+	<string name="import_success">Journal importé avec succès</string>
+	<string name="import_failed">Échec de l\'importation du logbook</string>
+	<!-- Settings -->
+	<string name="settings_section_notifications">Notifications</string>
+	<string name="settings_section_ui">Interface</string>
+	<string name="settings_section_logbook">Carnet de bord</string>
+	<!-- Settings: Fasting notification -->
+	<string name="settings_fasting_notification_title">Afficher la notification rapide</string>
+	<string name="settings_fasting_notification_subtitle">Fournit des informations en temps réel pendant une période rapide</string>
+	<!-- Settings: Stage alerts -->
+	<string name="settings_stage_alerts_title">Alertes d\'étape</string>
+	<string name="settings_stage_alerts_subtitle">Soyez averti lorsque vous entrez dans de nouvelles étapes de jeûne</string>
+	<string name="export_failed">Échec de l\'exportation du journal de bord</string>
 	<string name="intro_00_title">Bienvenue à Fast Track !</string>
-	<string name="intro_01_title">Aide motivationnelle</string>
 	<string name="intro_00_description">De quoi s\'agit-il dans cette application ?</string>
-	<string name="intro_02_title">Une simple application gratuite</string>
+	<string name="intro_01_title">Aide motivationnelle</string>
 	<string name="intro_01_description">L\'idée principale derrière Fast Track est de vous aider à vous motiver pendant
-		vos jeûnes et de vous expliquer ce que votre corps fait aux différentes étapes du jeûne.
-	</string>
-	<string name="intro_03_title">Jeûne intermittent</string>
-	<string name="intro_04_title">C\'est tout !</string>
-	<string name="intro_04_description">Maintenant, allons commencer à jeûner !</string>
-	<string name="about_name">Adam Brown</string>
-	<string name="intro_03_description">C\'est un nouveau domaine d\'étude qui montre de nombreux avantages au-delà de
-		la simple perte de poids.\n\nPour explorer ce que nous savons sur le jeûne et ce que la recherche dit, consultez
-		la section Infos de cette application !
-	</string>
+		vos jeûnes et de vous expliquer ce que votre corps fait aux différentes étapes du jeûne.</string>
+	<string name="intro_02_title">Une simple application gratuite</string>
 	<string name="intro_02_description">Fast Track est et sera toujours gratuit et open source. Il n\'y a pas de compte
 		à créer, pas d\'achats intégrés, pas de publicités à éviter. Et il n\'a même pas accès à Internet, donc il ne
-		peut pas envoyer vos données nulle part.
-	</string>
+		peut pas envoyer vos données nulle part.</string>
+	<string name="intro_03_title">Jeûne intermittent</string>
+	<string name="intro_03_description">C\'est un nouveau domaine d\'étude qui montre de nombreux avantages au-delà de
+		la simple perte de poids.\n\nPour explorer ce que nous savons sur le jeûne et ce que la recherche dit, consultez
+		la section Infos de cette application !</string>
+	<string name="intro_04_title">C\'est tout !</string>
+	<string name="intro_04_description">Maintenant, allons commencer à jeûner !</string>
+	<string name="intro_05_title">C\'est tout !</string>
+	<string name="intro_05_description">Maintenant, commencez à jeûner!</string>
+	<string name="about_name">Adam Brown</string>
 	<string name="about_subtitle">Développeur Mobile</string>
+	<string name="about_brief">Grimpeur, alpiniste, ingénieur logiciel et défenseur de l\'open source.</string>
+	<string name="about_discord">Discord.</string>
 	<string name="title_fasting">Jeûne</string>
 	<string name="title_log">Journal</string>
-	<string name="about_brief">Grimpeur, alpiniste, ingénieur logiciel et défenseur de l\'open source.</string>
 	<string name="title_profile">Profil</string>
 	<string name="fasting_fragment_label">Rapide</string>
 	<string name="start_fast_button">Démarrer rapidement</string>
+	<string name="start_fast_now_button">Démarrer rapidement maintenant</string>
 	<string name="end_fast_button">Fin du jeûne</string>
 	<string name="fasting_energy_mode">Mode d\'énergie : %1$s</string>
 	<string name="fasting_energy_mode_glucose">Glucose</string>
@@ -38,167 +56,170 @@
 	<string name="confirm_start_fast_positive">Maintenant</string>
 	<string name="confirm_start_fast_neutral">Déjà commencé</string>
 	<string name="confirm_start_fast_negative">Non</string>
+	<string name="already_started_dialog_title">Déjà commencé</string>
 	<string name="start_picker_title">Quand as-tu commencé ton jeûne ?</string>
 	<string name="confirm_end_fast_title">Terminer le jeûne ?</string>
-	<string name="confirm_end_fast_positive">Oui</string>
+	<string name="confirm_end_fast_positive">Maintenant</string>
+	<string name="confirm_end_fast_neutral">Déjà arrêté?</string>
 	<string name="confirm_end_fast_negative">Non</string>
+	<string name="already_stopped_dialog_title">Quand êtes-vous arrêté?</string>
+	<string name="menu_edit">Editer</string>
+	<string name="menu_delete">Supprimez</string>
 	<string name="confirm_delete_fast_title">Supprimer Fast ?</string>
 	<string name="confirm_delete_fast_positive">Oui</string>
 	<string name="confirm_delete_fast_negative">Non</string>
 	<string name="fast_status_fasting">Jeûne en cours</string>
 	<string name="fast_status_not_fasting">Vous ne jeûnez pas.</string>
+	<string name="next_stage">Prochaine étape dans : %1$d heures</string>
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">Démarré : %1$s</string>
-	<string name="next_stage">Prochaine étape dans : %1$d heures</string>
 	<string name="log_entry_length">%1$d heures</string>
-	<string name="profile_age_label">Âge</string>
 	<string name="log_entry_ketosis">%1$d heures</string>
 	<string name="log_entry_autophagy">Autophagie : %1$d heures</string>
+	<string name="profile_age_label">Âge</string>
 	<string name="profile_age_years">ans</string>
 	<string name="profile_weight_label">Poids</string>
 	<string name="profile_weight_pounds_label">Livres</string>
 	<string name="profile_weight_kg_label">Kg</string>
 	<string name="profile_update_button">Mettre à jour</string>
-	<string name="profile_bmi_value">%1$.1f - %2$s</string>
 	<string name="profile_bmi_label">IMC :</string>
-	<string name="profile_bmi_category_normal">Normal</string>
+	<string name="profile_bmi_value">%1$.1f - %2$s</string>
 	<string name="profile_bmi_category_underweight">Insuffisance pondérale</string>
-	<string name="profile_bmi_category_obese">Obèse</string>
+	<string name="profile_bmi_category_normal">Normal</string>
 	<string name="profile_bmi_category_overweight">En surpoids</string>
+	<string name="profile_bmi_category_obese">Obèse</string>
 	<string name="profile_bmi_category_morbidly_obese">Obèse morbide</string>
 	<string name="profile_error">Mauvaise valeur</string>
 	<string name="profile_bmr_label">BMR :</string>
-	<string name="profile_bmr_value">%.0f" kCal / jour</string>
+	<string name="profile_bmr_value">%.0f\" kCal / jour</string>
+	<string name="profile_height_label">Hauteur</string>
 	<string name="profile_height_imper_feet_label">Pieds</string>
 	<string name="profile_height_imper_inches_label">Pouces</string>
-	<string name="profile_height_label">Hauteur</string>
 	<string name="profile_height_metric_label">Cm</string>
 	<string name="profile_gender_male">Homme</string>
 	<string name="profile_gender_female">Femme</string>
 	<string name="manual_add_title">Ajout manuel</string>
+	<string name="manual_edit_title">Modifier l\'entrée</string>
 	<string name="manual_add_length_hint">Longueur (Heures)</string>
 	<string name="manual_add_complete_button">Ajouter</string>
-	<string name="manual_start_title">Démarrage rapide</string>
+	<string name="manual_add_save_button">Enregistrer</string>
 	<string name="manual_add_fast_started_on">Démarré rapidement le : %1$s</string>
+	<string name="manual_add_start_date_time_label">Date et heure de début</string>
+	<string name="edit_date">Modifier la date</string>
+	<string name="edit_time">Modifier l\'heure</string>
+	<string name="manual_start_title">Démarrage rapide</string>
+	<string name="manual_add_set_end_title">Définir la fin rapide</string>
+	<string name="manual_add_set_end_complete">Calculer</string>
+	<string name="fast_autophagy_label">Autophagie :</string>
 	<string name="fast_ketosis_label">Cétose :</string>
 	<string name="fast_fat_burn_label">Brûlage des graisses :</string>
-	<string name="fast_autophagy_label">Autophagie :</string>
 	<string name="stage_fasting_title">Jeûne</string>
 	<string name="stage_fasting_description">Votre corps consomme ses réserves de glucose, continuez comme ça !</string>
 	<string name="stage_fat_burning_title">Brûlage des graisses</string>
-	<string name="stage_fat_fasting_sweet_spot_title">Point idéal du jeûne</string>
 	<string name="stage_fat_burning_description">Vos réserves de glucose sont épuisées ! Votre corps brûle maintenant
 		des graisses pour
-		énergie. Un entraînement dans les prochaines heures serait optimal.
-	</string>
-	<string name="stage_fat_peak_fat_burning_title">Pic maximal de combustion des graisses</string>
-	<string name="stage_autophagy_title">Autophagie</string>
+		énergie. Un entraînement dans les prochaines heures serait optimal.</string>
+	<string name="stage_fat_fasting_sweet_spot_title">Point idéal du jeûne</string>
 	<string name="stage_fat_fasting_sweet_spot_description">Vous êtes dans la zone de jeûne idéale, continuez comme ça
-		!
-	</string>
+		!</string>
+	<string name="stage_fat_peak_fat_burning_title">Pic maximal de combustion des graisses</string>
 	<string name="stage_fat_peak_fat_burning_description">Votre corps brûle rapidement des graisses maintenant, et la
-		cétose a commencé.
-	</string>
+		cétose a commencé.</string>
+	<string name="stage_autophagy_title">Autophagie</string>
 	<string name="stage_autophagy_description">Votre corps a commencé l\'autophagie !</string>
 	<string name="stage_optimal_autophagy_title">Autophagie optimale</string>
+	<string name="stage_optimal_autophagy_description">L\'autophagie est en plein essor ! Continuez comme ça, entre
+		maintenant et 72 heures, l\'autophagie sera très efficace.</string>
 	<string name="phase_glucose">Brûlage de glucose</string>
 	<string name="phase_fat_burning">Brûlage des graisses</string>
 	<string name="phase_ketosis">Cétose</string>
 	<string name="phase_autophagy">Autophagie</string>
-	<string name="stage_optimal_autophagy_description">L\'autophagie est en plein essor ! Continuez comme ça, entre
-		maintenant et 72 heures, l\'autophagie sera très efficace.
-	</string>
 	<string name="phase_optimal_autophagy">Autophagie optimale</string>
-	<string name="share_text_past_tense">J\'ai jeûné pendant %1$d heures et %2$d minutes !</string>
 	<string name="share_text">Je jeûne depuis %1$d heures et %2$d minutes ! Mon corps consomme actuellement %3$s pour
-		l\'énergie.
-	</string>
+		l\'énergie.</string>
+	<string name="share_text_past_tense">J\'ai jeûné pendant %1$d heures et %2$d minutes !</string>
 	<string name="stage_alerts_checkbox">Alertes de scène</string>
 	<string name="notification_channel_name">Alertes de jeûne</string>
 	<string name="notification_channel_description">Alertes qui vous informent lorsque vous entrez dans une nouvelle
-		phase de votre jeûne.
-	</string>
+		phase de votre jeûne.</string>
 	<string name="notification_fat_burn_title">Phase rapide : brûlage de graisse</string>
-	<string name="notification_ketosis_title">Phase rapide : cétose</string>
 	<string name="notification_fat_burn_content">Vous avez épuisé vos réserves de glucose et votre corps consomme
-		maintenant des graisses pour obtenir de l\'énergie.
-	</string>
-	<string name="notification_optimal_autophagy_title">Phase Rapide : Autophagie Optimale</string>
+		maintenant des graisses pour obtenir de l\'énergie.</string>
+	<string name="notification_ketosis_title">Phase rapide : cétose</string>
 	<string name="notification_ketosis_content">Votre corps a désormais décomposé suffisamment de réserves de graisse
-		pour que vous soyez entré dans la cétose.
-	</string>
+		pour que vous soyez entré dans la cétose.</string>
 	<string name="notification_autophagy_title">Étape Rapide : Autophagie</string>
 	<string name="notification_autophagy_content">Votre corps est entré en autophagie. Les vieilles cellules ou les
-		cellules endommagées sont maintenant consommées pour produire de l\'énergie.
-	</string>
-	<string name="info_dialog_fat_burn_title">Brûlage de graisses</string>
+		cellules endommagées sont maintenant consommées pour produire de l\'énergie.</string>
+	<string name="notification_optimal_autophagy_title">Phase Rapide : Autophagie Optimale</string>
 	<string name="notification_optimal_autophagy_content">Votre corps est en autophagie depuis longtemps maintenant, et
-		votre santé cellulaire en tire de grands avantages.
-	</string>
-	<string name="info_dialog_ketosis_title">Cétose</string>
-	<string name="info_dialog_autophagy_title">Autophagie</string>
+		votre santé cellulaire en tire de grands avantages.</string>
+	<string name="notification_fasting_channel_name">Statut de jeûne</string>
+	<string name="notification_fasting_channel_description">Notification en cours montrant votre statut de jeûne actuel et
+		progression.</string>
+	<string name="notification_fasting_title">Le jeûne: %1$s heures</string>
+	<string name="notification_fasting_energy_mode">Mode Energie : %1$s</string>
+	<string name="info_dialog_fat_burn_title">Brûlage de graisses</string>
 	<string name="info_dialog_fat_burn_content">À ce stade, votre corps a épuisé vos réserves de glucose. Le glucose est
 		stocké sous forme de glycogène pour une utilisation ultérieure, à ce stade, la plupart de votre glycogène stocké
 		a été décomposé en glucose et utilisé comme source d\'énergie.\n\n Maintenant, il commence à décomposer le tissu
 		adipeux (gras) en corps cétoniques. En plus de pouvoir consommer du glucose pour l\'énergie, votre corps peut
 		alternativement consommer des corps cétoniques pour obtenir de l\'énergie, et à mesure que les réserves de
-		glucose s\'épuisent, votre corps passera à un mode d\'énergie basé sur les corps cétoniques.
-	</string>
-	<string name="info_dialog_bmi_title">Indice de masse corporelle</string>
+		glucose s\'épuisent, votre corps passera à un mode d\'énergie basé sur les corps cétoniques.</string>
+	<string name="info_dialog_ketosis_title">Cétose</string>
 	<string name="info_dialog_ketosis_content">À ce stade, votre corps a suffisamment décomposé les graisses pour que
 		principalement, votre corps soit alimenté par des corps cétoniques plutôt que par du glucose.\n\nEn plus des
 		avantages de la perte de graisse que cela implique, des études ont montré des bénéfices pour les maladies liées
-		à l\'inflammation, bien que le mécanisme d\'action de ceci soit actuellement inconnu.
-	</string>
-	<string name="info_dialog_bmr_title">Taux Métabolique de Base</string>
+		à l\'inflammation, bien que le mécanisme d\'action de ceci soit actuellement inconnu.</string>
+	<string name="info_dialog_autophagy_title">Autophagie</string>
 	<string name="info_dialog_autophagy_content">À ce stade, votre corps a commencé à activer d\'autres processus pour
 		récolter de l\'énergie. En plus de décomposer le tissu adipeux en corps cétoniques, il a commencé à rechercher
 		des cellules anciennes ou endommagées et à les consommer pour obtenir plus d\'énergie.\n\nLes recherches sur
 		cette phase en sont à leurs débuts, mais il semble que ce soit un mécanisme important pour le corps afin
 		d\'arrêter les problèmes avant qu\'ils ne commencent. Par exemple, les taux de cancer sont plus faibles chez les
 		personnes qui entrent régulièrement en autophagie. De plus, certaines études ont également montré des taux plus
-		bas de la maladie d\'Alzheimer.
-	</string>
-	<string name="info_dialog_positive">Génial !</string>
-	<string name="info_page_title_info">Informations</string>
-	<string name="info_page_title_tips">Astuces</string>
-	<string name="info_dialog_bmr_content">Ceci est une estimation du nombre de calories que votre corps va brûler en
-		une journée, lorsque vous êtes complètement au repos. Si vous ne faisiez que rester allongé au lit toute la
-		journée, c\'est le nombre de calories que vous pourriez manger sans prendre de poids.\n\nC\'est un chiffre
-		critique pour les personnes qui suivent un régime en restreignant leur apport calorique quotidien.
-	</string>
-	<string name="title_activity_info">Infos sur le jeûne</string>
-	<string name="log_total_autophagy">Autophagie totale :</string>
-	<string name="log_total_ketosis">Cétose totale :</string>
+		bas de la maladie d\'Alzheimer.</string>
+	<string name="info_dialog_bmi_title">Indice de masse corporelle</string>
 	<string name="info_dialog_bmi_content">Une estimation approximative du poids santé qu\'un adulte moyen devrait
 		avoir. Il est calculé simplement en divisant le poids par la taille.\n\nSouvent critiqué pour son inexactitude,
 		il est vrai qu\'il existe des facteurs qui peuvent rendre ce calcul trompeur. Par exemple : un culturiste
 		extrêmement musclé, ou une personne très grande ou très petite. Ces cas extrêmes donneront des résultats
 		inexacts à partir du calcul de l\'IMC de base.\n\nMais pour la majorité des gens, c\'est une estimation
-		suffisante pour savoir si vous êtes dans une fourchette de poids saine.
-	</string>
+		suffisante pour savoir si vous êtes dans une fourchette de poids saine.</string>
+	<string name="info_dialog_bmr_title">Taux Métabolique de Base</string>
+	<string name="info_dialog_bmr_content">Ceci est une estimation du nombre de calories que votre corps va brûler en
+		une journée, lorsque vous êtes complètement au repos. Si vous ne faisiez que rester allongé au lit toute la
+		journée, c\'est le nombre de calories que vous pourriez manger sans prendre de poids.\n\nC\'est un chiffre
+		critique pour les personnes qui suivent un régime en restreignant leur apport calorique quotidien.</string>
+	<string name="info_dialog_positive">Génial !</string>
+	<string name="info_page_title_info">Informations</string>
+	<string name="info_page_title_tips">Astuces</string>
+	<string name="title_activity_info">Infos sur le jeûne</string>
+	<string name="log_total_autophagy">Autophagie totale :</string>
+	<string name="log_total_ketosis">Cétose totale :</string>
+	<string name="log_total_hours">%1$d heures</string>
 	<string name="profile_metric_switch">Métrique</string>
 	<string name="title_activity_intro">Introduction</string>
-	<string name="log_total_hours">%1$d heures</string>
-	<string name="start_fast_now_button">Démarrer rapidement maintenant</string>
 	<string name="app_widget_description">Suivez vos progrès de jeûne depuis votre écran d\'accueil.</string>
 	<string name="app_widget_not_fasting">Ne pas jeûner</string>
 	<string name="app_widget_fast_in_progress">Jeûne en cours</string>
 	<string name="app_widget_time">%1$d heures</string>
+	<string name="app_widget_time_compact">%1$d h</string>
 	<string name="app_widget_start_fast_button">Démarrer rapidement</string>
-	<string name="already_started_dialog_title">Déjà commencé</string>
-	<string name="manual_add_set_end_complete">Calculer</string>
-	<string name="manual_add_set_end_title">Définir la fin rapide</string>
+	<string name="app_widget_stop_fast_button">Arrêter rapidement</string>
+	<string name="app_widget_start_compact">Début</string>
+	<string name="app_widget_start">Appuyez pour démarrer</string>
 	<string name="close_button_content_description">Fermer</string>
-	<string name="next_button">Suivant</string>
 	<string name="cancel_button">Annuler</string>
+	<string name="next_button">Suivant</string>
 	<string name="previous_button">Précédent</string>
+	<string name="skip_button">Passer</string>
 	<string name="done_button">Fait</string>
-	<string name="stop_fast_button_description">Arrêter rapidement</string>
 	<string name="debug_add_hour_button">Débogage : Ajouter 1 heure</string>
+	<string name="stop_fast_button_description">Arrêter rapidement</string>
 	<string name="start_fast_button_description">Commencer rapidement</string>
-	<string name="bmr_info_button_description">Informations BMR</string>
 	<string name="bmi_info_button_description">Informations sur l\'IMC</string>
+	<string name="bmr_info_button_description">Informations BMR</string>
 	<string name="profile_gender_label">Genre</string>
 	<string name="more_options_button_description">Plus d\'options</string>
 	<string name="manual_add_close_button_description">Fermer</string>
@@ -206,11 +227,13 @@
 	<string name="manual_add_cancel_button">Annuler</string>
 	<string name="manual_add_next_button">Suivant</string>
 	<string name="manual_add_calculate_from_end">Calculer à partir de la fin</string>
-	<string name="skip_button">Passer</string>
-	<string name="action_import">Importer le registre</string>
-	<string name="action_export">Exporter le carnet de bord</string>
-	<string name="import_failed">Échec de l\'importation du logbook</string>
-	<string name="import_success">Journal importé avec succès</string>
-	<string name="export_failed">Échec de l\'exportation du journal de bord</string>
-    <string name="app_widget_stop_fast_button">Arrêter rapidement</string>
+	<string name="action_settings">Réglages</string>
+	<string name="title_activity_settings">Réglages</string>
+	<string name="settings_placeholder">Paramètres à venir bientôt</string>
+	<string name="back">Précédent</string>
+	<string name="settings_fancy_background_title">Afficher l\'arrière-plan fantaisie</string>
+	<string name="settings_fancy_background_subtitle">Désactiver pour un arrière-plan rapide plus simple</string>
+	<string name="log_no_entries">Pas encore d\'entrées!</string>
+	<string name="log_logbook_label">Carnet de bord</string>
+	<string name="log_stats_label">Statistiques à vie</string>
 </resources>
