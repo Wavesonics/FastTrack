@@ -225,5 +225,5 @@
 	<string name="settings_fancy_background_subtitle">Вимкніть для простішого фону</string>
 	<string name="log_no_entries">Ще немає записів!</string>
 	<string name="log_logbook_label">Журнал</string>
-	<string name="log_stats_label">Загальна статистика</string>
+	<string name="log_stats_label">Статистика за весь час</string>
 </resources>
