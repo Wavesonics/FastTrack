@@ -59,7 +59,7 @@
 	<string name="already_started_dialog_title">Уже розпочато</string>
 	<string name="start_picker_title">Коли Ви розпочали голодування</string>
 	<string name="confirm_end_fast_title">Закінчити голодування?</string>
-	<string name="confirm_end_fast_positive">Зараз</string>
+	<string name="confirm_end_fast_positive">Так</string>
 	<string name="confirm_end_fast_neutral">Уже закінчили?</string>
 	<string name="confirm_end_fast_negative">Ні</string>
 	<string name="already_stopped_dialog_title">Коли Ви закінчили?</string>
