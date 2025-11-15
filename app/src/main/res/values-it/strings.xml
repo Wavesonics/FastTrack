@@ -5,7 +5,7 @@
 	<string name="action_info">Informazioni</string>
 	<string name="action_about">Informazioni</string>
 	<string name="action_export">Esporta il Logbook</string>
-	<string name="action_export_description">Produci un file CSV del tuo registro per il backup</string>
+	<string name="action_export_description">Produci un file CVS del registro per il backup</string>
 	<string name="action_import">Importa Logbook</string>
 	<string name="action_import_description">Popolare il registro da un\'esportazione precedente</string>
 	<string name="import_success">Registro importato con successo</string>
@@ -35,8 +35,10 @@
 		semplice perdita di peso.\n\nPer esplorare cosa sappiamo sul digiuno e cosa dicono le ricerche, controlla la
 		sezione Info di questa app!</string>
 	<string name="intro_04_title">Questo è tutto!</string>
-	<string name="intro_04_description">Ora inizia a digiunare!</string>
-	<string name="intro_05_title">Questo è tutto!</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">È tutto!</string>
 	<string name="intro_05_description">Ora vai a iniziare il digiuno!</string>
 	<string name="about_name">Adam Brown</string>
 	<string name="about_subtitle">Sviluppatore Mobile</string>
@@ -119,7 +121,7 @@
 	<string name="stage_fat_burning_description">I tuoi depositi di glucosio sono esauriti! Il tuo corpo sta ora
 		bruciando grassi per ottenere energia. Un allenamento nelle prossime ore sarebbe ottimale.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Punto giusto del Digiuno</string>
-	<string name="stage_fat_fasting_sweet_spot_description">Sei nel punto giusto del digiuno, continua così!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Sei nel punto dolce di digiuno, continua!</string>
 	<string name="stage_fat_peak_fat_burning_title">Brucia Grassi al picco</string>
 	<string name="stage_fat_peak_fat_burning_description">Il tuo corpo sta bruciando grasso rapidamente ora, e la
 		chetosi è iniziata.</string>

@@ -5,7 +5,7 @@
 	<string name="action_info">Info</string>
 	<string name="action_about">À propos</string>
 	<string name="action_export">Exporter le carnet de bord</string>
-	<string name="action_export_description">Produire un fichier CSV de votre livre de bord pour la sauvegarde</string>
+	<string name="action_export_description">Produire un fichier CVS de votre livre de bord pour la sauvegarde</string>
 	<string name="action_import">Importer le registre</string>
 	<string name="action_import_description">Remplir votre journal de bord à partir d\'une exportation précédente</string>
 	<string name="import_success">Journal importé avec succès</string>
@@ -35,8 +35,10 @@
 		la simple perte de poids.\n\nPour explorer ce que nous savons sur le jeûne et ce que la recherche dit, consultez
 		la section Infos de cette application !</string>
 	<string name="intro_04_title">C\'est tout !</string>
-	<string name="intro_04_description">Maintenant, allons commencer à jeûner !</string>
-	<string name="intro_05_title">C\'est tout !</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">Voilà!</string>
 	<string name="intro_05_description">Maintenant, commencez à jeûner!</string>
 	<string name="about_name">Adam Brown</string>
 	<string name="about_subtitle">Développeur Mobile</string>
@@ -114,7 +116,7 @@
 	<string name="fast_ketosis_label">Cétose :</string>
 	<string name="fast_fat_burn_label">Brûlage des graisses :</string>
 	<string name="stage_fasting_title">Jeûne</string>
-	<string name="stage_fasting_description">Votre corps consomme ses réserves de glucose, continuez comme ça !</string>
+	<string name="stage_fasting_description">Votre corps consomme ses réserves de glucose, continuez-en !</string>
 	<string name="stage_fat_burning_title">Brûlage des graisses</string>
 	<string name="stage_fat_burning_description">Vos réserves de glucose sont épuisées ! Votre corps brûle maintenant
 		des graisses pour

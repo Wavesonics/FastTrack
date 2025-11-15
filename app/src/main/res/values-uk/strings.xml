@@ -59,7 +59,7 @@
 	<string name="already_started_dialog_title">Уже розпочато</string>
 	<string name="start_picker_title">Коли Ви розпочали голодування</string>
 	<string name="confirm_end_fast_title">Закінчити голодування?</string>
-	<string name="confirm_end_fast_positive">Зараз</string>
+	<string name="confirm_end_fast_positive">Так</string>
 	<string name="confirm_end_fast_neutral">Уже закінчили?</string>
 	<string name="confirm_end_fast_negative">Ні</string>
 	<string name="already_stopped_dialog_title">Коли Ви закінчили?</string>
@@ -70,7 +70,7 @@
 	<string name="confirm_delete_fast_negative">Ні</string>
 	<string name="fast_status_fasting">Голодування триває</string>
 	<string name="fast_status_not_fasting">Ви не голодуєте</string>
-	<string name="next_stage">Наступний етап о: %1$d годин</string>
+	<string name="next_stage">Наступна стадія у: %1$d годин</string>
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">%1$s</string>
 	<string name="log_entry_length">%1$d годин</string>
@@ -79,7 +79,7 @@
 	<string name="profile_age_label">Вік</string>
 	<string name="profile_age_years">років</string>
 	<string name="profile_weight_label">Вага</string>
-	<string name="profile_weight_pounds_label">Фунти</string>
+	<string name="profile_weight_pounds_label">фунтів</string>
 	<string name="profile_weight_kg_label">кг</string>
 	<string name="profile_update_button">Оновити</string>
 	<string name="profile_bmi_label">ІМТ:</string>
@@ -88,14 +88,14 @@
 	<string name="profile_bmi_category_normal">Нормальна вага</string>
 	<string name="profile_bmi_category_overweight">Зайва вага</string>
 	<string name="profile_bmi_category_obese">Ожиріння</string>
-	<string name="profile_bmi_category_morbidly_obese">Ожиріння III ступеня</string>
+	<string name="profile_bmi_category_morbidly_obese">Патологічне ожиріння</string>
 	<string name="profile_error">Недопустиме значення</string>
 	<string name="profile_bmr_label">Основний обмін:</string>
 	<string name="profile_bmr_value">%.0f ккал / добу</string>
 	<string name="profile_height_label">Висота</string>
-	<string name="profile_height_imper_feet_label">Фути</string>
-	<string name="profile_height_imper_inches_label">дюйми</string>
-	<string name="profile_height_metric_label">См</string>
+	<string name="profile_height_imper_feet_label">футів</string>
+	<string name="profile_height_imper_inches_label">дюймів</string>
+	<string name="profile_height_metric_label">см</string>
 	<string name="profile_gender_male">Чоловік</string>
 	<string name="profile_gender_female">Жінка</string>
 	<string name="manual_add_title">Додавання вручну</string>
@@ -107,17 +107,17 @@
 	<string name="manual_add_start_date_time_label">Дата і час початку</string>
 	<string name="edit_date">Редагувати дату</string>
 	<string name="edit_time">Редагувати час</string>
-	<string name="manual_start_title">Швидкий старт</string>
+	<string name="manual_start_title">Fasted Started</string>
 	<string name="manual_add_set_end_title">Установити кінець голодування</string>
 	<string name="manual_add_set_end_complete">Розрахувати</string>
 	<string name="fast_autophagy_label">Автофагія:</string>
 	<string name="fast_ketosis_label">Кетоз:</string>
 	<string name="fast_fat_burn_label">Спалювання жиру:</string>
 	<string name="stage_fasting_title">Голодування</string>
-	<string name="stage_fasting_description">Ваш організм споживає свої запаси глюкози, так тримати!</string>
+	<string name="stage_fasting_description">Ваш організм споживає свої запаси глюкози, тримайтеся!</string>
 	<string name="stage_fat_burning_title">Спалювання жиру</string>
-	<string name="stage_fat_burning_description">Ваші запаси глюкози вичерпані! Ваше тіло зараз спалює жир для енергії.
-		Тренування в наступні кілька годин буде оптимальним.</string>
+	<string name="stage_fat_burning_description">Запаси глюкози закінчилися! Тепер Ваш організм спалює жир задля
+		енергії. Наступні кілька годин ідеально підходять для занять спортом.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Золота середина голодування</string>
 	<string name="stage_fat_fasting_sweet_spot_description">Ви досягли золотої середини голодування, так тримати!</string>
 	<string name="stage_fat_peak_fat_burning_title">Пік спалювання жиру</string>
@@ -125,10 +125,9 @@
 	<string name="stage_autophagy_title">Автофагія</string>
 	<string name="stage_autophagy_description">Ваш організм розпочав автофагію!</string>
 	<string name="stage_optimal_autophagy_title">Оптимальна автофагія</string>
-	<string name="stage_optimal_autophagy_description">Автофагія працює на повну потужність! Продовжуйте в тому ж дусі,
-		між теперішнім моментом і 72 годинами автофагія буде дуже ефективною.</string>
+	<string name="stage_optimal_autophagy_description">Автофагія у повному розпалі! Так тримати, від цього моменту і до настання 72-ї години автофагія буде дуже ефективною.</string>
 	<string name="phase_glucose">Спалювання глюкози</string>
-	<string name="phase_fat_burning">Спалювання жирів</string>
+	<string name="phase_fat_burning">Спалювання жиру</string>
 	<string name="phase_ketosis">Кетоз</string>
 	<string name="phase_autophagy">Автофагія</string>
 	<string name="phase_optimal_autophagy">Оптимальна автофагія</string>
@@ -139,8 +138,8 @@
 	<string name="notification_channel_description">Сповіщення, що приходять, коли Ви переходите на нову стадію
 		голодування.</string>
 	<string name="notification_fat_burn_title">Стадія голодування: спалювання жиру</string>
-	<string name="notification_fat_burn_content">Ви вичерпали свої резерви глюкози, і тепер ваше тіло споживає жир для
-		енергії.</string>
+	<string name="notification_fat_burn_content">Ваші запаси глюкози закінчилися, і тепер Ваш організм використовує
+		жир як джерело енергії.</string>
 	<string name="notification_ketosis_title">Стадія голодування: кетоз</string>
 	<string name="notification_ketosis_content">Ваш організм спалив достатню кількість жиру, і тепер Ви перейшли
 		в кетоз.</string>
@@ -156,34 +155,32 @@
 	<string name="notification_fasting_title">Голодування: %1$s годин</string>
 	<string name="notification_fasting_energy_mode">Джерело енергії: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Спалювання жиру</string>
-	<string name="info_dialog_fat_burn_content">На цьому етапі ваше тіло виснажило запаси глюкози. Глюкоза зберігається
-		у вигляді глікогену для подальшого використання, на цьому етапі більшість збереженого глікогену була розщеплена
-		на глюкозу і спожита для отримання енергії.\n\nТепер воно починає розщеплювати жирову тканину (жир) на кетонові
-		тіла. Окрім можливості споживати глюкозу для отримання енергії, ваше тіло може альтернативно споживати кетонові
-		тіла для отримання енергії, і коли запаси глюкози закінчуються, ваше тіло переключить свій режим енергії на
-		кетонові тіла.</string>
+	<string name="info_dialog_fat_burn_content">На цій стадії Ваш організм виснажив запаси глюкози. Глюкоза зберігається 
+		у вигляді глікогену, а на цій стадії більшість Вашого глікогену вже була розщеплена 
+		і спожита для отримання енергії.\n\nТепер почалося розщеплення жирової тканини (жиру) на кетонові
+		тіла. Окрім глюкози, Ваш організм може також споживати кетонові тіла,
+		тож коли запаси глюкози вичерпуються, джерело енергії поступово переключається.</string>
 	<string name="info_dialog_ketosis_title">Кетоз</string>
-	<string name="info_dialog_ketosis_content">На цьому етапі ваше тіло вже досить довго розщеплює жир так, що ваша
-		енергія в основному походить від кетонових тіл, а не від глюкози.\n\nНа додаток до переваг втрати жиру,
-		дослідження показали переваги для захворювань, пов\'язаних із запаленнями, хоча механізм дії поки що невідомий.</string>
+	<string name="info_dialog_ketosis_content">На цій стадії Ваш організм уже достатньо довго розщеплював жири, тож
+		енергія тепер в основному походить від кетонових тіл, а не від глюкози.\n\nНа додаток до схуднення,
+		дослідження показали покращення захворювань, пов\'язаних із запаленнями, хоча механізм цієї дії наразі невідомий.</string>
 	<string name="info_dialog_autophagy_title">Автофагія</string>
-	<string name="info_dialog_autophagy_content">На цьому етапі ваше тіло почало активувати деякі додаткові процеси для
-		збору енергії. Окрім розщеплення жирової тканини на кетонові тіла, воно почало шукати старі або пошкоджені
-		клітини і споживати їх для отримання більшої енергії.\n\nДослідження цього етапу знаходиться на ранній стадії,
-		але здається, що це важливий механізм для організму, щоб зупинити проблеми, перш ніж вони виникнуть. Наприклад,
-		рівень раку нижчий у людей, які регулярно входять в автопагію. Крім того, деякі дослідження також показали
-		знижені рівні хвороби Альцгеймера.</string>
+	<string name="info_dialog_autophagy_content">На цій стадії Ваш організм почав активувати деякі додаткові процеси
+		збору енергії. Окрім розщеплення жирової тканини на кетонові тіла, він почав шукати старі чи пошкоджені
+		клітини і переробляти їх.\n\nДослідження щодо цього ще доволі ранні,
+		але схоже, що цей важливий механізм здатний зупинити проблеми, перш ніж вони виникнуть. Наприклад,
+		у людей, які регулярно входять в автофагію, нижчий рівень раку. Крім того, деякі дослідження також показали
+		меншу захворюваність на Альцгеймера.</string>
 	<string name="info_dialog_bmi_title">Індекс маси тіла</string>
-	<string name="info_dialog_bmi_content">A rough estimation of the healthy weight an average adult human should be. It
-		is calculated simply by dividing weight by height.\n\nOften criticized for being inaccurate, it is true that
-		there are factors that can cause it to be misleading. For instance: an extremely muscular body builder, or a
-		very tall or very short person. These edge cases will get inaccurate results from the basic BMI
-		calculation.\n\nBut for the majority of people this is a good enough estimate to know if you are in a healthy
-		weight range.</string>
-	<string name="info_dialog_bmr_title">Базальний обмін речовин</string>
-	<string name="info_dialog_bmr_content">Це оцінка кількості калорій, які ваше тіло спалить за день, коли повністю в
-		спокої. Якщо б ви просто лежали в ліжку весь день, це кількість калорій, яку ви могли б спожити, не набираючи
-		вагу.\n\nЦе критичне число для людей, які худнуть, обмежуючи щоденний калорійний прийом.</string>
+	<string name="info_dialog_bmi_content">Приблизна оцінка ваги, якої повинна бути середньостатистична доросла людина. Цей індекс
+		розраховується шляхом ділення ваги на зріст у квадраті.\n\nЙого часто критикують за свою неточність, бо він не враховує 
+		багатьох інших чинників. Наприклад, людина може виявитися надзвичайно мускулистим бодібілдером, або просто дуже високою чи 
+		низькою. Ці крайні випадки дадуть неточні результати.\n\nВтім, для більшості людей цієї оцінки буде 
+		достатньо для того, щоби дізнатися, чи нормальна у них вага.</string>
+	<string name="info_dialog_bmr_title">Основний обмін</string>
+	<string name="info_dialog_bmr_content">Це оцінка кількості калорій, які Ваш організм спалить за день, проведений
+		у повній нерухомості. Якби Ви просто весь день лежали на дивані, то ось це — кількість калорій, яку Ви могли би з\'їсти, не набираючи
+		вагу.\n\nЦе дуже важливе число для тих людей, які худнуть, обмежуючи щоденну кількість калорій.</string>
 	<string name="info_dialog_positive">Круто!</string>
 	<string name="info_page_title_info">Інформація</string>
 	<string name="info_page_title_tips">Поради</string>
@@ -195,7 +192,7 @@
 	<string name="title_activity_intro">Вступ</string>
 	<string name="app_widget_description">Відстежуйте прогрес голодування на головному екрані</string>
 	<string name="app_widget_not_fasting">Ви не голодуєте</string>
-	<string name="app_widget_fast_in_progress">Продовжується голодування</string>
+	<string name="app_widget_fast_in_progress">Ви голодуєте</string>
 	<string name="app_widget_time">%1$d годин</string>
 	<string name="app_widget_time_compact">%1$d год</string>
 	<string name="app_widget_start_fast_button">Почати голодування</string>
@@ -222,11 +219,11 @@
 	<string name="manual_add_calculate_from_end">Розрахувати з кінця</string>
 	<string name="action_settings">Налаштування</string>
 	<string name="title_activity_settings">Налаштування</string>
-	<string name="settings_placeholder">Налаштування незабаром з\'являться</string>
+	<string name="settings_placeholder">Налаштування з\'являться незабаром</string>
 	<string name="back">Назад</string>
 	<string name="settings_fancy_background_title">Показати красивий фон</string>
 	<string name="settings_fancy_background_subtitle">Вимкніть для простішого фону</string>
 	<string name="log_no_entries">Ще немає записів!</string>
 	<string name="log_logbook_label">Журнал</string>
-	<string name="log_stats_label">Загальна статистика</string>
+	<string name="log_stats_label">Статистика за весь час</string>
 </resources>

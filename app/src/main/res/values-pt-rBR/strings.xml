@@ -5,7 +5,7 @@
 	<string name="action_info">Informação</string>
 	<string name="action_about">Sobre</string>
 	<string name="action_export">Exportar Registro</string>
-	<string name="action_export_description">Produza um arquivo CSV de seu diário de bordo para backup</string>
+	<string name="action_export_description">Produce a CVS file of your log book for backup</string>
 	<string name="action_import">Importar Logbook</string>
 	<string name="action_import_description">Populate your log book from a previous export</string>
 	<string name="import_success">Registro importado com sucesso</string>
@@ -16,7 +16,7 @@
 	<string name="settings_section_logbook">Logbook</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Show Fasting Notification</string>
-	<string name="settings_fasting_notification_subtitle">Fornece informações em tempo real durante um rápido</string>
+	<string name="settings_fasting_notification_subtitle">Provides realtime info during a fast</string>
 	<!-- Settings: Stage alerts -->
 	<string name="settings_stage_alerts_title">Alertas de Estágio</string>
 	<string name="settings_stage_alerts_subtitle">Get notified when entering new fasting stages</string>
@@ -35,8 +35,10 @@
 		simples perda de peso.\n\nPara explorar o que sabemos sobre o jejum e o que a pesquisa está dizendo, confira a
 		seção de Informações deste aplicativo!</string>
 	<string name="intro_04_title">É isso!</string>
-	<string name="intro_04_description">Agora vá começar a jejuar!</string>
-	<string name="intro_05_title">É isso!</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_05_title">That\'s it!</string>
 	<string name="intro_05_description">Now go start fasting!</string>
 	<string name="about_name">Adam Brown</string>
 	<string name="about_subtitle">Desenvolvedor Mobile</string>
@@ -91,7 +93,7 @@
 	<string name="profile_bmi_category_morbidly_obese">Obeso mórbido</string>
 	<string name="profile_error">Valor inválido</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f\" kCal / dia</string>
+	<string name="profile_bmr_value">%.0f\" kCal / day</string>
 	<string name="profile_height_label">Altura</string>
 	<string name="profile_height_imper_feet_label">Pés</string>
 	<string name="profile_height_imper_inches_label">polegadas</string>
@@ -119,7 +121,7 @@
 	<string name="stage_fat_burning_description">Seus estoques de glicose estão esgotados! Seu corpo agora está
 		queimando gordura para energia. Um treino nas próximas horas seria o ideal.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Ponto Doce do Jejum</string>
-	<string name="stage_fat_fasting_sweet_spot_description">Você está no ponto ideal do jejum, continue assim!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">You\'re in the fasting sweet spot, keep it up!</string>
 	<string name="stage_fat_peak_fat_burning_title">Queima de Gordura Máxima</string>
 	<string name="stage_fat_peak_fat_burning_description">Seu corpo está queimando gordura rapidamente agora, e a cetose
 		começou.</string>
