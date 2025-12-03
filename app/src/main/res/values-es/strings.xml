@@ -5,7 +5,7 @@
 	<string name="action_info">Información</string>
 	<string name="action_about">Acerca de</string>
 	<string name="action_export">Exportar Registro</string>
-	<string name="action_export_description">Produce un archivo CSV de tu libro de registro para la copia de seguridad</string>
+	<string name="action_export_description">Produce un archivo CVS de tu libro de registro para la copia de seguridad</string>
 	<string name="action_import">Importar Logbook</string>
 	<string name="action_import_description">Poblar tu libro de registro desde una exportación anterior</string>
 	<string name="import_success">Registro importado con éxito</string>
@@ -35,7 +35,9 @@
 		de la simple pérdida de peso.\n\nPara explorar lo que sabemos sobre el ayuno y lo que la investigación está
 		diciendo, ¡consulta la sección de Información de esta aplicación!</string>
 	<string name="intro_04_title">¡Eso es todo!</string>
-	<string name="intro_04_description">¡Ahora ve a empezar el ayuno!</string>
+	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
+		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
+		using.\n\nThis helps you stay on track without having to open the app!</string>
 	<string name="intro_05_title">¡Eso es todo!</string>
 	<string name="intro_05_description">¡Ahora empieza a ayunar!</string>
 	<string name="about_name">Adam Brown</string>
@@ -114,12 +116,12 @@
 	<string name="fast_ketosis_label">Cetoacidosis:</string>
 	<string name="fast_fat_burn_label">Quema de Grasa:</string>
 	<string name="stage_fasting_title">Ayuno</string>
-	<string name="stage_fasting_description">¡Tu cuerpo está consumiendo sus reservas de glucosa, ¡sigue así!</string>
+	<string name="stage_fasting_description">Su cuerpo está consumiendo sus almacenes de glucosa, ¡siga adelante!</string>
 	<string name="stage_fat_burning_title">Quema de grasa</string>
 	<string name="stage_fat_burning_description">¡Tus reservas de glucosa están agotadas! Tu cuerpo ahora está quemando
 		grasa para obtener energía. Un entrenamiento en las próximas horas sería óptimo.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Punto dulce de ayuno</string>
-	<string name="stage_fat_fasting_sweet_spot_description">Estás en el punto dulce del ayuno, ¡sigue así!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Estás en el ayuno dulce, ¡sigue así!</string>
 	<string name="stage_fat_peak_fat_burning_title">Pico de quema de grasa</string>
 	<string name="stage_fat_peak_fat_burning_description">Tu cuerpo está quemando grasa rápidamente ahora y la cetosis
 		ha comenzado.</string>
