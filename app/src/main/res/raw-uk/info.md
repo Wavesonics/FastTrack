@@ -30,5 +30,5 @@
 
 ## Джерела:
 
-- [Як повільне старіння (і навіть зворотне)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (\* Youtube\*)
-- [Ефекти переривчастих справ, старіння та хвороба] (https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_Новий журнал медицини_)
+- [How to Slow Aging (and even reverse it)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (_Youtube_)
+- [Effects of Intermittent Fasting on Health, Aging, and Disease](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_New England Journal of Medicine_)
