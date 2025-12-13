@@ -1,14 +1,14 @@
 # Інтервальне голодування
 
-**Intermittent Fasting** is currently a very active field of study, some parts of this are well established, and others are still being studied. So take this all with a grain of salt, and consult the primary sources linked below.
+Інтервальне голодування зараз дуже активно досліджується: щось уже визнане науковою спільнотою, а щось ще досі вивчається. Тому сприймайте це все з певною долею скептицизму і звертайтеся до першоджерел, наведених нижче.
 
-## How and why fasting works:
+## Як і чому працює голодування:
 
-It's believed that in our early development as hunter gatherers, our diet was feast or famine. Maybe a small tribe would get a large kill once a week or less. Thus our bodies are well designed to make the most out of that and store everything possible for later use.
+Вважається, що на ранніх етапах нашого розвитку як мисливців і збирачів наше харчування складалося із періодів переїдання та голодування. Невелике плем'я могло вполювати велику здобич раз на тиждень або ще рідше. Тому наш організм добре пристосований максимально з цього скористатися і зберегти на потім все, що можна.
 
-Acquiring carbs in large quantities would have been difficult. For instance: foraging for berries, which would be high in sugar, would require a lot of effort for only a small amount of sugar.
+Було дуже важко знайти вуглеводи у великій кількості. Наприклад, збирання ягід, які багаті на цукор, потребувало великих зусиль за досить невелику винагороду.
 
-### Thus our bodies developed two primary energy pathways:
+### Тому наші тіла розвинули два основні енергетичні шляхи:
 
 1. **Glucose:** Carbohydrates all break down into glucose when consumed. Glucose can be consumed directly by cells for energy. Excess glucose is then be stored as glycogen in various places around the body such as the liver and skeletal muscle. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
 2. **Ketone Bodies:** These are derived by metabolizing fat, and cells can consume them instead of glucose for energy. Excess calories from carbohydrates or protein (_which break down into glucose and amino acids respectively_)  will be stored as adipose tissue (_fat_), and when needed, can be broken down into ketone bodies which will be used for energy by your cells.
