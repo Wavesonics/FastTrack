@@ -1,0 +1,5 @@
+- Fix high power usage when in background
+(thanks for the report atom-smasher!)
+- Fixed fasting screen on very small screens
+- Translation updates
+- Library updates
