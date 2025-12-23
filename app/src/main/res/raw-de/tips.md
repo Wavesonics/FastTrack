@@ -18,14 +18,18 @@ Fastenzeit kann schwierig sein! Hier sind einige Zeiger zu helfen.
 
 ## Sehr niedrige Kalorienfutter
 
-Sie können tatsächlich ein paar Kalorien während Ihrer Schnelligkeit essen und immer noch genauso effektiv sein. Versuchen Sie, es unter 100 Kalorien pro Tag zu halten. Zu diesem Zweck ist hier ein Rezept finde ich sehr effektiv bei "Fühlen wie Nahrung" während es nur etwa 5 Kalorien pro Servier:
+Sie können tatsächlich ein paar Kalorien während Ihrer Schnelligkeit essen und immer noch genauso effektiv sein. Versuche es unter 100
+Kalorien pro Tag zu halten. Zu diesem Zweck ist hier ein Rezept, das ich bei "Fühlen wie Essen" sehr effektiv finde, während ich nur etwa 5
+Kalorien pro Portion habe:
 
-**Gewürzige Hühnerbrüche:**
+**Gewürzige Brüche:**
 
 - 1 Stück Hühnerbouillon
 - 8oz (1 Tasse) kochendes Wasser
 - Waschen der hitzigen Sauce
 - Kalksaft
+
+Für Veganer oder Veganer können Sie Hühnerbouillon gegen Gemüsebouillon ersetzen.
 
 ## Appetit suppressants
 

@@ -18,14 +18,18 @@ Fasting can be difficult! Here are some pointers to help.
 
 ## Very Low Calorie Foods
 
-You can actually eat a couple calories during your fast and still be just as effective. Try to keep it under 100 calories per day. To this end, here is a recipe I find very effective at "feeling like food" while only being about 5 calories per serving:
+Pode, de facto, comer algumas calorias durante o seu processo rápido e continuar a ser igualmente eficaz. Try to keep it under 100
+calories per day. Para esse fim, aqui está uma receita que eu acho muito eficaz em "sentir como comida", sendo apenas cerca de 5 calorias
+por porção:
 
-**Spicy Chicken Broth:**
+**Braço Picante:**
 
 - 1 tsp of chicken bouillon
 - 8oz (1 cup) boiling water
 - Dash of habanero hot sauce
 - Dash of lime juice
+
+Para os jejum ou Vegan mais rápido, você pode substituir o bolinho de frango por bolinho de legume.
 
 ## Appetite suppressants
 
