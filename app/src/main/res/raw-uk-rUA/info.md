@@ -1,14 +1,14 @@
-# Jejum Intermitente
+# Інтервальне голодування
 
-**Intermittent Fasting** is currently a very active field of study, some parts of this are well established, and others are still being studied. So take this all with a grain of salt, and consult the primary sources linked below.
+Інтервальне голодування зараз дуже активно досліджується: щось уже визнане науковою спільнотою, а щось ще досі вивчається. Тому сприймайте це все з певною долею скептицизму і звертайтеся до першоджерел, наведених нижче.
 
-## How and why fasting works:
+## Як і чому працює голодування:
 
-It's believed that in our early development as hunter gatherers, our diet was feast or famine. Maybe a small tribe would get a large kill once a week or less. Thus our bodies are well designed to make the most out of that and store everything possible for later use.
+Вважається, що на ранніх етапах нашого розвитку як мисливців і збирачів наше харчування складалося із періодів переїдання та голодування. Невелике плем'я могло вполювати велику здобич раз на тиждень або ще рідше. Тому наш організм добре пристосований максимально з цього скористатися і зберегти на потім все, що можна.
 
-Acquiring carbs in large quantities would have been difficult. For instance: foraging for berries, which would be high in sugar, would require a lot of effort for only a small amount of sugar.
+Було дуже важко знайти вуглеводи у великій кількості. Наприклад, збирання ягід, які багаті на цукор, потребувало великих зусиль за досить невелику винагороду.
 
-### Thus our bodies developed two primary energy pathways:
+### Тому наші тіла розвинули два основні енергетичні шляхи:
 
 1. **Glucose:** Carbohydrates all break down into glucose when consumed. Glucose can be consumed directly by cells for energy. Excess glucose is then be stored as glycogen in various places around the body such as the liver and skeletal muscle. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
 2. **Ketone Bodies:** These are derived by metabolizing fat, and cells can consume them instead of glucose for energy. Excess calories from carbohydrates or protein (_which break down into glucose and amino acids respectively_)  will be stored as adipose tissue (_fat_), and when needed, can be broken down into ketone bodies which will be used for energy by your cells.
@@ -28,7 +28,7 @@ An active area of research is about what processes the body has that are only ac
 5. **Autophagy:** The body has another mechanism for harvesting energy. In this stage your body will begin consuming old or damaged cells for energy. This area of research is still in its infancy, but it appears this is actually an important mechanism for the body to fix issues. Cancers are simply damaged cells that don't know when to stop dividing. If a body regularly enters autophagy, it appears that those damaged cells are broken down for energy before they have time to become a problem. Another area of research is around Alzheimer's Disease. We know the cause of Alzheimer's is a build up of plaque amyloid in the brain, so any way to prevent those build ups should prevent the disease from taking root in the first place. Autophagy may do just that, by consuming the plaque before it becomes a problem. Additionally, some places that store glycogen and adipose tissues are fine in small quantities, but become a problem when those stores are never depleted. Cirrhosis of the liver for instance can be caused by fatty deposits in the liver impeding its normal function. If you often drink alcohol and don’t otherwise follow a low-carb diet, the stored glycogen in your liver will rarely be depleted.
 6. **Optimal Autophagy:** This is probably the newest area of research, so take this with a grain of salt. But when your body has been in autophagy for a long enough period of time, it appears that further “repair” systems are activated. The mechanism of action is not yet known for this. But studies have shown that DNA damage, such as the length of telomeres on the ends of your DNA are repaired, effectively reversing age related DNA damage, and lowering your biological age. It appears to not just be autophagy that triggers these systems, stressing the body in a variety of ways can trigger them. Endurance athletes may trigger these systems, which may make sense as it appears our ancestors were endurance hunters, running for hours while stalking prey.
 
-## Sources:
+## Джерела:
 
 - [How to Slow Aging (and even reverse it)](https://www.youtube.com/watch?v=QRt7LjqJ45k) (_Youtube_)
 - [Effects of Intermittent Fasting on Health, Aging, and Disease](https://www.nejm.org/action/showFullText?downloadfile=showFullText&downloadfile=showFullText&doi=10.1056/nejmra1905136) (_New England Journal of Medicine_)
