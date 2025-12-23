@@ -20,6 +20,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.currentStateAsState
 import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.confetti.ConfettiState
@@ -142,8 +145,9 @@ fun FastingScreen(
 		onDispose { }
 	}
 
-	LaunchedEffect(uiState.isFasting) {
-		while (uiState.isFasting) {
+	val lifecycleState by LocalLifecycleOwner.current.lifecycle.currentStateAsState()
+	LaunchedEffect(uiState.isFasting, lifecycleState) {
+		while (uiState.isFasting && lifecycleState == Lifecycle.State.RESUMED) {
 			viewModel.updateUi()
 			delay(10)
 		}
