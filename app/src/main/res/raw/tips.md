@@ -18,14 +18,18 @@ Fasting can be difficult! Here are some pointers to help.
 
 ## Very Low Calorie Foods
 
-You can actually eat a couple calories during your fast and still be just as effective. Try to keep it under 100 calories per day. To this end, here is a recipe I find very effective at "feeling like food" while only being about 5 calories per serving:
+You can actually eat a couple of calories during your fast and still be just as effective. Try to keep it under 100
+calories per day. To this end, here is a recipe I find very effective at "feeling like food" while only being about 5
+calories per serving:
 
-**Spicy Chicken Broth:**
+**Spicy Broth:**
 
 - 1 tsp of chicken bouillon
 - 8oz (1 cup) boiling water
 - Dash of habanero hot sauce
 - Dash of lime juice
+
+For Vegan or Vegan fasters, you can substitute chicken bouillon for vegetable bouillon.
 
 ## Appetite suppressants
 - **Coffee:** more than just filling your stomach up a bit to feel full, will actively suppress your appetite for a while
