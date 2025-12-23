@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.android)
@@ -54,12 +56,14 @@ android {
 		sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
 		targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
 	}
-	kotlinOptions {
-		jvmTarget = libs.versions.javaVersion.get()
-		freeCompilerArgs = listOf(
-			"-opt-in=kotlin.time.ExperimentalTime",
-			"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
-		)
+	kotlin {
+		compilerOptions {
+			jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(libs.versions.javaVersion.get()))
+			freeCompilerArgs.addAll(
+				"-opt-in=kotlin.time.ExperimentalTime",
+				"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+			)
+		}
 	}
 	compileOptions {
 		sourceCompatibility = JavaVersion.VERSION_17
@@ -73,7 +77,7 @@ android {
 		animationsDisabled = true
 		managedDevices {
 			allDevices {
-				create<com.android.build.api.dsl.ManagedVirtualDevice>("pixel6Api34") {
+				create<ManagedVirtualDevice>("pixel6Api34") {
 					device = "Pixel 6"
 					apiLevel = 34
 					systemImageSource = "aosp-atd" // super-lightweight, headless
