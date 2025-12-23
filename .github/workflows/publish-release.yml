@@ -48,7 +48,7 @@ jobs:
           sudo udevadm trigger --name-match=kvm
 
       - name: AVD cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: avd-cache
         with:
           path: |
@@ -84,14 +84,14 @@ jobs:
         run: ./gradlew bundleRelease
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: apk-release
           path: app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
 
       - name: Upload AAB artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: aab-release
           path: app/build/outputs/bundle/release/app-release.aab
@@ -106,10 +106,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Download APK artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: apk-release
           path: app/build/outputs/apk/release
@@ -137,7 +137,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Set up JDK
         uses: actions/setup-java@v5
@@ -152,7 +152,7 @@ jobs:
           bundler-cache: true
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Setup Fastlane
         run: |
@@ -164,7 +164,7 @@ jobs:
         run: echo $PLAY_STORE_CONFIG_JSON > play-store-config.json
 
       - name: Download AAB artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: aab-release
           path: app/build/outputs/bundle/release
