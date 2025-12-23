@@ -18,14 +18,18 @@
 
 ## Alimentos muy bajos de Calorie
 
-Usted puede realmente comer un par de calorías durante su ayuno y aún así ser igual de eficaz. Trata de mantenerlo por debajo de 100 calorías al día. Con este fin, aquí hay una receta que encuentro muy efectiva en "sentirse comida" mientras que sólo es de 5 calorías por porción:
+Usted puede comer un par de calorías durante su ayuno y aún así ser igual de eficaz. Intenta mantenerlo por debajo de 100
+calorías al día. Para este fin, esta es una receta que encuentro muy efectiva en "sentirse comida" mientras que solo es de 5
+calorías por porción:
 
-**Caldo picante de pollo:**
+**Caldo picante:**
 
 - 1 tsp de pollo
 - 8oz (1 taza) agua de ebullición
 - Rayo de salsa de habanero caliente
 - Zumo de cal
+
+Para Vegan o Vegan más rápido, usted puede sustituir el pollo de illon por el de la verdura.
 
 ## Supresores de Appetitos
 
