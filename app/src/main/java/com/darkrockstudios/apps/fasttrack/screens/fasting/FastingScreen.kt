@@ -373,61 +373,65 @@ private fun FastDetailsContent(
 			)
 		}
 
-		// Stage Description
-		Box(
-			modifier = Modifier
-				.fillMaxWidth()
-				.weight(2f)
-				.verticalScroll(rememberScrollState())
-		) {
-			Text(
-				text = uiState.stageDescription,
-				style = typography.stageDescription(),
-				color = MaterialTheme.colorScheme.onBackground,
-				modifier = Modifier.padding(top = spacing.medium)
-			)
-		}
-
-		// Bottom Controls Row
-		Row(
-			modifier = Modifier
-				.fillMaxWidth()
-				.wrapContentHeight()
-				.padding(top = spacing.medium),
-			horizontalArrangement = Arrangement.End,
-			verticalAlignment = Alignment.CenterVertically
-		) {
-			// Debug Button (only in debug builds)
-			if (BuildConfig.DEBUG) {
-				FloatingActionButton(
-					onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
-					modifier = Modifier.padding(end = spacing.medium)
-				) {
-					Icon(
-						imageVector = Icons.Default.Add,
-						contentDescription = stringResource(id = R.string.debug_add_hour_button)
-					)
-				}
+		Row(modifier = Modifier
+			.fillMaxWidth()
+			.weight(2f)) {
+			// Stage Description
+			Box(
+				modifier = Modifier
+					.fillMaxWidth()
+					.weight(1f)
+					.verticalScroll(rememberScrollState())
+			) {
+				Text(
+					text = uiState.stageDescription,
+					style = typography.stageDescription(),
+					color = MaterialTheme.colorScheme.onBackground,
+					modifier = Modifier.padding(top = spacing.medium, end = spacing.medium)
+				)
 			}
 
-			// Start/Stop Button
-			if (uiState.isFasting) {
-				FloatingActionButton(
-					onClick = onShowEndFastConfirmation,
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_fast_stop),
-						contentDescription = stringResource(id = R.string.stop_fast_button_description)
-					)
+			// Bottom Controls Row
+			Row(
+				modifier = Modifier
+					.align(Alignment.Bottom)
+					.wrapContentHeight()
+					.padding(top = spacing.medium),
+				horizontalArrangement = Arrangement.End,
+				verticalAlignment = Alignment.CenterVertically
+			) {
+				// Debug Button (only in debug builds)
+				if (BuildConfig.DEBUG) {
+					FloatingActionButton(
+						onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
+						modifier = Modifier.padding(end = spacing.medium)
+					) {
+						Icon(
+							imageVector = Icons.Default.Add,
+							contentDescription = stringResource(id = R.string.debug_add_hour_button)
+						)
+					}
 				}
-			} else {
-				FloatingActionButton(
-					onClick = onShowStartFastSelector,
-				) {
-					Icon(
-						painter = painterResource(id = R.drawable.ic_start_fast),
-						contentDescription = stringResource(id = R.string.start_fast_button_description)
-					)
+
+				// Start/Stop Button
+				if (uiState.isFasting) {
+					FloatingActionButton(
+						onClick = onShowEndFastConfirmation,
+					) {
+						Icon(
+							painter = painterResource(id = R.drawable.ic_fast_stop),
+							contentDescription = stringResource(id = R.string.stop_fast_button_description)
+						)
+					}
+				} else {
+					FloatingActionButton(
+						onClick = onShowStartFastSelector,
+					) {
+						Icon(
+							painter = painterResource(id = R.drawable.ic_start_fast),
+							contentDescription = stringResource(id = R.string.start_fast_button_description)
+						)
+					}
 				}
 			}
 		}

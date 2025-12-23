@@ -536,6 +536,32 @@ private fun FastingScreenPreviewLandscapePhoneDark() {
 	)
 }
 
+@Preview(
+	name = "Fasting Screen - Tiny Device",
+	showBackground = true,
+	widthDp = 240,
+	heightDp = 470
+)
+@Composable
+private fun FastingScreenPreviewTinyDevice() {
+	FastingScreenPreview(
+		isFasting = true,
+		stageTitle = "Fat Burning",
+		stageDescription = "Your body has depleted its glucose reserves and is now burning fat for energy.",
+		energyMode = "Energy Mode: Fat",
+		elapsedHours = 14.0,
+		timerText = "14:00:00",
+		milliseconds = "0",
+		fatBurnTime = "2:00:00",
+		ketosisTime = "-4:00:00",
+		autophagyTime = "-10:00:00",
+		fatBurnStageState = StageState.StartedActive,
+		ketosisStageState = StageState.StartedInactive,
+		autophagyStageState = StageState.StartedInactive,
+		alertsEnabled = true,
+	)
+}
+
 class FakeFastingViewModel(state: IFastingViewModel.FastingUiState) : IFastingViewModel {
 	override val uiState = MutableStateFlow(state).asStateFlow()
 	override fun onCreate() {}
