@@ -18,14 +18,18 @@ Il digiuno può essere difficile! Ecco alcuni indicatori da aiutare.
 
 ## Alimenti Calorici Molto Basso
 
-Si può effettivamente mangiare un paio di calorie durante il vostro veloce e ancora essere altrettanto efficace. Cercate di tenerlo sotto 100 calorie al giorno. A tal fine, ecco una ricetta che trovo molto efficace a "sentirsi come il cibo" mentre solo circa 5 calorie per porzione:
+Si può effettivamente mangiare un paio di calorie durante il vostro veloce e ancora essere altrettanto efficace. Cerca di tenerlo sotto i 100
+calorie al giorno. A tal fine, ecco una ricetta che trovo molto efficace a "sentirsi come il cibo" mentre solo essere circa 5
+calorie per porzione:
 
-**Brodo Di Pollo Piccante:**
+**Brodo Speziato:**
 
 - 1 cucchiaino di brodo di pollo
 - 8oz (1 tazza) acqua bollente
 - Scatto di salsa calda habanero
 - Estratto di succo di lime
+
+Per Vegan o Vegan digiuni, è possibile sostituire il brodo di pollo per brodo di verdura.
 
 ## Soppressori dell'appetito
 
