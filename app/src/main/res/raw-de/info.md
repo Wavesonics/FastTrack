@@ -1,6 +1,6 @@
 # Intermittierendes Fasten
 
-**Intermittent Fasting** ist derzeit ein sehr aktives Studienfeld, einige Teile davon sind gut etabliert, andere werden noch untersucht. Also nehmen Sie dies alles mit einem Korn Salz, und konsultieren Sie die primären Quellen unten verlinkt.
+**Intermittierendes Fasten** ist derzeit ein sehr aktives Forschungsgebiet, wobei einige Aspekte bereits gut erforscht sind, während andere noch untersucht werden. Also nehmen Sie dies alles mit einem Korn Salz, und konsultieren Sie die primären Quellen unten verlinkt.
 
 ## Wie und warum Fasten funktioniert:
 
