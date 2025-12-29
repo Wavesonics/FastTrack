@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Schnellspur</string>
+	<string name="app_name">Fast Track</string>
 	<string name="action_share">Teilen</string>
 	<string name="action_info">Info</string>
 	<string name="action_about">Über</string>
-	<string name="action_export">Exportieren Sie das Logbuchs</string>
+	<string name="action_export">Exportieren Sie das Logbuch</string>
 	<string name="action_export_description">Erstellen Sie eine CSV-Datei Ihres Logbuchs zur Sicherung</string>
 	<string name="action_import">Logbuch importieren</string>
 	<string name="action_import_description">Befüllen Sie Ihr Logbuch aus einem früheren Export</string>
