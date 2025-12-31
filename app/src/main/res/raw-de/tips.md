@@ -34,4 +34,4 @@ Für Veganer oder Veganer können Sie Hühnerbouillon gegen Gemüsebouillon erse
 ## Appetit suppressants
 
 - **Kaffee:** mehr als nur den Magen zu füllen um sich voll zu fühlen, wird deinen Appetit für eine Weile aktiv unterdrücken
-- \*\*Chilisauce: \*\* Diese hat in der Regel keine Kalorien und hilft ebenfalls, das Hungergefühl zu unterdrücken.
+- \*\*Chilisauce: \*\* Die hat in der Regel keine Kalorien und hilft ebenfalls, das Hungergefühl zu unterdrücken.
