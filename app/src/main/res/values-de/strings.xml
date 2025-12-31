@@ -102,7 +102,7 @@
 	<string name="manual_add_start_date_time_label">Startdatum und Uhrzeit</string>
 	<string name="edit_date">Datum bearbeiten</string>
 	<string name="edit_time">Bearbeitungszeit</string>
-	<string name="manual_start_title">Schnellstart</string>
+	<string name="manual_start_title">Fasten begonnen</string>
 	<string name="manual_add_set_end_title">Fasten-Ende festlegen</string>
 	<string name="manual_add_set_end_complete">Berechnen</string>
 	<string name="fast_autophagy_label">Autophagie:</string>
@@ -223,7 +223,7 @@
 	<string name="title_activity_settings">Einstellungen</string>
 	<string name="settings_placeholder">Einstellungen kommen bald</string>
 	<string name="back">Zurück</string>
-	<string name="settings_fancy_background_title">Schicker Hintergrund anzeigen</string>
+	<string name="settings_fancy_background_title">Schicken Hintergrund anzeigen</string>
 	<string name="settings_fancy_background_subtitle">Für einen einfacheren Fast-Hintergrund deaktivieren</string>
 	<string name="log_no_entries">Noch keine Einträge!</string>
 	<string name="log_logbook_label">Logbuch</string>
