@@ -18,18 +18,18 @@
 
 ## Дуже низькокалорійна їжа
 
-Ви можете насправді їсти пару калорій під час якнайшвидшого і до сих пір бути таким же ефективним. Try to keep it under 100
+You can actually eat a couple of calories during your fast and still be just as effective. Try to keep it under 100
 calories per day. To this end, here is a recipe I find very effective at "feeling like food" while only being about 5
 calories per serving:
 
-**Широкий лот:**
+**Гострий бульйон:**
 
 - 1 ч. л. курячого бульйону
 - 250 мл (1 стакан) окропу
 - Крапля соусу хабанеро
 - Крапля соку лайма
 
-Для вегана або Вегану можна замінити курячий буїллон на овочевий буїлон.
+Вегани та вегетаріанці можуть замінити курячий бульйон на овочевий.
 
 ## Засоби для пригнічення апетиту
 
