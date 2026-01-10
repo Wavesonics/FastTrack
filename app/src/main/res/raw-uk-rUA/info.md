@@ -1,16 +1,16 @@
 # Інтервальне голодування
 
-Інтервальне голодування зараз дуже активно досліджується: щось уже визнане науковою спільнотою, а щось ще досі вивчається. Тому сприймайте це все з певною долею скептицизму і звертайтеся до першоджерел, наведених нижче.
+Інтервальне голодування зараз дуже активно досліджується: щось уже визнане науковою спільнотою, а щось іще досі вивчається. Тому сприймайте це все з певною долею скептицизму і звертайтеся до першоджерел, наведених нижче.
 
 ## Як і чому працює голодування:
 
-Вважається, що на ранніх етапах нашого розвитку як мисливців і збирачів наше харчування складалося із періодів переїдання та голодування. Невелике плем'я могло вполювати велику здобич раз на тиждень або ще рідше. Тому наш організм добре пристосований максимально з цього скористатися і зберегти на потім все, що можна.
+Вважається, що на ранніх етапах нашого розвитку як мисливців і збирачів наше харчування складалося із періодів переїдання та голодування. Невелике плем'я могло вполювати велику здобич раз на тиждень або ж іще рідше. Тому наш організм добре пристосований максимально з цього скористатися і зберегти на потім все, що можна.
 
-Було дуже важко знайти вуглеводи у великій кількості. Наприклад, збирання ягід, які багаті на цукор, потребувало великих зусиль за досить невелику винагороду.
+Було також дуже важко знайти вуглеводи у великій кількості. Наприклад, збирання ягід, які багаті на цукор, потребувало великих зусиль за досить невелику винагороду.
 
 ### Тому наші тіла розвинули два основні енергетичні шляхи:
 
-1. **Glucose:** Carbohydrates all break down into glucose when consumed. Glucose can be consumed directly by cells for energy. Excess glucose is then be stored as glycogen in various places around the body such as the liver and skeletal muscle. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
+1. **Глюкоза:** усі спожиті вуглеводи розщеплюються на глюкозу. Наші клітини можуть її використовувати безпосередньо. Зайва глюкоза зберігається в печінці та м'язах у вигляді глікогену. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
 2. **Ketone Bodies:** These are derived by metabolizing fat, and cells can consume them instead of glucose for energy. Excess calories from carbohydrates or protein (_which break down into glucose and amino acids respectively_)  will be stored as adipose tissue (_fat_), and when needed, can be broken down into ketone bodies which will be used for energy by your cells.
 
 In our hunter gatherer days we would have often been deriving our energy from ketone bodies as well as glucose.
