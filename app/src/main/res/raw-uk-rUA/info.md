@@ -10,8 +10,8 @@
 
 ### Тому наші тіла розвинули два основні енергетичні шляхи:
 
-1. **Глюкоза:** усі спожиті вуглеводи розщеплюються на глюкозу. Наші клітини можуть її використовувати безпосередньо. Зайва глюкоза зберігається в печінці та м'язах у вигляді глікогену. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
-2. **Ketone Bodies:** These are derived by metabolizing fat, and cells can consume them instead of glucose for energy. Excess calories from carbohydrates or protein (_which break down into glucose and amino acids respectively_)  will be stored as adipose tissue (_fat_), and when needed, can be broken down into ketone bodies which will be used for energy by your cells.
+1. **Глюкоза:** усі спожиті вуглеводи розщеплюються на глюкозу. Наші клітини можуть її використовувати безпосередньо. Зайва глюкоза зберігається в печінці та м'язах у вигляді глікогену. Коли запаси глікогену повні, зайва глюкоза починає перетворюватися на жир. За потреби глікоген розщеплюється назад на глюкозу, яку можуть використати клітини.
+2. **Кетонові тіла:** вони утворюються в процесі метаболізму жиру, і клітини можуть споживати їх замість глюкози. Зайві калорії від вуглеводів чи білків (_які розщеплюються на глюкозу та амінокислоти, відповідно_) зберігаються як жир, який за потреби розщеплюється на кетонові тіла, що їх можуть використати клітини.
 
 In our hunter gatherer days we would have often been deriving our energy from ketone bodies as well as glucose.
 
