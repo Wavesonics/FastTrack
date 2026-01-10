@@ -18,9 +18,7 @@
 
 ## Дуже низькокалорійна їжа
 
-You can actually eat a couple of calories during your fast and still be just as effective. Try to keep it under 100
-calories per day. To this end, here is a recipe I find very effective at "feeling like food" while only being about 5
-calories per serving:
+Насправді під час голодування можна з'їсти декілька калорій і все одно мати позитивні результати. Старайтеся не перевищувати 100 калорій на день. На допомогу наведу рецепт, який дуже нагадує справжню їжу на смак і водночас містить лише 5 калорій на порцію:
 
 **Гострий бульйон:**
 
