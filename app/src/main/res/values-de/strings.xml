@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Schnellspur</string>
-	<string name="action_share">Teilen</string>
+	<string name="app_name">Fast Track</string>
+	<string name="action_share">Share</string>
 	<string name="action_info">Info</string>
 	<string name="action_about">Über</string>
-	<string name="action_export">Exportieren Sie das Logbuchs</string>
+	<string name="action_export">Exportieren Sie das Logbuch</string>
 	<string name="action_export_description">Erstellen Sie eine CSV-Datei Ihres Logbuchs zur Sicherung</string>
 	<string name="action_import">Logbuch importieren</string>
 	<string name="action_import_description">Befüllen Sie Ihr Logbuch aus einem früheren Export</string>
@@ -15,30 +15,26 @@
 	<string name="settings_section_ui">Schnittstelle</string>
 	<string name="settings_section_logbook">Logbuch</string>
 	<!-- Settings: Fasting notification -->
-	<string name="settings_fasting_notification_title">Fast-Benachrichtigung anzeigen</string>
-	<string name="settings_fasting_notification_subtitle">Stellt Echtzeit-Informationen während einer Schnelligkeit bereit</string>
+	<string name="settings_fasting_notification_title">Fasten-Benachrichtigung anzeigen</string>
+	<string name="settings_fasting_notification_subtitle">Stellt Echtzeit-Informationen während des Fastens bereit</string>
 	<!-- Settings: Stage alerts -->
 	<string name="settings_stage_alerts_title">Bühnen-Alarme</string>
-	<string name="settings_stage_alerts_subtitle">Benachrichtigt werden, wenn neue Fast-Stufen betreten werden</string>
+	<string name="settings_stage_alerts_subtitle">Benachrichtigt werden, wenn neue Fasten-Stufen erreicht werden</string>
 	<string name="export_failed">Fehler beim Exportieren des Logbuchs</string>
 	<string name="intro_00_title">Willkommen bei Fast Track!</string>
 	<string name="intro_00_description">Worum geht es in dieser App?</string>
 	<string name="intro_01_title">Motivationshilfe</string>
-	<string name="intro_01_description">Die Hauptidee hinter Fast Track ist es, Sie während Ihrer Fastenperioden zu
-		motivieren und Ihnen zu erklären, was Ihr Körper in den verschiedenen Phasen des Fastens tut.</string>
+	<string name="intro_01_description">Die Hauptidee hinter Fast Track ist es, Sie während Ihrer Fastenperioden zu motivieren und Ihnen zu erklären, was Ihr Körper in den verschiedenen Phasen des Fastens tut</string>
 	<string name="intro_02_title">Eine einfache kostenlose App</string>
-	<string name="intro_02_description">Fast Track ist und wird immer kostenlos und Open Source sein. Es muss kein Konto erstellt werden, es gibt keine In-App-Käufe und keine Werbung! Die App benötigt nicht einmal Internetzugang und
-		kann somit Ihre Daten nicht weitergeben.</string>
+	<string name="intro_02_description">Fast Track ist und wird immer kostenlos und Open Source sein. Es muss kein Konto erstellt werden, es gibt keine In-App-Käufe und keine Werbung! Die App benötigt nicht einmal Internetzugang und kann somit Ihre Daten nicht weitergeben</string>
 	<string name="intro_03_title">Intermittierendes Fasten</string>
-	<string name="intro_03_description">Dies ist ein neues Studienfeld, das viele Vorteile über den einfachen
-		Gewichtsverlust hinaus zeigt.\n\nUm zu erkunden, was wir über das Fasten wissen und was die Forschung dazu sagt,
-		schauen Sie sich den Bereich Info dieser App an!</string>
-	<string name="intro_04_title">Das ist es!</string>
-	<string name="intro_04_description">Jetzt geh und fang an zu fasten!</string>
+	<string name="intro_03_description">Dies ist ein neues Studienfeld, das viele Vorteile über den einfachen Gewichtsverlust hinaus zeigt.\n\nUm zu erkunden, was wir über das Fasten wissen und was die Forschung dazu sagt, schauen Sie sich den Bereich Info dieser App an</string>
+	<string name="intro_04_title">Bleibe durch Benachrichtigungen motiviert</string>
+	<string name="intro_04_description">Fast Track kann dir hilfreiche Benachrichtigungen senden, damit du beim Fasten motiviert bleibst.\n\nDu siehst deine aktuelle Fastenzeit, in welcher Phase du dich befindest und welchen Energiemodus dein Körper gerade nutzt.\n\nSo bleibst du am Ball, ohne die App öffnen zu müssen</string>
 	<string name="intro_05_title">Das war\'s!</string>
-	<string name="intro_05_description">Jetzt starten Sie das Fasten!</string>
+	<string name="intro_05_description">Jetzt starte das Fasten!</string>
 	<string name="about_name">Adam Brown</string>
-	<string name="about_subtitle">Mobile-Entwickler</string>
+	<string name="about_subtitle">Open Source Entwicklung</string>
 	<string name="about_brief">Kletterer, Bergsteiger, Softwareingenieur und Open-Source-Befürworter.</string>
 	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Fasten</string>
@@ -56,7 +52,7 @@
 	<string name="confirm_start_fast_neutral">Bereits gestartet</string>
 	<string name="confirm_start_fast_negative">Nein</string>
 	<string name="already_started_dialog_title">Bereits gestartet</string>
-	<string name="start_picker_title">Wann hast du dein Fasten begonnen?</string>
+	<string name="start_picker_title">Wann hast du dein Fasten begonnen</string>
 	<string name="confirm_end_fast_title">Fasten beenden?</string>
 	<string name="confirm_end_fast_positive">Jetzt</string>
 	<string name="confirm_end_fast_neutral">Bereits gestoppt?</string>
@@ -68,7 +64,7 @@
 	<string name="confirm_delete_fast_positive">Ja</string>
 	<string name="confirm_delete_fast_negative">Nein</string>
 	<string name="fast_status_fasting">Fasten im Gange</string>
-	<string name="fast_status_not_fasting">Du fastest nicht.</string>
+	<string name="fast_status_not_fasting">Du fastest nicht</string>
 	<string name="next_stage">Nächste Stufe in: %1$d Stunden</string>
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">Gestartet: %1$s</string>
@@ -106,7 +102,7 @@
 	<string name="manual_add_start_date_time_label">Startdatum und Uhrzeit</string>
 	<string name="edit_date">Datum bearbeiten</string>
 	<string name="edit_time">Bearbeitungszeit</string>
-	<string name="manual_start_title">Schnellstart</string>
+	<string name="manual_start_title">Fasten begonnen</string>
 	<string name="manual_add_set_end_title">Fasten-Ende festlegen</string>
 	<string name="manual_add_set_end_complete">Berechnen</string>
 	<string name="fast_autophagy_label">Autophagie:</string>
@@ -227,7 +223,7 @@
 	<string name="title_activity_settings">Einstellungen</string>
 	<string name="settings_placeholder">Einstellungen kommen bald</string>
 	<string name="back">Zurück</string>
-	<string name="settings_fancy_background_title">Schicker Hintergrund anzeigen</string>
+	<string name="settings_fancy_background_title">Schicken Hintergrund anzeigen</string>
 	<string name="settings_fancy_background_subtitle">Für einen einfacheren Fast-Hintergrund deaktivieren</string>
 	<string name="log_no_entries">Noch keine Einträge!</string>
 	<string name="log_logbook_label">Logbuch</string>
