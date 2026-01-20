@@ -56,14 +56,19 @@ fun TimeLine(
                     val paddingPx = padding.toPx()
                     val spacingPx = spacing.toPx()
                     val barSizePx = barSize.toPx()
-                    val availableWidth = size.width - paddingPx
-                    val phaseWidth = (availableWidth / Stages.phases.size) - spacingPx
+                    val slantOffsetPx = slantOffset.toPx()
+                    
+                    // Calculate total width needed for all rhombuses
+                    val phaseWidth = (size.width - (2 * paddingPx) - (Stages.phases.size - 1) * spacingPx) / Stages.phases.size
+                    val totalWidth = (Stages.phases.size * phaseWidth) + ((Stages.phases.size - 1) * spacingPx) + slantOffsetPx
+                    val startOffset = (size.width - totalWidth) / 2f
+                    
                     val startY = paddingPx
                     val yOk = abs(offset.y - startY) <= (barSizePx / 2f)
                     if (yOk) {
                         Stages.phases.forEachIndexed { index, phase ->
-                            val startX = (index * phaseWidth) + (index * spacingPx) + paddingPx
-                            val endX = startX + phaseWidth
+                            val startX = startOffset + (index * phaseWidth) + (index * spacingPx)
+                            val endX = startX + phaseWidth + slantOffsetPx
                             if (offset.x in startX..endX) {
                                 onPhaseClick(phase)
                                 return@detectTapGestures
@@ -76,17 +81,21 @@ fun TimeLine(
         val lastPhase = Stages.phases.last()
         val lastPhaseHoursWeighted = lastPhase.hours * 1.5f
 
-        val availableWidth = size.width - padding.toPx()
-        val phaseWidth = (availableWidth / Stages.phases.size) - spacing.toPx()
+        val slantOffsetPx = slantOffset.toPx()
+        val barSizePx = barSize.toPx()
+        
+        // Calculate total width needed for all rhombuses
+        val phaseWidth = (size.width - (2 * padding.toPx()) - (Stages.phases.size - 1) * spacing.toPx()) / Stages.phases.size
+        val totalWidth = (Stages.phases.size * phaseWidth) + ((Stages.phases.size - 1) * spacing.toPx()) + slantOffsetPx
+        
+        // Center the rhombuses
+        val startOffset = (size.width - totalWidth) / 2f
 
         val curPhase = Stages.getCurrentPhase(elapsedHours.hours)
 
-        val slantOffsetPx = slantOffset.toPx()
-        val barSizePx = barSize.toPx()
-
         // Draw the rhombuses (phases)
         Stages.phases.forEachIndexed { index, phase ->
-            val startX = (index * phaseWidth) + (index * spacing.toPx()) + padding.toPx()
+            val startX = startOffset + (index * phaseWidth) + (index * spacing.toPx())
             val startY = padding.toPx()
 
             // Create rhombus path (parallelogram leaning right)
@@ -104,34 +113,34 @@ fun TimeLine(
 
             // Current phase, thicker orange outline
             if (curPhase == phase) {
-                // Outline
+                // Draw filled shape first
+                drawPath(
+                    path = rhombusPath,
+                    color = gaugeColors[index],
+                    style = Fill
+                )
+                
+                // Draw orange outline on top
                 drawPath(
                     path = rhombusPath,
                     color = Color(0xFFE67E22),
                     style = Stroke(width = 3.dp.toPx())
                 )
-
-                // Current phase - filled
+            } else {
+                // Other phases - draw fill first, then outline
+                
+                // Phase color fill
                 drawPath(
                     path = rhombusPath,
                     color = gaugeColors[index],
                     style = Fill
                 )
-            } else {
-                // Other phases - thinner "onBackground" outline
-
-                // Outline
+                
+                // Outline on top
                 drawPath(
                     path = rhombusPath,
                     color = outlineColor,
                     style = Stroke(width = 2.dp.toPx())
-                )
-
-                // Phase color
-                drawPath(
-                    path = rhombusPath,
-                    color = gaugeColors[index],
-                    style = Fill
                 )
             }
         }
@@ -152,7 +161,7 @@ fun TimeLine(
 
             val halfPadding = padding.toPx() / 2f
 
-            val startX = (curPhaseIndex * phaseWidth) + (curPhaseIndex * spacing.toPx()) + padding.toPx()
+            val startX = startOffset + (curPhaseIndex * phaseWidth) + (curPhaseIndex * spacing.toPx())
             val x = (startX + (phaseWidth * percent)).toFloat()
 
             // Draw needle line
