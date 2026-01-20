@@ -1,11 +1,17 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -13,6 +19,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.data.Phase
@@ -39,26 +46,39 @@ fun TimeLine(
     onPhaseClick: (Phase) -> Unit = {}
 ) {
     val padding = 16.dp
-    val spacing = 4.dp // Reduced spacing since rhombuses connect
+    val spacing = 4.dp
     val barSize = 16.dp
     val needleSize = 3.dp
     val needleRadius = 4.dp
-    val slantOffset = 8.dp // How much the rhombus leans to the right
+    val slantOffset = 8.dp
 
     val outlineColor = MaterialTheme.colorScheme.onBackground
+    
+    val curPhase = Stages.getCurrentPhase(elapsedHours.hours)
+    
+    // Continuous blink animation for current phase
+    val infiniteTransition = rememberInfiniteTransition(label = "phase_blink")
+    val blinkProgress by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 500),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "blink_progress"
+    )
 
     Canvas(
         modifier = modifier
             .fillMaxWidth()
             .height(padding + barSize)
-            .pointerInput(Stages.phases) {
+            .pointerInput(curPhase) {
                 detectTapGestures { offset ->
                     val paddingPx = padding.toPx()
                     val spacingPx = spacing.toPx()
                     val barSizePx = barSize.toPx()
                     val slantOffsetPx = slantOffset.toPx()
                     
-                    // Calculate total width needed for all rhombuses
                     val phaseWidth = (size.width - (2 * paddingPx) - (Stages.phases.size - 1) * spacingPx) / Stages.phases.size
                     val totalWidth = (Stages.phases.size * phaseWidth) + ((Stages.phases.size - 1) * spacingPx) + slantOffsetPx
                     val startOffset = (size.width - totalWidth) / 2f
@@ -84,59 +104,47 @@ fun TimeLine(
         val slantOffsetPx = slantOffset.toPx()
         val barSizePx = barSize.toPx()
         
-        // Calculate total width needed for all rhombuses
         val phaseWidth = (size.width - (2 * padding.toPx()) - (Stages.phases.size - 1) * spacing.toPx()) / Stages.phases.size
         val totalWidth = (Stages.phases.size * phaseWidth) + ((Stages.phases.size - 1) * spacing.toPx()) + slantOffsetPx
         
-        // Center the rhombuses
         val startOffset = (size.width - totalWidth) / 2f
 
-        val curPhase = Stages.getCurrentPhase(elapsedHours.hours)
-
-        // Draw the rhombuses (phases)
         Stages.phases.forEachIndexed { index, phase ->
             val startX = startOffset + (index * phaseWidth) + (index * spacing.toPx())
             val startY = padding.toPx()
 
-            // Create rhombus path (parallelogram leaning right)
             val rhombusPath = Path().apply {
-                // Top left
                 moveTo(startX + slantOffsetPx, startY - barSizePx / 2)
-                // Top right
                 lineTo(startX + phaseWidth + slantOffsetPx, startY - barSizePx / 2)
-                // Bottom right
                 lineTo(startX + phaseWidth, startY + barSizePx / 2)
-                // Bottom left
                 lineTo(startX, startY + barSizePx / 2)
                 close()
             }
 
-            // Current phase, thicker orange outline
             if (curPhase == phase) {
-                // Draw filled shape first
                 drawPath(
                     path = rhombusPath,
                     color = gaugeColors[index],
                     style = Fill
                 )
                 
-                // Draw orange outline on top
+                // Continuously animate between orange and yellow
+                val baseOutlineColor = Color(0xFFE67E22) // Orange
+                val blinkColor = Color.Yellow
+                val currentOutlineColor = lerp(baseOutlineColor, blinkColor, blinkProgress)
+                
                 drawPath(
                     path = rhombusPath,
-                    color = Color(0xFFE67E22),
+                    color = currentOutlineColor,
                     style = Stroke(width = 3.dp.toPx())
                 )
             } else {
-                // Other phases - draw fill first, then outline
-                
-                // Phase color fill
                 drawPath(
                     path = rhombusPath,
                     color = gaugeColors[index],
                     style = Fill
                 )
                 
-                // Outline on top
                 drawPath(
                     path = rhombusPath,
                     color = outlineColor,
@@ -164,7 +172,6 @@ fun TimeLine(
             val startX = startOffset + (curPhaseIndex * phaseWidth) + (curPhaseIndex * spacing.toPx())
             val x = (startX + (phaseWidth * percent)).toFloat()
 
-            // Draw needle line
             drawLine(
                 color = Color.DarkGray,
                 start = Offset(x, halfPadding),
@@ -173,7 +180,6 @@ fun TimeLine(
                 cap = StrokeCap.Square
             )
 
-            // Draw needle circle
             drawCircle(
                 color = Color.DarkGray,
                 radius = needleRadius.toPx(),
