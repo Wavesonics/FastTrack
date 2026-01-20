@@ -298,22 +298,36 @@ private fun FastHeadingContent(
 		Spacer(modifier = Modifier.size(height = spacing.large, width = 1.dp))
 
 		// Timer
-		Row(
-			verticalAlignment = Alignment.Bottom,
+		Column(
+			horizontalAlignment = Alignment.CenterHorizontally,
 			modifier = Modifier.padding(bottom = spacing.large)
 		) {
-			Text(
-				text = uiState.timerText,
-				style = typography.timerText(),
-				color = MaterialTheme.colorScheme.onBackground,
-				fontWeight = FontWeight.Bold,
-			)
-			Text(
-				text = uiState.milliseconds,
-				style = typography.timerMilliseconds(),
-				color = MaterialTheme.colorScheme.onBackground,
-				modifier = Modifier.padding(start = spacing.small, bottom = spacing.small)
-			)
+			Row(
+				verticalAlignment = Alignment.Bottom
+			) {
+				Text(
+					text = uiState.timerText,
+					style = typography.timerText(),
+					color = MaterialTheme.colorScheme.onBackground,
+					fontWeight = FontWeight.Bold,
+				)
+				Text(
+					text = uiState.milliseconds,
+					style = typography.timerMilliseconds(),
+					color = MaterialTheme.colorScheme.onBackground,
+					modifier = Modifier.padding(start = spacing.small, bottom = spacing.small)
+				)
+			}
+
+			// Days and hours text (shown when >= 24 hours)
+			uiState.daysAndHoursText?.let { daysText ->
+				Text(
+					text = daysText,
+					style = typography.energyMode(),
+					color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+					modifier = Modifier.padding(top = spacing.small)
+				)
+			}
 		}
 	}
 }

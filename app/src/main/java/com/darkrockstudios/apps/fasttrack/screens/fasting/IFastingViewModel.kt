@@ -25,6 +25,7 @@ interface IFastingViewModel {
 		val elapsedHours: Double = 0.0,
 		val milliseconds: String = "00",
 		val timerText: String = "00:00:00",
+		val daysAndHoursText: String? = null,
 		val showGradientBackground: Boolean = true,
 	)
 
