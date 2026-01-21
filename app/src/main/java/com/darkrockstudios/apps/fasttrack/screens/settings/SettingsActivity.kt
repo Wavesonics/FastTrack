@@ -41,6 +41,7 @@ class SettingsActivity : AppCompatActivity() {
 	private var pendingNotificationToggle = false
 	private var notificationSettingState by mutableStateOf(false)
 	private var stageAlertsSettingState by mutableStateOf(false)
+	private var darkModeState by mutableStateOf(false)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -50,11 +51,12 @@ class SettingsActivity : AppCompatActivity() {
 
 		notificationSettingState = settings.getShowFastingNotification()
 		stageAlertsSettingState = settings.getFastingAlerts()
+		darkModeState = settings.getDarkMode()
 		registerNotificationPermissionCallback()
 		registerImportCallback()
 
 		setContent {
-			FastTrackTheme {
+			FastTrackTheme(darkTheme = darkModeState) {
 				SettingsScreen(
 					onBack = { finish() },
 					settings = settings,
@@ -62,6 +64,8 @@ class SettingsActivity : AppCompatActivity() {
 					onNotificationSettingChanged = { enabled -> handleNotificationSettingChange(enabled) },
 					stageAlertsSettingState = stageAlertsSettingState,
 					onStageAlertsSettingChanged = { enabled -> handleStageAlertsSettingChange(enabled) },
+					darkModeState = darkModeState,
+					onDarkModeChanged = { enabled -> handleDarkModeChange(enabled) },
 					onExportClick = { onExportLogBook() },
 					onImportClick = { onImportLogBook() }
 				)
@@ -141,6 +145,12 @@ class SettingsActivity : AppCompatActivity() {
 	private fun handleStageAlertsSettingChange(enabled: Boolean) {
 		settings.setFastingAlerts(enabled)
 		stageAlertsSettingState = enabled
+	}
+
+	private fun handleDarkModeChange(enabled: Boolean) {
+		settings.setDarkMode(enabled)
+		darkModeState = enabled
+		recreate() // Recreate the activity to apply the new theme
 	}
 
 	private fun registerImportCallback() {

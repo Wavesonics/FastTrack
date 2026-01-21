@@ -33,6 +33,7 @@ import kotlin.time.ExperimentalTime
 class MainActivity : AppCompatActivity() {
 	private var startFastRequestState by mutableStateOf<StartFastRequest?>(null)
 	private var stopFastRequestState by mutableStateOf(false)
+	private var darkModeState by mutableStateOf(false)
 	private val settings by inject<SettingsDatasource>()
 	private val fastingRepository by inject<ActiveFastRepository>()
 
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 		WindowCompat.getInsetsController(window, window.decorView)
 			.isAppearanceLightStatusBars = false
 
+		darkModeState = settings.getDarkMode()
 		handleStartFastExtra(intent)
 
 		if (!settings.getIntroSeen()) {
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		setContent {
-			FastTrackTheme {
+			FastTrackTheme(darkTheme = darkModeState) {
 				MainScreen(
 					repository = fastingRepository,
 					onShareClick = { shareText() },
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onStart() {
 		super.onStart()
+		darkModeState = settings.getDarkMode()
 		setupFastingNotification()
 	}
 

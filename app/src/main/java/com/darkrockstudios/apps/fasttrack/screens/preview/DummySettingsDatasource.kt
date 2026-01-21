@@ -27,4 +27,8 @@ class DummySettingsDatasource(
 	override fun getShowFastingNotification(): Boolean = true
 
 	override fun setShowFastingNotification(enabled: Boolean) {}
+
+	override fun getDarkMode(): Boolean = false
+
+	override fun setDarkMode(enabled: Boolean) {}
 }

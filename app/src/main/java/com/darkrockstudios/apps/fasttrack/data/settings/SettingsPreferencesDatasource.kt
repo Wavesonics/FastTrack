@@ -61,4 +61,10 @@ class SettingsPreferencesDatasource(
 	override fun setShowFastingNotification(enabled: Boolean) {
 		storage.edit { putBoolean(Data.KEY_FASTING_NOTIFICATION, enabled) }
 	}
+
+	override fun getDarkMode(): Boolean = storage.getBoolean(Data.KEY_DARK_MODE, false)
+
+	override fun setDarkMode(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_DARK_MODE, enabled) }
+	}
 }

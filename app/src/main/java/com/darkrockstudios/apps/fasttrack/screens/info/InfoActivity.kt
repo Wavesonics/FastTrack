@@ -13,16 +13,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.core.view.WindowCompat
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
+import org.koin.android.ext.android.inject
 
 class InfoActivity : AppCompatActivity() {
+	private val settings by inject<SettingsDatasource>()
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
 		WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
 
 		setContent {
-			FastTrackTheme {
+			FastTrackTheme(darkTheme = settings.getDarkMode()) {
 				Scaffold(
 					topBar = {
 						TopAppBar(

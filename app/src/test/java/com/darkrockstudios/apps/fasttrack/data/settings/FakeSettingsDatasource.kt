@@ -12,6 +12,7 @@ class FakeSettingsDatasource : SettingsDatasource {
 	private var introSeen: Boolean = false
 	private var showFancyBackground: Boolean = false
 	private var showFastingNotification: Boolean = true
+	private var darkMode: Boolean = false
 
 	override fun getFastingAlerts(): Boolean = fastingAlerts
 
@@ -39,6 +40,12 @@ class FakeSettingsDatasource : SettingsDatasource {
 		showFastingNotification = enabled
 	}
 
+	override fun getDarkMode(): Boolean = darkMode
+
+	override fun setDarkMode(enabled: Boolean) {
+		darkMode = enabled
+	}
+
 	/**
 	 * Clears all data - useful for test setup/teardown
 	 */
@@ -47,5 +54,6 @@ class FakeSettingsDatasource : SettingsDatasource {
 		introSeen = false
 		showFancyBackground = false
 		showFastingNotification = true
+		darkMode = false
 	}
 }

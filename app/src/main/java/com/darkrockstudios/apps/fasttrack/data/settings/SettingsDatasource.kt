@@ -16,4 +16,7 @@ interface SettingsDatasource {
 
 	fun getShowFastingNotification(): Boolean
 	fun setShowFastingNotification(enabled: Boolean)
+
+	fun getDarkMode(): Boolean
+	fun setDarkMode(enabled: Boolean)
 }

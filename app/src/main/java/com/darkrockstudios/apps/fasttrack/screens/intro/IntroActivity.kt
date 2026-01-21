@@ -34,12 +34,15 @@ import androidx.core.content.edit
 import androidx.core.view.WindowCompat
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
+import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import io.github.aakira.napier.Napier
+import org.koin.android.ext.android.inject
 import kotlinx.coroutines.launch
 
 class IntroActivity : AppCompatActivity() {
     private val storage by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
+	private val settings by inject<SettingsDatasource>()
 	private lateinit var requestNotificationPermission: ActivityResultLauncher<String>
 	private var shouldRequestPermission by mutableStateOf(false)
 
@@ -53,7 +56,7 @@ class IntroActivity : AppCompatActivity() {
 	    registerNotificationPermissionCallback()
 
         setContent {
-            FastTrackTheme {
+            FastTrackTheme(darkTheme = settings.getDarkMode()) {
                 IntroScreen(
 	                onComplete = { complete() },
 	                onNotificationSlideExited = { requestNotificationPermissionIfNeeded() }

@@ -299,6 +299,8 @@
 	<string name="back">Back</string>
 	<string name="settings_fancy_background_title">Show Fancy Background</string>
 	<string name="settings_fancy_background_subtitle">Disable for a simpler Fasting background</string>
+	<string name="settings_dark_mode_title">Dark Mode</string>
+	<string name="settings_dark_mode_subtitle">Enable dark theme for the app</string>
 	<string name="log_no_entries">No entries yet!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Lifetime stats</string>

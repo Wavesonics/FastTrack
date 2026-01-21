@@ -1,7 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.ui.theme
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Brush
@@ -11,9 +10,9 @@ import androidx.compose.ui.graphics.Color
 val LightGradientStartColor = Color(0xFFE9DBFF) // #E9DBFF
 val LightGradientEndColor = Color(0xFFC2D7FF) // #C2D7FF
 
-// Colors from fast_background.xml (dark mode)
-val DarkGradientStartColor = Color(0xFF4E447A) // #4E447A
-val DarkGradientEndColor = Color(0xFF8E8E8E) // #8E8E8E
+// Colors from fast_background.xml (dark mode) - darker variant
+val DarkGradientStartColor = Color(0xFF2A1F3D) // Darker purple
+val DarkGradientEndColor = Color(0xFF1A1A1A) // Darker gray
 
 /**
  * Extension function to apply the fast background gradient to a Modifier.
@@ -31,7 +30,7 @@ val DarkGradientEndColor = Color(0xFF8E8E8E) // #8E8E8E
  */
 fun Modifier.fastBackgroundGradient(show: Boolean): Modifier = composed {
 	if (show) {
-		val isDarkTheme = isSystemInDarkTheme()
+		val isDarkTheme = LocalDarkTheme.current
 
 		val startColor = if (isDarkTheme) DarkGradientStartColor else LightGradientStartColor
 		val endColor = if (isDarkTheme) DarkGradientEndColor else LightGradientEndColor

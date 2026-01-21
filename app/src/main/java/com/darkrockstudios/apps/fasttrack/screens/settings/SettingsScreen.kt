@@ -25,6 +25,8 @@ fun SettingsScreen(
 	onNotificationSettingChanged: (Boolean) -> Unit,
 	stageAlertsSettingState: Boolean,
 	onStageAlertsSettingChanged: (Boolean) -> Unit,
+	darkModeState: Boolean,
+	onDarkModeChanged: (Boolean) -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit
 ) {
@@ -55,6 +57,8 @@ fun SettingsScreen(
 			onNotificationSettingChanged = onNotificationSettingChanged,
 			stageAlertsSettingState = stageAlertsSettingState,
 			onStageAlertsSettingChanged = onStageAlertsSettingChanged,
+			darkModeState = darkModeState,
+			onDarkModeChanged = onDarkModeChanged,
 			onExportClick = onExportClick,
 			onImportClick = onImportClick
 		)
@@ -69,6 +73,8 @@ private fun SettingsList(
 	onNotificationSettingChanged: (Boolean) -> Unit,
 	stageAlertsSettingState: Boolean,
 	onStageAlertsSettingChanged: (Boolean) -> Unit,
+	darkModeState: Boolean,
+	onDarkModeChanged: (Boolean) -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit
 ) {
@@ -116,6 +122,16 @@ private fun SettingsList(
 					onChange = { checked ->
 						fancyBackground = checked
 						settings.setShowFancyBackground(checked)
+					}
+				)
+			}
+			item(key = "dark_mode") {
+				SettingsItem(
+					headline = R.string.settings_dark_mode_title,
+					details = R.string.settings_dark_mode_subtitle,
+					value = darkModeState,
+					onChange = { checked ->
+						onDarkModeChanged(checked)
 					}
 				)
 			}

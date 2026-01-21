@@ -89,13 +89,12 @@ fun MainScreen(
 		topBar = {
 			TopAppBar(
 				colors = TopAppBarDefaults.topAppBarColors(
-					containerColor = MaterialTheme.colorScheme.primaryContainer,
-					titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-					actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+					containerColor = MaterialTheme.colorScheme.surfaceContainer,
+					titleContentColor = MaterialTheme.colorScheme.onSurface,
+					actionIconContentColor = MaterialTheme.colorScheme.onSurface,
 				),
 				modifier = Modifier.Companion
-					.fillMaxWidth()
-					.background(MaterialTheme.colorScheme.primary),
+					.fillMaxWidth(),
 				title = {
 					Text(
 						text = currentTitle,
