@@ -1,25 +1,25 @@
 # Інтервальне голодування
 
-Інтервальне голодування зараз дуже активно досліджується: щось уже визнане науковою спільнотою, а щось ще досі вивчається. Тому сприймайте це все з певною долею скептицизму і звертайтеся до першоджерел, наведених нижче.
+Інтервальне голодування зараз дуже активно досліджується: щось уже визнане науковою спільнотою, а щось іще досі вивчається. Тому сприймайте це все з певною долею скептицизму і звертайтеся до першоджерел, наведених нижче.
 
 ## Як і чому працює голодування:
 
-Вважається, що на ранніх етапах нашого розвитку як мисливців і збирачів наше харчування складалося із періодів переїдання та голодування. Невелике плем'я могло вполювати велику здобич раз на тиждень або ще рідше. Тому наш організм добре пристосований максимально з цього скористатися і зберегти на потім все, що можна.
+Вважається, що на ранніх етапах нашого розвитку як мисливців і збирачів наше харчування складалося із періодів переїдання та голодування. Невелике плем'я могло вполювати велику здобич раз на тиждень або ж іще рідше. Тому наш організм добре пристосований максимально з цього скористатися і зберегти на потім все, що можна.
 
-Було дуже важко знайти вуглеводи у великій кількості. Наприклад, збирання ягід, які багаті на цукор, потребувало великих зусиль за досить невелику винагороду.
+Було також дуже важко знайти вуглеводи у великій кількості. Наприклад, збирання ягід, які багаті на цукор, потребувало великих зусиль за досить невелику винагороду.
 
 ### Тому наші тіла розвинули два основні енергетичні шляхи:
 
-1. **Glucose:** Carbohydrates all break down into glucose when consumed. Glucose can be consumed directly by cells for energy. Excess glucose is then be stored as glycogen in various places around the body such as the liver and skeletal muscle. Once your glycogen reserves are full, the remaining glucose will be turned into adipose tissue. When needed, the stored glycogen can be broken back down into glucose in order to be consumed by your cells.
-2. **Ketone Bodies:** These are derived by metabolizing fat, and cells can consume them instead of glucose for energy. Excess calories from carbohydrates or protein (_which break down into glucose and amino acids respectively_)  will be stored as adipose tissue (_fat_), and when needed, can be broken down into ketone bodies which will be used for energy by your cells.
+1. **Глюкоза:** усі спожиті вуглеводи розщеплюються на глюкозу. Наші клітини можуть її використовувати безпосередньо. Зайва глюкоза зберігається в печінці та м'язах у вигляді глікогену. Коли запаси глікогену повні, зайва глюкоза починає перетворюватися на жир. За потреби глікоген розщеплюється назад на глюкозу, яку можуть використати клітини.
+2. **Кетонові тіла:** вони утворюються в процесі метаболізму жиру, і клітини можуть споживати їх замість глюкози. Зайві калорії від вуглеводів чи білків (_які розщеплюються на глюкозу та амінокислоти, відповідно_) зберігаються як жир, який за потреби розщеплюється на кетонові тіла, що їх можуть використати клітини.
 
-In our hunter gatherer days we would have often been deriving our energy from ketone bodies as well as glucose.
+У наші дні мисливців і збирачів ми часто отримували енергію як з кетонових тіл, так і з глюкози.
 
 However, today in modern western societies carbohydrates are so easy to come by that people can go most of their lives without their bodies having to resort to ketone bodies for energy.
 
 An active area of research is about what processes the body has that are only active when the body is primarily consuming ketone bodies.
 
-## Stages of Fasting:
+## Стадії голодування:
 
 1. **Glucose burning:** At first your body will be consuming the glucose that is already free in your blood. You may have heard that during cardiovascular exercise it takes 20 minutes to exhaust all your glucose. For endurance athletes such as marathon runners, they are advised to consume more glucose every 20 minutes if possible. As with all the numbers here, this is a rough estimate, a good rule of thumb if you will. This will be affected by many factors: your own body, the activity you are doing, how much glucose you already had due to your diet, etc. But it's a good enough estimate so we'll go with it.
 2. **Glycogen Breakdown:** As the glucose in your blood depletes, your body will replenish it by breaking down your stores of glycogen. People who follow low carb diets will have smaller glycogen stores, so this phase can vary widely. Someone with a low carb diet may complete this stage in just a few hours, while someone with a high carb diet who does not regularly exercise could take anywhere from 24 to 48 hours to exhaust their stores. Exercise during this stage will accelerate it by forcing your body to burn glucose faster.
