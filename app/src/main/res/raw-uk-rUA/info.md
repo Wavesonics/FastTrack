@@ -15,9 +15,9 @@
 
 У наші дні мисливців і збирачів ми часто отримували енергію як з кетонових тіл, так і з глюкози.
 
-However, today in modern western societies carbohydrates are so easy to come by that people can go most of their lives without their bodies having to resort to ketone bodies for energy.
+Однак в сучасних Західних цивілізаціях вуглеводи настільки поширені, що люди проживають більшу частину свого життя без використання кетонових тіл для енергії.
 
-An active area of research is about what processes the body has that are only active when the body is primarily consuming ketone bodies.
+Науковцями зараз активно досліджуються процеси, що відбуваються в організмі, лише коли він переважно споживає кетонові тіла.
 
 ## Стадії голодування:
 
