@@ -1,37 +1,35 @@
 # Tipps
 
-Fastenzeit kann schwierig sein! Hier sind einige Zeiger zu helfen.
+Fasten kann schwierig sein! Hier sind einige hilfreiche Tipps.
 
-## Start langsam:
+## Starte langsam:
 
-- Versuchen Sie ein paar 16 Stunden schnell zu beginnen, dann bewegen Sie sich auf 30 Stunden schnell, und so weiter.
-- Je mehr Sie schnell sind, desto einfacher wird es.
-- Wenn Sie anfangen, mehrtägige Schnelligkeiten zu machen, ist in der Regel der erste Tag schwieriger als der zweite Tag.
+- Versuche zunächst einige 16-stündige Fastenzeiten, gehe dann zu 30-stündigen Fastenzeiten über und so weiter.
+- Je mehr du fastest, desto leichter wird es.
+- Wenn man mit mehrtägigen Fastenkuren beginnt, ist der erste Tag in der Regel schwieriger als der zweite Tag.
 
-## Nullkalorienfutter
+## Kalorienfreie Lebensmittel
 
-- **Trinken Sie viel Wasser:** Neben dem Wohlbefinden für Sie wird Ihnen das Füllen Ihres Magens mit viel Volumen helfen, sich für eine Weile voll zu fühlen.
-- **Getränke ohne Kaloriengetränke:**
-  - Geniestes Seltzer-Wasser sind dafür ideal!
+- **Trinke viel Wasser:** Das ist nicht nur gut für dich, sondern füllt auch Magen und sorgt dafür, dass du dich eine Weile satt fühlen.
+- **Trinke kalorienfreie Getränke:**
+  - Aromatisierte Sprudelwasser eignet sich hervorragend dafür!
   - Ungesüßter Tee (_Heiß oder Eis_)
-  - Wasser mit Zitronen- oder Zitronensaft
+  - Wasser mit Zitrone oder Zitronensaft
 
-## Sehr niedrige Kalorienfutter
+## Sehr kalorienarme Lebensmittel
 
-Sie können tatsächlich ein paar Kalorien während Ihrer Schnelligkeit essen und immer noch genauso effektiv sein. Versuche es unter 100
-Kalorien pro Tag zu halten. Zu diesem Zweck ist hier ein Rezept, das ich bei "Fühlen wie Essen" sehr effektiv finde, während ich nur etwa 5
-Kalorien pro Portion habe:
+Während der Fastenzeit kann tatsächlich ein paar Kalorien zu sich genommen werden und trotzdem genauso effektiv sein. Versuchen unter 100 Kalorien pro Tag zu bleiben. Zu diesem Zweck hier ein Rezept, das ich sehr effektiv finde, um „das Gefühl zu haben, etwas zu essen“, obwohl es nur etwa 5 Kalorien pro Portion hat:
 
-**Gewürzige Brüche:**
+**Würzige Brühe:**
 
 - 1 Stück Hühnerbouillon
-- 8oz (1 Tasse) kochendes Wasser
-- Waschen der hitzigen Sauce
-- Kalksaft
+- 240 ml (1 Tasse) kochendes Wasser
+- Ein Spritzer Habanero-Chilisauce
+- Ein Spritzer Limettensaft
 
-Für Veganer oder Veganer können Sie Hühnerbouillon gegen Gemüsebouillon ersetzen.
+Für Veganer oder Veganer, die fasten, können Sie Hühnerbrühe durch Gemüsebrühe ersetzen.
 
-## Appetit suppressants
+## Appetitzügler
 
-- **Kaffee:** mehr als nur den Magen zu füllen um sich voll zu fühlen, wird deinen Appetit für eine Weile aktiv unterdrücken
-- \*\*Chilisauce: \*\* Die hat in der Regel keine Kalorien und hilft ebenfalls, das Hungergefühl zu unterdrücken.
+- **Kaffee:** Er füllt nicht nur den Magen ein wenig, um sich satter zu fühlen, sondern unterdrückt auch aktiv den Appetit für eine Weile.
+- **Scharfe Soße:** Diese hat in der Regel keine Kalorien und hilft außerdem, das Hungergefühl zu unterdrücken
