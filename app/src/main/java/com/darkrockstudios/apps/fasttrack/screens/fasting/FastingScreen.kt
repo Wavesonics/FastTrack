@@ -351,41 +351,10 @@ private fun FastDetailsContent(
 		Spacer(modifier = Modifier.weight(1f))
 
 		// Phase Information
-		Column(
-			modifier = Modifier
-				.fillMaxWidth()
-				.padding(bottom = spacing.medium)
-		) {
-			// Fat Burn Phase
-			StageInfo(
-				onShowInfoDialog = onShowInfoDialog,
-				titleRes = R.string.info_dialog_fat_burn_title,
-				contentRes = R.string.info_dialog_fat_burn_content,
-				labelRes = R.string.fast_fat_burn_label,
-				timeText = uiState.fatBurnTime,
-				stageState = uiState.fatBurnStageState
-			)
-
-			// Ketosis Phase
-			StageInfo(
-				onShowInfoDialog = onShowInfoDialog,
-				titleRes = R.string.info_dialog_ketosis_title,
-				contentRes = R.string.info_dialog_ketosis_content,
-				labelRes = R.string.fast_ketosis_label,
-				timeText = uiState.ketosisTime,
-				stageState = uiState.ketosisStageState
-			)
-
-			// Autophagy Phase
-			StageInfo(
-				onShowInfoDialog = onShowInfoDialog,
-				titleRes = R.string.info_dialog_autophagy_title,
-				contentRes = R.string.info_dialog_autophagy_content,
-				labelRes = R.string.fast_autophagy_label,
-				timeText = uiState.autophagyTime,
-				stageState = uiState.autophagyStageState
-			)
-		}
+		PhaseInformationSection(
+			uiState = uiState,
+			onShowInfoDialog = onShowInfoDialog
+		)
 
 		Row(modifier = Modifier
 			.fillMaxWidth()
@@ -406,47 +375,110 @@ private fun FastDetailsContent(
 			}
 
 			// Bottom Controls Row
-			Row(
+			FastActionButtons(
+				isFasting = uiState.isFasting,
+				onShowEndFastConfirmation = onShowEndFastConfirmation,
+				onShowStartFastSelector = onShowStartFastSelector,
+				viewModel = viewModel,
 				modifier = Modifier
 					.align(Alignment.Bottom)
 					.wrapContentHeight()
-					.padding(top = spacing.medium),
-				horizontalArrangement = Arrangement.End,
-				verticalAlignment = Alignment.CenterVertically
-			) {
-				// Debug Button (only in debug builds)
-				if (BuildConfig.DEBUG) {
-					FloatingActionButton(
-						onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
-						modifier = Modifier.padding(end = spacing.medium)
-					) {
-						Icon(
-							imageVector = Icons.Default.Add,
-							contentDescription = stringResource(id = R.string.debug_add_hour_button)
-						)
-					}
-				}
+					.padding(top = spacing.medium)
+			)
+		}
+	}
+}
 
-				// Start/Stop Button
-				if (uiState.isFasting) {
-					FloatingActionButton(
-						onClick = onShowEndFastConfirmation,
-					) {
-						Icon(
-							painter = painterResource(id = R.drawable.ic_fast_stop),
-							contentDescription = stringResource(id = R.string.stop_fast_button_description)
-						)
-					}
-				} else {
-					FloatingActionButton(
-						onClick = onShowStartFastSelector,
-					) {
-						Icon(
-							painter = painterResource(id = R.drawable.ic_start_fast),
-							contentDescription = stringResource(id = R.string.start_fast_button_description)
-						)
-					}
-				}
+@Composable
+private fun PhaseInformationSection(
+	uiState: IFastingViewModel.FastingUiState,
+	onShowInfoDialog: (Int, Int) -> Unit
+) {
+	val spacing = fastingSpacing()
+
+	Column(
+		modifier = Modifier
+			.fillMaxWidth()
+			.padding(bottom = spacing.medium)
+	) {
+		// Fat Burn Phase
+		StageInfo(
+			onShowInfoDialog = onShowInfoDialog,
+			titleRes = R.string.info_dialog_fat_burn_title,
+			contentRes = R.string.info_dialog_fat_burn_content,
+			labelRes = R.string.fast_fat_burn_label,
+			timeText = uiState.fatBurnTime,
+			stageState = uiState.fatBurnStageState
+		)
+
+		// Ketosis Phase
+		StageInfo(
+			onShowInfoDialog = onShowInfoDialog,
+			titleRes = R.string.info_dialog_ketosis_title,
+			contentRes = R.string.info_dialog_ketosis_content,
+			labelRes = R.string.fast_ketosis_label,
+			timeText = uiState.ketosisTime,
+			stageState = uiState.ketosisStageState
+		)
+
+		// Autophagy Phase
+		StageInfo(
+			onShowInfoDialog = onShowInfoDialog,
+			titleRes = R.string.info_dialog_autophagy_title,
+			contentRes = R.string.info_dialog_autophagy_content,
+			labelRes = R.string.fast_autophagy_label,
+			timeText = uiState.autophagyTime,
+			stageState = uiState.autophagyStageState
+		)
+	}
+}
+
+@Composable
+private fun FastActionButtons(
+	isFasting: Boolean,
+	onShowEndFastConfirmation: () -> Unit,
+	onShowStartFastSelector: () -> Unit,
+	viewModel: IFastingViewModel,
+	modifier: Modifier = Modifier
+) {
+	val spacing = fastingSpacing()
+
+	Row(
+		modifier = modifier,
+		horizontalArrangement = Arrangement.End,
+		verticalAlignment = Alignment.CenterVertically
+	) {
+		// Debug Button (only in debug builds)
+		if (BuildConfig.DEBUG) {
+			FloatingActionButton(
+				onClick = { viewModel.debugIncreaseFastingTimeByOneHour() },
+				modifier = Modifier.padding(end = spacing.medium)
+			) {
+				Icon(
+					imageVector = Icons.Default.Add,
+					contentDescription = stringResource(id = R.string.debug_add_hour_button)
+				)
+			}
+		}
+
+		// Start/Stop Button
+		if (isFasting) {
+			FloatingActionButton(
+				onClick = onShowEndFastConfirmation,
+			) {
+				Icon(
+					painter = painterResource(id = R.drawable.ic_fast_stop),
+					contentDescription = stringResource(id = R.string.stop_fast_button_description)
+				)
+			}
+		} else {
+			FloatingActionButton(
+				onClick = onShowStartFastSelector,
+			) {
+				Icon(
+					painter = painterResource(id = R.drawable.ic_start_fast),
+					contentDescription = stringResource(id = R.string.start_fast_button_description)
+				)
 			}
 		}
 	}
