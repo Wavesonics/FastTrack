@@ -367,9 +367,6 @@ private fun FastDetailsContent(
 	onShowStartFastSelector: () -> Unit,
 	modifier: Modifier = Modifier
 ) {
-	val spacing = fastingSpacing()
-	val typography = fastingTypography()
-
 	Column(
 		modifier = modifier,
 		horizontalAlignment = Alignment.CenterHorizontally,
@@ -382,36 +379,58 @@ private fun FastDetailsContent(
 			onShowInfoDialog = onShowInfoDialog
 		)
 
-		Row(modifier = Modifier
-			.fillMaxWidth()
-			.weight(2f)) {
-			// Stage Description
-			Box(
-				modifier = Modifier
-					.fillMaxWidth()
-					.weight(1f)
-					.verticalScroll(rememberScrollState())
-			) {
-				Text(
-					text = uiState.stageDescription,
-					style = typography.stageDescription(),
-					color = MaterialTheme.colorScheme.onBackground,
-					modifier = Modifier.padding(top = spacing.medium, end = spacing.medium)
-				)
-			}
+		StageDescriptionAndActions(
+			stageDescription = uiState.stageDescription,
+			isFasting = uiState.isFasting,
+			onShowEndFastConfirmation = onShowEndFastConfirmation,
+			onShowStartFastSelector = onShowStartFastSelector,
+			viewModel = viewModel,
+			modifier = Modifier
+				.fillMaxWidth()
+				.weight(2f)
+		)
+	}
+}
 
-			// Bottom Controls Row
-			FastActionButtons(
-				isFasting = uiState.isFasting,
-				onShowEndFastConfirmation = onShowEndFastConfirmation,
-				onShowStartFastSelector = onShowStartFastSelector,
-				viewModel = viewModel,
-				modifier = Modifier
-					.align(Alignment.Bottom)
-					.wrapContentHeight()
-					.padding(top = spacing.medium)
+@Composable
+private fun StageDescriptionAndActions(
+	stageDescription: String,
+	isFasting: Boolean,
+	onShowEndFastConfirmation: () -> Unit,
+	onShowStartFastSelector: () -> Unit,
+	viewModel: IFastingViewModel,
+	modifier: Modifier = Modifier
+) {
+	val spacing = fastingSpacing()
+	val typography = fastingTypography()
+
+	Row(modifier = modifier) {
+		// Stage Description
+		Box(
+			modifier = Modifier
+				.fillMaxWidth()
+				.weight(1f)
+				.verticalScroll(rememberScrollState())
+		) {
+			Text(
+				text = stageDescription,
+				style = typography.stageDescription(),
+				color = MaterialTheme.colorScheme.onBackground,
+				modifier = Modifier.padding(top = spacing.medium, end = spacing.medium)
 			)
 		}
+
+		// Bottom Controls Row
+		FastActionButtons(
+			isFasting = isFasting,
+			onShowEndFastConfirmation = onShowEndFastConfirmation,
+			onShowStartFastSelector = onShowStartFastSelector,
+			viewModel = viewModel,
+			modifier = Modifier
+				.align(Alignment.Bottom)
+				.wrapContentHeight()
+				.padding(top = spacing.medium)
+		)
 	}
 }
 
