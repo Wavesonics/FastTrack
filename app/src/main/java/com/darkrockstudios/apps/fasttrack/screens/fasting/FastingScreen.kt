@@ -380,8 +380,7 @@ private fun FastDetailsContent(
 		)
 
 		StageDescriptionAndActions(
-			stageDescription = uiState.stageDescription,
-			isFasting = uiState.isFasting,
+			uiState = uiState,
 			onShowEndFastConfirmation = onShowEndFastConfirmation,
 			onShowStartFastSelector = onShowStartFastSelector,
 			viewModel = viewModel,
@@ -394,8 +393,7 @@ private fun FastDetailsContent(
 
 @Composable
 private fun StageDescriptionAndActions(
-	stageDescription: String,
-	isFasting: Boolean,
+	uiState: IFastingViewModel.FastingUiState,
 	onShowEndFastConfirmation: () -> Unit,
 	onShowStartFastSelector: () -> Unit,
 	viewModel: IFastingViewModel,
@@ -413,7 +411,7 @@ private fun StageDescriptionAndActions(
 				.verticalScroll(rememberScrollState())
 		) {
 			Text(
-				text = stageDescription,
+				text = uiState.stageDescription,
 				style = typography.stageDescription(),
 				color = MaterialTheme.colorScheme.onBackground,
 				modifier = Modifier.padding(top = spacing.medium, end = spacing.medium)
@@ -422,7 +420,7 @@ private fun StageDescriptionAndActions(
 
 		// Bottom Controls Row
 		FastActionButtons(
-			isFasting = isFasting,
+			isFasting = uiState.isFasting,
 			onShowEndFastConfirmation = onShowEndFastConfirmation,
 			onShowStartFastSelector = onShowStartFastSelector,
 			viewModel = viewModel,
