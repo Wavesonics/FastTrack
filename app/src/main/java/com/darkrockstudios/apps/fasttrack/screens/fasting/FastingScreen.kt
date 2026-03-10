@@ -232,21 +232,8 @@ private fun FastHeadingContent(
 	uiState: IFastingViewModel.FastingUiState,
 	modifier: Modifier = Modifier
 ) {
-	val scope = rememberCoroutineScope()
-	val tooltipState = rememberTooltipState()
 	val spacing = fastingSpacing()
 	val typography = fastingTypography()
-
-	@StringRes
-	var phaseTooltipResId by remember { mutableStateOf<Int?>(null) }
-
-	LaunchedEffect(tooltipState.isVisible) {
-		if (tooltipState.isVisible) {
-			delay(4.seconds)
-			tooltipState.dismiss()
-			phaseTooltipResId = null
-		}
-	}
 
 	Column(
 		modifier = modifier,
@@ -262,29 +249,9 @@ private fun FastHeadingContent(
 			modifier = Modifier.padding(bottom = spacing.small)
 		)
 
-		TooltipBox(
-			positionProvider = TooltipDefaults
-				.rememberTooltipPositionProvider(TooltipAnchorPosition.Below),
-			tooltip = {
-				phaseTooltipResId?.let { stringRes ->
-					PlainTooltip { Text(stringResource(stringRes)) }
-				}
-			},
-			state = tooltipState,
-		) {
-			TimeLine(
-				elapsedHours = uiState.elapsedHours,
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(vertical = spacing.medium),
-				onPhaseClick = { phase ->
-					phaseTooltipResId = phase.title
-					scope.launch {
-						tooltipState.show()
-					}
-				}
-			)
-		}
+		TimeLineWithTooltip(
+			elapsedHours = uiState.elapsedHours
+		)
 
 		// Energy Mode
 		Text(
@@ -297,37 +264,96 @@ private fun FastHeadingContent(
 
 		Spacer(modifier = Modifier.size(height = spacing.large, width = 1.dp))
 
-		// Timer
-		Column(
-			horizontalAlignment = Alignment.CenterHorizontally,
-			modifier = Modifier.padding(bottom = spacing.large)
-		) {
-			Row(
-				verticalAlignment = Alignment.Bottom
-			) {
-				Text(
-					text = uiState.timerText,
-					style = typography.timerText(),
-					color = MaterialTheme.colorScheme.onBackground,
-					fontWeight = FontWeight.Bold,
-				)
-				Text(
-					text = uiState.milliseconds,
-					style = typography.timerMilliseconds(),
-					color = MaterialTheme.colorScheme.onBackground,
-					modifier = Modifier.padding(start = spacing.small, bottom = spacing.small)
-				)
-			}
+		TimerDisplay(
+			timerText = uiState.timerText,
+			milliseconds = uiState.milliseconds,
+			daysAndHoursText = uiState.daysAndHoursText
+		)
+	}
+}
 
-			// Days and hours text (shown when >= 24 hours)
-			uiState.daysAndHoursText?.let { daysText ->
-				Text(
-					text = daysText,
-					style = typography.energyMode(),
-					color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
-					modifier = Modifier.padding(top = spacing.small)
-				)
+@Composable
+private fun TimeLineWithTooltip(
+	elapsedHours: Double
+) {
+	val scope = rememberCoroutineScope()
+	val tooltipState = rememberTooltipState()
+	val spacing = fastingSpacing()
+
+	@StringRes
+	var phaseTooltipResId by remember { mutableStateOf<Int?>(null) }
+
+	LaunchedEffect(tooltipState.isVisible) {
+		if (tooltipState.isVisible) {
+			delay(4.seconds)
+			tooltipState.dismiss()
+			phaseTooltipResId = null
+		}
+	}
+
+	TooltipBox(
+		positionProvider = TooltipDefaults
+			.rememberTooltipPositionProvider(TooltipAnchorPosition.Below),
+		tooltip = {
+			phaseTooltipResId?.let { stringRes ->
+				PlainTooltip { Text(stringResource(stringRes)) }
 			}
+		},
+		state = tooltipState,
+	) {
+		TimeLine(
+			elapsedHours = elapsedHours,
+			modifier = Modifier
+				.fillMaxWidth()
+				.padding(vertical = spacing.medium),
+			onPhaseClick = { phase ->
+				phaseTooltipResId = phase.title
+				scope.launch {
+					tooltipState.show()
+				}
+			}
+		)
+	}
+}
+
+@Composable
+private fun TimerDisplay(
+	timerText: String,
+	milliseconds: String,
+	daysAndHoursText: String?
+) {
+	val spacing = fastingSpacing()
+	val typography = fastingTypography()
+
+	Column(
+		horizontalAlignment = Alignment.CenterHorizontally,
+		modifier = Modifier.padding(bottom = spacing.large)
+	) {
+		Row(
+			verticalAlignment = Alignment.Bottom
+		) {
+			Text(
+				text = timerText,
+				style = typography.timerText(),
+				color = MaterialTheme.colorScheme.onBackground,
+				fontWeight = FontWeight.Bold,
+			)
+			Text(
+				text = milliseconds,
+				style = typography.timerMilliseconds(),
+				color = MaterialTheme.colorScheme.onBackground,
+				modifier = Modifier.padding(start = spacing.small, bottom = spacing.small)
+			)
+		}
+
+		// Days and hours text (shown when >= 24 hours)
+		daysAndHoursText?.let { daysText ->
+			Text(
+				text = daysText,
+				style = typography.energyMode(),
+				color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+				modifier = Modifier.padding(top = spacing.small)
+			)
 		}
 	}
 }
