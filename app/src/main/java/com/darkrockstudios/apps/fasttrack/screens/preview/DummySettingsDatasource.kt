@@ -27,4 +27,10 @@ class DummySettingsDatasource(
 	override fun getShowFastingNotification(): Boolean = true
 
 	override fun setShowFastingNotification(enabled: Boolean) {}
+
+	override fun getUseMetricSystem(default: Boolean): Boolean = default
+
+	override fun setUseMetricSystem(enabled: Boolean) {}
+
+	override fun useMetricSystemFlow(default: Boolean): Flow<Boolean> = flowOf(default)
 }

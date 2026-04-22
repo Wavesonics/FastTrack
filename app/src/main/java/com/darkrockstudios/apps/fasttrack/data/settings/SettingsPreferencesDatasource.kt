@@ -61,4 +61,23 @@ class SettingsPreferencesDatasource(
 	override fun setShowFastingNotification(enabled: Boolean) {
 		storage.edit { putBoolean(Data.KEY_FASTING_NOTIFICATION, enabled) }
 	}
+
+	override fun getUseMetricSystem(default: Boolean): Boolean =
+		storage.getBoolean(Data.KEY_METRIC_SYSTEM, default)
+
+	override fun setUseMetricSystem(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_METRIC_SYSTEM, enabled) }
+	}
+
+	override fun useMetricSystemFlow(default: Boolean): Flow<Boolean> = callbackFlow {
+		trySend(storage.getBoolean(Data.KEY_METRIC_SYSTEM, default))
+
+		val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+			if (key == Data.KEY_METRIC_SYSTEM) {
+				trySend(storage.getBoolean(Data.KEY_METRIC_SYSTEM, default))
+			}
+		}
+		storage.registerOnSharedPreferenceChangeListener(listener)
+		awaitClose { storage.unregisterOnSharedPreferenceChangeListener(listener) }
+	}
 }

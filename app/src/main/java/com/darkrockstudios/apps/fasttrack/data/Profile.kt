@@ -6,8 +6,7 @@ data class Profile(
 		val ageYears: Int = 0,
 		val heightCm: Double = 0.0,
 		val weightKg: Double = 0.0,
-		val gender: Gender = Gender.Male,
-		val displayMetric: Boolean = false): Serializable
+		val gender: Gender = Gender.Male): Serializable
 {
 	companion object
 	{

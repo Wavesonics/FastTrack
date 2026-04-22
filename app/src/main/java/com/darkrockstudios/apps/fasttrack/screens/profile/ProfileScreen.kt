@@ -23,7 +23,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -106,8 +105,7 @@ fun ProfileScreen(
 				onWeightKgChanged = viewModel::updateWeightKg,
 				onWeightLbsChanged = viewModel::updateWeightLbs,
 				onAgeChanged = viewModel::updateAge,
-				onGenderChanged = viewModel::updateGender,
-				onMetricSwitchChanged = viewModel::updateMetricSystem
+				onGenderChanged = viewModel::updateGender
 			)
 		}
 	}
@@ -211,8 +209,7 @@ fun ProfileDataEntryCard(
 	onWeightKgChanged: (String) -> Unit,
 	onWeightLbsChanged: (String) -> Unit,
 	onAgeChanged: (String) -> Unit,
-	onGenderChanged: (Gender) -> Unit,
-	onMetricSwitchChanged: (Boolean) -> Unit
+	onGenderChanged: (Gender) -> Unit
 ) {
 	Card(
 		modifier = Modifier
@@ -222,33 +219,12 @@ fun ProfileDataEntryCard(
 		Column(
 			modifier = Modifier.padding(16.dp)
 		) {
-			Row(
-				modifier = Modifier.fillMaxWidth(),
-				horizontalArrangement = Arrangement.SpaceBetween
-			) {
-				Text(
-					text = stringResource(id = R.string.profile_height_label),
-					style = MaterialTheme.typography.headlineMedium,
-					color = MaterialTheme.colorScheme.onSurface,
-					modifier = Modifier.padding(top = 16.dp)
-				)
-
-				Row(
-					horizontalArrangement = Arrangement.End,
-					verticalAlignment = Alignment.CenterVertically,
-				) {
-					Text(
-						text = stringResource(id = R.string.profile_metric_switch),
-						modifier = Modifier.padding(end = 8.dp),
-						style = MaterialTheme.typography.labelLarge,
-						color = MaterialTheme.colorScheme.onSurface,
-					)
-					Switch(
-						checked = isMetric,
-						onCheckedChange = onMetricSwitchChanged
-					)
-				}
-			}
+			Text(
+				text = stringResource(id = R.string.profile_height_label),
+				style = MaterialTheme.typography.headlineMedium,
+				color = MaterialTheme.colorScheme.onSurface,
+				modifier = Modifier.padding(top = 16.dp)
+			)
 
 			if (isMetric) {
 				// Metric Height Input

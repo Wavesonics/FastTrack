@@ -25,6 +25,8 @@ fun SettingsScreen(
 	onNotificationSettingChanged: (Boolean) -> Unit,
 	stageAlertsSettingState: Boolean,
 	onStageAlertsSettingChanged: (Boolean) -> Unit,
+	metricSystemSettingState: Boolean,
+	onMetricSystemSettingChanged: (Boolean) -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit
 ) {
@@ -55,6 +57,8 @@ fun SettingsScreen(
 			onNotificationSettingChanged = onNotificationSettingChanged,
 			stageAlertsSettingState = stageAlertsSettingState,
 			onStageAlertsSettingChanged = onStageAlertsSettingChanged,
+			metricSystemSettingState = metricSystemSettingState,
+			onMetricSystemSettingChanged = onMetricSystemSettingChanged,
 			onExportClick = onExportClick,
 			onImportClick = onImportClick
 		)
@@ -69,6 +73,8 @@ private fun SettingsList(
 	onNotificationSettingChanged: (Boolean) -> Unit,
 	stageAlertsSettingState: Boolean,
 	onStageAlertsSettingChanged: (Boolean) -> Unit,
+	metricSystemSettingState: Boolean,
+	onMetricSystemSettingChanged: (Boolean) -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit
 ) {
@@ -117,6 +123,14 @@ private fun SettingsList(
 						fancyBackground = checked
 						settings.setShowFancyBackground(checked)
 					}
+				)
+			}
+			item(key = "metric_system") {
+				SettingsItem(
+					headline = R.string.settings_metric_system_title,
+					details = R.string.settings_metric_system_subtitle,
+					value = metricSystemSettingState,
+					onChange = onMetricSystemSettingChanged
 				)
 			}
 			item(key = "logbook_header") {
