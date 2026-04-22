@@ -223,6 +223,8 @@
 	<string name="back">Назад</string>
 	<string name="settings_fancy_background_title">Показати красивий фон</string>
 	<string name="settings_fancy_background_subtitle">Вимкніть для простішого фону</string>
+	<string name="settings_metric_system_title">Метрична система</string>
+	<string name="settings_metric_system_subtitle">Відображення висоти і ваги в метричних одиницях</string>
 	<string name="log_no_entries">Ще немає записів!</string>
 	<string name="log_logbook_label">Журнал</string>
 	<string name="log_stats_label">Статистика за весь час</string>
