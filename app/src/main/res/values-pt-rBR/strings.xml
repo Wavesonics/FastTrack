@@ -233,6 +233,8 @@
 	<string name="back">Back</string>
 	<string name="settings_fancy_background_title">Show Fancy Background</string>
 	<string name="settings_fancy_background_subtitle">Disable for a simpler Fasting background</string>
+	<string name="settings_metric_system_title">Sistema Métrico</string>
+	<string name="settings_metric_system_subtitle">Exibir altura e peso em unidades métricas</string>
 	<string name="log_no_entries">No entries yet!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Lifetime stats</string>
