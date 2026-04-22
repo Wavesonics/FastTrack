@@ -235,6 +235,8 @@
 	<string name="back">Précédent</string>
 	<string name="settings_fancy_background_title">Afficher l\'arrière-plan fantaisie</string>
 	<string name="settings_fancy_background_subtitle">Désactiver pour un arrière-plan rapide plus simple</string>
+	<string name="settings_metric_system_title">Système métrique</string>
+	<string name="settings_metric_system_subtitle">Afficher la taille et le poids en unités métriques</string>
 	<string name="log_no_entries">Pas encore d\'entrées!</string>
 	<string name="log_logbook_label">Carnet de bord</string>
 	<string name="log_stats_label">Statistiques à vie</string>
