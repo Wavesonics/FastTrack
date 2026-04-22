@@ -20,7 +20,10 @@ import androidx.compose.ui.window.DialogProperties
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.screens.fasting.DateTimePickerDialog
 import com.darkrockstudios.apps.fasttrack.screens.fasting.rememberDateTimePickerDialogState
+import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
 import com.darkrockstudios.apps.fasttrack.utils.PastAndTodaySelectableDates
+import com.darkrockstudios.apps.fasttrack.utils.formatAs
+import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
 import kotlinx.datetime.toInstant
@@ -40,6 +43,7 @@ fun ManualAddDialog(
 	}
 
 	val uiState by viewModel.uiState.collectAsState()
+	val use24Hour = shouldUse24HourFormat(getContext())
 	var showEndDateTimePicker by remember { mutableStateOf(false) }
 
 	Dialog(
@@ -97,7 +101,8 @@ fun ManualAddDialog(
 				val initialMinute = uiState.selectedDateTime?.minute ?: 0
 				val timePickerState = rememberTimePickerState(
 					initialHour = initialHour,
-					initialMinute = initialMinute
+					initialMinute = initialMinute,
+					is24Hour = use24Hour,
 				)
 
 				when (uiState.currentStep) {
@@ -155,7 +160,7 @@ fun ManualAddDialog(
 									verticalAlignment = Alignment.CenterVertically
 								) {
 									Text(
-										text = "${dateTime.hour}:${dateTime.minute.toString().padStart(2, '0')}",
+										text = dateTime.formatAs(if (use24Hour) "HH:mm" else "h:mm a"),
 										style = MaterialTheme.typography.bodyLarge
 									)
 									Icon(

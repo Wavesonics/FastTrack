@@ -22,6 +22,8 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.fasting.gaugeColors
 import com.darkrockstudios.apps.fasttrack.utils.formatAs
 import com.darkrockstudios.apps.fasttrack.utils.rememberVibrator
+import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
+import androidx.compose.ui.platform.LocalContext
 import kotlin.math.roundToInt
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
@@ -35,6 +37,8 @@ fun FastEntryItem(
 ) {
 	var showMenu by remember { mutableStateOf(false) }
 	val vibrator = rememberVibrator()
+	val context = LocalContext.current
+	val use24Hour = shouldUse24HourFormat(context)
 
 	Box {
 		Card(
@@ -53,8 +57,9 @@ fun FastEntryItem(
 			elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
 		) {
 			Column {
-				val dateStr = remember(entry.start) {
-					entry.start.formatAs("d MMM uuuu - HH:mm")
+				val dateStr = remember(entry.start, use24Hour) {
+					val timePattern = if (use24Hour) "HH:mm" else "h:mm a"
+					entry.start.formatAs("d MMM uuuu - $timePattern")
 				}
 
 				Text(
