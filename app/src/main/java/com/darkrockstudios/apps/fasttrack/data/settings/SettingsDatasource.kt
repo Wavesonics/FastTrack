@@ -16,4 +16,9 @@ interface SettingsDatasource {
 
 	fun getShowFastingNotification(): Boolean
 	fun setShowFastingNotification(enabled: Boolean)
+
+	fun getUseMetricSystem(default: Boolean): Boolean
+	fun setUseMetricSystem(enabled: Boolean)
+
+	fun useMetricSystemFlow(default: Boolean): Flow<Boolean>
 }

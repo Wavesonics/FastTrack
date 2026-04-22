@@ -61,10 +61,8 @@ class ProfileScreenComposeTest {
 		composeTestRule.onNodeWithContentDescription(context.getString(R.string.bmr_info_button_description))
 			.assertExists()
 
-		// Height section with metric switch label
+		// Height section label
 		composeTestRule.onAllNodesWithText(context.getString(R.string.profile_height_label))
-			.assertCountEquals(1)
-		composeTestRule.onAllNodesWithText(context.getString(R.string.profile_metric_switch))
 			.assertCountEquals(1)
 
 		// Metric height input label
@@ -121,10 +119,8 @@ class ProfileScreenComposeTest {
 			}
 		}
 
-		// Height section labels
+		// Height section label
 		composeTestRule.onNodeWithText(context.getString(R.string.profile_height_label))
-			.assertExists()
-		composeTestRule.onNodeWithText(context.getString(R.string.profile_metric_switch))
 			.assertExists()
 
 		// Imperial height input labels exist

@@ -10,10 +10,12 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.Gender
 import com.darkrockstudios.apps.fasttrack.data.Profile
+import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.*
@@ -23,6 +25,7 @@ import kotlin.math.roundToInt
 
 class ProfileViewModel(
     private val appContext: Context,
+    private val settings: SettingsDatasource,
 ) : ViewModel(), IProfileViewModel {
 
     private val _uiState = MutableStateFlow(IProfileViewModel.ProfileUiState())
@@ -30,12 +33,14 @@ class ProfileViewModel(
 
     override fun onCreate() {
         viewModelScope.launch {
-            val profile = Satchel.storage.getOrSet(Data.KEY_PROFILE, Profile(displayMetric = isMetricSystem()))
-            populateUiState(profile)
+            settings.useMetricSystemFlow(default = isMetricSystemLocale()).collectLatest { isMetric ->
+                val profile = Satchel.storage.getOrSet(Data.KEY_PROFILE, Profile())
+                populateUiState(profile, isMetric)
+            }
         }
     }
 
-    private fun populateUiState(profile: Profile) {
+    private fun populateUiState(profile: Profile, isMetric: Boolean) {
         val totalInches = Data.cmToInch(profile.heightCm)
         val feet = floor(totalInches / 12.0).toInt()
         val inches = (totalInches % 12).toInt()
@@ -63,7 +68,7 @@ class ProfileViewModel(
 
         _uiState.update {
             it.copy(
-                isMetric = profile.displayMetric,
+                isMetric = isMetric,
                 heightCm = totalCmStr,
                 heightFeet = feetStr,
                 heightInches = inchesStr,
@@ -110,19 +115,6 @@ class ProfileViewModel(
     override fun updateGender(value: Gender) {
         _uiState.update { it.copy(gender = value) }
         validateAndSaveProfile()
-    }
-
-    override fun updateMetricSystem(isMetric: Boolean) {
-        val currentState = _uiState.value
-        val profile = createProfileFromUiState()
-
-        if (profile != null) {
-            _uiState.update { it.copy(isMetric = isMetric) }
-            populateUiState(profile.copy(displayMetric = isMetric))
-            validateAndSaveProfile()
-        } else {
-            _uiState.update { it.copy(isMetric = isMetric) }
-        }
     }
 
     private fun validateAndSaveProfile() {
@@ -217,7 +209,7 @@ class ProfileViewModel(
             Satchel.storage.apply {
                 set(Data.KEY_PROFILE, profile)
             }
-            populateUiState(profile)
+            populateUiState(profile, _uiState.value.isMetric)
             Napier.i("Profile saved")
         }
     }
@@ -248,8 +240,7 @@ class ProfileViewModel(
                 ageYears = age,
                 heightCm = totalCm,
                 weightKg = kg,
-                gender = currentState.gender,
-                displayMetric = currentState.isMetric
+                gender = currentState.gender
             )
         } else {
             null
@@ -303,7 +294,7 @@ class ProfileViewModel(
         return number
     }
 
-    private fun isMetricSystem(): Boolean {
+    private fun isMetricSystemLocale(): Boolean {
         val locale: Locale = LocaleList.getDefault()[0]
         val imperialCountries = listOf("US", "LR", "MM")
         return !imperialCountries.contains(locale.country)

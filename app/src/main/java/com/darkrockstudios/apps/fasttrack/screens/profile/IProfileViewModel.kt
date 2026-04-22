@@ -33,5 +33,4 @@ interface IProfileViewModel {
 	fun updateWeightLbs(value: String)
 	fun updateAge(value: String)
 	fun updateGender(value: Gender)
-	fun updateMetricSystem(isMetric: Boolean)
 }

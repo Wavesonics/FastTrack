@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.LocaleList
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +32,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.io.File
+import java.util.Locale
 
 class SettingsActivity : AppCompatActivity() {
 	private val settings by inject<SettingsDatasource>()
@@ -41,6 +43,7 @@ class SettingsActivity : AppCompatActivity() {
 	private var pendingNotificationToggle = false
 	private var notificationSettingState by mutableStateOf(false)
 	private var stageAlertsSettingState by mutableStateOf(false)
+	private var metricSystemSettingState by mutableStateOf(false)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -50,6 +53,7 @@ class SettingsActivity : AppCompatActivity() {
 
 		notificationSettingState = settings.getShowFastingNotification()
 		stageAlertsSettingState = settings.getFastingAlerts()
+		metricSystemSettingState = settings.getUseMetricSystem(default = isMetricSystemLocale())
 		registerNotificationPermissionCallback()
 		registerImportCallback()
 
@@ -62,6 +66,8 @@ class SettingsActivity : AppCompatActivity() {
 					onNotificationSettingChanged = { enabled -> handleNotificationSettingChange(enabled) },
 					stageAlertsSettingState = stageAlertsSettingState,
 					onStageAlertsSettingChanged = { enabled -> handleStageAlertsSettingChange(enabled) },
+					metricSystemSettingState = metricSystemSettingState,
+					onMetricSystemSettingChanged = { enabled -> handleMetricSystemSettingChange(enabled) },
 					onExportClick = { onExportLogBook() },
 					onImportClick = { onImportLogBook() }
 				)
@@ -141,6 +147,17 @@ class SettingsActivity : AppCompatActivity() {
 	private fun handleStageAlertsSettingChange(enabled: Boolean) {
 		settings.setFastingAlerts(enabled)
 		stageAlertsSettingState = enabled
+	}
+
+	private fun handleMetricSystemSettingChange(enabled: Boolean) {
+		settings.setUseMetricSystem(enabled)
+		metricSystemSettingState = enabled
+	}
+
+	private fun isMetricSystemLocale(): Boolean {
+		val locale: Locale = LocaleList.getDefault()[0]
+		val imperialCountries = listOf("US", "LR", "MM")
+		return !imperialCountries.contains(locale.country)
 	}
 
 	private fun registerImportCallback() {

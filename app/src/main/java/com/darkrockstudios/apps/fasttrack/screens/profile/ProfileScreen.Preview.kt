@@ -343,5 +343,4 @@ class FakeProfileViewModel(state: IProfileViewModel.ProfileUiState) : IProfileVi
 	override fun updateWeightLbs(value: String) {}
 	override fun updateAge(value: String) {}
 	override fun updateGender(value: Gender) {}
-	override fun updateMetricSystem(isMetric: Boolean) {}
 }
