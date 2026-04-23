@@ -227,6 +227,11 @@
 	<string name="settings_fancy_background_subtitle">Für einen einfacheren Fast-Hintergrund deaktivieren</string>
 	<string name="settings_metric_system_title">Metrisches System</string>
 	<string name="settings_metric_system_subtitle">Höhe und Gewicht in metrischen Einheiten anzeigen</string>
+	<string name="settings_theme_mode_title">Thema</string>
+	<string name="settings_theme_mode_subtitle">Wähle hell, dunkel oder folge System</string>
+	<string name="settings_theme_mode_system">System</string>
+	<string name="settings_theme_mode_light">Hell</string>
+	<string name="settings_theme_mode_dark">Dunkel</string>
 	<string name="log_no_entries">Noch keine Einträge!</string>
 	<string name="log_logbook_label">Logbuch</string>
 	<string name="log_stats_label">Lebenslange Statistiken</string>
