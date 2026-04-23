@@ -12,6 +12,7 @@ import com.darkrockstudios.apps.fasttrack.data.log.FakeFastingLogDatasource
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepositoryImpl
+import com.darkrockstudios.apps.fasttrack.data.settings.FakeSettingsDatasource
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.datetime.LocalDateTime
@@ -43,7 +44,7 @@ class LogScreenComposeTest {
 	fun setup() {
 		fakeDatasource = FakeFastingLogDatasource()
 		repository = FastingLogRepositoryImpl(fakeDatasource)
-		viewModel = LogViewModel(repository)
+		viewModel = LogViewModel(repository, FakeSettingsDatasource())
 	}
 
 	@Test
