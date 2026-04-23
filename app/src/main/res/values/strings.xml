@@ -106,11 +106,11 @@
 	<string name="log_entry_autophagy">Autophagy: %1$d hours</string>
 
 	<string name="profile_age_label">Age</string>
-	<string name="profile_age_years">years</string>
+	<string name="profile_age_years">Years</string>
 
 	<string name="profile_weight_label">Weight</string>
 	<string name="profile_weight_pounds_label">Pounds</string>
-	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_weight_kg_label">Kilograms</string>
 
 	<string name="profile_update_button">Update</string>
 
@@ -125,12 +125,12 @@
 	<string name="profile_error">Bad Value</string>
 
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f kCal / day</string>
+	<string name="profile_bmr_value">%.0f kcal / day</string>
 
 	<string name="profile_height_label">Height</string>
 	<string name="profile_height_imper_feet_label">Feet</string>
 	<string name="profile_height_imper_inches_label">Inches</string>
-	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_height_metric_label">Centimeters</string>
 	<string name="profile_gender_male">Male</string>
 	<string name="profile_gender_female">Female</string>
 	<string name="manual_add_title">Manual Add</string>
@@ -301,6 +301,11 @@
 	<string name="settings_fancy_background_subtitle">Disable for a simpler Fasting background</string>
 	<string name="settings_metric_system_title">Metric System</string>
 	<string name="settings_metric_system_subtitle">Display height and weight in metric units</string>
+	<string name="settings_theme_mode_title">Theme</string>
+	<string name="settings_theme_mode_subtitle">Choose light, dark, or follow system</string>
+	<string name="settings_theme_mode_system">System</string>
+	<string name="settings_theme_mode_light">Light</string>
+	<string name="settings_theme_mode_dark">Dark</string>
 	<string name="log_no_entries">No entries yet!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Lifetime stats</string>
