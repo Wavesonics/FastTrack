@@ -18,6 +18,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.text.ParseException
 import java.util.*
 import kotlin.math.floor
 import kotlin.math.pow
@@ -283,15 +285,18 @@ class ProfileViewModel(
     }
 
     private fun parseDouble(text: String?): Double {
-        var number = 0.0
-        text?.let {
-            try {
-                number = text.toDouble()
-            } catch (e: NumberFormatException) {
-                Napier.w("Failed to parse double")
-            }
+        if (text.isNullOrEmpty()) return 0.0
+        try {
+            return text.toDouble()
+        } catch (e: NumberFormatException) {
+            // Fall through to locale-aware parsing for separators like ","
         }
-        return number
+        return try {
+            NumberFormat.getInstance().parse(text)?.toDouble() ?: 0.0
+        } catch (e: ParseException) {
+            Napier.w("Failed to parse double")
+            0.0
+        }
     }
 
     private fun isMetricSystemLocale(): Boolean {
