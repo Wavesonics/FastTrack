@@ -238,6 +238,11 @@
 	<string name="settings_fancy_background_subtitle">Disabilita per uno sfondo di digiuno più semplice</string>
 	<string name="settings_metric_system_title">Sistema Metrico</string>
 	<string name="settings_metric_system_subtitle">Mostra altezza e peso in unità metriche</string>
+	<string name="settings_theme_mode_title">Tema</string>
+	<string name="settings_theme_mode_subtitle">Scegli il sistema leggero, scuro o segui</string>
+	<string name="settings_theme_mode_system">Sistema</string>
+	<string name="settings_theme_mode_light">Chiaro</string>
+	<string name="settings_theme_mode_dark">Scuro</string>
 	<string name="log_no_entries">Ancora nessuna voce!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Statistiche a vita</string>
