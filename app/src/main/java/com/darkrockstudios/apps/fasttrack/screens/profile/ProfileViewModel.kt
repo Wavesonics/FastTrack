@@ -18,6 +18,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.text.ParseException
 import java.util.*
 import kotlin.math.floor
 import kotlin.math.pow
@@ -275,7 +277,7 @@ class ProfileViewModel(
         text?.let {
             try {
                 number = text.toInt()
-            } catch (e: NumberFormatException) {
+            } catch (_: NumberFormatException) {
                 Napier.w("Failed to parse int")
             }
         }
@@ -283,15 +285,17 @@ class ProfileViewModel(
     }
 
     private fun parseDouble(text: String?): Double {
-        var number = 0.0
-        text?.let {
+        if (text.isNullOrEmpty()) return 0.0
+        return try {
+            text.toDouble()
+        } catch (_: NumberFormatException) {
             try {
-                number = text.toDouble()
-            } catch (e: NumberFormatException) {
+                NumberFormat.getInstance().parse(text)?.toDouble() ?: 0.0
+            } catch (_: ParseException) {
                 Napier.w("Failed to parse double")
+                0.0
             }
         }
-        return number
     }
 
     private fun isMetricSystemLocale(): Boolean {
