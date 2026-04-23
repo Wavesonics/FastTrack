@@ -1,0 +1,8 @@
+- Dark mode with System/Light/Dark selector
+- Calendar view on Log screen
+- Stage animation
+- Locale-aware weight decimal separator
+- Fixed AM/PM vs 24-hour clock inconsistency
+- Metric toggle moved to Settings
+- Consistent naming on Profile page
+- Translation updates
