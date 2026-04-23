@@ -235,6 +235,11 @@
 	<string name="settings_fancy_background_subtitle">Desactivar para un fondo de limpieza más simple</string>
 	<string name="settings_metric_system_title">Sistema métrico</string>
 	<string name="settings_metric_system_subtitle">Mostrar altura y peso en unidades métricas</string>
+	<string name="settings_theme_mode_title">Tema</string>
+	<string name="settings_theme_mode_subtitle">Elegir luz, oscurecer o seguir el sistema</string>
+	<string name="settings_theme_mode_system">Sistema</string>
+	<string name="settings_theme_mode_light">Claro</string>
+	<string name="settings_theme_mode_dark">Oscuro</string>
 	<string name="log_no_entries">¡Aún no hay entradas!</string>
 	<string name="log_logbook_label">Bitácora</string>
 	<string name="log_stats_label">Estadísticas de por vida</string>
