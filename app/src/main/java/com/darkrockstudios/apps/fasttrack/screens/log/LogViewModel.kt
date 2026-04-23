@@ -6,12 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
+import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
+import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.LocalDate
 import kotlin.math.roundToInt
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
@@ -19,9 +22,12 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 class LogViewModel(
 	private val repository: FastingLogRepository,
+	private val settings: SettingsDatasource,
 ) : ViewModel(), ILogViewModel {
 
-	private val _uiState = MutableStateFlow(ILogViewModel.LogUiState())
+	private val _uiState = MutableStateFlow(
+		ILogViewModel.LogUiState(viewMode = settings.getLogViewMode())
+	)
 	override val uiState: StateFlow<ILogViewModel.LogUiState> = _uiState.asStateFlow()
 
 	override fun loadEntries() {
@@ -83,5 +89,14 @@ class LogViewModel(
 
 	override fun hideManualAddDialog() {
 		_uiState.update { it.copy(showManualAddDialog = false, entryToEdit = null) }
+	}
+
+	override fun setViewMode(mode: LogViewMode) {
+		settings.setLogViewMode(mode)
+		_uiState.update { it.copy(viewMode = mode) }
+	}
+
+	override fun selectDate(date: LocalDate?) {
+		_uiState.update { it.copy(selectedDate = date) }
 	}
 }
