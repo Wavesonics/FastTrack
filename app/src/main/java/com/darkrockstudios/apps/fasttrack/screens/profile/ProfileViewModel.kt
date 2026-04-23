@@ -277,7 +277,7 @@ class ProfileViewModel(
         text?.let {
             try {
                 number = text.toInt()
-            } catch (e: NumberFormatException) {
+            } catch (_: NumberFormatException) {
                 Napier.w("Failed to parse int")
             }
         }
@@ -286,16 +286,15 @@ class ProfileViewModel(
 
     private fun parseDouble(text: String?): Double {
         if (text.isNullOrEmpty()) return 0.0
-        try {
-            return text.toDouble()
-        } catch (e: NumberFormatException) {
-            // Fall through to locale-aware parsing for separators like ","
-        }
         return try {
-            NumberFormat.getInstance().parse(text)?.toDouble() ?: 0.0
-        } catch (e: ParseException) {
-            Napier.w("Failed to parse double")
-            0.0
+            text.toDouble()
+        } catch (_: NumberFormatException) {
+            try {
+                NumberFormat.getInstance().parse(text)?.toDouble() ?: 0.0
+            } catch (_: ParseException) {
+                Napier.w("Failed to parse double")
+                0.0
+            }
         }
     }
 
