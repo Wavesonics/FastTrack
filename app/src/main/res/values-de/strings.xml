@@ -225,6 +225,8 @@
 	<string name="back">Zurück</string>
 	<string name="settings_fancy_background_title">Schicken Hintergrund anzeigen</string>
 	<string name="settings_fancy_background_subtitle">Für einen einfacheren Fast-Hintergrund deaktivieren</string>
+	<string name="settings_metric_system_title">Metrisches System</string>
+	<string name="settings_metric_system_subtitle">Höhe und Gewicht in metrischen Einheiten anzeigen</string>
 	<string name="log_no_entries">Noch keine Einträge!</string>
 	<string name="log_logbook_label">Logbuch</string>
 	<string name="log_stats_label">Lebenslange Statistiken</string>
