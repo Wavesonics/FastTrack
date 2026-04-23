@@ -79,10 +79,10 @@
 	<string name="log_entry_ketosis">%1$d heures</string>
 	<string name="log_entry_autophagy">Autophagie : %1$d heures</string>
 	<string name="profile_age_label">Âge</string>
-	<string name="profile_age_years">ans</string>
+	<string name="profile_age_years">Années</string>
 	<string name="profile_weight_label">Poids</string>
 	<string name="profile_weight_pounds_label">Livres</string>
-	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_weight_kg_label">Kilogrammes</string>
 	<string name="profile_update_button">Mettre à jour</string>
 	<string name="profile_bmi_label">IMC :</string>
 	<string name="profile_bmi_value">%1$.1f - %2$s</string>
@@ -93,11 +93,11 @@
 	<string name="profile_bmi_category_morbidly_obese">Obèse morbide</string>
 	<string name="profile_error">Mauvaise valeur</string>
 	<string name="profile_bmr_label">BMR :</string>
-	<string name="profile_bmr_value">%.0f\" kCal / jour</string>
+	<string name="profile_bmr_value">%.0f kcal / jour</string>
 	<string name="profile_height_label">Hauteur</string>
 	<string name="profile_height_imper_feet_label">Pieds</string>
 	<string name="profile_height_imper_inches_label">Pouces</string>
-	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_height_metric_label">Centimètres</string>
 	<string name="profile_gender_male">Homme</string>
 	<string name="profile_gender_female">Femme</string>
 	<string name="manual_add_title">Ajout manuel</string>
@@ -245,4 +245,6 @@
 	<string name="log_no_entries">Pas encore d\'entrées!</string>
 	<string name="log_logbook_label">Carnet de bord</string>
 	<string name="log_stats_label">Statistiques à vie</string>
+	<string name="log_view_mode_list">Liste</string>
+	<string name="log_view_mode_calendar">Calendrier</string>
 </resources>
