@@ -217,6 +217,11 @@
 	<string name="settings_fancy_background_subtitle">禁用较简单的快取背景</string>
 	<string name="settings_metric_system_title">公式系统</string>
 	<string name="settings_metric_system_subtitle">以公制单位显示高度和权重</string>
+	<string name="settings_theme_mode_title">主题</string>
+	<string name="settings_theme_mode_subtitle">选择光线、暗色或关注系统</string>
+	<string name="settings_theme_mode_system">系统</string>
+	<string name="settings_theme_mode_light">亮色的</string>
+	<string name="settings_theme_mode_dark">深色</string>
 	<string name="log_no_entries">尚无条目！</string>
 	<string name="log_logbook_label">日志记录</string>
 	<string name="log_stats_label">终生统计</string>
