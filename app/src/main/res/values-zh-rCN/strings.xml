@@ -91,7 +91,7 @@
 	<string name="profile_bmi_category_morbidly_obese">病态肥胖</string>
 	<string name="profile_error">错误的值</string>
 	<string name="profile_bmr_label">基础代谢率：</string>
-	<string name="profile_bmr_value">%.0f\" 千卡 / 天</string>
+	<string name="profile_bmr_value">%.0f kcal / 天</string>
 	<string name="profile_height_label">身高</string>
 	<string name="profile_height_imper_feet_label">英尺</string>
 	<string name="profile_height_imper_inches_label">英寸</string>
@@ -225,4 +225,6 @@
 	<string name="log_no_entries">尚无条目！</string>
 	<string name="log_logbook_label">日志记录</string>
 	<string name="log_stats_label">终生统计</string>
+	<string name="log_view_mode_list">列表</string>
+	<string name="log_view_mode_calendar">日程表</string>
 </resources>
