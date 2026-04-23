@@ -87,4 +87,11 @@ class SettingsPreferencesDatasource(
 	override fun setThemeMode(mode: ThemeMode) {
 		storage.edit { putString(Data.KEY_THEME_MODE, mode.name) }
 	}
+
+	override fun getLogViewMode(): LogViewMode =
+		LogViewMode.fromName(storage.getString(Data.KEY_LOG_VIEW_MODE, null))
+
+	override fun setLogViewMode(mode: LogViewMode) {
+		storage.edit { putString(Data.KEY_LOG_VIEW_MODE, mode.name) }
+	}
 }

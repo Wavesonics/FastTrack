@@ -24,4 +24,7 @@ interface SettingsDatasource {
 
 	fun getThemeMode(): ThemeMode
 	fun setThemeMode(mode: ThemeMode)
+
+	fun getLogViewMode(): LogViewMode
+	fun setLogViewMode(mode: LogViewMode)
 }

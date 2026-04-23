@@ -52,6 +52,7 @@ material3Android = "1.4.0"
 
 adaptiveNavigation = "1.2.0"
 composeMarkdown = "0.5.7"
+kizitonwoseCalendar = "2.6.2"
 material3AdaptiveNavigationSuite = "1.4.0"
 material3WindowSizeClassVersion = "1.4.0"
 
@@ -105,6 +106,7 @@ glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 image-glide = { module = "io.noties.markwon:image-glide", version.ref = "core" }
 image = { module = "io.noties.markwon:image", version.ref = "core" }
 junit = { module = "junit:junit", version.ref = "junit" }
+kizitonwose-calendar-compose = { module = "com.kizitonwose.calendar:compose", version.ref = "kizitonwoseCalendar" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }

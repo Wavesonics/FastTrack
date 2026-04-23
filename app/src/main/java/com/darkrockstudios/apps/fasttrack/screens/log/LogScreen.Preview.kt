@@ -7,7 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
+import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
+import kotlinx.datetime.LocalDate
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.datetime.TimeZone
@@ -265,4 +267,6 @@ class FakeLogViewModel(state: ILogViewModel.LogUiState) : ILogViewModel {
 	override fun showEditDialog(entry: FastingLogEntry) {}
 	override fun hideManualAddDialog() {}
 	override fun loadEntries() {}
+	override fun setViewMode(mode: LogViewMode) {}
+	override fun selectDate(date: LocalDate?) {}
 }

@@ -175,6 +175,8 @@ dependencies {
 	implementation(libs.accompanist.pager)
 	implementation(libs.accompanist.pager.indicators)
 
+	implementation(libs.kizitonwose.calendar.compose)
+
 	implementation(libs.glance)
 	implementation(libs.glance.appwidget)
 	implementation(libs.glance.material)

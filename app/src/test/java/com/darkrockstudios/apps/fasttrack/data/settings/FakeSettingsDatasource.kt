@@ -14,6 +14,7 @@ class FakeSettingsDatasource : SettingsDatasource {
 	private var showFastingNotification: Boolean = true
 	private var useMetricSystem: Boolean? = null
 	private var themeMode: ThemeMode = ThemeMode.SYSTEM
+	private var logViewMode: LogViewMode = LogViewMode.LIST
 
 	override fun getFastingAlerts(): Boolean = fastingAlerts
 
@@ -56,6 +57,12 @@ class FakeSettingsDatasource : SettingsDatasource {
 		themeMode = mode
 	}
 
+	override fun getLogViewMode(): LogViewMode = logViewMode
+
+	override fun setLogViewMode(mode: LogViewMode) {
+		logViewMode = mode
+	}
+
 	/**
 	 * Clears all data - useful for test setup/teardown
 	 */
@@ -66,5 +73,6 @@ class FakeSettingsDatasource : SettingsDatasource {
 		showFastingNotification = true
 		useMetricSystem = null
 		themeMode = ThemeMode.SYSTEM
+		logViewMode = LogViewMode.LIST
 	}
 }

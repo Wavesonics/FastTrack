@@ -1,5 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.preview
 
+import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import kotlinx.coroutines.flow.Flow
@@ -38,4 +39,8 @@ class DummySettingsDatasource(
 	override fun getThemeMode(): ThemeMode = ThemeMode.SYSTEM
 
 	override fun setThemeMode(mode: ThemeMode) {}
+
+	override fun getLogViewMode(): LogViewMode = LogViewMode.LIST
+
+	override fun setLogViewMode(mode: LogViewMode) {}
 }
