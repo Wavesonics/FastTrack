@@ -13,6 +13,7 @@ class FakeSettingsDatasource : SettingsDatasource {
 	private var showFancyBackground: Boolean = false
 	private var showFastingNotification: Boolean = true
 	private var useMetricSystem: Boolean? = null
+	private var themeMode: ThemeMode = ThemeMode.SYSTEM
 
 	override fun getFastingAlerts(): Boolean = fastingAlerts
 
@@ -49,6 +50,12 @@ class FakeSettingsDatasource : SettingsDatasource {
 	override fun useMetricSystemFlow(default: Boolean): Flow<Boolean> =
 		flowOf(getUseMetricSystem(default))
 
+	override fun getThemeMode(): ThemeMode = themeMode
+
+	override fun setThemeMode(mode: ThemeMode) {
+		themeMode = mode
+	}
+
 	/**
 	 * Clears all data - useful for test setup/teardown
 	 */
@@ -58,5 +65,6 @@ class FakeSettingsDatasource : SettingsDatasource {
 		showFancyBackground = false
 		showFastingNotification = true
 		useMetricSystem = null
+		themeMode = ThemeMode.SYSTEM
 	}
 }
