@@ -1,6 +1,5 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -8,6 +7,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.darkrockstudios.apps.fasttrack.ui.theme.LocalDarkTheme
 import com.darkrockstudios.apps.fasttrack.ui.theme.Purple100
 import com.darkrockstudios.apps.fasttrack.ui.theme.Purple700
 
@@ -16,7 +16,7 @@ val phaseTextColor_Dark = Purple100
 
 @Composable
 fun phaseTextColor(): Color {
-	val isDark: Boolean = isSystemInDarkTheme()
+	val isDark: Boolean = LocalDarkTheme.current
 	return if (isDark) {
 		phaseTextColor_Dark
 	} else {

@@ -1,6 +1,7 @@
 package com.darkrockstudios.apps.fasttrack.screens.preview
 
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
+import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -33,4 +34,8 @@ class DummySettingsDatasource(
 	override fun setUseMetricSystem(enabled: Boolean) {}
 
 	override fun useMetricSystemFlow(default: Boolean): Flow<Boolean> = flowOf(default)
+
+	override fun getThemeMode(): ThemeMode = ThemeMode.SYSTEM
+
+	override fun setThemeMode(mode: ThemeMode) {}
 }

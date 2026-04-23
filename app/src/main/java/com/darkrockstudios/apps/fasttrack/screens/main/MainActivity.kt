@@ -18,6 +18,7 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
+import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.StartFastRequest
 import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
@@ -33,6 +34,7 @@ import kotlin.time.ExperimentalTime
 class MainActivity : AppCompatActivity() {
 	private var startFastRequestState by mutableStateOf<StartFastRequest?>(null)
 	private var stopFastRequestState by mutableStateOf(false)
+	private var themeModeState by mutableStateOf(ThemeMode.SYSTEM)
 	private val settings by inject<SettingsDatasource>()
 	private val fastingRepository by inject<ActiveFastRepository>()
 
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 		WindowCompat.getInsetsController(window, window.decorView)
 			.isAppearanceLightStatusBars = false
 
+		themeModeState = settings.getThemeMode()
 		handleStartFastExtra(intent)
 
 		if (!settings.getIntroSeen()) {
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		setContent {
-			FastTrackTheme {
+			FastTrackTheme(themeMode = themeModeState) {
 				MainScreen(
 					repository = fastingRepository,
 					onShareClick = { shareText() },
@@ -70,6 +73,10 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onStart() {
 		super.onStart()
+		val currentMode = settings.getThemeMode()
+		if (currentMode != themeModeState) {
+			themeModeState = currentMode
+		}
 		setupFastingNotification()
 	}
 

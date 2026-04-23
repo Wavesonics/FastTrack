@@ -80,4 +80,11 @@ class SettingsPreferencesDatasource(
 		storage.registerOnSharedPreferenceChangeListener(listener)
 		awaitClose { storage.unregisterOnSharedPreferenceChangeListener(listener) }
 	}
+
+	override fun getThemeMode(): ThemeMode =
+		ThemeMode.fromName(storage.getString(Data.KEY_THEME_MODE, null))
+
+	override fun setThemeMode(mode: ThemeMode) {
+		storage.edit { putString(Data.KEY_THEME_MODE, mode.name) }
+	}
 }

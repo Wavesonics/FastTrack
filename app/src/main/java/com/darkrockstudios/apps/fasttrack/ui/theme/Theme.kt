@@ -5,6 +5,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
+import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
+
+val LocalDarkTheme = staticCompositionLocalOf { false }
 
 private val LightColorScheme = lightColorScheme(
 	primary = Purple500,
@@ -60,18 +65,29 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun FastTrackTheme(
-	darkTheme: Boolean = isSystemInDarkTheme(),
+	themeMode: ThemeMode = ThemeMode.SYSTEM,
 	content: @Composable () -> Unit
 ) {
-	val colorScheme = if (darkTheme) {
-		DarkColorScheme
-	} else {
-		LightColorScheme
+	val darkTheme = when (themeMode) {
+		ThemeMode.SYSTEM -> isSystemInDarkTheme()
+		ThemeMode.LIGHT -> false
+		ThemeMode.DARK -> true
 	}
+	FastTrackTheme(darkTheme = darkTheme, content = content)
+}
 
-	MaterialTheme(
-		colorScheme = colorScheme,
-		shapes = Shapes,
-		content = content
-	)
+@Composable
+fun FastTrackTheme(
+	darkTheme: Boolean,
+	content: @Composable () -> Unit
+) {
+	val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
+	CompositionLocalProvider(LocalDarkTheme provides darkTheme) {
+		MaterialTheme(
+			colorScheme = colorScheme,
+			shapes = Shapes,
+			content = content
+		)
+	}
 }

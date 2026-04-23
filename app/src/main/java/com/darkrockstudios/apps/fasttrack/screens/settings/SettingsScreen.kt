@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,6 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
+import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 
 
@@ -27,6 +29,8 @@ fun SettingsScreen(
 	onStageAlertsSettingChanged: (Boolean) -> Unit,
 	metricSystemSettingState: Boolean,
 	onMetricSystemSettingChanged: (Boolean) -> Unit,
+	themeModeState: ThemeMode,
+	onThemeModeChanged: (ThemeMode) -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit
 ) {
@@ -59,6 +63,8 @@ fun SettingsScreen(
 			onStageAlertsSettingChanged = onStageAlertsSettingChanged,
 			metricSystemSettingState = metricSystemSettingState,
 			onMetricSystemSettingChanged = onMetricSystemSettingChanged,
+			themeModeState = themeModeState,
+			onThemeModeChanged = onThemeModeChanged,
 			onExportClick = onExportClick,
 			onImportClick = onImportClick
 		)
@@ -75,6 +81,8 @@ private fun SettingsList(
 	onStageAlertsSettingChanged: (Boolean) -> Unit,
 	metricSystemSettingState: Boolean,
 	onMetricSystemSettingChanged: (Boolean) -> Unit,
+	themeModeState: ThemeMode,
+	onThemeModeChanged: (ThemeMode) -> Unit,
 	onExportClick: () -> Unit,
 	onImportClick: () -> Unit
 ) {
@@ -131,6 +139,12 @@ private fun SettingsList(
 					details = R.string.settings_metric_system_subtitle,
 					value = metricSystemSettingState,
 					onChange = onMetricSystemSettingChanged
+				)
+			}
+			item(key = "theme_mode") {
+				ThemeModeSettingsItem(
+					themeMode = themeModeState,
+					onThemeModeChanged = onThemeModeChanged
 				)
 			}
 			item(key = "logbook_header") {
@@ -196,6 +210,65 @@ private fun SettingsItem(
 				checked = value,
 				onCheckedChange = onChange
 			)
+		}
+	)
+}
+
+@Composable
+private fun ThemeModeSettingsItem(
+	themeMode: ThemeMode,
+	onThemeModeChanged: (ThemeMode) -> Unit
+) {
+	var expanded by remember { mutableStateOf(false) }
+	val labelRes = when (themeMode) {
+		ThemeMode.SYSTEM -> R.string.settings_theme_mode_system
+		ThemeMode.LIGHT -> R.string.settings_theme_mode_light
+		ThemeMode.DARK -> R.string.settings_theme_mode_dark
+	}
+
+	ListItem(
+		headlineContent = {
+			Text(
+				text = stringResource(id = R.string.settings_theme_mode_title),
+				style = MaterialTheme.typography.labelLarge,
+				fontWeight = FontWeight.Bold
+			)
+		},
+		supportingContent = {
+			Text(
+				text = stringResource(id = R.string.settings_theme_mode_subtitle),
+				style = MaterialTheme.typography.bodySmall
+			)
+		},
+		trailingContent = {
+			Box {
+				TextButton(onClick = { expanded = true }) {
+					Text(stringResource(id = labelRes))
+					Icon(
+						imageVector = Icons.Filled.ArrowDropDown,
+						contentDescription = null
+					)
+				}
+				DropdownMenu(
+					expanded = expanded,
+					onDismissRequest = { expanded = false }
+				) {
+					ThemeMode.entries.forEach { mode ->
+						val itemLabel = when (mode) {
+							ThemeMode.SYSTEM -> R.string.settings_theme_mode_system
+							ThemeMode.LIGHT -> R.string.settings_theme_mode_light
+							ThemeMode.DARK -> R.string.settings_theme_mode_dark
+						}
+						DropdownMenuItem(
+							text = { Text(stringResource(id = itemLabel)) },
+							onClick = {
+								expanded = false
+								onThemeModeChanged(mode)
+							}
+						)
+					}
+				}
+			}
 		}
 	)
 }

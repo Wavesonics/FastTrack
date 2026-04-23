@@ -25,6 +25,7 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
+import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +45,7 @@ class SettingsActivity : AppCompatActivity() {
 	private var notificationSettingState by mutableStateOf(false)
 	private var stageAlertsSettingState by mutableStateOf(false)
 	private var metricSystemSettingState by mutableStateOf(false)
+	private var themeModeState by mutableStateOf(ThemeMode.SYSTEM)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -54,11 +56,12 @@ class SettingsActivity : AppCompatActivity() {
 		notificationSettingState = settings.getShowFastingNotification()
 		stageAlertsSettingState = settings.getFastingAlerts()
 		metricSystemSettingState = settings.getUseMetricSystem(default = isMetricSystemLocale())
+		themeModeState = settings.getThemeMode()
 		registerNotificationPermissionCallback()
 		registerImportCallback()
 
 		setContent {
-			FastTrackTheme {
+			FastTrackTheme(themeMode = themeModeState) {
 				SettingsScreen(
 					onBack = { finish() },
 					settings = settings,
@@ -68,6 +71,8 @@ class SettingsActivity : AppCompatActivity() {
 					onStageAlertsSettingChanged = { enabled -> handleStageAlertsSettingChange(enabled) },
 					metricSystemSettingState = metricSystemSettingState,
 					onMetricSystemSettingChanged = { enabled -> handleMetricSystemSettingChange(enabled) },
+					themeModeState = themeModeState,
+					onThemeModeChanged = { mode -> handleThemeModeChange(mode) },
 					onExportClick = { onExportLogBook() },
 					onImportClick = { onImportLogBook() }
 				)
@@ -152,6 +157,13 @@ class SettingsActivity : AppCompatActivity() {
 	private fun handleMetricSystemSettingChange(enabled: Boolean) {
 		settings.setUseMetricSystem(enabled)
 		metricSystemSettingState = enabled
+	}
+
+	private fun handleThemeModeChange(mode: ThemeMode) {
+		if (mode == themeModeState) return
+		settings.setThemeMode(mode)
+		themeModeState = mode
+		recreate()
 	}
 
 	private fun isMetricSystemLocale(): Boolean {

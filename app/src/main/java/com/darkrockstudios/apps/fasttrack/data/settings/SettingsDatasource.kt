@@ -21,4 +21,7 @@ interface SettingsDatasource {
 	fun setUseMetricSystem(enabled: Boolean)
 
 	fun useMetricSystemFlow(default: Boolean): Flow<Boolean>
+
+	fun getThemeMode(): ThemeMode
+	fun setThemeMode(mode: ThemeMode)
 }
