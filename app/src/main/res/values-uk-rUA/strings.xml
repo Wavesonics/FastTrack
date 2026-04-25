@@ -77,10 +77,10 @@
 	<string name="log_entry_ketosis">Кетоз: %1$d годин</string>
 	<string name="log_entry_autophagy">Автофагія: %1$d годин</string>
 	<string name="profile_age_label">Вік</string>
-	<string name="profile_age_years">років</string>
+	<string name="profile_age_years">Роки</string>
 	<string name="profile_weight_label">Вага</string>
 	<string name="profile_weight_pounds_label">фунтів</string>
-	<string name="profile_weight_kg_label">кг</string>
+	<string name="profile_weight_kg_label">Кілограм</string>
 	<string name="profile_update_button">Оновити</string>
 	<string name="profile_bmi_label">ІМТ:</string>
 	<string name="profile_bmi_value">%1$.1f - %2$s</string>
@@ -91,11 +91,11 @@
 	<string name="profile_bmi_category_morbidly_obese">Патологічне ожиріння</string>
 	<string name="profile_error">Недопустиме значення</string>
 	<string name="profile_bmr_label">Основний обмін:</string>
-	<string name="profile_bmr_value">%.0f ккал / добу</string>
+	<string name="profile_bmr_value">%.0f kcal / день</string>
 	<string name="profile_height_label">Висота</string>
 	<string name="profile_height_imper_feet_label">футів</string>
 	<string name="profile_height_imper_inches_label">дюймів</string>
-	<string name="profile_height_metric_label">см</string>
+	<string name="profile_height_metric_label">Сантиметр</string>
 	<string name="profile_gender_male">Чоловік</string>
 	<string name="profile_gender_female">Жінка</string>
 	<string name="manual_add_title">Додавання вручну</string>
@@ -225,7 +225,14 @@
 	<string name="settings_fancy_background_subtitle">Вимкніть для простішого фону</string>
 	<string name="settings_metric_system_title">Метрична система</string>
 	<string name="settings_metric_system_subtitle">Відображення висоти і ваги в метричних одиницях</string>
+	<string name="settings_theme_mode_title">Тема</string>
+	<string name="settings_theme_mode_subtitle">Підсвітка, темна або слідування за системою</string>
+	<string name="settings_theme_mode_system">Система</string>
+	<string name="settings_theme_mode_light">Світла</string>
+	<string name="settings_theme_mode_dark">Темна</string>
 	<string name="log_no_entries">Ще немає записів!</string>
 	<string name="log_logbook_label">Журнал</string>
 	<string name="log_stats_label">Статистика за весь час</string>
+	<string name="log_view_mode_list">Список</string>
+	<string name="log_view_mode_calendar">Календар</string>
 </resources>

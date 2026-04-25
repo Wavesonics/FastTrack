@@ -82,7 +82,7 @@
 	<string name="profile_age_years">anos</string>
 	<string name="profile_weight_label">Peso</string>
 	<string name="profile_weight_pounds_label">Libras</string>
-	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_weight_kg_label">Quilogramas</string>
 	<string name="profile_update_button">Atualizar</string>
 	<string name="profile_bmi_label">IMC:</string>
 	<string name="profile_bmi_value">%1$.1f - %2$s</string>
@@ -93,11 +93,11 @@
 	<string name="profile_bmi_category_morbidly_obese">Obeso mórbido</string>
 	<string name="profile_error">Valor inválido</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f\" kCal / day</string>
+	<string name="profile_bmr_value">%.0f kcal / dia</string>
 	<string name="profile_height_label">Altura</string>
 	<string name="profile_height_imper_feet_label">Pés</string>
 	<string name="profile_height_imper_inches_label">polegadas</string>
-	<string name="profile_height_metric_label">cm</string>
+	<string name="profile_height_metric_label">Centímetros</string>
 	<string name="profile_gender_male">Masculino</string>
 	<string name="profile_gender_female">Feminino</string>
 	<string name="manual_add_title">Adição Manual</string>
@@ -235,7 +235,14 @@
 	<string name="settings_fancy_background_subtitle">Disable for a simpler Fasting background</string>
 	<string name="settings_metric_system_title">Sistema Métrico</string>
 	<string name="settings_metric_system_subtitle">Exibir altura e peso em unidades métricas</string>
+	<string name="settings_theme_mode_title">Tema</string>
+	<string name="settings_theme_mode_subtitle">Escolha a luz, escura ou siga o sistema.</string>
+	<string name="settings_theme_mode_system">SISTEMA</string>
+	<string name="settings_theme_mode_light">Fino</string>
+	<string name="settings_theme_mode_dark">Escuro</string>
 	<string name="log_no_entries">No entries yet!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Lifetime stats</string>
+	<string name="log_view_mode_list">Lista</string>
+	<string name="log_view_mode_calendar">calendário</string>
 </resources>

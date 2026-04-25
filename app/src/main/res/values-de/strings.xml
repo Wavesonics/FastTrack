@@ -75,7 +75,7 @@
 	<string name="profile_age_years">Jahre</string>
 	<string name="profile_weight_label">Gewicht</string>
 	<string name="profile_weight_pounds_label">Pfund</string>
-	<string name="profile_weight_kg_label">kg</string>
+	<string name="profile_weight_kg_label">Kilogramm</string>
 	<string name="profile_update_button">Aktualisieren</string>
 	<string name="profile_bmi_label">BMI:</string>
 	<string name="profile_bmi_value">%1$.1f - %2$s</string>
@@ -86,11 +86,11 @@
 	<string name="profile_bmi_category_morbidly_obese">Fettleibigkeit</string>
 	<string name="profile_error">Ungültiger Wert</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f\" kCal / Tag</string>
+	<string name="profile_bmr_value">%.0f kcal / Tag</string>
 	<string name="profile_height_label">Höhe</string>
 	<string name="profile_height_imper_feet_label">Fuß</string>
 	<string name="profile_height_imper_inches_label">Zoll</string>
-	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_height_metric_label">Zentimeter</string>
 	<string name="profile_gender_male">Männlich</string>
 	<string name="profile_gender_female">Weiblich</string>
 	<string name="manual_add_title">Manuell hinzufügen</string>
@@ -227,7 +227,14 @@
 	<string name="settings_fancy_background_subtitle">Für einen einfacheren Fast-Hintergrund deaktivieren</string>
 	<string name="settings_metric_system_title">Metrisches System</string>
 	<string name="settings_metric_system_subtitle">Höhe und Gewicht in metrischen Einheiten anzeigen</string>
+	<string name="settings_theme_mode_title">Thema</string>
+	<string name="settings_theme_mode_subtitle">Wähle hell, dunkel oder folge System</string>
+	<string name="settings_theme_mode_system">System</string>
+	<string name="settings_theme_mode_light">Hell</string>
+	<string name="settings_theme_mode_dark">Dunkel</string>
 	<string name="log_no_entries">Noch keine Einträge!</string>
 	<string name="log_logbook_label">Logbuch</string>
 	<string name="log_stats_label">Lebenslange Statistiken</string>
+	<string name="log_view_mode_list">Liste</string>
+	<string name="log_view_mode_calendar">Kalender</string>
 </resources>

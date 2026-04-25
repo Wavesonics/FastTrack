@@ -79,10 +79,10 @@
 	<string name="log_entry_ketosis">%1$d ore</string>
 	<string name="log_entry_autophagy">Autofagia: %1$d ore</string>
 	<string name="profile_age_label">Età</string>
-	<string name="profile_age_years">anni</string>
+	<string name="profile_age_years">Anni</string>
 	<string name="profile_weight_label">Peso</string>
 	<string name="profile_weight_pounds_label">Libbre</string>
-	<string name="profile_weight_kg_label">Kg</string>
+	<string name="profile_weight_kg_label">Chilogrammi</string>
 	<string name="profile_update_button">Aggiorna</string>
 	<string name="profile_bmi_label">IMC:</string>
 	<string name="profile_bmi_value">%1$.1f - %2$s</string>
@@ -93,11 +93,11 @@
 	<string name="profile_bmi_category_morbidly_obese">Obeso grave</string>
 	<string name="profile_error">Valore non valido</string>
 	<string name="profile_bmr_label">BMR:</string>
-	<string name="profile_bmr_value">%.0f\" kCal / giorno</string>
+	<string name="profile_bmr_value">%.0f kcal / giorno</string>
 	<string name="profile_height_label">Altezza</string>
 	<string name="profile_height_imper_feet_label">Piedi</string>
 	<string name="profile_height_imper_inches_label">Pollici</string>
-	<string name="profile_height_metric_label">Cm</string>
+	<string name="profile_height_metric_label">Centimetri</string>
 	<string name="profile_gender_male">Maschio</string>
 	<string name="profile_gender_female">Femmina</string>
 	<string name="manual_add_title">Aggiunta Manuale</string>
@@ -238,7 +238,14 @@
 	<string name="settings_fancy_background_subtitle">Disabilita per uno sfondo di digiuno più semplice</string>
 	<string name="settings_metric_system_title">Sistema Metrico</string>
 	<string name="settings_metric_system_subtitle">Mostra altezza e peso in unità metriche</string>
+	<string name="settings_theme_mode_title">Tema</string>
+	<string name="settings_theme_mode_subtitle">Scegli il sistema leggero, scuro o segui</string>
+	<string name="settings_theme_mode_system">Sistema</string>
+	<string name="settings_theme_mode_light">Chiaro</string>
+	<string name="settings_theme_mode_dark">Scuro</string>
 	<string name="log_no_entries">Ancora nessuna voce!</string>
 	<string name="log_logbook_label">Logbook</string>
 	<string name="log_stats_label">Statistiche a vita</string>
+	<string name="log_view_mode_list">Elenco</string>
+	<string name="log_view_mode_calendar">Calendario</string>
 </resources>
