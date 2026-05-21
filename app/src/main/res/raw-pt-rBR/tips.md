@@ -1,37 +1,37 @@
 # Dicas
 
-Fasting can be difficult! Here are some pointers to help.
+Jejuar pode ser difícil! Aqui estão algumas dicas para ajudar.
 
-## Start slow:
+## Comece devagar:
 
-- Try a couple 16 hour fasts to begin with, then move to 30 hour fasts, and so on.
-- The more you fast, the easier things will get.
-- When you start doing multi-day fasts, generally the first day is harder than the second day.
+- Tente começar com alguns jejuns de 16 horas e depois passe para jejuns de 30 horas, e assim por diante.
+- Quanto mais você jejuar, mais fácil será.
+- Quando você começar a fazer jejuns de vários dias, em geral o primeiro dia é mais difícil que o segundo.
 
-## Zero Calorie Foods
+## Alimentos sem calorias
 
-- **Drink lots of water:** Besides being good for you, filling up your stomach with lots of volume will help you feel full for a while.
-- **Drink zero calorie beverages:**
-  - Flavored seltzer waters are great for this!
-  - Unsweetened Tea (_Hot or Iced_)
-  - Water with Lime or Lemon juice
+- Beba bastante água: além de fazer bem, encher o estômago com bastante volume ajuda você a se sentir saciado por um tempo.
+- Beba bebidas sem calorias:
+  - Águas com gás aromatizadas são ótimas para isso!
+  - Chá sem açúcar (_quente ou gelado_)
+  - Água com suco de limão ou lima
 
-## Very Low Calorie Foods
+## Alimentos de baixíssima caloria
 
-Pode, de facto, comer algumas calorias durante o seu processo rápido e continuar a ser igualmente eficaz. Try to keep it under 100
-calories per day. Para esse fim, aqui está uma receita que eu acho muito eficaz em "sentir como comida", sendo apenas cerca de 5 calorias
-por porção:
+Na verdade, você pode consumir algumas calorias durante o jejum e ainda obter o mesmo efeito. Tente manter abaixo de 100
+calorias por dia. Para isso, aqui vai uma receita que considero muito eficaz para dar a sensação de comida, com apenas cerca de 5
+calorias por porção:
 
-**Braço Picante:**
+**Caldo picante:**
 
-- 1 tsp of chicken bouillon
-- 8oz (1 cup) boiling water
-- Dash of habanero hot sauce
-- Dash of lime juice
+- 1 colher de chá de caldo de galinha
+- 8 oz (1 xícara) de água fervente
+- Um toque de molho de pimenta habanero
+- Um toque de suco de limão
 
-Para os jejum ou Vegan mais rápido, você pode substituir o bolinho de frango por bolinho de legume.
+Para pessoas veganas ou que jejuam seguindo uma alimentação vegana, você pode substituir o caldo de galinha por caldo de legumes.
 
-## Appetite suppressants
+## Supressores de apetite
 
-- **Coffee:** more than just filling your stomach up a bit to feel full, will actively suppress your appetite for a while
-- **Hot Sauce:** Usually these are zero calories, and will also help stave off feelings of hunger
+- **Café:** além de apenas encher um pouco o estômago para você se sentir saciado, também suprime o apetite por um tempo
+- **Molho de pimenta:** geralmente tem zero calorias e também ajuda a afastar a sensação de fome
