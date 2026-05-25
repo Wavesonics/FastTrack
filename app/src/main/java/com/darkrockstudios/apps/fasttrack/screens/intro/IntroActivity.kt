@@ -186,6 +186,7 @@ fun IntroScreen(
         Column(
             modifier = Modifier
 	            .align(Alignment.BottomCenter)
+	            .safeDrawingPadding()
 	            .padding(16.dp)
 	            .fillMaxWidth()
         ) {
@@ -278,6 +279,7 @@ fun IntroSlide(
         Column(
             modifier = Modifier
 	            .fillMaxSize()
+	            .safeDrawingPadding()
 	            .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
