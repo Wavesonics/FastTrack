@@ -4,7 +4,7 @@ versionName = "5.0.0"
 
 kotlin = "2.3.21"
 javaVersion = "17"
-agp = "8.13.2"
+agp = "9.0.1"
 targetSdk = "36"
 compileSdk = "36"
 minSdk = "26"
@@ -34,7 +34,7 @@ junitVersion = "1.3.0"
 kotlinxCoroutinesAndroid = "1.11.0"
 kotlinxDatetime = "0.8.0"
 kotlinxSerializationCore = "1.11.0"
-ksp = "2.2.21-RC2-2.0.4"
+ksp = "2.3.8"
 legacySupportV4 = "1.0.0"
 lifecycleExtensions = "2.2.0"
 lifecycleViewmodelKtx = "2.10.0"
@@ -130,7 +130,6 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

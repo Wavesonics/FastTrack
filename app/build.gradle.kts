@@ -2,7 +2,6 @@ import com.android.build.api.dsl.ManagedVirtualDevice
 
 plugins {
 	alias(libs.plugins.android.application)
-	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.ksp)
 	alias(libs.plugins.kotlin.compose)
@@ -32,6 +31,7 @@ android {
 	buildFeatures {
 		buildConfig = true
 		compose = true
+		resValues = true
 	}
 
 	composeOptions {
@@ -56,19 +56,6 @@ android {
 		sourceCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
 		targetCompatibility = JavaVersion.toVersion(libs.versions.javaVersion.get())
 	}
-	kotlin {
-		compilerOptions {
-			jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(libs.versions.javaVersion.get()))
-			freeCompilerArgs.addAll(
-				"-opt-in=kotlin.time.ExperimentalTime",
-				"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
-			)
-		}
-	}
-	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_17
-		targetCompatibility = JavaVersion.VERSION_17
-	}
 	dependenciesInfo {
 		includeInApk = false
 		includeInBundle = false
@@ -87,13 +74,23 @@ android {
 	}
 }
 
+kotlin {
+	compilerOptions {
+		jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(libs.versions.javaVersion.get()))
+		freeCompilerArgs.addAll(
+			"-opt-in=kotlin.time.ExperimentalTime",
+			"-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+		)
+	}
+}
+
 ksp {
 	arg("room.schemaLocation", "$projectDir/schemas")
 }
 
 android {
 	// Include the exported Room schemas in androidTest assets
-	sourceSets.getByName("androidTest").assets.srcDirs(files("$projectDir/schemas"))
+	sourceSets.getByName("androidTest").assets.directories.add("$projectDir/schemas")
 }
 
 dependencies {
