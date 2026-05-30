@@ -91,11 +91,11 @@
 	<string name="profile_bmi_category_morbidly_obese">Патологічне ожиріння</string>
 	<string name="profile_error">Недопустиме значення</string>
 	<string name="profile_bmr_label">Основний обмін:</string>
-	<string name="profile_bmr_value">%.0f kcal / day</string>
+	<string name="profile_bmr_value">%.0f ккал / день</string>
 	<string name="profile_height_label">Висота</string>
 	<string name="profile_height_imper_feet_label">футів</string>
 	<string name="profile_height_imper_inches_label">дюймів</string>
-	<string name="profile_height_metric_label">Centimeters</string>
+	<string name="profile_height_metric_label">Сантиметрів</string>
 	<string name="profile_gender_male">Чоловік</string>
 	<string name="profile_gender_female">Жінка</string>
 	<string name="manual_add_title">Додавання вручну</string>
@@ -224,10 +224,10 @@
 	<string name="settings_fancy_background_title">Показати красивий фон</string>
 	<string name="settings_fancy_background_subtitle">Вимкніть для простішого фону</string>
 	<string name="settings_metric_system_title">Метрична система</string>
-	<string name="settings_metric_system_subtitle">Відображення висоти і ваги в метричних одиницях</string>
+	<string name="settings_metric_system_subtitle">Показувати висоту та вагу в метричних одиницях</string>
 	<string name="settings_theme_mode_title">Тема</string>
-	<string name="settings_theme_mode_subtitle">Choose light, dark, or follow system</string>
-	<string name="settings_theme_mode_system">Система</string>
+	<string name="settings_theme_mode_subtitle">Оберіть світлу, темну чи системну</string>
+	<string name="settings_theme_mode_system">Системна</string>
 	<string name="settings_theme_mode_light">Світла</string>
 	<string name="settings_theme_mode_dark">Темна</string>
 	<string name="log_no_entries">Ще немає записів!</string>
