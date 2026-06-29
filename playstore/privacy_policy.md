@@ -2,7 +2,7 @@
 
 **FastTrack** prioritizes your privacy and data security. This app collects no data, does not connect to the internet, and does not even possess any internet permissions. FastTrack operates entirely on your device and is designed to function independently of any online services.
 
-We do not collect, store, or share any user information. Not for Ads, not for statistics, nothing. All usage of the app and its features remains entirely private and limited to your device. Additionally, FastTrack is fully open-source, allowing you to review and verify the code for transparency at this [GitHub repository](https://github.com/Wavesonics/FastTrack).
+We do not collect, store, or share any user information. Not for Ads, not for statistics, nothing. All usage of the app and its features remains entirely private and limited to your device. Additionally, FastTrack is fully open-source, allowing you to review and verify the code for transparency at this [GitHub repository](https://github.com/Darkrock-Studios/FastTrack).
 
 By using **FastTrack**, you can be assured of complete data privacy and security, with zero data collection or tracking.
 

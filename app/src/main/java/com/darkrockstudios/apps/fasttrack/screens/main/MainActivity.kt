@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
 			.setBrief(R.string.about_brief)
 			.setAppIcon(R.drawable.app_icon)
 			.setAppName(R.string.app_name)
-			.addGitHubLink("Wavesonics")
+			.addGitHubLink("Darkrock-Studios")
 			.addWebsiteLink("https://darkrock.studio/")
 			.addLink(
 				R.drawable.ic_discord,
