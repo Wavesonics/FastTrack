@@ -116,7 +116,7 @@
 	<string name="fast_ketosis_label">Cetosis:</string>
 	<string name="fast_fat_burn_label">Quema de Grasa:</string>
 	<string name="stage_fasting_title">Ayuno</string>
-	<string name="stage_fasting_description">Su cuerpo está consumiendo sus almacenes de glucosa, ¡siga adelante!</string>
+	<string name="stage_fasting_description">Tu cuerpo está consumiendo sus reservas de glucosa. ¡Sigue adelante!</string>
 	<string name="stage_fat_burning_title">Quema de grasa</string>
 	<string name="stage_fat_burning_description">¡Tus reservas de glucosa están agotadas! Tu cuerpo ahora está quemando
 		grasa para obtener energía. Un entrenamiento en las próximas horas sería óptimo.</string>
