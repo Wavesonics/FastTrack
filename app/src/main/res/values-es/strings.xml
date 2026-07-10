@@ -132,7 +132,7 @@
 		horas, la autofagia será muy efectiva.</string>
 	<string name="phase_glucose">Quema de Glucosa</string>
 	<string name="phase_fat_burning">Quema de grasa</string>
-	<string name="phase_ketosis">Cetoacidosis</string>
+	<string name="phase_ketosis">Cetosis</string>
 	<string name="phase_autophagy">Autofagia</string>
 	<string name="phase_optimal_autophagy">Autofagia Óptima</string>
 	<string name="share_text">¡He estado ayunando durante %1$d horas y %2$d minutos! Mi cuerpo está consumiendo
@@ -145,7 +145,7 @@
 	<string name="notification_fat_burn_title">Etapa Rápida: Quema de Grasas</string>
 	<string name="notification_fat_burn_content">Has agotado tus reservas de glucógeno y tu cuerpo ahora está
 		consumiendo grasa para obtener energía.</string>
-	<string name="notification_ketosis_title">Fase Rápida: Cetoacidosis</string>
+	<string name="notification_ketosis_title">Fase Rápida: Cetosis</string>
 	<string name="notification_ketosis_content">Tu cuerpo ha descompuesto suficientes reservas de grasa que has entrado
 		en cetosis.</string>
 	<string name="notification_autophagy_title">Fase Rápida: Autofagia</string>
@@ -166,7 +166,7 @@
 		adiposo (grasa) en cuerpos cetónicos. Además de poder consumir glucosa para obtener energía, tu cuerpo también
 		puede consumir cuerpos cetónicos para obtener energía, y a medida que las reservas de glucosa se agotan, tu
 		cuerpo cambiará su modo de energía a cuerpos cetónicos.</string>
-	<string name="info_dialog_ketosis_title">Cetoacidosis</string>
+	<string name="info_dialog_ketosis_title">Cetosis</string>
 	<string name="info_dialog_ketosis_content">En esta etapa, tu cuerpo ha estado descomponiendo grasa el tiempo
 		suficiente como para que esté siendo alimentado principalmente por cuerpos cetónicos en lugar de
 		glucosa.\n\nAdemás de los beneficios de pérdida de grasa que esto implica, los estudios han demostrado
