@@ -48,13 +48,13 @@
 	<string name="title_log">Registro</string>
 	<string name="title_profile">Perfil</string>
 	<string name="fasting_fragment_label">Rápido</string>
-	<string name="start_fast_button">Comenzar Rápido</string>
-	<string name="start_fast_now_button">Comienza Rápido Ahora</string>
-	<string name="end_fast_button">Terminar Rápido</string>
+	<string name="start_fast_button">Comenzar Ayuno</string>
+	<string name="start_fast_now_button">Comienza Ayuno Ahora</string>
+	<string name="end_fast_button">Terminar Ayuno</string>
 	<string name="fasting_energy_mode">Modo de energía: %1$s</string>
 	<string name="fasting_energy_mode_glucose">Glucosa</string>
 	<string name="fasting_energy_mode_fat">Cuerpos cetónicos</string>
-	<string name="confirm_start_fast_title">¿Comenzar rápido?</string>
+	<string name="confirm_start_fast_title">¿Comenzar ayuno?</string>
 	<string name="confirm_start_fast_positive">Ahora</string>
 	<string name="confirm_start_fast_neutral">Ya Comenzó</string>
 	<string name="confirm_start_fast_negative">No</string>
