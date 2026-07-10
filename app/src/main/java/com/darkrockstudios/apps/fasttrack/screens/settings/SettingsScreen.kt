@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.ui.text.font.FontWeight
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
@@ -87,6 +88,10 @@ private fun SettingsList(
 	onImportClick: () -> Unit
 ) {
 	var fancyBackground by remember { mutableStateOf(settings.getShowFancyBackground()) }
+	var phaseAutoMode by remember { mutableStateOf(settings.getPhaseAutoMode()) }
+	var showFatBurn by remember { mutableStateOf(settings.getShowFatBurn()) }
+	var showKetosis by remember { mutableStateOf(settings.getShowKetosis()) }
+	var showAutophagy by remember { mutableStateOf(settings.getShowAutophagy()) }
 
 	Box(modifier = Modifier.fillMaxSize()) {
 		LazyColumn(
@@ -141,6 +146,56 @@ private fun SettingsList(
 					onChange = onMetricSystemSettingChanged
 				)
 			}
+			item(key = "phases_header") {
+				SettingsSectionHeader(title = R.string.settings_section_phases)
+			}
+			item(key = "phase_auto_mode") {
+				SettingsItem(
+					headline = R.string.settings_phase_auto_title,
+					details = R.string.settings_phase_auto_subtitle,
+					value = phaseAutoMode,
+					onChange = { checked ->
+						phaseAutoMode = checked
+						settings.setPhaseAutoMode(checked)
+					}
+				)
+			}
+			item(key = "phase_fat_burn") {
+				SettingsItem(
+					headline = R.string.settings_phase_fatburn_title,
+					details = R.string.settings_phase_fatburn_subtitle,
+					value = showFatBurn,
+					enabled = !phaseAutoMode,
+					onChange = { checked ->
+						showFatBurn = checked
+						settings.setShowFatBurn(checked)
+					}
+				)
+			}
+			item(key = "phase_ketosis") {
+				SettingsItem(
+					headline = R.string.settings_phase_ketosis_title,
+					details = R.string.settings_phase_ketosis_subtitle,
+					value = showKetosis,
+					enabled = !phaseAutoMode,
+					onChange = { checked ->
+						showKetosis = checked
+						settings.setShowKetosis(checked)
+					}
+				)
+			}
+			item(key = "phase_autophagy") {
+				SettingsItem(
+					headline = R.string.settings_phase_autophagy_title,
+					details = R.string.settings_phase_autophagy_subtitle,
+					value = showAutophagy,
+					enabled = !phaseAutoMode,
+					onChange = { checked ->
+						showAutophagy = checked
+						settings.setShowAutophagy(checked)
+					}
+				)
+			}
 			item(key = "theme_mode") {
 				ThemeModeSettingsItem(
 					themeMode = themeModeState,
@@ -189,26 +244,32 @@ private fun SettingsItem(
 	@StringRes headline: Int,
 	@StringRes details: Int,
 	value: Boolean,
-	onChange: (enabled: Boolean) -> Unit
+	onChange: (enabled: Boolean) -> Unit,
+	enabled: Boolean = true,
 ) {
+	// Dim the whole row when disabled (e.g. individual phase toggles under Auto)
+	val contentAlpha = if (enabled) 1f else 0.38f
 	ListItem(
 		headlineContent = {
 			Text(
 				text = stringResource(id = headline),
 				style = MaterialTheme.typography.labelLarge,
-				fontWeight = FontWeight.Bold
+				fontWeight = FontWeight.Bold,
+				color = LocalContentColor.current.copy(alpha = contentAlpha)
 			)
 		},
 		supportingContent = {
 			Text(
 				text = stringResource(id = details),
-				style = MaterialTheme.typography.bodySmall
+				style = MaterialTheme.typography.bodySmall,
+				color = LocalContentColor.current.copy(alpha = contentAlpha)
 			)
 		},
 		trailingContent = {
 			Switch(
 				checked = value,
-				onCheckedChange = onChange
+				onCheckedChange = onChange,
+				enabled = enabled
 			)
 		}
 	)

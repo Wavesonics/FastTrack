@@ -12,11 +12,11 @@ import kotlin.time.Instant
  * Dummy implementation of FastingLogRepository for preview purposes
  */
 class DummyFastingLogRepository(private val entries: List<FastingLogEntry> = emptyList()) : FastingLogRepository {
-	override fun logFast(startTime: Instant, endTime: Instant) {}
+	override fun logFast(startTime: Instant, endTime: Instant, notes: String) {}
 	override fun loadAll(): Flow<List<FastingLogEntry>> = flow {}
 	override fun delete(item: FastingLogEntry) = true
-	override fun addLogEntry(start: LocalDateTime, length: Duration) {}
-	override fun updateLogEntry(entry: FastingLogEntry, start: LocalDateTime, length: Duration) = true
+	override fun addLogEntry(start: LocalDateTime, length: Duration, notes: String) {}
+	override fun updateLogEntry(entry: FastingLogEntry, start: LocalDateTime, length: Duration, notes: String) = true
 	override suspend fun exportLog(): String = ""
 	override suspend fun importLog(cvsExport: String) = true
 }

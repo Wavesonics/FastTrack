@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
@@ -14,11 +15,13 @@ import androidx.compose.material3.*
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
@@ -63,7 +66,6 @@ fun MainScreen(
 			pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
-	var showMenu by remember { mutableStateOf(false) }
 	val shareEnabled = remember { mutableStateOf(repository.getFastStart() != null) }
 
 	val fastingTitle = stringResource(id = R.string.title_fasting)
@@ -73,83 +75,13 @@ fun MainScreen(
 	val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
 
-	val currentTitle = remember(pagerState.currentPage, fastingTitle, logTitle, profileTitle) {
-		when (ScreenPages.fromOrdinal(pagerState.currentPage)) {
-			ScreenPages.Fasting -> fastingTitle
-			ScreenPages.Log -> logTitle
-			ScreenPages.Profile -> profileTitle
-		}
-	}
-
 	LaunchedEffect(repository.isFasting()) {
 		shareEnabled.value = repository.getFastStart() != null
 	}
 
+	// No top app bar: the bottom navigation already names the screen, and the
+	// reclaimed space belongs to the content. Actions float in the top-right.
 	Scaffold(
-		topBar = {
-			TopAppBar(
-				colors = TopAppBarDefaults.topAppBarColors(
-					containerColor = MaterialTheme.colorScheme.primaryContainer,
-					titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-					actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-				),
-				modifier = Modifier.Companion
-					.fillMaxWidth()
-					.background(MaterialTheme.colorScheme.primary),
-				title = {
-					Text(
-						text = currentTitle,
-						style = MaterialTheme.typography.headlineMedium,
-					)
-				},
-				actions = {
-					IconButton(
-						onClick = onShareClick,
-						enabled = shareEnabled.value
-					) {
-						Icon(
-							imageVector = Icons.Default.Share,
-							contentDescription = stringResource(id = R.string.action_share),
-						)
-					}
-
-					IconButton(onClick = onInfoClick) {
-						Icon(
-							imageVector = Icons.Default.Info,
-							contentDescription = stringResource(id = R.string.action_info),
-						)
-					}
-
-					IconButton(onClick = { showMenu = !showMenu }) {
-						Icon(
-							imageVector = Icons.Default.MoreVert,
-							contentDescription = stringResource(id = R.string.more_options_button_description),
-						)
-					}
-
-					DropdownMenu(
-						expanded = showMenu,
-						onDismissRequest = { showMenu = false }
-					) {
-						DropdownMenuItem(
-							text = { Text(stringResource(id = R.string.action_about)) },
-							onClick = {
-								onAboutClick()
-								showMenu = false
-							},
-						)
-
-						DropdownMenuItem(
-							text = { Text(stringResource(id = R.string.action_settings)) },
-							onClick = {
-								onSettingsClick()
-								showMenu = false
-							},
-						)
-					}
-				}
-			)
-		},
 		bottomBar = {
 			if (compactHeight.not()) {
 				NavigationBar(
@@ -208,14 +140,15 @@ fun MainScreen(
 			}
 		}
 	) { paddingValues ->
-		if (compactHeight) {
+		Box(modifier = Modifier.fillMaxSize()) {
+			if (compactHeight) {
 
-			Row(
-				modifier = Modifier
-					.padding(top = paddingValues.calculateTopPadding())
-					.fillMaxSize()
-			) {
-				NavigationRail {
+				Row(
+					modifier = Modifier
+						.padding(top = paddingValues.calculateTopPadding())
+						.fillMaxSize()
+				) {
+					NavigationRail {
 					NavigationRailItem(
 						icon = {
 							Icon(
@@ -275,17 +208,105 @@ fun MainScreen(
 					externalRequests,
 				)
 			}
-		} else {
-			Box(
-				modifier = Modifier
-					.fillMaxSize()
-			) {
+			} else {
 				Content(
 					Modifier.fillMaxSize(),
 					contentPaddingValues = paddingValues,
 					pagerState,
 					externalRequests,
 				)
+			}
+
+			FloatingTopActions(
+				shareEnabled = shareEnabled.value,
+				onShareClick = onShareClick,
+				onInfoClick = onInfoClick,
+				onAboutClick = onAboutClick,
+				onSettingsClick = onSettingsClick,
+				modifier = Modifier
+					.align(Alignment.TopEnd)
+					.padding(
+						top = paddingValues.calculateTopPadding() + 4.dp,
+						end = 8.dp,
+					)
+			)
+		}
+	}
+}
+
+/**
+ * The old top app bar, distilled to a small translucent pill in the
+ * top-right corner: Info stays exposed; Share, About and Settings live
+ * behind the overflow menu.
+ */
+@Composable
+private fun FloatingTopActions(
+	shareEnabled: Boolean,
+	onShareClick: () -> Unit,
+	onInfoClick: () -> Unit,
+	onAboutClick: () -> Unit,
+	onSettingsClick: () -> Unit,
+	modifier: Modifier = Modifier,
+) {
+	var showMenu by remember { mutableStateOf(false) }
+
+	Surface(
+		modifier = modifier,
+		shape = RoundedCornerShape(24.dp),
+		color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f),
+	) {
+		Row(verticalAlignment = Alignment.CenterVertically) {
+			IconButton(onClick = onInfoClick) {
+				Icon(
+					imageVector = Icons.Default.Info,
+					contentDescription = stringResource(id = R.string.action_info),
+				)
+			}
+
+			Box {
+				IconButton(onClick = { showMenu = !showMenu }) {
+					Icon(
+						imageVector = Icons.Default.MoreVert,
+						contentDescription = stringResource(id = R.string.more_options_button_description),
+					)
+				}
+
+				DropdownMenu(
+					expanded = showMenu,
+					onDismissRequest = { showMenu = false }
+				) {
+					DropdownMenuItem(
+						text = { Text(stringResource(id = R.string.action_share)) },
+						leadingIcon = {
+							Icon(
+								imageVector = Icons.Default.Share,
+								contentDescription = null,
+							)
+						},
+						// There is nothing to share until a fast has been started
+						enabled = shareEnabled,
+						onClick = {
+							onShareClick()
+							showMenu = false
+						},
+					)
+
+					DropdownMenuItem(
+						text = { Text(stringResource(id = R.string.action_about)) },
+						onClick = {
+							onAboutClick()
+							showMenu = false
+						},
+					)
+
+					DropdownMenuItem(
+						text = { Text(stringResource(id = R.string.action_settings)) },
+						onClick = {
+							onSettingsClick()
+							showMenu = false
+						},
+					)
+				}
 			}
 		}
 	}

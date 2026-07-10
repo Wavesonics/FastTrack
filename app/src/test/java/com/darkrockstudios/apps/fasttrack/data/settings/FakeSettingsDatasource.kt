@@ -63,6 +63,23 @@ class FakeSettingsDatasource : SettingsDatasource {
 		logViewMode = mode
 	}
 
+	private var showFatBurn: Boolean = true
+	private var showKetosis: Boolean = true
+	private var showAutophagy: Boolean = true
+	private var phaseAutoMode: Boolean = false
+
+	override fun getShowFatBurn(): Boolean = showFatBurn
+	override fun setShowFatBurn(enabled: Boolean) { showFatBurn = enabled }
+	override fun getShowKetosis(): Boolean = showKetosis
+	override fun setShowKetosis(enabled: Boolean) { showKetosis = enabled }
+	override fun getShowAutophagy(): Boolean = showAutophagy
+	override fun setShowAutophagy(enabled: Boolean) { showAutophagy = enabled }
+	override fun getPhaseAutoMode(): Boolean = phaseAutoMode
+	override fun setPhaseAutoMode(enabled: Boolean) { phaseAutoMode = enabled }
+
+	override fun phaseVisibilityFlow(): Flow<PhaseVisibility> =
+		flowOf(PhaseVisibility(showFatBurn, showKetosis, showAutophagy, phaseAutoMode))
+
 	/**
 	 * Clears all data - useful for test setup/teardown
 	 */

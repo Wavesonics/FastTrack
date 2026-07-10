@@ -25,6 +25,7 @@ import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.darkrockstudios.apps.fasttrack.screens.intro.IntroActivity
 import com.darkrockstudios.apps.fasttrack.screens.settings.SettingsActivity
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.vansuita.materialabout.builder.AboutBuilder
 import org.koin.android.ext.android.inject
 import kotlin.time.ExperimentalTime
@@ -111,14 +112,8 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun shareText() {
-		val elapsedHours: Long
-		val elapsedMinutes: Int
-
 		val elapsedTime = fastingRepository.getElapsedFastTime()
-		elapsedTime.toComponents { hours, minutes, _, _ ->
-			elapsedHours = hours
-			elapsedMinutes = minutes
-		}
+		val durationText = formatDuration(this, elapsedTime)
 
 		val curPhase = Stages.getCurrentPhase(elapsedTime)
 		val shareText = if (fastingRepository.isFasting()) {
@@ -128,9 +123,9 @@ class MainActivity : AppCompatActivity() {
 				} else {
 					getString(R.string.fasting_energy_mode_glucose)
 				}
-			getString(R.string.share_text, elapsedHours, elapsedMinutes, energyModeStr)
+			getString(R.string.share_text_fasting, durationText, energyModeStr)
 		} else {
-			getString(R.string.share_text_past_tense, elapsedHours, elapsedMinutes)
+			getString(R.string.share_text_finished, durationText)
 		}
 
 		val sendIntent: Intent = Intent().apply {

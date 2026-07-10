@@ -11,6 +11,7 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.widget.WidgetUpdater
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.math.abs
 import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
@@ -47,6 +47,19 @@ class FastingViewModel(
 		viewModelScope.launch {
 			settingsDatasource.showFancyBackgroundFlow().collect { enabled ->
 				_uiState.update { state -> state.copy(showGradientBackground = enabled) }
+			}
+		}
+
+		viewModelScope.launch {
+			settingsDatasource.phaseVisibilityFlow().collect { v ->
+				_uiState.update { state ->
+					state.copy(
+						showFatBurn = v.fatBurn,
+						showKetosis = v.ketosis,
+						showAutophagy = v.autophagy,
+						phaseAutoMode = v.autoMode,
+					)
+				}
 			}
 		}
 
@@ -118,12 +131,19 @@ class FastingViewModel(
 			updateTimerView(elapsedTime)
 			updatePhases(elapsedTime)
 
-			_uiState.update { it.copy(elapsedTime = elapsedTime, fastStartTime = fastStart) }
+			_uiState.update {
+				it.copy(
+					elapsedTime = elapsedTime,
+					fastStartTime = fastStart,
+					lastFastEndTime = fastEnd,
+				)
+			}
 		} else {
 			_uiState.update {
 				it.copy(
 					elapsedTime = null,
 					fastStartTime = null,
+					lastFastEndTime = repository.getFastEnd(),
 					elapsedHours = 0.0
 				)
 			}
@@ -131,39 +151,20 @@ class FastingViewModel(
 	}
 
 	private fun updateTimerView(elapsedTime: Duration) {
-		elapsedTime.toComponents { hours, minutes, seconds, nanoseconds ->
-			val secondsStr = "%02d".format(seconds)
-			val minutesStr = "%02d".format(minutes)
-			val timerText = "$hours:$minutesStr:$secondsStr"
-			val millisecondsText = "%02d".format(nanoseconds / 10000000)
-
-			_uiState.update {
-				it.copy(
-					timerText = timerText,
-					milliseconds = millisecondsText
-				)
-			}
+		_uiState.update {
+			it.copy(
+				timerText = formatDuration(appContext, elapsedTime),
+				milliseconds = ""
+			)
 		}
 	}
 
 	private fun updatePhases(elapsedTime: Duration) {
-		val currentStage = Stages.getCurrentPhase(elapsedTime)
-
 		_uiState.update { it.copy(elapsedHours = elapsedTime.inWholeHours.toDouble()) }
 
 		val fatBurnTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_FAT_BURN, elapsedTime)
-
-		val ketosisTimeAndState = if (currentStage.fatBurning) {
-			getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
-		} else {
-			Pair("--:--:--", IFastingViewModel.StageState.StartedInactive)
-		}
-
-		val autophagyTimeAndState = if (currentStage.ketosis) {
-			getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
-		} else {
-			Pair("--:--:--", IFastingViewModel.StageState.StartedInactive)
-		}
+		val ketosisTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
+		val autophagyTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
 
 		_uiState.update {
 			it.copy(
@@ -186,20 +187,13 @@ class FastingViewModel(
 		val stageState: IFastingViewModel.StageState
 
 		if (elapsedTime.toDouble(DurationUnit.HOURS) > phaseHours) {
-			val timeSince = elapsedTime.minus(phaseHours.hours)
-			timeText = timeSince.toComponents { hours, minutes, seconds, _ ->
-				"%d:%02d:%02d".format(hours, minutes, seconds)
-			}
+			// The phase is underway: how long you've been in it
+			timeText = formatDuration(appContext, elapsedTime.minus(phaseHours.hours))
 			stageState = IFastingViewModel.StageState.StartedActive
 		} else {
-			val timeSince = elapsedTime.minus(phaseHours.hours)
-			timeText = timeSince.toComponents { hours, minutes, seconds, _ ->
-				"-%d:%02d:%02d".format(
-					abs(hours),
-					abs(minutes),
-					abs(seconds)
-				)
-			}
+			// The phase is ahead: frame it as anticipation, not deficit
+			val timeUntil = phaseHours.hours.minus(elapsedTime)
+			timeText = appContext.getString(R.string.phase_time_until, formatDuration(appContext, timeUntil))
 			stageState = IFastingViewModel.StageState.StartedInactive
 		}
 
@@ -221,11 +215,13 @@ class FastingViewModel(
 		}
 	}
 
-	override fun endFast(timeEnded: Instant?) {
+	override fun endFast(timeEnded: Instant?, notes: String) {
 		if (repository.isFasting()) {
 			repository.endFast(timeEnded)
 
-			viewModelScope.launch(Dispatchers.IO) { saveFastToLog(repository.getFastStart(), repository.getFastEnd()) }
+			viewModelScope.launch(Dispatchers.IO) {
+				saveFastToLog(repository.getFastStart(), repository.getFastEnd(), notes)
+			}
 
 			Napier.i("Fast ended!")
 
@@ -294,11 +290,12 @@ class FastingViewModel(
 		WidgetUpdater.updateWidgets(appContext)
 	}
 
-	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?) = withContext(Dispatchers.Default) {
-		if (startTime != null && endTime != null) {
-			logRepository.logFast(startTime, endTime)
-		} else {
-			Napier.e("No start time when ending fast!")
+	private suspend fun saveFastToLog(startTime: Instant?, endTime: Instant?, notes: String) =
+		withContext(Dispatchers.Default) {
+			if (startTime != null && endTime != null) {
+				logRepository.logFast(startTime, endTime, notes)
+			} else {
+				Napier.e("No start time when ending fast!")
+			}
 		}
-	}
 }

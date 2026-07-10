@@ -17,6 +17,7 @@ import androidx.glance.text.TextStyle
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.utils.getColorFor
 import org.koin.compose.koinInject
 import kotlin.time.ExperimentalTime
@@ -117,7 +118,7 @@ private fun SmallWidgetContent(
 
 				// Time display
 				Text(
-					text = context.getString(R.string.app_widget_time_compact, elapsedTime.inWholeHours),
+					text = formatDuration(context, elapsedTime, withMinutes = false),
 					style = TextStyle(
 						fontWeight = FontWeight.Bold,
 						color = GlanceTheme.colors.onBackground,
@@ -190,7 +191,7 @@ private fun MediumWidgetContent(
 			Column {
 				// Time display
 				Text(
-					text = context.getString(R.string.app_widget_time, elapsedTime.inWholeHours),
+					text = formatDuration(context, elapsedTime, withMinutes = false),
 					style = TextStyle(
 						fontWeight = FontWeight.Bold,
 						color = GlanceTheme.colors.onBackground,
@@ -299,7 +300,7 @@ private fun FullWidgetContent(
 
 			// Large time display
 			Text(
-				text = context.getString(R.string.app_widget_time, elapsedTime.inWholeHours),
+				text = formatDuration(context, elapsedTime, withMinutes = false),
 				style = TextStyle(
 					fontWeight = FontWeight.Bold,
 					color = GlanceTheme.colors.onBackground,

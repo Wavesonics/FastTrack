@@ -24,6 +24,9 @@ interface FastEntryDao
 	@Query("DELETE FROM fastentry WHERE start = :startTime")
 	fun deleteByStartTime(startTime: Long): Int
 
+	@Query("DELETE FROM fastentry WHERE start >= :fromInclusive AND start < :toExclusive")
+	fun deleteByStartRange(fromInclusive: Long, toExclusive: Long): Int
+
 	@Query("DELETE FROM fastentry WHERE uid = :uid")
 	fun deleteByUid(uid: Int): Int
 }

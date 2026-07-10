@@ -8,14 +8,16 @@ import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.DurationUnit
 
 /**
- * start - a linux UTC epoch timestamp in milliseconds
+ * start  - a linux UTC epoch timestamp in milliseconds
  * length - duration in milliseconds of the fast
+ * notes  - optional user note captured when a fast ends (may be empty)
  */
 @Entity
 data class FastEntry(
 	@PrimaryKey(autoGenerate = true) val uid: Int = 0,
 	@ColumnInfo val start: Long,
-	@ColumnInfo val length: Long
+	@ColumnInfo val length: Long,
+	@ColumnInfo(defaultValue = "''") val notes: String = ""
 ) {
 	fun lengthHours() = length.milliseconds.toDouble(DurationUnit.HOURS)
 

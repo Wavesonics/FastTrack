@@ -13,6 +13,10 @@ object Data
 	const val KEY_METRIC_SYSTEM = "metric_system"
 	const val KEY_THEME_MODE = "theme_mode"
 	const val KEY_LOG_VIEW_MODE = "log_view_mode"
+	const val KEY_SHOW_FAT_BURN = "show_fat_burn"
+	const val KEY_SHOW_KETOSIS = "show_ketosis"
+	const val KEY_SHOW_AUTOPHAGY = "show_autophagy"
+	const val KEY_PHASE_AUTO_MODE = "phase_auto_mode"
 
 	private const val CM_INCH_RATIO = 2.54
 	fun inchToCm(inches: Int): Double = inches.toDouble() * CM_INCH_RATIO

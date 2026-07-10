@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.darkrockstudios.apps.fasttrack.R
@@ -21,6 +22,7 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.fasting.gaugeColors
 import com.darkrockstudios.apps.fasttrack.utils.formatAs
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.utils.rememberVibrator
 import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
 import androidx.compose.ui.platform.LocalContext
@@ -67,18 +69,17 @@ fun FastEntryItem(
 					style = MaterialTheme.typography.titleMedium,
 					fontStyle = FontStyle.Italic,
 					color = MaterialTheme.colorScheme.onSurface,
-					modifier = Modifier.padding(top = 8.dp, start = 16.dp, end = 16.dp)
+					modifier = Modifier.padding(top = 13.dp, start = 16.dp, end = 16.dp)
 				)
 
 				Row(
 					modifier = Modifier.Companion
 						.fillMaxWidth()
-						.padding(16.dp),
-					horizontalArrangement = Arrangement.spacedBy(16.dp),
+						.padding(start = 16.dp, end = 16.dp, top = 13.dp),
+					horizontalArrangement = Arrangement.spacedBy(13.dp),
 					verticalAlignment = Alignment.CenterVertically
 				) {
 					val lenHours = entry.length.toDouble(DurationUnit.HOURS)
-					val hours = lenHours.roundToInt()
 
 					// Determine highest stage reached
 					val highestStage = remember(lenHours) {
@@ -114,7 +115,7 @@ fun FastEntryItem(
 						} else 0
 
 						Text(
-							text = "⏱️ " + stringResource(id = R.string.log_entry_length, hours),
+							text = "⏱️ " + formatDuration(context, entry.length),
 							style = MaterialTheme.typography.headlineSmall.copy(fontSize = 18.sp),
 							color = MaterialTheme.colorScheme.onSurface,
 							fontWeight = FontWeight.Bold,
@@ -136,6 +137,40 @@ fun FastEntryItem(
 						}
 					}
 				}
+
+				// Optional note, shown as a blockquote so long text stays readable
+				if (entry.notes.isNotBlank()) {
+					Row(
+						modifier = Modifier
+							.fillMaxWidth()
+							.padding(start = 16.dp, end = 16.dp, top = 5.dp)
+							.height(IntrinsicSize.Min),
+						verticalAlignment = Alignment.CenterVertically,
+					) {
+						Box(
+							modifier = Modifier
+								.width(3.dp)
+								.fillMaxHeight()
+								.background(
+									MaterialTheme.colorScheme.primary,
+									RoundedCornerShape(2.dp)
+								)
+						)
+						Text(
+							text = entry.notes,
+							style = MaterialTheme.typography.bodyMedium,
+							fontStyle = FontStyle.Italic,
+							color = MaterialTheme.colorScheme.onSurfaceVariant,
+							maxLines = 6,
+							overflow = TextOverflow.Ellipsis,
+							modifier = Modifier
+								.weight(1f)
+								.padding(start = 8.dp)
+						)
+					}
+				}
+
+				Spacer(modifier = Modifier.height(13.dp))
 			}
 		}
 

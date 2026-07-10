@@ -15,5 +15,7 @@ class FastingLogDatabaseDatasource(
 	override fun update(entry: FastEntry): Boolean = dao.update(entry) > 0
 	override fun delete(entry: FastEntry): Boolean = dao.delete(entry) > 0
 	override fun deleteByStartTime(startTime: Long): Boolean = dao.deleteByStartTime(startTime) > 0
+	override fun deleteByStartRange(fromInclusive: Long, toExclusive: Long): Boolean =
+		dao.deleteByStartRange(fromInclusive, toExclusive) > 0
 	override fun deleteByUid(uid: Int): Boolean = dao.deleteByUid(uid) > 0
 }

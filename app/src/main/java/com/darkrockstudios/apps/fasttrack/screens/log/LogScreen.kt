@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -21,7 +22,9 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -149,14 +152,15 @@ private fun LogStatsHeader(
 			.padding(bottom = 16.dp),
 		horizontalArrangement = Arrangement.spacedBy(12.dp)
 	) {
+		val context = LocalContext.current
 		StatCard(
 			title = stringResource(id = R.string.log_total_ketosis),
-			valueText = stringResource(id = R.string.log_total_hours, totalKetosisHours),
+			valueText = formatDuration(context, totalKetosisHours.hours, withMinutes = false),
 			modifier = Modifier.weight(1f)
 		)
 		StatCard(
 			title = stringResource(id = R.string.log_total_autophagy),
-			valueText = stringResource(id = R.string.log_total_hours, totalAutophagyHours),
+			valueText = formatDuration(context, totalAutophagyHours.hours, withMinutes = false),
 			modifier = Modifier.weight(1f)
 		)
 	}

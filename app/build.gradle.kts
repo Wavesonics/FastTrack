@@ -7,6 +7,12 @@ plugins {
 	alias(libs.plugins.kotlin.compose)
 }
 
+// make APK filenames follow <archivesName>-<buildType>.apk,
+// i.e. FastTrack-release.apk and FastTrack-dev.apk
+base {
+	archivesName.set("FastTrack")
+}
+
 android {
 	namespace = "com.darkrockstudios.apps.fasttrack"
 	compileSdk = libs.versions.compileSdk.get().toInt()

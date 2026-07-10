@@ -130,28 +130,41 @@ class FastingLogRepositoryImplTest {
 		val csvOutput = repository.exportLog()
 
 		// Then
-		// Expected format: "ID,Start Date,Start Time,Duration (hours)"
 		val lines = csvOutput.split("\n")
 
-		// Check header
-		assertEquals("ID,Start Date,Start Time,Duration (hours)", lines[0])
-
-		// Check that we have the expected number of data rows
+		// New schema header
+		assertEquals("ID,Start,End,Duration (s),Duration,Notes", lines[0])
 		assertEquals(3, lines.size) // Header + 2 entries
 
-		// Convert entries to local time for comparison
-		val entry1Local = entry1Start.toLocalDateTime(TimeZone.currentSystemDefault())
-		val entry2Local = entry2Start.toLocalDateTime(TimeZone.currentSystemDefault())
-
-		// Check that each entry is correctly formatted
-		// Note: The exact format may vary depending on the local time zone, so we check for the presence of key data
+		// The datetime columns depend on the local time zone, so assert the
+		// tz-independent columns: duration seconds and humanized duration.
 		assertTrue(lines[1].startsWith("1,"))
-		assertTrue(lines[1].contains(entry1Local.date.toString()))
-		assertTrue(lines[1].endsWith("16"))
+		assertTrue(lines[1].contains(",57600,")) // 16h in seconds
+		assertTrue(lines[1].endsWith("16h 0m,")) // humanized, then empty Notes
 
 		assertTrue(lines[2].startsWith("2,"))
-		assertTrue(lines[2].contains(entry2Local.date.toString()))
-		assertTrue(lines[2].endsWith("24"))
+		assertTrue(lines[2].contains(",86400,")) // 24h in seconds
+		assertTrue(lines[2].endsWith("1d 0h 0m,"))
+	}
+
+	@Test
+	fun `test export then import round-trips through the new format`() = runBlocking<Unit> {
+		fakeDatasource.clear()
+		val start = LocalDateTime(2023, 3, 15, 9, 5, 30).toInstant(TimeZone.currentSystemDefault())
+		fakeDatasource.insertAll(
+			FastEntry(uid = 1, start = start.toEpochMilliseconds(), length = 40.hours.inWholeMilliseconds, notes = "Felt, \"great\"")
+		)
+
+		val csv = repository.exportLog()
+		fakeDatasource.clear()
+		val ok = repository.importLog(csv)
+
+		assertTrue(ok)
+		val entries = fakeDatasource.getAll()
+		assertEquals(1, entries.size)
+		assertEquals(start.toEpochMilliseconds(), entries[0].start)
+		assertEquals(40.hours.inWholeMilliseconds, entries[0].length)
+		assertEquals("Felt, \"great\"", entries[0].notes) // commas + quotes survive CSV escaping
 	}
 
 	@Test
@@ -166,66 +179,42 @@ class FastingLogRepositoryImplTest {
 			2,2023-01-02,12:30,24
 		""".trimIndent()
 
-		// When
+		// When (legacy format must still import)
 		val result = repository.importLog(csvInput)
 
 		// Then
 		assertTrue(result) // Import should succeed
 
-		// Check that entries were added to the datasource
 		val entries = fakeDatasource.getAll()
 		assertEquals(2, entries.size)
 
-		// Verify the entries have the correct properties
-		// Note: We can't directly check the exact millisecond values as they depend on the timezone
-		// So we'll check the IDs and relative properties
-
-		// Find entries by ID
-		val entry1 = entries.find { it.uid == 1 }
-		val entry2 = entries.find { it.uid == 2 }
-
-		// Verify entries exist
-		assertTrue(entry1 != null)
-		assertTrue(entry2 != null)
-
-		// Verify durations
-		assertEquals(16 * 60 * 60 * 1000, entry1!!.length) // 16 hours in milliseconds
-		assertEquals(24 * 60 * 60 * 1000, entry2!!.length) // 24 hours in milliseconds
+		// Import keys on start (not the CSV's ID), so verify by duration
+		assertTrue(entries.any { it.length == 16L * 60 * 60 * 1000 })
+		assertTrue(entries.any { it.length == 24L * 60 * 60 * 1000 })
 	}
 
 	@Test
-	fun `test importLog handles conflicts by replacing existing entries`() = runBlocking<Unit> {
-		// Given
-		fakeDatasource.clear() // Ensure we start with a clean state
+	fun `test importLog de-dupes by start time, replacing the existing entry`() = runBlocking<Unit> {
+		// Given an entry starting at a specific instant
+		fakeDatasource.clear()
+		val start = LocalDateTime(2023, 1, 1, 8, 0, 0).toInstant(TimeZone.currentSystemDefault())
+		fakeDatasource.insertAll(FastEntry(uid = 1, start = start.toEpochMilliseconds(), length = 2000))
 
-		// Add an existing entry with ID 1
-		val existingEntry = FastEntry(uid = 1, start = 1000, length = 2000)
-		fakeDatasource.insertAll(existingEntry)
-
-		// Create a CSV with an entry that has the same ID
+		// Importing a row with the SAME start (different duration) should replace it
 		val csvInput = """
 			ID,Start Date,Start Time,Duration (hours)
-			1,2023-01-01,8:00,16
+			99,2023-01-01,8:00,16
 		""".trimIndent()
 
 		// When
 		val result = repository.importLog(csvInput)
 
 		// Then
-		assertTrue(result) // Import should succeed
-
-		// Check that the entry was replaced
+		assertTrue(result)
 		val entries = fakeDatasource.getAll()
-		assertEquals(1, entries.size)
-
-		// Verify the entry has the new properties
-		val entry = entries[0]
-		assertEquals(1, entry.uid)
-		assertEquals(16 * 60 * 60 * 1000, entry.length) // 16 hours in milliseconds
-
-		// The original entry had length 2000, so if it's now 16 hours in milliseconds,
-		// we know it was replaced
-		assertNotEquals(2000, entry.length)
+		assertEquals(1, entries.size) // replaced, not duplicated
+		assertEquals(16L * 60 * 60 * 1000, entries[0].length)
+		assertNotEquals(2000L, entries[0].length)
 	}
 
 	@Test

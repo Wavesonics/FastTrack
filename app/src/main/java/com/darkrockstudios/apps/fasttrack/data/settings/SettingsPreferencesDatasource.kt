@@ -94,4 +94,44 @@ class SettingsPreferencesDatasource(
 	override fun setLogViewMode(mode: LogViewMode) {
 		storage.edit { putString(Data.KEY_LOG_VIEW_MODE, mode.name) }
 	}
+
+	override fun getShowFatBurn(): Boolean = storage.getBoolean(Data.KEY_SHOW_FAT_BURN, true)
+	override fun setShowFatBurn(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_SHOW_FAT_BURN, enabled) }
+	}
+
+	override fun getShowKetosis(): Boolean = storage.getBoolean(Data.KEY_SHOW_KETOSIS, true)
+	override fun setShowKetosis(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_SHOW_KETOSIS, enabled) }
+	}
+
+	override fun getShowAutophagy(): Boolean = storage.getBoolean(Data.KEY_SHOW_AUTOPHAGY, true)
+	override fun setShowAutophagy(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_SHOW_AUTOPHAGY, enabled) }
+	}
+
+	override fun getPhaseAutoMode(): Boolean = storage.getBoolean(Data.KEY_PHASE_AUTO_MODE, false)
+	override fun setPhaseAutoMode(enabled: Boolean) {
+		storage.edit { putBoolean(Data.KEY_PHASE_AUTO_MODE, enabled) }
+	}
+
+	override fun phaseVisibilityFlow(): Flow<PhaseVisibility> = callbackFlow {
+		fun current() = PhaseVisibility(
+			fatBurn = getShowFatBurn(),
+			ketosis = getShowKetosis(),
+			autophagy = getShowAutophagy(),
+			autoMode = getPhaseAutoMode(),
+		)
+		trySend(current())
+
+		val keys = setOf(
+			Data.KEY_SHOW_FAT_BURN, Data.KEY_SHOW_KETOSIS,
+			Data.KEY_SHOW_AUTOPHAGY, Data.KEY_PHASE_AUTO_MODE
+		)
+		val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+			if (key in keys) trySend(current())
+		}
+		storage.registerOnSharedPreferenceChangeListener(listener)
+		awaitClose { storage.unregisterOnSharedPreferenceChangeListener(listener) }
+	}
 }

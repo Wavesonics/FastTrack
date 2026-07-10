@@ -1,139 +1,248 @@
 package com.darkrockstudios.apps.fasttrack.data.log
 
 import com.darkrockstudios.apps.fasttrack.data.database.FastEntry
+import com.darkrockstudios.apps.fasttrack.utils.csvEscape
+import com.darkrockstudios.apps.fasttrack.utils.formatDurationFull
+import com.darkrockstudios.apps.fasttrack.utils.parseCsv
 import io.github.aakira.napier.Napier
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.datetime.*
-import java.time.format.DateTimeFormatter
+import kotlinx.coroutines.withContext
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
-import java.time.LocalDate as JavaLocalDate
-import java.time.LocalDateTime as JavaLocalDateTime
-import java.time.LocalTime as JavaLocalTime
+import kotlin.time.Instant
 
 class FastingLogRepositoryImpl(
 	private val datasource: FastingLogDatasource
 ) : FastingLogRepository {
-	override fun logFast(startTime: Instant, endTime: Instant) {
+
+	override fun logFast(startTime: Instant, endTime: Instant, notes: String) {
 		val duration = endTime.minus(startTime)
-		val newEntry = FastEntry(
-			start = startTime.toEpochMilliseconds(),
-			length = duration.inWholeMilliseconds
+		datasource.insertAll(
+			FastEntry(
+				start = startTime.toEpochMilliseconds(),
+				length = duration.inWholeMilliseconds,
+				notes = notes,
+			)
 		)
-		datasource.insertAll(newEntry)
 	}
 
 	override fun loadAll(): Flow<List<FastingLogEntry>> = datasource.loadAll().map { entries ->
 		entries.map { it.toFastingLogEntry() }
 	}
 
-	override fun delete(item: FastingLogEntry): Boolean {
-		return datasource.deleteByUid(item.id)
-	}
+	override fun delete(item: FastingLogEntry): Boolean = datasource.deleteByUid(item.id)
 
-	override fun addLogEntry(start: LocalDateTime, length: Duration) {
-		// Convert LocalDateTime to Instant (UTC time)
+	override fun addLogEntry(start: LocalDateTime, length: Duration, notes: String) {
 		val startInstant = start.toInstant(TimeZone.currentSystemDefault())
-
-		// Create FastEntry with UTC epoch milliseconds and duration in milliseconds
-		val newEntry = FastEntry(
-			start = startInstant.toEpochMilliseconds(),
-			length = length.inWholeMilliseconds
+		datasource.insertAll(
+			FastEntry(
+				start = startInstant.toEpochMilliseconds(),
+				length = length.inWholeMilliseconds,
+				notes = notes,
+			)
 		)
-		datasource.insertAll(newEntry)
 	}
 
-	override fun updateLogEntry(entry: FastingLogEntry, start: LocalDateTime, length: Duration): Boolean {
-		// Convert LocalDateTime to Instant (UTC time)
+	override fun updateLogEntry(
+		entry: FastingLogEntry,
+		start: LocalDateTime,
+		length: Duration,
+		notes: String
+	): Boolean {
 		val startInstant = start.toInstant(TimeZone.currentSystemDefault())
-
-		// Create updated FastEntry with the same ID but new values
 		val updatedEntry = FastEntry(
 			uid = entry.id,
 			start = startInstant.toEpochMilliseconds(),
-			length = length.inWholeMilliseconds
+			length = length.inWholeMilliseconds,
+			notes = notes,
 		)
 		return datasource.update(updatedEntry)
 	}
 
-	override suspend fun exportLog(): String {
-		val entries = loadAll().first()
+	// region Export
 
-		val header = "ID,Start Date,Start Time,Duration (hours)"
+	override suspend fun exportLog(): String = withContext(Dispatchers.IO) {
+		val entries = datasource.getAll()
+		val tz = TimeZone.currentSystemDefault()
 
+		val header = "ID,Start,End,Duration (s),Duration,Notes"
 		val rows = entries.map { entry ->
-			val startDate = entry.start.date.toString()
-			val startTime = "${entry.start.hour}:${entry.start.minute.toString().padStart(2, '0')}"
-			val durationHours = entry.length.inWholeHours
+			val startInstant = Instant.fromEpochMilliseconds(entry.start)
+			val length = entry.length.milliseconds
+			val endInstant = startInstant.plus(length)
 
-			"${entry.id},$startDate,$startTime,$durationHours"
+			val startStr = formatDateTime(startInstant.toLocalDateTime(tz))
+			val endStr = formatDateTime(endInstant.toLocalDateTime(tz))
+			val seconds = length.inWholeSeconds
+			val humanized = formatDurationFull(length)
+
+			listOf(
+				entry.uid.toString(),
+				startStr,
+				endStr,
+				seconds.toString(),
+				humanized,
+				csvEscape(entry.notes),
+			).joinToString(",")
 		}
 
-		return (listOf(header) + rows).joinToString("\n")
+		(listOf(header) + rows).joinToString("\n")
 	}
 
-	private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-	private val timeFormatter = DateTimeFormatter.ofPattern("H:mm")
+	// endregion
 
-	override suspend fun importLog(cvsExport: String): Boolean {
+	// region Import
+
+	/**
+	 * Import a logbook CSV. Supports both the current schema
+	 * (ID, Start, End, Duration (s), Duration, Notes) and the legacy schema
+	 * (ID, Start Date, Start Time, Duration (hours)). Timestamps are interpreted
+	 * in the device's current time zone, matching how they were exported.
+	 *
+	 * Entries are de-duplicated by start-second, so re-importing the same file
+	 * updates rather than duplicates.
+	 */
+	override suspend fun importLog(cvsExport: String): Boolean = withContext(Dispatchers.IO) {
 		try {
-			val lines = cvsExport.split("\n")
+			val allRows = parseCsv(cvsExport).filter { row -> row.any { it.isNotBlank() } }
+			if (allRows.isEmpty()) return@withContext false
 
-			// Skip header line
-			if (lines.size <= 1) {
-				return false
+			val headerCells = allRows.first().map { it.trim().lowercase() }
+			val hasHeader = headerCells.any { cell ->
+				cell == "id" || cell == "start" || cell == "end" || cell == "notes" ||
+					cell == "start date" || cell == "start time" || cell.startsWith("duration")
 			}
+			val isLegacy = headerCells.contains("start date") ||
+				headerCells.any { it.startsWith("duration (h") }
 
-			// Process each data row
-			for (i in 1 until lines.size) {
-				val line = lines[i].trim()
-				if (line.isEmpty()) continue
+			val dataRows = if (hasHeader) allRows.drop(1) else allRows
+			val tz = TimeZone.currentSystemDefault()
 
-				val parts = line.split(",")
-				if (parts.size < 4) continue // Skip invalid lines
-
-				val id = parts[0].toIntOrNull() ?: continue
-				val dateStr = parts[1]
-				val timeStr = parts[2]
-				val durationHours = parts[3].toLongOrNull() ?: continue
-
-				val localDateTime: LocalDateTime
-				try {
-					val javaDate = JavaLocalDate.parse(dateStr, dateFormatter)
-					val javaTime = JavaLocalTime.parse(timeStr, timeFormatter)
-					val javaDateTime = JavaLocalDateTime.of(javaDate, javaTime)
-
-					localDateTime = LocalDateTime(
-						javaDateTime.year,
-						javaDateTime.monthValue,
-						javaDateTime.dayOfMonth,
-						javaDateTime.hour,
-						javaDateTime.minute
-					)
-				} catch (e: Exception) {
-					Napier.w("Failed to import log entry", e)
-					continue
+			// Resolve column indices from the header when present; otherwise fall
+			// back to the canonical positions of each schema.
+			val cols = if (hasHeader) headerCells else emptyList()
+			fun col(vararg names: String, default: Int): Int {
+				for (n in names) {
+					val idx = cols.indexOfFirst { it == n || it.startsWith(n) }
+					if (idx >= 0) return idx
 				}
-
-				val startInstant = localDateTime.toInstant(TimeZone.UTC)
-
-				val newEntry = FastEntry(
-					uid = id,
-					start = startInstant.toEpochMilliseconds(),
-					length = durationHours * 60 * 60 * 1000 // Convert hours to milliseconds
-				)
-
-				// Handle conflicts by deleting existing entry with the same ID
-				datasource.deleteByUid(id)
-
-				datasource.insertAll(newEntry)
+				return default
 			}
 
-			return true
+			var imported = false
+			for (row in dataRows) {
+				val parsed = if (isLegacy) {
+					parseLegacyRow(
+						row,
+						dateIdx = col("start date", default = 1),
+						timeIdx = col("start time", default = 2),
+						hoursIdx = col("duration (h", default = 3),
+						tz = tz,
+					)
+				} else {
+					parseCurrentRow(
+						row,
+						startIdx = col("start", default = 1),
+						endIdx = col("end", default = 2),
+						secondsIdx = col("duration (s", default = 3),
+						notesIdx = col("notes", default = 5),
+						tz = tz,
+					)
+				} ?: continue
+
+				val (startEpoch, lengthMs, notes) = parsed
+				// De-dupe within the whole second the start falls in
+				val secondFloor = startEpoch - (startEpoch % 1000)
+				datasource.deleteByStartRange(secondFloor, secondFloor + 1000)
+				datasource.insertAll(FastEntry(start = startEpoch, length = lengthMs, notes = notes))
+				imported = true
+			}
+
+			imported
 		} catch (e: Exception) {
-			return false
+			Napier.e("Failed to import logbook", e)
+			false
+		}
+	}
+
+	private data class ParsedRow(val startEpoch: Long, val lengthMs: Long, val notes: String)
+
+	private fun parseCurrentRow(
+		row: List<String>,
+		startIdx: Int,
+		endIdx: Int,
+		secondsIdx: Int,
+		notesIdx: Int,
+		tz: TimeZone,
+	): ParsedRow? {
+		val start = parseLocalDateTime(row.getOrNull(startIdx)) ?: return null
+		val startInstant = start.toInstant(tz)
+
+		val end = parseLocalDateTime(row.getOrNull(endIdx))
+		val lengthMs: Long = when {
+			end != null -> {
+				val d = end.toInstant(tz).minus(startInstant)
+				if (d > Duration.ZERO) d.inWholeMilliseconds
+				else row.getOrNull(secondsIdx)?.trim()?.toLongOrNull()?.times(1000) ?: return null
+			}
+
+			else -> row.getOrNull(secondsIdx)?.trim()?.toLongOrNull()?.times(1000) ?: return null
+		}
+
+		val notes = row.getOrNull(notesIdx)?.trim().orEmpty()
+		return ParsedRow(startInstant.toEpochMilliseconds(), lengthMs, notes)
+	}
+
+	private fun parseLegacyRow(
+		row: List<String>,
+		dateIdx: Int,
+		timeIdx: Int,
+		hoursIdx: Int,
+		tz: TimeZone,
+	): ParsedRow? {
+		val dateStr = row.getOrNull(dateIdx)?.trim() ?: return null
+		val timeStr = row.getOrNull(timeIdx)?.trim() ?: return null
+		val start = parseLocalDateTime("$dateStr $timeStr") ?: return null
+		val startInstant = start.toInstant(tz)
+
+		// Legacy duration was whole hours (but tolerate a decimal just in case)
+		val hoursStr = row.getOrNull(hoursIdx)?.trim() ?: return null
+		val hours = hoursStr.toLongOrNull()?.toDouble() ?: hoursStr.toDoubleOrNull() ?: return null
+		val lengthMs = (hours * 60.0 * 60.0 * 1000.0).toLong()
+
+		return ParsedRow(startInstant.toEpochMilliseconds(), lengthMs, "")
+	}
+
+	// endregion
+
+	private fun formatDateTime(d: LocalDateTime): String =
+		"%04d-%02d-%02d %02d:%02d:%02d".format(
+			d.year, d.monthNumber, d.dayOfMonth, d.hour, d.minute, d.second
+		)
+
+	/**
+	 * Parse "yyyy-MM-dd HH:mm[:ss]" (a space or 'T' separator, seconds optional).
+	 * Locale-independent; returns null on any malformed input.
+	 */
+	private fun parseLocalDateTime(raw: String?): LocalDateTime? {
+		val text = raw?.trim()?.replace('T', ' ') ?: return null
+		return try {
+			val parts = text.split(Regex("\\s+"))
+			if (parts.size < 2) return null
+			val (y, mo, d) = parts[0].split('-').map { it.toInt() }
+			val timeParts = parts[1].split(':')
+			val h = timeParts[0].toInt()
+			val mi = timeParts.getOrNull(1)?.toInt() ?: 0
+			val s = timeParts.getOrNull(2)?.toInt() ?: 0
+			LocalDateTime(y, mo, d, h, mi, s)
+		} catch (e: Exception) {
+			null
 		}
 	}
 
@@ -143,7 +252,8 @@ class FastingLogRepositoryImpl(
 		return FastingLogEntry(
 			id = uid,
 			start = localDateTime,
-			length = length.milliseconds
+			length = length.milliseconds,
+			notes = notes,
 		)
 	}
 }

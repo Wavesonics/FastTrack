@@ -32,7 +32,9 @@ val mainModule = module {
 			get(),
 			AppDatabase::class.java,
 			"app-database"
-		).build()
+		)
+			.addMigrations(AppDatabase.MIGRATION_1_2)
+			.build()
 	}
 
 	single { Clock.System } bind Clock::class
