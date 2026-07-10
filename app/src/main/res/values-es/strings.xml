@@ -16,7 +16,7 @@
 	<string name="settings_section_logbook">Bitácora</string>
 	<!-- Settings: Fasting notification -->
 	<string name="settings_fasting_notification_title">Mostrar notificación de limpieza</string>
-	<string name="settings_fasting_notification_subtitle">Proporciona información en tiempo real durante un rápido</string>
+	<string name="settings_fasting_notification_subtitle">Muestra información en tiempo real durante el ayuno</string>
 	<!-- Settings: Stage alerts -->
 	<string name="settings_stage_alerts_title">Alertas de etapa</string>
 	<string name="settings_stage_alerts_subtitle">Recibe notificaciones al entrar en nuevas etapas de ayuno</string>
@@ -113,7 +113,7 @@
 	<string name="manual_add_set_end_title">Establecer Fin Rápido</string>
 	<string name="manual_add_set_end_complete">Calcular</string>
 	<string name="fast_autophagy_label">Autofagia:</string>
-	<string name="fast_ketosis_label">Cetoacidosis:</string>
+	<string name="fast_ketosis_label">Cetosis:</string>
 	<string name="fast_fat_burn_label">Quema de Grasa:</string>
 	<string name="stage_fasting_title">Ayuno</string>
 	<string name="stage_fasting_description">Su cuerpo está consumiendo sus almacenes de glucosa, ¡siga adelante!</string>
@@ -245,4 +245,49 @@
 	<string name="log_stats_label">Estadísticas de por vida</string>
 	<string name="log_view_mode_list">Lista</string>
 	<string name="log_view_mode_calendar">Calendario</string>
+	<string name="duration_less_than_minute">Recién empezado</string>
+	<string name="fast_notes_label">Notas (opcional)</string>
+	<string name="fast_notes_placeholder">¿Qué tal ha ido? ¿Algo que quieras recordar de este ayuno?</string>
+	<string name="just_finished_fast">Acabas de terminar un ayuno — ¡bien hecho!</string>
+	<string name="log_entry_note_prefix">📝</string>
+	<string name="notification_fasting_title_duration">Ayuno: %1$s</string>
+	<string name="phase_time_until">en %1$s</string>
+	<string name="time_since_last_fast">Tiempo desde tu último ayuno: %1$s</string>
+	<string name="share_text_fasting">¡Llevo ayunando %1$s! Ahora mismo mi cuerpo usa %2$s como fuente de energía.</string>
+	<string name="share_text_finished">¡He ayunado %1$s!</string>
+	<string name="journey_stage_hours_range">%1$d–%2$d h</string>
+	<string name="journey_stage_hours_open">%1$d h+</string>
+	<string name="sheet_start_now">Empezar ahora</string>
+	<string name="sheet_start_earlier">Empecé antes…</string>
+	<string name="sheet_end_now">Terminar ahora</string>
+	<string name="sheet_end_earlier">Terminé antes…</string>
+	<string name="settings_section_phases">Fases del ayuno</string>
+	<string name="settings_phase_auto_title">Automático: mostrar solo las fases activas</string>
+	<string name="settings_phase_auto_subtitle">Muestra cada fase cuando empieza. Anula los ajustes individuales de abajo.</string>
+	<string name="settings_phase_fatburn_title">Mostrar Quema de grasa</string>
+	<string name="settings_phase_fatburn_subtitle">Muestra la cuenta atrás de Quema de grasa en la pantalla de ayuno.</string>
+	<string name="settings_phase_ketosis_title">Mostrar Cetosis</string>
+	<string name="settings_phase_ketosis_subtitle">Muestra la cuenta atrás de Cetosis en la pantalla de ayuno.</string>
+	<string name="settings_phase_autophagy_title">Mostrar Autofagia</string>
+	<string name="settings_phase_autophagy_subtitle">Muestra la cuenta atrás de Autofagia en la pantalla de ayuno.</string>
+	<string name="journey_stage_0_title">Sube el azúcar en sangre</string>
+	<string name="journey_stage_1_title">Baja el azúcar en sangre</string>
+	<string name="journey_stage_2_title">El azúcar en sangre se estabiliza</string>
+	<string name="journey_stage_3_title">Gluconeogénesis</string>
+	<string name="journey_stage_4_title">Quema de grasa</string>
+	<string name="journey_stage_5_title">Cetosis</string>
+	<string name="journey_stage_6_title">Autofagia</string>
+	<string name="journey_stage_7_title">Pico de hormona del crecimiento</string>
+	<string name="journey_stage_8_title">Sensibilidad a la insulina</string>
+	<string name="journey_stage_9_title">Regeneración de células inmunitarias</string>
+	<string name="journey_stage_0_body">Acabas de comer y tu torrente sanguíneo lo nota. La glucosa sube —en personas sanas alcanza un pico por debajo de ~140 mg/dL en 30–60 min— y tu páncreas responde con insulina, la hormona que lleva ese azúcar a las células y guarda el excedente como glucógeno.\n\nEs el estado alimentado: hay energía de sobra, la prioridad es almacenar y la quema de grasa está apagada.\n\nSolo queda digerir. El reloj ha empezado a correr.</string>
+	<string name="journey_stage_1_body">La absorción se va agotando y la marea cambia. La insulina baja, el glucagón sube y tu hígado empieza a liberar glucógeno para mantener la glucosa en torno a ~70–100 mg/dL.\n\nHas pasado del estado alimentado al posabsortivo: el relevo silencioso en el que el cuerpo deja de almacenar y empieza a gastar.\n\nEse primer atisbo de hambre es, sobre todo, la insulina que baja. Se pasa.</string>
+	<string name="journey_stage_2_body">Ahora tu hígado es el único proveedor: va soltando glucosa del glucógeno (~100 g de reserva) para mantenerte estable. Solo tu cerebro consume ~120 g de glucosa al día, así que esta estabilidad no es poca cosa.\n\nNi bajones ni picos: la glucogenólisis aguanta el tipo y mantiene a raya la hipoglucemia.\n\nAquí la concentración se siente inusualmente limpia. No es imaginación; es combustible constante.</string>
+	<string name="journey_stage_3_body">El glucógeno escasea, así que el hígado se saca un segundo oficio: fabricar glucosa desde cero —lactato, glicerol, aminoácidos—, un proceso llamado gluconeogénesis. Hacia las ~16 h ya aporta casi la mitad de tu glucosa (Cahill, Annu Rev Nutr 2006).\n\nEs la flexibilidad metabólica hecha visible: tu cuerpo no va a dejar que al cerebro le falte energía.\n\nEl hambre y ese ligero bajón que notas son el interruptor cambiando de posición. Ahora toca la grasa.</string>
+	<string name="journey_stage_4_body">Por fin la insulina está lo bastante baja como para abrir tus reservas de grasa. La lipólisis libera ácidos grasos, el hígado empieza a convertirlos en cetonas y pasas de quemar azúcar a quemar grasa.\n\nCada hora aquí mejora un poco tu sensibilidad a la insulina y reduce tus reservas de grasa: el núcleo metabólico de por qué funciona el ayuno.\n\nUn sabor metálico o un leve dolor de cabeza son las primeras cetonas. El fuego está encendido.</string>
+	<string name="journey_stage_5_body">Las cetonas en sangre superan ~0,5 mmol/L —cetosis nutricional— y siguen subiendo. Tu cerebro no puede oxidar ácidos grasos directamente, pero funciona de maravilla con este flujo de cetonas, que evita sacrificar músculo para fabricar glucosa.\n\nMucha gente nota una claridad mental inusual y un hambre que se apaga sin más: las propias cetonas reducen el apetito.\n\nVeinticuatro horas. Tu cuerpo ya prefiere el combustible que él mismo fabrica.</string>
+	<string name="journey_stage_6_body">Un día entero y la autolimpieza se intensifica: la autofagia —tus células desmontan proteínas y orgánulos dañados y reciclan las piezas— (el mecanismo que le valió a Ohsumi el Nobel de 2016). En humanos aún se están afinando los tiempos, pero el ayuno activa esta vía con claridad.\n\nPiénsalo como un mantenimiento que no se puede comprar: una limpieza asociada a la longevidad y a un menor riesgo de enfermedad.\n\n¿Cansancio o dolor de cabeza? Sal y agua. Se está haciendo un trabajo profundo.</string>
+	<string name="journey_stage_7_body">Dos días y la hormona del crecimiento se dispara: un ayuno de ~2 días puede multiplicar su secreción por unas 5 veces (Ho, J Clin Invest 1988). Su cometido ahora: proteger la masa muscular y acelerar el metabolismo de la grasa.\n\nAsí sigues quemando grasa mientras conservas el músculo que esperarías perder: una adaptación realmente elegante.\n\n¿Ese subidón de energía inesperado que describe la gente aquí? Es la hormona hablando.</string>
+	<string name="journey_stage_8_body">Con la insulina baja durante días, tus células vuelven a responderle: la sensibilidad a la insulina se reajusta hacia un nivel más sano, lo contrario de la resistencia que precede a la diabetes tipo 2.\n\nLa glucosa se mantiene en una franja tranquila y estrecha, y la saciedad llega con facilidad.\n\nEstás afinando un sistema que casi nadie ajusta a propósito.</string>
+	<string name="journey_stage_9_body">Tres días: territorio poco común. El ayuno prolongado puede llevar al cuerpo a eliminar células inmunitarias envejecidas y regenerar otras nuevas a partir de células madre hematopoyéticas, a medida que baja la señalización de IGF-1 y PKA (Cheng, Cell Stem Cell 2014).\n\nLa inflamación sigue cediendo; algunas personas describen una sensación de bienestar serena y lúcida.\n\nHasta donde decidas llegar, llegas renovado. Y rompe el ayuno con calma. Siéntete orgulloso.</string>
 </resources>
