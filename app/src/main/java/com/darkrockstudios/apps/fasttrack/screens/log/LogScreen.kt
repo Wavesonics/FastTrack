@@ -1,5 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.log
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ViewList
@@ -12,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.Lifecycle
@@ -24,6 +26,7 @@ import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.ExperimentalTime
 
@@ -71,6 +74,9 @@ fun LogScreen(
 				.padding(top = contentPaddingValues.calculateTopPadding())
 		) {
 			LogStatsHeader(
+				totalFasts = uiState.totalFasts,
+				totalFastedDuration = uiState.totalFastedDuration,
+				longestFastDuration = uiState.longestFastDuration,
 				totalKetosisHours = uiState.totalKetosisHours,
 				totalAutophagyHours = uiState.totalAutophagyHours,
 				viewMode = uiState.viewMode,
@@ -124,68 +130,116 @@ fun LogScreen(
 
 @Composable
 private fun LogStatsHeader(
+	totalFasts: Int,
+	totalFastedDuration: Duration,
+	longestFastDuration: Duration,
 	totalKetosisHours: Int,
 	totalAutophagyHours: Int,
 	viewMode: LogViewMode,
 	onViewModeChanged: (LogViewMode) -> Unit,
 ) {
+	val context = LocalContext.current
+
+	// Local, non-persisted format toggle: durations default to "39d 22h";
+	// tapping any stat card flips them to total hours ("432h 40m") for as long
+	// as this screen stays composed, then returns to the default next time.
+	var showTotalHours by remember { mutableStateOf(false) }
+	val toggle = { showTotalHours = !showTotalHours }
+
+	fun durationStat(d: Duration): String =
+		if (d == Duration.ZERO) "0h"
+		else formatDuration(context, d, showTotalHours = showTotalHours)
+
+	// View mode switch, left-aligned (the "Lifetime stats" label was redundant)
+	LogViewModeSwitch(
+		viewMode = viewMode,
+		onViewModeChanged = onViewModeChanged,
+		modifier = Modifier.padding(vertical = 12.dp),
+	)
+
 	Row(
 		modifier = Modifier
 			.fillMaxWidth()
-			.padding(vertical = 16.dp),
-		verticalAlignment = Alignment.CenterVertically,
+			.padding(bottom = 8.dp),
+		horizontalArrangement = Arrangement.spacedBy(8.dp)
 	) {
-		Text(
-			stringResource(R.string.log_stats_label),
-			style = MaterialTheme.typography.labelLarge,
-			color = MaterialTheme.colorScheme.onSurfaceVariant,
-			modifier = Modifier.weight(1f),
+		StatCard(
+			title = stringResource(id = R.string.stat_total_fasts),
+			valueText = totalFasts.toString(),
+			onClick = toggle,
+			modifier = Modifier.weight(1f)
 		)
-		LogViewModeIconToggle(
-			viewMode = viewMode,
-			onViewModeChanged = onViewModeChanged,
+		StatCard(
+			title = stringResource(id = R.string.stat_total_fasted),
+			valueText = durationStat(totalFastedDuration),
+			onClick = toggle,
+			modifier = Modifier.weight(1f)
+		)
+		StatCard(
+			title = stringResource(id = R.string.stat_longest_fast),
+			valueText = durationStat(longestFastDuration),
+			onClick = toggle,
+			modifier = Modifier.weight(1f)
 		)
 	}
 	Row(
 		modifier = Modifier
 			.fillMaxWidth()
 			.padding(bottom = 16.dp),
-		horizontalArrangement = Arrangement.spacedBy(12.dp)
+		horizontalArrangement = Arrangement.spacedBy(8.dp)
 	) {
-		val context = LocalContext.current
 		StatCard(
 			title = stringResource(id = R.string.log_total_ketosis),
-			valueText = formatDuration(context, totalKetosisHours.hours, withMinutes = false),
+			valueText = formatDuration(context, totalKetosisHours.hours, showTotalHours = showTotalHours, withMinutes = false),
+			onClick = toggle,
 			modifier = Modifier.weight(1f)
 		)
 		StatCard(
 			title = stringResource(id = R.string.log_total_autophagy),
-			valueText = formatDuration(context, totalAutophagyHours.hours, withMinutes = false),
+			valueText = formatDuration(context, totalAutophagyHours.hours, showTotalHours = showTotalHours, withMinutes = false),
+			onClick = toggle,
 			modifier = Modifier.weight(1f)
 		)
 	}
 }
 
+/**
+ * Two-option segmented control for the Log view mode. Both modes are always
+ * visible with the active one highlighted, so switching back and forth is
+ * obvious (the old single icon-only toggle was too easy to overlook).
+ */
 @Composable
-private fun LogViewModeIconToggle(
+private fun LogViewModeSwitch(
 	viewMode: LogViewMode,
 	onViewModeChanged: (LogViewMode) -> Unit,
+	modifier: Modifier = Modifier,
 ) {
-	val isCalendar = viewMode == LogViewMode.CALENDAR
-	val nextMode = if (isCalendar) LogViewMode.LIST else LogViewMode.CALENDAR
-	val (icon, labelRes) = if (isCalendar) {
-		Icons.AutoMirrored.Filled.ViewList to R.string.log_view_mode_list
-	} else {
-		Icons.Default.CalendarMonth to R.string.log_view_mode_calendar
-	}
-	IconButton(
-		onClick = { onViewModeChanged(nextMode) },
-		modifier = Modifier.size(28.dp),
-	) {
-		Icon(
-			imageVector = icon,
-			contentDescription = stringResource(id = labelRes),
-			tint = MaterialTheme.colorScheme.onSurfaceVariant,
+	SingleChoiceSegmentedButtonRow(modifier = modifier) {
+		SegmentedButton(
+			selected = viewMode == LogViewMode.LIST,
+			onClick = { onViewModeChanged(LogViewMode.LIST) },
+			shape = SegmentedButtonDefaults.itemShape(index = 0, count = 2),
+			icon = {
+				Icon(
+					imageVector = Icons.AutoMirrored.Filled.ViewList,
+					contentDescription = null,
+					modifier = Modifier.size(SegmentedButtonDefaults.IconSize),
+				)
+			},
+			label = { Text(stringResource(id = R.string.log_view_mode_list)) },
+		)
+		SegmentedButton(
+			selected = viewMode == LogViewMode.CALENDAR,
+			onClick = { onViewModeChanged(LogViewMode.CALENDAR) },
+			shape = SegmentedButtonDefaults.itemShape(index = 1, count = 2),
+			icon = {
+				Icon(
+					imageVector = Icons.Default.CalendarMonth,
+					contentDescription = null,
+					modifier = Modifier.size(SegmentedButtonDefaults.IconSize),
+				)
+			},
+			label = { Text(stringResource(id = R.string.log_view_mode_calendar)) },
 		)
 	}
 }
@@ -233,25 +287,30 @@ private fun StatCard(
 	title: String,
 	valueText: String,
 	modifier: Modifier = Modifier,
+	onClick: (() -> Unit)? = null,
 ) {
 	ElevatedCard(
-		modifier = modifier,
+		modifier = if (onClick != null) modifier.clickable(onClick = onClick) else modifier,
 	) {
 		Column(
 			modifier = Modifier
 				.fillMaxWidth()
-				.padding(16.dp),
-			verticalArrangement = Arrangement.spacedBy(6.dp)
+				.padding(horizontal = 10.dp, vertical = 10.dp),
+			verticalArrangement = Arrangement.spacedBy(2.dp)
 		) {
 			Text(
 				text = title,
-				style = MaterialTheme.typography.labelLarge,
-				color = MaterialTheme.colorScheme.onSurfaceVariant
+				style = MaterialTheme.typography.labelSmall,
+				color = MaterialTheme.colorScheme.onSurfaceVariant,
+				maxLines = 1,
+				overflow = TextOverflow.Ellipsis,
 			)
 			Text(
 				text = valueText,
-				style = MaterialTheme.typography.headlineMedium,
-				color = MaterialTheme.colorScheme.onSurface
+				style = MaterialTheme.typography.titleMedium,
+				color = MaterialTheme.colorScheme.onSurface,
+				maxLines = 1,
+				overflow = TextOverflow.Ellipsis,
 			)
 		}
 	}

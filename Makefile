@@ -10,7 +10,6 @@ debug:
 
 repo:
 	open https://github.com/Wavesonics/FastTrack
-
 tasks:
 	./gradlew --no-daemon -q :tasks
 
@@ -23,6 +22,9 @@ one:
 
 install:
 	adb install app/build/outputs/apk/release/*.apk
+
+install-debug:
+	adb install app/build/outputs/apk/debug/*.apk
 
 clean:
 	./gradlew --no-daemon clean

@@ -248,4 +248,12 @@
 	<string name="journey_stage_7_body">Twee dagen, en het groeihormoon schiet omhoog — een vasten van ~2 dagen kan de afgifte ervan ongeveer 5 keer verhogen (Ho, J Clin Invest 1988). Zijn taak nu: spiermassa beschermen en de vetstofwisseling harder aanjagen.\n\nZo blijf je vet verbranden terwijl je de spier behoudt die je zou verwachten te verliezen — een werkelijk elegante aanpassing.\n\nDie onverwachte energieboost die veel mensen hier beschrijven? Dat is het hormoon dat spreekt.</string>
 	<string name="journey_stage_8_body">Als de insuline dagenlang laag blijft, worden je cellen er weer gevoelig voor — de insulinegevoeligheid stelt zich in op een gezonder niveau, het tegenovergestelde van de resistentie die aan diabetes type 2 voorafgaat.\n\nDe bloedsuiker blijft in een rustige, smalle band; verzadiging komt moeiteloos.\n\nJe stemt een systeem af dat bijna niemand ooit bewust aanraakt.</string>
 	<string name="journey_stage_9_body">Drie dagen: zeldzame hoogten. Langdurig vasten kan het lichaam ertoe aanzetten verouderde immuuncellen op te ruimen en nieuwe aan te maken uit hematopoëtische stamcellen, terwijl de IGF-1- en PKA-signalen dalen (Cheng, Cell Stem Cell 2014).\n\nDe ontsteking blijft afnemen; sommigen beschrijven een rustig, helder gevoel van welzijn.\n\nHoe ver je van hier ook gaat, je gaat vernieuwd verder — en verbreek je vasten rustig. Wees trots.</string>
+	<string name="import_easyfast_result">%1$d vastenperiodes geïmporteerd.\nOverlappende items OVERGESLAGEN: %2$d</string>
+	<string name="export_choose_format">Exportformaat</string>
+	<string name="export_format_csv">CSV (spreadsheet)</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
+	<string name="stat_total_fasts">Totaal aantal vastenperiodes</string>
+	<string name="stat_total_fasted">Totale vastentijd</string>
+	<string name="stat_longest_fast">Langste vastenperiode</string>
 </resources>

@@ -23,7 +23,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.FastingScreen
 import com.darkrockstudios.apps.fasttrack.screens.log.LogScreen
@@ -53,7 +52,6 @@ enum class ScreenPages {
 @ExperimentalTime
 @Composable
 fun MainScreen(
-	repository: ActiveFastRepository,
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
@@ -66,18 +64,12 @@ fun MainScreen(
 			pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
-	val shareEnabled = remember { mutableStateOf(repository.getFastStart() != null) }
-
 	val fastingTitle = stringResource(id = R.string.title_fasting)
 	val logTitle = stringResource(id = R.string.title_log)
 	val profileTitle = stringResource(id = R.string.title_profile)
 
 	val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
-
-	LaunchedEffect(repository.isFasting()) {
-		shareEnabled.value = repository.getFastStart() != null
-	}
 
 	// No top app bar: the bottom navigation already names the screen, and the
 	// reclaimed space belongs to the content. Actions float in the top-right.
@@ -218,7 +210,6 @@ fun MainScreen(
 			}
 
 			FloatingTopActions(
-				shareEnabled = shareEnabled.value,
 				onShareClick = onShareClick,
 				onInfoClick = onInfoClick,
 				onAboutClick = onAboutClick,
@@ -241,7 +232,6 @@ fun MainScreen(
  */
 @Composable
 private fun FloatingTopActions(
-	shareEnabled: Boolean,
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
@@ -283,8 +273,6 @@ private fun FloatingTopActions(
 								contentDescription = null,
 							)
 						},
-						// There is nothing to share until a fast has been started
-						enabled = shareEnabled,
 						onClick = {
 							onShareClick()
 							showMenu = false

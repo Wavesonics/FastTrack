@@ -15,7 +15,6 @@ import androidx.core.net.toUri
 import androidx.core.view.WindowCompat
 import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
@@ -25,7 +24,6 @@ import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.darkrockstudios.apps.fasttrack.screens.intro.IntroActivity
 import com.darkrockstudios.apps.fasttrack.screens.settings.SettingsActivity
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
-import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.vansuita.materialabout.builder.AboutBuilder
 import org.koin.android.ext.android.inject
 import kotlin.time.ExperimentalTime
@@ -35,6 +33,7 @@ import kotlin.time.ExperimentalTime
 class MainActivity : AppCompatActivity() {
 	private var startFastRequestState by mutableStateOf<StartFastRequest?>(null)
 	private var stopFastRequestState by mutableStateOf(false)
+	private var shareRequestState by mutableStateOf(false)
 	private var themeModeState by mutableStateOf(ThemeMode.SYSTEM)
 	private val settings by inject<SettingsDatasource>()
 	private val fastingRepository by inject<ActiveFastRepository>()
@@ -56,16 +55,17 @@ class MainActivity : AppCompatActivity() {
 		setContent {
 			FastTrackTheme(themeMode = themeModeState) {
 				MainScreen(
-					repository = fastingRepository,
-					onShareClick = { shareText() },
+					onShareClick = { shareRequestState = true },
 					onInfoClick = { startActivity(Intent(this, InfoActivity::class.java)) },
 					onAboutClick = { showAbout() },
 					onSettingsClick = { startActivity(Intent(this, SettingsActivity::class.java)) },
 					externalRequests = ExternalRequests(
 						startFastRequest = startFastRequestState,
 						stopFastRequested = stopFastRequestState,
+						shareRequested = shareRequestState,
 						consumeStartFastRequest = { startFastRequestState = null },
 						consumeStopFastRequest = { stopFastRequestState = false },
+						consumeShareRequest = { shareRequestState = false },
 					),
 				)
 			}
@@ -109,33 +109,6 @@ class MainActivity : AppCompatActivity() {
 		} else if (intent?.getBooleanExtra(STOP_FAST_EXTRA, false) == true) {
 			stopFastRequestState = true
 		}
-	}
-
-	private fun shareText() {
-		val elapsedTime = fastingRepository.getElapsedFastTime()
-		val durationText = formatDuration(this, elapsedTime)
-
-		val curPhase = Stages.getCurrentPhase(elapsedTime)
-		val shareText = if (fastingRepository.isFasting()) {
-			val energyModeStr =
-				if (curPhase.fatBurning) {
-					getString(R.string.fasting_energy_mode_fat)
-				} else {
-					getString(R.string.fasting_energy_mode_glucose)
-				}
-			getString(R.string.share_text_fasting, durationText, energyModeStr)
-		} else {
-			getString(R.string.share_text_finished, durationText)
-		}
-
-		val sendIntent: Intent = Intent().apply {
-			action = Intent.ACTION_SEND
-			putExtra(Intent.EXTRA_TEXT, shareText)
-			type = "text/plain"
-		}
-
-		val shareIntent = Intent.createChooser(sendIntent, null)
-		startActivity(shareIntent)
 	}
 
 	private fun showAbout() {

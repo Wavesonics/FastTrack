@@ -292,4 +292,12 @@
 	<string name="journey_stage_7_body">Deux jours, et l\'hormone de croissance s\'envole — un jeûne de ~2 jours peut multiplier sa sécrétion par environ 5 (Ho, J Clin Invest 1988). Sa mission maintenant : protéger le muscle maigre et pousser plus fort le métabolisme des graisses.\n\nTu continues donc à brûler de la graisse tout en préservant le muscle que tu croyais perdre — une adaptation vraiment élégante.\n\nCe regain d\'énergie inattendu que beaucoup décrivent ici ? C\'est l\'hormone qui parle.</string>
 	<string name="journey_stage_8_body">Avec une insuline maintenue basse pendant des jours, tes cellules y redeviennent sensibles — la sensibilité à l\'insuline se réajuste vers un niveau plus sain, l\'inverse de la résistance qui précède le diabète de type 2.\n\nLa glycémie reste dans une plage calme et étroite ; la satiété vient facilement.\n\nTu règles un système que la plupart des gens n\'ajustent jamais volontairement.</string>
 	<string name="journey_stage_9_body">Trois jours : un air rare. Le jeûne prolongé peut amener le corps à éliminer des cellules immunitaires vieillissantes et à en régénérer de nouvelles à partir de cellules souches hématopoïétiques, à mesure que la signalisation d\'IGF-1 et de PKA diminue (Cheng, Cell Stem Cell 2014).\n\nL\'inflammation continue de s\'apaiser ; certains décrivent un bien-être calme et lucide.\n\nAussi loin que tu ailles à partir d\'ici, tu en ressors renouvelé — et romps ton jeûne en douceur. Sois fier.</string>
+	<string name="import_easyfast_result">%1$d jeûnes importés.\nEntrées en chevauchement IGNORÉES : %2$d</string>
+	<string name="export_choose_format">Format d\'exportation</string>
+	<string name="export_format_csv">CSV (feuille de calcul)</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
+	<string name="stat_total_fasts">Total des jeûnes</string>
+	<string name="stat_total_fasted">Durée totale de jeûne</string>
+	<string name="stat_longest_fast">Jeûne le plus long</string>
 </resources>

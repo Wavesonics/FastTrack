@@ -20,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -43,6 +45,18 @@ import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.screens.confetti.ConfettiState
 import com.darkrockstudios.apps.fasttrack.screens.confetti.confettiEffect
 import com.darkrockstudios.apps.fasttrack.ui.theme.fastBackgroundGradient
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
+import com.darkrockstudios.apps.fasttrack.utils.shareFastImage
+import io.github.aakira.napier.Napier
+import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.Rect
+import android.os.Handler
+import android.os.Looper
+import android.view.PixelCopy
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
+import kotlin.math.roundToInt
 import kotlinx.coroutines.delay
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.Clock
@@ -50,6 +64,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
+import androidx.core.graphics.createBitmap
 
 @Composable
 fun FastingScreen(
@@ -154,6 +169,38 @@ fun FastingScreen(
 	// days+hours ("2d 12h") vs total hours ("60h 30m"), toggled by tapping either
 	var showTotalHours by rememberSaveable { mutableStateOf(false) }
 
+	val context = LocalContext.current
+	// Window-space bounds of the shareable hero (dial + rows), tracked for capture
+	var heroBounds by remember { mutableStateOf<Rect?>(null) }
+
+	// Share request: PixelCopy the hero region straight off the window surface
+	// (so it's the screen as-is, minus the status bar and other windows), then
+	// fire the chooser with a rich caption.
+	LaunchedEffect(externalRequests.shareRequested) {
+		if (externalRequests.shareRequested) {
+			try {
+				val bounds = heroBounds
+				val window = (context as? Activity)?.window
+				if (bounds != null && window != null && bounds.width() > 0 && bounds.height() > 0) {
+					val bitmap = createBitmap(bounds.width(), bounds.height())
+					val ok = suspendCancellableCoroutine { cont ->
+						PixelCopy.request(
+							window, bounds, bitmap,
+							{ result -> cont.resume(result == PixelCopy.SUCCESS) },
+							Handler(Looper.getMainLooper())
+						)
+					}
+					if (ok) {
+						shareFastImage(context, bitmap, buildShareCaption(context, uiState))
+					}
+				}
+			} catch (e: Throwable) {
+				Napier.e("Failed to share fast", e)
+			}
+			externalRequests.consumeShareRequest()
+		}
+	}
+
 	// Handle deep link requests to show dialogs or start/stop directly
 	LaunchedEffect(externalRequests.startFastRequest) {
 		externalRequests.startFastRequest?.let { req ->
@@ -235,6 +282,7 @@ fun FastingScreen(
 							.weight(1f)
 							.fillMaxHeight()
 							.padding(end = spacing.medium)
+							.onGloballyPositioned { heroBounds = it.boundsInWindow().toAndroidRect() }
 					)
 
 					Spacer(modifier = Modifier.size(height = spacing.large, width = 1.dp))
@@ -262,23 +310,25 @@ fun FastingScreen(
 				) {
 					// Golden-seat the whole hero cluster: a smaller minor share of
 					// slack above, a larger major share below (before the pinned
-					// action). Title + dial + rows + description read as one unit.
+					// action). Title + dial + rows + description read as one unit,
+					// and this whole block is what gets captured for image sharing.
 					Spacer(modifier = Modifier.weight(GOLDEN_MINOR))
 
-					FastHeadingContent(
+					FastHero(
 						uiState = uiState,
 						dialMaxSize = dialMaxSize,
 						showTotalHours = showTotalHours,
 						onToggleTimeFormat = { showTotalHours = !showTotalHours },
 						onStageSelected = { selectedStage = it },
-						modifier = Modifier.fillMaxWidth()
+						modifier = Modifier
+							.fillMaxWidth()
+							.onGloballyPositioned { heroBounds = it.boundsInWindow().toAndroidRect() }
 					)
 
-					FastDetailsPortrait(
+					Spacer(modifier = Modifier.weight(GOLDEN_MAJOR))
+
+					FastActionRow(
 						uiState = uiState,
-						showTotalHours = showTotalHours,
-						onToggleTimeFormat = { showTotalHours = !showTotalHours },
-						onStageSelected = { selectedStage = it },
 						viewModel = viewModel,
 						onShowEndFastConfirmation = ::onShowEndFastConfirmation,
 						onShowStartFastSelector = ::onShowStartFastSelector,
@@ -405,46 +455,90 @@ private const val GOLDEN_MINOR = 0.382f
 private const val GOLDEN_MAJOR = 0.618f
 
 /**
- * Portrait body: title + dial live above (in FastHeadingContent); here the
- * phase rows and stage description form the lower half of one cohesive cluster,
- * golden-seated between two weighted spacers, with the action pinned to the base.
- * When the phase rows are hidden the cluster simply shrinks and the golden
- * spacers rebalance — the description keeps hugging the dial instead of floating.
+ * Portrait hero: stage title, dial (with center timer + energy), phase rows,
+ * the status line, and a small brand footer — one cohesive cluster that also
+ * doubles as the shareable image (the action button lives outside it).
  */
 @Composable
-private fun ColumnScope.FastDetailsPortrait(
+private fun FastHero(
 	uiState: IFastingViewModel.FastingUiState,
+	dialMaxSize: Dp,
 	showTotalHours: Boolean,
 	onToggleTimeFormat: () -> Unit,
 	onStageSelected: (JourneyStage) -> Unit,
-	viewModel: IFastingViewModel,
-	onShowEndFastConfirmation: () -> Unit,
-	onShowStartFastSelector: () -> Unit,
+	modifier: Modifier = Modifier,
 ) {
 	val spacing = fastingSpacing()
 	val typography = fastingTypography()
 	val elapsed = uiState.elapsedTime ?: uiState.elapsedHours.takeIf { it > 0 }?.hours
 
-	PhaseRows(uiState, showTotalHours, onToggleTimeFormat, onStageSelected, elapsed)
+	Column(
+		modifier = modifier,
+		horizontalAlignment = Alignment.CenterHorizontally,
+	) {
+		FastHeadingContent(
+			uiState = uiState,
+			dialMaxSize = dialMaxSize,
+			showTotalHours = showTotalHours,
+			onToggleTimeFormat = onToggleTimeFormat,
+			onStageSelected = onStageSelected,
+			modifier = Modifier.fillMaxWidth()
+		)
 
-	Text(
-		text = rememberFastStatusText(uiState, showTotalHours),
-		style = typography.stageDescription(),
-		color = MaterialTheme.colorScheme.onBackground,
-		textAlign = TextAlign.Center,
-		modifier = Modifier
-			.fillMaxWidth()
-			.padding(top = spacing.large, start = spacing.medium, end = spacing.medium)
-	)
+		PhaseRows(uiState, showTotalHours, onToggleTimeFormat, onStageSelected, elapsed)
 
-	Spacer(modifier = Modifier.weight(GOLDEN_MAJOR))
+		Text(
+			text = rememberFastStatusText(uiState, showTotalHours),
+			style = typography.stageDescription(),
+			color = MaterialTheme.colorScheme.onBackground,
+			textAlign = TextAlign.Center,
+			modifier = Modifier
+				.fillMaxWidth()
+				.padding(top = spacing.large, start = spacing.medium, end = spacing.medium)
+		)
+	}
+}
 
-	FastActionRow(
-		uiState = uiState,
-		viewModel = viewModel,
-		onShowEndFastConfirmation = onShowEndFastConfirmation,
-		onShowStartFastSelector = onShowStartFastSelector,
-	)
+/** Rounded window-space rectangle for PixelCopy capture. */
+private fun androidx.compose.ui.geometry.Rect.toAndroidRect(): Rect =
+	Rect(left.roundToInt(), top.roundToInt(), right.roundToInt(), bottom.roundToInt())
+
+/**
+ * A multi-line caption for a shared fast: the lead sentence plus a line for each
+ * milestone the body has actually reached (positive count-up), reusing the
+ * already-localized phase labels.
+ */
+private fun buildShareCaption(
+	context: android.content.Context,
+	uiState: IFastingViewModel.FastingUiState,
+): String {
+	val elapsed = uiState.elapsedTime ?: return context.getString(R.string.app_name)
+	val durationText = formatDuration(context, elapsed)
+	val curPhase = Stages.getCurrentPhase(elapsed)
+	val energyStr = if (curPhase.fatBurning) {
+		context.getString(R.string.fasting_energy_mode_fat)
+	} else {
+		context.getString(R.string.fasting_energy_mode_glucose)
+	}
+	val lead = if (uiState.isFasting) {
+		context.getString(R.string.share_text_fasting, durationText, energyStr)
+	} else {
+		context.getString(R.string.share_text_finished, durationText)
+	}
+
+	val active = IFastingViewModel.StageState.StartedActive
+	val lines = buildList {
+		if (uiState.fatBurnStageState == active) {
+			add("🔥 " + context.getString(R.string.fast_fat_burn_label) + " " + uiState.fatBurnTime)
+		}
+		if (uiState.ketosisStageState == active) {
+			add("💎 " + context.getString(R.string.fast_ketosis_label) + " " + uiState.ketosisTime)
+		}
+		if (uiState.autophagyStageState == active) {
+			add("♻️ " + context.getString(R.string.fast_autophagy_label) + " " + uiState.autophagyTime)
+		}
+	}
+	return (listOf(lead) + lines).joinToString("\n")
 }
 
 /** Landscape body: rows + a scroll-safe description that fills the column, action pinned. */

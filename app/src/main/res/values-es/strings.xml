@@ -290,4 +290,12 @@
 	<string name="journey_stage_7_body">Dos días y la hormona del crecimiento se dispara: un ayuno de ~2 días puede multiplicar su secreción por unas 5 veces (Ho, J Clin Invest 1988). Su cometido ahora: proteger la masa muscular y acelerar el metabolismo de la grasa.\n\nAsí sigues quemando grasa mientras conservas el músculo que esperarías perder: una adaptación realmente elegante.\n\n¿Ese subidón de energía inesperado que describe la gente aquí? Es la hormona hablando.</string>
 	<string name="journey_stage_8_body">Con la insulina baja durante días, tus células vuelven a responderle: la sensibilidad a la insulina se reajusta hacia un nivel más sano, lo contrario de la resistencia que precede a la diabetes tipo 2.\n\nLa glucosa se mantiene en una franja tranquila y estrecha, y la saciedad llega con facilidad.\n\nEstás afinando un sistema que casi nadie ajusta a propósito.</string>
 	<string name="journey_stage_9_body">Tres días: territorio poco común. El ayuno prolongado puede llevar al cuerpo a eliminar células inmunitarias envejecidas y regenerar otras nuevas a partir de células madre hematopoyéticas, a medida que baja la señalización de IGF-1 y PKA (Cheng, Cell Stem Cell 2014).\n\nLa inflamación sigue cediendo; algunas personas describen una sensación de bienestar serena y lúcida.\n\nHasta donde decidas llegar, llegas renovado. Y rompe el ayuno con calma. Siéntete orgulloso.</string>
+	<string name="import_easyfast_result">%1$d ayunos importados.\nEntradas superpuestas OMITIDAS: %2$d</string>
+	<string name="export_choose_format">Formato de exportación</string>
+	<string name="export_format_csv">CSV (hoja de cálculo)</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
+	<string name="stat_total_fasts">Ayunos totales</string>
+	<string name="stat_total_fasted">Tiempo total en ayunas</string>
+	<string name="stat_longest_fast">Ayuno más largo</string>
 </resources>
