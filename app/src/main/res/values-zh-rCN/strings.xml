@@ -272,4 +272,12 @@
 	<string name="journey_stage_7_body">两天，生长激素飙升——约 2 天的断食可使其分泌大约增加 5 倍（Ho, J Clin Invest 1988）。它此刻的任务：守护瘦肌肉，并更用力地推动脂肪代谢。\n\n于是你一边继续燃脂，一边保住了你以为会失去的肌肉——一次真正优雅的适应。\n\n很多人在这里描述的那股意外的精力？那是激素在说话。</string>
 	<string name="journey_stage_8_body">胰岛素连日维持低位，你的细胞重新对它敏感起来——胰岛素敏感性回调到更健康的水平，正好与 2 型糖尿病之前的抵抗相反。\n\n血糖停留在平静而狭窄的区间；饱腹感也来得轻松。\n\n你正在微调一套几乎没人会刻意去动的系统。</string>
 	<string name="journey_stage_9_body">三天：稀薄的高处。长时间断食可促使身体清除衰老的免疫细胞，并由造血干细胞再生出新的，同时 IGF-1 与 PKA 信号下降（Cheng, Cell Stem Cell 2014）。\n\n炎症持续消退；有些人描述出一种平静而清明的安适。\n\n无论你从这里走多远，你都焕然一新地前行——并温和地结束断食。为自己骄傲。</string>
+	<string name="import_easyfast_result">已导入 %1$d 条禁食记录。\n已跳过重叠的条目：%2$d</string>
+	<string name="export_choose_format">导出格式</string>
+	<string name="export_format_csv">CSV（电子表格）</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
+	<string name="stat_total_fasts">禁食总次数</string>
+	<string name="stat_total_fasted">累计禁食时长</string>
+	<string name="stat_longest_fast">最长禁食</string>
 </resources>

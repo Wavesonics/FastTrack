@@ -11,13 +11,14 @@ import kotlin.time.Instant
 
 interface IManualAddViewModel {
 	data class ManualAddUiState(
-		val currentStep: ManualAddStep = ManualAddStep.StartDate,
-		val selectedDate: LocalDate? = null,
+        val currentStep: ManualAddStep = ManualAddStep.StartDate,
+        val selectedDate: LocalDate? = null,
 		val selectedDateTime: LocalDateTime? = null,
-		val lengthHours: String = "",
-		val isNextButtonEnabled: Boolean = true,
-		val isCompleteButtonEnabled: Boolean = false,
-		val entryToEdit: FastingLogEntry? = null
+        val lengthHours: String = "",
+        val notes: String = "",
+        val isNextButtonEnabled: Boolean = true,
+        val isCompleteButtonEnabled: Boolean = false,
+        val entryToEdit: FastingLogEntry? = null
 	) {
 		fun end(): Instant? {
 			return selectedDateTime?.let { start ->
@@ -40,6 +41,7 @@ interface IManualAddViewModel {
 	fun onDateSelected(dateTimestamp: Long)
 	fun onTimeSelected(hour: Int, minute: Int)
 	fun onLengthChanged(length: String)
+	fun onNotesChanged(notes: String)
 	fun onEndDateTimeSelected(instant: Instant)
 	fun onAddEntry(): Boolean
 	fun onDismiss()

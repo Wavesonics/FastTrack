@@ -171,7 +171,7 @@
 		steht noch am Anfang, aber es scheint, dass dies ein wichtiger Mechanismus für den Körper ist, um Probleme zu
 		stoppen, bevor sie auftreten. Zum Beispiel sind die Krebsraten bei Menschen, die regelmäßig in die Autophagie
 		eintreten, niedriger. Darüber hinaus haben einige Studien auch niedrigere Raten von Alzheimer gezeigt.</string>
-	<string name="info_dialog_bmi_title">Body-Mass-Index</string>
+	<string name="info_dialog_bmi_title">Body-Maß-Index</string>
 	<string name="info_dialog_bmi_content">Eine grobe Schätzung des gesunden Gewichts, das ein durchschnittlicher
 		Erwachsener haben sollte. Es wird einfach berechnet, indem das Gewicht durch die Höhe geteilt wird.\n\nOft als
 		ungenau kritisiert, ist es wahr, dass es Faktoren gibt, die dazu führen können, dass es irreführend ist. Zum
@@ -273,7 +273,7 @@
 	<string name="journey_stage_8_title">Insulinsensitivität</string>
 	<string name="journey_stage_9_title">Regeneration der Immunzellen</string>
 	<string name="journey_stage_0_body">Du hast gerade gegessen, und dein Blutkreislauf merkt es. Der Blutzucker steigt — bei gesunden Menschen auf einen Höchstwert unter ~140 mg/dl innerhalb von 30–60 min — und deine Bauchspeicheldrüse antwortet mit Insulin, dem Hormon, das diesen Zucker in die Zellen bringt und den Überschuss als Glykogen einlagert.\n\nDas ist der Sättigungszustand: Energie im Überfluss, Speichern hat Vorrang, die Fettverbrennung ist ausgeschaltet.\n\nJetzt heißt es nur verdauen. Die Uhr läuft.</string>
-	<string name="journey_stage_1_body">Die Aufnahme klingt ab, und das Blatt wendet sich. Insulin sinkt, Glukagon steigt, und deine Leber beginnt, gespeichertes Glykogen freizusetzen, um den Blutzucker um ~70–100 mg/dl stabil zu halten.\n\nDu bist vom Sättigungszustand in den postresorptiven Zustand gewechselt — die stille Übergabe, bei der der Körper aufhört zu speichern und anfängt zu verbrauchen.\n\nDieses erste Hungergefühl ist vor allem der fallende Insulinspiegel. Es geht vorbei.</string>
+	<string name="journey_stage_1_body">Die Aufnahme klingt ab, und das Blatt wendet sich. Insulin sinkt, Glukagon steigt, und deine Leber beginnt, gespeichertes Glykogen freizusetzen, um den Blutzucker um ~70–100 mg/dl stabil zu halten.\n\nDu bist vom Sättigungszustand in den postresorptiven Zustand gewechselt — die stille Übergabe, bei der Körper aufhört zu speichern und anfängt zu verbrauchen.\n\nDieses erste Hungergefühl ist vor allem der fallende Insulinspiegel. Es geht vorbei.</string>
 	<string name="journey_stage_2_body">Jetzt ist deine Leber der einzige Lieferant: Sie gibt tröpfchenweise Glukose aus dem Glykogen ab (~100 g Reserve), um dich stabil zu halten. Allein dein Gehirn verbraucht ~120 g Glukose pro Tag, diese Stabilität ist also keine Kleinigkeit.\n\nKein Einbruch, keine Spitze — die Glykogenolyse hält die Linie und hält die Unterzuckerung fern.\n\nDie Konzentration fühlt sich hier oft ungewöhnlich klar an. Das ist keine Einbildung, sondern gleichmäßiger Brennstoff.</string>
 	<string name="journey_stage_3_body">Das Glykogen wird knapp, also übernimmt die Leber ein zweites Handwerk: Glukose von Grund auf herzustellen — aus Laktat, Glyzerin, Aminosäuren — ein Vorgang namens Gluconeogenese. Nach ~16 h liefert sie bereits rund die Hälfte deiner Glukose (Cahill, Annu Rev Nutr 2006).\n\nDas ist metabolische Flexibilität in sichtbarer Form: Dein Körper lässt das Gehirn nicht hungern.\n\nDer Hunger und das leichte Tief, das du spürst, sind der umgelegte Schalter. Als Nächstes kommt das Fett.</string>
 	<string name="journey_stage_4_body">Das Insulin ist endlich niedrig genug, um deine Fettdepots zu öffnen. Die Lipolyse setzt Fettsäuren frei, die Leber beginnt, sie in Ketone umzuwandeln, und du wechselst vom Zucker- zum Fettverbrenner.\n\nJede Stunde hier verbessert deine Insulinsensitivität ein Stück und baut Fettreserven ab — der metabolische Kern, warum Fasten wirkt.\n\nEin metallischer Geschmack oder leichte Kopfschmerzen sind erste Ketone. Das Feuer brennt.</string>
@@ -282,4 +282,12 @@
 	<string name="journey_stage_7_body">Zwei Tage, und das Wachstumshormon schießt nach oben — ein ~2-tägiges Fasten kann seine Ausschüttung um etwa das 5-Fache steigern (Ho, J Clin Invest 1988). Seine Aufgabe jetzt: Muskelmasse schützen und den Fettstoffwechsel stärker antreiben.\n\nSo verbrennst du weiter Fett und bewahrst zugleich den Muskel, den du zu verlieren glaubtest — eine wirklich elegante Anpassung.\n\nDieser unerwartete Energieschub, den viele hier beschreiben? Das ist das Hormon.</string>
 	<string name="journey_stage_8_body">Wenn das Insulin tagelang niedrig bleibt, sprechen deine Zellen wieder neu darauf an — die Insulinsensitivität stellt sich auf ein gesünderes Niveau zurück, das Gegenteil der Resistenz, die dem Typ-2-Diabetes vorausgeht.\n\nDer Blutzucker bleibt in einem ruhigen, engen Bereich, und die Sättigung stellt sich leicht ein.\n\nDu justierst ein System, das die meisten Menschen nie bewusst berühren.</string>
 	<string name="journey_stage_9_body">Drei Tage: seltene Höhen. Längeres Fasten kann den Körper dazu bringen, gealterte Immunzellen abzubauen und aus hämatopoetischen Stammzellen neue zu bilden, während die IGF-1- und PKA-Signale sinken (Cheng, Cell Stem Cell 2014).\n\nDie Entzündung klingt weiter ab; manche beschreiben ein ruhiges, klares Wohlbefinden.\n\nWie weit du von hier aus auch gehst, du gehst erneuert — und brich dein Fasten sanft. Sei stolz.</string>
+	<string name="import_easyfast_result">%1$d Fasten importiert.\nÜberlappende Einträge ÜBERSPRUNGEN: %2$d</string>
+	<string name="export_choose_format">Exportformat</string>
+	<string name="export_format_csv">CSV (Tabelle)</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
+	<string name="stat_total_fasts">Fasten gesamt</string>
+	<string name="stat_total_fasted">Gesamte Fastenzeit</string>
+	<string name="stat_longest_fast">Längstes Fasten</string>
 </resources>

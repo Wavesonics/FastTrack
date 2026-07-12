@@ -1,11 +1,11 @@
 package com.darkrockstudios.apps.fasttrack.screens.main
 
 import android.app.ComponentCaller
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.getValue
@@ -13,9 +13,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.net.toUri
 import androidx.core.view.WindowCompat
+import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
@@ -25,8 +25,7 @@ import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.darkrockstudios.apps.fasttrack.screens.intro.IntroActivity
 import com.darkrockstudios.apps.fasttrack.screens.settings.SettingsActivity
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
-import com.darkrockstudios.apps.fasttrack.utils.formatDuration
-import com.vansuita.materialabout.builder.AboutBuilder
+import io.github.aakira.napier.Napier
 import org.koin.android.ext.android.inject
 import kotlin.time.ExperimentalTime
 
@@ -35,6 +34,8 @@ import kotlin.time.ExperimentalTime
 class MainActivity : AppCompatActivity() {
 	private var startFastRequestState by mutableStateOf<StartFastRequest?>(null)
 	private var stopFastRequestState by mutableStateOf(false)
+	private var shareRequestState by mutableStateOf(false)
+	private var showAboutState by mutableStateOf(false)
 	private var themeModeState by mutableStateOf(ThemeMode.SYSTEM)
 	private val settings by inject<SettingsDatasource>()
 	private val fastingRepository by inject<ActiveFastRepository>()
@@ -56,18 +57,29 @@ class MainActivity : AppCompatActivity() {
 		setContent {
 			FastTrackTheme(themeMode = themeModeState) {
 				MainScreen(
-					repository = fastingRepository,
-					onShareClick = { shareText() },
+					onShareClick = { shareRequestState = true },
 					onInfoClick = { startActivity(Intent(this, InfoActivity::class.java)) },
-					onAboutClick = { showAbout() },
+					onAboutClick = { showAboutState = true },
 					onSettingsClick = { startActivity(Intent(this, SettingsActivity::class.java)) },
 					externalRequests = ExternalRequests(
 						startFastRequest = startFastRequestState,
 						stopFastRequested = stopFastRequestState,
+						shareRequested = shareRequestState,
 						consumeStartFastRequest = { startFastRequestState = null },
 						consumeStopFastRequest = { stopFastRequestState = false },
+						consumeShareRequest = { shareRequestState = false },
 					),
 				)
+
+				if (showAboutState) {
+					AboutDialog(
+						versionName = BuildConfig.VERSION_NAME,
+						onOpenUrl = { url -> openUrl(url) },
+						onRateApp = { rateApp() },
+						onShareApp = { shareApp() },
+						onDismiss = { showAboutState = false },
+					)
+				}
 			}
 		}
 	}
@@ -111,58 +123,31 @@ class MainActivity : AppCompatActivity() {
 		}
 	}
 
-	private fun shareText() {
-		val elapsedTime = fastingRepository.getElapsedFastTime()
-		val durationText = formatDuration(this, elapsedTime)
-
-		val curPhase = Stages.getCurrentPhase(elapsedTime)
-		val shareText = if (fastingRepository.isFasting()) {
-			val energyModeStr =
-				if (curPhase.fatBurning) {
-					getString(R.string.fasting_energy_mode_fat)
-				} else {
-					getString(R.string.fasting_energy_mode_glucose)
-				}
-			getString(R.string.share_text_fasting, durationText, energyModeStr)
-		} else {
-			getString(R.string.share_text_finished, durationText)
+	private fun openUrl(url: String) {
+		try {
+			startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
+		} catch (e: ActivityNotFoundException) {
+			Napier.w("No activity available to open url: $url", e)
 		}
-
-		val sendIntent: Intent = Intent().apply {
-			action = Intent.ACTION_SEND
-			putExtra(Intent.EXTRA_TEXT, shareText)
-			type = "text/plain"
-		}
-
-		val shareIntent = Intent.createChooser(sendIntent, null)
-		startActivity(shareIntent)
 	}
 
-	private fun showAbout() {
-		val view = AboutBuilder.with(this)
-			.setPhoto(R.drawable.darkrockstudios_logo)
-			.setCover(R.mipmap.profile_cover)
-			.setName(R.string.about_name)
-			.setSubTitle(R.string.about_subtitle)
-			.setBrief(R.string.about_brief)
-			.setAppIcon(R.drawable.app_icon)
-			.setAppName(R.string.app_name)
-			.addGitHubLink("Darkrock-Studios")
-			.addWebsiteLink("https://darkrock.studio/")
-			.addLink(
-				R.drawable.ic_discord,
-				R.string.about_discord,
-				"https://discord.gg/ju2RQa5x8W".toUri()
-			)
-			.addFiveStarsAction()
-			.setVersionNameAsAppSubTitle()
-			.addShareAction(R.string.app_name)
-			.setWrapScrollView(true)
-			.setLinksAnimated(true)
-			.setShowAsCard(true)
-			.build()
+	private fun rateApp() {
+		try {
+			startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()))
+		} catch (e: ActivityNotFoundException) {
+			// No Play Store on this device; fall back to the web listing
+			openUrl("https://play.google.com/store/apps/details?id=$packageName")
+		}
+	}
 
-		AlertDialog.Builder(this).setView(view).create().show()
+	private fun shareApp() {
+		val shareText =
+			"${getString(R.string.app_name)} — https://play.google.com/store/apps/details?id=$packageName"
+		val intent = Intent(Intent.ACTION_SEND).apply {
+			type = "text/plain"
+			putExtra(Intent.EXTRA_TEXT, shareText)
+		}
+		startActivity(Intent.createChooser(intent, null))
 	}
 
 	companion object {

@@ -11,9 +11,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.datetime.*
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.DurationUnit
+import kotlin.time.Instant
 
 class ManualAddViewModel(
 	private val repository: FastingLogRepository
@@ -26,11 +31,11 @@ class ManualAddViewModel(
 		val instant = Instant.fromEpochMilliseconds(dateTimestamp)
 		val localDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
 
-		val selectedDate = LocalDate(
-			year = localDateTime.year,
-			month = localDateTime.month,
-			dayOfMonth = localDateTime.dayOfMonth
-		)
+        val selectedDate = LocalDate(
+            year = localDateTime.year,
+            month = localDateTime.month,
+            day = localDateTime.day
+        )
 
 		_uiState.update { currentState ->
 			currentState.copy(
@@ -46,7 +51,7 @@ class ManualAddViewModel(
 			val selectedDateTime = LocalDateTime(
 				year = selectedDate.year,
 				month = selectedDate.month,
-				dayOfMonth = selectedDate.dayOfMonth,
+				day = selectedDate.day,
 				hour = hour,
 				minute = minute,
 				second = 0,
@@ -79,6 +84,10 @@ class ManualAddViewModel(
 		}
 	}
 
+	override fun onNotesChanged(notes: String) {
+		_uiState.update { it.copy(notes = notes) }
+	}
+
 	override fun onEndDateTimeSelected(instant: Instant) {
 		val currentState = _uiState.value
 		val startDateTime = currentState.selectedDateTime
@@ -102,16 +111,17 @@ class ManualAddViewModel(
 		val selectedDateTime = currentState.selectedDateTime
 		val lengthHours = currentState.lengthHours.toLongOrNull() ?: 0
 		val entryToEdit = currentState.entryToEdit
+		val notes = currentState.notes.trim()
 
 		return if (selectedDateTime != null && lengthHours > 0) {
 			val length = lengthHours.hours
 			viewModelScope.launch(Dispatchers.IO) {
 				if (entryToEdit != null) {
 					// Update existing entry
-					repository.updateLogEntry(entryToEdit, selectedDateTime, length)
+					repository.updateLogEntry(entryToEdit, selectedDateTime, length, notes)
 				} else {
 					// Add new entry
-					repository.addLogEntry(selectedDateTime, length)
+					repository.addLogEntry(selectedDateTime, length, notes)
 				}
 			}
 			true
@@ -128,11 +138,11 @@ class ManualAddViewModel(
 	}
 
 	override fun initializeWithEntry(entry: FastingLogEntry) {
-		val selectedDate = LocalDate(
-			year = entry.start.year,
-			month = entry.start.month,
-			dayOfMonth = entry.start.dayOfMonth
-		)
+        val selectedDate = LocalDate(
+            year = entry.start.year,
+            month = entry.start.month,
+            day = entry.start.day
+        )
 
 		val lengthHours = entry.length.toDouble(DurationUnit.HOURS).toLong().toString()
 
@@ -142,6 +152,7 @@ class ManualAddViewModel(
 				selectedDate = selectedDate,
 				selectedDateTime = entry.start,
 				lengthHours = lengthHours,
+				notes = entry.notes,
 				isCompleteButtonEnabled = true,
 				entryToEdit = entry
 			)

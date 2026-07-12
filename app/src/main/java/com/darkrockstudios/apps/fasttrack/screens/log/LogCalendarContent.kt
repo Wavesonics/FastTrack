@@ -3,7 +3,6 @@ package com.darkrockstudios.apps.fasttrack.screens.log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -22,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -50,13 +50,13 @@ import kotlinx.datetime.LocalDate as KxLocalDate
 @ExperimentalTime
 @Composable
 fun LogCalendarContent(
-	entries: List<FastingLogEntry>,
+    entries: List<FastingLogEntry>,
 	selectedDate: KxLocalDate?,
 	onDateSelected: (KxLocalDate?) -> Unit,
-	onEdit: (FastingLogEntry) -> Unit,
-	onDelete: (FastingLogEntry) -> Unit,
-	contentPadding: PaddingValues,
-	modifier: Modifier = Modifier,
+    onEdit: (FastingLogEntry) -> Unit,
+    onDelete: (FastingLogEntry) -> Unit,
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier,
 ) {
 	val entriesByDate = remember(entries) {
 		entries.groupBy { it.start.date }
@@ -117,10 +117,10 @@ fun LogCalendarContent(
 @Composable
 private fun FastDayDialog(
 	date: KxLocalDate,
-	entries: List<FastingLogEntry>,
-	onDismiss: () -> Unit,
-	onEdit: (FastingLogEntry) -> Unit,
-	onDelete: (FastingLogEntry) -> Unit,
+    entries: List<FastingLogEntry>,
+    onDismiss: () -> Unit,
+    onEdit: (FastingLogEntry) -> Unit,
+    onDelete: (FastingLogEntry) -> Unit,
 ) {
 	val formatter = remember { DateTimeFormatter.ofPattern("EEE, d MMM uuuu", Locale.getDefault()) }
 	val dateLabel = remember(date) { date.toJavaLocalDate().format(formatter) }
@@ -172,7 +172,7 @@ private fun DaysOfWeekRow(daysOfWeek: List<java.time.DayOfWeek>) {
 	) {
 		daysOfWeek.forEach { dow ->
 			Text(
-				text = dow.getDisplayName(TextStyle.SHORT, Locale.getDefault()),
+				text = dow.getDisplayName(TextStyle.SHORT, LocalLocale.current.platformLocale),
 				style = MaterialTheme.typography.labelSmall,
 				color = MaterialTheme.colorScheme.onSurfaceVariant,
 				textAlign = TextAlign.Center,

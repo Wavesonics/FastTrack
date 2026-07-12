@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.data.log.LogExportFormat
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
@@ -32,7 +34,7 @@ fun SettingsScreen(
 	onMetricSystemSettingChanged: (Boolean) -> Unit,
 	themeModeState: ThemeMode,
 	onThemeModeChanged: (ThemeMode) -> Unit,
-	onExportClick: () -> Unit,
+	onExportClick: (LogExportFormat) -> Unit,
 	onImportClick: () -> Unit
 ) {
 	Scaffold(
@@ -84,7 +86,7 @@ private fun SettingsList(
 	onMetricSystemSettingChanged: (Boolean) -> Unit,
 	themeModeState: ThemeMode,
 	onThemeModeChanged: (ThemeMode) -> Unit,
-	onExportClick: () -> Unit,
+	onExportClick: (LogExportFormat) -> Unit,
 	onImportClick: () -> Unit
 ) {
 	var fancyBackground by remember { mutableStateOf(settings.getShowFancyBackground()) }
@@ -92,6 +94,7 @@ private fun SettingsList(
 	var showFatBurn by remember { mutableStateOf(settings.getShowFatBurn()) }
 	var showKetosis by remember { mutableStateOf(settings.getShowKetosis()) }
 	var showAutophagy by remember { mutableStateOf(settings.getShowAutophagy()) }
+	var showExportFormatDialog by remember { mutableStateOf(false) }
 
 	Box(modifier = Modifier.fillMaxSize()) {
 		LazyColumn(
@@ -209,7 +212,7 @@ private fun SettingsList(
 				SettingsActionItem(
 					headline = R.string.action_export,
 					details = R.string.action_export_description,
-					onClick = onExportClick
+					onClick = { showExportFormatDialog = true }
 				)
 			}
 			item(key = "import_logbook") {
@@ -219,6 +222,35 @@ private fun SettingsList(
 					onClick = onImportClick
 				)
 			}
+		}
+
+		if (showExportFormatDialog) {
+			AlertDialog(
+				onDismissRequest = { showExportFormatDialog = false },
+				title = { Text(stringResource(id = R.string.export_choose_format)) },
+				text = {
+					Column {
+						LogExportFormat.entries.forEach { format ->
+							Text(
+								text = stringResource(id = format.labelRes),
+								style = MaterialTheme.typography.bodyLarge,
+								modifier = Modifier
+									.fillMaxWidth()
+									.clickable {
+										showExportFormatDialog = false
+										onExportClick(format)
+									}
+									.padding(vertical = 12.dp),
+							)
+						}
+					}
+				},
+				confirmButton = {
+					TextButton(onClick = { showExportFormatDialog = false }) {
+						Text(stringResource(id = R.string.cancel_button))
+					}
+				},
+			)
 		}
 	}
 }

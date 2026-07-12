@@ -13,6 +13,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -51,10 +53,17 @@ fun ManualAddDialog(
 			viewModel.onDismiss()
 			onDismiss()
 		},
-		properties = DialogProperties(usePlatformDefaultWidth = false),
+		properties = DialogProperties(
+			usePlatformDefaultWidth = false,
+			// Let the dialog receive IME/system-bar insets so the card can
+			// stay clear of the keyboard while the Notes field is focused.
+			decorFitsSystemWindows = false,
+		),
 	) {
 		Card(
 			modifier = Modifier
+				.safeDrawingPadding()
+				.padding(13.dp)
 				.widthIn(max = 600.dp)
 				.heightIn(max = 800.dp)
 				.verticalScroll(rememberScrollState())
@@ -66,7 +75,7 @@ fun ManualAddDialog(
 				// Header with title and close button
 				Row(
 					modifier = Modifier
-						.padding(horizontal = 16.dp)
+						.padding(start = 21.dp, end = 8.dp, top = 8.dp)
 						.fillMaxWidth(),
 					horizontalArrangement = Arrangement.SpaceBetween,
 					verticalAlignment = Alignment.CenterVertically
@@ -116,7 +125,7 @@ fun ManualAddDialog(
 
 					ManualAddStep.SetDuration -> {
 						// Length Input
-						Column(modifier = Modifier.padding(16.dp)) {
+						Column(modifier = Modifier.padding(horizontal = 21.dp, vertical = 13.dp)) {
 							// Show summary of selections with clickable edit options
 							uiState.selectedDateTime?.let { dateTime ->
 								Text(
@@ -125,12 +134,13 @@ fun ManualAddDialog(
 									color = MaterialTheme.colorScheme.onSurfaceVariant
 								)
 
-								Spacer(modifier = Modifier.height(4.dp))
+								Spacer(modifier = Modifier.height(5.dp))
 
 								// Date row - clickable
 								Row(
 									modifier = Modifier
 										.fillMaxWidth()
+										.heightIn(min = 48.dp)
 										.clickable { viewModel.goToStep(ManualAddStep.StartDate) }
 										.padding(vertical = 8.dp),
 									horizontalArrangement = Arrangement.SpaceBetween,
@@ -154,6 +164,7 @@ fun ManualAddDialog(
 								Row(
 									modifier = Modifier
 										.fillMaxWidth()
+										.heightIn(min = 48.dp)
 										.clickable { viewModel.goToStep(ManualAddStep.StartTime) }
 										.padding(vertical = 8.dp),
 									horizontalArrangement = Arrangement.SpaceBetween,
@@ -173,7 +184,7 @@ fun ManualAddDialog(
 
 								HorizontalDivider()
 
-								Spacer(modifier = Modifier.height(16.dp))
+								Spacer(modifier = Modifier.height(21.dp))
 							}
 
 							OutlinedTextField(
@@ -181,19 +192,39 @@ fun ManualAddDialog(
 								onValueChange = { viewModel.onLengthChanged(it) },
 								label = { Text(stringResource(id = R.string.manual_add_length_hint)) },
 								keyboardOptions = KeyboardOptions(
-									keyboardType = KeyboardType.Number
+									keyboardType = KeyboardType.Number,
+									imeAction = ImeAction.Next
 								),
+								singleLine = true,
 								modifier = Modifier.fillMaxWidth()
 							)
 
-							Spacer(modifier = Modifier.height(8.dp))
+							Spacer(modifier = Modifier.height(13.dp))
 
 							// Button to calculate length from end date/time
 							Button(
 								onClick = { showEndDateTimePicker = true },
+								modifier = Modifier
+									.fillMaxWidth()
+									.heightIn(min = 48.dp)
 							) {
 								Text(stringResource(id = R.string.manual_add_calculate_from_end))
 							}
+
+							Spacer(modifier = Modifier.height(21.dp))
+
+							OutlinedTextField(
+								value = uiState.notes,
+								onValueChange = { viewModel.onNotesChanged(it) },
+								label = { Text(stringResource(id = R.string.fast_notes_label)) },
+								placeholder = { Text(stringResource(id = R.string.fast_notes_placeholder)) },
+								keyboardOptions = KeyboardOptions(
+									capitalization = KeyboardCapitalization.Sentences
+								),
+								minLines = 2,
+								maxLines = 5,
+								modifier = Modifier.fillMaxWidth()
+							)
 
 							if (showEndDateTimePicker) {
 								val dateTimePickerState = rememberDateTimePickerDialogState()
@@ -221,9 +252,10 @@ fun ManualAddDialog(
 				// Buttons
 				Row(
 					modifier = Modifier
-						.padding(16.dp)
+						.padding(start = 21.dp, end = 21.dp, top = 8.dp, bottom = 13.dp)
 						.fillMaxWidth(),
-					horizontalArrangement = Arrangement.SpaceBetween
+					horizontalArrangement = Arrangement.SpaceBetween,
+					verticalAlignment = Alignment.CenterVertically
 				) {
 					// Left side: Previous button (only show if not on first step)
 					if (uiState.currentStep != ManualAddStep.StartDate) {
@@ -237,7 +269,7 @@ fun ManualAddDialog(
 					}
 
 					// Right side: Cancel and Next/Complete buttons
-					Row {
+					Row(verticalAlignment = Alignment.CenterVertically) {
 						TextButton(onClick = {
 							viewModel.onDismiss()
 							onDismiss()

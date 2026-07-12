@@ -1,5 +1,10 @@
 package com.darkrockstudios.apps.fasttrack.screens.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,7 +15,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.*
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.runtime.*
@@ -23,7 +30,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.FastingScreen
 import com.darkrockstudios.apps.fasttrack.screens.log.LogScreen
@@ -53,7 +59,6 @@ enum class ScreenPages {
 @ExperimentalTime
 @Composable
 fun MainScreen(
-	repository: ActiveFastRepository,
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
@@ -66,18 +71,12 @@ fun MainScreen(
 			pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
-	val shareEnabled = remember { mutableStateOf(repository.getFastStart() != null) }
-
 	val fastingTitle = stringResource(id = R.string.title_fasting)
 	val logTitle = stringResource(id = R.string.title_log)
 	val profileTitle = stringResource(id = R.string.title_profile)
 
 	val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
-
-	LaunchedEffect(repository.isFasting()) {
-		shareEnabled.value = repository.getFastStart() != null
-	}
 
 	// No top app bar: the bottom navigation already names the screen, and the
 	// reclaimed space belongs to the content. Actions float in the top-right.
@@ -218,7 +217,7 @@ fun MainScreen(
 			}
 
 			FloatingTopActions(
-				shareEnabled = shareEnabled.value,
+				showShare = pagerState.currentPage == ScreenPages.Fasting.ordinal,
 				onShareClick = onShareClick,
 				onInfoClick = onInfoClick,
 				onAboutClick = onAboutClick,
@@ -236,12 +235,13 @@ fun MainScreen(
 
 /**
  * The old top app bar, distilled to a small translucent pill in the
- * top-right corner: Info stays exposed; Share, About and Settings live
- * behind the overflow menu.
+ * top-right corner: Info stays exposed; About and Settings live behind
+ * the overflow menu. Share is contextual — it captures the fasting hero,
+ * so it only appears (animated) while the Fasting page is active.
  */
 @Composable
 private fun FloatingTopActions(
-	shareEnabled: Boolean,
+	showShare: Boolean,
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
@@ -256,6 +256,19 @@ private fun FloatingTopActions(
 		color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f),
 	) {
 		Row(verticalAlignment = Alignment.CenterVertically) {
+			AnimatedVisibility(
+				visible = showShare,
+				enter = expandHorizontally() + fadeIn(),
+				exit = shrinkHorizontally() + fadeOut(),
+			) {
+				IconButton(onClick = onShareClick) {
+					Icon(
+						imageVector = Icons.Default.Share,
+						contentDescription = stringResource(id = R.string.action_share),
+					)
+				}
+			}
+
 			IconButton(onClick = onInfoClick) {
 				Icon(
 					imageVector = Icons.Default.Info,
@@ -276,23 +289,13 @@ private fun FloatingTopActions(
 					onDismissRequest = { showMenu = false }
 				) {
 					DropdownMenuItem(
-						text = { Text(stringResource(id = R.string.action_share)) },
+						text = { Text(stringResource(id = R.string.action_about)) },
 						leadingIcon = {
 							Icon(
-								imageVector = Icons.Default.Share,
+								imageVector = Icons.Outlined.Info,
 								contentDescription = null,
 							)
 						},
-						// There is nothing to share until a fast has been started
-						enabled = shareEnabled,
-						onClick = {
-							onShareClick()
-							showMenu = false
-						},
-					)
-
-					DropdownMenuItem(
-						text = { Text(stringResource(id = R.string.action_about)) },
 						onClick = {
 							onAboutClick()
 							showMenu = false
@@ -301,6 +304,12 @@ private fun FloatingTopActions(
 
 					DropdownMenuItem(
 						text = { Text(stringResource(id = R.string.action_settings)) },
+						leadingIcon = {
+							Icon(
+								imageVector = Icons.Default.Settings,
+								contentDescription = null,
+							)
+						},
 						onClick = {
 							onSettingsClick()
 							showMenu = false

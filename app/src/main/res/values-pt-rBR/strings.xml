@@ -269,4 +269,12 @@ Esse é um número fundamental para pessoas que fazem dieta restringindo a inges
 	<string name="journey_stage_7_body">Dois dias, e o hormônio do crescimento dispara — um jejum de ~2 dias pode aumentar sua secreção em cerca de 5 vezes (Ho, J Clin Invest 1988). Sua missão agora: proteger a massa muscular e acelerar mais o metabolismo da gordura.\n\nAssim você continua queimando gordura enquanto preserva o músculo que esperaria perder — uma adaptação realmente elegante.\n\nAquele aumento inesperado de energia que muitos descrevem aqui? É o hormônio falando.</string>
 	<string name="journey_stage_8_body">Com a insulina mantida baixa por dias, suas células voltam a responder a ela — a sensibilidade à insulina se reajusta para um nível mais saudável, o oposto da resistência que precede o diabetes tipo 2.\n\nA glicose fica numa faixa calma e estreita; a saciedade vem com facilidade.\n\nVocê está afinando um sistema que quase ninguém ajusta de propósito.</string>
 	<string name="journey_stage_9_body">Três dias: ar rarefeito. O jejum prolongado pode levar o corpo a eliminar células imunológicas envelhecidas e regenerar novas a partir de células-tronco hematopoéticas, à medida que a sinalização de IGF-1 e PKA diminui (Cheng, Cell Stem Cell 2014).\n\nA inflamação continua cedendo; algumas pessoas descrevem um bem-estar calmo e lúcido.\n\nPor mais longe que você vá daqui, você sai renovado — e quebre o jejum com calma. Tenha orgulho.</string>
+	<string name="import_easyfast_result">%1$d jejuns importados.\nEntradas sobrepostas IGNORADAS: %2$d</string>
+	<string name="export_choose_format">Formato de exportação</string>
+	<string name="export_format_csv">CSV (planilha)</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
+	<string name="stat_total_fasts">Total de jejuns</string>
+	<string name="stat_total_fasted">Tempo total de jejum</string>
+	<string name="stat_longest_fast">Jejum mais longo</string>
 </resources>

@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 import kotlin.math.roundToInt
+import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
@@ -41,12 +42,17 @@ class LogViewModel(
 	private fun updateEntries(entries: List<FastingLogEntry>) {
 		val totalKetosisHours = entries.sumOf { calculateKetosis(it) }.roundToInt()
 		val totalAutophagyHours = entries.sumOf { calculateAutophagy(it) }.roundToInt()
+		val totalFastedDuration = entries.fold(Duration.ZERO) { acc, e -> acc + e.length }
+		val longestFastDuration = entries.maxOfOrNull { it.length } ?: Duration.ZERO
 
 		_uiState.update { currentState ->
 			currentState.copy(
 				entries = entries.sortedByDescending { it.start },
 				totalKetosisHours = totalKetosisHours,
-				totalAutophagyHours = totalAutophagyHours
+				totalAutophagyHours = totalAutophagyHours,
+				totalFasts = entries.size,
+				totalFastedDuration = totalFastedDuration,
+				longestFastDuration = longestFastDuration,
 			)
 		}
 	}

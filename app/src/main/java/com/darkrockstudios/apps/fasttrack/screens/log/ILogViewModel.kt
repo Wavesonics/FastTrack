@@ -4,12 +4,16 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.datetime.LocalDate
+import kotlin.time.Duration
 
 interface ILogViewModel {
 	data class LogUiState(
 		val entries: List<FastingLogEntry> = emptyList(),
 		val totalKetosisHours: Int = 0,
 		val totalAutophagyHours: Int = 0,
+		val totalFasts: Int = 0,
+		val totalFastedDuration: Duration = Duration.ZERO,
+		val longestFastDuration: Duration = Duration.ZERO,
 		val showManualAddDialog: Boolean = false,
 		val entryToEdit: FastingLogEntry? = null,
 		val viewMode: LogViewMode = LogViewMode.LIST,
