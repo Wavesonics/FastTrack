@@ -12,10 +12,10 @@ interface FastingLogRepository {
 	fun addLogEntry(start: LocalDateTime, length: Duration, notes: String = "")
 	// notes defaults to the entry's current notes so an edit that omits them preserves them
 	fun updateLogEntry(
-		entry: FastingLogEntry,
+        entry: FastingLogEntry,
 		start: LocalDateTime,
-		length: Duration,
-		notes: String = entry.notes
+        length: Duration,
+        notes: String = entry.notes
 	): Boolean
 	suspend fun exportLog(): String
 	suspend fun importLog(cvsExport: String): Boolean

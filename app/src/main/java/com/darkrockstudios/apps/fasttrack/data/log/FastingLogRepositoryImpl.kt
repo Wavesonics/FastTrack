@@ -12,6 +12,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.UtcOffset
+import kotlinx.datetime.number
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import java.util.Locale
@@ -55,10 +56,10 @@ class FastingLogRepositoryImpl(
 	}
 
 	override fun updateLogEntry(
-		entry: FastingLogEntry,
+        entry: FastingLogEntry,
 		start: LocalDateTime,
-		length: Duration,
-		notes: String
+        length: Duration,
+        notes: String
 	): Boolean {
 		val startInstant = start.toInstant(TimeZone.currentSystemDefault())
 		val updatedEntry = FastEntry(
@@ -370,8 +371,8 @@ class FastingLogRepositoryImpl(
 
 				"END:VEVENT" -> {
 					if (inEvent && start != null) {
-						val finish = end ?: durationMs?.let { start!! + it }
-						if (finish != null) out += ImportedFast(start!!, finish, desc.trim())
+						val finish = end ?: durationMs?.let { start + it }
+						if (finish != null) out += ImportedFast(start, finish, desc.trim())
 					}
 					inEvent = false
 				}
@@ -443,7 +444,7 @@ class FastingLogRepositoryImpl(
 		val d = Instant.fromEpochMilliseconds(epochMs).toLocalDateTime(TimeZone.UTC)
 		return String.format(
 			Locale.ROOT, "%04d%02d%02dT%02d%02d%02dZ",
-			d.year, d.monthNumber, d.dayOfMonth, d.hour, d.minute, d.second
+			d.year, d.month.number, d.day, d.hour, d.minute, d.second
 		)
 	}
 
@@ -566,7 +567,7 @@ class FastingLogRepositoryImpl(
 		val d = Instant.fromEpochMilliseconds(epochMs).toLocalDateTime(TimeZone.UTC)
 		return String.format(
 			Locale.ROOT, "%04d-%02d-%02dT%02d:%02d:%02dZ",
-			d.year, d.monthNumber, d.dayOfMonth, d.hour, d.minute, d.second
+			d.year, d.month.number, d.day, d.hour, d.minute, d.second
 		)
 	}
 
@@ -611,12 +612,12 @@ class FastingLogRepositoryImpl(
 
 			val dp = datePart.split('-')
 			val tp = timePart.split(':')
-			val ldt = LocalDateTime(
+            val ldt = LocalDateTime(
 				dp[0].toInt(), dp[1].toInt(), dp[2].toInt(),
-				tp.getOrNull(0)?.toInt() ?: 0,
-				tp.getOrNull(1)?.toInt() ?: 0,
-				tp.getOrNull(2)?.toInt() ?: 0,
-			)
+                tp.getOrNull(0)?.toInt() ?: 0,
+                tp.getOrNull(1)?.toInt() ?: 0,
+                tp.getOrNull(2)?.toInt() ?: 0,
+            )
 			val instant = if (offsetMinutes != null) {
 				ldt.toInstant(UtcOffset(hours = offsetMinutes / 60, minutes = offsetMinutes % 60))
 			} else {
@@ -645,7 +646,7 @@ class FastingLogRepositoryImpl(
 
 	private fun formatDateTime(d: LocalDateTime): String =
 		"%04d-%02d-%02d %02d:%02d:%02d".format(
-			d.year, d.monthNumber, d.dayOfMonth, d.hour, d.minute, d.second
+			d.year, d.month.number, d.day, d.hour, d.minute, d.second
 		)
 
 	/**
@@ -655,15 +656,15 @@ class FastingLogRepositoryImpl(
 	private fun parseLocalDateTime(raw: String?): LocalDateTime? {
 		val text = raw?.trim()?.replace('T', ' ') ?: return null
 		return try {
-			val parts = text.split(Regex("\\s+"))
-			if (parts.size < 2) return null
-			val (y, mo, d) = parts[0].split('-').map { it.toInt() }
-			val timeParts = parts[1].split(':')
-			val h = timeParts[0].toInt()
-			val mi = timeParts.getOrNull(1)?.toInt() ?: 0
-			val s = timeParts.getOrNull(2)?.toInt() ?: 0
+            val parts = text.split(Regex("\\s+"))
+            if (parts.size < 2) return null
+            val (y, mo, d) = parts[0].split('-').map { it.toInt() }
+            val timeParts = parts[1].split(':')
+            val h = timeParts[0].toInt()
+            val mi = timeParts.getOrNull(1)?.toInt() ?: 0
+            val s = timeParts.getOrNull(2)?.toInt() ?: 0
 			LocalDateTime(y, mo, d, h, mi, s)
-		} catch (e: Exception) {
+        } catch (e: Exception) {
 			null
 		}
 	}

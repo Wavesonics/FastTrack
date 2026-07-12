@@ -28,3 +28,6 @@ install-debug:
 
 clean:
 	./gradlew --no-daemon clean
+
+check-jetifier:
+	 ./gradlew checkJetifier

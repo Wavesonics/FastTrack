@@ -31,14 +31,15 @@ import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.Dispatchers
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
-import kotlin.time.Clock
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.number
+import kotlinx.datetime.toLocalDateTime
 import org.koin.android.ext.android.inject
 import java.io.File
 import java.util.Locale
+import kotlin.time.Clock
 
 class SettingsActivity : AppCompatActivity() {
 	private val settings by inject<SettingsDatasource>()
@@ -244,7 +245,7 @@ class SettingsActivity : AppCompatActivity() {
 			val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
 			val stamp = String.format(
 				Locale.ROOT, "%04d-%02d-%02d-%02d%02d",
-				now.year, now.monthNumber, now.dayOfMonth, now.hour, now.minute
+				now.year, now.month.number, now.day, now.hour, now.minute
 			)
 			val exportFile = File(cacheDir, "fastingLogbook-$stamp.${format.extension}")
 

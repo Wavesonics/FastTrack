@@ -150,15 +150,11 @@ dependencies {
 	implementation(libs.koin.androidx.compose)
 	implementation(libs.koin.androidx.workmanager)
 
-	implementation(libs.customdatetimepicker)
-
 	implementation(libs.satchel.core)
 	implementation(libs.satchel.storer.encrypted.file)
 	implementation(libs.satchel.serializer.base64.android)
 
 	implementation(libs.compose.markdown)
-
-	implementation(libs.materialabout)
 
 	implementation(libs.core)
 	implementation(libs.ext.latex)

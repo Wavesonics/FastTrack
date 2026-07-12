@@ -65,6 +65,9 @@
 	<string name="about_brief">Climber, mountaineer, software engineer, and open source advocate.</string>
 
 	<string name="about_discord">Discord</string>
+	<string name="about_github" translatable="false">GitHub</string>
+	<string name="about_website" translatable="false">Website</string>
+	<string name="about_rate" translatable="false">Rate on Google Play</string>
 
 	<string name="title_fasting">Fasting</string>
 	<string name="title_log">Log</string>

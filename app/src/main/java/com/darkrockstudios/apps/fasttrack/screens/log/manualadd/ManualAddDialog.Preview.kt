@@ -17,6 +17,7 @@ class FakeManualAddViewModel(initialState: IManualAddViewModel.ManualAddUiState 
 	override fun onDateSelected(dateTimestamp: Long) {}
 	override fun onTimeSelected(hour: Int, minute: Int) {}
 	override fun onLengthChanged(length: String) {}
+	override fun onNotesChanged(notes: String) {}
 	override fun onEndDateTimeSelected(instant: Instant) {}
 	override fun onAddEntry() = true
 	override fun onDismiss() {}
@@ -67,6 +68,7 @@ fun ManualAddDialogPreviewStep2() {
 				currentStep = ManualAddStep.SetDuration,
 				selectedDateTime = selectedDateTime,
 				lengthHours = "16",
+				notes = "Felt great, easy morning.",
 				isCompleteButtonEnabled = true
 			)
 		)

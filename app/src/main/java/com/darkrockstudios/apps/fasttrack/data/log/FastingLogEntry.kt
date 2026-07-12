@@ -4,8 +4,8 @@ import kotlinx.datetime.LocalDateTime
 import kotlin.time.Duration
 
 data class FastingLogEntry(
-	val id: Int,
+    val id: Int,
 	val start: LocalDateTime,
-	val length: Duration,
-	val notes: String = ""
+    val length: Duration,
+    val notes: String = ""
 )

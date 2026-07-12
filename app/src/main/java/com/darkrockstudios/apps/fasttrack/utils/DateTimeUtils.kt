@@ -1,9 +1,14 @@
 package com.darkrockstudios.apps.fasttrack.utils
 
-import kotlinx.datetime.*
+import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toJavaLocalDateTime
+import kotlinx.datetime.toLocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
+import kotlin.time.Instant
+
 
 fun Instant.formatAs(
 	pattern: String,
