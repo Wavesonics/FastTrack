@@ -30,9 +30,10 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
 import com.darkrockstudios.apps.fasttrack.screens.log.manualadd.ManualAddDialog
+import com.darkrockstudios.apps.fasttrack.utils.AppDateTime
+import com.darkrockstudios.apps.fasttrack.utils.LocalDateStyle
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
 import com.darkrockstudios.apps.fasttrack.utils.formatDuration
-import kotlinx.datetime.toJavaLocalDate
 import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
@@ -165,10 +166,9 @@ private fun AddFastForDayDialog(
 	onConfirm: () -> Unit,
 	onDismiss: () -> Unit,
 ) {
-	val label = remember(date) {
-		val formatter = java.time.format.DateTimeFormatter
-			.ofPattern("EEE, d MMM uuuu", java.util.Locale.getDefault())
-		date.toJavaLocalDate().format(formatter)
+	val dateStyle = LocalDateStyle.current
+	val label = remember(date, dateStyle) {
+		AppDateTime.formatDate(date, dateStyle)
 	}
 	AlertDialog(
 		onDismissRequest = onDismiss,

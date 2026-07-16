@@ -286,4 +286,12 @@ Esse é um número fundamental para pessoas que fazem dieta restringindo a inges
 	<string name="clear_logbook_title">Excluir todo o registro?</string>
 	<string name="clear_logbook_message">Isso exclui permanentemente todos os %1$d jejuns registrados. Esta ação não pode ser desfeita.</string>
 	<string name="clear_logbook_confirm">Excluir todos (%1$d)</string>
+	<string name="stage_optimal_autophagy_description_past72">A autofagia está em plena atividade! Continue assim!</string>
+	<string name="settings_dateformat_title">Formato de data e hora</string>
+	<string name="dateformat_optimized_compact">Compacto</string>
+	<string name="dateformat_optimized_weekday">Compacto + dia da semana</string>
+	<string name="dateformat_system_short">Sistema curto</string>
+	<string name="dateformat_system_medium">Sistema médio</string>
+	<string name="dateformat_system_long">Sistema longo</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

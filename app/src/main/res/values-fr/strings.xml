@@ -309,4 +309,12 @@
 	<string name="clear_logbook_title">Supprimer tout le journal ?</string>
 	<string name="clear_logbook_message">Ceci supprime définitivement les %1$d jeûnes enregistrés. Cette action est irréversible.</string>
 	<string name="clear_logbook_confirm">Tout supprimer (%1$d)</string>
+	<string name="stage_optimal_autophagy_description_past72">L\'autophagie est en plein essor ! Continuez comme ça !</string>
+	<string name="settings_dateformat_title">Format date &amp; heure</string>
+	<string name="dateformat_optimized_compact">Compact</string>
+	<string name="dateformat_optimized_weekday">Compact + jour de semaine</string>
+	<string name="dateformat_system_short">Système court</string>
+	<string name="dateformat_system_medium">Système moyen</string>
+	<string name="dateformat_system_long">Système long</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

@@ -159,6 +159,13 @@
 	<string name="manual_add_set_end_complete">Calculate</string>
 	<string name="add_fast_for_day_title">Add a fast for %1$s?</string>
 	<string name="add_fast_for_day_confirm">Add fast</string>
+	<string name="settings_dateformat_title">Date &amp; time format</string>
+	<string name="dateformat_optimized_compact">Compact</string>
+	<string name="dateformat_optimized_weekday">Compact + weekday</string>
+	<string name="dateformat_system_short">System short</string>
+	<string name="dateformat_system_medium">System medium</string>
+	<string name="dateformat_system_long">System long</string>
+	<string name="dateformat_iso">ISO 8601</string>
 	<string name="menu_clear_logbook">Clear logbook…</string>
 	<string name="clear_logbook_title">Delete entire logbook?</string>
 	<string name="clear_logbook_message">This permanently deletes all %1$d logged fasts. This cannot be undone.</string>
@@ -379,4 +386,5 @@
 	<string name="fast_notes_label">Notes (optional)</string>
 	<string name="fast_notes_placeholder">How did it go? Anything to remember about this fast?</string>
 	<string name="log_entry_note_prefix">📝</string>
+	<string name="stage_optimal_autophagy_description_past72">Autophagy is in full swing! Keep it up!</string>
 </resources>

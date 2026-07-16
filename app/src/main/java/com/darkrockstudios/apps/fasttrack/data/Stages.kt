@@ -58,6 +58,19 @@ fun autophagyHours(length: Duration): Double {
 	return (length.toDouble(DurationUnit.HOURS) - start).coerceAtLeast(0.0)
 }
 
+/**
+ * The description to show for [stage] at [elapsedHours]. Optimal autophagy's copy
+ * talks about the window "between now and 72 hours", which no longer applies once a
+ * fast is past 72h, so beyond that we switch to a version without the deadline.
+ */
+@StringRes
+fun descriptionFor(stage: Stage, elapsedHours: Long): Int =
+	if (stage.description == R.string.stage_optimal_autophagy_description && elapsedHours >= 72L) {
+		R.string.stage_optimal_autophagy_description_past72
+	} else {
+		stage.description
+	}
+
 fun phaseForStage(stage: Stage): Phase {
 	return when {
 		stage.hours >= 48 -> Stages.PHASE_OPTIMAL_AUTOPHAGY

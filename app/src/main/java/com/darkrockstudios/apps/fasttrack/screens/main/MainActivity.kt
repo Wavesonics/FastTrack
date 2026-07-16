@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -17,8 +18,10 @@ import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
+import com.darkrockstudios.apps.fasttrack.data.settings.DateStyle
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
+import com.darkrockstudios.apps.fasttrack.utils.LocalDateStyle
 import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.StartFastRequest
 import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 	private var shareRequestState by mutableStateOf(false)
 	private var showAboutState by mutableStateOf(false)
 	private var themeModeState by mutableStateOf(ThemeMode.SYSTEM)
+	private var dateStyleState by mutableStateOf(DateStyle.OPTIMIZED_COMPACT)
 	private val settings by inject<SettingsDatasource>()
 	private val fastingRepository by inject<ActiveFastRepository>()
 
@@ -48,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 			.isAppearanceLightStatusBars = false
 
 		themeModeState = settings.getThemeMode()
+		dateStyleState = settings.getDateStyle()
 		handleStartFastExtra(intent)
 
 		if (!settings.getIntroSeen()) {
@@ -56,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
 		setContent {
 			FastTrackTheme(themeMode = themeModeState) {
+				CompositionLocalProvider(LocalDateStyle provides dateStyleState) {
 				MainScreen(
 					onShareClick = { shareRequestState = true },
 					onInfoClick = { startActivity(Intent(this, InfoActivity::class.java)) },
@@ -80,6 +86,7 @@ class MainActivity : AppCompatActivity() {
 						onDismiss = { showAboutState = false },
 					)
 				}
+				}
 			}
 		}
 	}
@@ -89,6 +96,10 @@ class MainActivity : AppCompatActivity() {
 		val currentMode = settings.getThemeMode()
 		if (currentMode != themeModeState) {
 			themeModeState = currentMode
+		}
+		val currentDateStyle = settings.getDateStyle()
+		if (currentDateStyle != dateStyleState) {
+			dateStyleState = currentDateStyle
 		}
 		setupFastingNotification()
 	}

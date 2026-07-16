@@ -4,6 +4,8 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -11,15 +13,20 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.log.LogExportFormat
+import com.darkrockstudios.apps.fasttrack.data.settings.DateStyle
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
+import com.darkrockstudios.apps.fasttrack.utils.AppDateTime
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
+import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
+import kotlinx.datetime.LocalDateTime
 
 
 @Composable
@@ -90,6 +97,7 @@ private fun SettingsList(
 	onImportClick: () -> Unit
 ) {
 	var fancyBackground by remember { mutableStateOf(settings.getShowFancyBackground()) }
+	var dateStyle by remember { mutableStateOf(settings.getDateStyle()) }
 	var phaseAutoMode by remember { mutableStateOf(settings.getPhaseAutoMode()) }
 	var showFatBurn by remember { mutableStateOf(settings.getShowFatBurn()) }
 	var showKetosis by remember { mutableStateOf(settings.getShowKetosis()) }
@@ -203,6 +211,15 @@ private fun SettingsList(
 				ThemeModeSettingsItem(
 					themeMode = themeModeState,
 					onThemeModeChanged = onThemeModeChanged
+				)
+			}
+			item(key = "date_format") {
+				DateFormatSettingsItem(
+					dateStyle = dateStyle,
+					onDateStyleChanged = { style ->
+						dateStyle = style
+						settings.setDateStyle(style)
+					}
 				)
 			}
 			item(key = "logbook_header") {
@@ -364,6 +381,93 @@ private fun ThemeModeSettingsItem(
 			}
 		}
 	)
+}
+
+@StringRes
+private fun dateStyleLabel(style: DateStyle): Int = when (style) {
+	DateStyle.OPTIMIZED_COMPACT -> R.string.dateformat_optimized_compact
+	DateStyle.OPTIMIZED_WEEKDAY -> R.string.dateformat_optimized_weekday
+	DateStyle.SYSTEM_SHORT -> R.string.dateformat_system_short
+	DateStyle.SYSTEM_MEDIUM -> R.string.dateformat_system_medium
+	DateStyle.SYSTEM_LONG -> R.string.dateformat_system_long
+	DateStyle.ISO -> R.string.dateformat_iso
+}
+
+@Composable
+private fun DateFormatSettingsItem(
+	dateStyle: DateStyle,
+	onDateStyleChanged: (DateStyle) -> Unit,
+) {
+	val is24Hour = shouldUse24HourFormat(LocalContext.current)
+	// A representative moment (current year, evening, non-zero minutes) so each
+	// option's live sample shows off its real appearance rather than a mask.
+	val sample = remember { LocalDateTime(java.time.Year.now().value, 6, 1, 20, 5) }
+	var showDialog by remember { mutableStateOf(false) }
+
+	ListItem(
+		headlineContent = {
+			Text(
+				text = stringResource(id = R.string.settings_dateformat_title),
+				style = MaterialTheme.typography.labelLarge,
+				fontWeight = FontWeight.Bold,
+			)
+		},
+		supportingContent = {
+			// The current value is shown as its own live sample — pick by looking.
+			Text(
+				text = AppDateTime.formatDateTime(sample, dateStyle, is24Hour),
+				style = MaterialTheme.typography.bodySmall,
+			)
+		},
+		modifier = Modifier.clickable { showDialog = true },
+	)
+
+	if (showDialog) {
+		AlertDialog(
+			onDismissRequest = { showDialog = false },
+			title = { Text(stringResource(id = R.string.settings_dateformat_title)) },
+			text = {
+				Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+					DateStyle.entries.forEach { style ->
+						Row(
+							modifier = Modifier
+								.fillMaxWidth()
+								.clickable {
+									onDateStyleChanged(style)
+									showDialog = false
+								}
+								.padding(vertical = 8.dp),
+							verticalAlignment = Alignment.CenterVertically,
+						) {
+							RadioButton(
+								selected = style == dateStyle,
+								onClick = {
+									onDateStyleChanged(style)
+									showDialog = false
+								},
+							)
+							Column(modifier = Modifier.padding(start = 8.dp)) {
+								Text(
+									text = stringResource(id = dateStyleLabel(style)),
+									style = MaterialTheme.typography.bodyLarge,
+								)
+								Text(
+									text = AppDateTime.formatDateTime(sample, style, is24Hour),
+									style = MaterialTheme.typography.bodySmall,
+									color = MaterialTheme.colorScheme.onSurfaceVariant,
+								)
+							}
+						}
+					}
+				}
+			},
+			confirmButton = {
+				TextButton(onClick = { showDialog = false }) {
+					Text(stringResource(id = R.string.cancel_button))
+				}
+			},
+		)
+	}
 }
 
 @Composable

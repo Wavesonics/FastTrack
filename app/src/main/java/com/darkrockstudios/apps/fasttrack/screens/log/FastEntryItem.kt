@@ -23,11 +23,15 @@ import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.fasting.gaugeColors
-import com.darkrockstudios.apps.fasttrack.utils.formatAs
+import com.darkrockstudios.apps.fasttrack.utils.AppDateTime
+import com.darkrockstudios.apps.fasttrack.utils.LocalDateStyle
 import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.utils.rememberVibrator
 import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
 import androidx.compose.ui.platform.LocalContext
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toLocalDateTime
 import kotlin.math.roundToInt
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
@@ -82,13 +86,17 @@ fun FastEntryItem(
 			elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
 		) {
 			Column {
-				val dateStr = remember(entry.start, use24Hour) {
-					val timePattern = if (use24Hour) "HH:mm" else "h:mm a"
-					entry.start.formatAs("d MMM uuuu - $timePattern")
+				// The fast's full window (start → end), the whole point of the entry,
+				// rendered in the user's chosen date/time style (locale-aware).
+				val dateStyle = LocalDateStyle.current
+				val heading = remember(entry.start, entry.length, use24Hour, dateStyle) {
+					val tz = TimeZone.currentSystemDefault()
+					val end = entry.start.toInstant(tz).plus(entry.length).toLocalDateTime(tz)
+					AppDateTime.formatFastRange(entry.start, end, dateStyle, use24Hour)
 				}
 
 				Text(
-					text = stringResource(id = R.string.log_entry_started, dateStr),
+					text = heading,
 					style = MaterialTheme.typography.titleMedium,
 					fontStyle = FontStyle.Italic,
 					color = MaterialTheme.colorScheme.onSurface,
@@ -218,3 +226,4 @@ fun FastEntryItem(
 		}
 	}
 }
+

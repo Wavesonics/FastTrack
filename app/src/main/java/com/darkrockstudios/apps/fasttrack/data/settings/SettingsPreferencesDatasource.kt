@@ -89,6 +89,13 @@ class SettingsPreferencesDatasource(
 		storage.edit { putString(Data.KEY_THEME_MODE, mode.name) }
 	}
 
+	override fun getDateStyle(): DateStyle =
+		DateStyle.fromName(storage.getString(Data.KEY_DATE_STYLE, null))
+
+	override fun setDateStyle(style: DateStyle) {
+		storage.edit { putString(Data.KEY_DATE_STYLE, style.name) }
+	}
+
 	override fun getLogViewMode(): LogViewMode =
 		LogViewMode.fromName(storage.getString(Data.KEY_LOG_VIEW_MODE, null))
 

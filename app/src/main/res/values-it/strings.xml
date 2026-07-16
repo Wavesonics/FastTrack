@@ -310,4 +310,12 @@
 	<string name="clear_logbook_title">Eliminare tutto il registro?</string>
 	<string name="clear_logbook_message">Questa operazione elimina definitivamente tutti i %1$d digiuni registrati. Non può essere annullata.</string>
 	<string name="clear_logbook_confirm">Elimina tutti (%1$d)</string>
+	<string name="stage_optimal_autophagy_description_past72">L\'autofagia è in pieno svolgimento! Continua così!</string>
+	<string name="settings_dateformat_title">Formato data e ora</string>
+	<string name="dateformat_optimized_compact">Compatto</string>
+	<string name="dateformat_optimized_weekday">Compatto + giorno della settimana</string>
+	<string name="dateformat_system_short">Sistema breve</string>
+	<string name="dateformat_system_medium">Sistema medio</string>
+	<string name="dateformat_system_long">Sistema lungo</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

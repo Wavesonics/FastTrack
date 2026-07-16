@@ -12,6 +12,7 @@ object Data
 	const val KEY_FASTING_NOTIFICATION = "fasting_notification"
 	const val KEY_METRIC_SYSTEM = "metric_system"
 	const val KEY_THEME_MODE = "theme_mode"
+	const val KEY_DATE_STYLE = "date_style"
 	const val KEY_LOG_VIEW_MODE = "log_view_mode"
 	const val KEY_SHOW_FAT_BURN = "show_fat_burn"
 	const val KEY_SHOW_KETOSIS = "show_ketosis"

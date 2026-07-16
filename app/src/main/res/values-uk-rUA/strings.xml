@@ -297,4 +297,12 @@
 	<string name="clear_logbook_title">Видалити весь журнал?</string>
 	<string name="clear_logbook_message">Це назавжди видаляє всі %1$d записаних голодувань. Цю дію не можна скасувати.</string>
 	<string name="clear_logbook_confirm">Видалити всі %1$d</string>
+	<string name="stage_optimal_autophagy_description_past72">Автофагія у повному розпалі! Так тримати!</string>
+	<string name="settings_dateformat_title">Формат дати та часу</string>
+	<string name="dateformat_optimized_compact">Компактний</string>
+	<string name="dateformat_optimized_weekday">Компактний + день тижня</string>
+	<string name="dateformat_system_short">Короткий (системний)</string>
+	<string name="dateformat_system_medium">Середній (системний)</string>
+	<string name="dateformat_system_long">Довгий (системний)</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

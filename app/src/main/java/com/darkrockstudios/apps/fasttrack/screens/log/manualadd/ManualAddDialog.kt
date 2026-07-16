@@ -57,8 +57,9 @@ import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.screens.fasting.DateTimePickerDialog
 import com.darkrockstudios.apps.fasttrack.screens.fasting.rememberDateTimePickerDialogState
 import com.darkrockstudios.apps.fasttrack.screens.preview.getContext
+import com.darkrockstudios.apps.fasttrack.utils.AppDateTime
+import com.darkrockstudios.apps.fasttrack.utils.LocalDateStyle
 import com.darkrockstudios.apps.fasttrack.utils.PastAndTodaySelectableDates
-import com.darkrockstudios.apps.fasttrack.utils.formatAs
 import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -276,6 +277,7 @@ private fun DurationStep(
 	onNotesChanged: (String) -> Unit,
 	onCalculateFromEnd: () -> Unit,
 ) {
+	val dateStyle = LocalDateStyle.current
 	Column(modifier = Modifier.fillMaxWidth()) {
 		// Start summary — tap either row to jump back and edit that step.
 		uiState.selectedDateTime?.let { dateTime ->
@@ -285,10 +287,14 @@ private fun DurationStep(
 				color = MaterialTheme.colorScheme.onSurfaceVariant
 			)
 			Spacer(modifier = Modifier.height(GapXs))
-			EditableSummaryRow(text = "${dateTime.date}", editContentDescription = R.string.edit_date, onClick = onEditDate)
+			EditableSummaryRow(
+				text = AppDateTime.formatDate(dateTime, dateStyle),
+				editContentDescription = R.string.edit_date,
+				onClick = onEditDate,
+			)
 			HorizontalDivider()
 			EditableSummaryRow(
-				text = dateTime.formatAs(if (use24Hour) "HH:mm" else "h:mm a"),
+				text = AppDateTime.formatTime(dateTime, dateStyle, use24Hour),
 				editContentDescription = R.string.edit_time,
 				onClick = onEditTime,
 			)

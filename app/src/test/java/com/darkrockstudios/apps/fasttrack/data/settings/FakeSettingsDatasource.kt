@@ -14,6 +14,7 @@ class FakeSettingsDatasource : SettingsDatasource {
 	private var showFastingNotification: Boolean = true
 	private var useMetricSystem: Boolean? = null
 	private var themeMode: ThemeMode = ThemeMode.SYSTEM
+	private var dateStyle: DateStyle = DateStyle.OPTIMIZED_COMPACT
 	private var logViewMode: LogViewMode = LogViewMode.LIST
 
 	override fun getFastingAlerts(): Boolean = fastingAlerts
@@ -55,6 +56,12 @@ class FakeSettingsDatasource : SettingsDatasource {
 
 	override fun setThemeMode(mode: ThemeMode) {
 		themeMode = mode
+	}
+
+	override fun getDateStyle(): DateStyle = dateStyle
+
+	override fun setDateStyle(style: DateStyle) {
+		dateStyle = style
 	}
 
 	override fun getLogViewMode(): LogViewMode = logViewMode

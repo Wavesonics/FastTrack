@@ -265,4 +265,12 @@
 	<string name="clear_logbook_title">Hele logboek verwijderen?</string>
 	<string name="clear_logbook_message">Hiermee worden alle %1$d gelogde vastenperiodes permanent verwijderd. Dit kan niet ongedaan worden gemaakt.</string>
 	<string name="clear_logbook_confirm">Alle %1$d verwijderen</string>
+	<string name="stage_optimal_autophagy_description_past72">De autofagie draait op volle toeren! Ga zo door!</string>
+	<string name="settings_dateformat_title">Datum- &amp; tijdnotatie</string>
+	<string name="dateformat_optimized_compact">Compact</string>
+	<string name="dateformat_optimized_weekday">Compact + weekdag</string>
+	<string name="dateformat_system_short">Systeem kort</string>
+	<string name="dateformat_system_medium">Systeem medium</string>
+	<string name="dateformat_system_long">Systeem lang</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

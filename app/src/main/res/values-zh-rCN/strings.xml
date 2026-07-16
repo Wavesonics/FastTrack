@@ -269,4 +269,12 @@
 	<string name="clear_logbook_title">删除整个日志？</string>
 	<string name="clear_logbook_message">此操作将永久删除全部 %1$d 条禁食记录，且无法撤销。</string>
 	<string name="clear_logbook_confirm">全部删除 (%1$d)</string>
+	<string name="stage_optimal_autophagy_description_past72">自噬正全力进行中！继续保持！</string>
+	<string name="settings_dateformat_title">日期和时间格式</string>
+	<string name="dateformat_optimized_compact">紧凑</string>
+	<string name="dateformat_optimized_weekday">紧凑 + 星期</string>
+	<string name="dateformat_system_short">系统－短</string>
+	<string name="dateformat_system_medium">系统－中</string>
+	<string name="dateformat_system_long">系统－长</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

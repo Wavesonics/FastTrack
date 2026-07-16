@@ -1,5 +1,6 @@
 package com.darkrockstudios.apps.fasttrack.screens.preview
 
+import com.darkrockstudios.apps.fasttrack.data.settings.DateStyle
 import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
 import com.darkrockstudios.apps.fasttrack.data.settings.PhaseVisibility
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
@@ -40,6 +41,10 @@ class DummySettingsDatasource(
 	override fun getThemeMode(): ThemeMode = ThemeMode.SYSTEM
 
 	override fun setThemeMode(mode: ThemeMode) {}
+
+	override fun getDateStyle(): DateStyle = DateStyle.OPTIMIZED_COMPACT
+
+	override fun setDateStyle(style: DateStyle) {}
 
 	override fun getLogViewMode(): LogViewMode = LogViewMode.LIST
 

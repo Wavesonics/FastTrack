@@ -299,4 +299,12 @@
 	<string name="clear_logbook_title">Gesamtes Logbuch löschen?</string>
 	<string name="clear_logbook_message">Dies löscht endgültig alle %1$d protokollierten Fasten. Dies kann nicht rückgängig gemacht werden.</string>
 	<string name="clear_logbook_confirm">Alle %1$d löschen</string>
+	<string name="stage_optimal_autophagy_description_past72">Die Autophagie ist in vollem Gange! Mach weiter so!</string>
+	<string name="settings_dateformat_title">Datums- &amp; Zeitformat</string>
+	<string name="dateformat_optimized_compact">Kompakt</string>
+	<string name="dateformat_optimized_weekday">Kompakt + Wochentag</string>
+	<string name="dateformat_system_short">System kurz</string>
+	<string name="dateformat_system_medium">System mittel</string>
+	<string name="dateformat_system_long">System lang</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

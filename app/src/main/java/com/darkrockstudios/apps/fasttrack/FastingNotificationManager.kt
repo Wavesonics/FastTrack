@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.data.descriptionFor
 import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
 import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.utils.getColorFor
@@ -72,7 +73,7 @@ object FastingNotificationManager {
 			append("\n")
 			append(context.getString(R.string.notification_fasting_energy_mode, energyMode))
 			append("\n")
-			append(context.getString(stage.description))
+			append(context.getString(descriptionFor(stage, elapsedHours)))
 		}
 
 		val intent = Intent(context, MainActivity::class.java).apply {

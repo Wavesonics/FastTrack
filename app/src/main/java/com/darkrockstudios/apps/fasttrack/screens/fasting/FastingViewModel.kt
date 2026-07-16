@@ -8,6 +8,7 @@ import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Phase
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.data.descriptionFor
 import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
@@ -140,7 +141,7 @@ class FastingViewModel(
 
 		return StageStrings(
 			title = appContext.getString(stage.title),
-			description = appContext.getString(stage.description),
+			description = appContext.getString(descriptionFor(stage, elapsedTime.inWholeHours)),
 			energyMode = energyMode,
 		)
 	}

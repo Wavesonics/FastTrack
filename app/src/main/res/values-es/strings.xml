@@ -128,7 +128,7 @@
 	<string name="stage_autophagy_title">Autofagia</string>
 	<string name="stage_autophagy_description">¡Tu cuerpo ha comenzado la autofagia!</string>
 	<string name="stage_optimal_autophagy_title">Autofagia Óptima</string>
-	<string name="stage_optimal_autophagy_description">¡La autofagia está en pleno apogeo! ¡Sigue así! Entre ahora y 72
+	<string name="stage_optimal_autophagy_description">La autofagia está a pleno rendimiento! ¡Buen trabajo, sigue así! Entre ahora y 72
 		horas, la autofagia será muy efectiva.</string>
 	<string name="phase_glucose">Quema de Glucosa</string>
 	<string name="phase_fat_burning">Quema de grasa</string>
@@ -307,4 +307,12 @@
 	<string name="clear_logbook_title">¿Borrar toda la libreta?</string>
 	<string name="clear_logbook_message">Esto elimina permanentemente todos los %1$d ayunos registrados. Esta acción no se puede deshacer.</string>
 	<string name="clear_logbook_confirm">Borrar todos (%1$d)</string>
+	<string name="stage_optimal_autophagy_description_past72">La autofagia está a pleno rendimiento! ¡Buen trabajo, sigue así!</string>
+	<string name="settings_dateformat_title">Formato de fecha y hora</string>
+	<string name="dateformat_optimized_compact">Compacto</string>
+	<string name="dateformat_optimized_weekday">Compacto + día de semana</string>
+	<string name="dateformat_system_short">Sistema corto</string>
+	<string name="dateformat_system_medium">Sistema medio</string>
+	<string name="dateformat_system_long">Sistema largo</string>
+	<string name="dateformat_iso">ISO 8601</string>
 </resources>

@@ -32,6 +32,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
+import com.darkrockstudios.apps.fasttrack.utils.AppDateTime
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
@@ -43,13 +44,10 @@ import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.plus
 import kotlinx.datetime.toInstant
-import kotlinx.datetime.toJavaLocalDate
 import kotlinx.datetime.toKotlinLocalDate
 import kotlinx.datetime.toLocalDateTime
 import java.time.YearMonth
-import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
-import java.util.Locale
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
@@ -154,7 +152,6 @@ fun LogCalendarContent(
 	val selectedEntries = if (selected != null) coverage.byDay[selected].orEmpty() else emptyList()
 	if (selected != null && selectedEntries.isNotEmpty()) {
 		FastDayDialog(
-			date = selected,
 			entries = selectedEntries,
 			onDismiss = { onDateSelected(null) },
 			onEdit = onEdit,
@@ -166,15 +163,11 @@ fun LogCalendarContent(
 @ExperimentalTime
 @Composable
 private fun FastDayDialog(
-	date: KxLocalDate,
     entries: List<FastingLogEntry>,
     onDismiss: () -> Unit,
     onEdit: (FastingLogEntry) -> Unit,
     onDelete: (FastingLogEntry) -> Unit,
 ) {
-	val formatter = remember { DateTimeFormatter.ofPattern("EEE, d MMM uuuu", Locale.getDefault()) }
-	val dateLabel = remember(date) { date.toJavaLocalDate().format(formatter) }
-
 	Dialog(
 		onDismissRequest = onDismiss,
 		properties = DialogProperties(
@@ -187,15 +180,6 @@ private fun FastDayDialog(
 				.fillMaxWidth()
 				.padding(horizontal = 8.dp),
 		) {
-			Text(
-				text = dateLabel,
-				style = MaterialTheme.typography.titleSmall,
-				color = MaterialTheme.colorScheme.onSurface,
-				textAlign = TextAlign.Center,
-				modifier = Modifier
-					.fillMaxWidth()
-					.padding(bottom = 8.dp),
-			)
 			entries.forEach { entry ->
 				FastEntryItem(
 					entry = entry,
@@ -234,9 +218,9 @@ private fun DaysOfWeekRow(daysOfWeek: List<java.time.DayOfWeek>) {
 
 @Composable
 private fun MonthHeader(month: CalendarMonth) {
-	val formatter = remember { DateTimeFormatter.ofPattern("MMMM uuuu", Locale.getDefault()) }
+	val title = remember(month.yearMonth) { AppDateTime.formatMonthYear(month.yearMonth) }
 	Text(
-		text = month.yearMonth.format(formatter),
+		text = title,
 		style = MaterialTheme.typography.titleMedium,
 		color = MaterialTheme.colorScheme.onSurface,
 		fontWeight = FontWeight.SemiBold,
@@ -257,9 +241,11 @@ private fun DayCell(
 	onClick: () -> Unit,
 ) {
 	val inMonth = day.position == DayPosition.MonthDate
-	// Only past/today fasts can be logged, so future days are greyed out and inert.
-	val enabled = inMonth && !isFuture
 	val cover = band
+	// Future days are greyed out and inert. Spill days from the adjacent month stay
+	// dimmed, but a covered one (a fast's head/tail bleeding across the month edge)
+	// remains tappable so the whole span is reachable — no dead-looking segments.
+	val enabled = !isFuture && (inMonth || cover != null)
 
 	val stageColor = cover?.color ?: Color.Transparent
 	// The whole span is one soft capsule; the true start/end read a touch stronger.
@@ -275,7 +261,10 @@ private fun DayCell(
 	val borderWidth = if (isSelected) 2.dp else 1.dp
 
 	val dayTextColor = when {
-		!inMonth || isFuture -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+		isFuture -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+		// Spill days from another month are dimmed; a covered one sits a little
+		// brighter so its part of the fast reads as present (and tappable).
+		!inMonth -> MaterialTheme.colorScheme.onSurface.copy(alpha = if (cover != null) 0.55f else 0.3f)
 		else -> MaterialTheme.colorScheme.onSurface
 	}
 
