@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.UtcOffset
 import kotlinx.datetime.number
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
@@ -468,14 +467,14 @@ class FastingLogRepositoryImpl(
 			val zone = if (tzid != null) {
 				try {
 					TimeZone.of(tzid)
-				} catch (e: Exception) {
+				} catch (_: Exception) {
 					TimeZone.currentSystemDefault()
 				}
 			} else {
 				TimeZone.currentSystemDefault()
 			}
 			ldt.toInstant(zone).toEpochMilliseconds()
-		} catch (e: IllegalArgumentException) {
+		} catch (_: IllegalArgumentException) {
 			null
 		}
 	}
@@ -786,7 +785,7 @@ class FastingLogRepositoryImpl(
 		return try {
 			val ldt = LocalDateTime(y, m, day, h, mi, s)
 			ldt.toInstant(TimeZone.currentSystemDefault()).toEpochMilliseconds()
-		} catch (e: IllegalArgumentException) {
+		} catch (_: IllegalArgumentException) {
 			null
 		}
 	}
@@ -847,15 +846,15 @@ class FastingLogRepositoryImpl(
 	private fun parseLocalDateTime(raw: String?): LocalDateTime? {
 		val text = raw?.trim()?.replace('T', ' ') ?: return null
 		return try {
-            val parts = text.split(Regex("\\s+"))
-            if (parts.size < 2) return null
-            val (y, mo, d) = parts[0].split('-').map { it.toInt() }
-            val timeParts = parts[1].split(':')
-            val h = timeParts[0].toInt()
-            val mi = timeParts.getOrNull(1)?.toInt() ?: 0
-            val s = timeParts.getOrNull(2)?.toInt() ?: 0
+			val parts = text.split(Regex("\\s+"))
+			if (parts.size < 2) return null
+			val (y, mo, d) = parts[0].split('-').map { it.toInt() }
+			val timeParts = parts[1].split(':')
+			val h = timeParts[0].toInt()
+			val mi = timeParts.getOrNull(1)?.toInt() ?: 0
+			val s = timeParts.getOrNull(2)?.toInt() ?: 0
 			LocalDateTime(y, mo, d, h, mi, s)
-        } catch (e: Exception) {
+		} catch (_: Exception) {
 			null
 		}
 	}

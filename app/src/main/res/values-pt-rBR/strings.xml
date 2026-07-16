@@ -37,7 +37,7 @@ Para explorar o que sabemos sobre o jejum e o que as pesquisas dizem, confira a 
 Você verá o tempo atual de jejum, em que fase está e qual modo de energia seu corpo está usando.
 
 Isso ajuda você a seguir no caminho certo sem precisar abrir o app!</string>
-	<string name="intro_05_title">That\'s it!</string>
+	<string name="intro_05_title">É isso!</string>
 	<string name="intro_05_description">Agora comece a jejuar!</string>
 	<string name="about_name">Dark Rock Studios</string>
 	<string name="about_subtitle">Desenvolvimento de código aberto</string>
@@ -119,7 +119,7 @@ Isso ajuda você a seguir no caminho certo sem precisar abrir o app!</string>
 	<string name="stage_fat_burning_title">Queima de gordura</string>
 	<string name="stage_fat_burning_description">Suas reservas de glicose se esgotaram! Seu corpo agora está queimando gordura para obter energia. Um treino nas próximas horas seria ideal.</string>
 	<string name="stage_fat_fasting_sweet_spot_title">Ponto ideal do jejum</string>
-	<string name="stage_fat_fasting_sweet_spot_description">You\'re in the fasting sweet spot, keep it up!</string>
+	<string name="stage_fat_fasting_sweet_spot_description">Você está no ponto ideal do jejum, continue assim!</string>
 	<string name="stage_fat_peak_fat_burning_title">Pico de queima de gordura</string>
 	<string name="stage_fat_peak_fat_burning_description">Seu corpo está queimando gordura rapidamente agora, e a cetose começou.</string>
 	<string name="stage_autophagy_title">Autofagia</string>
@@ -277,4 +277,13 @@ Esse é um número fundamental para pessoas que fazem dieta restringindo a inges
 	<string name="stat_total_fasts">Total de jejuns</string>
 	<string name="stat_total_fasted">Tempo total de jejum</string>
 	<string name="stat_longest_fast">Jejum mais longo</string>
+	<string name="manual_add_duration_label">Duração</string>
+	<string name="manual_add_hours_hint">Horas</string>
+	<string name="manual_add_minutes_hint">Minutos</string>
+	<string name="add_fast_for_day_title">Adicionar um jejum para %1$s?</string>
+	<string name="add_fast_for_day_confirm">Adicionar jejum</string>
+	<string name="menu_clear_logbook">Limpar registro…</string>
+	<string name="clear_logbook_title">Excluir todo o registro?</string>
+	<string name="clear_logbook_message">Isso exclui permanentemente todos os %1$d jejuns registrados. Esta ação não pode ser desfeita.</string>
+	<string name="clear_logbook_confirm">Excluir todos (%1$d)</string>
 </resources>

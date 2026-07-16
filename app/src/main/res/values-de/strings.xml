@@ -290,4 +290,13 @@
 	<string name="stat_total_fasts">Fasten gesamt</string>
 	<string name="stat_total_fasted">Gesamte Fastenzeit</string>
 	<string name="stat_longest_fast">Längstes Fasten</string>
+	<string name="manual_add_duration_label">Dauer</string>
+	<string name="manual_add_hours_hint">Stunden</string>
+	<string name="manual_add_minutes_hint">Minuten</string>
+	<string name="add_fast_for_day_title">Ein Fasten für %1$s hinzufügen?</string>
+	<string name="add_fast_for_day_confirm">Fasten hinzufügen</string>
+	<string name="menu_clear_logbook">Logbuch leeren…</string>
+	<string name="clear_logbook_title">Gesamtes Logbuch löschen?</string>
+	<string name="clear_logbook_message">Dies löscht endgültig alle %1$d protokollierten Fasten. Dies kann nicht rückgängig gemacht werden.</string>
+	<string name="clear_logbook_confirm">Alle %1$d löschen</string>
 </resources>

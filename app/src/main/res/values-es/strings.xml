@@ -5,7 +5,7 @@
 	<string name="action_info">Información</string>
 	<string name="action_about">Acerca de</string>
 	<string name="action_export">Exportar Registro</string>
-	<string name="action_export_description">Produce un archivo CVS de tu libro de registro para la copia de seguridad</string>
+	<string name="action_export_description">Produce un archivo CSV de tu libro de registro para la copia de seguridad</string>
 	<string name="action_import">Importar Logbook</string>
 	<string name="action_import_description">Poblar tu libro de registro desde una exportación anterior</string>
 	<string name="import_success">Registro importado con éxito</string>
@@ -34,16 +34,16 @@
 	<string name="intro_03_description">Esta es una nueva área de estudio que está mostrando muchos beneficios más allá
 		de la simple pérdida de peso.\n\nPara explorar lo que sabemos sobre el ayuno y lo que la investigación está
 		diciendo, ¡consulta la sección de Información de esta aplicación!</string>
-	<string name="intro_04_title">¡Eso es todo!</string>
-	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
-		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
-		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_04_title">Mantente motivado con notificaciones</string>
+	<string name="intro_04_description">Fast Track puede mostrarte notificaciones útiles para mantenerte motivado durante tu
+		ayuno.\n\nVerás tu tiempo de ayuno actual, en qué etapa te encuentras y qué modo de energía está usando tu
+		cuerpo.\n\n¡Esto te ayuda a mantenerte en el camino sin tener que abrir la aplicación!</string>
 	<string name="intro_05_title">¡Eso es todo!</string>
 	<string name="intro_05_description">¡Ahora empieza a ayunar!</string>
 	<string name="about_name">Adam Brown</string>
 	<string name="about_subtitle">Desarrollador móvil</string>
 	<string name="about_brief">Escalador, montañista, ingeniero de software y defensor del código abierto.</string>
-	<string name="about_discord">Discordia</string>
+	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Ayuno</string>
 	<string name="title_log">Registro</string>
 	<string name="title_profile">Perfil</string>
@@ -154,10 +154,10 @@
 	<string name="notification_optimal_autophagy_title">Etapa rápida: Autofagia óptima</string>
 	<string name="notification_optimal_autophagy_content">Tu cuerpo ha estado en autofagia durante mucho tiempo, y tu
 		salud celular está viendo grandes beneficios.</string>
-	<string name="notification_fasting_channel_name">Estado de Fasting</string>
-	<string name="notification_fasting_channel_description">Ongoing notification showing your current fasting status and
-		progress.</string>
-	<string name="notification_fasting_title">Rápido: %1$s horas</string>
+	<string name="notification_fasting_channel_name">Estado de ayuno</string>
+	<string name="notification_fasting_channel_description">Notificación permanente que muestra tu estado de ayuno actual y
+		progreso.</string>
+	<string name="notification_fasting_title">Ayuno: %1$s horas</string>
 	<string name="notification_fasting_energy_mode">Modo Energía: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Quema de grasa</string>
 	<string name="info_dialog_fat_burn_content">En esta etapa, tu cuerpo ha agotado sus reservas de glucosa. La glucosa
@@ -298,4 +298,13 @@
 	<string name="stat_total_fasts">Ayunos totales</string>
 	<string name="stat_total_fasted">Tiempo total en ayunas</string>
 	<string name="stat_longest_fast">Ayuno más largo</string>
+	<string name="manual_add_duration_label">Duración</string>
+	<string name="manual_add_hours_hint">Horas</string>
+	<string name="manual_add_minutes_hint">Minutos</string>
+	<string name="add_fast_for_day_title">¿Añadir un ayuno para %1$s?</string>
+	<string name="add_fast_for_day_confirm">Añadir ayuno</string>
+	<string name="menu_clear_logbook">Vaciar libreta…</string>
+	<string name="clear_logbook_title">¿Borrar toda la libreta?</string>
+	<string name="clear_logbook_message">Esto elimina permanentemente todos los %1$d ayunos registrados. Esta acción no se puede deshacer.</string>
+	<string name="clear_logbook_confirm">Borrar todos (%1$d)</string>
 </resources>

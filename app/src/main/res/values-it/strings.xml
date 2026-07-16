@@ -5,7 +5,7 @@
 	<string name="action_info">Informazioni</string>
 	<string name="action_about">Informazioni</string>
 	<string name="action_export">Esporta il Logbook</string>
-	<string name="action_export_description">Produci un file CVS del registro per il backup</string>
+	<string name="action_export_description">Produci un file CSV del registro per il backup</string>
 	<string name="action_import">Importa Logbook</string>
 	<string name="action_import_description">Popolare il registro da un\'esportazione precedente</string>
 	<string name="import_success">Registro importato con successo</string>
@@ -34,10 +34,10 @@
 	<string name="intro_03_description">Questa è una nuova area di studio che sta mostrando molti benefici oltre alla
 		semplice perdita di peso.\n\nPer esplorare cosa sappiamo sul digiuno e cosa dicono le ricerche, controlla la
 		sezione Info di questa app!</string>
-	<string name="intro_04_title">Questo è tutto!</string>
-	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
-		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
-		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_04_title">Resta motivato con le notifiche</string>
+	<string name="intro_04_description">Fast Track può mostrarti notifiche utili per tenerti motivato durante il
+		digiuno.\n\nVedrai il tuo tempo di digiuno attuale, in che fase ti trovi e quale modalità energetica il tuo
+		corpo sta usando.\n\nQuesto ti aiuta a rimanere in carreggiata senza dover aprire l\'app!</string>
 	<string name="intro_05_title">È tutto!</string>
 	<string name="intro_05_description">Ora vai a iniziare il digiuno!</string>
 	<string name="about_name">Adam Brown</string>
@@ -133,7 +133,7 @@
 		l\'autofagia sarà molto efficace.</string>
 	<string name="phase_glucose">Consumo di Glucosio</string>
 	<string name="phase_fat_burning">Brucia Grassi</string>
-	<string name="phase_ketosis">Chetoacidosi</string>
+	<string name="phase_ketosis">Chetosi</string>
 	<string name="phase_autophagy">Autofagia</string>
 	<string name="phase_optimal_autophagy">Autofagia Ottimale</string>
 	<string name="share_text">Ho digiunato per %1$d ore e %2$d minuti! Il mio corpo sta attualmente consumando %3$s per
@@ -155,10 +155,10 @@
 	<string name="notification_optimal_autophagy_title">Fase digiuno: Autofagia ottimale</string>
 	<string name="notification_optimal_autophagy_content">Il tuo corpo è stato in Autofagia per molto tempo ormai e la
 		tua salute cellulare sta ottenendo grandi benefici.</string>
-	<string name="notification_fasting_channel_name">Stato Di digiuno</string>
-	<string name="notification_fasting_channel_description">Notifica in corso che mostra il tuo attuale stato di digiuno e
-		&lt;unk&gt; &lt;unk&gt; progresso.</string>
-	<string name="notification_fasting_title">Chiusura: %1$s ore</string>
+	<string name="notification_fasting_channel_name">Stato di digiuno</string>
+	<string name="notification_fasting_channel_description">Notifica continua che mostra lo stato attuale del digiuno e il
+		progresso.</string>
+	<string name="notification_fasting_title">Digiuno: %1$s ore</string>
 	<string name="notification_fasting_energy_mode">Modalità Energetica: %1$s</string>
 	<string name="info_dialog_fat_burn_title">Brucia Grassi</string>
 	<string name="info_dialog_fat_burn_content">In questa fase il tuo corpo ha esaurito le riserve di glucosio. Il
@@ -301,4 +301,13 @@
 	<string name="stat_total_fasts">Digiuni totali</string>
 	<string name="stat_total_fasted">Tempo totale di digiuno</string>
 	<string name="stat_longest_fast">Digiuno più lungo</string>
+	<string name="manual_add_duration_label">Durata</string>
+	<string name="manual_add_hours_hint">Ore</string>
+	<string name="manual_add_minutes_hint">Minuti</string>
+	<string name="add_fast_for_day_title">Aggiungere un digiuno per %1$s?</string>
+	<string name="add_fast_for_day_confirm">Aggiungi digiuno</string>
+	<string name="menu_clear_logbook">Svuota registro…</string>
+	<string name="clear_logbook_title">Eliminare tutto il registro?</string>
+	<string name="clear_logbook_message">Questa operazione elimina definitivamente tutti i %1$d digiuni registrati. Non può essere annullata.</string>
+	<string name="clear_logbook_confirm">Elimina tutti (%1$d)</string>
 </resources>

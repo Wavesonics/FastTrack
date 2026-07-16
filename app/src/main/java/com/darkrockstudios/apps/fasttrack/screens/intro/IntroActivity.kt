@@ -38,65 +38,66 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class IntroActivity : AppCompatActivity() {
-	private val settings by inject<SettingsDatasource>()
-	private lateinit var requestNotificationPermission: ActivityResultLauncher<String>
-	private var shouldRequestPermission by mutableStateOf(false)
+    private val settings by inject<SettingsDatasource>()
+    private lateinit var requestNotificationPermission: ActivityResultLauncher<String>
+    private var shouldRequestPermission by mutableStateOf(false)
 
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
-	    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
+        WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars =
+            false
 
-	    registerNotificationPermissionCallback()
+        registerNotificationPermissionCallback()
 
         setContent {
             FastTrackTheme(themeMode = settings.getThemeMode()) {
                 IntroScreen(
-	                onComplete = { complete() },
-	                onNotificationSlideExited = { requestNotificationPermissionIfNeeded() }
+                    onComplete = { complete() },
+                    onNotificationSlideExited = { requestNotificationPermissionIfNeeded() }
                 )
             }
         }
     }
 
-	private fun registerNotificationPermissionCallback() {
-		requestNotificationPermission = registerForActivityResult(
-			ActivityResultContracts.RequestPermission()
-		) { isGranted: Boolean ->
-			if (isGranted) {
-				Napier.d("Notification permission granted")
-			} else {
-				Napier.w("Notification permission denied")
-			}
-			shouldRequestPermission = false
-		}
-	}
+    private fun registerNotificationPermissionCallback() {
+        requestNotificationPermission = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Napier.d("Notification permission granted")
+            } else {
+                Napier.w("Notification permission denied")
+            }
+            shouldRequestPermission = false
+        }
+    }
 
-	private fun requestNotificationPermissionIfNeeded() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-			when {
-				ContextCompat.checkSelfPermission(
-					this,
-					Manifest.permission.POST_NOTIFICATIONS
-				) == PackageManager.PERMISSION_GRANTED -> {
-					Napier.d("Notification permission already granted")
-				}
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    Napier.d("Notification permission already granted")
+                }
 
-				shouldRequestPermission -> {
-					// Already requested, don't request again
-					Napier.d("Notification permission already requested")
-				}
+                shouldRequestPermission -> {
+                    // Already requested, don't request again
+                    Napier.d("Notification permission already requested")
+                }
 
-				else -> {
-					Napier.d("Requesting notification permission")
-					shouldRequestPermission = true
-					requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
-				}
-			}
-		}
-	}
+                else -> {
+                    Napier.d("Requesting notification permission")
+                    shouldRequestPermission = true
+                    requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        }
+    }
 
     private fun complete() {
         settings.setIntroSeen(true)
@@ -107,22 +108,22 @@ class IntroActivity : AppCompatActivity() {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun IntroScreen(
-	onComplete: () -> Unit,
-	onNotificationSlideExited: () -> Unit
+    onComplete: () -> Unit,
+    onNotificationSlideExited: () -> Unit
 ) {
-	val pagerState = rememberPagerState(pageCount = { 6 })
+    val pagerState = rememberPagerState(pageCount = { 6 })
     val coroutineScope = rememberCoroutineScope()
-	var hasRequestedPermission by remember { mutableStateOf(false) }
+    var hasRequestedPermission by remember { mutableStateOf(false) }
 
-	// Watch for page changes and request permission when moving past slide 4
-	LaunchedEffect(pagerState) {
-		snapshotFlow { pagerState.currentPage }.collect { page ->
-			if (page > 4 && !hasRequestedPermission) {
-				hasRequestedPermission = true
-				onNotificationSlideExited()
-			}
-		}
-	}
+    // Watch for page changes and request permission when moving past slide 4
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect { page ->
+            if (page > 4 && !hasRequestedPermission) {
+                hasRequestedPermission = true
+                onNotificationSlideExited()
+            }
+        }
+    }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -164,13 +165,13 @@ fun IntroScreen(
                     title = stringResource(id = R.string.intro_04_title),
                     description = stringResource(id = R.string.intro_04_description),
                     imageDrawable = R.drawable.intro_04,
-	                backgroundColor = Color.rgb(96, 128, 91) // Pastel Green
+                    backgroundColor = Color.rgb(96, 128, 91) // Pastel Green
                 )
 
-	            5 -> IntroSlide(
-		            title = stringResource(id = R.string.intro_05_title),
-		            description = stringResource(id = R.string.intro_05_description),
-		            imageDrawable = R.drawable.intro_05,
+                5 -> IntroSlide(
+                    title = stringResource(id = R.string.intro_05_title),
+                    description = stringResource(id = R.string.intro_05_description),
+                    imageDrawable = R.drawable.intro_05,
                     backgroundColor = Color.rgb(128, 91, 128) // Pastel Magenta
                 )
             }
@@ -179,19 +180,19 @@ fun IntroScreen(
         // Navigation controls at the bottom
         Column(
             modifier = Modifier
-	            .align(Alignment.BottomCenter)
-	            .safeDrawingPadding()
-	            .padding(16.dp)
-	            .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .safeDrawingPadding()
+                .padding(16.dp)
+                .fillMaxWidth()
         ) {
             // Page indicator dots
             Row(
                 modifier = Modifier
-	                .fillMaxWidth()
-	                .padding(8.dp),
+                    .fillMaxWidth()
+                    .padding(8.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
-	            repeat(6) { iteration ->
+                repeat(6) { iteration ->
                     val color = if (pagerState.currentPage == iteration) {
                         androidx.compose.ui.graphics.Color.White
                     } else {
@@ -199,9 +200,9 @@ fun IntroScreen(
                     }
                     Box(
                         modifier = Modifier
-	                        .padding(4.dp)
-	                        .size(8.dp)
-	                        .background(color = color, shape = MaterialTheme.shapes.small)
+                            .padding(4.dp)
+                            .size(8.dp)
+                            .background(color = color, shape = MaterialTheme.shapes.small)
                     )
                 }
             }
@@ -209,8 +210,8 @@ fun IntroScreen(
             // Navigation buttons
             Row(
                 modifier = Modifier
-	                .fillMaxWidth()
-	                .padding(8.dp),
+                    .fillMaxWidth()
+                    .padding(8.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 // Previous button or Skip button
@@ -234,7 +235,7 @@ fun IntroScreen(
                 }
 
                 // Next button or Done button
-	            if (pagerState.currentPage < 5) {
+                if (pagerState.currentPage < 5) {
                     Button(
                         onClick = {
                             coroutineScope.launch {
@@ -267,14 +268,14 @@ fun IntroSlide(
 ) {
     Box(
         modifier = modifier
-	        .fillMaxSize()
-	        .background(color = androidx.compose.ui.graphics.Color(backgroundColor))
+            .fillMaxSize()
+            .background(color = androidx.compose.ui.graphics.Color(backgroundColor))
     ) {
         Column(
             modifier = Modifier
-	            .fillMaxSize()
-	            .safeDrawingPadding()
-	            .padding(16.dp),
+                .fillMaxSize()
+                .safeDrawingPadding()
+                .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -282,8 +283,8 @@ fun IntroSlide(
                 painter = painterResource(id = imageDrawable),
                 contentDescription = null,
                 modifier = Modifier
-	                .size(200.dp)
-	                .padding(16.dp)
+                    .size(200.dp)
+                    .padding(16.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))

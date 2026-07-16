@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 	private fun rateApp() {
 		try {
 			startActivity(Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()))
-		} catch (e: ActivityNotFoundException) {
+		} catch (_: ActivityNotFoundException) {
 			// No Play Store on this device; fall back to the web listing
 			openUrl("https://play.google.com/store/apps/details?id=$packageName")
 		}

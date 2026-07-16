@@ -39,11 +39,11 @@ class ManualAddViewModel(
 		// day by one for users far enough east/west of UTC).
 		val localDateTime = Instant.fromEpochMilliseconds(dateTimestamp).toLocalDateTime(TimeZone.UTC)
 
-        val selectedDate = LocalDate(
-            year = localDateTime.year,
-            month = localDateTime.month,
-            day = localDateTime.day
-        )
+		val selectedDate = LocalDate(
+			year = localDateTime.year,
+			month = localDateTime.month,
+			day = localDateTime.day
+		)
 
 		_uiState.update { currentState ->
 			currentState.copy(
@@ -163,11 +163,11 @@ class ManualAddViewModel(
 
 	override fun initializeWithEntry(entry: FastingLogEntry) {
 		exactLength = entry.length
-        val selectedDate = LocalDate(
-            year = entry.start.year,
-            month = entry.start.month,
-            day = entry.start.day
-        )
+		val selectedDate = LocalDate(
+			year = entry.start.year,
+			month = entry.start.month,
+			day = entry.start.day
+		)
 
 		_uiState.update {
 			it.copy(

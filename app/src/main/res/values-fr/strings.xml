@@ -5,7 +5,7 @@
 	<string name="action_info">Info</string>
 	<string name="action_about">À propos</string>
 	<string name="action_export">Exporter le carnet de bord</string>
-	<string name="action_export_description">Produire un fichier CVS de votre livre de bord pour la sauvegarde</string>
+	<string name="action_export_description">Produire un fichier CSV de votre carnet de bord pour la sauvegarde</string>
 	<string name="action_import">Importer le registre</string>
 	<string name="action_import_description">Remplir votre journal de bord à partir d\'une exportation précédente</string>
 	<string name="import_success">Journal importé avec succès</string>
@@ -34,16 +34,16 @@
 	<string name="intro_03_description">C\'est un nouveau domaine d\'étude qui montre de nombreux avantages au-delà de
 		la simple perte de poids.\n\nPour explorer ce que nous savons sur le jeûne et ce que la recherche dit, consultez
 		la section Infos de cette application !</string>
-	<string name="intro_04_title">C\'est tout !</string>
-	<string name="intro_04_description">Fast Track can show you helpful notifications to keep you motivated during your
-		fast.\n\nYou’ll see your current fasting time, what stage you’re in, and what energy mode your body is
-		using.\n\nThis helps you stay on track without having to open the app!</string>
+	<string name="intro_04_title">Restez motivé avec les notifications</string>
+	<string name="intro_04_description">Fast Track peut afficher des notifications utiles pour vous motiver pendant votre
+		jeûne.\n\nVous verrez votre temps de jeûne actuel, à quelle étape vous en êtes, et quel mode d\'énergie votre
+		corps utilise.\n\nCela vous aide à rester sur la bonne voie sans avoir à ouvrir l\'application !</string>
 	<string name="intro_05_title">Voilà!</string>
 	<string name="intro_05_description">Maintenant, commencez à jeûner!</string>
 	<string name="about_name">Adam Brown</string>
 	<string name="about_subtitle">Développeur Mobile</string>
 	<string name="about_brief">Grimpeur, alpiniste, ingénieur logiciel et défenseur de l\'open source.</string>
-	<string name="about_discord">Discord.</string>
+	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Jeûne</string>
 	<string name="title_log">Journal</string>
 	<string name="title_profile">Profil</string>
@@ -76,7 +76,7 @@
 	<string name="start_fast_button_advanced">*</string>
 	<string name="log_entry_started">Démarré : %1$s</string>
 	<string name="log_entry_length">%1$d heures</string>
-	<string name="log_entry_ketosis">%1$d heures</string>
+	<string name="log_entry_ketosis">Cétose : %1$d heures</string>
 	<string name="log_entry_autophagy">Autophagie : %1$d heures</string>
 	<string name="profile_age_label">Âge</string>
 	<string name="profile_age_years">Années</string>
@@ -300,4 +300,13 @@
 	<string name="stat_total_fasts">Total des jeûnes</string>
 	<string name="stat_total_fasted">Durée totale de jeûne</string>
 	<string name="stat_longest_fast">Jeûne le plus long</string>
+	<string name="manual_add_duration_label">Durée</string>
+	<string name="manual_add_hours_hint">Heures</string>
+	<string name="manual_add_minutes_hint">Minutes</string>
+	<string name="add_fast_for_day_title">Ajouter un jeûne pour %1$s ?</string>
+	<string name="add_fast_for_day_confirm">Ajouter le jeûne</string>
+	<string name="menu_clear_logbook">Vider le journal…</string>
+	<string name="clear_logbook_title">Supprimer tout le journal ?</string>
+	<string name="clear_logbook_message">Ceci supprime définitivement les %1$d jeûnes enregistrés. Cette action est irréversible.</string>
+	<string name="clear_logbook_confirm">Tout supprimer (%1$d)</string>
 </resources>

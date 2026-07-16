@@ -288,4 +288,13 @@
 	<string name="stat_total_fasts">Усього голодувань</string>
 	<string name="stat_total_fasted">Загальний час голодування</string>
 	<string name="stat_longest_fast">Найдовше голодування</string>
+	<string name="manual_add_duration_label">Тривалість</string>
+	<string name="manual_add_hours_hint">Години</string>
+	<string name="manual_add_minutes_hint">Хвилини</string>
+	<string name="add_fast_for_day_title">Додати голодування для %1$s?</string>
+	<string name="add_fast_for_day_confirm">Додати голодування</string>
+	<string name="menu_clear_logbook">Очистити журнал…</string>
+	<string name="clear_logbook_title">Видалити весь журнал?</string>
+	<string name="clear_logbook_message">Це назавжди видаляє всі %1$d записаних голодувань. Цю дію не можна скасувати.</string>
+	<string name="clear_logbook_confirm">Видалити всі %1$d</string>
 </resources>

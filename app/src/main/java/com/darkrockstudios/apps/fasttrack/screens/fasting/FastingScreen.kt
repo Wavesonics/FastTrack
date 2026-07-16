@@ -93,6 +93,7 @@ import kotlin.math.roundToInt
 import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
 
@@ -266,7 +267,7 @@ fun FastingScreen(
 		// wake exactly on each whole-minute boundary so the value flips on time.
 		while (uiState.isFasting && lifecycleState == Lifecycle.State.RESUMED) {
 			viewModel.updateUi()
-			delay(60_000L - (System.currentTimeMillis() % 60_000L))
+			delay((60_000L - (System.currentTimeMillis() % 60_000L)).milliseconds)
 		}
 	}
 

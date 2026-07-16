@@ -256,4 +256,13 @@
 	<string name="stat_total_fasts">Totaal aantal vastenperiodes</string>
 	<string name="stat_total_fasted">Totale vastentijd</string>
 	<string name="stat_longest_fast">Langste vastenperiode</string>
+	<string name="manual_add_duration_label">Duur</string>
+	<string name="manual_add_hours_hint">Uren</string>
+	<string name="manual_add_minutes_hint">Minuten</string>
+	<string name="add_fast_for_day_title">Vasten toevoegen voor %1$s?</string>
+	<string name="add_fast_for_day_confirm">Vasten toevoegen</string>
+	<string name="menu_clear_logbook">Logboek wissen…</string>
+	<string name="clear_logbook_title">Hele logboek verwijderen?</string>
+	<string name="clear_logbook_message">Hiermee worden alle %1$d gelogde vastenperiodes permanent verwijderd. Dit kan niet ongedaan worden gemaakt.</string>
+	<string name="clear_logbook_confirm">Alle %1$d verwijderen</string>
 </resources>
