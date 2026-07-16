@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -30,7 +32,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.darkrockstudios.apps.fasttrack.data.Stages
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
-import com.darkrockstudios.apps.fasttrack.utils.gaugeColors
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
@@ -258,13 +259,13 @@ private fun DayCell(
 	val inMonth = day.position == DayPosition.MonthDate
 	// Only past/today fasts can be logged, so future days are greyed out and inert.
 	val enabled = inMonth && !isFuture
-	val cover = if (inMonth) band else null
+	val cover = band
 
 	val stageColor = cover?.color ?: Color.Transparent
-	// Middle days are a light connecting bar; the true start/end are stronger circles.
-	val barColor = stageColor.copy(alpha = 0.22f)
+	// The whole span is one soft capsule; the true start/end read a touch stronger.
+	val bandColor = stageColor.copy(alpha = 0.20f)
 	val isEndpoint = cover != null && (cover.isStart || cover.isEnd || cover.isSingle)
-	val endpointFill = if (isEndpoint) stageColor.copy(alpha = 0.45f) else Color.Transparent
+	val endpointFill = if (isEndpoint) stageColor.copy(alpha = 0.42f) else Color.Transparent
 
 	val borderColor = when {
 		isSelected -> MaterialTheme.colorScheme.primary
@@ -284,36 +285,38 @@ private fun DayCell(
 			.clickable(enabled = enabled, onClick = onClick),
 		contentAlignment = Alignment.Center,
 	) {
-		// Connecting band, drawn edge-to-edge behind the day token so it joins the
-		// neighbouring cells into one continuous bar. Each side is filled only when
-		// the range continues that way; at week wraps this yields a clean flat edge.
+		// Connecting band: one continuous capsule at token height, drawn edge-to-edge
+		// so neighbouring cells fuse into a single stadium. It is rounded only at the
+		// fast's true start/end; middle days (and week wraps) run flush to the edge.
 		if (cover != null && !cover.isSingle) {
-			if (!cover.isStart) {
-				Box(
-					modifier = Modifier
-						.align(Alignment.CenterStart)
-						.fillMaxWidth(0.5f)
-						.fillMaxHeight(0.72f)
-						.background(barColor),
-				)
+			val bandShape = when {
+				cover.isStart -> RoundedCornerShape(topStartPercent = 50, bottomStartPercent = 50)
+				cover.isEnd -> RoundedCornerShape(topEndPercent = 50, bottomEndPercent = 50)
+				else -> RectangleShape
 			}
-			if (!cover.isEnd) {
-				Box(
-					modifier = Modifier
-						.align(Alignment.CenterEnd)
-						.fillMaxWidth(0.5f)
-						.fillMaxHeight(0.72f)
-						.background(barColor),
-				)
+			val bandAlign = when {
+				cover.isStart -> Alignment.CenterEnd
+				cover.isEnd -> Alignment.CenterStart
+				else -> Alignment.Center
 			}
+			// Endpoint cells inset the outer side so the rounded cap sits under the
+			// token circle; middle cells span the full width to bridge the gap.
+			val bandWidth = if (cover.isStart || cover.isEnd) 0.90f else 1f
+			Box(
+				modifier = Modifier
+					.align(bandAlign)
+					.fillMaxWidth(bandWidth)
+					.fillMaxHeight(DAY_TOKEN_FRACTION)
+					.clip(bandShape)
+					.background(bandColor),
+			)
 		}
 
-		// The day token itself: a filled circle at range endpoints (and single-day
-		// fasts), plus the today/selected ring, with the date number on top.
+		// The day token: a filled circle at range endpoints (and single-day fasts),
+		// plus the today/selected ring, with the date number on top.
 		Box(
 			modifier = Modifier
-				.fillMaxSize()
-				.padding(2.dp)
+				.fillMaxSize(DAY_TOKEN_FRACTION)
 				.clip(CircleShape)
 				.background(endpointFill, CircleShape)
 				.border(borderWidth, borderColor, CircleShape),
@@ -329,6 +332,10 @@ private fun DayCell(
 	}
 }
 
+// The day circle / band height as a fraction of the square cell, so the capsule
+// endpoints and connector share one diameter (a clean stadium).
+private const val DAY_TOKEN_FRACTION = 0.80f
+
 /** Per-day coverage precomputed for the visible entries. */
 private class CalendarCoverage(
 	val byDay: Map<KxLocalDate, List<FastingLogEntry>>,
@@ -343,11 +350,22 @@ private data class DayBand(
 	val isSingle: Boolean,
 )
 
+// Calm, desaturated calendar tones per phase — warmth/renewal rather than alarm
+// (glucose → fat burn → ketosis → autophagy → optimal). Applied at low opacity, so
+// they read as an accomplished wash, not a warning. One hue per fast.
+private val calendarStageColors = listOf(
+	Color(0xFF9AA7B3), // Glucose — quiet slate
+	Color(0xFF6FBF8B), // Fat burn — soft green
+	Color(0xFFE0A94E), // Ketosis — warm amber
+	Color(0xFFE08A6B), // Autophagy — soft coral
+	Color(0xFFB98AD8), // Optimal autophagy — soft violet
+)
+
 @ExperimentalTime
 private fun stageColorFor(entries: List<FastingLogEntry>): Color {
 	val longest = entries.maxByOrNull { it.length } ?: return Color.Transparent
 	val lenHours = longest.length.toDouble(DurationUnit.HOURS)
 	val stage = Stages.phases.lastOrNull { lenHours >= it.hours } ?: Stages.phases.first()
 	val stageIndex = Stages.phases.indexOf(stage).coerceAtLeast(0)
-	return gaugeColors.getOrElse(stageIndex) { Color.Transparent }
+	return calendarStageColors.getOrElse(stageIndex) { calendarStageColors.last() }
 }
