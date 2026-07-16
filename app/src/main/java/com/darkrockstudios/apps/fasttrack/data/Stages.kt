@@ -46,6 +46,18 @@ object Stages {
 	)
 }
 
+/** Hours spent in ketosis for a fast of the given [length] (0 if it never reached ketosis). */
+fun ketosisHours(length: Duration): Double {
+	val start = Stages.PHASE_KETOSIS.hours.toDouble()
+	return (length.toDouble(DurationUnit.HOURS) - start).coerceAtLeast(0.0)
+}
+
+/** Hours spent in autophagy for a fast of the given [length] (0 if it never reached autophagy). */
+fun autophagyHours(length: Duration): Double {
+	val start = Stages.PHASE_AUTOPHAGY.hours.toDouble()
+	return (length.toDouble(DurationUnit.HOURS) - start).coerceAtLeast(0.0)
+}
+
 fun phaseForStage(stage: Stage): Phase {
 	return when {
 		stage.hours >= 48 -> Stages.PHASE_OPTIMAL_AUTOPHAGY

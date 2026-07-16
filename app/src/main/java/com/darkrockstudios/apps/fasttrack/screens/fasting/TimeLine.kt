@@ -4,10 +4,8 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -156,17 +154,38 @@ fun TimeLine(
 		)
 	}
 
-	// Slow breathing pulse for the knob and the current milestone.
-	val infiniteTransition = rememberInfiniteTransition(label = "ring_breath")
-	val breath by infiniteTransition.animateFloat(
-		initialValue = 0f,
-		targetValue = 1f,
-		animationSpec = infiniteRepeatable(
-			animation = tween(durationMillis = 2600, easing = FastOutSlowInEasing),
-			repeatMode = RepeatMode.Reverse
-		),
-		label = "breath_progress"
-	)
+	// Slow breathing pulse for the comet head — only while a fast is running.
+	// When idle nobody drives the animation, so the Canvas stops invalidating
+	// every frame (no wasted battery on a screen that isn't visibly moving).
+	val pulsing = elapsedHours > 0
+	val breathAnim = remember { Animatable(0f) }
+	LaunchedEffect(pulsing) {
+		if (pulsing) {
+			breathAnim.animateTo(
+				targetValue = 1f,
+				animationSpec = infiniteRepeatable(
+					animation = tween(durationMillis = 2600, easing = FastOutSlowInEasing),
+					repeatMode = RepeatMode.Reverse
+				)
+			)
+		} else {
+			breathAnim.snapTo(0f)
+		}
+	}
+	val breath = breathAnim.value
+
+	// The sweep gradient's color stops depend only on the palette and geometry,
+	// not on time — remember them so a fasting redraw doesn't rebuild the array
+	// (and Brush) on every animation frame.
+	val stageStops = remember(ringColors, segmentSweep) {
+		Array(stages.size + 2) { i ->
+			when (i) {
+				0 -> 0f to ringColors.first()
+				stages.size + 1 -> 1f to ringColors.last()
+				else -> ((i - 0.5f) * segmentSweep / 360f) to ringColors[i - 1]
+			}
+		}
+	}
 
 	Box(
 		modifier = modifier.aspectRatio(1f),
@@ -215,14 +234,7 @@ fun TimeLine(
 
 			// One continuous gradient flowing through the stage colors,
 			// anchored at each stage segment's midpoint.
-			val stageStops = Array(stages.size + 2) { i ->
-				when (i) {
-					0 -> 0f to ringColors.first()
-					stages.size + 1 -> 1f to ringColors.last()
-					else -> ((i - 0.5f) * segmentSweep / 360f) to ringColors[i - 1]
-				}
-			}
-			val phaseBrush = Brush.sweepGradient(*stageStops, center = center)
+			val phaseBrush = Brush.sweepGradient(colorStops = stageStops, center = center)
 
 			// Rotate so relative angle 0 is the arc start; the sweep gradient
 			// rotates with the geometry, keeping its stops aligned to stages.

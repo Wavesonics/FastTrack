@@ -70,6 +70,13 @@ class FakeFastingLogDatasource : FastingLogDatasource {
 		return entries.size < initialSize
 	}
 
+	override fun deleteAllEntries(): Int {
+		val removed = entries.size
+		entries.clear()
+		updateFlow()
+		return removed
+	}
+
 	private fun updateFlow() {
 		entriesFlow.value = entries.toList()
 	}

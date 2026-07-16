@@ -68,114 +68,81 @@ class FastingViewModel(
 	}
 
 	override fun updateUi() {
-		updateFastingState()
-		updateTimer()
-		updateStage()
-	}
-
-	private fun updateFastingState() {
+		// One read of the repository and one state emission per tick: separate
+		// emissions here each trigger their own recomposition of the dial + rows.
 		val isFasting = repository.isFasting()
-		_uiState.update { it.copy(isFasting = isFasting) }
-	}
-
-	private fun updateStage() {
-		val fastStart = repository.getFastStart()
-		var stageTitle = ""
-		var stageDescription = ""
-		var energyMode = ""
-
-		if (repository.isFasting() && fastStart != null) {
-			val elapsedTime = clock.now().minus(fastStart)
-			val elapsedHours = elapsedTime.inWholeHours.toInt()
-
-			var stageIndex = Stages.stage.indexOfLast { it.hours <= elapsedHours }
-			if (stageIndex < 0) {
-				stageIndex = 0
-			}
-
-			val stage = Stages.stage[stageIndex]
-
-			val curPhase = Stages.getCurrentPhase(elapsedTime)
-			energyMode = if (curPhase.fatBurning) {
-				appContext.getString(
-					R.string.fasting_energy_mode,
-					appContext.getString(R.string.fasting_energy_mode_fat)
-				)
-			} else {
-				appContext.getString(
-					R.string.fasting_energy_mode,
-					appContext.getString(R.string.fasting_energy_mode_glucose)
-				)
-			}
-
-			stageTitle = appContext.getString(stage.title)
-			stageDescription = appContext.getString(stage.description)
-		}
-
-		_uiState.update {
-			it.copy(
-				stageTitle = stageTitle,
-				stageDescription = stageDescription,
-				energyMode = energyMode
-			)
-		}
-	}
-
-	private fun updateTimer() {
 		val fastStart = repository.getFastStart()
 		val fastEnd = repository.getFastEnd()
 
-		if (fastStart != null) {
-			val elapsedTime = fastEnd?.minus(fastStart) ?: clock.now().minus(fastStart)
+		_uiState.update { state ->
+			if (fastStart != null) {
+				val elapsedTime = fastEnd?.minus(fastStart) ?: clock.now().minus(fastStart)
 
-			updateTimerView(elapsedTime)
-			updatePhases(elapsedTime)
+				// Stage copy is shown only while a fast is actually running.
+				val stage = if (isFasting) computeStage(elapsedTime) else EMPTY_STAGE
 
-			_uiState.update {
-				it.copy(
+				val fatBurn = getPhaseTimeAndStageState(Stages.PHASE_FAT_BURN, elapsedTime)
+				val ketosis = getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
+				val autophagy = getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
+
+				state.copy(
+					isFasting = isFasting,
 					elapsedTime = elapsedTime,
+					elapsedHours = elapsedTime.inWholeHours.toDouble(),
 					fastStartTime = fastStart,
 					lastFastEndTime = fastEnd,
+					timerText = formatDuration(appContext, elapsedTime),
+					milliseconds = "",
+					stageTitle = stage.title,
+					stageDescription = stage.description,
+					energyMode = stage.energyMode,
+					fatBurnTime = fatBurn.first,
+					fatBurnStageState = fatBurn.second,
+					ketosisTime = ketosis.first,
+					ketosisStageState = ketosis.second,
+					autophagyTime = autophagy.first,
+					autophagyStageState = autophagy.second,
 				)
-			}
-		} else {
-			_uiState.update {
-				it.copy(
+			} else {
+				state.copy(
+					isFasting = isFasting,
 					elapsedTime = null,
+					elapsedHours = 0.0,
 					fastStartTime = null,
-					lastFastEndTime = repository.getFastEnd(),
-					elapsedHours = 0.0
+					lastFastEndTime = fastEnd,
+					stageTitle = "",
+					stageDescription = "",
+					energyMode = "",
 				)
 			}
 		}
 	}
 
-	private fun updateTimerView(elapsedTime: Duration) {
-		_uiState.update {
-			it.copy(
-				timerText = formatDuration(appContext, elapsedTime),
-				milliseconds = ""
+	private data class StageStrings(val title: String, val description: String, val energyMode: String)
+
+	private val EMPTY_STAGE = StageStrings("", "", "")
+
+	private fun computeStage(elapsedTime: Duration): StageStrings {
+		val elapsedHours = elapsedTime.inWholeHours.toInt()
+
+		var stageIndex = Stages.stage.indexOfLast { it.hours <= elapsedHours }
+		if (stageIndex < 0) stageIndex = 0
+		val stage = Stages.stage[stageIndex]
+
+		val curPhase = Stages.getCurrentPhase(elapsedTime)
+		val energyMode = appContext.getString(
+			R.string.fasting_energy_mode,
+			appContext.getString(
+				if (curPhase.fatBurning) R.string.fasting_energy_mode_fat
+				else R.string.fasting_energy_mode_glucose
 			)
-		}
-	}
+		)
 
-	private fun updatePhases(elapsedTime: Duration) {
-		_uiState.update { it.copy(elapsedHours = elapsedTime.inWholeHours.toDouble()) }
-
-		val fatBurnTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_FAT_BURN, elapsedTime)
-		val ketosisTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_KETOSIS, elapsedTime)
-		val autophagyTimeAndState = getPhaseTimeAndStageState(Stages.PHASE_AUTOPHAGY, elapsedTime)
-
-		_uiState.update {
-			it.copy(
-				fatBurnTime = fatBurnTimeAndState.first,
-				fatBurnStageState = fatBurnTimeAndState.second,
-				ketosisTime = ketosisTimeAndState.first,
-				ketosisStageState = ketosisTimeAndState.second,
-				autophagyTime = autophagyTimeAndState.first,
-				autophagyStageState = autophagyTimeAndState.second
-			)
-		}
+		return StageStrings(
+			title = appContext.getString(stage.title),
+			description = appContext.getString(stage.description),
+			energyMode = energyMode,
+		)
 	}
 
 	private fun getPhaseTimeAndStageState(

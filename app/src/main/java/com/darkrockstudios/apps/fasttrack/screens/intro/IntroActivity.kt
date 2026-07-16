@@ -5,7 +5,6 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
@@ -30,10 +29,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.core.view.WindowCompat
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.Data
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import io.github.aakira.napier.Napier
@@ -41,7 +38,6 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class IntroActivity : AppCompatActivity() {
-    private val storage by lazy { PreferenceManager.getDefaultSharedPreferences(this) }
 	private val settings by inject<SettingsDatasource>()
 	private lateinit var requestNotificationPermission: ActivityResultLauncher<String>
 	private var shouldRequestPermission by mutableStateOf(false)
@@ -103,9 +99,7 @@ class IntroActivity : AppCompatActivity() {
 	}
 
     private fun complete() {
-        storage.edit {
-            putBoolean(Data.KEY_INTRO_SEEN, true)
-        }
+        settings.setIntroSeen(true)
         finish()
     }
 }

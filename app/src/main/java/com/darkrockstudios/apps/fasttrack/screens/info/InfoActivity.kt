@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -42,7 +42,7 @@ class InfoActivity : AppCompatActivity() {
 							navigationIcon = {
 								IconButton(onClick = { onBackPressed() }) {
 									Icon(
-										imageVector = Icons.Default.ArrowBack,
+										imageVector = Icons.AutoMirrored.Filled.ArrowBack,
 										contentDescription = "Back"
 									)
 								}

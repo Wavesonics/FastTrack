@@ -9,6 +9,8 @@ interface FastingLogRepository {
 	fun logFast(startTime: Instant, endTime: Instant, notes: String = "")
 	fun loadAll(): Flow<List<FastingLogEntry>>
 	fun delete(item: FastingLogEntry): Boolean
+	/** Delete the entire logbook; returns the number of entries removed. */
+	fun deleteAllEntries(): Int
 	fun addLogEntry(start: LocalDateTime, length: Duration, notes: String = "")
 	// notes defaults to the entry's current notes so an edit that omits them preserves them
 	fun updateLogEntry(

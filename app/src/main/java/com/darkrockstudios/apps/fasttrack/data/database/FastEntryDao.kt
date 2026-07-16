@@ -29,4 +29,7 @@ interface FastEntryDao
 
 	@Query("DELETE FROM fastentry WHERE uid = :uid")
 	fun deleteByUid(uid: Int): Int
+
+	@Query("DELETE FROM fastentry")
+	fun deleteAll(): Int
 }

@@ -12,4 +12,6 @@ interface FastingLogDatasource {
 	fun deleteByStartTime(startTime: Long): Boolean
 	fun deleteByStartRange(fromInclusive: Long, toExclusive: Long): Boolean
 	fun deleteByUid(uid: Int): Boolean
+	/** Delete every entry; returns the number of rows removed. */
+	fun deleteAllEntries(): Int
 }

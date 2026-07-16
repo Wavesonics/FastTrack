@@ -31,3 +31,6 @@ clean:
 
 check-jetifier:
 	 ./gradlew checkJetifier
+
+test:
+	./gradlew app:testDebugUnitTest

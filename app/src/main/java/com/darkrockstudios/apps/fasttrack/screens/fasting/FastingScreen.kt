@@ -1,10 +1,29 @@
 package com.darkrockstudios.apps.fasttrack.screens.fasting
 
+import android.app.Activity
 import android.content.res.Configuration
+import android.graphics.Rect
+import android.os.Handler
+import android.os.Looper
+import android.view.PixelCopy
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,9 +32,26 @@ import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +70,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.createBitmap
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.currentStateAsState
@@ -48,23 +85,16 @@ import com.darkrockstudios.apps.fasttrack.ui.theme.fastBackgroundGradient
 import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.utils.shareFastImage
 import io.github.aakira.napier.Napier
-import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.Rect
-import android.os.Handler
-import android.os.Looper
-import android.view.PixelCopy
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.suspendCancellableCoroutine
+import org.koin.compose.viewmodel.koinViewModel
 import kotlin.coroutines.resume
 import kotlin.math.roundToInt
-import kotlinx.coroutines.delay
-import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
-import androidx.core.graphics.createBitmap
 
 @Composable
 fun FastingScreen(
@@ -178,6 +208,7 @@ fun FastingScreen(
 	// fire the chooser with a rich caption.
 	LaunchedEffect(externalRequests.shareRequested) {
 		if (externalRequests.shareRequested) {
+			@Suppress("TooGenericExceptionCaught")
 			try {
 				val bounds = heroBounds
 				val window = (context as? Activity)?.window
@@ -230,9 +261,12 @@ fun FastingScreen(
 
 	val lifecycleState by LocalLifecycleOwner.current.lifecycle.currentStateAsState()
 	LaunchedEffect(uiState.isFasting, lifecycleState) {
+		// The timer displays minute granularity, so there is no reason to poll
+		// faster than once a minute. Refresh immediately (e.g. on resume), then
+		// wake exactly on each whole-minute boundary so the value flips on time.
 		while (uiState.isFasting && lifecycleState == Lifecycle.State.RESUMED) {
 			viewModel.updateUi()
-			delay(10)
+			delay(60_000L - (System.currentTimeMillis() % 60_000L))
 		}
 	}
 
@@ -753,9 +787,10 @@ private fun StageInfo(
 		}
 
 		delta >= Duration.ZERO -> {
-			// Underway: alive, affirming green
+			// Underway: alive, affirming green — the dial's own "burn begins" hue,
+			// so it tracks the theme (light/dark) instead of a fixed color.
 			timeText = formatDuration(delta, showTotalHours)
-			timeColor = Color(0xFF57BB63)
+			timeColor = journeyStageColor(4)
 		}
 
 		else -> {
@@ -980,8 +1015,8 @@ private fun JourneyStageSheet(
  */
 @Composable
 private fun formatDuration(duration: Duration, showTotalHours: Boolean): String =
-	com.darkrockstudios.apps.fasttrack.utils.formatDuration(
-		LocalContext.current,
-		duration,
-		showTotalHours
-	)
+    formatDuration(
+        LocalContext.current,
+        duration,
+        showTotalHours
+    )

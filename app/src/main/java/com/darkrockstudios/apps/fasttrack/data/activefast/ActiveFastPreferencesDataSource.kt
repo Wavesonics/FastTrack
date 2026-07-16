@@ -1,14 +1,17 @@
 package com.darkrockstudios.apps.fasttrack.data.activefast
 
 import android.content.Context
-import android.preference.PreferenceManager
 import androidx.core.content.edit
 import com.darkrockstudios.apps.fasttrack.data.Data
 import kotlin.time.Instant
 
 class ActiveFastPreferencesDataSource(appContext: Context) : ActiveFastDataSource {
 
-	private val storage = PreferenceManager.getDefaultSharedPreferences(appContext)
+	// The historical default-preferences file, addressed directly now that
+	// android.preference.PreferenceManager is deprecated (same file, same data).
+	private val storage = appContext.getSharedPreferences(
+		"${appContext.packageName}_preferences", Context.MODE_PRIVATE
+	)
 
 	override fun getFastStart(): Instant? {
 		val mills = storage.getLong(Data.KEY_FAST_START, -1)

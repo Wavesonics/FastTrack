@@ -2,7 +2,6 @@ package com.darkrockstudios.apps.fasttrack.data.settings
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import androidx.core.content.edit
 import com.darkrockstudios.apps.fasttrack.data.Data
 import kotlinx.coroutines.channels.awaitClose
@@ -13,9 +12,11 @@ class SettingsPreferencesDatasource(
 	appContext: Context
 ) : SettingsDatasource {
 
+	// The historical default-preferences file, addressed directly now that
+	// android.preference.PreferenceManager is deprecated (same file, same data).
 	private val storage: SharedPreferences by lazy {
-		PreferenceManager.getDefaultSharedPreferences(
-			appContext
+		appContext.getSharedPreferences(
+			"${appContext.packageName}_preferences", Context.MODE_PRIVATE
 		)
 	}
 

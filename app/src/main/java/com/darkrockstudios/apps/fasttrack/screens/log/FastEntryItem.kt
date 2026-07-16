@@ -4,7 +4,6 @@ import android.os.VibrationEffect
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -12,6 +11,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -30,31 +32,52 @@ import kotlin.math.roundToInt
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 
+/**
+ * A single logbook row.
+ *
+ * Interaction model (fluid + least-surprise + discoverable, and safe from the
+ * pager's horizontal swipe):
+ * - **Tap** opens the entry for editing — the universal "tap a record to open it"
+ *   convention, so the row is never a dead target.
+ * - **Long-press** opens a small Edit/Delete menu — a deliberate gesture (no
+ *   accidental deletes) and the accessible, TalkBack-friendly path.
+ *
+ * Bulk deletion lives in the screen's overflow menu ("Clear logbook"), behind a
+ * danger confirmation, rather than being reachable by a stray swipe.
+ */
 @ExperimentalTime
 @Composable
 fun FastEntryItem(
 	entry: FastingLogEntry,
 	onEdit: () -> Unit,
-	onDelete: () -> Unit
+	onDelete: () -> Unit,
 ) {
 	var showMenu by remember { mutableStateOf(false) }
 	val vibrator = rememberVibrator()
 	val context = LocalContext.current
 	val use24Hour = shouldUse24HourFormat(context)
+	val editLabel = stringResource(id = R.string.menu_edit)
+	val deleteLabel = stringResource(id = R.string.menu_delete)
 
-	Box {
+	Box(modifier = Modifier.padding(bottom = 8.dp)) {
 		Card(
-			modifier = Modifier.Companion
+			modifier = Modifier
 				.fillMaxWidth()
-				.padding(bottom = 8.dp)
 				.combinedClickable(
-					interactionSource = remember { MutableInteractionSource() },
-					onClick = {},
+					onClick = onEdit,
 					onLongClick = {
 						vibrator?.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
 						showMenu = true
-					}
-				),
+					},
+				)
+				.semantics {
+					// The long-press menu is invisible to assistive tech; surface both
+					// actions explicitly in the TalkBack actions menu.
+					customActions = listOf(
+						CustomAccessibilityAction(editLabel) { onEdit(); true },
+						CustomAccessibilityAction(deleteLabel) { onDelete(); true },
+					)
+				},
 			colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
 			elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
 		) {

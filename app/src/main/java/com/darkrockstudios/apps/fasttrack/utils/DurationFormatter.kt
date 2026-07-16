@@ -27,6 +27,9 @@ fun formatDuration(
 	return when {
 		withMinutes && totalMinutes < 1 -> context.getString(R.string.duration_less_than_minute)
 		withMinutes && hours == 0L -> "${minutes}m"
+		// Hour-granular surfaces (notification/widget) in the first hour: "0h" would
+		// mislead, so read it as "<1h" until the first whole hour is reached.
+		!withMinutes && hours == 0L -> "<1h"
 		hours < 24 || showTotalHours ->
 			if (minutes == 0L || !withMinutes) "${hours}h" else "${hours}h ${minutes}m"
 

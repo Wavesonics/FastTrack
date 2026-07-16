@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
-import io.github.aakira.napier.Napier.w
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,8 +15,9 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
-import kotlin.time.DurationUnit
+import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
 
 class ManualAddViewModel(
@@ -27,9 +27,17 @@ class ManualAddViewModel(
 	private val _uiState = MutableStateFlow(IManualAddViewModel.ManualAddUiState())
 	override val uiState: StateFlow<IManualAddViewModel.ManualAddUiState> = _uiState.asStateFlow()
 
+	// A precise length that must be saved verbatim, minutes and all, because the
+	// duration field only shows whole hours. Set when editing an existing entry
+	// and when the length is computed from an end date/time; cleared only when
+	// the user types directly into the hours field (an explicit whole-hour value).
+	private var exactLength: Duration? = null
+
 	override fun onDateSelected(dateTimestamp: Long) {
-		val instant = Instant.fromEpochMilliseconds(dateTimestamp)
-		val localDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
+		// Material's DatePicker reports the picked day as UTC-midnight millis, so
+		// read the calendar date back in UTC (using the system zone would shift the
+		// day by one for users far enough east/west of UTC).
+		val localDateTime = Instant.fromEpochMilliseconds(dateTimestamp).toLocalDateTime(TimeZone.UTC)
 
         val selectedDate = LocalDate(
             year = localDateTime.year,
@@ -67,21 +75,31 @@ class ManualAddViewModel(
 	}
 
 	override fun onLengthChanged(length: String) {
-		try {
-			val lengthValue = if (length.isNotEmpty()) length.toLong() else null
-			val isCompleteButtonEnabled = _uiState.value.selectedDateTime != null &&
-					length.isNotEmpty() &&
-					(length.toLongOrNull() ?: 0) > 0
-
-			_uiState.update { currentState ->
-				currentState.copy(
-					lengthHours = length,
-					isCompleteButtonEnabled = isCompleteButtonEnabled
-				)
-			}
-		} catch (e: NumberFormatException) {
-			w("Failed to parse length input")
+		// The user is typing an exact hours+minutes value, so the fields now carry
+		// the full precision and any preserved length is superseded.
+		exactLength = null
+		_uiState.update { state ->
+			state.copy(
+				lengthHours = length,
+				isCompleteButtonEnabled = durationEntered(length, state.lengthMinutes, state.selectedDateTime),
+			)
 		}
+	}
+
+	override fun onMinutesChanged(minutes: String) {
+		exactLength = null
+		_uiState.update { state ->
+			state.copy(
+				lengthMinutes = minutes,
+				isCompleteButtonEnabled = durationEntered(state.lengthHours, minutes, state.selectedDateTime),
+			)
+		}
+	}
+
+	/** A savable duration is present when the start is set and hours+minutes > 0. */
+	private fun durationEntered(hours: String, minutes: String, start: LocalDateTime?): Boolean {
+		val total = (hours.toLongOrNull() ?: 0).hours + (minutes.toLongOrNull() ?: 0).minutes
+		return start != null && total > Duration.ZERO
 	}
 
 	override fun onNotesChanged(notes: String) {
@@ -89,19 +107,20 @@ class ManualAddViewModel(
 	}
 
 	override fun onEndDateTimeSelected(instant: Instant) {
-		val currentState = _uiState.value
-		val startDateTime = currentState.selectedDateTime
+		val startDateTime = _uiState.value.selectedDateTime ?: return
+		val startInstant = startDateTime.toInstant(TimeZone.currentSystemDefault())
+		val duration = instant.minus(startInstant)
 
-		if (startDateTime != null) {
-			val startInstant = startDateTime.toInstant(TimeZone.currentSystemDefault())
-			val durationMillis = instant.toEpochMilliseconds() - startInstant.toEpochMilliseconds()
-
-			// Convert milliseconds to hours, rounded to nearest whole number
-			val hours = (durationMillis / (1000.0 * 60 * 60)).toLong()
-
-			// Only update if the end time is after the start time
-			if (hours > 0) {
-				onLengthChanged(hours.toString())
+		// Only accept an end after the start. Split the exact duration across the
+		// hours and minutes fields so the display matches what will be saved.
+		if (duration > Duration.ZERO) {
+			exactLength = duration
+			_uiState.update {
+				it.copy(
+					lengthHours = duration.inWholeHours.toString(),
+					lengthMinutes = (duration.inWholeMinutes % 60).toString(),
+					isCompleteButtonEnabled = true,
+				)
 			}
 		}
 	}
@@ -109,12 +128,16 @@ class ManualAddViewModel(
 	override fun onAddEntry(): Boolean {
 		val currentState = _uiState.value
 		val selectedDateTime = currentState.selectedDateTime
-		val lengthHours = currentState.lengthHours.toLongOrNull() ?: 0
 		val entryToEdit = currentState.entryToEdit
 		val notes = currentState.notes.trim()
 
-		return if (selectedDateTime != null && lengthHours > 0) {
-			val length = lengthHours.hours
+		// Save the precise length when we have one (edited entry or an end-time
+		// calculation); otherwise build it from the hours + minutes fields.
+		val fieldLength = (currentState.lengthHours.toLongOrNull() ?: 0).hours +
+				(currentState.lengthMinutes.toLongOrNull() ?: 0).minutes
+		val length = exactLength ?: fieldLength
+
+		return if (selectedDateTime != null && length > Duration.ZERO) {
 			viewModelScope.launch(Dispatchers.IO) {
 				if (entryToEdit != null) {
 					// Update existing entry
@@ -132,29 +155,42 @@ class ManualAddViewModel(
 
 	override fun onDismiss() {
 		// Reset state when dialog is dismissed
+		exactLength = null
 		_uiState.update {
 			IManualAddViewModel.ManualAddUiState()
 		}
 	}
 
 	override fun initializeWithEntry(entry: FastingLogEntry) {
+		exactLength = entry.length
         val selectedDate = LocalDate(
             year = entry.start.year,
             month = entry.start.month,
             day = entry.start.day
         )
 
-		val lengthHours = entry.length.toDouble(DurationUnit.HOURS).toLong().toString()
-
 		_uiState.update {
 			it.copy(
 				currentStep = ManualAddStep.SetDuration,
 				selectedDate = selectedDate,
 				selectedDateTime = entry.start,
-				lengthHours = lengthHours,
+				lengthHours = entry.length.inWholeHours.toString(),
+				lengthMinutes = (entry.length.inWholeMinutes % 60).toString(),
 				notes = entry.notes,
 				isCompleteButtonEnabled = true,
 				entryToEdit = entry
+			)
+		}
+	}
+
+	override fun initializeWithDate(date: LocalDate) {
+		// Fresh entry, but with the day preselected (e.g. tapped on the calendar):
+		// open on the date step with that day chosen so the user just confirms it.
+		exactLength = null
+		_uiState.update {
+			IManualAddViewModel.ManualAddUiState(
+				currentStep = ManualAddStep.StartDate,
+				selectedDate = date,
 			)
 		}
 	}

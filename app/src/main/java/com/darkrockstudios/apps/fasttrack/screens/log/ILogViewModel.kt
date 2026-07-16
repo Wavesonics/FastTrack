@@ -18,6 +18,11 @@ interface ILogViewModel {
 		val entryToEdit: FastingLogEntry? = null,
 		val viewMode: LogViewMode = LogViewMode.LIST,
 		val selectedDate: LocalDate? = null,
+		val showClearAllConfirmation: Boolean = false,
+		// An empty (past/today) calendar day awaiting "add a fast here?" confirmation.
+		val emptyDayToAdd: LocalDate? = null,
+		// Date to preselect in the Manual Add picker (e.g. from an empty calendar day).
+		val manualAddInitialDate: LocalDate? = null,
 	)
 
 	val uiState: StateFlow<LogUiState>
@@ -29,4 +34,10 @@ interface ILogViewModel {
 	fun loadEntries()
 	fun setViewMode(mode: LogViewMode)
 	fun selectDate(date: LocalDate?)
+	fun requestClearAll()
+	fun dismissClearAll()
+	fun clearAll()
+	fun requestAddForDate(date: LocalDate)
+	fun dismissAddForDate()
+	fun confirmAddForDate()
 }

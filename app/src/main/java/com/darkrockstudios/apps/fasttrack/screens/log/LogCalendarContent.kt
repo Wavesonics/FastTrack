@@ -53,6 +53,7 @@ fun LogCalendarContent(
     entries: List<FastingLogEntry>,
 	selectedDate: KxLocalDate?,
 	onDateSelected: (KxLocalDate?) -> Unit,
+	onAddForEmptyDay: (KxLocalDate) -> Unit,
     onEdit: (FastingLogEntry) -> Unit,
     onDelete: (FastingLogEntry) -> Unit,
     contentPadding: PaddingValues,
@@ -91,8 +92,18 @@ fun LogCalendarContent(
 						day = day,
 						isToday = day.date == today,
 						entries = dayEntries,
+						isFuture = day.date.isAfter(today),
 						isSelected = selectedDate == kxDate,
-						onClick = { onDateSelected(kxDate) },
+						onClick = {
+							if (dayEntries.isNotEmpty()) {
+								// A day with fasts opens its detail dialog.
+								onDateSelected(kxDate)
+							} else {
+								// An empty day offers to log a fast there — framed as
+								// "planning" when the day is in the future.
+								onAddForEmptyDay(kxDate)
+							}
+						},
 					)
 				},
 				monthHeader = { month -> MonthHeader(month) },
@@ -202,12 +213,15 @@ private fun MonthHeader(month: CalendarMonth) {
 private fun DayCell(
 	day: CalendarDay,
 	isToday: Boolean,
+	isFuture: Boolean,
 	entries: List<FastingLogEntry>,
 	isSelected: Boolean,
 	onClick: () -> Unit,
 ) {
 	val inMonth = day.position == DayPosition.MonthDate
 	val hasEntries = entries.isNotEmpty() && inMonth
+	// Only past/today fasts can be logged, so future days are greyed out and inert.
+	val enabled = inMonth && !isFuture
 
 	val stageColor = if (hasEntries) stageColorFor(entries) else Color.Transparent
 	val bgColor = if (hasEntries) stageColor.copy(alpha = 0.45f) else Color.Transparent
@@ -220,7 +234,7 @@ private fun DayCell(
 	val borderWidth = if (isSelected) 2.dp else 1.dp
 
 	val dayTextColor = when {
-		!inMonth -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+		!inMonth || isFuture -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
 		else -> MaterialTheme.colorScheme.onSurface
 	}
 
@@ -231,7 +245,7 @@ private fun DayCell(
 			.clip(CircleShape)
 			.background(bgColor, CircleShape)
 			.border(borderWidth, borderColor, CircleShape)
-			.clickable(enabled = inMonth, onClick = onClick),
+			.clickable(enabled = enabled, onClick = onClick),
 		contentAlignment = Alignment.Center,
 	) {
 		Text(

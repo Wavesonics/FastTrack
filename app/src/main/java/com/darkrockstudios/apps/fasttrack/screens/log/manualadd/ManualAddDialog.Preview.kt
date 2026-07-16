@@ -17,11 +17,13 @@ class FakeManualAddViewModel(initialState: IManualAddViewModel.ManualAddUiState 
 	override fun onDateSelected(dateTimestamp: Long) {}
 	override fun onTimeSelected(hour: Int, minute: Int) {}
 	override fun onLengthChanged(length: String) {}
+	override fun onMinutesChanged(minutes: String) {}
 	override fun onNotesChanged(notes: String) {}
 	override fun onEndDateTimeSelected(instant: Instant) {}
 	override fun onAddEntry() = true
 	override fun onDismiss() {}
 	override fun initializeWithEntry(entry: FastingLogEntry) {}
+	override fun initializeWithDate(date: LocalDate) {}
 	override fun onPreviousStep() {}
 	override fun goToStep(step: ManualAddStep) {}
 }

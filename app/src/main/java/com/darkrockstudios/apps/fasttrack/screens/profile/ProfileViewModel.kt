@@ -56,17 +56,25 @@ class ProfileViewModel(
         val weightPoundsStr = if (profile.weightKg == 0.0) "" else "%.01f".format(pounds)
         val weightKgStr = if (profile.weightKg == 0.0) "" else "%.01f".format(profile.weightKg)
 
-        val bmi = calculateBmi(profile)
-        val bmiCategory = when {
-            bmi < 18.5 -> appContext.getString(R.string.profile_bmi_category_underweight)
-            bmi < 25.0 -> appContext.getString(R.string.profile_bmi_category_normal)
-            bmi < 30.0 -> appContext.getString(R.string.profile_bmi_category_overweight)
-            bmi < 40.0 -> appContext.getString(R.string.profile_bmi_category_obese)
-            bmi >= 40.0 -> appContext.getString(R.string.profile_bmi_category_morbidly_obese)
-            else -> ""
+        // Only surface BMI/BMR once the profile is complete; an empty profile
+        // has a BMI of 0.0, which would otherwise read as "Underweight".
+        val bmiValue: String
+        val bmrValue: String
+        if (profile.isValid()) {
+            val bmi = calculateBmi(profile)
+            val bmiCategory = when {
+                bmi < 18.5 -> appContext.getString(R.string.profile_bmi_category_underweight)
+                bmi < 25.0 -> appContext.getString(R.string.profile_bmi_category_normal)
+                bmi < 30.0 -> appContext.getString(R.string.profile_bmi_category_overweight)
+                bmi < 40.0 -> appContext.getString(R.string.profile_bmi_category_obese)
+                else -> appContext.getString(R.string.profile_bmi_category_morbidly_obese)
+            }
+            bmiValue = appContext.getString(R.string.profile_bmi_value, bmi, bmiCategory)
+            bmrValue = appContext.getString(R.string.profile_bmr_value, calculateBmr(profile))
+        } else {
+            bmiValue = ""
+            bmrValue = ""
         }
-
-        val bmr = calculateBmr(profile)
 
         _uiState.update {
             it.copy(
@@ -78,8 +86,8 @@ class ProfileViewModel(
                 weightLbs = weightPoundsStr,
                 age = if (profile.ageYears == 0) "" else profile.ageYears.toString(),
                 gender = profile.gender,
-                bmiValue = appContext.getString(R.string.profile_bmi_value, bmi, bmiCategory),
-                bmrValue = appContext.getString(R.string.profile_bmr_value, bmr)
+                bmiValue = bmiValue,
+                bmrValue = bmrValue
             )
         }
     }
