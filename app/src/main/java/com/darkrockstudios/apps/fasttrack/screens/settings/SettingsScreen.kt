@@ -4,19 +4,29 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
+import com.darkrockstudios.apps.fasttrack.data.log.LogExportFormat
+import com.darkrockstudios.apps.fasttrack.data.settings.DateStyle
 import com.darkrockstudios.apps.fasttrack.data.settings.SettingsDatasource
 import com.darkrockstudios.apps.fasttrack.data.settings.ThemeMode
+import com.darkrockstudios.apps.fasttrack.utils.AppDateTime
 import com.darkrockstudios.apps.fasttrack.utils.MAX_COLUMN_WIDTH
+import com.darkrockstudios.apps.fasttrack.utils.shouldUse24HourFormat
+import kotlinx.datetime.LocalDateTime
 
 
 @Composable
@@ -31,7 +41,7 @@ fun SettingsScreen(
 	onMetricSystemSettingChanged: (Boolean) -> Unit,
 	themeModeState: ThemeMode,
 	onThemeModeChanged: (ThemeMode) -> Unit,
-	onExportClick: () -> Unit,
+	onExportClick: (LogExportFormat) -> Unit,
 	onImportClick: () -> Unit
 ) {
 	Scaffold(
@@ -46,7 +56,7 @@ fun SettingsScreen(
 				navigationIcon = {
 					IconButton(onClick = onBack) {
 						Icon(
-							Icons.Filled.ArrowBack,
+							Icons.AutoMirrored.Filled.ArrowBack,
 							contentDescription = stringResource(id = R.string.back)
 						)
 					}
@@ -83,10 +93,16 @@ private fun SettingsList(
 	onMetricSystemSettingChanged: (Boolean) -> Unit,
 	themeModeState: ThemeMode,
 	onThemeModeChanged: (ThemeMode) -> Unit,
-	onExportClick: () -> Unit,
+	onExportClick: (LogExportFormat) -> Unit,
 	onImportClick: () -> Unit
 ) {
 	var fancyBackground by remember { mutableStateOf(settings.getShowFancyBackground()) }
+	var dateStyle by remember { mutableStateOf(settings.getDateStyle()) }
+	var phaseAutoMode by remember { mutableStateOf(settings.getPhaseAutoMode()) }
+	var showFatBurn by remember { mutableStateOf(settings.getShowFatBurn()) }
+	var showKetosis by remember { mutableStateOf(settings.getShowKetosis()) }
+	var showAutophagy by remember { mutableStateOf(settings.getShowAutophagy()) }
+	var showExportFormatDialog by remember { mutableStateOf(false) }
 
 	Box(modifier = Modifier.fillMaxSize()) {
 		LazyColumn(
@@ -141,10 +157,69 @@ private fun SettingsList(
 					onChange = onMetricSystemSettingChanged
 				)
 			}
+			item(key = "phases_header") {
+				SettingsSectionHeader(title = R.string.settings_section_phases)
+			}
+			item(key = "phase_auto_mode") {
+				SettingsItem(
+					headline = R.string.settings_phase_auto_title,
+					details = R.string.settings_phase_auto_subtitle,
+					value = phaseAutoMode,
+					onChange = { checked ->
+						phaseAutoMode = checked
+						settings.setPhaseAutoMode(checked)
+					}
+				)
+			}
+			item(key = "phase_fat_burn") {
+				SettingsItem(
+					headline = R.string.settings_phase_fatburn_title,
+					details = R.string.settings_phase_fatburn_subtitle,
+					value = showFatBurn,
+					enabled = !phaseAutoMode,
+					onChange = { checked ->
+						showFatBurn = checked
+						settings.setShowFatBurn(checked)
+					}
+				)
+			}
+			item(key = "phase_ketosis") {
+				SettingsItem(
+					headline = R.string.settings_phase_ketosis_title,
+					details = R.string.settings_phase_ketosis_subtitle,
+					value = showKetosis,
+					enabled = !phaseAutoMode,
+					onChange = { checked ->
+						showKetosis = checked
+						settings.setShowKetosis(checked)
+					}
+				)
+			}
+			item(key = "phase_autophagy") {
+				SettingsItem(
+					headline = R.string.settings_phase_autophagy_title,
+					details = R.string.settings_phase_autophagy_subtitle,
+					value = showAutophagy,
+					enabled = !phaseAutoMode,
+					onChange = { checked ->
+						showAutophagy = checked
+						settings.setShowAutophagy(checked)
+					}
+				)
+			}
 			item(key = "theme_mode") {
 				ThemeModeSettingsItem(
 					themeMode = themeModeState,
 					onThemeModeChanged = onThemeModeChanged
+				)
+			}
+			item(key = "date_format") {
+				DateFormatSettingsItem(
+					dateStyle = dateStyle,
+					onDateStyleChanged = { style ->
+						dateStyle = style
+						settings.setDateStyle(style)
+					}
 				)
 			}
 			item(key = "logbook_header") {
@@ -154,7 +229,7 @@ private fun SettingsList(
 				SettingsActionItem(
 					headline = R.string.action_export,
 					details = R.string.action_export_description,
-					onClick = onExportClick
+					onClick = { showExportFormatDialog = true }
 				)
 			}
 			item(key = "import_logbook") {
@@ -164,6 +239,35 @@ private fun SettingsList(
 					onClick = onImportClick
 				)
 			}
+		}
+
+		if (showExportFormatDialog) {
+			AlertDialog(
+				onDismissRequest = { showExportFormatDialog = false },
+				title = { Text(stringResource(id = R.string.export_choose_format)) },
+				text = {
+					Column {
+						LogExportFormat.entries.forEach { format ->
+							Text(
+								text = stringResource(id = format.labelRes),
+								style = MaterialTheme.typography.bodyLarge,
+								modifier = Modifier
+									.fillMaxWidth()
+									.clickable {
+										showExportFormatDialog = false
+										onExportClick(format)
+									}
+									.padding(vertical = 12.dp),
+							)
+						}
+					}
+				},
+				confirmButton = {
+					TextButton(onClick = { showExportFormatDialog = false }) {
+						Text(stringResource(id = R.string.cancel_button))
+					}
+				},
+			)
 		}
 	}
 }
@@ -189,26 +293,32 @@ private fun SettingsItem(
 	@StringRes headline: Int,
 	@StringRes details: Int,
 	value: Boolean,
-	onChange: (enabled: Boolean) -> Unit
+	onChange: (enabled: Boolean) -> Unit,
+	enabled: Boolean = true,
 ) {
+	// Dim the whole row when disabled (e.g. individual phase toggles under Auto)
+	val contentAlpha = if (enabled) 1f else 0.38f
 	ListItem(
 		headlineContent = {
 			Text(
 				text = stringResource(id = headline),
 				style = MaterialTheme.typography.labelLarge,
-				fontWeight = FontWeight.Bold
+				fontWeight = FontWeight.Bold,
+				color = LocalContentColor.current.copy(alpha = contentAlpha)
 			)
 		},
 		supportingContent = {
 			Text(
 				text = stringResource(id = details),
-				style = MaterialTheme.typography.bodySmall
+				style = MaterialTheme.typography.bodySmall,
+				color = LocalContentColor.current.copy(alpha = contentAlpha)
 			)
 		},
 		trailingContent = {
 			Switch(
 				checked = value,
-				onCheckedChange = onChange
+				onCheckedChange = onChange,
+				enabled = enabled
 			)
 		}
 	)
@@ -271,6 +381,93 @@ private fun ThemeModeSettingsItem(
 			}
 		}
 	)
+}
+
+@StringRes
+private fun dateStyleLabel(style: DateStyle): Int = when (style) {
+	DateStyle.OPTIMIZED_COMPACT -> R.string.dateformat_optimized_compact
+	DateStyle.OPTIMIZED_WEEKDAY -> R.string.dateformat_optimized_weekday
+	DateStyle.SYSTEM_SHORT -> R.string.dateformat_system_short
+	DateStyle.SYSTEM_MEDIUM -> R.string.dateformat_system_medium
+	DateStyle.SYSTEM_LONG -> R.string.dateformat_system_long
+	DateStyle.ISO -> R.string.dateformat_iso
+}
+
+@Composable
+private fun DateFormatSettingsItem(
+	dateStyle: DateStyle,
+	onDateStyleChanged: (DateStyle) -> Unit,
+) {
+	val is24Hour = shouldUse24HourFormat(LocalContext.current)
+	// A representative moment (current year, evening, non-zero minutes) so each
+	// option's live sample shows off its real appearance rather than a mask.
+	val sample = remember { LocalDateTime(java.time.Year.now().value, 6, 1, 20, 5) }
+	var showDialog by remember { mutableStateOf(false) }
+
+	ListItem(
+		headlineContent = {
+			Text(
+				text = stringResource(id = R.string.settings_dateformat_title),
+				style = MaterialTheme.typography.labelLarge,
+				fontWeight = FontWeight.Bold,
+			)
+		},
+		supportingContent = {
+			// The current value is shown as its own live sample — pick by looking.
+			Text(
+				text = AppDateTime.formatDateTime(sample, dateStyle, is24Hour),
+				style = MaterialTheme.typography.bodySmall,
+			)
+		},
+		modifier = Modifier.clickable { showDialog = true },
+	)
+
+	if (showDialog) {
+		AlertDialog(
+			onDismissRequest = { showDialog = false },
+			title = { Text(stringResource(id = R.string.settings_dateformat_title)) },
+			text = {
+				Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+					DateStyle.entries.forEach { style ->
+						Row(
+							modifier = Modifier
+								.fillMaxWidth()
+								.clickable {
+									onDateStyleChanged(style)
+									showDialog = false
+								}
+								.padding(vertical = 8.dp),
+							verticalAlignment = Alignment.CenterVertically,
+						) {
+							RadioButton(
+								selected = style == dateStyle,
+								onClick = {
+									onDateStyleChanged(style)
+									showDialog = false
+								},
+							)
+							Column(modifier = Modifier.padding(start = 8.dp)) {
+								Text(
+									text = stringResource(id = dateStyleLabel(style)),
+									style = MaterialTheme.typography.bodyLarge,
+								)
+								Text(
+									text = AppDateTime.formatDateTime(sample, style, is24Hour),
+									style = MaterialTheme.typography.bodySmall,
+									color = MaterialTheme.colorScheme.onSurfaceVariant,
+								)
+							}
+						}
+					}
+				}
+			},
+			confirmButton = {
+				TextButton(onClick = { showDialog = false }) {
+					Text(stringResource(id = R.string.cancel_button))
+				}
+			},
+		)
+	}
 }
 
 @Composable

@@ -56,11 +56,25 @@ class FakeFastingLogDatasource : FastingLogDatasource {
 		return entries.size < initialSize
 	}
 
+	override fun deleteByStartRange(fromInclusive: Long, toExclusive: Long): Boolean {
+		val initialSize = entries.size
+		entries.removeAll { it.start >= fromInclusive && it.start < toExclusive }
+		updateFlow()
+		return entries.size < initialSize
+	}
+
 	override fun deleteByUid(uid: Int): Boolean {
 		val initialSize = entries.size
 		entries.removeAll { it.uid == uid }
 		updateFlow()
 		return entries.size < initialSize
+	}
+
+	override fun deleteAllEntries(): Int {
+		val removed = entries.size
+		entries.clear()
+		updateFlow()
+		return removed
 	}
 
 	private fun updateFlow() {

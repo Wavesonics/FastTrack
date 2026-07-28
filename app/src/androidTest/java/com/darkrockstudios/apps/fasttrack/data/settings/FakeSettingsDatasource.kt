@@ -10,6 +10,7 @@ class FakeSettingsDatasource : SettingsDatasource {
 	private var showFastingNotification: Boolean = true
 	private var useMetricSystem: Boolean? = null
 	private var themeMode: ThemeMode = ThemeMode.SYSTEM
+	private var dateStyle: DateStyle = DateStyle.OPTIMIZED_COMPACT
 	private var logViewMode: LogViewMode = LogViewMode.LIST
 
 	override fun getFastingAlerts(): Boolean = fastingAlerts
@@ -46,8 +47,32 @@ class FakeSettingsDatasource : SettingsDatasource {
 		themeMode = mode
 	}
 
+	override fun getDateStyle(): DateStyle = dateStyle
+	override fun setDateStyle(style: DateStyle) {
+		dateStyle = style
+	}
+
 	override fun getLogViewMode(): LogViewMode = logViewMode
 	override fun setLogViewMode(mode: LogViewMode) {
 		logViewMode = mode
 	}
+
+	// In-memory phase visibility, matching the production defaults so a screen
+	// driven by this fake behaves like the real app unless a test overrides it.
+	private var showFatBurn: Boolean = true
+	private var showKetosis: Boolean = true
+	private var showAutophagy: Boolean = true
+	private var phaseAutoMode: Boolean = false
+
+	override fun getShowFatBurn(): Boolean = showFatBurn
+	override fun setShowFatBurn(enabled: Boolean) { showFatBurn = enabled }
+	override fun getShowKetosis(): Boolean = showKetosis
+	override fun setShowKetosis(enabled: Boolean) { showKetosis = enabled }
+	override fun getShowAutophagy(): Boolean = showAutophagy
+	override fun setShowAutophagy(enabled: Boolean) { showAutophagy = enabled }
+	override fun getPhaseAutoMode(): Boolean = phaseAutoMode
+	override fun setPhaseAutoMode(enabled: Boolean) { phaseAutoMode = enabled }
+
+	override fun phaseVisibilityFlow(): Flow<PhaseVisibility> =
+		flowOf(PhaseVisibility(showFatBurn, showKetosis, showAutophagy, phaseAutoMode))
 }

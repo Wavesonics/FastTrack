@@ -1,37 +1,37 @@
 # Consejos
 
-¡La limpieza puede ser difícil! He aquí algunos punteros para ayudar.
+¡Ayunar puede ser todo un reto! Aquí tienes algunas pautas que te ayudarán a llevarlo mejor.
 
-## Iniciar lentamente:
+## Empieza con calma
 
-- Pruebe un par de ayunas de 16 horas para empezar, luego mueva a 30 horas de ayuno, y así sucesivamente.
-- Cuanto más rápido vayas, más fácil obtendrán las cosas.
-- Cuando empiezas a hacer un ayuno de varios días, generalmente el primer día es más difícil que el segundo día.
+- Prueba primero un par de ayunos de 16 horas y, una vez los domines, progresa hacia ayunos de 30 horas, y así sucesivamente.
+- Cuanto más ayunes, más fácil se volverá todo.
+- Al iniciar un ayuno de varios días, el primero suele costar más que el segundo.
 
-## Alimentos de Calorie Cero
+## Alimentos y bebidas sin calorías
 
-- **Beba mucha agua:** Además de ser bueno para ti, llenar tu estómago con un montón de volumen te ayudará a sentirte lleno durante un tiempo.
-- **Beber cero bebidas calorías:**
-  - ¡Las aguas de seltzer saboreadas son excelentes para esto!
-  - Té no endulzado (_Caliente o hielo_)
-  - Agua con zumo de limón o limón
+- **Bebe agua en abundancia:** además de sentarte bien, llenar el estómago de líquido te ayudará a sentirte saciado durante más tiempo.
+- **Recurre a bebidas sin calorías:**
+    - Las aguas con gas aromatizadas son una opción magnífica.
+    - Infusiones o té sin azúcar, tanto calientes como fríos.
+    - Agua con unas gotas de limón o de lima.
 
-## Alimentos muy bajos de Calorie
+## Alimentos muy bajos en calorías
 
-Usted puede comer un par de calorías durante su ayuno y aún así ser igual de eficaz. Intenta mantenerlo por debajo de 100
-calorías al día. Para este fin, esta es una receta que encuentro muy efectiva en "sentirse comida" mientras que solo es de 5
-calorías por porción:
+Puedes permitirte unas pocas calorías durante el ayuno sin perder por ello su efectividad. Procura no superar las 100 calorías diarias.
 
-**Caldo picante:**
+Con ese fin, aquí tienes una receta que resulta muy eficaz para engañar al hambre, con apenas 5 calorías por ración:
 
-- 1 tsp de pollo
-- 8oz (1 taza) agua de ebullición
-- Rayo de salsa de habanero caliente
-- Zumo de cal
+**Caldo picante**
 
-Para Vegan o Vegan más rápido, usted puede sustituir el pollo de illon por el de la verdura.
+- 1 cucharadita de caldo de pollo en polvo
+- 1 taza (240 ml) de agua hirviendo
+- Unas gotas de salsa picante de habanero
+- Un chorrito de zumo de lima
 
-## Supresores de Appetitos
+Si sigues una dieta vegana, o simplemente prefieres una versión apta para veganos, basta con sustituir el caldo de pollo por caldo de verduras.
 
-- **Coffe:** más que llenar tu estómago un poco para sentirte lleno, reprimirá activamente tu apetito por un tiempo
-- **Salsa caliente:** Normalmente estas son calorías cero, y también ayudarán a evitar los sentimientos de hambre
+## Supresores del apetito
+
+- **Café:** además de aportar cierta sensación de saciedad, ayuda a frenar el apetito durante un tiempo.
+- **Salsa picante:** por lo general no aporta calorías y también contribuye a mantener el hambre a raya.

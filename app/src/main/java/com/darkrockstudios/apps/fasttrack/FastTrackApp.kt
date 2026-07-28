@@ -30,7 +30,9 @@ class FastTrackApp : Application(), Configuration.Provider {
 	override fun onCreate() {
 		super.onCreate()
 
-		Napier.base(DebugAntilog())
+		if (BuildConfig.DEBUG) {
+			Napier.base(DebugAntilog())
+		}
 
 		Satchel.init(
 			storer = FileSatchelStorer(File(filesDir, Data.STORAGE_PATH)),

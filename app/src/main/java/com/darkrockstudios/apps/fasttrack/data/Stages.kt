@@ -46,6 +46,31 @@ object Stages {
 	)
 }
 
+/** Hours spent in ketosis for a fast of the given [length] (0 if it never reached ketosis). */
+fun ketosisHours(length: Duration): Double {
+	val start = Stages.PHASE_KETOSIS.hours.toDouble()
+	return (length.toDouble(DurationUnit.HOURS) - start).coerceAtLeast(0.0)
+}
+
+/** Hours spent in autophagy for a fast of the given [length] (0 if it never reached autophagy). */
+fun autophagyHours(length: Duration): Double {
+	val start = Stages.PHASE_AUTOPHAGY.hours.toDouble()
+	return (length.toDouble(DurationUnit.HOURS) - start).coerceAtLeast(0.0)
+}
+
+/**
+ * The description to show for [stage] at [elapsedHours]. Optimal autophagy's copy
+ * talks about the window "between now and 72 hours", which no longer applies once a
+ * fast is past 72h, so beyond that we switch to a version without the deadline.
+ */
+@StringRes
+fun descriptionFor(stage: Stage, elapsedHours: Long): Int =
+	if (stage.description == R.string.stage_optimal_autophagy_description && elapsedHours >= 72L) {
+		R.string.stage_optimal_autophagy_description_past72
+	} else {
+		stage.description
+	}
+
 fun phaseForStage(stage: Stage): Phase {
 	return when {
 		stage.hours >= 48 -> Stages.PHASE_OPTIMAL_AUTOPHAGY

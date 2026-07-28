@@ -13,6 +13,8 @@ data class StartFastRequest(val startNow: Boolean)
 data class ExternalRequests(
 	val startFastRequest: StartFastRequest? = null,
 	val stopFastRequested: Boolean = false,
+	val shareRequested: Boolean = false,
 	val consumeStartFastRequest: () -> Unit = {},
 	val consumeStopFastRequest: () -> Unit = {},
+	val consumeShareRequest: () -> Unit = {},
 )

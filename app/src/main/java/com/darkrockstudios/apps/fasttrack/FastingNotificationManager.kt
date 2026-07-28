@@ -14,7 +14,9 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.data.descriptionFor
 import com.darkrockstudios.apps.fasttrack.screens.main.MainActivity
+import com.darkrockstudios.apps.fasttrack.utils.formatDuration
 import com.darkrockstudios.apps.fasttrack.utils.getColorFor
 import io.github.aakira.napier.Napier
 import kotlin.time.Duration
@@ -53,10 +55,8 @@ object FastingNotificationManager {
 		}
 		val stage = Stages.stage[stageIndex]
 
-		// Format elapsed time
-		val timeText = elapsedTime.toComponents { hours, _, _, _ ->
-			"%d".format(hours)
-		}
+		// The notification refreshes hourly, so keep the duration hour-granular
+		val timeText = formatDuration(context, elapsedTime, withMinutes = false)
 
 		// Get energy mode
 		val energyMode = if (currentPhase.fatBurning) {
@@ -66,14 +66,14 @@ object FastingNotificationManager {
 		}
 
 		// Build notification content
-		val title = context.getString(R.string.notification_fasting_title, timeText)
+		val title = context.getString(R.string.notification_fasting_title_duration, timeText)
 		val contentText = context.getString(stage.title)
 		val expandedText = buildString {
 			append(context.getString(stage.title))
 			append("\n")
 			append(context.getString(R.string.notification_fasting_energy_mode, energyMode))
 			append("\n")
-			append(context.getString(stage.description))
+			append(context.getString(descriptionFor(stage, elapsedHours)))
 		}
 
 		val intent = Intent(context, MainActivity::class.java).apply {

@@ -269,4 +269,10 @@ class FakeLogViewModel(state: ILogViewModel.LogUiState) : ILogViewModel {
 	override fun loadEntries() {}
 	override fun setViewMode(mode: LogViewMode) {}
 	override fun selectDate(date: LocalDate?) {}
+	override fun requestClearAll() {}
+	override fun dismissClearAll() {}
+	override fun clearAll() {}
+	override fun requestAddForDate(date: LocalDate) {}
+	override fun dismissAddForDate() {}
+	override fun confirmAddForDate() {}
 }

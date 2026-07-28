@@ -34,13 +34,15 @@ data class FastingSpacing(
 	val buttonPaddingVertical: Dp,
 )
 
+// Spacing follows the Fibonacci ladder (3, 5, 8, 13, 21) — the integer
+// expression of the golden ratio, so every gap relates to its neighbor by ~phi.
 val LocalFastingSpacing = staticCompositionLocalOf {
 	FastingSpacing(
-		small = 4.dp,
+		small = 5.dp,
 		medium = 8.dp,
-		large = 16.dp,
-		iconSize = 24.dp,
-		buttonPaddingHorizontal = 12.dp,
+		large = 13.dp,
+		iconSize = 21.dp,
+		buttonPaddingHorizontal = 13.dp,
 		buttonPaddingVertical = 8.dp,
 	)
 }
@@ -66,8 +68,8 @@ fun fastingTypography(): FastingTypography =
 		energyMode = { MaterialTheme.typography.labelMedium },
 		timerText = { MaterialTheme.typography.displayLarge },
 		timerMilliseconds = { MaterialTheme.typography.headlineMedium },
-		phaseLabel = { MaterialTheme.typography.headlineSmall },
-		phaseTime = { MaterialTheme.typography.headlineMedium },
+		phaseLabel = { MaterialTheme.typography.titleMedium },
+		phaseTime = { MaterialTheme.typography.titleMedium },
 		stageDescription = { MaterialTheme.typography.bodyMedium },
 		checkboxLabel = { MaterialTheme.typography.labelLarge },
 	)
@@ -80,20 +82,20 @@ fun rememberFastingSpacing(isCompact: Boolean): FastingSpacing {
 	return remember(isCompact) {
 		if (isCompact) {
 			FastingSpacing(
-				small = 2.dp,
-				medium = 4.dp,
+				small = 3.dp,
+				medium = 5.dp,
 				large = 8.dp,
-				iconSize = 16.dp,
+				iconSize = 13.dp,
 				buttonPaddingHorizontal = 8.dp,
-				buttonPaddingVertical = 4.dp,
+				buttonPaddingVertical = 5.dp,
 			)
 		} else {
 			FastingSpacing(
-				small = 4.dp,
+				small = 5.dp,
 				medium = 8.dp,
-				large = 16.dp,
-				iconSize = 24.dp,
-				buttonPaddingHorizontal = 12.dp,
+				large = 13.dp,
+				iconSize = 21.dp,
+				buttonPaddingHorizontal = 13.dp,
 				buttonPaddingVertical = 8.dp,
 			)
 		}
@@ -109,8 +111,8 @@ fun rememberFastingTypography(isCompact: Boolean): FastingTypography {
 				energyMode = { MaterialTheme.typography.labelSmall },
 				timerText = { MaterialTheme.typography.displayMedium },
 				timerMilliseconds = { MaterialTheme.typography.headlineSmall },
-				phaseLabel = { MaterialTheme.typography.titleMedium },
-				phaseTime = { MaterialTheme.typography.titleLarge },
+				phaseLabel = { MaterialTheme.typography.titleSmall },
+				phaseTime = { MaterialTheme.typography.titleSmall },
 				stageDescription = { MaterialTheme.typography.bodySmall },
 				checkboxLabel = { MaterialTheme.typography.labelMedium },
 			)
@@ -120,8 +122,8 @@ fun rememberFastingTypography(isCompact: Boolean): FastingTypography {
 				energyMode = { MaterialTheme.typography.labelMedium },
 				timerText = { MaterialTheme.typography.displayLarge },
 				timerMilliseconds = { MaterialTheme.typography.headlineMedium },
-				phaseLabel = { MaterialTheme.typography.headlineSmall },
-				phaseTime = { MaterialTheme.typography.headlineMedium },
+				phaseLabel = { MaterialTheme.typography.titleMedium },
+				phaseTime = { MaterialTheme.typography.titleMedium },
 				stageDescription = { MaterialTheme.typography.bodyMedium },
 				checkboxLabel = { MaterialTheme.typography.labelLarge },
 			)

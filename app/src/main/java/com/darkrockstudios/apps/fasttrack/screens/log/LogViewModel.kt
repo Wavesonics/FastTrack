@@ -3,7 +3,8 @@ package com.darkrockstudios.apps.fasttrack.screens.log
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.darkrockstudios.apps.fasttrack.data.Stages
+import com.darkrockstudios.apps.fasttrack.data.autophagyHours
+import com.darkrockstudios.apps.fasttrack.data.ketosisHours
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogEntry
 import com.darkrockstudios.apps.fasttrack.data.log.FastingLogRepository
 import com.darkrockstudios.apps.fasttrack.data.settings.LogViewMode
@@ -16,7 +17,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 import kotlin.math.roundToInt
-import kotlin.time.DurationUnit
+import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -39,48 +40,35 @@ class LogViewModel(
 	}
 
 	private fun updateEntries(entries: List<FastingLogEntry>) {
-		val totalKetosisHours = entries.sumOf { calculateKetosis(it) }.roundToInt()
-		val totalAutophagyHours = entries.sumOf { calculateAutophagy(it) }.roundToInt()
+		val totalKetosisHours = entries.sumOf { ketosisHours(it.length) }.roundToInt()
+		val totalAutophagyHours = entries.sumOf { autophagyHours(it.length) }.roundToInt()
+		val totalFastedDuration = entries.fold(Duration.ZERO) { acc, e -> acc + e.length }
+		val longestFastDuration = entries.maxOfOrNull { it.length } ?: Duration.ZERO
 
 		_uiState.update { currentState ->
 			currentState.copy(
 				entries = entries.sortedByDescending { it.start },
 				totalKetosisHours = totalKetosisHours,
-				totalAutophagyHours = totalAutophagyHours
+				totalAutophagyHours = totalAutophagyHours,
+				totalFasts = entries.size,
+				totalFastedDuration = totalFastedDuration,
+				longestFastDuration = longestFastDuration,
 			)
-		}
-	}
-
-	private fun calculateKetosis(entry: FastingLogEntry): Double {
-		val ketosisStart = Stages.PHASE_KETOSIS.hours.toDouble()
-		val lenHours = entry.length.toDouble(DurationUnit.HOURS)
-		return if (lenHours > ketosisStart) {
-			lenHours - ketosisStart
-		} else {
-			0.0
-		}
-	}
-
-	private fun calculateAutophagy(entry: FastingLogEntry): Double {
-		val autophagyStart = Stages.PHASE_AUTOPHAGY.hours.toDouble()
-		val lenHours = entry.length.toDouble(DurationUnit.HOURS)
-		return if (lenHours > autophagyStart) {
-			lenHours - autophagyStart
-		} else {
-			0.0
 		}
 	}
 
 	override fun deleteFast(item: FastingLogEntry) {
 		viewModelScope.launch(Dispatchers.IO) {
-			if (repository.delete(item)) {
+			if (!repository.delete(item)) {
 				Log.w("LogViewModel", "Failed to delete Fast: $item")
 			}
 		}
 	}
 
 	override fun showManualAddDialog() {
-		_uiState.update { it.copy(showManualAddDialog = true, entryToEdit = null) }
+		_uiState.update {
+			it.copy(showManualAddDialog = true, entryToEdit = null, manualAddInitialDate = null)
+		}
 	}
 
 	override fun showEditDialog(entry: FastingLogEntry) {
@@ -88,7 +76,9 @@ class LogViewModel(
 	}
 
 	override fun hideManualAddDialog() {
-		_uiState.update { it.copy(showManualAddDialog = false, entryToEdit = null) }
+		_uiState.update {
+			it.copy(showManualAddDialog = false, entryToEdit = null, manualAddInitialDate = null)
+		}
 	}
 
 	override fun setViewMode(mode: LogViewMode) {
@@ -98,5 +88,40 @@ class LogViewModel(
 
 	override fun selectDate(date: LocalDate?) {
 		_uiState.update { it.copy(selectedDate = date) }
+	}
+
+	override fun requestClearAll() {
+		_uiState.update { it.copy(showClearAllConfirmation = true) }
+	}
+
+	override fun dismissClearAll() {
+		_uiState.update { it.copy(showClearAllConfirmation = false) }
+	}
+
+	override fun clearAll() {
+		_uiState.update { it.copy(showClearAllConfirmation = false) }
+		viewModelScope.launch(Dispatchers.IO) {
+			repository.deleteAllEntries()
+			// The loadAll() flow emits the now-empty list and refreshes the stats.
+		}
+	}
+
+	override fun requestAddForDate(date: LocalDate) {
+		_uiState.update { it.copy(emptyDayToAdd = date) }
+	}
+
+	override fun dismissAddForDate() {
+		_uiState.update { it.copy(emptyDayToAdd = null) }
+	}
+
+	override fun confirmAddForDate() {
+		_uiState.update {
+			it.copy(
+				showManualAddDialog = true,
+				entryToEdit = null,
+				manualAddInitialDate = it.emptyDayToAdd,
+				emptyDayToAdd = null,
+			)
+		}
 	}
 }

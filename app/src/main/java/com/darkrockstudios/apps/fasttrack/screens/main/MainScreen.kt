@@ -1,32 +1,68 @@
 package com.darkrockstudios.apps.fasttrack.screens.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.*
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveableStateHolder
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.darkrockstudios.apps.fasttrack.R
-import com.darkrockstudios.apps.fasttrack.data.activefast.ActiveFastRepository
 import com.darkrockstudios.apps.fasttrack.screens.fasting.ExternalRequests
 import com.darkrockstudios.apps.fasttrack.screens.fasting.FastingScreen
 import com.darkrockstudios.apps.fasttrack.screens.log.LogScreen
+import com.darkrockstudios.apps.fasttrack.screens.log.LogViewModel
 import com.darkrockstudios.apps.fasttrack.screens.profile.ProfileScreen
 import com.darkrockstudios.apps.fasttrack.utils.Utils
 import kotlinx.coroutines.launch
+import org.koin.compose.viewmodel.koinViewModel
 import kotlin.time.ExperimentalTime
 
 enum class ScreenPages {
@@ -50,7 +86,6 @@ enum class ScreenPages {
 @ExperimentalTime
 @Composable
 fun MainScreen(
-	repository: ActiveFastRepository,
 	onShareClick: () -> Unit,
 	onInfoClick: () -> Unit,
 	onAboutClick: () -> Unit,
@@ -63,8 +98,10 @@ fun MainScreen(
 			pageCount = { ScreenPages.entries.size })
 	val coroutineScope = rememberCoroutineScope()
 
-	var showMenu by remember { mutableStateOf(false) }
-	val shareEnabled = remember { mutableStateOf(repository.getFastStart() != null) }
+	// Same activity-scoped LogViewModel instance the Log page uses, so the
+	// contextual "Clear logbook" overflow action drives its confirmation state.
+	val logViewModel: LogViewModel = koinViewModel()
+	val logState by logViewModel.uiState.collectAsState()
 
 	val fastingTitle = stringResource(id = R.string.title_fasting)
 	val logTitle = stringResource(id = R.string.title_log)
@@ -73,83 +110,9 @@ fun MainScreen(
 	val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
 	val compactHeight = windowSizeClass.minHeightDp < windowSizeClass.minWidthDp
 
-	val currentTitle = remember(pagerState.currentPage, fastingTitle, logTitle, profileTitle) {
-		when (ScreenPages.fromOrdinal(pagerState.currentPage)) {
-			ScreenPages.Fasting -> fastingTitle
-			ScreenPages.Log -> logTitle
-			ScreenPages.Profile -> profileTitle
-		}
-	}
-
-	LaunchedEffect(repository.isFasting()) {
-		shareEnabled.value = repository.getFastStart() != null
-	}
-
+	// No top app bar: the bottom navigation already names the screen, and the
+	// reclaimed space belongs to the content. Actions float in the top-right.
 	Scaffold(
-		topBar = {
-			TopAppBar(
-				colors = TopAppBarDefaults.topAppBarColors(
-					containerColor = MaterialTheme.colorScheme.primaryContainer,
-					titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-					actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-				),
-				modifier = Modifier.Companion
-					.fillMaxWidth()
-					.background(MaterialTheme.colorScheme.primary),
-				title = {
-					Text(
-						text = currentTitle,
-						style = MaterialTheme.typography.headlineMedium,
-					)
-				},
-				actions = {
-					IconButton(
-						onClick = onShareClick,
-						enabled = shareEnabled.value
-					) {
-						Icon(
-							imageVector = Icons.Default.Share,
-							contentDescription = stringResource(id = R.string.action_share),
-						)
-					}
-
-					IconButton(onClick = onInfoClick) {
-						Icon(
-							imageVector = Icons.Default.Info,
-							contentDescription = stringResource(id = R.string.action_info),
-						)
-					}
-
-					IconButton(onClick = { showMenu = !showMenu }) {
-						Icon(
-							imageVector = Icons.Default.MoreVert,
-							contentDescription = stringResource(id = R.string.more_options_button_description),
-						)
-					}
-
-					DropdownMenu(
-						expanded = showMenu,
-						onDismissRequest = { showMenu = false }
-					) {
-						DropdownMenuItem(
-							text = { Text(stringResource(id = R.string.action_about)) },
-							onClick = {
-								onAboutClick()
-								showMenu = false
-							},
-						)
-
-						DropdownMenuItem(
-							text = { Text(stringResource(id = R.string.action_settings)) },
-							onClick = {
-								onSettingsClick()
-								showMenu = false
-							},
-						)
-					}
-				}
-			)
-		},
 		bottomBar = {
 			if (compactHeight.not()) {
 				NavigationBar(
@@ -208,14 +171,15 @@ fun MainScreen(
 			}
 		}
 	) { paddingValues ->
-		if (compactHeight) {
+		Box(modifier = Modifier.fillMaxSize()) {
+			if (compactHeight) {
 
-			Row(
-				modifier = Modifier
-					.padding(top = paddingValues.calculateTopPadding())
-					.fillMaxSize()
-			) {
-				NavigationRail {
+				Row(
+					modifier = Modifier
+						.padding(top = paddingValues.calculateTopPadding())
+						.fillMaxSize()
+				) {
+					NavigationRail {
 					NavigationRailItem(
 						icon = {
 							Icon(
@@ -275,17 +239,148 @@ fun MainScreen(
 					externalRequests,
 				)
 			}
-		} else {
-			Box(
-				modifier = Modifier
-					.fillMaxSize()
-			) {
+			} else {
 				Content(
 					Modifier.fillMaxSize(),
 					contentPaddingValues = paddingValues,
 					pagerState,
 					externalRequests,
 				)
+			}
+
+			FloatingTopActions(
+				showShare = pagerState.currentPage == ScreenPages.Fasting.ordinal,
+				showClearLog = pagerState.currentPage == ScreenPages.Log.ordinal,
+				clearLogEnabled = logState.totalFasts > 0,
+				onClearLogClick = { logViewModel.requestClearAll() },
+				onShareClick = onShareClick,
+				onInfoClick = onInfoClick,
+				onAboutClick = onAboutClick,
+				onSettingsClick = onSettingsClick,
+				modifier = Modifier
+					.align(Alignment.TopEnd)
+					.padding(
+						top = paddingValues.calculateTopPadding() + 4.dp,
+						end = 8.dp,
+					)
+			)
+		}
+	}
+}
+
+/**
+ * The old top app bar, distilled to a small translucent pill in the
+ * top-right corner: Info stays exposed; About and Settings live behind
+ * the overflow menu. Share is contextual — it captures the fasting hero,
+ * so it only appears (animated) while the Fasting page is active.
+ */
+@Composable
+private fun FloatingTopActions(
+	showShare: Boolean,
+	showClearLog: Boolean,
+	clearLogEnabled: Boolean,
+	onClearLogClick: () -> Unit,
+	onShareClick: () -> Unit,
+	onInfoClick: () -> Unit,
+	onAboutClick: () -> Unit,
+	onSettingsClick: () -> Unit,
+	modifier: Modifier = Modifier,
+) {
+	var showMenu by remember { mutableStateOf(false) }
+
+	Surface(
+		modifier = modifier,
+		shape = RoundedCornerShape(24.dp),
+		color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f),
+	) {
+		Row(verticalAlignment = Alignment.CenterVertically) {
+			AnimatedVisibility(
+				visible = showShare,
+				enter = expandHorizontally() + fadeIn(),
+				exit = shrinkHorizontally() + fadeOut(),
+			) {
+				IconButton(onClick = onShareClick) {
+					Icon(
+						imageVector = Icons.Default.Share,
+						contentDescription = stringResource(id = R.string.action_share),
+					)
+				}
+			}
+
+			IconButton(onClick = onInfoClick) {
+				Icon(
+					imageVector = Icons.Default.Info,
+					contentDescription = stringResource(id = R.string.action_info),
+				)
+			}
+
+			Box {
+				IconButton(onClick = { showMenu = !showMenu }) {
+					Icon(
+						imageVector = Icons.Default.MoreVert,
+						contentDescription = stringResource(id = R.string.more_options_button_description),
+					)
+				}
+
+				DropdownMenu(
+					expanded = showMenu,
+					onDismissRequest = { showMenu = false }
+				) {
+					DropdownMenuItem(
+						text = { Text(stringResource(id = R.string.action_about)) },
+						leadingIcon = {
+							Icon(
+								imageVector = Icons.Outlined.Info,
+								contentDescription = null,
+							)
+						},
+						onClick = {
+							onAboutClick()
+							showMenu = false
+						},
+					)
+
+					DropdownMenuItem(
+						text = { Text(stringResource(id = R.string.action_settings)) },
+						leadingIcon = {
+							Icon(
+								imageVector = Icons.Default.Settings,
+								contentDescription = null,
+							)
+						},
+						onClick = {
+							onSettingsClick()
+							showMenu = false
+						},
+					)
+
+					// Contextual, destructive: only on the Log page, and only when
+					// there is something to clear. Set apart by a divider and error
+					// tone so it can't be mistaken for the routine actions above.
+					if (showClearLog) {
+						HorizontalDivider()
+						DropdownMenuItem(
+							text = {
+								Text(
+									text = stringResource(id = R.string.menu_clear_logbook),
+									color = MaterialTheme.colorScheme.error,
+								)
+							},
+							leadingIcon = {
+								Icon(
+									imageVector = Icons.Default.DeleteSweep,
+									contentDescription = null,
+									tint = MaterialTheme.colorScheme.error,
+								)
+							},
+							enabled = clearLogEnabled,
+							onClick = {
+								onClearLogClick()
+								showMenu = false
+							},
+						)
+					}
+				}
 			}
 		}
 	}

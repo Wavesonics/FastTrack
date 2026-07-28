@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Fast Track</string>
 	<string name="action_share">Share</string>
@@ -9,6 +10,11 @@
     <string name="action_import_description">Populate your log book from a previous export</string>
 	<string name="import_success">Logbook imported successfully</string>
 	<string name="import_failed">Failed to import logbook</string>
+	<string name="import_easyfast_result">Imported %1$d fasts.\nOverlapping entries SKIPPED: %2$d</string>
+	<string name="export_choose_format">Export format</string>
+	<string name="export_format_csv">CSV (spreadsheet)</string>
+	<string name="export_format_ics">iCalendar (.ics)</string>
+	<string name="export_format_activitystreams">ActivityStreams 2.0 (JSON-LD)</string>
 
     <!-- Settings -->
     <string name="settings_section_notifications">Notifications</string>
@@ -59,6 +65,9 @@
 	<string name="about_brief">Climber, mountaineer, software engineer, and open source advocate.</string>
 
 	<string name="about_discord">Discord</string>
+	<string name="about_github" translatable="false">GitHub</string>
+	<string name="about_website" translatable="false">Website</string>
+	<string name="about_rate" translatable="false">Rate on Google Play</string>
 
 	<string name="title_fasting">Fasting</string>
 	<string name="title_log">Log</string>
@@ -136,6 +145,9 @@
 	<string name="manual_add_title">Manual Add</string>
 	<string name="manual_edit_title">Edit Entry</string>
 	<string name="manual_add_length_hint">Length (Hours)</string>
+	<string name="manual_add_duration_label">Duration</string>
+	<string name="manual_add_hours_hint">Hours</string>
+	<string name="manual_add_minutes_hint">Minutes</string>
 	<string name="manual_add_complete_button">Add</string>
 	<string name="manual_add_save_button">Save</string>
 	<string name="manual_add_fast_started_on">Fast Started On: %1$s</string>
@@ -145,6 +157,19 @@
 	<string name="manual_start_title">Fasted Started</string>
 	<string name="manual_add_set_end_title">Set Fast End</string>
 	<string name="manual_add_set_end_complete">Calculate</string>
+	<string name="add_fast_for_day_title">Add a fast for %1$s?</string>
+	<string name="add_fast_for_day_confirm">Add fast</string>
+	<string name="settings_dateformat_title">Date &amp; time format</string>
+	<string name="dateformat_optimized_compact">Compact</string>
+	<string name="dateformat_optimized_weekday">Compact + weekday</string>
+	<string name="dateformat_system_short">System short</string>
+	<string name="dateformat_system_medium">System medium</string>
+	<string name="dateformat_system_long">System long</string>
+	<string name="dateformat_iso">ISO 8601</string>
+	<string name="menu_clear_logbook">Clear logbook…</string>
+	<string name="clear_logbook_title">Delete entire logbook?</string>
+	<string name="clear_logbook_message">This permanently deletes all %1$d logged fasts. This cannot be undone.</string>
+	<string name="clear_logbook_confirm">Delete all %1$d</string>
 	<string name="fast_autophagy_label">Autophagy:</string>
 	<string name="fast_ketosis_label">Ketosis:</string>
 	<string name="fast_fat_burn_label">Fat Burn:</string>
@@ -263,6 +288,9 @@
 	<string name="title_activity_info">Fasting Info</string>
 	<string name="log_total_autophagy">🧬 Autophagy:</string>
 	<string name="log_total_ketosis">🔥 Ketosis:</string>
+	<string name="stat_total_fasts">Total Fasts</string>
+	<string name="stat_total_fasted">Total Fasted</string>
+	<string name="stat_longest_fast">Longest Fast</string>
 	<string name="log_total_hours">%1$d hours</string>
 	<string name="profile_metric_switch">Metric</string>
 	<string name="title_activity_intro">Intro</string>
@@ -311,4 +339,52 @@
 	<string name="log_stats_label">Lifetime stats</string>
 	<string name="log_view_mode_list">List</string>
 	<string name="log_view_mode_calendar">Calendar</string>
+
+	<!-- Fasting journey stages (dial milestones) -->
+	<string name="journey_stage_0_title">Blood Sugar Rises</string>
+	<string name="journey_stage_0_body">You just ate, and your bloodstream knows it. Glucose climbs — in healthy people peaking under ~140 mg/dL within 30–60 min — and your pancreas answers with insulin, the hormone that ushers that sugar into cells and banks the surplus as glycogen.\n\nThis is the fed state: energy is abundant, storage is the priority, fat-burning is switched off.\n\nNothing to do but digest. The clock has started.</string>
+	<string name="journey_stage_1_title">Blood Sugar Falls</string>
+	<string name="journey_stage_1_body">Absorption tapers and the tide turns. Insulin recedes, glucagon rises, and your liver starts releasing stored glycogen to hold blood glucose steady near ~70–100 mg/dL.\n\nYou\'ve crossed from the fed state into the post-absorptive state — the quiet handoff where the body stops storing and starts spending.\n\nThat first flicker of hunger is mostly insulin falling. It passes.</string>
+	<string name="journey_stage_2_title">Blood Sugar Stabilizes</string>
+	<string name="journey_stage_2_body">Your liver is now the sole supplier, drip-feeding glucose from glycogen (~100 g in reserve) to keep you level. Your brain alone burns ~120 g of glucose a day, so this stability is not trivial.\n\nNo dip, no spike — glycogenolysis holds the line and keeps hypoglycemia away.\n\nFocus often feels unusually clean here. That\'s not imagination; it\'s steady fuel.</string>
+	<string name="journey_stage_3_title">Gluconeogenesis</string>
+	<string name="journey_stage_3_body">Glycogen is running thin, so the liver takes up a second trade: building glucose from scratch — lactate, glycerol, amino acids — a process called gluconeogenesis. By ~16 h it already supplies roughly half of your glucose output (Cahill, Annu Rev Nutr 2006).\n\nThis is metabolic flexibility made visible: your body will not let the brain go hungry.\n\nThe hunger and mild dip you feel are the switch being thrown. Fat is next.</string>
+	<string name="journey_stage_4_title">Fat Burning</string>
+	<string name="journey_stage_4_body">Insulin is finally low enough to unlock your fat stores. Lipolysis frees fatty acids, the liver begins spinning them into ketones, and you pivot from sugar-burner to fat-burner.\n\nEvery hour here nudges insulin sensitivity upward and draws down fat reserves — the metabolic core of why fasting works.\n\nA metallic taste or faint headache is early ketones. The fire is lit.</string>
+	<string name="journey_stage_5_title">Ketosis</string>
+	<string name="journey_stage_5_body">Blood ketones cross ~0.5 mmol/L — nutritional ketosis — and keep climbing. Your brain can\'t oxidize fatty acids directly, but it runs beautifully on this ketone stream, which spares muscle from being cannibalized for glucose.\n\nMany report an unusual mental clarity, and a hunger that quietly switches off — ketones themselves blunt appetite.\n\nTwenty-four hours. Your body now prefers the fuel it\'s making.</string>
+	<string name="journey_stage_6_title">Autophagy</string>
+	<string name="journey_stage_6_body">A full day in, and self-cleaning intensifies: autophagy — cells disassembling damaged proteins and organelles and recycling the parts (the mechanism that earned Ohsumi the 2016 Nobel). Human timing is still being mapped, but the pathway is clearly upregulated by fasting.\n\nThink of it as maintenance you can\'t buy — clearance associated with longevity and lower disease risk.\n\nTiredness or a headache? Salt and water. Deep work is underway.</string>
+	<string name="journey_stage_7_title">Growth Hormone Surge</string>
+	<string name="journey_stage_7_body">Two days, and growth hormone spikes — a ~2-day fast can raise GH secretion roughly 5-fold (Ho, J Clin Invest 1988). Its brief right now: defend lean muscle and push fat metabolism harder.\n\nSo you keep burning fat while sparing the muscle you\'d expect to lose — a genuinely elegant adaptation.\n\nThat unexpected lift in energy people describe here? That\'s the hormone talking.</string>
+	<string name="journey_stage_8_title">Insulin Sensitivity</string>
+	<string name="journey_stage_8_body">With insulin held low for days, your cells turn newly responsive to it — insulin sensitivity resets toward a healthier baseline, the opposite of the resistance that precedes type 2 diabetes.\n\nBlood glucose sits in a calm, narrow band; satiety comes easily.\n\nYou\'re tuning a system most people never deliberately touch.</string>
+	<string name="journey_stage_9_title">Immune Cell Regeneration</string>
+	<string name="journey_stage_9_body">Three days: rare air. Prolonged fasting can prompt the body to clear senescent immune cells and regenerate new ones from hematopoietic stem cells, as IGF-1 and PKA signaling drop (Cheng, Cell Stem Cell 2014).\n\nInflammation keeps easing; some describe a quiet, lucid sense of well-being.\n\nHowever far you go from here, you go renewed — and break your fast gently. Be proud.</string>
+	<string name="journey_stage_hours_range">%1$d–%2$d h</string>
+	<string name="journey_stage_hours_open">%1$d h+</string>
+	<string name="phase_time_until">in %1$s</string>
+	<string name="time_since_last_fast">Time since your last fast: %1$s</string>
+	<string name="just_finished_fast">You just finished a fast — well done!</string>
+	<string name="duration_less_than_minute">Just started</string>
+	<string name="settings_section_phases">Fasting Phases</string>
+	<string name="settings_phase_auto_title">Auto: show only active phases</string>
+	<string name="settings_phase_auto_subtitle">Reveal each phase once it begins. Overrides the individual toggles below.</string>
+	<string name="settings_phase_fatburn_title">Show Fat Burn</string>
+	<string name="settings_phase_fatburn_subtitle">Display the Fat Burn countdown on the fasting screen</string>
+	<string name="settings_phase_ketosis_title">Show Ketosis</string>
+	<string name="settings_phase_ketosis_subtitle">Display the Ketosis countdown on the fasting screen</string>
+	<string name="settings_phase_autophagy_title">Show Autophagy</string>
+	<string name="settings_phase_autophagy_subtitle">Display the Autophagy countdown on the fasting screen</string>
+	<string name="share_text_fasting">I’ve been fasting for %1$s! My body is currently consuming %2$s for energy.</string>
+	<string name="share_text_finished">I fasted for %1$s!</string>
+	<string name="notification_fasting_title_duration">Fasting: %1$s</string>
+	<string name="sheet_start_now">Start now</string>
+	<string name="sheet_start_earlier">I started earlier…</string>
+	<string name="sheet_end_now">End now</string>
+	<string name="sheet_end_earlier">I stopped earlier…</string>
+	<string name="fast_notes_label">Notes (optional)</string>
+	<string name="fast_notes_placeholder">How did it go? Anything to remember about this fast?</string>
+	<string name="log_entry_note_prefix">📝</string>
+	<string name="stage_optimal_autophagy_description_past72">Autophagy is in full swing! Keep it up!</string>
 </resources>
