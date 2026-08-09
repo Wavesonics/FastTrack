@@ -69,6 +69,16 @@
 	<string name="fasting_energy_mode_glucose">Glucose</string>
 	<string name="fasting_energy_mode_fat">Ketone Bodies</string>
 
+	<plurals name="fasting_days">
+		<item quantity="one">%1$d day</item>
+		<item quantity="other">%1$d days</item>
+	</plurals>
+	<plurals name="fasting_hours">
+		<item quantity="one">%1$d hour</item>
+		<item quantity="other">%1$d hours</item>
+	</plurals>
+	<string name="fasting_days_and_hours">%1$s, %2$s</string>
+
 	<string name="confirm_start_fast_title">Start Fast?</string>
 	<string name="confirm_start_fast_positive">Now</string>
 	<string name="confirm_start_fast_neutral">Already Started</string>
