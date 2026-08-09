@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -42,7 +43,6 @@ import kotlinx.datetime.toKotlinLocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
-import java.util.Locale
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlinx.datetime.LocalDate as KxLocalDate
@@ -122,8 +122,9 @@ private fun FastDayDialog(
 	onEdit: (FastingLogEntry) -> Unit,
 	onDelete: (FastingLogEntry) -> Unit,
 ) {
-	val formatter = remember { DateTimeFormatter.ofPattern("EEE, d MMM uuuu", Locale.getDefault()) }
-	val dateLabel = remember(date) { date.toJavaLocalDate().format(formatter) }
+	val locale = LocalLocale.current.platformLocale
+	val formatter = remember(locale) { DateTimeFormatter.ofPattern("EEE, d MMM uuuu", locale) }
+	val dateLabel = remember(date, formatter) { date.toJavaLocalDate().format(formatter) }
 
 	Dialog(
 		onDismissRequest = onDismiss,
@@ -165,6 +166,7 @@ private fun FastDayDialog(
 
 @Composable
 private fun DaysOfWeekRow(daysOfWeek: List<java.time.DayOfWeek>) {
+	val locale = LocalLocale.current.platformLocale
 	Row(
 		modifier = Modifier
 			.fillMaxWidth()
@@ -172,7 +174,7 @@ private fun DaysOfWeekRow(daysOfWeek: List<java.time.DayOfWeek>) {
 	) {
 		daysOfWeek.forEach { dow ->
 			Text(
-				text = dow.getDisplayName(TextStyle.SHORT, Locale.getDefault()),
+				text = dow.getDisplayName(TextStyle.SHORT, locale),
 				style = MaterialTheme.typography.labelSmall,
 				color = MaterialTheme.colorScheme.onSurfaceVariant,
 				textAlign = TextAlign.Center,
@@ -184,7 +186,8 @@ private fun DaysOfWeekRow(daysOfWeek: List<java.time.DayOfWeek>) {
 
 @Composable
 private fun MonthHeader(month: CalendarMonth) {
-	val formatter = remember { DateTimeFormatter.ofPattern("MMMM uuuu", Locale.getDefault()) }
+	val locale = LocalLocale.current.platformLocale
+	val formatter = remember(locale) { DateTimeFormatter.ofPattern("MMMM uuuu", locale) }
 	Text(
 		text = month.yearMonth.format(formatter),
 		style = MaterialTheme.typography.titleMedium,
