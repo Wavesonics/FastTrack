@@ -137,12 +137,29 @@ class FastingViewModel(
 			val timerText = "$hours:$minutesStr:$secondsStr"
 			val millisecondsText = "%02d".format(nanoseconds / 10000000)
 
+			// Calculate days and hours text for durations >= 24 hours
+			val daysAndHoursText = if (hours >= 24) {
+				formatDaysAndHours(days = (hours / 24).toInt(), hours = (hours % 24).toInt())
+			} else null
+
 			_uiState.update {
 				it.copy(
 					timerText = timerText,
-					milliseconds = millisecondsText
+					milliseconds = millisecondsText,
+					daysAndHoursText = daysAndHoursText
 				)
 			}
+		}
+	}
+
+	private fun formatDaysAndHours(days: Int, hours: Int): String {
+		val resources = appContext.resources
+		val daysText = resources.getQuantityString(R.plurals.fasting_days, days, days)
+		return if (hours == 0) {
+			daysText
+		} else {
+			val hoursText = resources.getQuantityString(R.plurals.fasting_hours, hours, hours)
+			appContext.getString(R.string.fasting_days_and_hours, daysText, hoursText)
 		}
 	}
 
