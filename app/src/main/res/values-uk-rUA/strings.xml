@@ -38,10 +38,6 @@
 	<string name="intro_04_description">Fast Track може показувати корисні сповіщення, щоби мотивувати Вас протягом голодування. \n\nВи бачитимете поточний час голодування, на якій Ви стадії, і яке джерело енергії використовується Вашим організмом. \n\nЦе допоможе Вам не зійти з курсу, навіть не відкриваючи додаток!</string>
 	<string name="intro_05_title">От і все!</string>
 	<string name="intro_05_description">А тепер починайте голодувати!</string>
-	<string name="about_name">Адам Браун</string>
-	<string name="about_subtitle">Розробник мобільних додатків</string>
-	<string name="about_brief">Скелелаз, альпініст, програміст і прибічник відкритого програмного забезпечення.</string>
-	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Голодування</string>
 	<string name="title_log">Журнал</string>
 	<string name="title_profile">Профіль</string>

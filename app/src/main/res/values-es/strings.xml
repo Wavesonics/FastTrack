@@ -40,10 +40,6 @@
 		using.\n\nThis helps you stay on track without having to open the app!</string>
 	<string name="intro_05_title">¡Eso es todo!</string>
 	<string name="intro_05_description">¡Ahora empieza a ayunar!</string>
-	<string name="about_name">Adam Brown</string>
-	<string name="about_subtitle">Desarrollador móvil</string>
-	<string name="about_brief">Escalador, montañista, ingeniero de software y defensor del código abierto.</string>
-	<string name="about_discord">Discordia</string>
 	<string name="title_fasting">Ayuno</string>
 	<string name="title_log">Registro</string>
 	<string name="title_profile">Perfil</string>

@@ -38,7 +38,7 @@ ksp = "2.3.8"
 legacySupportV4 = "1.0.0"
 lifecycleExtensions = "2.2.0"
 lifecycleViewmodelKtx = "2.10.0"
-materialabout = "0.3.0"
+cairn = "0.1.0"
 napier = "2.7.1"
 navigationRuntimeKtx = "2.9.8"
 navigationUiKtx = "2.9.8"
@@ -117,7 +117,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 linkify = { module = "io.noties.markwon:linkify", version.ref = "core" }
-materialabout = { module = "com.github.jrvansuita:MaterialAbout", version.ref = "materialabout" }
+cairn = { module = "com.darkrockstudios:cairn", version.ref = "cairn" }
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 navigation-runtime-ktx = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }

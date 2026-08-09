@@ -5,14 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.core.net.toUri
+import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
+import com.darkrockstudios.apps.fasttrack.BuildConfig
 import com.darkrockstudios.apps.fasttrack.FastingNotificationManager
 import com.darkrockstudios.apps.fasttrack.R
 import com.darkrockstudios.apps.fasttrack.data.Stages
@@ -25,7 +28,8 @@ import com.darkrockstudios.apps.fasttrack.screens.info.InfoActivity
 import com.darkrockstudios.apps.fasttrack.screens.intro.IntroActivity
 import com.darkrockstudios.apps.fasttrack.screens.settings.SettingsActivity
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
-import com.vansuita.materialabout.builder.AboutBuilder
+import com.darkrockstudios.cairn.CairnAboutOverlay
+import com.darkrockstudios.cairn.CairnConfig
 import org.koin.android.ext.android.inject
 import kotlin.time.ExperimentalTime
 
@@ -54,19 +58,30 @@ class MainActivity : AppCompatActivity() {
 
 		setContent {
 			FastTrackTheme(themeMode = themeModeState) {
-				MainScreen(
-					repository = fastingRepository,
-					onShareClick = { shareText() },
-					onInfoClick = { startActivity(Intent(this, InfoActivity::class.java)) },
-					onAboutClick = { showAbout() },
-					onSettingsClick = { startActivity(Intent(this, SettingsActivity::class.java)) },
-					externalRequests = ExternalRequests(
-						startFastRequest = startFastRequestState,
-						stopFastRequested = stopFastRequestState,
-						consumeStartFastRequest = { startFastRequestState = null },
-						consumeStopFastRequest = { stopFastRequestState = false },
-					),
-				)
+				var aboutVisible by rememberSaveable { mutableStateOf(false) }
+				Box(Modifier.fillMaxSize()) {
+					MainScreen(
+						repository = fastingRepository,
+						onShareClick = { shareText() },
+						onInfoClick = { startActivity(Intent(this@MainActivity, InfoActivity::class.java)) },
+						onAboutClick = { aboutVisible = true },
+						onSettingsClick = { startActivity(Intent(this@MainActivity, SettingsActivity::class.java)) },
+						externalRequests = ExternalRequests(
+							startFastRequest = startFastRequestState,
+							stopFastRequested = stopFastRequestState,
+							consumeStartFastRequest = { startFastRequestState = null },
+							consumeStopFastRequest = { stopFastRequestState = false },
+						),
+					)
+					CairnAboutOverlay(
+						visible = aboutVisible,
+						config = CairnConfig(
+							currentAppId = "fasttrack",
+							versionName = BuildConfig.VERSION_NAME,
+						),
+						onDismissed = { aboutVisible = false },
+					)
+				}
 			}
 		}
 	}
@@ -141,33 +156,6 @@ class MainActivity : AppCompatActivity() {
 
 		val shareIntent = Intent.createChooser(sendIntent, null)
 		startActivity(shareIntent)
-	}
-
-	private fun showAbout() {
-		val view = AboutBuilder.with(this)
-			.setPhoto(R.drawable.darkrockstudios_logo)
-			.setCover(R.mipmap.profile_cover)
-			.setName(R.string.about_name)
-			.setSubTitle(R.string.about_subtitle)
-			.setBrief(R.string.about_brief)
-			.setAppIcon(R.drawable.app_icon)
-			.setAppName(R.string.app_name)
-			.addGitHubLink("Darkrock-Studios")
-			.addWebsiteLink("https://darkrock.studio/")
-			.addLink(
-				R.drawable.ic_discord,
-				R.string.about_discord,
-				"https://discord.gg/ju2RQa5x8W".toUri()
-			)
-			.addFiveStarsAction()
-			.setVersionNameAsAppSubTitle()
-			.addShareAction(R.string.app_name)
-			.setWrapScrollView(true)
-			.setLinksAnimated(true)
-			.setShowAsCard(true)
-			.build()
-
-		AlertDialog.Builder(this).setView(view).create().show()
 	}
 
 	companion object {

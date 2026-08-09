@@ -40,10 +40,6 @@
 		using.\n\nThis helps you stay on track without having to open the app!</string>
 	<string name="intro_05_title">That’s it!</string>
 	<string name="intro_05_description">Now go start fasting!</string>
-	<string name="about_name">Dark Rock Studios</string>
-	<string name="about_subtitle">Open Source Development</string>
-	<string name="about_brief">Climber, mountaineer, software engineer, and open source advocate.</string>
-	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Fasting</string>
 	<string name="title_log">Log</string>
 	<string name="title_profile">Profile</string>

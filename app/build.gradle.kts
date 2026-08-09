@@ -152,7 +152,7 @@ dependencies {
 
 	implementation(libs.compose.markdown)
 
-	implementation(libs.materialabout)
+	implementation(libs.cairn)
 
 	implementation(libs.core)
 	implementation(libs.ext.latex)

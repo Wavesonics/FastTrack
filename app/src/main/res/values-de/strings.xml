@@ -33,10 +33,6 @@
 	<string name="intro_04_description">Fast Track kann dir hilfreiche Benachrichtigungen senden, damit du beim Fasten motiviert bleibst.\n\nDu siehst deine aktuelle Fastenzeit, in welcher Phase du dich befindest und welchen Energiemodus dein Körper gerade nutzt.\n\nSo bleibst du am Ball, ohne die App öffnen zu müssen</string>
 	<string name="intro_05_title">Das war\'s!</string>
 	<string name="intro_05_description">Jetzt starte das Fasten!</string>
-	<string name="about_name">Adam Brown</string>
-	<string name="about_subtitle">Open Source Entwicklung</string>
-	<string name="about_brief">Kletterer, Bergsteiger, Softwareingenieur und Open-Source-Befürworter.</string>
-	<string name="about_discord">Discord</string>
 	<string name="title_fasting">Fasten</string>
 	<string name="title_log">Protokoll</string>
 	<string name="title_profile">Profil</string>

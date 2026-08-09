@@ -38,10 +38,6 @@
 		using.\n\nThis helps you stay on track without having to open the app!</string>
 	<string name="intro_05_title">就是这样！</string>
 	<string name="intro_05_description">现在开始快速！</string>
-	<string name="about_name">亚当·布朗</string>
-	<string name="about_subtitle">移动开发者</string>
-	<string name="about_brief">攀登者、登山者、软件工程师和开源倡导者。</string>
-	<string name="about_discord">Discord</string>
 	<string name="title_fasting">禁食</string>
 	<string name="title_log">日志</string>
 	<string name="title_profile">个人资料</string>
