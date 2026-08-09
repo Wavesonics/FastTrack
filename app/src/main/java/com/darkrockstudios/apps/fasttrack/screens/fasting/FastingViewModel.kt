@@ -139,15 +139,7 @@ class FastingViewModel(
 
 			// Calculate days and hours text for durations >= 24 hours
 			val daysAndHoursText = if (hours >= 24) {
-				val days = hours / 24
-				val remainingHours = hours % 24
-				if (remainingHours == 0L) {
-					if (days == 1L) "1 day" else "$days days"
-				} else {
-					val dayText = if (days == 1L) "1 day" else "$days days"
-					val hourText = if (remainingHours == 1L) "1 hour" else "$remainingHours hours"
-					"$dayText, $hourText"
-				}
+				formatDaysAndHours(days = (hours / 24).toInt(), hours = (hours % 24).toInt())
 			} else null
 
 			_uiState.update {
@@ -157,6 +149,17 @@ class FastingViewModel(
 					daysAndHoursText = daysAndHoursText
 				)
 			}
+		}
+	}
+
+	private fun formatDaysAndHours(days: Int, hours: Int): String {
+		val resources = appContext.resources
+		val daysText = resources.getQuantityString(R.plurals.fasting_days, days, days)
+		return if (hours == 0) {
+			daysText
+		} else {
+			val hoursText = resources.getQuantityString(R.plurals.fasting_hours, hours, hours)
+			appContext.getString(R.string.fasting_days_and_hours, daysText, hoursText)
 		}
 	}
 
