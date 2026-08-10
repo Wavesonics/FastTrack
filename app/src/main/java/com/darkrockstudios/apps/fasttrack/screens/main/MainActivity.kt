@@ -29,6 +29,7 @@ import com.darkrockstudios.apps.fasttrack.screens.intro.IntroActivity
 import com.darkrockstudios.apps.fasttrack.screens.settings.SettingsActivity
 import com.darkrockstudios.apps.fasttrack.ui.theme.FastTrackTheme
 import com.darkrockstudios.cairn.CairnAboutOverlay
+import com.darkrockstudios.cairn.CairnAppId
 import com.darkrockstudios.cairn.CairnConfig
 import org.koin.android.ext.android.inject
 import kotlin.time.ExperimentalTime
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 					CairnAboutOverlay(
 						visible = aboutVisible,
 						config = CairnConfig(
-							currentAppId = "fasttrack",
+							currentAppId = CairnAppId.FastTrack,
 							versionName = BuildConfig.VERSION_NAME,
 						),
 						onDismissed = { aboutVisible = false },
